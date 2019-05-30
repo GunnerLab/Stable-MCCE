@@ -1,0 +1,28 @@
+   Error! get_connect12(): connectivity of atom " N   TRP A0140" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   TRP A0140" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  TRPBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   TRPBK  HA      0.000
+CHARGE   TRP01  CB      0.000
+CHARGE   TRP01 1HB      0.000
+CHARGE   TRP01 2HB      0.000
+CHARGE   TRP01  CG      0.000
+CHARGE   TRP01  CD1     0.000
+CHARGE   TRP01  HD1     0.000
+CHARGE   TRP01  CD2     0.000
+CHARGE   TRP01  NE1     0.000
+CHARGE   TRP01  HE1     0.000
+CHARGE   TRP01  CE2     0.000
+CHARGE   TRP01  CE3     0.000
+CHARGE   TRP01  HE3     0.000
+CHARGE   TRP01  CZ2     0.000
+CHARGE   TRP01  HZ2     0.000
+CHARGE   TRP01  CZ3     0.000
+CHARGE   TRP01  HZ3     0.000
+CHARGE   TRP01  CH2     0.000
+CHARGE   TRP01  HH2     0.000

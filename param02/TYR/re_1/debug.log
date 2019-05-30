@@ -1,0 +1,14 @@
+   Error! get_connect12(): connectivity of atom " N   TYR A0027" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   TYR A0027" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  TYRBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   TYRBK  HA      0.000
+CHARGE   TYR01 1HB      0.000
+CHARGE   TYR01 2HB      0.000
+CHARGE   TYR-1 1HB      0.000
+CHARGE   TYR-1 2HB      0.000

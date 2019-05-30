@@ -1,0 +1,212 @@
+#1,4-dimethyl,9,10-anthraquinone        
+#Agnes 10/09  
+CONFLIST A1D        A1DBK A1D01 A1DDM
+
+NATOM    A1DDM      0
+NATOM    A1DBK      0
+NATOM    A1D01      30
+
+IATOM    A1D01  C1  0
+IATOM    A1D01  C1M 1
+IATOM    A1D01  C2  2
+IATOM    A1D01  H2  3
+IATOM    A1D01  C3  4
+IATOM    A1D01  H3  5
+IATOM    A1D01  C4  6
+IATOM    A1D01  C4M 7
+IATOM    A1D01  C5  8
+IATOM    A1D01  H5  9
+IATOM    A1D01  C6  10
+IATOM    A1D01  H6  11
+IATOM    A1D01  C7  12
+IATOM    A1D01  H7  13
+IATOM    A1D01  C8  14
+IATOM    A1D01  H8  15
+IATOM    A1D01  C9  16
+IATOM    A1D01  C10 17
+IATOM    A1D01  O9  18
+IATOM    A1D01  O10 19
+IATOM    A1D01  C11 20
+IATOM    A1D01  C12 21
+IATOM    A1D01  C13 22
+IATOM    A1D01  C14 23
+IATOM    A1D01 1H1M 24
+IATOM    A1D01 2H1M 25
+IATOM    A1D01 3H1M 26
+IATOM    A1D01 1H4M 27
+IATOM    A1D01 2H4M 28
+IATOM    A1D01 3H4M 29
+
+ATOMNAME A1D01    0  C1
+ATOMNAME A1D01    1  C1M
+ATOMNAME A1D01    2  C2 
+ATOMNAME A1D01    3  H2 
+ATOMNAME A1D01    4  C3 
+ATOMNAME A1D01    5  H3 
+ATOMNAME A1D01    6  C4 
+ATOMNAME A1D01    7  C4M
+ATOMNAME A1D01    8  C5 
+ATOMNAME A1D01    9  H5 
+ATOMNAME A1D01   10  C6 
+ATOMNAME A1D01   11  H6 
+ATOMNAME A1D01   12  C7 
+ATOMNAME A1D01   13  H7 
+ATOMNAME A1D01   14  C8 
+ATOMNAME A1D01   15  H8 
+ATOMNAME A1D01   16  C9 
+ATOMNAME A1D01   17  C10 
+ATOMNAME A1D01   18  O9
+ATOMNAME A1D01   19  O10
+ATOMNAME A1D01   20  C11
+ATOMNAME A1D01   21  C12
+ATOMNAME A1D01   22  C13 
+ATOMNAME A1D01   23  C14
+ATOMNAME A1D01   24 1H1M
+ATOMNAME A1D01   25 2H1M
+ATOMNAME A1D01   26 3H1M
+ATOMNAME A1D01   27 1H4M
+ATOMNAME A1D01   28 2H4M
+ATOMNAME A1D01   29 3H4M
+
+
+#1.Basic conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+PROTON   A1D01      0
+
+PKA      A1D01      0.0
+
+ELECTRON A1D01      0
+
+EM       A1D01      0.0
+
+RXN      A1D01      -2.973
+
+
+#2.Structure connectivity
+#NEUTRAL-----------
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  A1D01  C1  sp2       0     C1M 0     C2  0     C13
+CONNECT  A1D01  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M
+CONNECT  A1D01  C2  sp2       0     H2  0     C1  0     C3
+CONNECT  A1D01  H2  s         0     C2
+CONNECT  A1D01  C3  sp2       0     C2  0     H3  0     C4
+CONNECT  A1D01  H3  s         0     C3
+CONNECT  A1D01  C4  sp2       0     C3  0     C4M 0     C14
+CONNECT  A1D01  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M
+CONNECT  A1D01  C5  sp2       0     C12 0     H5  0     C6
+CONNECT  A1D01  H5  s         0     C5
+CONNECT  A1D01  C6  sp2       0     C5  0     C7  0     H6
+CONNECT  A1D01  H6  s         0     C6
+CONNECT  A1D01  C7  sp2       0     C8  0     C6  0     H7
+CONNECT  A1D01  H7  s         0     C7
+CONNECT  A1D01  C8  sp2       0     C7  0     C11 0     H8
+CONNECT  A1D01  H8  s         0     C8
+CONNECT  A1D01  C9  sp2       0     C11 0     O9  0     C13
+CONNECT  A1D01  C10 sp2       0     C14 0     O10 0     C12
+CONNECT  A1D01  O9  s         0     C9
+CONNECT  A1D01  O10 s         0     C10
+CONNECT  A1D01  C11 sp2       0     C8  0     C9  0     C12
+CONNECT  A1D01  C12 sp2       0     C11 0     C10 0     C5 
+CONNECT  A1D01  C13 sp2       0     C1  0     C9  0     C14
+CONNECT  A1D01  C14 sp2       0     C4  0     C10 0     C13
+CONNECT  A1D01 1H1M s         0     C1M
+CONNECT  A1D01 2H1M s         0     C1M
+CONNECT  A1D01 3H1M s         0     C1M
+CONNECT  A1D01 1H4M s         0     C4M
+CONNECT  A1D01 2H4M s         0     C4M
+CONNECT  A1D01 3H4M s         0     C4M
+
+
+#3.Atom Parameters: Partial charges and Radii
+#23456789A123456789B123456789C
+RADIUS   A1D    C1  1.70
+RADIUS   A1D    C1M 1.70
+RADIUS   A1D    C2  1.70
+RADIUS   A1D    H2  1.00
+RADIUS   A1D    C3  1.70
+RADIUS   A1D    H3  1.00
+RADIUS   A1D    C4  1.70
+RADIUS   A1D    C4M 1.70
+RADIUS   A1D    C5  1.70
+RADIUS   A1D    H5  1.00
+RADIUS   A1D    C6  1.70
+RADIUS   A1D    H6  1.00
+RADIUS   A1D    C7  1.70
+RADIUS   A1D    H7  1.00
+RADIUS   A1D    C8  1.70
+RADIUS   A1D    H8  1.00
+RADIUS   A1D    C9  1.70
+RADIUS   A1D    C10 1.70
+RADIUS   A1D    O9  1.40
+RADIUS   A1D    O10 1.40
+RADIUS   A1D    C11 1.70
+RADIUS   A1D    C12 1.70
+RADIUS   A1D    C13 1.70
+RADIUS   A1D    C14 1.70
+RADIUS   A1D   1H1M 1.00
+RADIUS   A1D   2H1M 1.00
+RADIUS   A1D   3H1M 1.00
+RADIUS   A1D   1H4M 1.00
+RADIUS   A1D   2H4M 1.00
+RADIUS   A1D   3H4M 1.00
+
+
+
+
+#NEUTRAL------
+#23456789A123456789B123456789C
+# opt ub3lyp/lanl2dz nosymm geom=connectivity  pop=chelpg scf(maxcycle=600)   Agnes 10/09
+CHARGE   A1D01  C1   0.26
+CHARGE   A1D01  C1M -0.38
+CHARGE   A1D01  C2  -0.20
+CHARGE   A1D01  H2   0.14
+CHARGE   A1D01  C3  -0.20
+CHARGE   A1D01  H3   0.14
+CHARGE   A1D01  C4   0.25
+CHARGE   A1D01  C4M -0.37
+CHARGE   A1D01  C5  -0.04
+CHARGE   A1D01  H5   0.09
+CHARGE   A1D01  C6  -0.11
+CHARGE   A1D01  H6   0.11
+CHARGE   A1D01  C7  -0.10
+CHARGE   A1D01  H7   0.11
+CHARGE   A1D01  C8  -0.05
+CHARGE   A1D01  H8   0.09
+CHARGE   A1D01  C9   0.46
+CHARGE   A1D01  C10  0.48
+CHARGE   A1D01  O9  -0.47
+CHARGE   A1D01  O10 -0.48
+CHARGE   A1D01  C11 -0.04
+CHARGE   A1D01  C12 -0.06
+CHARGE   A1D01  C13 -0.15
+CHARGE   A1D01  C14 -0.16
+CHARGE   A1D01 1H1M  0.09
+CHARGE   A1D01 2H1M  0.13
+CHARGE   A1D01 3H1M  0.13
+CHARGE   A1D01 1H4M  0.12
+CHARGE   A1D01 2H4M  0.12 
+CHARGE   A1D01 3H4M  0.09
+
+
+
+
+
+#ParaNam|Res  |Atom|Param/toggle
+TRANS    A1D          t
+
+#====================================
+#        Res    #
+#23456789012345678901234567890123
+#-------|-----|----|----|----|----|
+#SPIN     A1D   0     C9 - C10- C1
+#SPIN     A1D   1     C8 - C5 - C10
+#SPIN     A1D   2     C1 - C4 - C9
+
+#=========================================================================
+#        Res    #      Axis     Rotated_Atoms
+#23456789012345678901234567890123
+#-------|-----|----|---------|----|----|----|----|----|----|----|
+ROTAMER  A1D   0     C9 - C10  WHOLE_CONF
+ROTAMER  A1D   1     C11- C13  WHOLE_CONF
+

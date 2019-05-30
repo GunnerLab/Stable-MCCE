@@ -1,0 +1,18 @@
+   Error! get_connect12(): connectivity of atom " N   MET A0098" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MET A0098" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  METBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   METBK  HA      0.000
+CHARGE   MET01  CB      0.000
+CHARGE   MET01 1HB      0.000
+CHARGE   MET01 2HB      0.000
+CHARGE   MET01 1HG      0.000
+CHARGE   MET01 2HG      0.000
+CHARGE   MET01 1HE      0.000
+CHARGE   MET01 2HE      0.000
+CHARGE   MET01 3HE      0.000

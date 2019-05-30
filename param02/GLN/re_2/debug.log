@@ -1,0 +1,16 @@
+   Error! get_connect12(): connectivity of atom " N   GLN A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   GLN A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  GLNBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   GLNBK  HA      0.000
+CHARGE   GLN01  CB      0.000
+CHARGE   GLN01 1HB      0.000
+CHARGE   GLN01 2HB      0.000
+CHARGE   GLN01  CG      0.000
+CHARGE   GLN01 1HG      0.000
+CHARGE   GLN01 2HG      0.000

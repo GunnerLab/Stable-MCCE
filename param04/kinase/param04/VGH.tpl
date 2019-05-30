@@ -1,0 +1,1003 @@
+####################################
+# Topology File for:
+# param/VGH.tpl
+# /home/salah/mcce-charges/epik_inhibitors/output/Crizotinib/Crizotinib
+#
+# Created on: 2016-06-12
+#
+# Created with: make_tpl_1.py by Salah Salah
+####################################
+
+# neural always starts with 0
+# numberical value means the charge is 1
+# alphabet lower case means the charge is 2
+# alphabet upper case means the charge is 3
+# nothing for charge of 4, this code will not work
+
+CONFLIST VGH        VGHBK VGH+a VGH+1 VGH01 VGH+2 VGHDM
+
+NATOM    VGHBK      0
+NATOM    VGH+a      54
+NATOM    VGH+1      53
+NATOM    VGH01      52
+NATOM    VGH+2      53
+NATOM    VGHDM      0
+
+IATOM    VGH+a    CL    0
+IATOM    VGH+a   C13    1
+IATOM    VGH+a    C3    2
+IATOM    VGH+a    C2    3
+IATOM    VGH+a   C12    4
+IATOM    VGH+a     F    5
+IATOM    VGH+a   C17    6
+IATOM    VGH+a   C18    7
+IATOM    VGH+a   CL2    8
+IATOM    VGH+a   C21    9
+IATOM    VGH+a    C1   10
+IATOM    VGH+a   O27   11
+IATOM    VGH+a   C15   12
+IATOM    VGH+a    C4   13
+IATOM    VGH+a   C19   14
+IATOM    VGH+a   N22   15
+IATOM    VGH+a   N23   16
+IATOM    VGH+a    C5   17
+IATOM    VGH+a   C14   18
+IATOM    VGH+a   C16   19
+IATOM    VGH+a    C6   20
+IATOM    VGH+a    C7   21
+IATOM    VGH+a   N26   22
+IATOM    VGH+a   N24   23
+IATOM    VGH+a   C20   24
+IATOM    VGH+a    C8   25
+IATOM    VGH+a   C10   26
+IATOM    VGH+a   N25   27
+IATOM    VGH+a   C11   28
+IATOM    VGH+a    C9   29
+IATOM    VGH+a    H3   30
+IATOM    VGH+a    H2   31
+IATOM    VGH+a   H21   32
+IATOM    VGH+a  H11C   33
+IATOM    VGH+a  H12C   34
+IATOM    VGH+a  H13C   35
+IATOM    VGH+a    H4   36
+IATOM    VGH+a  H221   37
+IATOM    VGH+a  H222   38
+IATOM    VGH+a    H5   39
+IATOM    VGH+a    H6   40
+IATOM    VGH+a    H7   41
+IATOM    VGH+a   H20   42
+IATOM    VGH+a  H81C   43
+IATOM    VGH+a  H82C   44
+IATOM    VGH+a  H91C   45
+IATOM    VGH+a  H92C   46
+IATOM    VGH+a  H101   47
+IATOM    VGH+a  H102   48
+IATOM    VGH+a   H25   49
+IATOM    VGH+a  H111   50
+IATOM    VGH+a  H112   51
+IATOM    VGH+a   H53   52
+IATOM    VGH+a   H54   53
+
+IATOM    VGH+1    CL    0
+IATOM    VGH+1   C13    1
+IATOM    VGH+1    C3    2
+IATOM    VGH+1    C2    3
+IATOM    VGH+1   C12    4
+IATOM    VGH+1     F    5
+IATOM    VGH+1   C17    6
+IATOM    VGH+1   C18    7
+IATOM    VGH+1   CL2    8
+IATOM    VGH+1   C21    9
+IATOM    VGH+1    C1   10
+IATOM    VGH+1   O27   11
+IATOM    VGH+1   C15   12
+IATOM    VGH+1    C4   13
+IATOM    VGH+1   C19   14
+IATOM    VGH+1   N22   15
+IATOM    VGH+1   N23   16
+IATOM    VGH+1    C5   17
+IATOM    VGH+1   C14   18
+IATOM    VGH+1   C16   19
+IATOM    VGH+1    C6   20
+IATOM    VGH+1    C7   21
+IATOM    VGH+1   N26   22
+IATOM    VGH+1   N24   23
+IATOM    VGH+1   C20   24
+IATOM    VGH+1    C8   25
+IATOM    VGH+1   C10   26
+IATOM    VGH+1   N25   27
+IATOM    VGH+1   C11   28
+IATOM    VGH+1    C9   29
+IATOM    VGH+1    H3   30
+IATOM    VGH+1    H2   31
+IATOM    VGH+1   H21   32
+IATOM    VGH+1  H11C   33
+IATOM    VGH+1  H12C   34
+IATOM    VGH+1  H13C   35
+IATOM    VGH+1    H4   36
+IATOM    VGH+1  H221   37
+IATOM    VGH+1  H222   38
+IATOM    VGH+1    H5   39
+IATOM    VGH+1    H6   40
+IATOM    VGH+1    H7   41
+IATOM    VGH+1   H20   42
+IATOM    VGH+1  H81C   43
+IATOM    VGH+1  H82C   44
+IATOM    VGH+1  H91C   45
+IATOM    VGH+1  H92C   46
+IATOM    VGH+1  H101   47
+IATOM    VGH+1  H102   48
+IATOM    VGH+1   H25   49
+IATOM    VGH+1  H111   50
+IATOM    VGH+1  H112   51
+IATOM    VGH+1   H53   52
+
+IATOM    VGH01    CL    0
+IATOM    VGH01   C13    1
+IATOM    VGH01    C3    2
+IATOM    VGH01    C2    3
+IATOM    VGH01   C12    4
+IATOM    VGH01     F    5
+IATOM    VGH01   C17    6
+IATOM    VGH01   C18    7
+IATOM    VGH01   CL2    8
+IATOM    VGH01   C21    9
+IATOM    VGH01    C1   10
+IATOM    VGH01   O27   11
+IATOM    VGH01   C15   12
+IATOM    VGH01    C4   13
+IATOM    VGH01   C19   14
+IATOM    VGH01   N22   15
+IATOM    VGH01   N23   16
+IATOM    VGH01    C5   17
+IATOM    VGH01   C14   18
+IATOM    VGH01   C16   19
+IATOM    VGH01    C6   20
+IATOM    VGH01    C7   21
+IATOM    VGH01   N26   22
+IATOM    VGH01   N24   23
+IATOM    VGH01   C20   24
+IATOM    VGH01    C8   25
+IATOM    VGH01   C10   26
+IATOM    VGH01   N25   27
+IATOM    VGH01   C11   28
+IATOM    VGH01    C9   29
+IATOM    VGH01    H3   30
+IATOM    VGH01    H2   31
+IATOM    VGH01   H21   32
+IATOM    VGH01  H11C   33
+IATOM    VGH01  H12C   34
+IATOM    VGH01  H13C   35
+IATOM    VGH01    H4   36
+IATOM    VGH01  H221   37
+IATOM    VGH01  H222   38
+IATOM    VGH01    H5   39
+IATOM    VGH01    H6   40
+IATOM    VGH01    H7   41
+IATOM    VGH01   H20   42
+IATOM    VGH01  H81C   43
+IATOM    VGH01  H82C   44
+IATOM    VGH01  H91C   45
+IATOM    VGH01  H92C   46
+IATOM    VGH01  H101   47
+IATOM    VGH01  H102   48
+IATOM    VGH01   H25   49
+IATOM    VGH01  H111   50
+IATOM    VGH01  H112   51
+
+IATOM    VGH+2    CL    0
+IATOM    VGH+2   C13    1
+IATOM    VGH+2    C3    2
+IATOM    VGH+2    C2    3
+IATOM    VGH+2   C12    4
+IATOM    VGH+2     F    5
+IATOM    VGH+2   C17    6
+IATOM    VGH+2   C18    7
+IATOM    VGH+2   CL2    8
+IATOM    VGH+2   C21    9
+IATOM    VGH+2    C1   10
+IATOM    VGH+2   O27   11
+IATOM    VGH+2   C15   12
+IATOM    VGH+2    C4   13
+IATOM    VGH+2   C19   14
+IATOM    VGH+2   N22   15
+IATOM    VGH+2   N23   16
+IATOM    VGH+2    C5   17
+IATOM    VGH+2   C14   18
+IATOM    VGH+2   C16   19
+IATOM    VGH+2    C6   20
+IATOM    VGH+2    C7   21
+IATOM    VGH+2   N26   22
+IATOM    VGH+2   N24   23
+IATOM    VGH+2   C20   24
+IATOM    VGH+2    C8   25
+IATOM    VGH+2   C10   26
+IATOM    VGH+2   N25   27
+IATOM    VGH+2   C11   28
+IATOM    VGH+2    C9   29
+IATOM    VGH+2    H3   30
+IATOM    VGH+2    H2   31
+IATOM    VGH+2   H21   32
+IATOM    VGH+2  H11C   33
+IATOM    VGH+2  H12C   34
+IATOM    VGH+2  H13C   35
+IATOM    VGH+2    H4   36
+IATOM    VGH+2  H221   37
+IATOM    VGH+2  H222   38
+IATOM    VGH+2    H5   39
+IATOM    VGH+2    H6   40
+IATOM    VGH+2    H7   41
+IATOM    VGH+2   H20   42
+IATOM    VGH+2  H81C   43
+IATOM    VGH+2  H82C   44
+IATOM    VGH+2  H91C   45
+IATOM    VGH+2  H92C   46
+IATOM    VGH+2  H101   47
+IATOM    VGH+2  H102   48
+IATOM    VGH+2   H25   49
+IATOM    VGH+2  H111   50
+IATOM    VGH+2  H112   51
+IATOM    VGH+2   H53   52
+
+ATOMNAME VGH+a     0  CL
+ATOMNAME VGH+a     1 C13
+ATOMNAME VGH+a     2  C3
+ATOMNAME VGH+a     3  C2
+ATOMNAME VGH+a     4 C12
+ATOMNAME VGH+a     5   F
+ATOMNAME VGH+a     6 C17
+ATOMNAME VGH+a     7 C18
+ATOMNAME VGH+a     8 CL2
+ATOMNAME VGH+a     9 C21
+ATOMNAME VGH+a    10  C1
+ATOMNAME VGH+a    11 O27
+ATOMNAME VGH+a    12 C15
+ATOMNAME VGH+a    13  C4
+ATOMNAME VGH+a    14 C19
+ATOMNAME VGH+a    15 N22
+ATOMNAME VGH+a    16 N23
+ATOMNAME VGH+a    17  C5
+ATOMNAME VGH+a    18 C14
+ATOMNAME VGH+a    19 C16
+ATOMNAME VGH+a    20  C6
+ATOMNAME VGH+a    21  C7
+ATOMNAME VGH+a    22 N26
+ATOMNAME VGH+a    23 N24
+ATOMNAME VGH+a    24 C20
+ATOMNAME VGH+a    25  C8
+ATOMNAME VGH+a    26 C10
+ATOMNAME VGH+a    27 N25
+ATOMNAME VGH+a    28 C11
+ATOMNAME VGH+a    29  C9
+ATOMNAME VGH+a    30  H3
+ATOMNAME VGH+a    31  H2
+ATOMNAME VGH+a    32 H21
+ATOMNAME VGH+a    33H11C
+ATOMNAME VGH+a    34H12C
+ATOMNAME VGH+a    35H13C
+ATOMNAME VGH+a    36  H4
+ATOMNAME VGH+a    37H221
+ATOMNAME VGH+a    38H222
+ATOMNAME VGH+a    39  H5
+ATOMNAME VGH+a    40  H6
+ATOMNAME VGH+a    41  H7
+ATOMNAME VGH+a    42 H20
+ATOMNAME VGH+a    43H81C
+ATOMNAME VGH+a    44H82C
+ATOMNAME VGH+a    45H91C
+ATOMNAME VGH+a    46H92C
+ATOMNAME VGH+a    47H101
+ATOMNAME VGH+a    48H102
+ATOMNAME VGH+a    49 H25
+ATOMNAME VGH+a    50H111
+ATOMNAME VGH+a    51H112
+ATOMNAME VGH+a    52 H53
+ATOMNAME VGH+a    53 H54
+
+ATOMNAME VGH+1     0  CL
+ATOMNAME VGH+1     1 C13
+ATOMNAME VGH+1     2  C3
+ATOMNAME VGH+1     3  C2
+ATOMNAME VGH+1     4 C12
+ATOMNAME VGH+1     5   F
+ATOMNAME VGH+1     6 C17
+ATOMNAME VGH+1     7 C18
+ATOMNAME VGH+1     8 CL2
+ATOMNAME VGH+1     9 C21
+ATOMNAME VGH+1    10  C1
+ATOMNAME VGH+1    11 O27
+ATOMNAME VGH+1    12 C15
+ATOMNAME VGH+1    13  C4
+ATOMNAME VGH+1    14 C19
+ATOMNAME VGH+1    15 N22
+ATOMNAME VGH+1    16 N23
+ATOMNAME VGH+1    17  C5
+ATOMNAME VGH+1    18 C14
+ATOMNAME VGH+1    19 C16
+ATOMNAME VGH+1    20  C6
+ATOMNAME VGH+1    21  C7
+ATOMNAME VGH+1    22 N26
+ATOMNAME VGH+1    23 N24
+ATOMNAME VGH+1    24 C20
+ATOMNAME VGH+1    25  C8
+ATOMNAME VGH+1    26 C10
+ATOMNAME VGH+1    27 N25
+ATOMNAME VGH+1    28 C11
+ATOMNAME VGH+1    29  C9
+ATOMNAME VGH+1    30  H3
+ATOMNAME VGH+1    31  H2
+ATOMNAME VGH+1    32 H21
+ATOMNAME VGH+1    33H11C
+ATOMNAME VGH+1    34H12C
+ATOMNAME VGH+1    35H13C
+ATOMNAME VGH+1    36  H4
+ATOMNAME VGH+1    37H221
+ATOMNAME VGH+1    38H222
+ATOMNAME VGH+1    39  H5
+ATOMNAME VGH+1    40  H6
+ATOMNAME VGH+1    41  H7
+ATOMNAME VGH+1    42 H20
+ATOMNAME VGH+1    43H81C
+ATOMNAME VGH+1    44H82C
+ATOMNAME VGH+1    45H91C
+ATOMNAME VGH+1    46H92C
+ATOMNAME VGH+1    47H101
+ATOMNAME VGH+1    48H102
+ATOMNAME VGH+1    49 H25
+ATOMNAME VGH+1    50H111
+ATOMNAME VGH+1    51H112
+ATOMNAME VGH+1    52 H53
+
+ATOMNAME VGH01     0  CL
+ATOMNAME VGH01     1 C13
+ATOMNAME VGH01     2  C3
+ATOMNAME VGH01     3  C2
+ATOMNAME VGH01     4 C12
+ATOMNAME VGH01     5   F
+ATOMNAME VGH01     6 C17
+ATOMNAME VGH01     7 C18
+ATOMNAME VGH01     8 CL2
+ATOMNAME VGH01     9 C21
+ATOMNAME VGH01    10  C1
+ATOMNAME VGH01    11 O27
+ATOMNAME VGH01    12 C15
+ATOMNAME VGH01    13  C4
+ATOMNAME VGH01    14 C19
+ATOMNAME VGH01    15 N22
+ATOMNAME VGH01    16 N23
+ATOMNAME VGH01    17  C5
+ATOMNAME VGH01    18 C14
+ATOMNAME VGH01    19 C16
+ATOMNAME VGH01    20  C6
+ATOMNAME VGH01    21  C7
+ATOMNAME VGH01    22 N26
+ATOMNAME VGH01    23 N24
+ATOMNAME VGH01    24 C20
+ATOMNAME VGH01    25  C8
+ATOMNAME VGH01    26 C10
+ATOMNAME VGH01    27 N25
+ATOMNAME VGH01    28 C11
+ATOMNAME VGH01    29  C9
+ATOMNAME VGH01    30  H3
+ATOMNAME VGH01    31  H2
+ATOMNAME VGH01    32 H21
+ATOMNAME VGH01    33H11C
+ATOMNAME VGH01    34H12C
+ATOMNAME VGH01    35H13C
+ATOMNAME VGH01    36  H4
+ATOMNAME VGH01    37H221
+ATOMNAME VGH01    38H222
+ATOMNAME VGH01    39  H5
+ATOMNAME VGH01    40  H6
+ATOMNAME VGH01    41  H7
+ATOMNAME VGH01    42 H20
+ATOMNAME VGH01    43H81C
+ATOMNAME VGH01    44H82C
+ATOMNAME VGH01    45H91C
+ATOMNAME VGH01    46H92C
+ATOMNAME VGH01    47H101
+ATOMNAME VGH01    48H102
+ATOMNAME VGH01    49 H25
+ATOMNAME VGH01    50H111
+ATOMNAME VGH01    51H112
+
+ATOMNAME VGH+2     0  CL
+ATOMNAME VGH+2     1 C13
+ATOMNAME VGH+2     2  C3
+ATOMNAME VGH+2     3  C2
+ATOMNAME VGH+2     4 C12
+ATOMNAME VGH+2     5   F
+ATOMNAME VGH+2     6 C17
+ATOMNAME VGH+2     7 C18
+ATOMNAME VGH+2     8 CL2
+ATOMNAME VGH+2     9 C21
+ATOMNAME VGH+2    10  C1
+ATOMNAME VGH+2    11 O27
+ATOMNAME VGH+2    12 C15
+ATOMNAME VGH+2    13  C4
+ATOMNAME VGH+2    14 C19
+ATOMNAME VGH+2    15 N22
+ATOMNAME VGH+2    16 N23
+ATOMNAME VGH+2    17  C5
+ATOMNAME VGH+2    18 C14
+ATOMNAME VGH+2    19 C16
+ATOMNAME VGH+2    20  C6
+ATOMNAME VGH+2    21  C7
+ATOMNAME VGH+2    22 N26
+ATOMNAME VGH+2    23 N24
+ATOMNAME VGH+2    24 C20
+ATOMNAME VGH+2    25  C8
+ATOMNAME VGH+2    26 C10
+ATOMNAME VGH+2    27 N25
+ATOMNAME VGH+2    28 C11
+ATOMNAME VGH+2    29  C9
+ATOMNAME VGH+2    30  H3
+ATOMNAME VGH+2    31  H2
+ATOMNAME VGH+2    32 H21
+ATOMNAME VGH+2    33H11C
+ATOMNAME VGH+2    34H12C
+ATOMNAME VGH+2    35H13C
+ATOMNAME VGH+2    36  H4
+ATOMNAME VGH+2    37H221
+ATOMNAME VGH+2    38H222
+ATOMNAME VGH+2    39  H5
+ATOMNAME VGH+2    40  H6
+ATOMNAME VGH+2    41  H7
+ATOMNAME VGH+2    42 H20
+ATOMNAME VGH+2    43H81C
+ATOMNAME VGH+2    44H82C
+ATOMNAME VGH+2    45H91C
+ATOMNAME VGH+2    46H92C
+ATOMNAME VGH+2    47H101
+ATOMNAME VGH+2    48H102
+ATOMNAME VGH+2    49 H25
+ATOMNAME VGH+2    50H111
+ATOMNAME VGH+2    51H112
+ATOMNAME VGH+2    52 H53
+
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+
+# PROTON SECTION: PROTON means charge
+
+PROTON   VGH+a      0    
+PROTON   VGH+1      0    
+PROTON   VGH01      0    
+PROTON   VGH+2      0    
+PROTON   VGHDM      0    
+
+# Solution pKa Section: pKa data from CRC Handbook of Chemistry and Physics
+# pka is set to zero
+PKA      VGH+a         0.000
+PKA      VGH+1         0.000
+PKA      VGH01         0.000
+PKA      VGH+2         0.000
+PKA      VGHDM         0.000
+
+#ELECTRON SECTION:
+ELECTRON VGH+a      0.0  
+ELECTRON VGH+1      0.0  
+ELECTRON VGH01      0.0  
+ELECTRON VGH+2      0.0  
+ELECTRON VGHDM      0.0  
+
+# EM SECTION:
+EM       VGH+a      0.0  
+EM       VGH+1      0.0  
+EM       VGH01      0.0  
+EM       VGH+2      0.0  
+EM       VGHDM      0.0  
+
+# REACTION FIELD ENERGY SECTION:
+RXN      VGH+a      -39.742
+RXN      VGH+1      -18.565
+RXN      VGH01      -6.656
+RXN      VGH+2      -16.990
+
+#  VGH+a
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  VGH+a  CL      sp     0   C13  
+CONNECT  VGH+a C13     sp2     0    CL   0    C3   0   C17  
+CONNECT  VGH+a  C3     sp2     0   C13   0    C2   0    H3  
+CONNECT  VGH+a  C2     sp2     0    C3   0   C12   0    H2  
+CONNECT  VGH+a C12     sp2     0    C2   0    F    0   C18  
+CONNECT  VGH+a  F       sp     0   C12  
+CONNECT  VGH+a C17     sp2     0   C13   0   C18   0   C21  
+CONNECT  VGH+a C18     sp2     0   C12   0   C17   0   CL2  
+CONNECT  VGH+a CL2      sp     0   C18  
+CONNECT  VGH+a C21     sp3     0   C17   0    C1   0   O27   0   H21  
+CONNECT  VGH+a  C1     sp3     0   C21   0   H11C  0   H12C  0   H13C 
+CONNECT  VGH+a O27     sp3     0   C21   0   C15  
+CONNECT  VGH+a C15     sp2     0   O27   0    C4   0   C19  
+CONNECT  VGH+a  C4     sp2     0   C15   0   C14   0    H4  
+CONNECT  VGH+a C19     sp2     0   C15   0   N22   0   N23  
+CONNECT  VGH+a N22     sp2     0   C19   0   H221  0   H222 
+CONNECT  VGH+a N23     sp2     0   C19   0    C5   0   H54  
+CONNECT  VGH+a  C5     sp2     0   N23   0   C14   0    H5  
+CONNECT  VGH+a C14     sp2     0    C4   0    C5   0   C16  
+CONNECT  VGH+a C16     sp2     0   C14   0    C6   0    C7  
+CONNECT  VGH+a  C6     sp2     0   C16   0   N24   0    H6  
+CONNECT  VGH+a  C7     sp2     0   C16   0   N26   0    H7  
+CONNECT  VGH+a N26     sp2     0    C7   0   N24   0   C20  
+CONNECT  VGH+a N24     sp2     0    C6   0   N26  
+CONNECT  VGH+a C20     sp3     0   N26   0    C8   0    C9   0   H20  
+CONNECT  VGH+a  C8     sp3     0   C20   0   C10   0   H81C  0   H82C 
+CONNECT  VGH+a C10     sp3     0    C8   0   N25   0   H101  0   H102 
+CONNECT  VGH+a N25     sp3     0   C10   0   C11   0   H25   0   H53  
+CONNECT  VGH+a C11     sp3     0   N25   0    C9   0   H111  0   H112 
+CONNECT  VGH+a  C9     sp3     0   C20   0   C11   0   H91C  0   H92C 
+CONNECT  VGH+a  H3      s      0    C3  
+CONNECT  VGH+a  H2      s      0    C2  
+CONNECT  VGH+a H21      s      0   C21  
+CONNECT  VGH+a H11C     s      0    C1  
+CONNECT  VGH+a H12C     s      0    C1  
+CONNECT  VGH+a H13C     s      0    C1  
+CONNECT  VGH+a  H4      s      0    C4  
+CONNECT  VGH+a H221     s      0   N22  
+CONNECT  VGH+a H222     s      0   N22  
+CONNECT  VGH+a  H5      s      0    C5  
+CONNECT  VGH+a  H6      s      0    C6  
+CONNECT  VGH+a  H7      s      0    C7  
+CONNECT  VGH+a H20      s      0   C20  
+CONNECT  VGH+a H81C     s      0    C8  
+CONNECT  VGH+a H82C     s      0    C8  
+CONNECT  VGH+a H91C     s      0    C9  
+CONNECT  VGH+a H92C     s      0    C9  
+CONNECT  VGH+a H101     s      0   C10  
+CONNECT  VGH+a H102     s      0   C10  
+CONNECT  VGH+a H25      s      0   N25  
+CONNECT  VGH+a H111     s      0   C11  
+CONNECT  VGH+a H112     s      0   C11  
+CONNECT  VGH+a H53      s      0   N25  
+CONNECT  VGH+a H54      s      0   N23  
+
+#  VGH+1
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  VGH+1  CL      sp     0   C13  
+CONNECT  VGH+1 C13     sp2     0    CL   0    C3   0   C17  
+CONNECT  VGH+1  C3     sp2     0   C13   0    C2   0    H3  
+CONNECT  VGH+1  C2     sp2     0    C3   0   C12   0    H2  
+CONNECT  VGH+1 C12     sp2     0    C2   0    F    0   C18  
+CONNECT  VGH+1  F       sp     0   C12  
+CONNECT  VGH+1 C17     sp2     0   C13   0   C18   0   C21  
+CONNECT  VGH+1 C18     sp2     0   C12   0   C17   0   CL2  
+CONNECT  VGH+1 CL2      sp     0   C18  
+CONNECT  VGH+1 C21     sp3     0   C17   0    C1   0   O27   0   H21  
+CONNECT  VGH+1  C1     sp3     0   C21   0   H11C  0   H12C  0   H13C 
+CONNECT  VGH+1 O27     sp3     0   C21   0   C15  
+CONNECT  VGH+1 C15     sp2     0   O27   0    C4   0   C19  
+CONNECT  VGH+1  C4     sp2     0   C15   0   C14   0    H4  
+CONNECT  VGH+1 C19     sp2     0   C15   0   N22   0   N23  
+CONNECT  VGH+1 N22     sp2     0   C19   0   H221  0   H222 
+CONNECT  VGH+1 N23     sp2     0   C19   0    C5  
+CONNECT  VGH+1  C5     sp2     0   N23   0   C14   0    H5  
+CONNECT  VGH+1 C14     sp2     0    C4   0    C5   0   C16  
+CONNECT  VGH+1 C16     sp2     0   C14   0    C6   0    C7  
+CONNECT  VGH+1  C6     sp2     0   C16   0   N24   0    H6  
+CONNECT  VGH+1  C7     sp2     0   C16   0   N26   0    H7  
+CONNECT  VGH+1 N26     sp2     0    C7   0   N24   0   C20  
+CONNECT  VGH+1 N24     sp2     0    C6   0   N26  
+CONNECT  VGH+1 C20     sp3     0   N26   0    C8   0    C9   0   H20  
+CONNECT  VGH+1  C8     sp3     0   C20   0   C10   0   H81C  0   H82C 
+CONNECT  VGH+1 C10     sp3     0    C8   0   N25   0   H101  0   H102 
+CONNECT  VGH+1 N25     sp3     0   C10   0   C11   0   H25   0   H53  
+CONNECT  VGH+1 C11     sp3     0   N25   0    C9   0   H111  0   H112 
+CONNECT  VGH+1  C9     sp3     0   C20   0   C11   0   H91C  0   H92C 
+CONNECT  VGH+1  H3      s      0    C3  
+CONNECT  VGH+1  H2      s      0    C2  
+CONNECT  VGH+1 H21      s      0   C21  
+CONNECT  VGH+1 H11C     s      0    C1  
+CONNECT  VGH+1 H12C     s      0    C1  
+CONNECT  VGH+1 H13C     s      0    C1  
+CONNECT  VGH+1  H4      s      0    C4  
+CONNECT  VGH+1 H221     s      0   N22  
+CONNECT  VGH+1 H222     s      0   N22  
+CONNECT  VGH+1  H5      s      0    C5  
+CONNECT  VGH+1  H6      s      0    C6  
+CONNECT  VGH+1  H7      s      0    C7  
+CONNECT  VGH+1 H20      s      0   C20  
+CONNECT  VGH+1 H81C     s      0    C8  
+CONNECT  VGH+1 H82C     s      0    C8  
+CONNECT  VGH+1 H91C     s      0    C9  
+CONNECT  VGH+1 H92C     s      0    C9  
+CONNECT  VGH+1 H101     s      0   C10  
+CONNECT  VGH+1 H102     s      0   C10  
+CONNECT  VGH+1 H25      s      0   N25  
+CONNECT  VGH+1 H111     s      0   C11  
+CONNECT  VGH+1 H112     s      0   C11  
+CONNECT  VGH+1 H53      s      0   N25  
+
+#  VGH01
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  VGH01  CL      sp     0   C13  
+CONNECT  VGH01 C13     sp2     0    CL   0    C3   0   C17  
+CONNECT  VGH01  C3     sp2     0   C13   0    C2   0    H3  
+CONNECT  VGH01  C2     sp2     0    C3   0   C12   0    H2  
+CONNECT  VGH01 C12     sp2     0    C2   0    F    0   C18  
+CONNECT  VGH01  F       sp     0   C12  
+CONNECT  VGH01 C17     sp2     0   C13   0   C18   0   C21  
+CONNECT  VGH01 C18     sp2     0   C12   0   C17   0   CL2  
+CONNECT  VGH01 CL2      sp     0   C18  
+CONNECT  VGH01 C21     sp3     0   C17   0    C1   0   O27   0   H21  
+CONNECT  VGH01  C1     sp3     0   C21   0   H11C  0   H12C  0   H13C 
+CONNECT  VGH01 O27     sp3     0   C21   0   C15  
+CONNECT  VGH01 C15     sp2     0   O27   0    C4   0   C19  
+CONNECT  VGH01  C4     sp2     0   C15   0   C14   0    H4  
+CONNECT  VGH01 C19     sp2     0   C15   0   N22   0   N23  
+CONNECT  VGH01 N22     sp2     0   C19   0   H221  0   H222 
+CONNECT  VGH01 N23     sp2     0   C19   0    C5  
+CONNECT  VGH01  C5     sp2     0   N23   0   C14   0    H5  
+CONNECT  VGH01 C14     sp2     0    C4   0    C5   0   C16  
+CONNECT  VGH01 C16     sp2     0   C14   0    C6   0    C7  
+CONNECT  VGH01  C6     sp2     0   C16   0   N24   0    H6  
+CONNECT  VGH01  C7     sp2     0   C16   0   N26   0    H7  
+CONNECT  VGH01 N26     sp2     0    C7   0   N24   0   C20  
+CONNECT  VGH01 N24     sp2     0    C6   0   N26  
+CONNECT  VGH01 C20     sp3     0   N26   0    C8   0    C9   0   H20  
+CONNECT  VGH01  C8     sp3     0   C20   0   C10   0   H81C  0   H82C 
+CONNECT  VGH01 C10     sp3     0    C8   0   N25   0   H101  0   H102 
+CONNECT  VGH01 N25     sp2     0   C10   0   C11   0   H25  
+CONNECT  VGH01 C11     sp3     0   N25   0    C9   0   H111  0   H112 
+CONNECT  VGH01  C9     sp3     0   C20   0   C11   0   H91C  0   H92C 
+CONNECT  VGH01  H3      s      0    C3  
+CONNECT  VGH01  H2      s      0    C2  
+CONNECT  VGH01 H21      s      0   C21  
+CONNECT  VGH01 H11C     s      0    C1  
+CONNECT  VGH01 H12C     s      0    C1  
+CONNECT  VGH01 H13C     s      0    C1  
+CONNECT  VGH01  H4      s      0    C4  
+CONNECT  VGH01 H221     s      0   N22  
+CONNECT  VGH01 H222     s      0   N22  
+CONNECT  VGH01  H5      s      0    C5  
+CONNECT  VGH01  H6      s      0    C6  
+CONNECT  VGH01  H7      s      0    C7  
+CONNECT  VGH01 H20      s      0   C20  
+CONNECT  VGH01 H81C     s      0    C8  
+CONNECT  VGH01 H82C     s      0    C8  
+CONNECT  VGH01 H91C     s      0    C9  
+CONNECT  VGH01 H92C     s      0    C9  
+CONNECT  VGH01 H101     s      0   C10  
+CONNECT  VGH01 H102     s      0   C10  
+CONNECT  VGH01 H25      s      0   N25  
+CONNECT  VGH01 H111     s      0   C11  
+CONNECT  VGH01 H112     s      0   C11  
+
+#  VGH+2
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  VGH+2  CL      sp     0   C13  
+CONNECT  VGH+2 C13     sp2     0    CL   0    C3   0   C17  
+CONNECT  VGH+2  C3     sp2     0   C13   0    C2   0    H3  
+CONNECT  VGH+2  C2     sp2     0    C3   0   C12   0    H2  
+CONNECT  VGH+2 C12     sp2     0    C2   0    F    0   C18  
+CONNECT  VGH+2  F       sp     0   C12  
+CONNECT  VGH+2 C17     sp2     0   C13   0   C18   0   C21  
+CONNECT  VGH+2 C18     sp2     0   C12   0   C17   0   CL2  
+CONNECT  VGH+2 CL2      sp     0   C18  
+CONNECT  VGH+2 C21     sp3     0   C17   0    C1   0   O27   0   H21  
+CONNECT  VGH+2  C1     sp3     0   C21   0   H11C  0   H12C  0   H13C 
+CONNECT  VGH+2 O27     sp3     0   C21   0   C15  
+CONNECT  VGH+2 C15     sp2     0   O27   0    C4   0   C19  
+CONNECT  VGH+2  C4     sp2     0   C15   0   C14   0    H4  
+CONNECT  VGH+2 C19     sp2     0   C15   0   N22   0   N23  
+CONNECT  VGH+2 N22     sp2     0   C19   0   H221  0   H222 
+CONNECT  VGH+2 N23     sp2     0   C19   0    C5   0   H53  
+CONNECT  VGH+2  C5     sp2     0   N23   0   C14   0    H5  
+CONNECT  VGH+2 C14     sp2     0    C4   0    C5   0   C16  
+CONNECT  VGH+2 C16     sp2     0   C14   0    C6   0    C7  
+CONNECT  VGH+2  C6     sp2     0   C16   0   N24   0    H6  
+CONNECT  VGH+2  C7     sp2     0   C16   0   N26   0    H7  
+CONNECT  VGH+2 N26     sp2     0    C7   0   N24   0   C20  
+CONNECT  VGH+2 N24     sp2     0    C6   0   N26  
+CONNECT  VGH+2 C20     sp3     0   N26   0    C8   0    C9   0   H20  
+CONNECT  VGH+2  C8     sp3     0   C20   0   C10   0   H81C  0   H82C 
+CONNECT  VGH+2 C10     sp3     0    C8   0   N25   0   H101  0   H102 
+CONNECT  VGH+2 N25     sp2     0   C10   0   C11   0   H25  
+CONNECT  VGH+2 C11     sp3     0   N25   0    C9   0   H111  0   H112 
+CONNECT  VGH+2  C9     sp3     0   C20   0   C11   0   H91C  0   H92C 
+CONNECT  VGH+2  H3      s      0    C3  
+CONNECT  VGH+2  H2      s      0    C2  
+CONNECT  VGH+2 H21      s      0   C21  
+CONNECT  VGH+2 H11C     s      0    C1  
+CONNECT  VGH+2 H12C     s      0    C1  
+CONNECT  VGH+2 H13C     s      0    C1  
+CONNECT  VGH+2  H4      s      0    C4  
+CONNECT  VGH+2 H221     s      0   N22  
+CONNECT  VGH+2 H222     s      0   N22  
+CONNECT  VGH+2  H5      s      0    C5  
+CONNECT  VGH+2  H6      s      0    C6  
+CONNECT  VGH+2  H7      s      0    C7  
+CONNECT  VGH+2 H20      s      0   C20  
+CONNECT  VGH+2 H81C     s      0    C8  
+CONNECT  VGH+2 H82C     s      0    C8  
+CONNECT  VGH+2 H91C     s      0    C9  
+CONNECT  VGH+2 H92C     s      0    C9  
+CONNECT  VGH+2 H101     s      0   C10  
+CONNECT  VGH+2 H102     s      0   C10  
+CONNECT  VGH+2 H25      s      0   N25  
+CONNECT  VGH+2 H111     s      0   C11  
+CONNECT  VGH+2 H112     s      0   C11  
+CONNECT  VGH+2 H53      s      0   N23  
+
+# Atom Parameters:
+# Van Der Waals Radii. See source for reference
+RADIUS   VGH    CL        1.7
+RADIUS   VGH    C13       1.7
+RADIUS   VGH    C3        1.7
+RADIUS   VGH    C2        1.7
+RADIUS   VGH    C12       1.7
+RADIUS   VGH    F        1.47
+RADIUS   VGH    C17       1.7
+RADIUS   VGH    C18       1.7
+RADIUS   VGH    CL2       1.7
+RADIUS   VGH    C21       1.7
+RADIUS   VGH    C1        1.7
+RADIUS   VGH    O27      1.52
+RADIUS   VGH    C15       1.7
+RADIUS   VGH    C4        1.7
+RADIUS   VGH    C19       1.7
+RADIUS   VGH    N22      1.55
+RADIUS   VGH    N23      1.55
+RADIUS   VGH    C5        1.7
+RADIUS   VGH    C14       1.7
+RADIUS   VGH    C16       1.7
+RADIUS   VGH    C6        1.7
+RADIUS   VGH    C7        1.7
+RADIUS   VGH    N26      1.55
+RADIUS   VGH    N24      1.55
+RADIUS   VGH    C20       1.7
+RADIUS   VGH    C8        1.7
+RADIUS   VGH    C10       1.7
+RADIUS   VGH    N25      1.55
+RADIUS   VGH    C11       1.7
+RADIUS   VGH    C9        1.7
+RADIUS   VGH    H3        1.2
+RADIUS   VGH    H2        1.2
+RADIUS   VGH    H21       1.2
+RADIUS   VGH    H11C      1.2
+RADIUS   VGH    H12C      1.2
+RADIUS   VGH    H13C      1.2
+RADIUS   VGH    H4        1.2
+RADIUS   VGH    H221      1.2
+RADIUS   VGH    H222      1.2
+RADIUS   VGH    H5        1.2
+RADIUS   VGH    H6        1.2
+RADIUS   VGH    H7        1.2
+RADIUS   VGH    H20       1.2
+RADIUS   VGH    H81C      1.2
+RADIUS   VGH    H82C      1.2
+RADIUS   VGH    H91C      1.2
+RADIUS   VGH    H92C      1.2
+RADIUS   VGH    H101      1.2
+RADIUS   VGH    H102      1.2
+RADIUS   VGH    H25       1.2
+RADIUS   VGH    H111      1.2
+RADIUS   VGH    H112      1.2
+RADIUS   VGH    H53       1.2
+RADIUS   VGH    H54       1.2
+
+CHARGE   VGH+a  CL  -0.0809
+CHARGE   VGH+a  C13  0.0321
+CHARGE   VGH+a  C3  -0.0901
+CHARGE   VGH+a  C2  -0.1267
+CHARGE   VGH+a  C12  0.1558
+CHARGE   VGH+a  F   -0.1001
+CHARGE   VGH+a  C17 -0.0846
+CHARGE   VGH+a  C18 -0.0199
+CHARGE   VGH+a  CL2 -0.0495
+CHARGE   VGH+a  C21  0.1947
+CHARGE   VGH+a  C1  -0.1331
+CHARGE   VGH+a  O27  -0.325
+CHARGE   VGH+a  C15  0.0565
+CHARGE   VGH+a  C4  -0.0287
+CHARGE   VGH+a  C19  0.3941
+CHARGE   VGH+a  N22 -0.8087
+CHARGE   VGH+a  N23  -0.536
+CHARGE   VGH+a  C5   0.0511
+CHARGE   VGH+a  C14  0.0037
+CHARGE   VGH+a  C16 -0.2488
+CHARGE   VGH+a  C6   0.3541
+CHARGE   VGH+a  C7  -0.0902
+CHARGE   VGH+a  N26  0.0723
+CHARGE   VGH+a  N24 -0.4926
+CHARGE   VGH+a  C20  0.0753
+CHARGE   VGH+a  C8  -0.1286
+CHARGE   VGH+a  C10  0.1078
+CHARGE   VGH+a  N25 -0.7654
+CHARGE   VGH+a  C11  0.1078
+CHARGE   VGH+a  C9  -0.1286
+CHARGE   VGH+a  H3   0.1735
+CHARGE   VGH+a  H2   0.1808
+CHARGE   VGH+a  H21  0.0726
+CHARGE   VGH+a  H11C   0.063
+CHARGE   VGH+a  H12C   0.063
+CHARGE   VGH+a  H13C   0.063
+CHARGE   VGH+a  H4    0.196
+CHARGE   VGH+a  H221  0.4871
+CHARGE   VGH+a  H222  0.4871
+CHARGE   VGH+a  H5   0.1934
+CHARGE   VGH+a  H6   0.0679
+CHARGE   VGH+a  H7   0.1882
+CHARGE   VGH+a  H20  0.0794
+CHARGE   VGH+a  H81C   0.109
+CHARGE   VGH+a  H82C   0.109
+CHARGE   VGH+a  H91C   0.109
+CHARGE   VGH+a  H92C   0.109
+CHARGE   VGH+a  H101  0.1161
+CHARGE   VGH+a  H102  0.1161
+CHARGE   VGH+a  H25  0.4641
+CHARGE   VGH+a  H111  0.1161
+CHARGE   VGH+a  H112  0.1161
+CHARGE   VGH+a  H53  0.4641
+CHARGE   VGH+a  H54  0.4887
+
+CHARGE   VGH+1  CL  -0.0749
+CHARGE   VGH+1  C13  0.0145
+CHARGE   VGH+1  C3  -0.1006
+CHARGE   VGH+1  C2  -0.1412
+CHARGE   VGH+1  C12  0.1311
+CHARGE   VGH+1  F    -0.119
+CHARGE   VGH+1  C17 -0.0491
+CHARGE   VGH+1  C18  0.0113
+CHARGE   VGH+1  CL2 -0.0569
+CHARGE   VGH+1  C21  0.1792
+CHARGE   VGH+1  C1  -0.1266
+CHARGE   VGH+1  O27 -0.3291
+CHARGE   VGH+1  C15 -0.0826
+CHARGE   VGH+1  C4  -0.0457
+CHARGE   VGH+1  C19  0.6524
+CHARGE   VGH+1  N22 -0.9229
+CHARGE   VGH+1  N23 -0.7207
+CHARGE   VGH+1  C5   0.4508
+CHARGE   VGH+1  C14 -0.1975
+CHARGE   VGH+1  C16 -0.1452
+CHARGE   VGH+1  C6   0.3366
+CHARGE   VGH+1  C7    -0.14
+CHARGE   VGH+1  N26  0.0454
+CHARGE   VGH+1  N24  -0.527
+CHARGE   VGH+1  C20  0.0893
+CHARGE   VGH+1  C8  -0.1308
+CHARGE   VGH+1  C10  0.1102
+CHARGE   VGH+1  N25 -0.7646
+CHARGE   VGH+1  C11  0.1102
+CHARGE   VGH+1  C9  -0.1308
+CHARGE   VGH+1  H3   0.1623
+CHARGE   VGH+1  H2   0.1659
+CHARGE   VGH+1  H21  0.0742
+CHARGE   VGH+1  H11C  0.0538
+CHARGE   VGH+1  H12C  0.0538
+CHARGE   VGH+1  H13C  0.0538
+CHARGE   VGH+1  H4   0.1523
+CHARGE   VGH+1  H221  0.4282
+CHARGE   VGH+1  H222  0.4282
+CHARGE   VGH+1  H5   0.0149
+CHARGE   VGH+1  H6   0.0593
+CHARGE   VGH+1  H7   0.1829
+CHARGE   VGH+1  H20  0.0728
+CHARGE   VGH+1  H81C  0.1071
+CHARGE   VGH+1  H82C  0.1071
+CHARGE   VGH+1  H91C  0.1071
+CHARGE   VGH+1  H92C  0.1071
+CHARGE   VGH+1  H101   0.108
+CHARGE   VGH+1  H102   0.108
+CHARGE   VGH+1  H25  0.4557
+CHARGE   VGH+1  H111   0.108
+CHARGE   VGH+1  H112   0.108
+CHARGE   VGH+1  H53  0.4557
+
+CHARGE   VGH01  CL  -0.0713
+CHARGE   VGH01  C13  0.0337
+CHARGE   VGH01  C3  -0.1045
+CHARGE   VGH01  C2  -0.1468
+CHARGE   VGH01  C12  0.1323
+CHARGE   VGH01  F   -0.1214
+CHARGE   VGH01  C17 -0.0414
+CHARGE   VGH01  C18 -0.0067
+CHARGE   VGH01  CL2 -0.0579
+CHARGE   VGH01  C21   0.183
+CHARGE   VGH01  C1  -0.1275
+CHARGE   VGH01  O27  -0.332
+CHARGE   VGH01  C15 -0.0753
+CHARGE   VGH01  C4   -0.082
+CHARGE   VGH01  C19  0.6282
+CHARGE   VGH01  N22 -0.9223
+CHARGE   VGH01  N23 -0.7162
+CHARGE   VGH01  C5   0.4286
+CHARGE   VGH01  C14 -0.1396
+CHARGE   VGH01  C16 -0.2046
+CHARGE   VGH01  C6   0.3063
+CHARGE   VGH01  C7   -0.139
+CHARGE   VGH01  N26  0.0912
+CHARGE   VGH01  N24 -0.5055
+CHARGE   VGH01  C20   0.078
+CHARGE   VGH01  C8  -0.0904
+CHARGE   VGH01  C10  0.1631
+CHARGE   VGH01  N25 -0.8193
+CHARGE   VGH01  C11  0.1631
+CHARGE   VGH01  C9  -0.0904
+CHARGE   VGH01  H3   0.1573
+CHARGE   VGH01  H2   0.1598
+CHARGE   VGH01  H21  0.0636
+CHARGE   VGH01  H11C  0.0569
+CHARGE   VGH01  H12C  0.0569
+CHARGE   VGH01  H13C  0.0569
+CHARGE   VGH01  H4   0.1493
+CHARGE   VGH01  H221  0.4139
+CHARGE   VGH01  H222  0.4139
+CHARGE   VGH01  H5   0.0196
+CHARGE   VGH01  H6   0.0446
+CHARGE   VGH01  H7   0.1764
+CHARGE   VGH01  H20   0.056
+CHARGE   VGH01  H81C  0.0675
+CHARGE   VGH01  H82C  0.0675
+CHARGE   VGH01  H91C  0.0675
+CHARGE   VGH01  H92C  0.0675
+CHARGE   VGH01  H101   0.031
+CHARGE   VGH01  H102   0.031
+CHARGE   VGH01  H25  0.3673
+CHARGE   VGH01  H111   0.031
+CHARGE   VGH01  H112   0.031
+
+CHARGE   VGH+2  CL  -0.0708
+CHARGE   VGH+2  C13  0.0329
+CHARGE   VGH+2  C3  -0.0936
+CHARGE   VGH+2  C2  -0.1314
+CHARGE   VGH+2  C12  0.1487
+CHARGE   VGH+2  F   -0.1064
+CHARGE   VGH+2  C17 -0.0764
+CHARGE   VGH+2  C18 -0.0193
+CHARGE   VGH+2  CL2 -0.0536
+CHARGE   VGH+2  C21  0.1932
+CHARGE   VGH+2  C1  -0.1318
+CHARGE   VGH+2  O27 -0.3293
+CHARGE   VGH+2  C15  0.0459
+CHARGE   VGH+2  C4  -0.0273
+CHARGE   VGH+2  C19  0.3783
+CHARGE   VGH+2  N22 -0.8286
+CHARGE   VGH+2  N23 -0.5255
+CHARGE   VGH+2  C5   0.0277
+CHARGE   VGH+2  C14  0.0455
+CHARGE   VGH+2  C16 -0.3031
+CHARGE   VGH+2  C6   0.3284
+CHARGE   VGH+2  C7  -0.0941
+CHARGE   VGH+2  N26  0.1225
+CHARGE   VGH+2  N24 -0.4717
+CHARGE   VGH+2  C20  0.0662
+CHARGE   VGH+2  C8  -0.0911
+CHARGE   VGH+2  C10  0.1646
+CHARGE   VGH+2  N25 -0.8222
+CHARGE   VGH+2  C11  0.1646
+CHARGE   VGH+2  C9  -0.0911
+CHARGE   VGH+2  H3   0.1701
+CHARGE   VGH+2  H2    0.175
+CHARGE   VGH+2  H21  0.0695
+CHARGE   VGH+2  H11C  0.0638
+CHARGE   VGH+2  H12C  0.0638
+CHARGE   VGH+2  H13C  0.0638
+CHARGE   VGH+2  H4   0.1959
+CHARGE   VGH+2  H221  0.4783
+CHARGE   VGH+2  H222  0.4783
+CHARGE   VGH+2  H5   0.1968
+CHARGE   VGH+2  H6   0.0518
+CHARGE   VGH+2  H7   0.1824
+CHARGE   VGH+2  H20  0.0612
+CHARGE   VGH+2  H81C  0.0701
+CHARGE   VGH+2  H82C  0.0701
+CHARGE   VGH+2  H91C  0.0701
+CHARGE   VGH+2  H92C  0.0701
+CHARGE   VGH+2  H101  0.0388
+CHARGE   VGH+2  H102  0.0388
+CHARGE   VGH+2  H25  0.3809
+CHARGE   VGH+2  H111  0.0388
+CHARGE   VGH+2  H112  0.0388
+CHARGE   VGH+2  H53  0.4818
+
+# EXTRA energy for tautomers:
+EXTRA    VGH+a         0.283
+EXTRA    VGH+1         0.585
+EXTRA    VGH01         3.192
+EXTRA    VGH+2         3.587
+

@@ -1,0 +1,64 @@
+# ==== ipece.prm ==== Revised 2010-08-16
+
+LATTICE_SCALE                   0.4     # = Mminimal distance of separation for the added species on the placement grid.
+                                        # Consequently, ION_NAME value(3) >= LATTICE_SCALE value.
+                                        # If a value lower than this is chosen for ION_NAME value(3), then the LATTICE
+                                        # _SCALE value needs reducing until the above relation is true again, else
+                                        # the 'sieve' is useless!
+                                        # All distances in angstroms.
+
+#================== Parameters to add a membrane =======================================================================
+#        10        20        30        40        50        60        70        80        90        100       110       1
+#23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+#
+ADD_MEM                         f
+INNER_MEM                       f
+MEM_THICKNESS                   28.             # default is 30
+N_ITERATION                     2000
+TRANSLATION_MAX                 1.
+ROTATION_MAX                    15.
+BOUNDARY_EXTENTION_X            8               # 4.8 gives small membrane, 8 std
+BOUNDARY_EXTENTION_Y            8
+BOUNDARY_EXTENTION_Z            5.
+BETA                            10.
+SURFACE_EXP_RAD                 2.              # Surface exposed if within this range from protein outside boundary
+MEM_RADIUS                      1.7
+MEM_PLACE_SEP                   3.4             # 3.0 might be better
+MEM_NAME                        Cx  MEM X 999   # col:33-46 would copied into PDB col:13-26; neutral atoms names
+AXIS_SCORE_WEIGHT               10.             # default is 100
+AXIS_ORIENTATION_UPDATE         500
+AXIS_EXTENTION                  2.
+MOVE_BACK                       t
+
+#================= SCORED_ATOM section ==============================================================================
+#col 33-35  residue name
+#col 41-44  atom name
+#col 49-56  score weight if buried in membrane
+#col 57-64  score weight if on edge of membrane
+#        10        20        30        40        50        60        70        80        90        100       110       120
+#23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 1234567890
+#
+SCORED_ATOM                     ASP     OD1     2.      2.
+SCORED_ATOM                     ASP     OD2     2.      2.
+SCORED_ATOM                     GLU     OE1     2.      2.
+SCORED_ATOM                     GLU     OE2     2.      2.
+SCORED_ATOM                     ARG     NH1     2.      2.
+SCORED_ATOM                     ARG     NH2     2.      2.
+SCORED_ATOM                     LYS     NZ      4.      4.
+
+#================= Parameters to add either ions or waters ==============================================================
+#        10        20        30        40        50        60        70        80        90        100       110       120
+#23456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 1234567890
+#
+ADD_ION                         t                                    # t = ion/water added, f = none added
+CAV_POS           36.444  -7.901  16.228                             # = Anchor position: xyz coordinates for CL A 466
+CAV_THR           5.0                                                # = Cavity threshold: ~ radius of the protein cavity
+
+# Parameters:
+# (1) col 33-42: PDB(col 13-22);
+# (2) col 49-56: Ion radius (used for probing);
+# (3) col 57-64: Distance separation for ion placement.
+# Note: Multiple species are added in order of appearance as per the following lines:
+#
+ION_NAME                        CL   _CL X      1.2     0.5          # Example for chloride
+#ION_NAME                        O    HOH X      1.2     0.5          # Example for water

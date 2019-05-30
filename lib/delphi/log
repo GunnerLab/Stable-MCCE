@@ -1,0 +1,205 @@
+    
+  __________DelPhi V. 4 Release 1.1 ______________  
+ |                                                | 
+ | A program to solve the PB equation             | 
+ | in 3D, using non-linear form, incorporating    | 
+ | many dielectric regions, multisalt ionic       | 
+ | strength, different probe radii, periodic      | 
+ | and focussing boundary conditions, utilizing   | 
+ | stripped optimum successive over-relaxation    | 
+ | and an improved algorithm for mapping the      | 
+ | Mol. Surface to the finite-Difference grid     | 
+ | Recompiled on Linux and PC                     | 
+ |    January 2005 --------  Walter Rocchia       | 
+ |__________________           ___________________| 
+                    DelPhi V. 4                     
+   
+  program started on Mon Feb 21 2011
+              at 21:36:52
+ opening parameter file fort.10
+ here after 10
+ line=exdi=78.5                                                                       ***
+ index(cnum,line(1:1))=           0
+ line=scale=1.0                                                                       ***
+ line=bndcon=4                                                                        ***
+ line=linit=5000                                                                      ***
+ line=indi=1.0                                                                        ***
+ line=perfil=85.0                                                                     ***
+ line=prbrad=1.4                                                                      ***
+ line=rmsc=0.0001                                                                     ***
+ line=energy(s,g)                                                                     ***
+ line=!                                                                               ***
+ line=   qinclude                                                                     ***
+ opening default file qpref.prm
+ the file /home/compbio01/qpref.prm specified in
+ a qinclude statement does not exist. continuing
+ atom radii read from file
+ fort.11
+  
+ !my siz based on PARSE                                      
+ !(value for P taken from Pauling,                           
+ # of radius parameter records:         365
+  
+ atomic charges read from file
+ fort.12
+  
+ !Amber parm94 charges                                       
+ # of charge parameter records:         365
+ assigning charges and radii...
+  
+ opening formatted file:fort.13
+ You are not reading from an objectfile! assuming   having only molecules, and one dielectric medium
+ number of atoms read in =         8580
+ Direct mapping of epsilon: (0/1)(n/y)           1
+ time to read in and/or assign rad/chrg=  8.69859978556632996E-002
+ object number :              1 ,  is a molecule
+   
+ grid size                  :          91
+ percent of box to be filled:   85.000000000000000     
+ scale,in grids/A :   1.0000000000000000     
+ xmin,xmax     (A):  -21.131000000000000        56.620000000000005     
+ ymin,ymax     (A):   29.376999999999999        100.27300000000000     
+ zmin,zmax     (A):  -27.512999999999998        29.245000000000001     
+ x,y,z range   (A):    77.751000000000005        70.896000000000001        56.757999999999996     
+ system geometric center in (A):   17.744500000000002        64.825000000000003       0.86600000000000144     
+  grid  box is centered in (A) :   17.744500000000002        64.825000000000003       0.86600000000000144     
+ object centre offset (gu)  :   0.0000000000000000        0.0000000000000000        0.0000000000000000     
+ outer dielectric           :   78.500000000000000     
+ dielectric in medium number           0  :   78.500000000000014     
+ dielectric in medium number           1  :   1.0000000000000000     
+ first kind salt concentration (M)   :   0.0000000000000000     
+ valences salt 1 are                   1  and           1
+ second kind salt concentration (M)  :   0.0000000000000000     
+ valences salt 2 are                   0  and           0
+ ionic strength (M)         :   0.0000000000000000     
+ debye length (A)           :   1000000.0000000000     
+ absolute temperature (K)   :   297.33421190000001     
+ ion exclusion radius (A)   :   2.0000000000000000     
+ probe radius facing water(A:   1.3999999999999999     
+ probe radius, internal (A) :   1.3999999999999999     
+ boundary conditions        : coulombic   
+ x,y,z periodic bc. and volt. drop flags: F F F F F F
+ # of linear iterations     :        5000
+ convergence by rms  change :  1.00000000000000005E-004  kt
+ convergence by max  change :   0.0000000000000000       kt
+ convergence by norm change :   0.0000000000000000       kt
+ # of non-linear iterations :           0
+ non-linear energy calculat.: F
+ manual relaxation parameter : F
+ ionic direct energy contribution: F
+ concentration map output   : F
+ spherical charge distbn.   : F
+ INSIGHT format output      : F
+ site potential output      : F
+ modified atom file output  : F
+ map file label             :
+qdiffxas: qdiffxs4 with an improved surfacing routine       
+  convergence graph turned off
+  potential listings turned off
+  
+ start vw surface at   8.89860019087791443E-002
+ Starting creating Van der Waals  Epsilon Map 
+ Ending creating Van der Waals  Epsilon Map 
+ fill in re-entrant regions at   0.15697599947452545     
+ boundary points facing continuum solvent=        43233
+ total number of boundary points before elab.=        43233
+ radpmax,radprb    1.3999999999999999        1.3999999999999999        1.3999999999999999     
+ # of vertices =          384  # of edges =          372
+ # of pairs =       286156
+ time to find all pairs =   1.97199960308413790E-024
+ # pairs analyzed (atom-atom and atom-object)=       286156
+ # exposed pairs (atom-atom and atom-object)=         9893
+ no. arc points  =       215535
+ no. surface atoms  =         3280  nbur =         5300
+ mkacc time =   8.71394868214316188E-021
+ initial cube size too small, 
+ in assigning accessible points to a grid
+ therefore rescaling...
+ grid for indexing accessible points =    1.7639999999999996     
+ bgp added m=        6376  bgp removed  mr =       30719
+ bgp added m=         113  bgp removed  mr =        2921
+ bgp added m=           0  bgp removed  mr =           1
+ time to grow re-entrant surface =   2.10064171601855254E-021
+ no. cavity mid-points inaccessible to solvent =         1010
+ after surface elaboration ibnum=        16081
+     and               ibnumsurf=        16081
+ scaling boundary grid points
+ time taken =   5.14583249929846894E-315
+           0  points had to be assigned by global comparison
+ time to turn everything in is   1.3467949628829956     
+ number of charges coming from molecules         8580
+   
+ number of atom coordinates read  :         8580
+ total number of assigned charges    :         8580
+ net assigned charge              :   -31.999999999999769     
+ assigned positive charge         :    1074.0301999999872     
+ centred at (gu) :   44.030850951025883        46.492370459322856        45.156100246715930     
+ assigned negative charge         :   -1106.0301999999999     
+ centred at (gu) :   44.024932584209857        46.534071232774657        45.308345397892523     
+    
+ number of dielectric boundary points       16081
+ no. dielectric boundary points in salt =            0
+ no. charged boundary grid points =        3557
+ ## out of them,          22  charged points are in solution ## Increased resolution is needed
+ iepsmp to db, and charging done at   1.3797899484634399     
+ number of grid points assigned charge       46541
+  
+   setting boundary conditions
+  
+  some initial phi values: 
+  midg,midg,1; midg,midg,igrid 
+  -4.0776013115390635       -5.1171609841234584     
+  midg,1,midg; midg,igrid,midg 
+  -4.8239310597179612       -5.4665997109633127     
+  1,midg,midg; igrid,midg,midg 
+  -5.5149685172513756       -5.0225770799507288     
+  
+gauss-seidel spectral radius is        0.9979547174
+  
+ estimated iterations to convergence         176
+   
+ setup time was (sec)    49.470478057861328     
+   
+ now iterating at: 21:37:41
+  
+  
+   rms-change     max change       #iterations
+   13.711902629942674        348.14439431198036       at          10  iterations
+   5.4339493394783158        106.26076728301041       at          20  iterations
+   2.1704313212919608        41.231881793681339       at          30  iterations
+  0.86255415670798108        17.647080217846483       at          40  iterations
+  0.34567592309508255        6.5977728124780128       at          50  iterations
+  0.13896205585065027        2.7173193386099399       at          60  iterations
+  5.67609507275573452E-002   1.0813886668165873       at          70  iterations
+  2.42583192574866678E-002  0.47505345851584480       at          80  iterations
+  1.15917277512045669E-002  0.25494814200953897       at          90  iterations
+  6.54114656267603279E-003  0.12878143846394607       at         100  iterations
+  4.26092359987085244E-003  9.15123531559629555E-002  at         110  iterations
+  2.99916723862546494E-003  6.17629762645606206E-002  at         120  iterations
+  2.16986050999372912E-003  4.34302227002945074E-002  at         130  iterations
+  1.58549824589722973E-003  3.20003905819774559E-002  at         140  iterations
+  1.16170197250062236E-003  2.36281356469945081E-002  at         150  iterations
+  8.51898188008987523E-004  1.74275427793517679E-002  at         160  iterations
+  6.24966629794351022E-004  1.28377870864611054E-002  at         170  iterations
+  4.58465008991842721E-004  9.45129510483866397E-003  at         180  iterations
+  3.36325921772538238E-004  6.95239254989843403E-003  at         190  iterations
+  2.46693155418379099E-004  5.10857262905517473E-003  at         200  iterations
+  1.80935966323688102E-004  3.75273543842524759E-003  at         210  iterations
+  1.32695257899296783E-004  2.75548335009290213E-003  at         220  iterations
+  9.73095350201440051E-005  2.02251898989658230E-003  at         230  iterations
+ finished qdiffx linear iterations
+ at                       : 21:37:44
+ total time elapsed so far:    51.642150878906250     
+ # loops                  :          230
+ mean,max change (kT/e)   :   9.73095350201440051E-005  2.02251898989658230E-003
+ total grid energy          :        171473.73896456775       kt
+ self-reaction field energy :       0.0000000000000000       kt
+ total s.charge,no epsin carrying :   31.5938
+ corrected reaction field energy:   -15738.425473205680       kt
+ total reaction field energy :     -15738.425473205680       kt
+ All required energy terms but grid and self_react.:  -15738.425473205680      kt
+ energy calculations done at   55.343585968017578     
+   
+ total cpu time was (sec)    55.343585968017578     
+   
+ DelPhi exited at 21:37:47

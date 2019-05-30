@@ -1,0 +1,24 @@
+   Error! get_connect12(): connectivity of atom " N   PHE A0076" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   PHE A0076" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  PHEBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   PHEBK  HA      0.000
+CHARGE   PHE01  CB      0.000
+CHARGE   PHE01 1HB      0.000
+CHARGE   PHE01 2HB      0.000
+CHARGE   PHE01  CG      0.000
+CHARGE   PHE01  CD1     0.000
+CHARGE   PHE01  HD1     0.000
+CHARGE   PHE01  CD2     0.000
+CHARGE   PHE01  HD2     0.000
+CHARGE   PHE01  CE1     0.000
+CHARGE   PHE01  HE1     0.000
+CHARGE   PHE01  CE2     0.000
+CHARGE   PHE01  HE2     0.000
+CHARGE   PHE01  CZ      0.000
+CHARGE   PHE01  HZ      0.000

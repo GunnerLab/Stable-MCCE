@@ -1,0 +1,716 @@
+####################################
+# Topology File for:
+# param/LEV.tpl
+# /home/salah/mcce-charges/epik_inhibitors/output/Lenvatinib/Lenvatinib
+#
+# Created on: 2016-06-12
+#
+# Created with: make_tpl_1.py by Salah Salah
+####################################
+
+# neural always starts with 0
+# numberical value means the charge is 1
+# alphabet lower case means the charge is 2
+# alphabet upper case means the charge is 3
+# nothing for charge of 4, this code will not work
+
+CONFLIST LEV        LEVBK LEV01 LEV-1 LEV-2 LEVDM
+
+NATOM    LEVBK      0
+NATOM    LEV01      49
+NATOM    LEV-1      48
+NATOM    LEV-2      48
+NATOM    LEVDM      0
+
+IATOM    LEV01    C1    0
+IATOM    LEV01    O2    1
+IATOM    LEV01    C3    2
+IATOM    LEV01    C4    3
+IATOM    LEV01    C5    4
+IATOM    LEV01    N6    5
+IATOM    LEV01    C7    6
+IATOM    LEV01    C8    7
+IATOM    LEV01    C9    8
+IATOM    LEV01   C10    9
+IATOM    LEV01   C11   10
+IATOM    LEV01   C12   11
+IATOM    LEV01   C13   12
+IATOM    LEV01   O14   13
+IATOM    LEV01   N15   14
+IATOM    LEV01   O16   15
+IATOM    LEV01   C17   16
+IATOM    LEV01   C18   17
+IATOM    LEV01   C19   18
+IATOM    LEV01   C20   19
+IATOM    LEV01   C21   20
+IATOM    LEV01   C22   21
+IATOM    LEV01   N23   22
+IATOM    LEV01   C24   23
+IATOM    LEV01   O25   24
+IATOM    LEV01   N26   25
+IATOM    LEV01   C27   26
+IATOM    LEV01   C28   27
+IATOM    LEV01   C29   28
+IATOM    LEV01    CL   29
+IATOM    LEV01    H1   30
+IATOM    LEV01    H2   31
+IATOM    LEV01    H3   32
+IATOM    LEV01    H4   33
+IATOM    LEV01    H5   34
+IATOM    LEV01    H6   35
+IATOM    LEV01    H7   36
+IATOM    LEV01    H8   37
+IATOM    LEV01    H9   38
+IATOM    LEV01   H10   39
+IATOM    LEV01   H11   40
+IATOM    LEV01   H12   41
+IATOM    LEV01   H13   42
+IATOM    LEV01   H14   43
+IATOM    LEV01   H15   44
+IATOM    LEV01   H16   45
+IATOM    LEV01   H17   46
+IATOM    LEV01   H18   47
+IATOM    LEV01   H19   48
+
+IATOM    LEV-1    C1    0
+IATOM    LEV-1    O2    1
+IATOM    LEV-1    C3    2
+IATOM    LEV-1    C4    3
+IATOM    LEV-1    C5    4
+IATOM    LEV-1    N6    5
+IATOM    LEV-1    C7    6
+IATOM    LEV-1    C8    7
+IATOM    LEV-1    C9    8
+IATOM    LEV-1   C10    9
+IATOM    LEV-1   C11   10
+IATOM    LEV-1   C12   11
+IATOM    LEV-1   C13   12
+IATOM    LEV-1   O14   13
+IATOM    LEV-1   N15   14
+IATOM    LEV-1   O16   15
+IATOM    LEV-1   C17   16
+IATOM    LEV-1   C18   17
+IATOM    LEV-1   C19   18
+IATOM    LEV-1   C20   19
+IATOM    LEV-1   C21   20
+IATOM    LEV-1   C22   21
+IATOM    LEV-1   N23   22
+IATOM    LEV-1   C24   23
+IATOM    LEV-1   O25   24
+IATOM    LEV-1   N26   25
+IATOM    LEV-1   C27   26
+IATOM    LEV-1   C28   27
+IATOM    LEV-1   C29   28
+IATOM    LEV-1    CL   29
+IATOM    LEV-1    H1   30
+IATOM    LEV-1    H2   31
+IATOM    LEV-1    H3   32
+IATOM    LEV-1    H4   33
+IATOM    LEV-1    H5   34
+IATOM    LEV-1    H6   35
+IATOM    LEV-1    H7   36
+IATOM    LEV-1    H9   37
+IATOM    LEV-1   H10   38
+IATOM    LEV-1   H11   39
+IATOM    LEV-1   H12   40
+IATOM    LEV-1   H13   41
+IATOM    LEV-1   H14   42
+IATOM    LEV-1   H15   43
+IATOM    LEV-1   H16   44
+IATOM    LEV-1   H17   45
+IATOM    LEV-1   H18   46
+IATOM    LEV-1   H19   47
+
+IATOM    LEV-2    C1    0
+IATOM    LEV-2    O2    1
+IATOM    LEV-2    C3    2
+IATOM    LEV-2    C4    3
+IATOM    LEV-2    C5    4
+IATOM    LEV-2    N6    5
+IATOM    LEV-2    C7    6
+IATOM    LEV-2    C8    7
+IATOM    LEV-2    C9    8
+IATOM    LEV-2   C10    9
+IATOM    LEV-2   C11   10
+IATOM    LEV-2   C12   11
+IATOM    LEV-2   C13   12
+IATOM    LEV-2   O14   13
+IATOM    LEV-2   N15   14
+IATOM    LEV-2   O16   15
+IATOM    LEV-2   C17   16
+IATOM    LEV-2   C18   17
+IATOM    LEV-2   C19   18
+IATOM    LEV-2   C20   19
+IATOM    LEV-2   C21   20
+IATOM    LEV-2   C22   21
+IATOM    LEV-2   N23   22
+IATOM    LEV-2   C24   23
+IATOM    LEV-2   O25   24
+IATOM    LEV-2   N26   25
+IATOM    LEV-2   C27   26
+IATOM    LEV-2   C28   27
+IATOM    LEV-2   C29   28
+IATOM    LEV-2    CL   29
+IATOM    LEV-2    H1   30
+IATOM    LEV-2    H2   31
+IATOM    LEV-2    H3   32
+IATOM    LEV-2    H4   33
+IATOM    LEV-2    H5   34
+IATOM    LEV-2    H6   35
+IATOM    LEV-2    H7   36
+IATOM    LEV-2    H8   37
+IATOM    LEV-2   H10   38
+IATOM    LEV-2   H11   39
+IATOM    LEV-2   H12   40
+IATOM    LEV-2   H13   41
+IATOM    LEV-2   H14   42
+IATOM    LEV-2   H15   43
+IATOM    LEV-2   H16   44
+IATOM    LEV-2   H17   45
+IATOM    LEV-2   H18   46
+IATOM    LEV-2   H19   47
+
+ATOMNAME LEV01     0  C1
+ATOMNAME LEV01     1  O2
+ATOMNAME LEV01     2  C3
+ATOMNAME LEV01     3  C4
+ATOMNAME LEV01     4  C5
+ATOMNAME LEV01     5  N6
+ATOMNAME LEV01     6  C7
+ATOMNAME LEV01     7  C8
+ATOMNAME LEV01     8  C9
+ATOMNAME LEV01     9 C10
+ATOMNAME LEV01    10 C11
+ATOMNAME LEV01    11 C12
+ATOMNAME LEV01    12 C13
+ATOMNAME LEV01    13 O14
+ATOMNAME LEV01    14 N15
+ATOMNAME LEV01    15 O16
+ATOMNAME LEV01    16 C17
+ATOMNAME LEV01    17 C18
+ATOMNAME LEV01    18 C19
+ATOMNAME LEV01    19 C20
+ATOMNAME LEV01    20 C21
+ATOMNAME LEV01    21 C22
+ATOMNAME LEV01    22 N23
+ATOMNAME LEV01    23 C24
+ATOMNAME LEV01    24 O25
+ATOMNAME LEV01    25 N26
+ATOMNAME LEV01    26 C27
+ATOMNAME LEV01    27 C28
+ATOMNAME LEV01    28 C29
+ATOMNAME LEV01    29  CL
+ATOMNAME LEV01    30  H1
+ATOMNAME LEV01    31  H2
+ATOMNAME LEV01    32  H3
+ATOMNAME LEV01    33  H4
+ATOMNAME LEV01    34  H5
+ATOMNAME LEV01    35  H6
+ATOMNAME LEV01    36  H7
+ATOMNAME LEV01    37  H8
+ATOMNAME LEV01    38  H9
+ATOMNAME LEV01    39 H10
+ATOMNAME LEV01    40 H11
+ATOMNAME LEV01    41 H12
+ATOMNAME LEV01    42 H13
+ATOMNAME LEV01    43 H14
+ATOMNAME LEV01    44 H15
+ATOMNAME LEV01    45 H16
+ATOMNAME LEV01    46 H17
+ATOMNAME LEV01    47 H18
+ATOMNAME LEV01    48 H19
+
+ATOMNAME LEV-1     0  C1
+ATOMNAME LEV-1     1  O2
+ATOMNAME LEV-1     2  C3
+ATOMNAME LEV-1     3  C4
+ATOMNAME LEV-1     4  C5
+ATOMNAME LEV-1     5  N6
+ATOMNAME LEV-1     6  C7
+ATOMNAME LEV-1     7  C8
+ATOMNAME LEV-1     8  C9
+ATOMNAME LEV-1     9 C10
+ATOMNAME LEV-1    10 C11
+ATOMNAME LEV-1    11 C12
+ATOMNAME LEV-1    12 C13
+ATOMNAME LEV-1    13 O14
+ATOMNAME LEV-1    14 N15
+ATOMNAME LEV-1    15 O16
+ATOMNAME LEV-1    16 C17
+ATOMNAME LEV-1    17 C18
+ATOMNAME LEV-1    18 C19
+ATOMNAME LEV-1    19 C20
+ATOMNAME LEV-1    20 C21
+ATOMNAME LEV-1    21 C22
+ATOMNAME LEV-1    22 N23
+ATOMNAME LEV-1    23 C24
+ATOMNAME LEV-1    24 O25
+ATOMNAME LEV-1    25 N26
+ATOMNAME LEV-1    26 C27
+ATOMNAME LEV-1    27 C28
+ATOMNAME LEV-1    28 C29
+ATOMNAME LEV-1    29  CL
+ATOMNAME LEV-1    30  H1
+ATOMNAME LEV-1    31  H2
+ATOMNAME LEV-1    32  H3
+ATOMNAME LEV-1    33  H4
+ATOMNAME LEV-1    34  H5
+ATOMNAME LEV-1    35  H6
+ATOMNAME LEV-1    36  H7
+ATOMNAME LEV-1    37  H9
+ATOMNAME LEV-1    38 H10
+ATOMNAME LEV-1    39 H11
+ATOMNAME LEV-1    40 H12
+ATOMNAME LEV-1    41 H13
+ATOMNAME LEV-1    42 H14
+ATOMNAME LEV-1    43 H15
+ATOMNAME LEV-1    44 H16
+ATOMNAME LEV-1    45 H17
+ATOMNAME LEV-1    46 H18
+ATOMNAME LEV-1    47 H19
+
+ATOMNAME LEV-2     0  C1
+ATOMNAME LEV-2     1  O2
+ATOMNAME LEV-2     2  C3
+ATOMNAME LEV-2     3  C4
+ATOMNAME LEV-2     4  C5
+ATOMNAME LEV-2     5  N6
+ATOMNAME LEV-2     6  C7
+ATOMNAME LEV-2     7  C8
+ATOMNAME LEV-2     8  C9
+ATOMNAME LEV-2     9 C10
+ATOMNAME LEV-2    10 C11
+ATOMNAME LEV-2    11 C12
+ATOMNAME LEV-2    12 C13
+ATOMNAME LEV-2    13 O14
+ATOMNAME LEV-2    14 N15
+ATOMNAME LEV-2    15 O16
+ATOMNAME LEV-2    16 C17
+ATOMNAME LEV-2    17 C18
+ATOMNAME LEV-2    18 C19
+ATOMNAME LEV-2    19 C20
+ATOMNAME LEV-2    20 C21
+ATOMNAME LEV-2    21 C22
+ATOMNAME LEV-2    22 N23
+ATOMNAME LEV-2    23 C24
+ATOMNAME LEV-2    24 O25
+ATOMNAME LEV-2    25 N26
+ATOMNAME LEV-2    26 C27
+ATOMNAME LEV-2    27 C28
+ATOMNAME LEV-2    28 C29
+ATOMNAME LEV-2    29  CL
+ATOMNAME LEV-2    30  H1
+ATOMNAME LEV-2    31  H2
+ATOMNAME LEV-2    32  H3
+ATOMNAME LEV-2    33  H4
+ATOMNAME LEV-2    34  H5
+ATOMNAME LEV-2    35  H6
+ATOMNAME LEV-2    36  H7
+ATOMNAME LEV-2    37  H8
+ATOMNAME LEV-2    38 H10
+ATOMNAME LEV-2    39 H11
+ATOMNAME LEV-2    40 H12
+ATOMNAME LEV-2    41 H13
+ATOMNAME LEV-2    42 H14
+ATOMNAME LEV-2    43 H15
+ATOMNAME LEV-2    44 H16
+ATOMNAME LEV-2    45 H17
+ATOMNAME LEV-2    46 H18
+ATOMNAME LEV-2    47 H19
+
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+
+# PROTON SECTION: PROTON means charge
+
+PROTON   LEV01      0    
+PROTON   LEV-1      0    
+PROTON   LEV-2      0    
+PROTON   LEVDM      0    
+
+# Solution pKa Section: pKa data from CRC Handbook of Chemistry and Physics
+# pka is set to zero
+PKA      LEV01         0.000
+PKA      LEV-1         0.000
+PKA      LEV-2         0.000
+PKA      LEVDM         0.000
+
+#ELECTRON SECTION:
+ELECTRON LEV01      0.0  
+ELECTRON LEV-1      0.0  
+ELECTRON LEV-2      0.0  
+ELECTRON LEVDM      0.0  
+
+# EM SECTION:
+EM       LEV01      0.0  
+EM       LEV-1      0.0  
+EM       LEV-2      0.0  
+EM       LEVDM      0.0  
+
+# REACTION FIELD ENERGY SECTION:
+RXN      LEV01      -7.897  
+RXN      LEV-1      -24.460
+RXN      LEV-2      -24.388
+
+#  LEV01
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  LEV01  C1     sp3     0    H1   0    H2   0    H3   0    O2  
+CONNECT  LEV01  O2     sp3     0    C1   0    C3  
+CONNECT  LEV01  C3     sp2     0    O2   0    C4   0   C12  
+CONNECT  LEV01  C4     sp2     0    C3   0    H4   0    C5  
+CONNECT  LEV01  C5     sp2     0    C4   0    N6   0   C10  
+CONNECT  LEV01  N6     sp2     0    C5   0    C7  
+CONNECT  LEV01  C7     sp2     0    N6   0    H5   0    C8  
+CONNECT  LEV01  C8     sp2     0    C7   0    C9   0    H6  
+CONNECT  LEV01  C9     sp2     0    C8   0   C10   0   O16  
+CONNECT  LEV01 C10     sp2     0    C5   0    C9   0   C11  
+CONNECT  LEV01 C11     sp2     0   C10   0   C12   0    H7  
+CONNECT  LEV01 C12     sp2     0    C3   0   C11   0   C13  
+CONNECT  LEV01 C13     sp2     0   C12   0   N15   0   O14  
+CONNECT  LEV01 O14     sp2     0   C13  
+CONNECT  LEV01 N15     sp2     0   C13   0    H8   0   H9  
+CONNECT  LEV01 O16     sp3     0    C9   0   C17  
+CONNECT  LEV01 C17     sp2     0   O16   0   C18   0   C22  
+CONNECT  LEV01 C18     sp2     0   C17   0   H10   0   C19  
+CONNECT  LEV01 C19     sp2     0   C18   0   C20   0    CL  
+CONNECT  LEV01 C20     sp2     0   C19   0   C21   0   N23  
+CONNECT  LEV01 C21     sp2     0   C20   0   C22   0   H11  
+CONNECT  LEV01 C22     sp2     0   C17   0   C21   0   H12  
+CONNECT  LEV01 N23     sp2     0   C20   0   H13   0   C24  
+CONNECT  LEV01 C24     sp2     0   N23   0   O25   0   N26  
+CONNECT  LEV01 O25     sp2     0   C24  
+CONNECT  LEV01 N26     sp2     0   C24   0   H14   0   C27  
+CONNECT  LEV01 C27     sp3     0   N26   0   H15   0   C28   0   C29  
+CONNECT  LEV01 C28     sp3     0   C27   0   H16   0   H17   0   C29  
+CONNECT  LEV01 C29     sp3     0   C27   0   C28   0   H18   0   H19  
+CONNECT  LEV01  CL      sp     0   C19  
+CONNECT  LEV01  H1      s      0    C1  
+CONNECT  LEV01  H2      s      0    C1  
+CONNECT  LEV01  H3      s      0    C1  
+CONNECT  LEV01  H4      s      0    C4  
+CONNECT  LEV01  H5      s      0    C7  
+CONNECT  LEV01  H6      s      0    C8  
+CONNECT  LEV01  H7      s      0   C11  
+CONNECT  LEV01  H8      s      0   N15  
+CONNECT  LEV01  H9      s      0   N15  
+CONNECT  LEV01 H10      s      0   C18  
+CONNECT  LEV01 H11      s      0   C21  
+CONNECT  LEV01 H12      s      0   C22  
+CONNECT  LEV01 H13      s      0   N23  
+CONNECT  LEV01 H14      s      0   N26  
+CONNECT  LEV01 H15      s      0   C27  
+CONNECT  LEV01 H16      s      0   C28  
+CONNECT  LEV01 H17      s      0   C28  
+CONNECT  LEV01 H18      s      0   C29  
+CONNECT  LEV01 H19      s      0   C29  
+
+#  LEV-1
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  LEV-1  C1     sp3     0    H1   0    H2   0    H3   0    O2  
+CONNECT  LEV-1  O2     sp3     0    C1   0    C3  
+CONNECT  LEV-1  C3     sp2     0    O2   0    C4   0   C12  
+CONNECT  LEV-1  C4     sp2     0    C3   0    H4   0    C5  
+CONNECT  LEV-1  C5     sp2     0    C4   0    N6   0   C10  
+CONNECT  LEV-1  N6     sp2     0    C5   0    C7  
+CONNECT  LEV-1  C7     sp2     0    N6   0    H5   0    C8  
+CONNECT  LEV-1  C8     sp2     0    C7   0    C9   0    H6  
+CONNECT  LEV-1  C9     sp2     0    C8   0   C10   0   O16  
+CONNECT  LEV-1 C10     sp2     0    C5   0    C9   0   C11  
+CONNECT  LEV-1 C11     sp2     0   C10   0   C12   0    H7  
+CONNECT  LEV-1 C12     sp2     0    C3   0   C11   0   C13  
+CONNECT  LEV-1 C13     sp2     0   C12   0   N15   0   O14  
+CONNECT  LEV-1 O14   unknown   0   C13  
+CONNECT  LEV-1 N15     sp2     0   C13   0    H8  
+CONNECT  LEV-1 O16     sp3     0    C9   0   C17  
+CONNECT  LEV-1 C17     sp2     0   O16   0   C18   0   C22  
+CONNECT  LEV-1 C18     sp2     0   C17   0   H10   0   C19  
+CONNECT  LEV-1 C19     sp2     0   C18   0   C20   0    CL  
+CONNECT  LEV-1 C20     sp2     0   C19   0   C21   0   N23  
+CONNECT  LEV-1 C21     sp2     0   C20   0   C22   0   H11  
+CONNECT  LEV-1 C22     sp2     0   C17   0   C21   0   H12  
+CONNECT  LEV-1 N23     sp2     0   C20   0   H13   0   C24  
+CONNECT  LEV-1 C24     sp2     0   N23   0   O25   0   N26  
+CONNECT  LEV-1 O25     sp2     0   C24  
+CONNECT  LEV-1 N26     sp2     0   C24   0   H14   0   C27  
+CONNECT  LEV-1 C27     sp3     0   N26   0   H15   0   C28   0   C29  
+CONNECT  LEV-1 C28     sp3     0   C27   0   H16   0   H17   0   C29  
+CONNECT  LEV-1 C29     sp3     0   C27   0   C28   0   H18   0   H19  
+CONNECT  LEV-1  CL      sp     0   C19  
+CONNECT  LEV-1  H1      s      0    C1  
+CONNECT  LEV-1  H2      s      0    C1  
+CONNECT  LEV-1  H3      s      0    C1  
+CONNECT  LEV-1  H4      s      0    C4  
+CONNECT  LEV-1  H5      s      0    C7  
+CONNECT  LEV-1  H6      s      0    C8  
+CONNECT  LEV-1  H7      s      0   C11  
+CONNECT  LEV-1  H9      s      0   N15  
+CONNECT  LEV-1 H10      s      0   C18  
+CONNECT  LEV-1 H11      s      0   C21  
+CONNECT  LEV-1 H12      s      0   C22  
+CONNECT  LEV-1 H13      s      0   N23  
+CONNECT  LEV-1 H14      s      0   N26  
+CONNECT  LEV-1 H15      s      0   C27  
+CONNECT  LEV-1 H16      s      0   C28  
+CONNECT  LEV-1 H17      s      0   C28  
+CONNECT  LEV-1 H18      s      0   C29  
+CONNECT  LEV-1 H19      s      0   C29  
+
+#  LEV-2
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  LEV-2  C1     sp3     0    H1   0    H2   0    H3   0    O2  
+CONNECT  LEV-2  O2     sp3     0    C1   0    C3  
+CONNECT  LEV-2  C3     sp2     0    O2   0    C4   0   C12  
+CONNECT  LEV-2  C4     sp2     0    C3   0    H4   0    C5  
+CONNECT  LEV-2  C5     sp2     0    C4   0    N6   0   C10  
+CONNECT  LEV-2  N6     sp2     0    C5   0    C7  
+CONNECT  LEV-2  C7     sp2     0    N6   0    H5   0    C8  
+CONNECT  LEV-2  C8     sp2     0    C7   0    C9   0    H6  
+CONNECT  LEV-2  C9     sp2     0    C8   0   C10   0   O16  
+CONNECT  LEV-2 C10     sp2     0    C5   0    C9   0   C11  
+CONNECT  LEV-2 C11     sp2     0   C10   0   C12   0    H7  
+CONNECT  LEV-2 C12     sp2     0    C3   0   C11   0   C13  
+CONNECT  LEV-2 C13     sp2     0   C12   0   N15   0   O14  
+CONNECT  LEV-2 O14   unknown   0   C13  
+CONNECT  LEV-2 N15     sp2     0   C13   0    H8  
+CONNECT  LEV-2 O16     sp3     0    C9   0   C17  
+CONNECT  LEV-2 C17     sp2     0   O16   0   C18   0   C22  
+CONNECT  LEV-2 C18     sp2     0   C17   0   H10   0   C19  
+CONNECT  LEV-2 C19     sp2     0   C18   0   C20   0    CL  
+CONNECT  LEV-2 C20     sp2     0   C19   0   C21   0   N23  
+CONNECT  LEV-2 C21     sp2     0   C20   0   C22   0   H11  
+CONNECT  LEV-2 C22     sp2     0   C17   0   C21   0   H12  
+CONNECT  LEV-2 N23     sp2     0   C20   0   H13   0   C24  
+CONNECT  LEV-2 C24     sp2     0   N23   0   O25   0   N26  
+CONNECT  LEV-2 O25     sp2     0   C24  
+CONNECT  LEV-2 N26     sp2     0   C24   0   H14   0   C27  
+CONNECT  LEV-2 C27     sp3     0   N26   0   H15   0   C28   0   C29  
+CONNECT  LEV-2 C28     sp3     0   C27   0   H16   0   H17   0   C29  
+CONNECT  LEV-2 C29     sp3     0   C27   0   C28   0   H18   0   H19  
+CONNECT  LEV-2  CL      sp     0   C19  
+CONNECT  LEV-2  H1      s      0    C1  
+CONNECT  LEV-2  H2      s      0    C1  
+CONNECT  LEV-2  H3      s      0    C1  
+CONNECT  LEV-2  H4      s      0    C4  
+CONNECT  LEV-2  H5      s      0    C7  
+CONNECT  LEV-2  H6      s      0    C8  
+CONNECT  LEV-2  H7      s      0   C11  
+CONNECT  LEV-2  H8      s      0   N15  
+CONNECT  LEV-2 H10      s      0   C18  
+CONNECT  LEV-2 H11      s      0   C21  
+CONNECT  LEV-2 H12      s      0   C22  
+CONNECT  LEV-2 H13      s      0   N23  
+CONNECT  LEV-2 H14      s      0   N26  
+CONNECT  LEV-2 H15      s      0   C27  
+CONNECT  LEV-2 H16      s      0   C28  
+CONNECT  LEV-2 H17      s      0   C28  
+CONNECT  LEV-2 H18      s      0   C29  
+CONNECT  LEV-2 H19      s      0   C29  
+
+# Atom Parameters:
+# Van Der Waals Radii. See source for reference
+RADIUS   LEV    C1        1.7
+RADIUS   LEV    O2       1.52
+RADIUS   LEV    C3        1.7
+RADIUS   LEV    C4        1.7
+RADIUS   LEV    C5        1.7
+RADIUS   LEV    N6       1.55
+RADIUS   LEV    C7        1.7
+RADIUS   LEV    C8        1.7
+RADIUS   LEV    C9        1.7
+RADIUS   LEV    C10       1.7
+RADIUS   LEV    C11       1.7
+RADIUS   LEV    C12       1.7
+RADIUS   LEV    C13       1.7
+RADIUS   LEV    O14      1.52
+RADIUS   LEV    N15      1.55
+RADIUS   LEV    O16      1.52
+RADIUS   LEV    C17       1.7
+RADIUS   LEV    C18       1.7
+RADIUS   LEV    C19       1.7
+RADIUS   LEV    C20       1.7
+RADIUS   LEV    C21       1.7
+RADIUS   LEV    C22       1.7
+RADIUS   LEV    N23      1.55
+RADIUS   LEV    C24       1.7
+RADIUS   LEV    O25      1.52
+RADIUS   LEV    N26      1.55
+RADIUS   LEV    C27       1.7
+RADIUS   LEV    C28       1.7
+RADIUS   LEV    C29       1.7
+RADIUS   LEV    CL        1.7
+RADIUS   LEV    H1        1.2
+RADIUS   LEV    H2        1.2
+RADIUS   LEV    H3        1.2
+RADIUS   LEV    H4        1.2
+RADIUS   LEV    H5        1.2
+RADIUS   LEV    H6        1.2
+RADIUS   LEV    H7        1.2
+RADIUS   LEV    H8        1.2
+RADIUS   LEV    H9        1.2
+RADIUS   LEV    H10       1.2
+RADIUS   LEV    H11       1.2
+RADIUS   LEV    H12       1.2
+RADIUS   LEV    H13       1.2
+RADIUS   LEV    H14       1.2
+RADIUS   LEV    H15       1.2
+RADIUS   LEV    H16       1.2
+RADIUS   LEV    H17       1.2
+RADIUS   LEV    H18       1.2
+RADIUS   LEV    H19       1.2
+
+CHARGE   LEV01  C1   0.1149
+CHARGE   LEV01  O2  -0.3539
+CHARGE   LEV01  C3   0.1359
+CHARGE   LEV01  C4   -0.197
+CHARGE   LEV01  C5   0.4323
+CHARGE   LEV01  N6  -0.6792
+CHARGE   LEV01  C7   0.4506
+CHARGE   LEV01  C8  -0.3331
+CHARGE   LEV01  C9    0.175
+CHARGE   LEV01  C10 -0.1743
+CHARGE   LEV01  C11 -0.0442
+CHARGE   LEV01  C12 -0.1572
+CHARGE   LEV01  C13  0.6839
+CHARGE   LEV01  O14 -0.6052
+CHARGE   LEV01  N15 -0.6645
+CHARGE   LEV01  O16  -0.239
+CHARGE   LEV01  C17  0.0398
+CHARGE   LEV01  C18 -0.0913
+CHARGE   LEV01  C19 -0.0475
+CHARGE   LEV01  C20  0.1095
+CHARGE   LEV01  C21 -0.1505
+CHARGE   LEV01  C22 -0.0935
+CHARGE   LEV01  N23 -0.4782
+CHARGE   LEV01  C24  0.7763
+CHARGE   LEV01  O25 -0.6081
+CHARGE   LEV01  N26 -0.5278
+CHARGE   LEV01  C27  0.0499
+CHARGE   LEV01  C28  -0.146
+CHARGE   LEV01  C29  -0.146
+CHARGE   LEV01  CL  -0.0951
+CHARGE   LEV01  H1   0.0494
+CHARGE   LEV01  H2   0.0494
+CHARGE   LEV01  H3   0.0494
+CHARGE   LEV01  H4   0.1678
+CHARGE   LEV01  H5   0.0268
+CHARGE   LEV01  H6   0.1606
+CHARGE   LEV01  H7   0.1623
+CHARGE   LEV01  H8   0.3148
+CHARGE   LEV01  H9   0.3148
+CHARGE   LEV01  H10   0.166
+CHARGE   LEV01  H11  0.1895
+CHARGE   LEV01  H12  0.1604
+CHARGE   LEV01  H13  0.3267
+CHARGE   LEV01  H14  0.2994
+CHARGE   LEV01  H15  0.1121
+CHARGE   LEV01  H16  0.0785
+CHARGE   LEV01  H17  0.0785
+CHARGE   LEV01  H18  0.0785
+CHARGE   LEV01  H19  0.0785
+
+CHARGE   LEV-1  C1   0.1243
+CHARGE   LEV-1  O2   -0.344
+CHARGE   LEV-1  C3   0.1255
+CHARGE   LEV-1  C4  -0.2266
+CHARGE   LEV-1  C5   0.3937
+CHARGE   LEV-1  N6  -0.6807
+CHARGE   LEV-1  C7   0.4114
+CHARGE   LEV-1  C8  -0.3537
+CHARGE   LEV-1  C9   0.1642
+CHARGE   LEV-1  C10 -0.1553
+CHARGE   LEV-1  C11 -0.0921
+CHARGE   LEV-1  C12 -0.1835
+CHARGE   LEV-1  C13  0.9299
+CHARGE   LEV-1  O14 -0.8459
+CHARGE   LEV-1  N15 -1.0239
+CHARGE   LEV-1  O16 -0.2333
+CHARGE   LEV-1  C17  0.0756
+CHARGE   LEV-1  C18 -0.0976
+CHARGE   LEV-1  C19 -0.0394
+CHARGE   LEV-1  C20  0.0856
+CHARGE   LEV-1  C21 -0.1493
+CHARGE   LEV-1  C22 -0.0995
+CHARGE   LEV-1  N23 -0.4777
+CHARGE   LEV-1  C24  0.7759
+CHARGE   LEV-1  O25 -0.6125
+CHARGE   LEV-1  N26 -0.5343
+CHARGE   LEV-1  C27  0.0575
+CHARGE   LEV-1  C28 -0.1504
+CHARGE   LEV-1  C29 -0.1504
+CHARGE   LEV-1  CL   -0.113
+CHARGE   LEV-1  H1   0.0357
+CHARGE   LEV-1  H2   0.0357
+CHARGE   LEV-1  H3   0.0357
+CHARGE   LEV-1  H4   0.1419
+CHARGE   LEV-1  H5   0.0026
+CHARGE   LEV-1  H6   0.1391
+CHARGE   LEV-1  H7   0.1594
+CHARGE   LEV-1  H9   0.3264
+CHARGE   LEV-1  H10  0.1695
+CHARGE   LEV-1  H11  0.1806
+CHARGE   LEV-1  H12  0.1631
+CHARGE   LEV-1  H13   0.324
+CHARGE   LEV-1  H14   0.295
+CHARGE   LEV-1  H15  0.1103
+CHARGE   LEV-1  H16  0.0751
+CHARGE   LEV-1  H17  0.0751
+CHARGE   LEV-1  H18  0.0751
+CHARGE   LEV-1  H19  0.0751
+
+CHARGE   LEV-2  C1   0.1238
+CHARGE   LEV-2  O2  -0.3298
+CHARGE   LEV-2  C3   0.1425
+CHARGE   LEV-2  C4  -0.2296
+CHARGE   LEV-2  C5   0.3958
+CHARGE   LEV-2  N6  -0.6811
+CHARGE   LEV-2  C7   0.4108
+CHARGE   LEV-2  C8  -0.3546
+CHARGE   LEV-2  C9   0.1641
+CHARGE   LEV-2  C10 -0.1542
+CHARGE   LEV-2  C11 -0.0978
+CHARGE   LEV-2  C12 -0.0855
+CHARGE   LEV-2  C13  0.8885
+CHARGE   LEV-2  O14 -0.9086
+CHARGE   LEV-2  N15 -1.0361
+CHARGE   LEV-2  O16 -0.2336
+CHARGE   LEV-2  C17  0.0752
+CHARGE   LEV-2  C18 -0.0954
+CHARGE   LEV-2  C19 -0.0401
+CHARGE   LEV-2  C20  0.0833
+CHARGE   LEV-2  C21 -0.1501
+CHARGE   LEV-2  C22 -0.1008
+CHARGE   LEV-2  N23 -0.4776
+CHARGE   LEV-2  C24  0.7769
+CHARGE   LEV-2  O25 -0.6106
+CHARGE   LEV-2  N26 -0.5348
+CHARGE   LEV-2  C27  0.0581
+CHARGE   LEV-2  C28 -0.1501
+CHARGE   LEV-2  C29 -0.1501
+CHARGE   LEV-2  CL  -0.1146
+CHARGE   LEV-2  H1   0.0335
+CHARGE   LEV-2  H2   0.0335
+CHARGE   LEV-2  H3   0.0335
+CHARGE   LEV-2  H4   0.1414
+CHARGE   LEV-2  H5   0.0021
+CHARGE   LEV-2  H6    0.139
+CHARGE   LEV-2  H7   0.1582
+CHARGE   LEV-2  H8   0.3309
+CHARGE   LEV-2  H10  0.1715
+CHARGE   LEV-2  H11  0.1812
+CHARGE   LEV-2  H12  0.1625
+CHARGE   LEV-2  H13  0.3235
+CHARGE   LEV-2  H14  0.2934
+CHARGE   LEV-2  H15  0.1097
+CHARGE   LEV-2  H16  0.0755
+CHARGE   LEV-2  H17  0.0755
+CHARGE   LEV-2  H18  0.0755
+CHARGE   LEV-2  H19  0.0755
+
+# EXTRA energy for tautomers:
+EXTRA    LEV01         0.000
+EXTRA    LEV-1         5.763
+EXTRA    LEV-2         5.763
+

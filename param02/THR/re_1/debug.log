@@ -1,0 +1,14 @@
+   Error! get_connect12(): connectivity of atom " N   THR A0013" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   THR A0013" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  THRBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   THRBK  HA      0.000
+CHARGE   THR01  HB      0.000
+CHARGE   THR01 1HG2     0.000
+CHARGE   THR01 2HG2     0.000
+CHARGE   THR01 3HG2     0.000

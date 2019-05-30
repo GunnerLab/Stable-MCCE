@@ -1,0 +1,23 @@
+   Error! get_connect12(): connectivity of atom " N   LEU A0103" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   LEU A0103" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  LEUBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   LEUBK  HA      0.000
+CHARGE   LEU01  CB      0.000
+CHARGE   LEU01 1HB      0.000
+CHARGE   LEU01 2HB      0.000
+CHARGE   LEU01  CG      0.000
+CHARGE   LEU01  HG      0.000
+CHARGE   LEU01  CD1     0.000
+CHARGE   LEU01 1HD1     0.000
+CHARGE   LEU01 2HD1     0.000
+CHARGE   LEU01 3HD1     0.000
+CHARGE   LEU01  CD2     0.000
+CHARGE   LEU01 1HD2     0.000
+CHARGE   LEU01 2HD2     0.000
+CHARGE   LEU01 3HD2     0.000

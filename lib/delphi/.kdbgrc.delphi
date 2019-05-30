@@ -1,0 +1,37 @@
+[Breakpoint 0]
+Enabled=true
+File=src/getatm2.f
+Line=107
+Temporary=false
+
+[Breakpoint 1]
+Enabled=true
+File=src/getatm2.f
+Line=99
+Temporary=false
+
+[Breakpoint 2]
+Enabled=true
+File=src/form2.f
+Line=24
+Temporary=false
+
+[General]
+DebuggerCmdStr=
+DriverName=GDB
+FileVersion=1
+OptionsSelected=
+ProgramArgs=
+TTYLevel=7
+WorkingDirectory=
+
+[Memory]
+ColumnWidths=80,0
+NumExprs=0
+
+[Watches]
+Expr0=xfield
+Expr1=crdstr
+Expr2=ifrm
+Expr3=nam1
+Expr4=ias
