@@ -22,6 +22,7 @@ is equal to:
 ```ROTATE, GLU: " CA " - " CB ", " CB " - " CG ", " CG " - " CD "```
 
 In circumstances that one needs to overwrite previously defined entries instead of appending, one can negate an earlier record by defining a special value "!!!"
+```
 SCALING, VDW0:     !!!
 SCALING, VDW0:     1.0
 
@@ -33,6 +34,7 @@ SCALING, VDW:      1.0
 
 SCALING, TORS:     !!!
 SCALING, TORS:     1.0
+```
 
 means "No matter what were defined before, delete this entry, then create an entry with new key and value pair."
 
