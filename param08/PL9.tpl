@@ -1,0 +1,187 @@
+### This is a temporary parameter file made for residue PL9 ###
+### Make sure that all the parameters are verified before using this file as a global parameter file ###
+
+CONFLIST PL9        PL9BK PL901 PL9-1
+
+NATOM    PL9BK      41
+NATOM    PL901       4
+NATOM    PL9-1       4
+
+IATOM    PL9BK  C2     0
+IATOM    PL9BK  C3     1
+IATOM    PL9BK  C5     2
+IATOM    PL9BK  C6     3
+IATOM    PL9BK  C7     4
+IATOM    PL9BK  C8     5
+IATOM    PL9BK  C9     6
+IATOM    PL9BK  C10    7
+IATOM    PL9BK  C11    8
+IATOM    PL9BK  C12    9
+IATOM    PL9BK  C13   10
+IATOM    PL9BK  C14   11
+IATOM    PL9BK  C15   12
+IATOM    PL9BK  C16   13
+IATOM    PL9BK  C17   14
+IATOM    PL9BK  C18   15
+IATOM    PL9BK  C19   16
+IATOM    PL9BK  C20   17
+IATOM    PL9BK  C21   18
+IATOM    PL9BK  C22   19
+IATOM    PL9BK  C23   20
+IATOM    PL9BK  C24   21
+IATOM    PL9BK  C25   22
+IATOM    PL9BK  C26   23
+IATOM    PL9BK  C27   24
+IATOM    PL9BK  C28   25
+IATOM    PL9BK  C29   26
+IATOM    PL9BK  C30   27
+IATOM    PL9BK  C31   28
+IATOM    PL9BK  C32   29
+IATOM    PL9BK  C33   30
+IATOM    PL9BK  C34   31
+IATOM    PL9BK  C35   32
+IATOM    PL9BK  C36   33
+IATOM    PL9BK  C37   34
+IATOM    PL9BK  C38   35
+IATOM    PL9BK  C39   36
+IATOM    PL9BK  C40   37
+IATOM    PL9BK  C41   38
+IATOM    PL9BK  C52   39
+IATOM    PL9BK  C53   40
+
+IATOM    PL901  C1    0
+IATOM    PL901  O2    1
+IATOM    PL901  C4    2
+IATOM    PL901  O1    3
+
+IATOM    PL9-1  C1    0
+IATOM    PL9-1  O2    1
+IATOM    PL9-1  C4    2
+IATOM    PL9-1  O1    3
+
+ATOMNAME PL9BK    0  C2 
+ATOMNAME PL9BK    1  C3 
+ATOMNAME PL9BK    2  C5 
+ATOMNAME PL9BK    3  C6 
+ATOMNAME PL9BK    4  C7 
+ATOMNAME PL9BK    5  C8 
+ATOMNAME PL9BK    6  C9 
+ATOMNAME PL9BK    7  C10
+ATOMNAME PL9BK    8  C11
+ATOMNAME PL9BK    9  C12
+ATOMNAME PL9BK   10  C13
+ATOMNAME PL9BK   11  C14
+ATOMNAME PL9BK   12  C15
+ATOMNAME PL9BK   13  C16
+ATOMNAME PL9BK   14  C17
+ATOMNAME PL9BK   15  C18
+ATOMNAME PL9BK   16  C19
+ATOMNAME PL9BK   17  C20
+ATOMNAME PL9BK   18  C21
+ATOMNAME PL9BK   19  C22
+ATOMNAME PL9BK   20  C23
+ATOMNAME PL9BK   21  C24
+ATOMNAME PL9BK   22  C25
+ATOMNAME PL9BK   23  C26
+ATOMNAME PL9BK   24  C27
+ATOMNAME PL9BK   25  C28
+ATOMNAME PL9BK   26  C29
+ATOMNAME PL9BK   27  C30
+ATOMNAME PL9BK   28  C31
+ATOMNAME PL9BK   29  C32
+ATOMNAME PL9BK   30  C33
+ATOMNAME PL9BK   31  C34
+ATOMNAME PL9BK   32  C35
+ATOMNAME PL9BK   33  C36
+ATOMNAME PL9BK   34  C37
+ATOMNAME PL9BK   35  C38
+ATOMNAME PL9BK   36  C39
+ATOMNAME PL9BK   37  C40
+ATOMNAME PL9BK   38  C41
+ATOMNAME PL9BK   39  C52
+ATOMNAME PL9BK   40  C53
+
+ATOMNAME PL901    0  C1 
+ATOMNAME PL901    1  O2 
+ATOMNAME PL901    2  C4 
+ATOMNAME PL901    3  O1 
+
+ATOMNAME PL9-1    0  C1 
+ATOMNAME PL9-1    1  O2 
+ATOMNAME PL9-1    2  C4 
+ATOMNAME PL9-1    3  O1 
+
+CONNECT  PL9BK  C2  ion        0    C3   0    C1 
+CONNECT  PL9BK  C3  ion        0    C2   0    C4   0    C7 
+CONNECT  PL9BK  C5  ion        0    C4   0    C6   0    C52
+CONNECT  PL9BK  C6  ion        0    C5   0    C1   0    C53
+CONNECT  PL9BK  C7  ion        0    C3   0    C8 
+CONNECT  PL9BK  C8  ion        0    C7   0    C9 
+CONNECT  PL9BK  C9  ion        0    C8   0    C10  0    C11
+CONNECT  PL9BK  C10 ion        0    C9 
+CONNECT  PL9BK  C11 ion        0    C9   0    C12
+CONNECT  PL9BK  C12 ion        0    C11  0    C13
+CONNECT  PL9BK  C13 ion        0    C12  0    C14
+CONNECT  PL9BK  C14 ion        0    C13  0    C15  0    C16
+CONNECT  PL9BK  C15 ion        0    C14
+CONNECT  PL9BK  C16 ion        0    C14  0    C17
+CONNECT  PL9BK  C17 ion        0    C16  0    C18
+CONNECT  PL9BK  C18 ion        0    C17  0    C19
+CONNECT  PL9BK  C19 ion        0    C18  0    C20  0    C21
+CONNECT  PL9BK  C20 ion        0    C19
+CONNECT  PL9BK  C21 ion        0    C19  0    C22
+CONNECT  PL9BK  C22 ion        0    C21  0    C23
+CONNECT  PL9BK  C23 ion        0    C22  0    C24
+CONNECT  PL9BK  C24 ion        0    C23  0    C25  0    C26
+CONNECT  PL9BK  C25 ion        0    C24
+CONNECT  PL9BK  C26 ion        0    C24  0    C27
+CONNECT  PL9BK  C27 ion        0    C26  0    C28
+CONNECT  PL9BK  C28 ion        0    C27  0    C29
+CONNECT  PL9BK  C29 ion        0    C28  0    C30  0    C31
+CONNECT  PL9BK  C30 ion        0    C29
+CONNECT  PL9BK  C31 ion        0    C29  0    C32
+CONNECT  PL9BK  C32 ion        0    C31  0    C33
+CONNECT  PL9BK  C33 ion        0    C32  0    C34
+CONNECT  PL9BK  C34 ion        0    C33  0    C35  0    C36
+CONNECT  PL9BK  C35 ion        0    C34
+CONNECT  PL9BK  C36 ion        0    C34  0    C37
+CONNECT  PL9BK  C37 ion        0    C36  0    C38
+CONNECT  PL9BK  C38 ion        0    C37  0    C39
+CONNECT  PL9BK  C39 ion        0    C38  0    C40  0    C41
+CONNECT  PL9BK  C40 ion        0    C39
+CONNECT  PL9BK  C41 ion        0    C39
+CONNECT  PL9BK  C52 ion        0    C5 
+CONNECT  PL9BK  C53 ion        0    C6 
+
+CONNECT  PL901  C1  ion        0    C2   0    C6   0    O2 
+CONNECT  PL901  C4  ion        0    C3   0    C5   0    O1 
+CONNECT  PL901  O1  ion        0    C4 
+CONNECT  PL901  O2  ion        0    C1 
+
+CONNECT  PL9-1  C1  ion        0    C2   0    C6   0    O2 
+CONNECT  PL9-1  C4  ion        0    C3   0    C5   0    O1 
+CONNECT  PL9-1  O1  ion        0    C4 
+CONNECT  PL9-1  O2  ion        0    C1 
+
+CHARGE   PL901  O2  -0.20            #fake charges
+CHARGE   PL901  C1  +0.20
+CHARGE   PL901  O1  -0.20
+CHARGE   PL901  C4  +0.20
+
+CHARGE   PL9-1  O2  -0.50
+CHARGE   PL9-1  C1  -0.00
+CHARGE   PL9-1  O1  -0.50
+CHARGE   PL9-1  C4  -0.00
+
+PROTON   PL901      0
+PKA      PL901      0.0       
+ELECTRON PL901      0
+EM       PL901      0.0       
+RXN      PL901      -3.56            #from UbQ
+
+PROTON   PL9-1      0
+PKA      PL9-1      0.0       
+ELECTRON PL9-1      1
+EM       PL9-1      -145             #from UbQ
+RXN      PL9-1      -18.10           #from UbQ
+
