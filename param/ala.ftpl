@@ -1,0 +1,59 @@
+>>>START of original comments, this file was converted from old format
+### Alanine
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#3.Atom Parameters: Partial Charges and Radii
+# from parseres.siz
+#4.Rotomer
+# None
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ALA: ALABK, ALA01
+
+# Atom definition
+CONNECT, " N  ", ALABK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ALABK: s, " N  "
+CONNECT, " CA ", ALABK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ALABK: s, " CA "
+CONNECT, " C  ", ALABK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ALABK: sp2, " C  "
+CONNECT, " CB ", ALA01: sp3, " CA ", "1HB ", "2HB ", "3HB "
+CONNECT, "1HB ", ALA01: s, " CB "
+CONNECT, "2HB ", ALA01: s, " CB "
+CONNECT, "3HB ", ALA01: s, " CB "
+
+# Atom charges
+CHARGE, ALABK, " N  ": -0.350
+CHARGE, ALABK, " H  ":  0.250
+CHARGE, ALABK, " CA ":  0.100
+CHARGE, ALABK, " HA ":  0.000
+CHARGE, ALABK, " C  ":  0.550
+CHARGE, ALABK, " O  ": -0.550
+CHARGE, ALA01, " CB ":  0.000
+CHARGE, ALA01, "1HB ":  0.000
+CHARGE, ALA01, "2HB ":  0.000
+CHARGE, ALA01, "3HB ":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ALABK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ALABK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ALABK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ALABK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ALABK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ALABK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ALA01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ALA01,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  "3HB ": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ALA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0.000, rxn04=0.000, rxn08=0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
