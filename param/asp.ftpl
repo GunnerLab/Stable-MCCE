@@ -1,0 +1,112 @@
+>>>START of original comments, this file was converted from old format
+###Aspartate
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ASP: ASPBK, ASP01, ASP02, ASP-1
+
+# Atom definition
+CONNECT, " N  ", ASPBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ASPBK: s, " N  "
+CONNECT, " CA ", ASPBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ASPBK: s, " CA "
+CONNECT, " C  ", ASPBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ASPBK: sp2, " C  "
+CONNECT, " CB ", ASP01: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", ASP01: s, " CB "
+CONNECT, "2HB ", ASP01: s, " CB "
+CONNECT, " CG ", ASP01: sp2, " CB ", " OD1", " OD2"
+CONNECT, " OD1", ASP01: sp3, " CG ", " HD1"
+CONNECT, " HD1", ASP01: s, " OD1"
+CONNECT, " OD2", ASP01: sp2, " CG "
+CONNECT, " CB ", ASP02: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", ASP02: s, " CB "
+CONNECT, "2HB ", ASP02: s, " CB "
+CONNECT, " CG ", ASP02: sp2, " CB ", " OD1", " OD2"
+CONNECT, " OD1", ASP02: sp2, " CG "
+CONNECT, " OD2", ASP02: sp3, " CG ", " HD2"
+CONNECT, " HD2", ASP02: s, " OD2"
+CONNECT, " CB ", ASP-1: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", ASP-1: s, " CB "
+CONNECT, "2HB ", ASP-1: s, " CB "
+CONNECT, " CG ", ASP-1: sp2, " CB ", " OD1", " OD2"
+CONNECT, " OD1", ASP-1: sp2, " CG "
+CONNECT, " OD2", ASP-1: sp2, " CG "
+
+# Atom charges
+CHARGE, ASPBK, " N  ": -0.350
+CHARGE, ASPBK, " H  ":  0.250
+CHARGE, ASPBK, " CA ":  0.100
+CHARGE, ASPBK, " HA ":  0.000
+CHARGE, ASPBK, " C  ":  0.550
+CHARGE, ASPBK, " O  ": -0.550
+CHARGE, ASP01, " CB ":  0.000
+CHARGE, ASP01, "1HB ":  0.000
+CHARGE, ASP01, "2HB ":  0.000
+CHARGE, ASP01, " CG ":  0.550
+CHARGE, ASP01, " OD1": -0.495
+CHARGE, ASP01, " HD1":  0.435
+CHARGE, ASP01, " OD2": -0.490
+CHARGE, ASP02, " CB ":  0.000
+CHARGE, ASP02, "1HB ":  0.000
+CHARGE, ASP02, "2HB ":  0.000
+CHARGE, ASP02, " CG ":  0.550
+CHARGE, ASP02, " OD1": -0.490
+CHARGE, ASP02, " OD2": -0.495
+CHARGE, ASP02, " HD2":  0.435
+CHARGE, ASP-1, " CB ":  0.000
+CHARGE, ASP-1, "1HB ":  0.000
+CHARGE, ASP-1, "2HB ":  0.000
+CHARGE, ASP-1, " CG ":  0.100
+CHARGE, ASP-1, " OD1": -0.550
+CHARGE, ASP-1, " OD2": -0.550
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ASPBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ASPBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ASPBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ASPBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ASPBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ASPBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ASP01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ASP01,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  ASP01,  " OD1": 1.400,   1.600,   0.200
+RADIUS,  ASP01,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  ASP01,  " OD2": 1.400,   1.600,   0.200
+RADIUS,  ASP02,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ASP02,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP02,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP02,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  ASP02,  " OD1": 1.400,   1.600,   0.200
+RADIUS,  ASP02,  " OD2": 1.400,   1.600,   0.200
+RADIUS,  ASP02,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  ASP-1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ASP-1,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP-1,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP-1,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  ASP-1,  " OD1": 1.400,   1.600,   0.200
+RADIUS,  ASP-1,  " OD2": 1.400,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ASP01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -6.320, rxn04= -2.93, rxn08= -1.38
+CONFORMER, ASP02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -6.240, rxn04= -3.13, rxn08= -1.38
+CONFORMER, ASP-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02=-41.680, rxn04= -20.2, rxn08= -9.57
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, ASP: " CA " - " CB "
+ROTATE, ASP: " CB " - " CG "

@@ -1,0 +1,534 @@
+>>>START of original comments, this file was converted from old format
+### Bacteriochlorophyl with a carbon tail to C5
+### 2 redox states: 0,-1  -Agnes
+#Parameter file for BCHL
+#zhenyu zhu 12/15/03
+#1.Basic Conformer Informatsp3: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#BCL01----------------------------------------------------------------
+#Group N A
+#Group N B
+#Group N C
+#Group N D
+#BCL-1 ---------------------------------------------------------------
+#Group N A
+#Group N B
+#Group N C
+#Group N D
+#3.Atom Parameters: Partial Charges and Radii
+#23456789A123456789B123456789C
+#23456789A123456789B123456789C
+#Backbone------------------
+#BCL01----------------------
+#BCL-1---------------------
+#4.Rotomer
+#23456789A123456789B123456789CEND
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, BCL: BCLBK, BCL01, BCL-1
+
+# Atom definition
+CONNECT, " C1 ", BCLBK: sp2, " O2A", " C2 "
+CONNECT, " C2 ", BCLBK: sp2, " C1 ", " C3 "
+CONNECT, " C3 ", BCLBK: sp3, " C2 ", " C4 ", " C5 "
+CONNECT, " C4 ", BCLBK: s, " C3 "
+CONNECT, " C5 ", BCLBK: s, " C3 "
+CONNECT, "MG  ", BCL01: ion, " N A", " N B", " N C", " N D"
+CONNECT, " CHA", BCL01: sp2, " C4D", " C1A", " CBD"
+CONNECT, " CHB", BCL01: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", BCL01: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", BCL01: sp2, " C4C", " C1D", " HHD"
+CONNECT, " HHB", BCL01: s, " CHB"
+CONNECT, " HHC", BCL01: s, " CHC"
+CONNECT, " HHD", BCL01: s, " CHD"
+CONNECT, " N A", BCL01: sp2, "MG  ", " C1A", " C4A"
+CONNECT, " C1A", BCL01: sp2, " N A", " CHA", " C2A"
+CONNECT, " C2A", BCL01: sp3, " C1A", " C3A", " CAA", " H2A"
+CONNECT, " C3A", BCL01: sp3, " C2A", " CMA", " C4A", " H3A"
+CONNECT, " C4A", BCL01: sp2, " C3A", " CHB", " N A"
+CONNECT, " CMA", BCL01: sp3, " C3A", "1HMA", "2HMA", "3HMA"
+CONNECT, " CAA", BCL01: sp3, " C2A", " CBA", "1HAA", "2HAA"
+CONNECT, " CBA", BCL01: sp3, " CAA", " CGA", "1HBA", "2HBA"
+CONNECT, " CGA", BCL01: sp2, " CBA", " O1A", " O2A"
+CONNECT, " O1A", BCL01: s, " CGA"
+CONNECT, " O2A", BCL01: sp3, " CGA", " C1 "
+CONNECT, "1HMA", BCL01: s, " CMA"
+CONNECT, "2HMA", BCL01: s, " CMA"
+CONNECT, "3HMA", BCL01: s, " CMA"
+CONNECT, " H2A", BCL01: s, " C2A"
+CONNECT, " H3A", BCL01: s, " C3A"
+CONNECT, "1HAA", BCL01: s, " CAA"
+CONNECT, "2HAA", BCL01: s, " CAA"
+CONNECT, "1HBA", BCL01: s, " CBA"
+CONNECT, "2HBA", BCL01: s, " CBA"
+CONNECT, " N B", BCL01: sp2, "MG  ", " C1B", " C4B"
+CONNECT, " C1B", BCL01: sp2, " N B", " CHB", " C2B"
+CONNECT, " C2B", BCL01: sp2, " C1B", " CMB", " C3B"
+CONNECT, " C3B", BCL01: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", BCL01: sp2, " C3B", " CHC", " N B"
+CONNECT, " CMB", BCL01: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " CAB", BCL01: sp2, " C3B", " CBB", " OBB"
+CONNECT, " CBB", BCL01: sp3, " CAB", "1HBB", "2HBB", "3HBB"
+CONNECT, " OBB", BCL01: s, " CAB"
+CONNECT, "1HMB", BCL01: s, " CMB"
+CONNECT, "2HMB", BCL01: s, " CMB"
+CONNECT, "3HMB", BCL01: s, " CMB"
+CONNECT, "1HBB", BCL01: s, " CBB"
+CONNECT, "2HBB", BCL01: s, " CBB"
+CONNECT, "3HBB", BCL01: s, " CBB"
+CONNECT, " N C", BCL01: sp2, "MG  ", " C1C", " C4C"
+CONNECT, " C1C", BCL01: sp2, " N C", " CHC", " C2C"
+CONNECT, " C2C", BCL01: sp3, " C1C", " CMC", " C3C", " H2C"
+CONNECT, " C3C", BCL01: sp2, " C2C", " CAC", " C4C"
+CONNECT, " C4C", BCL01: sp2, " C3C", " CHD", " N C"
+CONNECT, " CMC", BCL01: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", BCL01: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", BCL01: sp3, " CAC", "1HBC", "2HBC", "3HBC"
+CONNECT, "1HMC", BCL01: s, " CMC"
+CONNECT, "2HMC", BCL01: s, " CMC"
+CONNECT, "3HMC", BCL01: s, " CMC"
+CONNECT, " HAC", BCL01: s, " CAC"
+CONNECT, " H2C", BCL01: s, " C2C"
+CONNECT, "1HBC", BCL01: s, " CBC"
+CONNECT, "2HBC", BCL01: s, " CBC"
+CONNECT, "3HBC", BCL01: s, " CBC"
+CONNECT, " N D", BCL01: sp2, "MG  ", " C1D", " C4D"
+CONNECT, " C1D", BCL01: sp2, " N D", " CHD", " C2D"
+CONNECT, " C2D", BCL01: sp2, " C1D", " CMD", " C3D"
+CONNECT, " C3D", BCL01: sp2, " C2D", " C4D", " CAD"
+CONNECT, " C4D", BCL01: sp2, " C3D", " CHA", " N D"
+CONNECT, " CMD", BCL01: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " CAD", BCL01: sp2, " C3D", " OBD", " CBD"
+CONNECT, " OBD", BCL01: s, " CAD"
+CONNECT, " CBD", BCL01: sp3, " CHA", " CAD", " CGD", " HBD"
+CONNECT, " CGD", BCL01: sp2, " CBD", " O1D", " O2D"
+CONNECT, " O1D", BCL01: s, " CGD"
+CONNECT, " O2D", BCL01: sp2, " CGD", " CED"
+CONNECT, " CED", BCL01: sp3, " O2D", "1HED", "2HED", "3HED"
+CONNECT, "1HMD", BCL01: s, " CMD"
+CONNECT, "2HMD", BCL01: s, " CMD"
+CONNECT, "3HMD", BCL01: s, " CMD"
+CONNECT, " HBD", BCL01: s, " CBD"
+CONNECT, "1HED", BCL01: s, " CED"
+CONNECT, "2HED", BCL01: s, " CED"
+CONNECT, "3HED", BCL01: s, " CED"
+CONNECT, "MG  ", BCL-1: ion, " N A", " N B", " N C", " N D"
+CONNECT, " CHA", BCL-1: sp2, " C4D", " C1A", " CBD"
+CONNECT, " CHB", BCL-1: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", BCL-1: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", BCL-1: sp2, " C4C", " C1D", " HHD"
+CONNECT, " HHB", BCL-1: s, " CHB"
+CONNECT, " HHC", BCL-1: s, " CHC"
+CONNECT, " HHD", BCL-1: s, " CHD"
+CONNECT, " N A", BCL-1: sp2, "MG  ", " C1A", " C4A"
+CONNECT, " C1A", BCL-1: sp2, " N A", " CHA", " C2A"
+CONNECT, " C2A", BCL-1: sp3, " C1A", " C3A", " CAA", " H2A"
+CONNECT, " C3A", BCL-1: sp3, " C2A", " CMA", " C4A", " H3A"
+CONNECT, " C4A", BCL-1: sp2, " C3A", " CHB", " N A"
+CONNECT, " CMA", BCL-1: sp3, " C3A", "1HMA", "2HMA", "3HMA"
+CONNECT, " CAA", BCL-1: sp3, " C2A", " CBA", "1HAA", "2HAA"
+CONNECT, " CBA", BCL-1: sp3, " CAA", " CGA", "1HBA", "2HBA"
+CONNECT, " CGA", BCL-1: sp2, " CBA", " O1A", " O2A"
+CONNECT, " O1A", BCL-1: s, " CGA"
+CONNECT, " O2A", BCL-1: sp3, " CGA", " C1 "
+CONNECT, "1HMA", BCL-1: s, " CMA"
+CONNECT, "2HMA", BCL-1: s, " CMA"
+CONNECT, "3HMA", BCL-1: s, " CMA"
+CONNECT, " H2A", BCL-1: s, " C2A"
+CONNECT, " H3A", BCL-1: s, " C3A"
+CONNECT, "1HAA", BCL-1: s, " CAA"
+CONNECT, "2HAA", BCL-1: s, " CAA"
+CONNECT, "1HBA", BCL-1: s, " CBA"
+CONNECT, "2HBA", BCL-1: s, " CBA"
+CONNECT, " N B", BCL-1: sp2, "MG  ", " C1B", " C4B"
+CONNECT, " C1B", BCL-1: sp2, " N B", " CHB", " C2B"
+CONNECT, " C2B", BCL-1: sp2, " C1B", " CMB", " C3B"
+CONNECT, " C3B", BCL-1: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", BCL-1: sp2, " C3B", " CHC", " N B"
+CONNECT, " CMB", BCL-1: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " CAB", BCL-1: sp2, " C3B", " CBB", " OBB"
+CONNECT, " CBB", BCL-1: sp3, " CAB", "1HBB", "2HBB", "3HBB"
+CONNECT, " OBB", BCL-1: s, " CAB"
+CONNECT, "1HMB", BCL-1: s, " CMB"
+CONNECT, "2HMB", BCL-1: s, " CMB"
+CONNECT, "3HMB", BCL-1: s, " CMB"
+CONNECT, "1HBB", BCL-1: s, " CBB"
+CONNECT, "2HBB", BCL-1: s, " CBB"
+CONNECT, "3HBB", BCL-1: s, " CBB"
+CONNECT, " N C", BCL-1: sp2, "MG  ", " C1C", " C4C"
+CONNECT, " C1C", BCL-1: sp2, " N C", " CHC", " C2C"
+CONNECT, " C2C", BCL-1: sp3, " C1C", " CMC", " C3C", " H2C"
+CONNECT, " C3C", BCL-1: sp2, " C2C", " CAC", " C4C"
+CONNECT, " C4C", BCL-1: sp2, " C3C", " CHD", " N C"
+CONNECT, " CMC", BCL-1: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", BCL-1: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", BCL-1: sp3, " CAC", "1HBC", "2HBC", "3HBC"
+CONNECT, "1HMC", BCL-1: s, " CMC"
+CONNECT, "2HMC", BCL-1: s, " CMC"
+CONNECT, "3HMC", BCL-1: s, " CMC"
+CONNECT, " HAC", BCL-1: s, " CAC"
+CONNECT, " H2C", BCL-1: s, " C2C"
+CONNECT, "1HBC", BCL-1: s, " CBC"
+CONNECT, "2HBC", BCL-1: s, " CBC"
+CONNECT, "3HBC", BCL-1: s, " CBC"
+CONNECT, " N D", BCL-1: sp2, "MG  ", " C1D", " C4D"
+CONNECT, " C1D", BCL-1: sp2, " N D", " CHD", " C2D"
+CONNECT, " C2D", BCL-1: sp2, " C1D", " CMD", " C3D"
+CONNECT, " C3D", BCL-1: sp2, " C2D", " C4D", " CAD"
+CONNECT, " C4D", BCL-1: sp2, " C3D", " CHA", " N D"
+CONNECT, " CMD", BCL-1: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " CAD", BCL-1: sp2, " C3D", " OBD", " CBD"
+CONNECT, " OBD", BCL-1: s, " CAD"
+CONNECT, " CBD", BCL-1: sp3, " CHA", " CAD", " CGD", " HBD"
+CONNECT, " CGD", BCL-1: sp2, " CBD", " O1D", " O2D"
+CONNECT, " O1D", BCL-1: s, " CGD"
+CONNECT, " O2D", BCL-1: sp2, " CGD", " CED"
+CONNECT, " CED", BCL-1: sp3, " O2D", "1HED", "2HED", "3HED"
+CONNECT, "1HMD", BCL-1: s, " CMD"
+CONNECT, "2HMD", BCL-1: s, " CMD"
+CONNECT, "3HMD", BCL-1: s, " CMD"
+CONNECT, " HBD", BCL-1: s, " CBD"
+CONNECT, "1HED", BCL-1: s, " CED"
+CONNECT, "2HED", BCL-1: s, " CED"
+CONNECT, "3HED", BCL-1: s, " CED"
+
+# Atom charges
+CHARGE, BCLBK, " C1 ":  0.000
+CHARGE, BCLBK, " C2 ":  0.000
+CHARGE, BCLBK, " C3 ":  0.000
+CHARGE, BCLBK, " C4 ":  0.000
+CHARGE, BCLBK, " C5 ":  0.000
+CHARGE, BCL01, "MG  ":  1.001
+CHARGE, BCL01, " CHA": -0.072
+CHARGE, BCL01, " CHB": -0.016
+CHARGE, BCL01, " CHC":  0.017
+CHARGE, BCL01, " CHD":  0.010
+CHARGE, BCL01, " HHB":  0.000
+CHARGE, BCL01, " HHC":  0.000
+CHARGE, BCL01, " HHD":  0.000
+CHARGE, BCL01, " N A": -0.101
+CHARGE, BCL01, " C1A":  0.008
+CHARGE, BCL01, " C2A": -0.097
+CHARGE, BCL01, " C3A": -0.097
+CHARGE, BCL01, " C4A": -0.022
+CHARGE, BCL01, " CMA": -0.291
+CHARGE, BCL01, " CAA": -0.194
+CHARGE, BCL01, " CBA": -0.194
+CHARGE, BCL01, " CGA":  0.700
+CHARGE, BCL01, " O1A": -0.350
+CHARGE, BCL01, " O2A": -0.350
+CHARGE, BCL01, "1HMA":  0.097
+CHARGE, BCL01, "2HMA":  0.097
+CHARGE, BCL01, "3HMA":  0.097
+CHARGE, BCL01, " H2A":  0.097
+CHARGE, BCL01, " H3A":  0.097
+CHARGE, BCL01, "1HAA":  0.097
+CHARGE, BCL01, "2HAA":  0.097
+CHARGE, BCL01, "1HBA":  0.097
+CHARGE, BCL01, "2HBA":  0.097
+CHARGE, BCL01, " N B": -0.208
+CHARGE, BCL01, " C1B": -0.008
+CHARGE, BCL01, " C2B": -0.041
+CHARGE, BCL01, " C3B": -0.044
+CHARGE, BCL01, " C4B": -0.019
+CHARGE, BCL01, " CMB": -0.291
+CHARGE, BCL01, " CAB":  0.220
+CHARGE, BCL01, " CBB": -0.291
+CHARGE, BCL01, " OBB": -0.287
+CHARGE, BCL01, "1HMB":  0.097
+CHARGE, BCL01, "2HMB":  0.097
+CHARGE, BCL01, "3HMB":  0.097
+CHARGE, BCL01, "1HBB":  0.097
+CHARGE, BCL01, "2HBB":  0.097
+CHARGE, BCL01, "3HBB":  0.097
+CHARGE, BCL01, " N C": -0.054
+CHARGE, BCL01, " C1C": -0.024
+CHARGE, BCL01, " C2C": -0.097
+CHARGE, BCL01, " C3C":  0.000
+CHARGE, BCL01, " C4C": -0.023
+CHARGE, BCL01, " CMC": -0.291
+CHARGE, BCL01, " CAC": -0.097
+CHARGE, BCL01, " CBC": -0.291
+CHARGE, BCL01, "1HMC":  0.097
+CHARGE, BCL01, "2HMC":  0.097
+CHARGE, BCL01, "3HMC":  0.097
+CHARGE, BCL01, " HAC":  0.097
+CHARGE, BCL01, " H2C":  0.097
+CHARGE, BCL01, "1HBC":  0.097
+CHARGE, BCL01, "2HBC":  0.097
+CHARGE, BCL01, "3HBC":  0.097
+CHARGE, BCL01, " N D": -0.224
+CHARGE, BCL01, " C1D": -0.008
+CHARGE, BCL01, " C2D": -0.009
+CHARGE, BCL01, " C3D": -0.047
+CHARGE, BCL01, " C4D":  0.007
+CHARGE, BCL01, " CMD": -0.291
+CHARGE, BCL01, " CAD":  0.213
+CHARGE, BCL01, " OBD": -0.269
+CHARGE, BCL01, " CBD": -0.097
+CHARGE, BCL01, " CGD":  0.700
+CHARGE, BCL01, " O1D": -0.350
+CHARGE, BCL01, " O2D": -0.350
+CHARGE, BCL01, " CED": -0.291
+CHARGE, BCL01, "1HMD":  0.097
+CHARGE, BCL01, "2HMD":  0.097
+CHARGE, BCL01, "3HMD":  0.097
+CHARGE, BCL01, " HBD":  0.097
+CHARGE, BCL01, "1HED":  0.097
+CHARGE, BCL01, "2HED":  0.097
+CHARGE, BCL01, "3HED":  0.097
+CHARGE, BCL-1, "MG  ":  1.000
+CHARGE, BCL-1, " CHA": -0.137
+CHARGE, BCL-1, " CHB": -0.070
+CHARGE, BCL-1, " CHC": -0.063
+CHARGE, BCL-1, " CHD": -0.068
+CHARGE, BCL-1, " HHB":  0.000
+CHARGE, BCL-1, " HHC":  0.000
+CHARGE, BCL-1, " HHD":  0.000
+CHARGE, BCL-1, " N A": -0.202
+CHARGE, BCL-1, " C1A": -0.004
+CHARGE, BCL-1, " C2A": -0.097
+CHARGE, BCL-1, " C3A": -0.097
+CHARGE, BCL-1, " C4A": -0.042
+CHARGE, BCL-1, " CMA": -0.291
+CHARGE, BCL-1, " CAA": -0.194
+CHARGE, BCL-1, " CBA": -0.194
+CHARGE, BCL-1, " CGA":  0.700
+CHARGE, BCL-1, " O1A": -0.350
+CHARGE, BCL-1, " O2A": -0.350
+CHARGE, BCL-1, "1HMA":  0.097
+CHARGE, BCL-1, "2HMA":  0.097
+CHARGE, BCL-1, "3HMA":  0.097
+CHARGE, BCL-1, " H2A":  0.097
+CHARGE, BCL-1, " H3A":  0.097
+CHARGE, BCL-1, "1HAA":  0.097
+CHARGE, BCL-1, "2HAA":  0.097
+CHARGE, BCL-1, "1HBA":  0.097
+CHARGE, BCL-1, "2HBA":  0.097
+CHARGE, BCL-1, " N B": -0.209
+CHARGE, BCL-1, " C1B": -0.049
+CHARGE, BCL-1, " C2B": -0.093
+CHARGE, BCL-1, " C3B": -0.090
+CHARGE, BCL-1, " C4B": -0.051
+CHARGE, BCL-1, " CMB": -0.291
+CHARGE, BCL-1, " CAB":  0.201
+CHARGE, BCL-1, " CBB": -0.291
+CHARGE, BCL-1, " OBB": -0.314
+CHARGE, BCL-1, "1HMB":  0.097
+CHARGE, BCL-1, "2HMB":  0.097
+CHARGE, BCL-1, "3HMB":  0.097
+CHARGE, BCL-1, "1HBB":  0.097
+CHARGE, BCL-1, "2HBB":  0.097
+CHARGE, BCL-1, "3HBB":  0.097
+CHARGE, BCL-1, " N C": -0.126
+CHARGE, BCL-1, " C1C": -0.037
+CHARGE, BCL-1, " C2C": -0.097
+CHARGE, BCL-1, " C3C":  0.000
+CHARGE, BCL-1, " C4C": -0.064
+CHARGE, BCL-1, " CMC": -0.291
+CHARGE, BCL-1, " CAC": -0.097
+CHARGE, BCL-1, " CBC": -0.291
+CHARGE, BCL-1, "1HMC":  0.097
+CHARGE, BCL-1, "2HMC":  0.097
+CHARGE, BCL-1, "3HMC":  0.097
+CHARGE, BCL-1, " HAC":  0.097
+CHARGE, BCL-1, " H2C":  0.097
+CHARGE, BCL-1, "1HBC":  0.097
+CHARGE, BCL-1, "2HBC":  0.097
+CHARGE, BCL-1, "3HBC":  0.097
+CHARGE, BCL-1, " N D": -0.234
+CHARGE, BCL-1, " C1D": -0.056
+CHARGE, BCL-1, " C2D": -0.072
+CHARGE, BCL-1, " C3D": -0.094
+CHARGE, BCL-1, " C4D": -0.048
+CHARGE, BCL-1, " CMD": -0.291
+CHARGE, BCL-1, " CAD":  0.206
+CHARGE, BCL-1, " OBD": -0.284
+CHARGE, BCL-1, " CBD": -0.097
+CHARGE, BCL-1, " CGD":  0.700
+CHARGE, BCL-1, " O1D": -0.350
+CHARGE, BCL-1, " O2D": -0.350
+CHARGE, BCL-1, " CED": -0.291
+CHARGE, BCL-1, "1HMD":  0.097
+CHARGE, BCL-1, "2HMD":  0.097
+CHARGE, BCL-1, "3HMD":  0.097
+CHARGE, BCL-1, " HBD":  0.097
+CHARGE, BCL-1, "1HED":  0.097
+CHARGE, BCL-1, "2HED":  0.097
+CHARGE, BCL-1, "3HED":  0.097
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  BCLBK,  " C1 ": 1.800,   2.000,   0.150
+RADIUS,  BCLBK,  " C2 ": 1.800,   2.000,   0.150
+RADIUS,  BCLBK,  " C3 ": 1.800,   2.000,   0.150
+RADIUS,  BCLBK,  " C4 ": 1.800,   2.000,   0.150
+RADIUS,  BCLBK,  " C5 ": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  "MG  ": 1.450,   2.000,   0.173
+RADIUS,  BCL01,  " CHA": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CHB": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CHC": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CHD": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " N A": 1.500,   1.750,   0.160
+RADIUS,  BCL01,  " C1A": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C2A": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C3A": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C4A": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CMA": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CAA": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CBA": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CGA": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " O1A": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  " O2A": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  "1HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " H2A": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " H3A": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "1HAA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HAA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "1HBA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HBA": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " N B": 1.500,   1.750,   0.160
+RADIUS,  BCL01,  " C1B": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C2B": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C3B": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C4B": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CMB": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CAB": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CBB": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " OBB": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "1HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " N C": 1.500,   1.750,   0.160
+RADIUS,  BCL01,  " C1C": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C2C": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C3C": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C4C": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CMC": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CAC": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CBC": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " H2C": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " N D": 1.500,   1.750,   0.160
+RADIUS,  BCL01,  " C1D": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C2D": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C3D": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " C4D": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CMD": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CAD": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " OBD": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  " CBD": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " CGD": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  " O1D": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  " O2D": 1.600,   1.600,   0.200
+RADIUS,  BCL01,  " CED": 1.800,   2.000,   0.150
+RADIUS,  BCL01,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  " HBD": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "1HED": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "2HED": 1.200,   1.000,   0.020
+RADIUS,  BCL01,  "3HED": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "MG  ": 1.450,   2.000,   0.173
+RADIUS,  BCL-1,  " CHA": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CHB": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CHC": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CHD": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " N A": 1.500,   1.750,   0.160
+RADIUS,  BCL-1,  " C1A": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C2A": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C3A": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C4A": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CMA": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CAA": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CBA": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CGA": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " O1A": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  " O2A": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  "1HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HMA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " H2A": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " H3A": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "1HAA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HAA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "1HBA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HBA": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " N B": 1.500,   1.750,   0.160
+RADIUS,  BCL-1,  " C1B": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C2B": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C3B": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C4B": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CMB": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CAB": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CBB": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " OBB": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "1HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HBB": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " N C": 1.500,   1.750,   0.160
+RADIUS,  BCL-1,  " C1C": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C2C": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C3C": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C4C": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CMC": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CAC": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CBC": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " H2C": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HBC": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " N D": 1.500,   1.750,   0.160
+RADIUS,  BCL-1,  " C1D": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C2D": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C3D": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " C4D": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CMD": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CAD": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " OBD": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  " CBD": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " CGD": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  " O1D": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  " O2D": 1.600,   1.600,   0.200
+RADIUS,  BCL-1,  " CED": 1.800,   2.000,   0.150
+RADIUS,  BCL-1,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  " HBD": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "1HED": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "2HED": 1.200,   1.000,   0.020
+RADIUS,  BCL-1,  "3HED": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, BCL01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=-12.410, rxn04= -12.41, rxn08= -6.200  # rxn02 the same as rxn04?
+CONFORMER, BCL-1: Em0=   0.0, pKa0= 40.00, ne= 0, nH=-1, rxn02=-23.900, rxn04= -23.90, rxn08= -11.950
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
