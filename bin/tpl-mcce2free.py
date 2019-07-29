@@ -12,7 +12,8 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)-s: %(message)s')
 class Paramfile:
     def __init__(self, fname):
         self.mccedb = {}  # parameter database in mcce format
-        self.extra_records = ["EXTRA", "SCALING"]  # records that can be directly translated
+        self.extra_records = ["EXTRA", "SCALING", "VDWAMBER", "RADCOVAL", "BOND_ANG", "RELAX",
+                              "TORSION"]  # records that can be directly translated
         self.tplout = []
         self.load_file(fname)
         self.vdw_complete()
