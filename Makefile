@@ -1,4 +1,4 @@
-CC      = gcc -g -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include  -lglib-2.0
+CC      = gcc -g 
 LDIR = lib
 DEPS    = $(LDIR)/mcce.h
 LIB     = $(LDIR)/mcce.a
@@ -9,7 +9,7 @@ SRC = $(wildcard $(LDIR)/*.c)
 DELPHI = bin/delphi
 
 bin/mcce: mcce.c $(LIB) $(DEPS) $(DELPHI)
-	$(CC) -o bin/mcce mcce.c $(LIB) -lm -lglib-2.0
+	$(CC) -o bin/mcce mcce.c $(LIB) -lm 
 
 $(DELPHI): $(LDIR)/delphi/delphi
 	$(MAKE) -C $(LDIR)/delphi
