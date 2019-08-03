@@ -1,10 +1,6 @@
 #!/usr/bin/env python
-"""
-This module handles MCCE topology parameters and run-time control parameters
-"""
 
 import logging
-logging.basicConfig(level=logging.INFO, format='%(levelname)-s: %(message)s')
 
 class Env:
     def __init__(self):
@@ -42,3 +38,9 @@ class Env:
                 self.tpl[keys] = value_string
 
         return
+
+class Protein:
+    """Protein structure"""
+    def __init__(self):
+        return
+
