@@ -140,4 +140,5 @@ class Protein:
 
         return mccelines
 
+
 env = Env()
