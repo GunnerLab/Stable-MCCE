@@ -31,32 +31,32 @@ CONNECT, " CA ", GLUBK: sp3, " N  ", " C  ", " CB ", " HA "
 CONNECT, " HA ", GLUBK: s, " CA "
 CONNECT, " C  ", GLUBK: sp2, " CA ", " O  ", " ?  "
 CONNECT, " O  ", GLUBK: sp2, " C  "
-CONNECT, " CB ", GLU01: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", GLU01: s, " CB "
-CONNECT, "2HB ", GLU01: s, " CB "
-CONNECT, " CG ", GLU01: sp3, " CB ", " CD ", "1HG ", "2HG "
-CONNECT, "1HG ", GLU01: s, " CG "
-CONNECT, "2HG ", GLU01: s, " CG "
+CONNECT, " CB ", GLU01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU01: s, " CB "
+CONNECT, " HB3", GLU01: s, " CB "
+CONNECT, " CG ", GLU01: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU01: s, " CG "
+CONNECT, " HG3", GLU01: s, " CG "
 CONNECT, " CD ", GLU01: sp2, " CG ", " OE1", " OE2"
 CONNECT, " OE1", GLU01: sp3, " CD ", " HE1"
 CONNECT, " HE1", GLU01: s, " OE1"
 CONNECT, " OE2", GLU01: s, " CD "
-CONNECT, " CB ", GLU02: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", GLU02: s, " CB "
-CONNECT, "2HB ", GLU02: s, " CB "
-CONNECT, " CG ", GLU02: sp3, " CB ", " CD ", "1HG ", "2HG "
-CONNECT, "1HG ", GLU02: s, " CG "
-CONNECT, "2HG ", GLU02: s, " CG "
+CONNECT, " CB ", GLU02: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU02: s, " CB "
+CONNECT, " HB3", GLU02: s, " CB "
+CONNECT, " CG ", GLU02: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU02: s, " CG "
+CONNECT, " HG3", GLU02: s, " CG "
 CONNECT, " CD ", GLU02: sp2, " CG ", " OE1", " OE2"
 CONNECT, " OE1", GLU02: s, " CD "
 CONNECT, " OE2", GLU02: sp3, " CD ", " HE2"
 CONNECT, " HE2", GLU02: sp3, " OE2"
-CONNECT, " CB ", GLU-1: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", GLU-1: s, " CB "
-CONNECT, "2HB ", GLU-1: s, " CB "
-CONNECT, " CG ", GLU-1: sp3, " CB ", " CD ", "1HG ", "2HG "
-CONNECT, "1HG ", GLU-1: s, " CG "
-CONNECT, "2HG ", GLU-1: s, " CG "
+CONNECT, " CB ", GLU-1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU-1: s, " CB "
+CONNECT, " HB3", GLU-1: s, " CB "
+CONNECT, " CG ", GLU-1: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU-1: s, " CG "
+CONNECT, " HG3", GLU-1: s, " CG "
 CONNECT, " CD ", GLU-1: sp2, " CG ", " OE1", " OE2"
 CONNECT, " OE1", GLU-1: sp2, " CD "
 CONNECT, " OE2", GLU-1: sp2, " CD "
@@ -69,31 +69,31 @@ CHARGE, GLUBK, " HA ":  0.000
 CHARGE, GLUBK, " C  ":  0.550
 CHARGE, GLUBK, " O  ": -0.550
 CHARGE, GLU01, " CB ":  0.000
-CHARGE, GLU01, "1HB ":  0.000
-CHARGE, GLU01, "2HB ":  0.000
+CHARGE, GLU01, " HB2":  0.000
+CHARGE, GLU01, " HB3":  0.000
 CHARGE, GLU01, " CG ":  0.000
-CHARGE, GLU01, "1HG ":  0.000
-CHARGE, GLU01, "2HG ":  0.000
+CHARGE, GLU01, " HG2":  0.000
+CHARGE, GLU01, " HG3":  0.000
 CHARGE, GLU01, " CD ":  0.550
 CHARGE, GLU01, " OE1": -0.495
 CHARGE, GLU01, " HE1":  0.435
 CHARGE, GLU01, " OE2": -0.490
 CHARGE, GLU02, " CB ":  0.000
-CHARGE, GLU02, "1HB ":  0.000
-CHARGE, GLU02, "2HB ":  0.000
+CHARGE, GLU02, " HB2":  0.000
+CHARGE, GLU02, " HB3":  0.000
 CHARGE, GLU02, " CG ":  0.000
-CHARGE, GLU02, "1HG ":  0.000
-CHARGE, GLU02, "2HG ":  0.000
+CHARGE, GLU02, " HG2":  0.000
+CHARGE, GLU02, " HG3":  0.000
 CHARGE, GLU02, " CD ":  0.550
 CHARGE, GLU02, " OE1": -0.490
 CHARGE, GLU02, " OE2": -0.495
 CHARGE, GLU02, " HE2":  0.435
 CHARGE, GLU-1, " CB ":  0.000
-CHARGE, GLU-1, "1HB ":  0.000
-CHARGE, GLU-1, "2HB ":  0.000
+CHARGE, GLU-1, " HB2":  0.000
+CHARGE, GLU-1, " HB3":  0.000
 CHARGE, GLU-1, " CG ":  0.000
-CHARGE, GLU-1, "1HG ":  0.000
-CHARGE, GLU-1, "2HG ":  0.000
+CHARGE, GLU-1, " HG2":  0.000
+CHARGE, GLU-1, " HG3":  0.000
 CHARGE, GLU-1, " CD ":  0.100
 CHARGE, GLU-1, " OE1": -0.550
 CHARGE, GLU-1, " OE2": -0.550
@@ -106,31 +106,31 @@ RADIUS,  GLUBK,  " HA ": 0.000,   1.000,   0.020
 RADIUS,  GLUBK,  " C  ": 1.700,   2.000,   0.150
 RADIUS,  GLUBK,  " O  ": 1.400,   1.600,   0.200
 RADIUS,  GLU01,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  GLU01,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  GLU01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  GLU01,  " CG ": 2.000,   2.000,   0.150
-RADIUS,  GLU01,  "1HG ": 0.000,   1.000,   0.020
-RADIUS,  GLU01,  "2HG ": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HG3": 0.000,   1.000,   0.020
 RADIUS,  GLU01,  " CD ": 1.700,   2.000,   0.150
 RADIUS,  GLU01,  " OE1": 1.400,   1.600,   0.200
 RADIUS,  GLU01,  " HE1": 1.000,   1.000,   0.020
 RADIUS,  GLU01,  " OE2": 1.400,   1.600,   0.200
 RADIUS,  GLU02,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  GLU02,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  GLU02,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  GLU02,  " CG ": 2.000,   2.000,   0.150
-RADIUS,  GLU02,  "1HG ": 0.000,   1.000,   0.020
-RADIUS,  GLU02,  "2HG ": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HG3": 0.000,   1.000,   0.020
 RADIUS,  GLU02,  " CD ": 1.700,   2.000,   0.150
 RADIUS,  GLU02,  " OE1": 1.400,   1.600,   0.200
 RADIUS,  GLU02,  " OE2": 1.400,   1.600,   0.200
 RADIUS,  GLU02,  " HE2": 1.000,   1.000,   0.020
 RADIUS,  GLU-1,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  GLU-1,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  GLU-1,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  GLU-1,  " CG ": 2.000,   2.000,   0.150
-RADIUS,  GLU-1,  "1HG ": 0.000,   1.000,   0.020
-RADIUS,  GLU-1,  "2HG ": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HG3": 0.000,   1.000,   0.020
 RADIUS,  GLU-1,  " CD ": 1.700,   2.000,   0.150
 RADIUS,  GLU-1,  " OE1": 1.400,   1.600,   0.200
 RADIUS,  GLU-1,  " OE2": 1.400,   1.600,   0.200

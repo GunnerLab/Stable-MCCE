@@ -18,18 +18,9 @@ if __name__ == "__main__":
 
     ftpl = sys.argv[1]
     pdb = sys.argv[2]
-    env = Env()
     env.load_ftpl(ftpl)
     prot = Protein()
 
     # Verify if pdb can be loaded correctly
-
-    # Verify VDW are present
-
-    # Verify all atoms are connected within a residue
-
-    # Verify rotate parameters exist for single bond
-
-    # Verify torsion paramaters exist
-
-    # Verify CONFORMER parameters are complete
+    mccepdb = prot.pdb2mcce(pdb)
+    open("step1_out.pdb", "w").writelines(mccepdb)
