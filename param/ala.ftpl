@@ -24,10 +24,10 @@ CONNECT, " CA ", ALABK: sp3, " N  ", " C  ", " CB ", " HA "
 CONNECT, " HA ", ALABK: s, " CA "
 CONNECT, " C  ", ALABK: sp2, " CA ", " O  ", " ?  "
 CONNECT, " O  ", ALABK: sp2, " C  "
-CONNECT, " CB ", ALA01: sp3, " CA ", "1HB ", "2HB ", "3HB "
-CONNECT, "1HB ", ALA01: s, " CB "
-CONNECT, "2HB ", ALA01: s, " CB "
-CONNECT, "3HB ", ALA01: s, " CB "
+CONNECT, " CB ", ALA01: sp3, " CA ", " HB1", " HB2", " HB3"
+CONNECT, " HB1", ALA01: s, " CB "
+CONNECT, " HB2", ALA01: s, " CB "
+CONNECT, " HB3", ALA01: s, " CB "
 
 # Atom charges
 CHARGE, ALABK, " N  ": -0.350
@@ -37,9 +37,9 @@ CHARGE, ALABK, " HA ":  0.000
 CHARGE, ALABK, " C  ":  0.550
 CHARGE, ALABK, " O  ": -0.550
 CHARGE, ALA01, " CB ":  0.000
-CHARGE, ALA01, "1HB ":  0.000
-CHARGE, ALA01, "2HB ":  0.000
-CHARGE, ALA01, "3HB ":  0.000
+CHARGE, ALA01, " HB1":  0.000
+CHARGE, ALA01, " HB2":  0.000
+CHARGE, ALA01, " HB3":  0.000
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS,  ALABK,  " N  ": 1.500,   1.750,   0.160
@@ -49,9 +49,9 @@ RADIUS,  ALABK,  " HA ": 0.000,   1.000,   0.020
 RADIUS,  ALABK,  " C  ": 1.700,   2.000,   0.150
 RADIUS,  ALABK,  " O  ": 1.400,   1.600,   0.200
 RADIUS,  ALA01,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  ALA01,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  ALA01,  "2HB ": 0.000,   1.000,   0.020
-RADIUS,  ALA01,  "3HB ": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  " HB1": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  " HB3": 0.000,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, ALA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0.000, rxn04=0.000, rxn08=0.000
