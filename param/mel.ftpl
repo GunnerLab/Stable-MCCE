@@ -1,0 +1,82 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, MEL: MELBK, MEL01
+
+# Atom definition
+CONNECT, " N  ", MELBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", MELBK: s, " N  "
+CONNECT, " CA ", MELBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", MELBK: s, " CA "
+CONNECT, " C  ", MELBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", MELBK: sp2, " C  "
+CONNECT, " CB ", MEL01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", MEL01: s, " CB "
+CONNECT, " HB3", MEL01: s, " CB "
+CONNECT, " CG ", MEL01: sp3, " CB ", " SD ", " HG2", " HG3"
+CONNECT, " HG2", MEL01: s, " CG "
+CONNECT, " HG3", MEL01: s, " CG "
+CONNECT, " SD ", MEL01: sp3, " CG ", " CE "
+CONNECT, " CE ", MEL01: sp3, " SD ", " HE1", " HE2", " HE3"
+CONNECT, " HE1", MEL01: s, " CE "
+CONNECT, " HE2", MEL01: s, " CE "
+CONNECT, " HE3", MEL01: s, " CE "
+
+# Atom charges
+CHARGE, MELBK, " N  ":  0.000
+CHARGE, MELBK, " H  ":  0.000
+CHARGE, MELBK, " CA ":  0.000
+CHARGE, MELBK, " HA ":  0.000
+CHARGE, MELBK, " C  ":  0.000
+CHARGE, MELBK, " O  ":  0.000
+CHARGE, MEL01, " CB ":  0.000
+CHARGE, MEL01, " HB2":  0.000
+CHARGE, MEL01, " HB3":  0.000
+CHARGE, MEL01, " CG ":  0.060
+CHARGE, MEL01, " HG2":  0.000
+CHARGE, MEL01, " HG3":  0.000
+CHARGE, MEL01, " SD ": -0.120
+CHARGE, MEL01, " CE ":  0.060
+CHARGE, MEL01, " HE1":  0.000
+CHARGE, MEL01, " HE2":  0.000
+CHARGE, MEL01, " HE3":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  MELBK,  " N  ": 1.550,   1.750,   0.160
+RADIUS,  MELBK,  " H  ": 1.200,   1.000,   0.020
+RADIUS,  MELBK,  " CA ": 1.700,   2.000,   0.150
+RADIUS,  MELBK,  " HA ": 1.200,   1.000,   0.020
+RADIUS,  MELBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  MELBK,  " O  ": 1.520,   1.600,   0.200
+RADIUS,  MEL01,  " CB ": 1.700,   2.000,   0.150
+RADIUS,  MEL01,  " HB2": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " HB3": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  MEL01,  " HG2": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " HG3": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " SD ": 1.800,   2.000,   0.200
+RADIUS,  MEL01,  " CE ": 1.700,   2.000,   0.150
+RADIUS,  MEL01,  " HE1": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " HE2": 1.200,   1.000,   0.020
+RADIUS,  MEL01,  " HE3": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, MEL01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04=  0.000, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

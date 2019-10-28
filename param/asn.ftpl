@@ -27,14 +27,14 @@ CONNECT, " CA ", ASNBK: sp3, " N  ", " C  ", " CB ", " HA "
 CONNECT, " HA ", ASNBK: s, " CA "
 CONNECT, " C  ", ASNBK: sp2, " CA ", " O  ", " ?  "
 CONNECT, " O  ", ASNBK: sp2, " C  "
-CONNECT, " CB ", ASN01: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", ASN01: s, " CB "
-CONNECT, "2HB ", ASN01: s, " CB "
+CONNECT, " CB ", ASN01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ASN01: s, " CB "
+CONNECT, " HB3", ASN01: s, " CB "
 CONNECT, " CG ", ASN01: sp2, " CB ", " OD1", " ND2"
 CONNECT, " OD1", ASN01: sp2, " CG "
-CONNECT, " ND2", ASN01: sp2, " CG ", "1HD2", "2HD2"
-CONNECT, "1HD2", ASN01: s, " ND2"
-CONNECT, "2HD2", ASN01: s, " ND2"
+CONNECT, " ND2", ASN01: sp2, " CG ", "HD21", "HD22"
+CONNECT, "HD21", ASN01: s, " ND2"
+CONNECT, "HD22", ASN01: s, " ND2"
 
 # Atom charges
 CHARGE, ASNBK, " N  ": -0.350
@@ -44,13 +44,13 @@ CHARGE, ASNBK, " HA ":  0.000
 CHARGE, ASNBK, " C  ":  0.550
 CHARGE, ASNBK, " O  ": -0.550
 CHARGE, ASN01, " CB ":  0.000
-CHARGE, ASN01, "1HB ":  0.000
-CHARGE, ASN01, "2HB ":  0.000
+CHARGE, ASN01, " HB2":  0.000
+CHARGE, ASN01, " HB3":  0.000
 CHARGE, ASN01, " CG ":  0.550
 CHARGE, ASN01, " OD1": -0.550
 CHARGE, ASN01, " ND2": -0.780
-CHARGE, ASN01, "1HD2":  0.390
-CHARGE, ASN01, "2HD2":  0.390
+CHARGE, ASN01, "HD21":  0.390
+CHARGE, ASN01, "HD22":  0.390
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS,  ASNBK,  " N  ": 1.500,   1.750,   0.160
@@ -60,17 +60,16 @@ RADIUS,  ASNBK,  " HA ": 0.000,   1.000,   0.020
 RADIUS,  ASNBK,  " C  ": 1.700,   2.000,   0.150
 RADIUS,  ASNBK,  " O  ": 1.400,   1.600,   0.200
 RADIUS,  ASN01,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  ASN01,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  ASN01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASN01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ASN01,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  ASN01,  " CG ": 1.700,   2.000,   0.150
 RADIUS,  ASN01,  " OD1": 1.400,   1.600,   0.200
 RADIUS,  ASN01,  " ND2": 1.500,   1.750,   0.160
-RADIUS,  ASN01,  "1HD2": 1.000,   1.000,   0.020
-RADIUS,  ASN01,  "2HD2": 1.000,   1.000,   0.020
+RADIUS,  ASN01,  "HD21": 1.000,   1.000,   0.020
+RADIUS,  ASN01,  "HD22": 1.000,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, ASN01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -7.340, rxn04= -3.5, rxn08= -1.64
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
-ROTATE, ASN: " CA " - " CB "
-ROTATE, ASN: " CB " - " CG "
+ROTATE, ASN: " CA " - " CB ", " CB " - " CG "

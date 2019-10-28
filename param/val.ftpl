@@ -1,0 +1,81 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#marilyn 6/11/03
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, VAL: VALBK, VAL01
+
+# Atom definition
+CONNECT, " N  ", VALBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", VALBK: s, " N  "
+CONNECT, " CA ", VALBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", VALBK: s, " CA "
+CONNECT, " C  ", VALBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", VALBK: sp2, " C  "
+CONNECT, " CB ", VAL01: sp3, " CA ", " CG1", " CG2", " HB "
+CONNECT, " HB ", VAL01: s, " CB "
+CONNECT, " CG1", VAL01: sp3, " CB ", "HG11", "HG12", "HG13"
+CONNECT, "HG11", VAL01: s, " CG1"
+CONNECT, "HG12", VAL01: s, " CG1"
+CONNECT, "HG13", VAL01: s, " CG1"
+CONNECT, " CG2", VAL01: sp3, " CB ", "HG21", "HG22", "HG23"
+CONNECT, "HG21", VAL01: s, " CG2"
+CONNECT, "HG22", VAL01: s, " CG2"
+CONNECT, "HG23", VAL01: s, " CG2"
+
+# Atom charges
+CHARGE, VALBK, " N  ": -0.350
+CHARGE, VALBK, " H  ":  0.250
+CHARGE, VALBK, " CA ":  0.100
+CHARGE, VALBK, " HA ":  0.000
+CHARGE, VALBK, " C  ":  0.550
+CHARGE, VALBK, " O  ": -0.550
+CHARGE, VAL01, " CB ":  0.000
+CHARGE, VAL01, " HB ":  0.000
+CHARGE, VAL01, " CG1":  0.000
+CHARGE, VAL01, "HG11":  0.000
+CHARGE, VAL01, "HG12":  0.000
+CHARGE, VAL01, "HG13":  0.000
+CHARGE, VAL01, " CG2":  0.000
+CHARGE, VAL01, "HG21":  0.000
+CHARGE, VAL01, "HG22":  0.000
+CHARGE, VAL01, "HG23":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  VALBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  VALBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  VALBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  VALBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  VALBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  VALBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  VAL01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  VAL01,  " HB ": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  " CG1": 2.000,   2.000,   0.150
+RADIUS,  VAL01,  "HG11": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  "HG12": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  "HG13": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  " CG2": 0.000,   2.000,   0.150
+RADIUS,  VAL01,  "HG21": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  "HG22": 0.000,   1.000,   0.020
+RADIUS,  VAL01,  "HG23": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, VAL01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04=  0.000, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, VAL: " CA " - " CB "
