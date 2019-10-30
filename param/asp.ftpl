@@ -25,23 +25,23 @@ CONNECT, " CA ", ASPBK: sp3, " N  ", " C  ", " CB ", " HA "
 CONNECT, " HA ", ASPBK: s, " CA "
 CONNECT, " C  ", ASPBK: sp2, " CA ", " O  ", " ?  "
 CONNECT, " O  ", ASPBK: sp2, " C  "
-CONNECT, " CB ", ASP01: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", ASP01: s, " CB "
-CONNECT, "2HB ", ASP01: s, " CB "
+CONNECT, " CB ", ASP01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ASP01: s, " CB "
+CONNECT, " HB3", ASP01: s, " CB "
 CONNECT, " CG ", ASP01: sp2, " CB ", " OD1", " OD2"
 CONNECT, " OD1", ASP01: sp3, " CG ", " HD1"
 CONNECT, " HD1", ASP01: s, " OD1"
 CONNECT, " OD2", ASP01: sp2, " CG "
-CONNECT, " CB ", ASP02: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", ASP02: s, " CB "
-CONNECT, "2HB ", ASP02: s, " CB "
+CONNECT, " CB ", ASP02: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ASP02: s, " CB "
+CONNECT, " HB3", ASP02: s, " CB "
 CONNECT, " CG ", ASP02: sp2, " CB ", " OD1", " OD2"
 CONNECT, " OD1", ASP02: sp2, " CG "
 CONNECT, " OD2", ASP02: sp3, " CG ", " HD2"
 CONNECT, " HD2", ASP02: s, " OD2"
-CONNECT, " CB ", ASP-1: sp3, " CA ", " CG ", "1HB ", "2HB "
-CONNECT, "1HB ", ASP-1: s, " CB "
-CONNECT, "2HB ", ASP-1: s, " CB "
+CONNECT, " CB ", ASP-1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ASP-1: s, " CB "
+CONNECT, " HB3", ASP-1: s, " CB "
 CONNECT, " CG ", ASP-1: sp2, " CB ", " OD1", " OD2"
 CONNECT, " OD1", ASP-1: sp2, " CG "
 CONNECT, " OD2", ASP-1: sp2, " CG "
@@ -54,22 +54,22 @@ CHARGE, ASPBK, " HA ":  0.000
 CHARGE, ASPBK, " C  ":  0.550
 CHARGE, ASPBK, " O  ": -0.550
 CHARGE, ASP01, " CB ":  0.000
-CHARGE, ASP01, "1HB ":  0.000
-CHARGE, ASP01, "2HB ":  0.000
+CHARGE, ASP01, " HB2":  0.000
+CHARGE, ASP01, " HB3":  0.000
 CHARGE, ASP01, " CG ":  0.550
 CHARGE, ASP01, " OD1": -0.495
 CHARGE, ASP01, " HD1":  0.435
 CHARGE, ASP01, " OD2": -0.490
 CHARGE, ASP02, " CB ":  0.000
-CHARGE, ASP02, "1HB ":  0.000
-CHARGE, ASP02, "2HB ":  0.000
+CHARGE, ASP02, " HB2":  0.000
+CHARGE, ASP02, " HB3":  0.000
 CHARGE, ASP02, " CG ":  0.550
 CHARGE, ASP02, " OD1": -0.490
 CHARGE, ASP02, " OD2": -0.495
 CHARGE, ASP02, " HD2":  0.435
 CHARGE, ASP-1, " CB ":  0.000
-CHARGE, ASP-1, "1HB ":  0.000
-CHARGE, ASP-1, "2HB ":  0.000
+CHARGE, ASP-1, " HB2":  0.000
+CHARGE, ASP-1, " HB3":  0.000
 CHARGE, ASP-1, " CG ":  0.100
 CHARGE, ASP-1, " OD1": -0.550
 CHARGE, ASP-1, " OD2": -0.550
@@ -82,22 +82,22 @@ RADIUS,  ASPBK,  " HA ": 0.000,   1.000,   0.020
 RADIUS,  ASPBK,  " C  ": 1.700,   2.000,   0.150
 RADIUS,  ASPBK,  " O  ": 1.400,   1.600,   0.200
 RADIUS,  ASP01,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  ASP01,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  ASP01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ASP01,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  ASP01,  " CG ": 1.700,   2.000,   0.150
 RADIUS,  ASP01,  " OD1": 1.400,   1.600,   0.200
 RADIUS,  ASP01,  " HD1": 1.000,   1.000,   0.020
 RADIUS,  ASP01,  " OD2": 1.400,   1.600,   0.200
 RADIUS,  ASP02,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  ASP02,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  ASP02,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP02,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ASP02,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  ASP02,  " CG ": 1.700,   2.000,   0.150
 RADIUS,  ASP02,  " OD1": 1.400,   1.600,   0.200
 RADIUS,  ASP02,  " OD2": 1.400,   1.600,   0.200
 RADIUS,  ASP02,  " HD2": 1.000,   1.000,   0.020
 RADIUS,  ASP-1,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  ASP-1,  "1HB ": 0.000,   1.000,   0.020
-RADIUS,  ASP-1,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ASP-1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ASP-1,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  ASP-1,  " CG ": 1.700,   2.000,   0.150
 RADIUS,  ASP-1,  " OD1": 1.400,   1.600,   0.200
 RADIUS,  ASP-1,  " OD2": 1.400,   1.600,   0.200
@@ -108,5 +108,4 @@ CONFORMER, ASP02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -6.240, rxn04= -
 CONFORMER, ASP-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02=-41.680, rxn04= -20.2, rxn08= -9.57
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
-ROTATE, ASP: " CA " - " CB "
-ROTATE, ASP: " CB " - " CG "
+ROTATE, ASP: " CA " - " CB ", " CB " - " CG "
