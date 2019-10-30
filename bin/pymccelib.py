@@ -48,6 +48,7 @@ class Env:
                     self.atomnames[conf].append(atom)
                 else:
                     self.atomnames[conf] = [atom]
+
         return
 
 class Atom:
