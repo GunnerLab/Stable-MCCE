@@ -1,0 +1,36 @@
+init: INFO:    Changing TPL_FOLDER to /home/jmao/projects/Develop-MCCE/param
+init: INFO:    Setting PW_WARNING to default value 0.05
+init: INFO:    Loading ftpl file lys.ftpl
+init: INFO:    Loading ftpl file thr.ftpl
+init: INFO:    Loading ftpl file phe.ftpl
+init: INFO:    Loading ftpl file ile.ftpl
+init: INFO:    Loading ftpl file hoh.ftpl
+init: INFO:    Loading ftpl file met.ftpl
+init: INFO:    Loading ftpl file arg.ftpl
+init: INFO:    Loading ftpl file trp.ftpl
+init: INFO:    Loading ftpl file gln.ftpl
+init: INFO:    Loading ftpl file pro.ftpl
+init: INFO:    Loading ftpl file ser.ftpl
+init: INFO:    Loading ftpl file val.ftpl
+init: INFO:    Loading ftpl file glu.ftpl
+init: INFO:    Loading ftpl file asn.ftpl
+init: INFO:    Loading ftpl file hil.ftpl
+init: INFO:    Loading ftpl file tyr.ftpl
+init: INFO:    Loading ftpl file his.ftpl
+init: INFO:    Loading ftpl file 00always_needed.ftpl
+init: INFO:    Loading ftpl file cys.ftpl
+init: INFO:    Loading ftpl file asp.ftpl
+init: INFO:    Loading ftpl file ala.ftpl
+init: INFO:    Loading ftpl file mel.ftpl
+init: INFO:    Loading ftpl file gly.ftpl
+init: INFO:    Loading ftpl file leu.ftpl
+init: INFO:    Loading ftpl file ntr.ftpl
+init: INFO:    Loading ftpl file cyd.ftpl
+init: INFO:    Loading ftpl file ctr.ftpl
+init: INFO:    Set non-zero default values for missing parameters
+init: INFO:    Set to default: SCALING,VDW0 = 1.0
+init: INFO:    Set to default: SCALING,VDW1 = 1.0
+init: INFO:    Set to default: SCALING,VDW = 1.0
+init: INFO:    Set to default: SCALING,TORS = 1.0
+init: INFO:    Set to default: SCALING,ELE = 1.0
+init: INFO:    Set to default: SCALING,DSOLV = 1.0
