@@ -83,8 +83,7 @@ RADIUS,  ILE01,  "HD12": 0.000,   1.000,   0.020
 RADIUS,  ILE01,  "HD13": 0.000,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, ILE01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04= 0.000, rxn08=0.000
+CONFORMER, ILE01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04=  0.000, rxn08=  0.000
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
-ROTATE, ILE: " CB " - " CG1"
-ROTATE, ILE: " CA " - " CB "
+ROTATE, ILE: " CA " - " CB ", " CB " - " CG1"

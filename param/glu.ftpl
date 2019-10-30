@@ -136,11 +136,9 @@ RADIUS,  GLU-1,  " OE1": 1.400,   1.600,   0.200
 RADIUS,  GLU-1,  " OE2": 1.400,   1.600,   0.200
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -6.410, rxn04= -3.10, rxn08= -1.39
-CONFORMER, GLU02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rx02= -6.440, rxn04= -3.10, rxn08= -1.39
-CONFORMER, GLU-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02=-41.760, rxn04= -20.2, rxn08= -9.59
+CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = -6.41, rxn04= -3.100, rxn08= -1.39
+CONFORMER, GLU02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = -6.44, rxn04= -3.100, rxn08= -1.39 
+CONFORMER, GLU-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02 =-41.76, rxn04=-20.200, rxn08= -9.59
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
-ROTATE, GLU: " CA " - " CB "
-ROTATE, GLU: " CB " - " CG "
-ROTATE, GLU: " CG " - " CD "
+ROTATE, GLU: " CA " - " CB ", " CB " - " CG ", " CG " - " CD "
