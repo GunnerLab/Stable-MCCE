@@ -9,7 +9,7 @@
 * [ ] Keep original H position for conformer 0 if H coordinates were provided by PDB. Good for connection with MD.
    * only the completly filled conformer is labeled as native
 * [ ] Step 3 pairwise interaction benchmark.
-* [ ] Microstate output - Xiu Hong
+* [X] Microstate output - Xiu Hong
 * [ ] Hydrogen network report - Xiu Hong
 * [ ] phi map
    * most occupied confomer pdb file
