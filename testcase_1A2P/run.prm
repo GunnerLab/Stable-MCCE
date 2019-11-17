@@ -18,7 +18,7 @@ Input and Output:
 prot.pdb                                                    (INPDB)
 
 Steps:
-f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
 f        step 2: make rotatmers                             (DO_ROTAMERS)
 f        step 3: do energy calculations                     (DO_ENERGY)
 f        step 4: monte carlo sampling                       (DO_MONTE)
@@ -33,8 +33,8 @@ surface  self/surface, APBS always use rxn self energy      (RXN_METHOD)
 Less modified entries
 ------------------------------------------------------------------------------
 4.0      Protein dielectric constant for DelPhi             (EPSILON_PROT)
-/home/mcce/mcce2.5.1/extra.tpl                              (EXTRA)
-/home/mcce/mcce2.5.1/name.txt MCCE renaming rule.           (RENAME_RULES)
+./extra.tpl                              (EXTRA)
+../name.txt MCCE renaming rule.           (RENAME_RULES)
 
 ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 0.0      Initial pH                                         (TITR_PH0)
@@ -49,7 +49,7 @@ ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 #############################################################################
 MODIFYING FOLLOWING ENTRIES REQUIRE ADVANCED KNOWLEDGE:
 -----------------------------------------------------------------------------
-/home/mcce/mcce2.5.1                                        (MCCE_HOME)
+../                                        (MCCE_HOME)
 t       Minimize output files                               (MINIMIZE_SIZE)
 t       Print trace file                                    (DO_TRACE)
 
@@ -107,8 +107,7 @@ step 3:
 1.4      Radius of the probe                                (RADIUS_PROBE)
 2.0      Ion radius                                         (IONRAD)
 0.15     Salt                                               (SALT)
-/home/mcce/mcce2.5.1/bin/delphi DelPhi executable           (DELPHI_EXE)
-/home/mcce/mcce2.5.1/bin/apbs APBS executable               (APBS_EXE)
+../bin/delphi DelPhi executable           (DELPHI_EXE)
 
 
 step 4:
@@ -130,7 +129,7 @@ f        Specify mfe point, f=pKa/Em                        (MFE_POINT)
 # Advanced options:
 1         delphi start conformer number, 0 based            (PBE_START)
 99999     delphi end conformer number, self included        (PBE_END)
-/scratch     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
+/tmp      delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
 6.0      dielectric constant for Coulomb's law              (EPSILON_COULOMB)
 
 ##############################################################################
