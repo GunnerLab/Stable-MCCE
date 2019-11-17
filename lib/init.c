@@ -29,7 +29,7 @@ int init()
     else printf("   No such file, ignore.\n");
     printf("   Done\n\n");
     fflush(stdout);
-    
+
     printf("   Load parameters from directory \"%s\" ... \n", env.param); fflush(stdout);
     if (load_all_param(env.param)) {printf("   FATAL: init(): \"failed.\"\n"); return USERERR;}
     else {printf("   Done\n\n"); fflush(stdout);}
@@ -69,7 +69,7 @@ int init()
 
     remove(env.debug_log);
     remove(env.progress_log);
-	
+
 	now = time(NULL);
     if (env.test_seed < 0) srand(now); //allows random numbers to be fixed for testing
     else srand(env.test_seed);
@@ -155,9 +155,9 @@ int get_env()
     env.default_radius = 1.7;
     env.factor_14lj = 0.5;
     env.epsilon_coulomb = 6.;
-    
+
     env.sas2vdw = -0.06;
-    
+
     env.warn_pairwise     = 20.0;
     env.big_pairwise      = 5.0;
 
@@ -180,13 +180,13 @@ int get_env()
 
     /* default value for IPECE */
     memset(&env.ipece,0,sizeof(IPECE));
-    
+
     env.ipece.grid_space = 1.0;
-    
+
     env.ipece.mem_position_defined = 0;
     env.ipece.probe_radius = 1.40;
     env.ipece.surface_exp_dist = 5.;
-    
+
     env.ipece.boundary_extention = 5.;
     env.ipece.half_mem_thickness = 15.;
     env.ipece.mem_separation = 3.;
@@ -215,10 +215,10 @@ int get_env()
     strcpy(env.chgm, "spl0");    /*method by which the biomolecular point charges are mapped to the grid*/
     strcpy(env.bcfl, "sdh");     /*specify the type of boundry condition used -"Single Debye-H√ºckel" boundary condition*/
     strcpy(env.apbs_exe, "apbs");
-    
+
     env.ignore_input_h = 1;
     env.do_corrections = 1;
-     
+
     /* open "run.prm" to read in mcce environment variables */
     if ((fp=fopen(FN_RUNPRM, "r")) == NULL) {
         printf("   FATAL: get_env(): \"No run control file %s.\"\n", FN_RUNPRM);
@@ -245,7 +245,7 @@ int get_env()
         else if (strstr(sbuff, "(INPDB)")) {
             strcpy(env.inpdb, strtok(sbuff, " "));
         }
-        
+
         else if (strstr(sbuff, "(MCCE_HOME)")) {
             strcpy(env.mcce_home, strtok(sbuff, " "));
         }
@@ -267,7 +267,7 @@ int get_env()
             else env.minimize_size = 0;
         }
 
-        
+
         else if (strstr(sbuff, "(DO_PREMCCE)")) {
             str1 = strtok(sbuff, " ");
             if (str1[0] == 't' || str1[0] == 'T') {
@@ -558,7 +558,7 @@ int get_env()
         else if (strstr(sbuff, "(WARN_PAIRWISE)")) {
             env.warn_pairwise = atof(strtok(sbuff, " "));
         }
-        
+
         else if (strstr(sbuff, "(MONTE_ADV_OPT)")) {
             str1 = strtok(sbuff, " ");
             if (str1[0] == 't' || str1[0] == 'T') env.monte_adv_opt = 1;
@@ -604,7 +604,7 @@ int get_env()
         else if (strstr(sbuff, "(NSTATE_MAX)")) {
             env.nstate_max = atoi(strtok(sbuff, " "));
         }
-        
+
         else if (strstr(sbuff, "(ADDING_CONF)")) {
             str1 = strtok(sbuff, " ");
             if (str1[0] == 't' || str1[0] == 'T') {
@@ -648,7 +648,7 @@ int get_env()
             }
             else env.monte_print_nonzero = 0;
         }
-        
+
         else if (strstr(sbuff, "(ANNEAL_TEMP_START)")) {
             env.anneal_temp_start = atof(strtok(sbuff, " "));
         }
@@ -658,7 +658,7 @@ int get_env()
         else if (strstr(sbuff, "(ANNEAL_NITER_STEP)")) {
             env.anneal_niter_step = atoi(strtok(sbuff, " "));
         }
-        
+
         else if (strstr(sbuff, "(TITR_TYPE)")) {
             str1 = strtok(sbuff, " ");
             if (str1[0] == 'p' || str1[0] == 'P') env.titr_type = 'p';
@@ -860,7 +860,7 @@ int get_env()
         }
         else if (strstr(sbuff, "(MFE_POINT)")) {
                 if (!(strchr(strtok(sbuff, " "), 'f'))) {
-                    env.mfe_flag = 1; 
+                    env.mfe_flag = 1;
                     env.mfe_point = atof(strtok(sbuff, " "));
                 }
         }
@@ -880,20 +880,25 @@ int get_env()
     if (env.ipece.boundary_extention <= env.ipece.probe_radius*4.)
         env.ipece.boundary_extention = env.ipece.probe_radius*4.;
 
-    /* round the dielectric constant to the nearest integer number */
+    /* round the dielectric constant to the nearest integer number
     sprintf(env.param, "%s/param%02d", env.mcce_home, (int) (env.epsilon_prot));
-    
-    /* sets env.ga_seed and env.monte_seed equal to env.test_seed if env.test_seed has been set to a 
+    */
+    /* altered to read from the converted mcce.tpl */
+    sprintf(sbuff, "%s/bin/tpl-free2mcce.py", env.mcce_home);
+    system(sbuff);
+    sprintf(env.param, "./param");
+
+    /* sets env.ga_seed and env.monte_seed equal to env.test_seed if env.test_seed has been set to a
     non random value, eliminating all randomness from MCCE */
     if (env.test_seed >= 1) {
     	env.monte_seed = env.test_seed;
     	env.ga_seed = env.test_seed;
     }
-    	
-	
+
+
 	/*adds in the default behavior of the run.trace output*/
 	if (dotrace == 1) {
-		
+
 		if ((fp=fopen(FN_RUNPRM, "r")) == NULL) {
         	printf("   FATAL: get_env(): \"No run control file %s.\"\n", FN_RUNPRM);
         	return USERERR;
@@ -902,7 +907,7 @@ int get_env()
         	printf("   FATAL: get_env(): \"Cannot create run.trace file.\"\n");
         	return USERERR;
         }
-        
+
         /* this block grabs the subversion revision number from .svn/entries */
         if ((ent=fopen("/home/mcce/mcce2.5.1/.svn/entries", "r")) != NULL) {
         	int i;
@@ -915,15 +920,15 @@ int get_env()
         else {
         	fprintf(tr, "%s\n", "can't open entries file");
         }
-        
+
         /* this block prints a timestamp */
         now = time(NULL);
         time_ptr = localtime(&now);
         fprintf(tr, "%s\n", asctime(time_ptr));
-        
+
         /* this block prints headers for all of the columns */
         fprintf(tr, "%31s%31s\t%31s%31s\n", "run.prm var name", "run.prm var value", "init.c var name", "init.c var value");
-        
+
         while (fgets(trbuff, sizeof(trbuff), fp)) {
 			if (strstr(trbuff, "(ADDING_CONF)")) {
 				fprintf(tr, "%31s%31s\t%31s%31d\n", "(ADDING_CONF)", strtok(trbuff, " "), "env.adding_conf", env.adding_conf);
@@ -1414,7 +1419,7 @@ int get_env()
 			else if (strstr(trbuff, "(IGNORE_INPUT_H")) {
 				fprintf(tr, "%31s%31s\t%31s%31d\n", "(IGNORE_INPUT_H)", strtok(trbuff, " "), "env.ignore_input_h", env.ignore_input_h);
 			}
-			
+
 		}
     	fclose(fp);
     	fclose(tr);

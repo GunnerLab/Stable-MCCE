@@ -211,6 +211,7 @@ typedef struct ATOM_STRUCT {
     char   on;
     int    cal_vdw;      /* flag for if vdw is calculated */
     char   name[5];
+    char   element[3];   /* 2 letter element name */
     int    serial;
     char   resName[4];
     char   confName[6];
