@@ -54,5 +54,7 @@ dkms.conf
 __pycache__/
 *.swp
 
-bin/mcce
-bin/delphi
+delphi
+delphi/delphi
+mcce
+
