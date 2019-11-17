@@ -53,3 +53,8 @@ dkms.conf
 .idea
 __pycache__/
 *.swp
+
+delphi
+delphi/delphi
+mcce
+
