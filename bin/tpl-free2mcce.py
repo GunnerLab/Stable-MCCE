@@ -135,7 +135,7 @@ def convert(filename, epsilon):
                     ne = int(subfields[1])
                 elif subfields[0].upper() == "NH":
                     nh = int(subfields[1])
-                elif subfields[0].upper() == "RXN%02d" % int(epsilon):
+                elif subfields[0].upper() == "RXN%02d" % int(float(epsilon)):
                     rxn = float(subfields[1])
             em0_records.append( "EM       %5s      %-.2f\n" % (conf, em0))
             pka0_records.append("PKA      %5s      %-.2f\n" % (conf, pka0))
