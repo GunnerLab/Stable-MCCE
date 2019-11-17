@@ -1,0 +1,50 @@
+MCCE CONFIGURATION FILE
+   This file must have the name of "run.prm" in the working directory. The first
+   field of the line is the value, and last string, if in parenthesis, is
+   the key.
+
+
+==============================================================================
+Most modified entries
+------------------------------------------------------------------------------
+Input and Output:
+prot.pdb                                                    (INPDB)
+
+Steps:
+f        step 1: pdb -> mcce pdb                            (DO_PREMCCE)
+f        step 2: make conformers                            (DO_ROTAMERS)
+f        step 3: energy table                               (DO_ENERGY)
+f        step 4: monte carlo sampling                       (DO_MONTE)
+==============================================================================
+
+
+==============================================================================
+Less modified entries
+------------------------------------------------------------------------------
+4        integer, Protein dielectric constant for DelPhi    (EPSILON_PROT)
+DEFAULT  tpl file folder path, "DEFAULT" to launch location (TPL_FOLDER)
+./extra.ftpl                                                (EXTRA)
+
+ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
+0.0      Initial pH                                         (TITR_PH0)
+1.0      pH interval                                        (TITR_PHD)
+0.0      Initial Eh                                         (TITR_EH0)
+30.0     Eh interval (in mV)                                (TITR_EHD)
+15       Number of titration points                         (TITR_STEPS)
+=============================================================================
+../                                        (MCCE_HOME)
+
+
+#############################################################################
+MODIFYING FOLLOWING ENTRIES REQUIRE ADVANCED KNOWLEDGE:
+-----------------------------------------------------------------------------
+
+step 4:
+5.0      Big pairwise threshold to make big list            (BIG_PAIRWISE)
+3        Number of flips                                    (MONTE_FLIPS)
+298.15   Temperature                                        (MONTE_T)
+2000     Sampling = n_iter * confs                          (MONTE_NITER)
+6        Independent monte carlo sampling                   (MONTE_RUNS)
+1000000  Maximum microstates for analytical solution        (NSTATE_MAX)
+##############################################################################
+
