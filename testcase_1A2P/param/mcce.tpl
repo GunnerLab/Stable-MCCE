@@ -391,6 +391,28 @@ CHARGE   7MQ-1 3H14  -0.01
 CHARGE   7MQ-1 1H15   0.10
 CHARGE   7MQ-1 2H15   0.10
 
+CONFLIST _ZN        _ZNBK _ZN+2 _ZNDM
+
+NATOM    _ZNBK      0  
+NATOM    _ZN+2      1  
+NATOM    _ZNDM      0  
+
+IATOM    _ZN+2 ZN   0  
+
+ATOMNAME _ZN+2    0 ZN  
+
+CONNECT  _ZN+2 ZN   ?         
+
+PROTON   _ZN+2      0 
+PKA      _ZN+2      0.00
+ELECTRON _ZN+2      0 
+EM       _ZN+2      0.00
+RXN      _ZN+2      -91.25
+
+RADIUS   _ZN   ZN   1.73
+
+CHARGE   _ZN+2 ZN     2.00
+
 CONFLIST ALA        ALABK ALA01
 
 NATOM    ALABK      6  

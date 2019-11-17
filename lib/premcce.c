@@ -82,7 +82,7 @@ int premcce()
             if (sbuff[0] == '#') continue;
             strncpy(rules_from[c], sbuff, 14); rules_from[c][14] = '\0';
             strncpy(rules_to[c], sbuff+16, 14); rules_to[c][14] = '\0';
-            
+
             c++;
         }
         fclose(fp1);
@@ -134,7 +134,7 @@ int premcce()
     fclose(fp2);
     printf("   Done\n\n");
     fflush(stdout);
-    
+
     /*
     while ((c=fgetc(fp1)) != EOF) {
         if (fputc(c, stdout)==EOF)
@@ -148,7 +148,7 @@ int premcce()
     fputc(EOF, stdout);
     */
 
-    
+
     /* Load to data structure */
     printf("   Load pdb lines into data structure...\n");   fflush(stdout);
     prot = load_pdb(fp1);
@@ -159,7 +159,7 @@ int premcce()
     }
     printf("   Done\n\n");
     fflush(stdout);
-    
+
     /* label original conformers */
     for (i_res=0; i_res<prot.n_res; i_res++) {
         prot.res[i_res].n_conf_ori = prot.res[i_res].n_conf;
@@ -168,7 +168,7 @@ int premcce()
             strncpy(prot.res[i_res].conf[i_conf].history+2, sbuff, 4);
         }
     }
-    
+
     /* cutoff water */
     printf("   Strip free cofactors with SAS > %3.f%%...\n", env.h2o_sascutoff*100);
     fflush(stdout);
@@ -230,7 +230,7 @@ int premcce()
         }
         printf("   Done. Membrane position stored in %s\n\n", MEM_POS);
     }
-    
+
     /* write out pdb file */
     if (!(fp = fopen(STEP1_OUT, "w"))) {
         printf("   FATAL: premcce(): \"Can't open file %s to write\n", STEP1_OUT);
@@ -242,7 +242,7 @@ int premcce()
     /* Adjust rotational degree of freedom for surface residues.
      * This is because the motion on the surface is not as critical as buried residues to charge stabilization
      */
-    
+
     /* write out CONFLIST1 */
     remove(FN_CONFLIST1); /* remove old */
     load_headlst(prot);   /* load default value */
@@ -271,18 +271,18 @@ FILE *premcce_rename(FILE *fp_in)
     char sto[15];
     int i;
     FILE *fp_out;
-    
+
     fp_out = tmpfile();
 
     while (fgets(sbuff, sizeof(sbuff), fp_in)) {
         if (!strncmp(sbuff, "ATOM  ", 6) || !strncmp(sbuff, "HETATM", 6)) {
-			
+
 			if (env.ignore_input_h) {
 				/*remove all hydrogens from input structure*/
 				/*try and figure out atom type from atom name*/
 				if (sbuff[13] == 'H') continue;
 			}
-			
+
             if (sbuff[21] == ' ') sbuff[21] = '_';
             for (i=0; i<c; i++) {
                strncpy(sfrom, sbuff+12, 14); sfrom[14] = '\0';
@@ -298,14 +298,14 @@ FILE *premcce_rename(FILE *fp_in)
     }
     fputc(EOF, fp_out);
     rewind(fp_out); rewind(fp_in);
-    
+
     return fp_out;
 }
 
 int premcce_match(char *sfrom, char *pattern)
 {  int i;
     int match;
-    
+
     match = 1;
     //printf("===%s===%s===\n", sfrom, pattern);
     for (i=0; i<14; i++) {
@@ -335,13 +335,13 @@ FILE *premcce_terminals(FILE *fp_in)
     char stemp[MAXCHAR_LINE];
     char NTR_atoms[] = "1H  2H  3H   N   CA  HA 1HA 2HA ";
     char CTR_atoms[] = " C   O   OXT";
-    char exclude_ntrs[] = "FME ACE"; 
+    char exclude_ntrs[] = "FME ACE";
     char ntr_name[4];
     char ter;
     FILE *fp1, *fp2, *fp_out;
     int resSeq;
     int i;
-    
+
     /* collect all N and C atoms */
     n_Ns = 0; n_Cs = 0;
     while (fgets(sbuff, sizeof(sbuff), fp_in)) {
@@ -373,11 +373,11 @@ FILE *premcce_terminals(FILE *fp_in)
         }
     }
     rewind(fp_in);
-    
+
     fp1 = tmpfile();
     while ((i=fgetc(fp_in)) != EOF) fputc(i, fp1);
     fputc(EOF, fp1); rewind(fp1); rewind(fp_in);
-    
+
     /* Do Ntrs by distance checking */
     for (i_Ns=0; i_Ns<n_Ns; i_Ns++) {
         if (strstr(exclude_ntrs, Ns[i_Ns].resName)) ter = 0;
@@ -476,12 +476,12 @@ FILE *premcce_confname(FILE *fp) {
     int  k_atom_fail,k_conf_fail;
     ATOM atom;
     //int i;
-    
+
     memset(&pdb,        0, sizeof(STRINGS));
     memset(&checklist,  0, sizeof(STRINGS));
     memset(&residue,    0, sizeof(STRINGS));
     env.err_msg = -1;
-    
+
     while ( fgets(sbuffer, MAXCHAR_LINE, fp) ) {
         pdb.n++;
         pdb.strings = realloc(pdb.strings, pdb.n*sizeof(char *));
@@ -493,7 +493,7 @@ FILE *premcce_confname(FILE *fp) {
     rewind(fp);
     i = 0;
         */
-    
+
         if (sbuffer[strlen(sbuffer) - 1] == '\n') sbuffer[strlen(sbuffer) - 1] = '\0';      /* delete new line character at the end of the line */
         if (!strncmp("ATOM  ", sbuffer, 6) || !strncmp("HETATM", sbuffer, 6)) {
             while (strlen(sbuffer)<90) strcat(sbuffer, "_");      /* Extend length of pdb line to 90 characters */
@@ -503,7 +503,7 @@ FILE *premcce_confname(FILE *fp) {
                 sbuffer[29] = sbuffer[16];
             }
         }
-        
+
         pdb.strings[pdb.n-1] = (char *)malloc(MAXCHAR_LINE*sizeof(char));
         memset(pdb.strings[pdb.n-1], 0, MAXCHAR_LINE*sizeof(char));
         strcpy(pdb.strings[pdb.n-1], sbuffer);
@@ -511,7 +511,7 @@ FILE *premcce_confname(FILE *fp) {
         if (!strncmp("ATOM  ", sbuffer, 6) || !strncmp("HETATM", sbuffer, 6)) {
 
             atom = pdbline2atom(sbuffer);
-            
+
             /* error checkings for conflist parameter */
             if ( param_get("CONFLIST",atom.resName, "",&conflist) ) {
                 printf("   Error! premcce_confname(): Can't get conformer list of this residue %s\n", atom.resName);
@@ -519,13 +519,13 @@ FILE *premcce_confname(FILE *fp) {
                 free_strings(&pdb);
                 return NULL;
             }
-            
+
             if ( strcmp(conflist.strings[0]+3, "BK" ) )  {
                 printf("   FATAL: first conformer in conformer list of %s is not named as \"BK\"\n", atom.resName);
                 free_strings(&pdb);
                 return NULL;
             }
-            
+
             if ( strncmp(sbuffer+80,"__",2) ) continue;         /* Conformer is given. */
 
             if ( !param_get("IATOM", conflist.strings[0], atom.name, &iatom) ) {
@@ -533,7 +533,7 @@ FILE *premcce_confname(FILE *fp) {
                 strncpy(pdb.strings[pdb.n-1]+27, "00", 2);
                 continue;
             }
-            
+
             if (conflist.n>1) {
                 if ( !param_get("IATOM", conflist.strings[1], atom.name, &iatom) ) continue;
 
@@ -544,7 +544,7 @@ FILE *premcce_confname(FILE *fp) {
         }
     }
     rewind(fp);
-    
+
     while (checklist.n) {
         atom = pdbline2atom(checklist.strings[0]);
 
@@ -559,7 +559,7 @@ FILE *premcce_confname(FILE *fp) {
                 residue.strings[residue.n-1] = pdb.strings[i_pdb];
             }
         }
-        
+
         /* Remove all atoms in this checklist */
         for (i_check = 0; i_check<checklist.n; i_check++) {
             if (
@@ -597,7 +597,7 @@ FILE *premcce_confname(FILE *fp) {
                 break;              /* If looping over all atoms is finished without broken, means all atoms can be found by current conformer name, then break looping over conformer list */
             }
         }
-        
+
         if ( i_conf == conflist.n ) {
             printf("   Error! The following atoms of residue %s %c%4d can not be loaded to conformer type %s\n",atom.resName, atom.chainID, atom.resSeq, conflist.strings[k_conf_fail]);
             for (k_atom=0; k_atom<residue.n; k_atom++) {
@@ -607,7 +607,7 @@ FILE *premcce_confname(FILE *fp) {
                 }
             }
             fatal_err++;
-            
+
             strcpy(confName,"?????");
             strcpy(confID, "???");
         }
@@ -630,7 +630,7 @@ FILE *premcce_confname(FILE *fp) {
         free(residue.strings);
         memset(&residue,0,sizeof(STRINGS));
     }
-    
+
     for (i_pdb = 0; i_pdb<pdb.n; i_pdb++) {
         if ( strncmp(pdb.strings[i_pdb]+80,"__",2) ) continue;         /* Conformer is given. */
         atom = pdbline2atom(pdb.strings[i_pdb]);
@@ -654,7 +654,7 @@ FILE *premcce_confname(FILE *fp) {
         free_strings(&pdb);
         return NULL;
     }
-    
+
     fp2 = tmpfile();
     for (i_pdb=0; i_pdb<pdb.n; i_pdb++) {
         fprintf(fp2, "%s\n",pdb.strings[i_pdb]);
@@ -669,7 +669,7 @@ int premcce_hvatoms(PROT prot)
 {  int kr, kc, ka;
     char Missing, Alt;
     char sbuff[MAXCHAR_LINE], siatom[MAXCHAR_LINE];
-    
+
     /* altLoc atoms */
     Alt = 0;
     for (kr=0; kr<prot.n_res; kr++) {
@@ -703,7 +703,7 @@ int premcce_hvatoms(PROT prot)
                         ka, prot.res[kr].conf[kc].confName);
                         Missing++;
                     }
-                    else if (sbuff[1] != 'H') {
+                    else if (sbuff[1] != 'H' && sbuff[0] != 'H' ) {
                         printf("   Missing heavy atom %s of conf %s in \"%s %c%4d\".\n",
                         sbuff, prot.res[kr].conf[kc].confName, prot.res[kr].resName, prot.res[kr].chainID, prot.res[kr].resSeq);
                         Missing++;
@@ -712,7 +712,7 @@ int premcce_hvatoms(PROT prot)
             }
         }
     }
-    
+
     return Missing;
 }
 
@@ -803,11 +803,11 @@ int create_param(FILE *pdb_fp, int k_line) {
         printf(" Error! create_param(): input line is not an atom line. \n");
         return USERERR;
     }
-    
+
     strcpy(line, sbuffer);
     if (line[strlen(line)-1] == '\n') line[strlen(line)-1] = '\0';
     while (strlen(line)<84) strcat(line, " ");
-    
+
     memset(&conf,0,sizeof(CONF));
     rewind(pdb_fp);
     while ( fgets(sbuffer, MAXCHAR_LINE, pdb_fp) ) {
@@ -831,21 +831,21 @@ int create_param(FILE *pdb_fp, int k_line) {
         }
     }
 
-    
+
     param_fp = fopen(env.new_tpl,"a");
     fprintf(param_fp,"### This is a temporary parameter file made for residue %s ###\n", conf.atom[0].resName);
     fprintf(param_fp,"### Make sure that all the parameters are verified before using this file as a global parameter file ###\n\n");
-    
+
     /* CONFLSIT */
     strcpy(sbuffer, "CONFLIST ");
     strcat(sbuffer, conf.atom[0].resName);
     strcat(sbuffer, "        ");
-    
+
     strcat(sbuffer, conf.atom[0].resName);
     strcat(sbuffer, "BK ");
-    
+
     fprintf(param_fp,"%s\n\n",sbuffer);
-    
+
     /* NATOM */
     strcpy(sbuffer, "NATOM    ");
     strcat(sbuffer, conf.atom[0].resName);
@@ -874,7 +874,7 @@ int create_param(FILE *pdb_fp, int k_line) {
         fprintf(param_fp,"%s\n",sbuffer);
     }
     fprintf(param_fp,"\n");
-    
+
     /* CONNECT */
     for (i_atom=0; i_atom<conf.n_atom; i_atom++) {
         strcpy(sbuffer, "CONNECT  ");
@@ -882,7 +882,7 @@ int create_param(FILE *pdb_fp, int k_line) {
         strcat(sbuffer, "BK ");
         strcat(sbuffer, conf.atom[i_atom].name);
         strcat(sbuffer, " ion      ");
-        
+
         for (j_atom=0; j_atom<conf.n_atom; j_atom++) {
             if (j_atom == i_atom) continue;
             if (conf.atom[i_atom].name[1] == 'H' || conf.atom[j_atom].name[1] == 'H') {
@@ -897,7 +897,7 @@ int create_param(FILE *pdb_fp, int k_line) {
         fprintf(param_fp,"%s\n",sbuffer);
     }
     fprintf(param_fp,"\n");
-    
+
     fclose(param_fp);
     return 0;
 }
