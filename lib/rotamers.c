@@ -3823,15 +3823,17 @@ float get_bond_length(CONF *conf_p, ATOM *atom1_p, ATOM *atom2_p) {
     }
 
     /* then use covalence radii to get bond length */
-    elem1[0]=atom1_p->name[1];
+    atom_element(atom1_p);
+    elem1[0]=atom1_p->element[1];
     if (param_get("RADCOVAL", "SINGL", elem1, &rad1)) {
-        printf("   Warning! get_bond_length(): Can't find covalent radius for %s, use default radius %f instead\n", atom1_p->name, DEFAULT_RAD);
+        printf("   Warning! get_bond_length(): Can't find covalent radius for %s, use default radius %f instead\n", atom1_p->element, DEFAULT_RAD);
         rad1 = DEFAULT_RAD;
         param_sav("RADCOVAL", "SINGL", elem1, &rad1, sizeof(float));
     }
-    elem2[0]=atom2_p->name[1];
+    atom_element(atom2_p);
+    elem2[0]=atom2_p->element[1];
     if (param_get("RADCOVAL", "SINGL", elem2, &rad2)) {
-        printf("   Warning! get_bond_length(): Can't find covalent radius for %s, use default radius %f instead\n", atom2_p->name, DEFAULT_RAD);
+        printf("   Warning! get_bond_length(): Can't find covalent radius for %s, use default radius %f instead\n", atom2_p->element, DEFAULT_RAD);
         rad2 = DEFAULT_RAD;
         param_sav("RADCOVAL", "SINGL", elem2, &rad2, sizeof(float));
     }
@@ -4760,7 +4762,7 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
            if (i_res == j_res) continue;
            
            /* check if distance within the threshold */
-           if (out_of_range(prot.res[i_res].r_min,prot.res[i_res].r_max,prot.res[j_res].r_min,prot.res[j_res].r_max,36.)) continue;  /* 8Å away */
+           if (out_of_range(prot.res[i_res].r_min,prot.res[i_res].r_max,prot.res[j_res].r_min,prot.res[j_res].r_max,36.)) continue;  /* 8ÔøΩ away */
            found = 0;
            for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
                for (j_conf=0; j_conf<prot.res[j_res].n_conf; j_conf++) {
@@ -4770,7 +4772,7 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
                        for (j_atom=0; j_atom<prot.res[j_res].conf[j_conf].n_atom; j_atom++) {
                            if (!prot.res[j_res].conf[j_conf].atom[j_atom].on) continue;
                            
-                           if (ddvv(prot.res[i_res].conf[i_conf].atom[i_atom].xyz,prot.res[j_res].conf[j_conf].atom[j_atom].xyz) < 64.) { /* 8Å away */
+                           if (ddvv(prot.res[i_res].conf[i_conf].atom[i_atom].xyz,prot.res[j_res].conf[j_conf].atom[j_atom].xyz) < 64.) { /* 8ÔøΩ away */
                                found = 1;
                                break;
                            }
