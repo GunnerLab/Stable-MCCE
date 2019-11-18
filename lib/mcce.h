@@ -557,6 +557,7 @@ typedef struct {
     char do_energies;
     char do_monte;
 
+
     char minimize_size;
 
     float default_radius;
@@ -608,7 +609,8 @@ typedef struct {
     float hv_relax_vdw_thr;
     float hv_relax_hv_vdw_thr;
     float hv_relax_elec_thr; /* electrostatic energy threshold for doing relaxation (hydrogen bond searching) */
-    float hv_relax_elec_crg_thr; /* threshold of atomic charge for searching hydrogen bonded pairs */
+    float hv_relax_elec_crg_thr;
+ /* threshold of atomic charge for searching hydrogen bonded pairs */
     float hv_relax_elec_dist_thr; /* threshold of distance between charged atoms of a hydrogen bonded pair */
     float hv_relax_dt;
     float hv_tors_scale;
@@ -758,7 +760,7 @@ typedef struct {
     int   mfe_flag;
     float  mfe_point;
 
-    int do_corrections; /*boundary corrections switch*/
+    int do_corrections; /*boundary corrlib/surfw_l2.cections switch*/
 
     int ignore_input_h; /*toggle on to disregard all hydrogens in input structure*/
 
@@ -766,7 +768,6 @@ typedef struct {
 } ENV;
 
 extern ENV env;
-
 /*--- Data structure functions ---*/
 ATOM   pdbline2atom(char *line);
 PROT   load_pdb(FILE *fp);
@@ -864,6 +865,9 @@ int inf(FILE *source, FILE *dest);
 int del_dir(char *dir_name);
 int place_missing(PROT prot, int handle_addconf);
 int place_missing_res(PROT prot, int i_res, int handle_addconf);
+int atom_element(ATOM *atom);
+int prot_atom_element(PROT prot);
+
 
 /* done */
 int free_ematrix(EMATRIX *ematrix);
