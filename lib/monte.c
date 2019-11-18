@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include <stdbool.h>
 #include "mcce.h"
 
 /* normal pw is garanteed to be smaller than 2000. When it is is bigger than 5000, it is
@@ -66,6 +67,29 @@ typedef struct {
    CONFTYPE *conftype;
 }  TYPES;
 
+/* for the microstate ---By Cai*/
+typedef struct {
+    unsigned short *conf_id;
+    double H;  //to store acumulate energy value
+//    double Hsq;
+    int counter; //to store counter for MC sampling
+    double occ;  // to store occ for enumeration
+    double Hav; // to store average state energy
+} MSRECORD;
+
+int enum_flag = 0; //flag to judge if run enumerate(): analytical solution;
+
+int   load_ms_gold(STRINGS *str);
+int   update_conf_id(unsigned short *conf_id, int *state);
+int   write_ms(MSRECORD *ms_state);
+void MC_smp(int n);
+
+STRINGS ms_spe_lst;
+FILE   *ms_fp;
+FILE   *re_ms_fp;  //readable ms.dat: re_ms.dat
+/* for the microstate */
+
+
 /* public variables */
 PROT     prot;
 RES      conflist, conflist_bak;
@@ -101,6 +125,7 @@ void MC(int n);
 int reduce_conflist();
 int fitit();
 int enumerate(int i_ph_eh);
+int enumerate_new(int i_ph_eh); //Cai: new enumerate subroutine to ouput microstate 
 int load_conflist();
 int group_conftype();
 int cmp_conftype(CONFTYPE t1, CONFTYPE t2);
@@ -203,6 +228,50 @@ int monte()
     else {
        fp = tmpfile();
     }
+
+    /* Microstate ---By Cai: inititalize ms.dat writing */
+    if (env.ms_out) {
+        memset(&ms_spe_lst, 0, sizeof(STRINGS));
+        ms_spe_lst.n = 0;
+        if (load_ms_gold(&ms_spe_lst)) {
+            printf("   Load file ms_gold error: ms_gold file for Output Microstate (MONTE_MS) is missing. If you do not want microstates reported, turn (MS_OUT) to f. If you do want microstate reported, include ms_gold file.\n");
+            printf("   Formate of ms_gold:\n   GLUA0286\n   TYRA0288\n   THRA0288\n   Or formate of pdb file.\n");
+            return USERERR;
+        }
+        if (ms_spe_lst.n == 0) {
+            printf("Load 0 ms gold residue, don't output ms_out\n");
+            env.ms_out = 0;
+        }
+        else {
+            if(env.re_ms_out) { //output microstate in binary file and readable file
+                ms_fp = fopen("ms.dat", "wb");
+                re_ms_fp=fopen("re_ms.dat", "w");
+                int i_spe;
+                fwrite(&ms_spe_lst.n, 1, sizeof(int), ms_fp);
+//checkpoint
+                fprintf(re_ms_fp, "residue number: %d\n", ms_spe_lst.n);
+                for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+//checkpoint
+                    fprintf(re_ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
+                    fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp);
+                }
+                fprintf(re_ms_fp,"\n");
+            }
+            else { //only output microstate in binary formate
+                ms_fp = fopen("ms.dat", "wb");
+                int i_spe;
+                fwrite(&ms_spe_lst.n, 1, sizeof(int), ms_fp);
+//checkpoint
+                //printf("       writing ms.dat...\nresidue number: %d\n", ms_spe_lst.n);
+                for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+//checkpoint
+                    //printf("       %s\n", ms_spe_lst.strings[i_spe]);
+                    fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp);
+                }
+             }
+        }    
+    }   
+
 
     timerB = time(NULL);
     printf("   Monte Carlo set up time: %ld seconds.\n", timerB-timerA); fflush(stdout);
@@ -327,7 +396,15 @@ int monte()
 
         E_base = get_base();
         /* ANALYTICAL SOLOTION */
-        if (enumerate(i) == -1) {
+        //if (enumerate(i) == -1) {
+        if (enumerate_new(i) == -1) { // use new enumerate subroutine to output microstate
+            if (env.ms_out){
+                fwrite("MONTERUNS", 9, sizeof(char), ms_fp); //The third line of ms.dat: method
+                if(env.re_ms_out) { //write out the method
+                    fprintf(re_ms_fp, "METHOD: %s\n", "MONTERUNS");
+                }
+            }
+
             /*
             fprintf(fp, "Conformer list after reduction: E_base = %10.3f\n", E_base);
             for (j=0; j<conflist.n_conf; j++) {
@@ -352,7 +429,12 @@ int monte()
                 if (env.monte_nstart * counter) MC(env.monte_nstart * counter);
 
                 fprintf(fp, "Doing MC %2d ... \n", j+1); fflush(fp);
-                if (N_smp) MC(N_smp);
+                //if (N_smp) MC(N_smp);
+                if (N_smp) {            //Cai: microstate output or not
+                    if (env.ms_out) MC_smp(N_smp);   // Using MC_smp to write out microstate
+                    else MC(N_smp);  //initial MC without writing out microstate  
+                }
+
                 for (k=0; k<conflist.n_conf; k++) {
                     MC_occ[j][k] = conflist.conf[k].occ;
                 }
@@ -413,7 +495,19 @@ int monte()
 
     }
 
+    //fclose(fp);
+    if (env.ms_out && env.re_ms_out){ // close the microstate output file if true
     fclose(fp);
+    fclose(ms_fp);
+    fclose(re_ms_fp);}
+    else if (env.ms_out && !env.re_ms_out){
+    fclose(fp);
+    fclose(ms_fp);}      // output microstate -- By Cai
+    else if (!env.ms_out && env.re_ms_out)
+    printf("   Warning: need to turn on (MS_OUT) in run.prm to get readable microstate file.\n");
+    else
+    fclose(fp);
+
     printf("   Done\n\n"); fflush(stdout);
 
 
@@ -2185,6 +2279,8 @@ int enumerate(int i_ph_eh)
 
     E_states = malloc(nstate*sizeof(float));
     occ_states = malloc(nstate*sizeof(float));
+    enum_flag = 1; //Cai
+
 
     istate = 0;
     E_min = E_state = get_E();  /* get microstate energy */
@@ -2277,6 +2373,181 @@ int enumerate(int i_ph_eh)
     free(occ_states);
     return 0;
 }
+
+int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstate if true
+{
+    long    nstate,istate;
+    float   b;
+    int     ires,jres,iconf,old_conf,new_conf;
+    float   *E_states,*occ_states;
+    float   E_min, tot_occ;
+    b = -KCAL2KT/(env.monte_temp/ROOMT);
+
+    if (!n_free) {
+        for (iconf=0; iconf<conflist.n_conf; iconf++) {
+            occ_table[iconf][i_ph_eh] = conflist.conf[iconf].occ;
+        }
+        return 0;
+    }
+
+    /* each residue state with first conformer */
+    nstate = 1;
+    for (ires=0;ires<n_free;ires++) {
+        free_res[ires].on=0;
+        state[ires]=free_res[ires].conf[0];
+        nstate=nstate*free_res[ires].n;
+        if (nstate>env.nstate_max) return -1;
+    }
+    if (nstate>env.nstate_max) return -1;
+
+
+    fprintf(fp, "%ld <= %d microstates, will use analytical solution\n\n", nstate, env.nstate_max);
+    fflush(fp);
+
+    enum_flag = 1; //turn on the enumeration flag
+
+    E_states = malloc(nstate*sizeof(float));
+    occ_states = malloc(nstate*sizeof(float));
+
+    istate = 0;
+    E_min = E_state = get_E();  /* get microstate energy */
+    E_states[istate]=E_state;
+
+
+    //initialize microstate
+    MSRECORD ms_state;
+    ms_state.conf_id = (unsigned short *) calloc(ms_spe_lst.n,  sizeof(unsigned short));
+    ms_state.H       = 0.0;
+    ms_state.counter = 0;
+    ms_state.occ = 0.0;
+
+
+    while (1) {
+        istate++;
+        ires = 0;
+        old_conf = state[ires];
+        free_res[ires].on++;
+        while (free_res[ires].on>=free_res[ires].n) {
+            free_res[ires].on=0;
+            new_conf = state[ires] = free_res[ires].conf[0];
+
+            E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
+            for (jres=0; jres<n_free; jres++) {
+                E_state += pairwise[new_conf][state[jres]] - pairwise[old_conf][state[jres]];
+            }
+
+            ires++;
+            if (ires==n_free) break;
+            old_conf = state[ires];
+            free_res[ires].on++;
+        }
+        if (ires==n_free) break;
+
+        new_conf = state[ires] = free_res[ires].conf[free_res[ires].on];
+        E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
+        for (jres=0; jres<n_free; jres++) {
+            E_state += pairwise[new_conf][state[jres]] - pairwise[old_conf][state[jres]];
+        }
+
+        E_states[istate]=E_state;
+        if (E_state<E_min) E_min = E_state;
+    } //calculate energy for each microstates and find out the minimum energy state
+
+    tot_occ=0.;
+    for (istate=0;istate<nstate;istate++) {
+        occ_states[istate] = exp(b*(E_states[istate]-E_min));
+        tot_occ += occ_states[istate];
+    }
+    for (istate=0;istate<nstate;istate++) {
+        occ_states[istate] = occ_states[istate]/tot_occ;
+    }
+/*   
+    //write out occupancy for each microstate at mc_out
+    if (env.ms_out){
+        fprintf(fp, "microstate_id       OCC\n");
+        for (istate=0; istate<nstate; istate++){
+        fprintf(fp, "%ld        %5.3f\n", istate, occ_states[istate]);
+        }
+        fprintf(fp, "\n");
+        fflush(fp);
+    }
+*/
+    /* get conformer occ */
+    /* reset occ to 0 */
+    for (iconf=0;iconf<conflist.n_conf;iconf++) {
+        if (conflist.conf[iconf].on == 't') continue;
+        conflist.conf[iconf].occ = 0.;
+    }
+
+    /* first microstate */
+    istate = 0;
+    for (ires=0;ires<n_free;ires++) {
+        free_res[ires].on=0;
+        state[ires]=free_res[ires].conf[0];
+
+        iconf = free_res[ires].conf[free_res[ires].on];
+        conflist.conf[iconf].occ += occ_states[istate];
+    }
+
+    if (env.ms_out) {
+        fwrite("ENUMERATE", 9, sizeof(char), ms_fp); //The third line of ms.dat: method
+        if(env.re_ms_out) { //write out the method
+            fprintf(re_ms_fp, "METHOD: %s\n", "ENUMERATE");
+        }
+
+        //write each microstate: write first microstate
+        update_conf_id(ms_state.conf_id, state);
+        ms_state.occ = occ_states[istate];
+        ms_state.H = E_states[istate] + E_base;
+        // ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
+        write_ms(&ms_state);
+    }
+
+
+    while (1) {
+        istate++;
+        /* flipping (looping over) microstate */
+        ires = 0;
+        free_res[ires].on++;
+        while (free_res[ires].on>=free_res[ires].n) {
+            free_res[ires].on=0;
+            new_conf = state[ires] = free_res[ires].conf[0];
+
+            ires++;
+            if (ires==n_free) break;
+            free_res[ires].on++;
+        }
+        if (ires==n_free) break;
+
+        new_conf = state[ires] = free_res[ires].conf[free_res[ires].on];
+
+        if (env.ms_out) {
+        //write each microstate
+        update_conf_id(ms_state.conf_id, state);
+        ms_state.occ = occ_states[istate];
+        ms_state.H = E_states[istate] + E_base;
+        //ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
+        write_ms(&ms_state);
+        }
+
+
+        /* collect occ for each working conformer */
+        for (ires=0;ires<n_free;ires++) {
+            iconf = free_res[ires].conf[free_res[ires].on];
+            conflist.conf[iconf].occ += occ_states[istate];
+        }
+    }
+
+    for (iconf=0; iconf<conflist.n_conf; iconf++) {
+        occ_table[iconf][i_ph_eh] = conflist.conf[iconf].occ;
+    }
+
+    free(E_states);
+    free(occ_states);
+    return 0;
+}
+
+
 
 int group_conftype()
 {  int i;
@@ -2419,3 +2690,328 @@ float get_entropy(int iconf, int start, int end)
 
    return TS;
 }
+
+
+int load_ms_gold(STRINGS *str)  //Cai
+{
+    FILE *ms_gold_fp;
+    char line[MAXCHAR_LINE], sbuff[MAXCHAR_LINE], cbuff[MAXCHAR_LINE];
+    ATOM atom;
+    int i_spe, j;
+
+    if ((ms_gold_fp=fopen("ms_gold", "r"))) {
+        printf("\n   Loading file \"ms_gold\"\n"); fflush(stdout);
+
+        while (fgets(line, sizeof(line), ms_gold_fp)) {
+            if (strlen(line) == 9) {
+                strncpy(sbuff, line, 8);
+                sbuff[8] = '\0';
+            }
+            else {
+                if (strlen(line) < 24) continue;
+                atom = pdbline2atom(line);
+                if (atom.chainID == ' ') atom.chainID = '_';  // change the chain ID,if it's space         
+                sprintf(sbuff, "%s%c%04d", atom.resName, atom.chainID, atom.resSeq);
+            }
+            for (j=0; j<conflist.n_conf; j++) {
+                sprintf(cbuff, "%s%c%04d", conflist.conf[j].resName, conflist.conf[j].chainID, conflist.conf[j].resSeq);
+                if (!strcmp(sbuff, cbuff)) break;
+            }
+            if (j==conflist.n_conf) {
+     //           printf("      no conformer for residue %s, ignore it\n", sbuff);
+                continue;
+            }
+
+            for (i_spe=str->n-1; i_spe>=0; i_spe--) {
+                if (!strcmp(str->strings[i_spe], sbuff)) break;
+            }
+            if (i_spe == -1) {
+                str->n++;
+                str->strings = (char **) realloc(str->strings, str->n * sizeof(char *));
+                str->strings[str->n-1] = (char *) malloc(strlen(sbuff) * sizeof(char));
+                strcpy(str->strings[str->n-1], sbuff);
+            }
+        }
+        printf("      Done, %d residue(s) marked.\n\n", str->n); fflush(stdout);
+    }
+    else {
+        return USERERR;
+    }
+
+    return 0;
+}
+
+
+void MC_smp(int n)
+{  int cycles, n_total, n_cycle;
+    int i, j, k;
+    register int iters;
+    int mem;
+    int *old_state;
+    float  old_E;
+    float dE;
+    float b;
+    int nflips;
+    double H_average;
+    double H_noTS;
+    float E_entropy;
+
+    int iflip, ires, iconf; /* iconf is 0 to n of the conf in a res */
+    int old_conf, new_conf; /* old_conf and new_conf are from 0 to n_conf in conflist */
+
+
+    b = -KCAL2KT/(env.monte_temp/ROOMT);
+
+    mem =n_free * sizeof(int);
+    old_state = (int *) malloc(mem);
+    E_minimum = E_state = get_E();
+
+    /* number of cycles and iters in each cycle */
+    if (env.monte_trace > 0) {
+        cycles = (n-1)/env.monte_trace + 1; /* round up */
+        n_total = cycles*env.monte_trace;
+        n_cycle = env.monte_trace;
+    }
+    else {
+        cycles = 1;
+        n_total = n_cycle = n;
+    }
+
+    /* clear counters */
+    for (i=0; i<conflist.n_conf; i++) conflist.conf[i].counter = 0;
+    H_average = 0.0;
+    H_noTS = 0.0;
+
+    /* Cai */
+    MSRECORD ms_state;
+    ms_state.conf_id = (unsigned short *) calloc(ms_spe_lst.n,  sizeof(unsigned short));
+    ms_state.H       = 0.0;
+    ms_state.counter = 0;
+    ms_state.occ = 0.0;
+
+
+    for (i=0; i<cycles; i++) {
+        /*
+        fprintf(fp, "Step %10d, E_minimum = %10.2f, E_running = %10.2f, E_reset = %10.2f\n",
+        i*n_cycle, E_minimum+E_base, E_state+E_base, get_E()+E_base);
+        */
+        E_entropy = get_totalTS();
+        fprintf(fp, "Step %10d, E_minimum= %10.2f, E_running = %10.2f ,  E_running without entropy = %10.2f\n",
+        i*n_cycle, E_minimum+E_base, E_state+E_base, E_state+E_base - E_entropy);
+        fflush(fp);
+        iters = n_cycle;
+        while (iters) {
+            /*  save state */
+            old_E = E_state;
+            memcpy(old_state, state, mem);
+
+            /* 1st flip */
+            ires  = rand()/(RAND_MAX/n_free + 1);
+            while (1) {
+                iconf = rand()/(RAND_MAX/free_res[ires].n + 1);
+                old_conf = state[ires];
+                new_conf = free_res[ires].conf[iconf];
+                if (old_conf != new_conf) break;
+            }
+            state[ires] = new_conf;
+            E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
+            for (j=0; j<n_free; j++) {
+                E_state += pairwise[new_conf][state[j]] - pairwise[old_conf][state[j]];
+            }
+
+            /* now multiple flip */
+            /*   1st flip -> No (50% probablity)
+             *     | Yes (50% probablity)
+             *   2nd flip (any res in big list)
+             *     |
+             *   3rd flip (any res in big list)
+             *     |
+             *   4th flip (any res in big list)
+             */
+            if (rand() & 1) {   /* do multiple flip if odd number */
+                if (biglist[ires].n) {
+                    nflips = env.monte_flips > (biglist[ires].n+1) ? biglist[ires].n+1: env.monte_flips;
+                    for (k=1; k<nflips; k++) {
+
+                        iflip = biglist[ires].res[rand()/(RAND_MAX/biglist[ires].n + 1)];
+                        iconf = rand()/(RAND_MAX/free_res[iflip].n + 1);
+                        old_conf = state[iflip];
+                        new_conf = free_res[iflip].conf[iconf];
+
+                        state[iflip] = new_conf;
+                        E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
+                        for (j=0; j<n_free; j++) {
+                            E_state += pairwise[new_conf][state[j]] - pairwise[old_conf][state[j]];
+                        }
+                    }
+                }
+            }
+
+
+            /* DEBUG
+            for (j=0; j<n_free; j++) printf("%03d ", state[j]);
+            printf("\n");
+            */
+
+            if (E_minimum > E_state) E_minimum = E_state;
+
+            dE = E_state - old_E;
+            /*if (dE < 0.0) {                                 // go to new low //
+            }
+            //<<< Boltman distribution >>>//
+            else if ((float) rand()/RAND_MAX < exp(b*dE)) { // Go //
+            }
+            else {                                                    // stay, restore the state //
+                memcpy(state, old_state, mem);
+                E_state = old_E;
+            }  */
+
+            if (dE < 0.0 || (float) rand()/RAND_MAX < exp(b*dE)) {                                 /* go to new low */
+                if (ms_state.counter != 0) write_ms(&ms_state);
+                update_conf_id(ms_state.conf_id, state);
+                ms_state.counter = 1;
+                ms_state.H       = E_state + E_base;
+                //ms_state.Hsq     = (E_state + E_base) * (E_state+E_base);
+            }
+            else {                                                    /* stay, restore the state */
+                memcpy(state, old_state, mem);
+                E_state = old_E;
+                if (ms_state.counter != 0) {
+                    ms_state.counter++;
+                    ms_state.H    += E_state + E_base;
+                    //ms_state.Hsq  += (E_state + E_base) * (E_state+E_base);
+                }
+                else {
+                    update_conf_id(ms_state.conf_id, state);
+                    ms_state.counter = 1;
+                    ms_state.H       = E_state + E_base;
+                    //ms_state.Hsq     = (E_state + E_base) * (E_state+E_base);
+                }
+            }
+
+
+            /*
+            if (!memcmp(state, state_check, sizeof(int)*n)) {
+                printf("E=%12.5f\n", E_state);
+            }  DEBUG */
+
+            /* count this state energy */
+            H_average += E_state/n_total;
+            H_noTS += (E_state-get_totalTS())/n_total;
+            /*<<< Do statistics >>>*/
+            for (j=0; j<n_free; j++) {
+                conflist.conf[state[j]].counter++;
+                //+= pairwise_vdw[j]
+            }
+
+            iters --;
+        }
+    }
+
+    E_entropy = get_totalTS();
+    fprintf(fp, "Exit %10d, E_minimum = %10.2f, E_running = %10.2f E_running without TS = %10.2f\n", n_total, E_minimum+E_base, E_state+E_base, E_state+E_base-E_entropy);
+    fprintf(fp, "The average running energy, corresponding to H = %8.3f kCal/mol, H without TS = %8.3f\n", H_average+E_base, H_noTS + E_base);
+    fflush(fp);
+
+    /* compute occ */
+    for (i=0; i<conflist.n_conf; i++) {
+        if (conflist.conf[i].on == 't') continue;
+        conflist.conf[i].occ = (float) conflist.conf[i].counter / n_total;
+    }
+
+    free(old_state);
+
+    return;
+}
+
+
+int write_ms(MSRECORD *ms_state)
+{
+    int i_spe;
+
+    //printf("writing ms ...\n");
+    if(env.re_ms_out){
+    for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+        fwrite(&ms_state->conf_id[i_spe], 1, sizeof(unsigned short), ms_fp);
+        fprintf(re_ms_fp,"%d\t", ms_state->conf_id[i_spe]);
+    }
+    }
+    else{
+    for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+        fwrite(&ms_state->conf_id[i_spe], 1, sizeof(unsigned short), ms_fp);
+        //printf("%d\t", ms_state->conf_id[i_spe]);
+    }
+    }
+
+    //write microstate at ms.dat, binary file
+    fwrite(&ms_state->H, 1, sizeof(double), ms_fp);
+    //fwrite(&ms_state->Hsq, 1, sizeof(double), ms_fp);
+    if (enum_flag == 0) { //for MC sampling
+        ms_state->Hav = ms_state->H/ms_state->counter;
+        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp);
+        fwrite(&ms_state->counter, 1, sizeof(int), ms_fp);
+    }
+    else {  //for enumerate, ms_state->counter is the occ of the microstate
+        ms_state->Hav = ms_state->H;
+        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp);
+        fwrite(&ms_state->occ, 1, sizeof(double), ms_fp);
+    }
+
+
+    //for readable ms.dat (re_ms.dat)
+    if (env.re_ms_out){
+        fprintf(re_ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
+        fprintf(re_ms_fp,"state energy: %lf\t", ms_state->Hav);
+
+        //fprintf(re_ms_fp,"cumulative energy^2: %lf\t", ms_state->Hsq);
+        if (enum_flag == 0 ){   //for MC sampling, ms_state->counter is the times the microstate stays
+        fprintf(re_ms_fp,"count: %d\n", ms_state->counter);}
+    else{ //for enumerate, ms_state->counter is the occ of the microstate
+        fprintf(re_ms_fp,"occ: %5.3f\n", ms_state->occ);}
+    }
+
+    return 0;
+}
+
+int update_conf_id(unsigned short *conf_id, int *state)
+{
+    bool found;
+    int i_spe, i_free, i_fix, ic;
+
+    for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+        found = false;
+        for (i_free=0; i_free<n_free; i_free++) {
+            //if (!strncmp(conflist.conf[state[i_free]].uniqID+5, ms_spe_lst.strings[i_spe]+3, 5)) {
+            if ((!strncmp(conflist.conf[state[i_free]].uniqID+5, ms_spe_lst.strings[i_spe]+3, 5))
+&& (!strncmp(conflist.conf[state[i_free]].uniqID, ms_spe_lst.strings[i_spe], 3))) {
+                found = true;
+                conf_id[i_spe]  = state[i_free];
+                break;
+            }
+        }
+        if (!found) {
+            for (i_fix=0; i_fix<n_fixed; i_fix++) {
+                //if (!strncmp(conflist.conf[fixed_res[i_fix].conf[0]].uniqID+5, ms_spe_lst.strings[i_spe]+3, 5)) {
+                if ((!strncmp(conflist.conf[fixed_res[i_fix].conf[0]].uniqID+5, ms_spe_lst.strings[i_spe]+3, 5))  && (!strncmp(conflist.conf[fixed_res[i_fix].conf[0]].uniqID, ms_spe_lst.strings[i_spe], 3))) {
+                    for (ic=0; ic<fixed_res[i_fix].n; ic++) {
+                        // this will be a problem, if partial occ is assigned
+                        if (conflist.conf[fixed_res[i_fix].conf[ic]].occ > 0.99) {
+                            conf_id[i_spe] = fixed_res[i_fix].conf[ic];
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) break;
+            }
+        }
+        
+        if (!found) {
+            //printf("special list can't find micro states\n");
+        }   
+    }   
+    
+    return 0;
+}   
+
+

@@ -186,6 +186,29 @@ int load_param(char *fname)
          /* save this STRINGS structure */
          param_sav(key1, key2, key3, &value, sizeof(value));
       }
+      /* Edited for transfer hb.tpl to the parameter database --Cai 20170812 */
+      else if (!strcmp(key1, "HDONOR   ") ||
+               !strcmp(key1, "HACCEPT  ")
+              ) { /* convert to STRINGS */
+         STRINGS value;
+         strip(sbuff, line+LEN_KEY1+LEN_KEY2+LEN_KEY3);
+         value.n = strlen(sbuff)/5+1;  /* 4 char for each atom name, 1 separation space, # of donor/acceptor atom (hydrogen) */
+
+         /* allocate string array from the number of atom names */
+         value.strings = (char **) malloc(value.n*sizeof(char *));
+
+         /* loop over all donor/acceptor atom names in the value string */
+         for (Counter=0; Counter<value.n; Counter++) {
+            /* allocate the string for 4 char in each h_donor/h_acceptor entry */
+            value.strings[Counter] = (char *) malloc(5*sizeof(char));
+            /* copy the donor/acceptor atom name */
+            strncpy(value.strings[Counter], sbuff+Counter*5, 4);
+            value.strings[Counter][4] = '\0';
+         }
+         /* save this STRINGS structure */
+         param_sav(key1, key2, key3, &value, sizeof(value));
+      }
+
       else if (!strcmp(key1, "PROTON   ") ||
                !strcmp(key1, "IATOM    ") ||
                !strcmp(key1, "NATOM    ") ||

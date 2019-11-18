@@ -556,6 +556,7 @@ typedef struct {
     char do_rotamers;
     char do_energies;
     char do_monte;
+    char do_analysis;  /* Cai */
 
 
     char minimize_size;
@@ -632,6 +633,7 @@ typedef struct {
     float prune_rmsd;
     float prune_ele;
     float prune_vdw;
+    char  ms_gold_out;  //Cai 
 
     float sas2vdw;
 
@@ -759,12 +761,24 @@ typedef struct {
     float mfe_cutoff;
     int   mfe_flag;
     float  mfe_point;
+    char   ms_out;             /*used for output binary microstate   by Cai */
+    char   re_ms_out;             /*used for output readable microstate    by Cai */
+    char  always_scale_vdw;   /* used for monte_ms  by Cai */
+
 
     int do_corrections; /*boundary corrlib/surfw_l2.cections switch*/
 
     int ignore_input_h; /*toggle on to disregard all hydrogens in input structure*/
 
     char entropy_converge_error[256];
+
+    // Step 6 variables---Cai
+    char get_hbond_matrix;
+    float hbond_upper_limit;
+    float hbond_lower_limit;
+    float hbond_ang_cutoff;
+    char get_hbond_network;
+
 } ENV;
 
 extern ENV env;
@@ -886,3 +900,4 @@ int energies();
 int energies2();
 int monte();
 int monte2();
+int analysis(); /* step 6 ---Cai */
