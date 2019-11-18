@@ -35,6 +35,7 @@
 
 #include <math.h>
 #include "mcce.h"
+
 double ddvv(VECTOR v1, VECTOR v2)
 {  double dx, dy, dz;
    dx = v2.x- v1.x;
