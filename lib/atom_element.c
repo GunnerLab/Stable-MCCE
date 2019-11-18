@@ -4,8 +4,9 @@
 #include "mcce.h"
 
 int atom_element(ATOM *atom)
-{   if (atom->name[0] == 'H') {
+{   if (atom->name[0] == 'H' && atom->name[2] != ' ') { // "HG  " for mercury, "HG12" for gamma H
         strncpy(atom->element, " H", 2);
+        atom->element[2] = '\0';
     }
     else {
         strncpy(atom->element, atom->name, 2);

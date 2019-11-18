@@ -666,6 +666,7 @@ int delete_h(PROT prot)
 {  int n = 0;
    int i, j, k;
 
+   prot_atom_element(prot);
    for (i=0; i<prot.n_res; i++) {
        char toggle[MAXCHAR_LINE];
        /* check DEL_HYDR parameter */
@@ -676,7 +677,7 @@ int delete_h(PROT prot)
        
        for (j=0; j<prot.res[i].n_conf; j++)
            for (k=0; k<prot.res[i].conf[j].n_atom; k++)
-               if (prot.res[i].conf[j].atom[k].name[1] == 'H' && prot.res[i].conf[j].atom[k].on) {
+               if (prot.res[i].conf[j].atom[k].element[1] == 'H' && prot.res[i].conf[j].atom[k].on) {
                    prot.res[i].conf[j].atom[k].on = 0;
                    n++;
                }
