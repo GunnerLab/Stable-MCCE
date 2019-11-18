@@ -211,6 +211,8 @@ int premcce()
     }
     else printf("   Done.\n\n");
 
+    prot_atom_element(prot);
+
     while (place_missing(prot,0) > 0); rm_dupconf(prot, 0.001);
 
     /* IPECE find membrane postion */
