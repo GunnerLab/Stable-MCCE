@@ -93,6 +93,14 @@ int get_env()
     memset(&env, 0, sizeof(ENV));
 
     /* Default values */
+    env.ms_gold_out=0;        //Step 2 ---Cai
+    // Step 6 ---Cai
+    env.get_hbond_matrix = 0;
+    env.hbond_upper_limit = 3.2;
+    env.hbond_lower_limit = 1.2;
+    env.hbond_ang_cutoff = 90.0;
+    env.get_hbond_network = 0;
+ 
     env.test_seed = -1;
     env.minimize_size = 0;
     env.PI                = 4.*atan(1.);
@@ -177,6 +185,10 @@ int get_env()
     env.delphi_clean      =  1;
     env.ionrad = 0.0;
     env.salt =0.00;
+    env.ms_out            =    0;    /* Standard microstate output flag ----Cai */
+    env.re_ms_out            =    0;    /* Readable Standard microstate output flag ----Cai */
+    env.always_scale_vdw  =    1;    /* monte_ms variable ----Cai */
+
 
     /* default value for IPECE */
     memset(&env.ipece,0,sizeof(IPECE));
@@ -509,6 +521,14 @@ int get_env()
             }
             else env.average_pairwise = 0;
         }
+
+        /* Add env.ms_gold_out by Cai */
+        else if (strstr(sbuff, "(MS_GOLD_OUT)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') env.ms_gold_out = 1;
+            else env.ms_gold_out = 0;
+        }
+
         else if (strstr(sbuff, "(EPSILON_PROT)")) {
             env.epsilon_prot = atof(strtok(sbuff, " "));
         }
@@ -564,6 +584,20 @@ int get_env()
             if (str1[0] == 't' || str1[0] == 'T') env.monte_adv_opt = 1;
             else env.monte_adv_opt = 0;
         }
+
+        /* Output microstate variable --Cai*/
+        else if (strstr(sbuff, "(MS_OUT)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') env.ms_out = 1;
+            else env.ms_out = 0;
+        }
+        /* Output readable microstate --Cai*/
+        else if (strstr(sbuff, "(RE_MS_OUT)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') env.re_ms_out = 1;
+            else env.re_ms_out = 0;
+        }
+
         else if (strstr(sbuff, "(MONTE_SEED)")) {
             env.monte_seed = atoi(strtok(sbuff, " "));
         }
@@ -864,6 +898,15 @@ int get_env()
                     env.mfe_point = atof(strtok(sbuff, " "));
                 }
         }
+        /* always_scale_vdw variable ----Cai */
+        else if (strstr(sbuff, "(ALWAYS_SCALE_VDW)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') {
+                env.always_scale_vdw = 1;
+            }
+            else env.always_scale_vdw = 0;
+        }
+
         else if (strstr(sbuff, "(DO_CORRECTIONS)")) {
             str1 = strtok(sbuff, " ");
             if (str1[0] == 'f' || str1[0] == 'F') {
@@ -871,6 +914,38 @@ int get_env()
             }
             else env.do_corrections = 1;
         }
+        /* Step 6 ---Cai */
+        else if (strstr(sbuff, "(DO_ANALYSIS)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') {
+                env.do_analysis = 1;
+            }
+            else env.do_analysis = 0;
+        }
+        else if (strstr(sbuff, "(GET_HBOND_MATRIX)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') {
+                env.get_hbond_matrix = 1;
+            }
+            else env.get_hbond_matrix = 0;
+        }
+        else if (strstr(sbuff, "(HBOND_UPPER_LIMIT)")) {
+            env.hbond_upper_limit = atof(strtok(sbuff, " "));
+        }
+        else if (strstr(sbuff, "(HBOND_LOWER_LIMIT)")) {
+            env.hbond_lower_limit = atof(strtok(sbuff, " "));
+        }
+        else if (strstr(sbuff, "(HBOND_ANG_CUTOFF)")) {
+            env.hbond_ang_cutoff = atof(strtok(sbuff, " "));
+        }
+        else if (strstr(sbuff, "(GET_HBOND_NETWORK)")) {
+            str1 = strtok(sbuff, " ");
+            if (str1[0] == 't' || str1[0] == 'T') {
+                env.get_hbond_network = 1;
+            }
+            else env.get_hbond_network = 0;
+        }
+
     }
 
     fclose(fp);
@@ -984,6 +1059,38 @@ int get_env()
 			else if (strstr(trbuff, "(DO_PREMCCE)")) {
 				fprintf(tr, "%31s%31s\t%31s%31d\n", "(DO_PREMCCE)", strtok(trbuff, " "), "env.do_premcce", env.do_premcce);
 			}
+
+                        /* Cai */
+                        else if (strstr(trbuff, "(DO_ANALYSIS)")) {                                 fprintf(tr, "%31s%31s\t%31s%31d\n", "(DO_ANALYSIS)", strtok(trbuff, " "), "env.do_analysis", env.do_analysis);
+                        }
+                        else if (strstr(trbuff, "(GET_HBOND_MATRIX)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(GET_HBOND_MATRIX)", strtok(trbuff, " "), "env.get_hbond_matrix", env.get_hbond_matrix);
+                        }
+                        else if (strstr(trbuff, "(HBOND_UPPER_LIMIT)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31f\n", "(HBOND_UPPER_LIMIT)", strtok(trbuff, " "), "env.hbond_upper_limit", env.hbond_upper_limit);
+                        }
+                        else if (strstr(trbuff, "(HBOND_LOWER_LIMIT)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31f\n", "(HBOND_LOWER_LIMIT)", strtok(trbuff, " "), "env.hbond_lower_limit", env.hbond_lower_limit);
+                        }
+                        else if (strstr(trbuff, "(HBOND_ANG_CUTOFF)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31f\n", "(HBOND_ANG_CUTOFF)", strtok(trbuff, " "), "env.hbond_ang_cutoff", env.hbond_ang_cutoff);
+                        }
+                        else if (strstr(trbuff, "(GET_HBOND_NETWORK)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(GET_HBOND_NETWORK)", strtok(trbuff, " "), "env.get_hbond_network", env.get_hbond_network);
+                        }
+                        /* Output microState at standard Monte Carlo --Cai  */
+                        else if (strstr(trbuff, "(MS_OUT)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(MS_OUT)", strtok(trbuff, " "), "env.ms_out", env.ms_out);
+                        }
+                        /* Output readable microstate --Cai */
+                        else if (strstr(trbuff, "(RE_MS_OUT)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(RE_MS_OUT)", strtok(trbuff, " "), "env.re_ms_out", env.re_ms_out);
+                        }
+                        else if (strstr(trbuff, "(MS_GOLD_OUT)")) {
+                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(MS_GOLD_OUT)", strtok(trbuff, " "), "env.ms_gold_out", env.ms_gold_out);
+                        }
+
+
 			else if (strstr(trbuff, "(DO_ROTAMERS)")) {
 				fprintf(tr, "%31s%31s\t%31s%31d\n", "(DO_ROTAMERS)", strtok(trbuff, " "), "env.do_rotamers", env.do_rotamers);
 			}
