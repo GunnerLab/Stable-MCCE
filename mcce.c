@@ -1,5 +1,9 @@
-#include <stdio.h>
+extern "C" {
 #include "lib/mcce.h"
+}
+
+#include <stdio.h>
+//#include "lib/mcce.h"
 //#include <mpi.h>
 
 void welcome();
@@ -59,6 +63,15 @@ int main(int argc, char *argv[])
        }
    }
    else printf("Not doing \"Step 4. Monte Carlo Sampling\"\n\n");
+
+
+/* Add H bond analysis---Cai */
+   if (env.do_analysis){
+      printf("Step 6. Hydrogen Bond Network Analysis\n"); fflush(stdout);
+      if (analysis()) { return USERERR;}
+      else printf("Step 6 Done.\n\n");
+   }
+   else printf("Not doing \"Step 6. Hydrogen Bond Network Analysis\"\n\n");
 
 
    return 0;

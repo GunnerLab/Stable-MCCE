@@ -24,7 +24,7 @@ energies.c  assign_crg.c    coulomb.c   coulomb_conf.c\
 get_vdw0.c  get_vdw1.c      relax_water.c      relax_h.c monte.c monte2.c  ran2.c\
 relaxation.c collect_connect.c  torsion.c	vdw_fast.c hbond_extra.c swap.c quick_e.c\
 check_tpl.c zip.c del_dir.c make_matrices.c\
-mem_position.c probe.c add_membrane.c    load_pdb_no_param.c ga_engine.c rotamers_ga.c compute_patches.c
+mem_position.c probe.c add_membrane.c    load_pdb_no_param.c ga_engine.c rotamers_ga.c compute_patches.c write_ms_gold.c
 
 OBJ     = $(SRC:.c=.o)
 
