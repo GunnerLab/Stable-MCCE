@@ -14,9 +14,9 @@
   * [ ] change microstate output format
 * [ ] Hydrogen network report - Xiu Hong
 * [ ] phi map
-   * most occupied confomer pdb file
-   * delphi calculation
-   * apply potential on B factor field for visulization
+   * [ ] most occupied confomer pdb file
+   * [ ] delphi calculation (set up script)
+   * [ ] phi map file
 * [ ] mfe in the analysis report
 
    
