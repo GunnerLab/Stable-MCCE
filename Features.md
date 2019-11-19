@@ -10,6 +10,8 @@
    * only the completly filled conformer is labeled as native
 * [ ] Step 3 pairwise interaction benchmark.
 * [ ] Microstate output - Xiu Hong
+  * [x] upload previous code
+  * [ ] change microstate output format
 * [ ] Hydrogen network report - Xiu Hong
 * [ ] phi map
    * most occupied confomer pdb file
