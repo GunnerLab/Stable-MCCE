@@ -159,10 +159,10 @@ int rotamers()
        fclose(fp);
    }
 
-   /* Relabel rotamer history 
+   /* Relabel rotamer history
    - disable in mcce2.4 version to avoid a conformer explosion in the relaxation
    step when there are multiple conformers in step1_out - Yifan 10/18/2007 */
-   
+
    for (i=0; i<prot.n_res; i++) {
       prot.res[i].n_conf_ori = prot.res[i].n_conf;
       /*
@@ -172,21 +172,21 @@ int rotamers()
       }
       */
    }
-   
+
    /* Relax original conformer */
    if (env.n_initial_relax) {
        printf("   Initial relaxation...\n"); fflush(stdout);
        initial_relaxation(prot);
        printf("   Done\n\n"); fflush(stdout);
    }
-   
+
    /* Relax water */
    if (env.relax_wat) {
        printf("   Relax crystal water..\n"); fflush(stdout);
        relax_water(prot);
        printf("   Done\n\n"); fflush(stdout);
    }
-   
+
    if (env.rebuild_sc) {
        nowA = time(NULL);
        printf("   Rebuild sidechains...\n"); fflush(stdout);
@@ -194,7 +194,7 @@ int rotamers()
        nowB= time(NULL);
        printf("   Done. Time spent = %d\n\n", (int)(nowB - nowA)); fflush(stdout);
    }
-   
+
    printf("   Prepare for rotamer making ...\n");
    get_connect12(prot);
    printf("   Deleting H atoms...%d H atoms were deleted.\n", delete_h(prot)); fflush(stdout);
@@ -283,7 +283,7 @@ int rotamers()
    /* prune by self vdw */
    nowA = time(NULL);
    printf("   Prune rotamers by self VDW potential...\n");
-   
+
    /* add protons for self energy pruning */
    for (kr=0; kr<prot.n_res; kr++) {
        while(place_missing_res(prot,kr,1) > 0); rm_dupconf_res(prot, kr, 0.005);
@@ -292,10 +292,10 @@ int rotamers()
    for (kr=0; kr<prot.n_res; kr++) {
        rm_dupconf_res(prot, kr, 0.005);
    }
-   
+
    printf("   Creating connectivity table...\n"); fflush(stdout);
    get_connect12(prot);
-   
+
    printf("   Computing self VDW potential. It may take a while...\n"); fflush(stdout);
    assign_vdw_param(prot);
    get_vdw0_no_sas(prot);
@@ -383,7 +383,7 @@ int rotamers()
        printf("\n");
        fclose(fp);
    }
-   
+
    /* repack */
    nowA = time(NULL);
    printf("   Repack side chains %d times, remove inaccessible conformers...\n", env.repacks);
@@ -449,7 +449,7 @@ int rotamers()
    else {
       printf("   Skip writing heavy atome rotamer pdb file %s\n", FN_HVROT);
    }
-   
+
    if (env.n_hv_conf_limit > 0) {
        printf("   Randomly prune conformers...\n"); fflush(stdout);
        if (env.rot_mhd_prune == 1) { //execution path that allows for MHD's pruning function
@@ -460,7 +460,7 @@ int rotamers()
        }
        printf("   Done\n\n"); fflush(stdout);
    }
-   
+
    /* Make ionization states */
    printf("   Making ionization conformers...\n"); fflush(stdout);
    if (ionization(prot)) {
@@ -480,7 +480,7 @@ int rotamers()
    write_step2stat(fp, prot, confstat);
    printf("\n");
    fclose(fp);
-   
+
    /* add h */
    printf("   Add H atoms...\n"); fflush(stdout);
    while(place_missing(prot,1) > 0); rm_dupconf(prot, 0.001);
@@ -491,7 +491,7 @@ int rotamers()
 
    c = prune_pv(prot, env.prune_rmsd, env.prune_ele, env.prune_vdw);
    if (c) printf("    %5d conformers deleted in this cycle at %8.3f %8.3f %8.3f\n", c, env.prune_rmsd, env.prune_ele, env.prune_vdw);
-   
+
    //assign_vdw_param(prot);
 
    c = 0;
@@ -523,7 +523,7 @@ int rotamers()
                ins_conf(&prot.res[i_res], k_conf, prot.res[i_res].conf[i_conf].n_atom);
                cpy_conf(&prot.res[i_res].conf[k_conf], &prot.res[i_res].conf[i_conf]);
                prot.res[i_res].conf[k_conf].history[2] = 'T';
-               
+
                for (i_atom=0; i_atom<prot.res[i_res].conf[k_conf].n_atom; i_atom++) {
                    if (prot.res[i_res].conf[k_conf].atom[i_atom].on) {
                        if (prot.res[i_res].conf[k_conf].atom[i_atom].name[1] == 'H') {
@@ -533,7 +533,7 @@ int rotamers()
                }
            }
        }
-       
+
        /* remaking ionization due to different relaxation results on neutral and ionized forms, Yifan -01/25/07 */
        if (env.rot_mhd_prune == 1) { //execution path that allows for MHD's pruning function
        		if (ionization(prot)) {
@@ -541,7 +541,7 @@ int rotamers()
        			return USERERR;
        		}
        }
-       
+
        assign_crg(prot); /* reassign parameters before rm_dupconf(), Yifan -02/07/07 */
        assign_rad(prot);
        rm_dupconf(prot, 0.001); /* identical coordinates */
@@ -551,7 +551,7 @@ int rotamers()
        assign_crg(prot); /* reassign parameters before rm_dupconf(), Yifan -02/07/07 */
        assign_rad(prot);
        rm_dupconf(prot, 0.001); /* identical coordinates */
-       
+
        nowB= time(NULL);
        i=nowB - nowA;
        printf("   Done. Time spent = %d\n\n", i); fflush(stdout);
@@ -591,7 +591,7 @@ int rotamers()
    printf("   Sorting conformers...\n"); fflush(stdout);
    sort_conf(prot);
    printf("   Done\n\n"); fflush(stdout);
-   
+
    /* write full step2_out */
    assign_crg(prot);
    assign_rad(prot);
@@ -603,14 +603,14 @@ int rotamers()
    else {
       printf("   Skip writing full rotamer file step2_out.full.\n");
    }
-   
+
    nowA = time(NULL);
    printf("   Delete duplicate conformers ...\n");
    fflush(stdout);
 
    c = prune_pv(prot, env.prune_rmsd, env.prune_ele, env.prune_vdw);
    if (c) printf("      %d conformers deleted in this cycle at %8.3f %8.3f %8.3f\n", c, env.prune_rmsd, env.prune_ele, env.prune_vdw);
-   
+
    nowB= time(NULL);
    i=nowB - nowA;
    printf("   Done. Time spent = %d\n\n", i); fflush(stdout);
@@ -625,14 +625,14 @@ int rotamers()
    write_step2stat(fp, prot, confstat);
    printf("\n");
    fclose(fp);
-   
+
    /* IPECE add membrane */
    if (env.ipece.add_mem) {
         printf("   Add membrane.\n");   fflush(stdout);
         add_membrane(&prot, &env.ipece);
         printf("   Done\n\n");   fflush(stdout);
    }
-   
+
    /* write out */
    printf("   Write output...\n"); fflush(stdout);
    /* mcce pdb */
@@ -647,7 +647,7 @@ int rotamers()
    /*
    get_demetri_out();
    */
-   
+
    printf("   Done\n\n"); fflush(stdout);
 
    nowEnd = time(NULL);
@@ -689,7 +689,7 @@ int delete_h(PROT prot)
            if (strchr(toggle,'f')) continue;
            if (strchr(toggle,'F')) continue;
        }
-       
+
        for (j=0; j<prot.res[i].n_conf; j++)
            for (k=0; k<prot.res[i].conf[j].n_atom; k++)
                if (prot.res[i].conf[j].atom[k].element[1] == 'H' && prot.res[i].conf[j].atom[k].on) {
@@ -719,14 +719,14 @@ int place_rot(PROT prot)
          C = (int) (prot.res[i].rotations/2.0+0.5);
          if (C <= 0) C = 1;
          printf("   Reduce rotation steps from %2d to %2d for residue \"%s %c%04d\" as SAS=%3.f%%\n",  prot.res[i].rotations,
-                                                                                 C,                                 
+                                                                                 C,
                                                                                  prot.res[i].resName,
                                                                                  prot.res[i].chainID,
                                                                                  prot.res[i].resSeq,
                                                                                  prot.res[i].sas*100.0);
          prot.res[i].rotations = C;
       }
-      
+
       for (i_conf = 1; i_conf<prot.res[i].n_conf; i_conf++) {
           if (prot.res[i].conf[i_conf].history[2] == 'I' || prot.res[i].conf[i_conf].history[2] == 'B') {
               break;
@@ -749,7 +749,7 @@ int place_rot(PROT prot)
           prot.res[i].conf[ins].history[2] = 'R';
           get_connect12_conf(i,ins,prot);
       }
-      
+
       C = 0;
       while (1) {
          sprintf(C_str, "%d", C);
@@ -791,11 +791,11 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
        /* search for the bond: atom2 is the second atom of the rotatable. This atom must
        * be in this residue. atom2->v2
        */
-       
+
        if (prot.res[i_res].conf[j].history[2] != 'R') continue; /* only rotate 'R' conformers */
-       
+
        if ((k=iatom(res->conf[j].confName, rule.atom2)) == -1) {
-           
+
            /* search in the backbone */
            if ((k=iatom(res->conf[0].confName, rule.atom2)) == -1) {
                printf("   Error: place_rot_rule(): can't find atom \"%s\" in residue \"%s\"\n",
@@ -813,7 +813,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
            atom2_p = &res->conf[j].atom[k];
        }
        v2 = atom2_p->xyz;
-       
+
        /* search for the bond: atom1 is the first atom of the bond, it is one of the connected
        * atoms of atom2, but not necessary in this conformer or this residue */
        found = 0;
@@ -832,7 +832,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
            atom1_p = &res->conf[j].atom[k];
            found = 1;
        }
-       
+
        if (found)  v1 = atom1_p->xyz;
        else {
            printf("   FATAL: place_rot_rule(): can't find atom \"%s\" connected to \"%s\" in residue \"%s\"\n",
@@ -840,14 +840,14 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
            //return USERERR;
            continue; /* jump to the next conformer, instead of exiting the subroutine - Yifan */
        }
-       
+
        /* If "ALL_CONNECTED" is in the parameter, then search for the connected atoms */
        if (strstr(rule.affected, "ALL_CONNECTED")) {
            int i_connect;
            n_connected = 1;
            connected = malloc(sizeof(ATOM*));
            connected[0] = atom2_p;
-           
+
            for (i_connect=0; i_connect<n_connected; i_connect++) {
                int j_connect;
                for (j_connect=0; j_connect<MAX_CONNECTED; j_connect++) {
@@ -856,7 +856,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
                    if (!atom_in_network) break; /* end of connect12 array */
                    if (!atom_in_network->on) continue; /* empty atom slot skipped */
                    if (atom1_p == atom_in_network) continue; /* back connect to atom1 is disallowed */
-                   
+
                    /* search the array to see if this atom is already in the array */
                    for (k_connect=0; k_connect<n_connected; k_connect++) {
                        if (connected[k_connect] == atom_in_network) {
@@ -864,7 +864,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
                        }
                    }
                    if (k_connect<n_connected) continue;
-                   
+
                    /* add this connected atom into the array */
                    n_connected++;  /* n_connect changes in the loop!! The search will continue  */
                    connected = realloc(connected, n_connected*sizeof(ATOM *));
@@ -872,15 +872,15 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
                }
            }
        }
-       
+
        /* rotatable bond is found, now use the coordinates to get the rotation axis */
        axis = line_2v(v1, v2);
-       
+
        geom_reset(&op);
        for (i=0; i<n-1; i++) { /* rotate n-1 times */
            /* get rotation operator */
            geom_roll(&op, phi, axis);
-           
+
            /* add a copy of the current conformer */
            ins = ins_conf(res, res->n_conf, res->conf[j].n_atom);
            if (ins == USERERR) return USERERR;
@@ -924,7 +924,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
                    }
                }
            }
-           
+
            /* check for duplication */
            for (k_conf=1; k_conf<res->n_conf-1;k_conf++) {
                if(!cmp_conf_hv(res->conf[res->n_conf-1], res->conf[k_conf], 0.2)) {
@@ -933,7 +933,7 @@ int place_rot_rule(int i_res, ROTAMER rule, int n, PROT prot)
                }
            }
        }
-       
+
        if (strstr(rule.affected, "ALL_CONNECTED")) {
            n_connected=0;
            free(connected);
@@ -951,7 +951,7 @@ int swing_rot(PROT prot)
    char sbuff[MAXCHAR_LINE];
 
    assign_vdw_param(prot);
-   
+
    /* construct rotamers */
    for (i=0; i<prot.n_res; i++) {
       C = 0;
@@ -968,12 +968,12 @@ int swing_rot(PROT prot)
                                                                                  prot.res[i].sas*100.0);
          continue;
       }
-      
+
       for (i_conf = 1; i_conf<prot.res[i].n_conf; i_conf++) {
           if (prot.res[i].conf[i_conf].history[2] == 'I' ||
               prot.res[i].conf[i_conf].history[2] == 'B' ||
               prot.res[i].conf[i_conf].history[2] == 'O') {
-          
+
           int ins;
           /* add a copy of the current conformer */
           ins = ins_conf(&prot.res[i], prot.res[i].n_conf, prot.res[i].conf[i_conf].n_atom);
@@ -996,7 +996,7 @@ int swing_rot(PROT prot)
          }
          C++;
       }
-      
+
       /* prune by self energy here to save memory */
       if (prot.res[i].n_conf > 1000) {
           int kc;
@@ -1006,10 +1006,10 @@ int swing_rot(PROT prot)
           }
           get_vdw0_res_no_sas(i, prot);
           get_vdw1_res(i, prot);
-          
+
           prune_by_vdw_res(i,prot, env.vdw_cutoff);
       }
-      
+
    }
    return 0;
 }
@@ -1035,9 +1035,9 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
        * be in this residue. atom2->v2
        */
        if (prot.res[i_res].conf[j].history[2] != 'S') continue; /* only rotate 'S' conformers */
-       
+
        if ((k=iatom(res->conf[j].confName, rule.atom2)) == -1) {
-           
+
            /* search in the backbone */
            if ((k=iatom(res->conf[0].confName, rule.atom2)) == -1) {
                printf("   Error: place_rot_rule(): can't find atom \"%s\" in residue \"%s\"\n",
@@ -1074,7 +1074,7 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
            atom1_p = &res->conf[j].atom[k];
            found = 1;
        }
-       
+
        if (found)  v1 = atom1_p->xyz;
        else {
            printf("   FATAL: place_rot_rule(): can't find atom \"%s\" connected to \"%s\" in residue \"%s\"\n",
@@ -1089,7 +1089,7 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
            n_connected = 1;
            connected = malloc(sizeof(ATOM*));
            connected[0] = atom2_p;
-           
+
            for (i_connect=0; i_connect<n_connected; i_connect++) {
                int j_connect;
                for (j_connect=0; j_connect<MAX_CONNECTED; j_connect++) {
@@ -1098,7 +1098,7 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
                    if (!atom_in_network) break; /* end of connect12 array */
                    if (!atom_in_network->on) continue; /* empty atom slot skipped */
                    if (atom1_p == atom_in_network) continue; /* back connect to atom1 is disallowed */
-                   
+
                    /* search the array to see if this atom is already in the array */
                    for (k_connect=0; k_connect<n_connected; k_connect++) {
                        if (connected[k_connect] == atom_in_network) {
@@ -1106,7 +1106,7 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
                        }
                    }
                    if (k_connect<n_connected) continue;
-                   
+
                    /* add this connected atom into the array */
                    n_connected++;  /* n_connect changes in the loop!! The search will continue  */
                    connected = realloc(connected, n_connected*sizeof(ATOM *));
@@ -1114,14 +1114,14 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
                }
            }
        }
-       
+
        /* rotatable bond is found, now use the coordinates to get the rotation axis */
        axis = line_2v(v1, v2);
 
       /* swing left */
       geom_reset(&op);
       geom_roll(&op, -phi, axis);
-      
+
       /* add a copy of the current conformer */
       ins = ins_conf(res, res->n_conf, res->conf[j].n_atom);
       if (ins == USERERR) return USERERR;
@@ -1167,14 +1167,14 @@ int swing_rot_rule(int i_res, ROTAMER rule, float phi, PROT prot)
       /* swing right */
       geom_reset(&op);
       geom_roll(&op, phi, axis);
-      
+
       /* add a copy of the current conformer */
       ins = ins_conf(res, res->n_conf, res->conf[j].n_atom);
       if (ins == USERERR) return USERERR;
       cpy_conf(&res->conf[ins], &res->conf[j]);
       strncpy(res->conf[ins].history+4, "Sw", 2);
       get_connect12_conf(i_res,ins,prot);
-      
+
       /* apply rotation operator to the atoms that match the parameter */
       if (strstr(rule.affected, "ALL_CONNECTED")) {
           int i_connect;
@@ -1225,12 +1225,12 @@ int extra_rot(PROT prot)
     designed for ligand binding, such as quinones */
     char toggle[MAXCHAR_LINE];
     int i_res;
-    
+
     /* translations */
     for (i_res=0; i_res<prot.n_res; i_res++) {
         RES *res_p = &prot.res[i_res];
         int i_trans;
-        
+
         /* check if this residue will be translated */
         if ( !param_get("TRANS", prot.res[i_res].resName, "", toggle) ) {
             if (strchr(toggle,'f')) continue;
@@ -1239,24 +1239,24 @@ int extra_rot(PROT prot)
         else {
             continue;
         }
-        
+
         /* loop over number of translation steps, defined in run.prm */
         for (i_trans = 0; i_trans < env.n_trans; i_trans++) {
             int n_conf, i_conf;
-            
+
             /* loop over all existing conformers */
             n_conf = prot.res[i_res].n_conf;
             for (i_conf = 1; i_conf < n_conf; i_conf++) {
                 int i_direc, j_direc, k_direc;
-                
+
                 /* move in three directions */
                 for (i_direc = -1; i_direc <= 1; i_direc++) {
                     for (j_direc = -1; j_direc <= 1; j_direc++) {
                         for (k_direc = -1; k_direc <= 1; k_direc++) {
                             int ins, i_atom, k_conf;
-                            
+
                             if (!(i_direc||j_direc||k_direc)) continue; /* i,j,k all 0, no movement */
-                            
+
                             /* add a copy of the current conformer */
                             ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                             if (ins == USERERR) {
@@ -1265,7 +1265,7 @@ int extra_rot(PROT prot)
                             }
                             cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                             strncpy(res_p->conf[ins].history+2, "Tr", 2);
-                            
+
                             /* move the new conformer */
                             for (i_atom=0; i_atom<res_p->conf[ins].n_atom; i_atom++) {
                                 if (!res_p->conf[ins].atom[i_atom].on) continue;
@@ -1273,7 +1273,7 @@ int extra_rot(PROT prot)
                                 res_p->conf[ins].atom[i_atom].xyz.y += env.trans_dist*(float)j_direc;
                                 res_p->conf[ins].atom[i_atom].xyz.z += env.trans_dist*(float)k_direc;
                             }
-                            
+
                             /* check for duplication */
                             for (k_conf=1; k_conf<ins; k_conf++) {
                                 if(!cmp_conf_hv(res_p->conf[ins], res_p->conf[k_conf], 0.05)) {
@@ -1287,65 +1287,65 @@ int extra_rot(PROT prot)
             }
         }
     }
-    
+
     /* rotation (using different parameter from rotamer making subroutine) */
     for (i_res=0; i_res<prot.n_res; i_res++) {
         int  counter;
         char counter_str[5];
         char rule[MAXCHAR_LINE];
         RES * res_p = &prot.res[i_res];
-        
+
         counter = 0;
         while (1) {
             char atom1[5], atom2[5], atom3[5];
             int i_conf;
             int n_conf = prot.res[i_res].n_conf;
-            
+
             sprintf(counter_str, "%d", counter);
             if (param_get("SLIDE", prot.res[i_res].resName, counter_str, rule)) break;
             counter++;
-            
+
             while (strlen(rule)<15) strcat(rule, " ");
-            
+
             strncpy(atom1, rule,    4); atom1[4] = '\0';
             strncpy(atom2, rule+5,  4); atom2[4] = '\0';
             strncpy(atom3, rule+10, 4); atom3[4] = '\0';
-            
+
             for (i_conf = 1; i_conf<n_conf; i_conf++) {
                 int ins, i_atom, k_atom1, k_atom2, k_atom3;
                 PLANE plane;
                 VECTOR v0, v1;
                 LINE axis;
                 GEOM op;
-                
+
                 if ((k_atom1 = iatom(res_p->conf[i_conf].confName, atom1)) == -1) continue;
                 if ((k_atom2 = iatom(res_p->conf[i_conf].confName, atom2)) == -1) continue;
                 if ((k_atom3 = iatom(res_p->conf[i_conf].confName, atom3)) == -1) continue;
-                
+
                 plane = plane_3v(res_p->conf[i_conf].atom[k_atom1].xyz,res_p->conf[i_conf].atom[k_atom2].xyz,res_p->conf[i_conf].atom[k_atom3].xyz);
-                
+
                 /* v0 is the position of atom1 */
                 v0 = res_p->conf[i_conf].atom[k_atom1].xyz;
                 v1 = vector_vplusv(v0,plane.t);
-                
+
                 axis = line_2v(v0, v1);
-                
+
                 if (res_p->do_rot) {
                     int i_rot;
                     float phi = env.PI*2.0 /(float) res_p->rotations;
                     geom_reset(&op);
-                    
+
                     for (i_rot=0; i_rot<res_p->rotations-1; i_rot++) { /* rotate n-1 times */
                         /* get rotation operator */
                         /* op is not reset after each rotation step, therefore kept rotating */
                         geom_roll(&op, phi, axis);
-                        
+
                         /* add a copy of the current conformer */
                         ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                         if (ins == USERERR) return USERERR;
                         cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                         strncpy(res_p->conf[ins].history+4, "Ro", 2);
-                        
+
                         /* apply rotation to each atom */
                         for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                             if (!res_p->conf[ins].atom[i_atom].on) continue;
@@ -1357,90 +1357,90 @@ int extra_rot(PROT prot)
                     /* rotate in one direction */
                     geom_reset(&op);
                     geom_roll(&op, res_p->phi_swing, axis);
-                    
+
                     /* add a copy of the current conformer */
                     ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                     if (ins == USERERR) return USERERR;
                     cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                     strncpy(res_p->conf[ins].history+4, "Sw", 2);
-                    
+
                     /* apply rotation to each atom */
                     for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                         if (!res_p->conf[ins].atom[i_atom].on) continue;
                         geom_apply(op, &res_p->conf[ins].atom[i_atom].xyz);
                     }
-                    
+
                     /* rotate in the other direction */
                     geom_reset(&op);
                     geom_roll(&op, -res_p->phi_swing, axis);
-                    
+
                     /* add a copy of the current conformer */
                     ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                     if (ins == USERERR) return USERERR;
                     cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                     strncpy(res_p->conf[ins].history+4, "Sw", 2);
-                    
+
                     /* apply rotation to each atom */
                     for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                         if (!res_p->conf[ins].atom[i_atom].on) continue;
                         geom_apply(op, &res_p->conf[ins].atom[i_atom].xyz);
                     }
-                    
+
                 }
             }
-            
+
         }
         /* same as SLIDE, except using the midpoint of first two atoms for axis */
         while (1) {
             char atom1[5], atom2[5], atom3[5];
             int i_conf;
             int n_conf = prot.res[i_res].n_conf;
-            
+
             sprintf(counter_str, "%d", counter);
             if (param_get("SPIN", prot.res[i_res].resName, counter_str, rule)) break;
             counter++;
-            
+
             while (strlen(rule)<15) strcat(rule, " ");
-            
+
             strncpy(atom1, rule,    4); atom1[4] = '\0';
             strncpy(atom2, rule+5,  4); atom2[4] = '\0';
             strncpy(atom3, rule+10, 4); atom3[4] = '\0';
-            
+
             for (i_conf = 1; i_conf<n_conf; i_conf++) {
                 int ins, i_atom, k_atom1, k_atom2, k_atom3;
                 PLANE plane;
                 VECTOR v0, v1;
                 LINE axis;
                 GEOM op;
-                
+
                 if ((k_atom1 = iatom(res_p->conf[i_conf].confName, atom1)) == -1) continue;
                 if ((k_atom2 = iatom(res_p->conf[i_conf].confName, atom2)) == -1) continue;
                 if ((k_atom3 = iatom(res_p->conf[i_conf].confName, atom3)) == -1) continue;
-                
+
                 plane = plane_3v(res_p->conf[i_conf].atom[k_atom1].xyz,res_p->conf[i_conf].atom[k_atom2].xyz,res_p->conf[i_conf].atom[k_atom3].xyz);
-                
+
                 /* v0 is the midpoint if atom1 and atom2 */
                 v0 = vector_rescale(vector_vplusv(res_p->conf[i_conf].atom[k_atom1].xyz, res_p->conf[i_conf].atom[k_atom2].xyz), 0.5);
                 v1 = vector_vplusv(v0,plane.t);
-                
+
                 axis = line_2v(v0, v1);
-                
+
                 if (res_p->do_rot) {
                     int i_rot;
                     float phi = env.PI*2.0 /(float) res_p->rotations;
                     geom_reset(&op);
-                    
+
                     for (i_rot=0; i_rot<res_p->rotations-1; i_rot++) { /* rotate n-1 times */
                         /* get rotation operator */
                         /* op is not reset after each rotation step, therefore kept rotating */
                         geom_roll(&op, phi, axis);
-                        
+
                         /* add a copy of the current conformer */
                         ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                         if (ins == USERERR) return USERERR;
                         cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                         strncpy(res_p->conf[ins].history+4, "Ro", 2);
-                        
+
                         /* apply rotation to each atom */
                         for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                             if (!res_p->conf[ins].atom[i_atom].on) continue;
@@ -1452,39 +1452,39 @@ int extra_rot(PROT prot)
                     /* rotate in one direction */
                     geom_reset(&op);
                     geom_roll(&op, res_p->phi_swing, axis);
-                    
+
                     /* add a copy of the current conformer */
                     ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                     if (ins == USERERR) return USERERR;
                     cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                     strncpy(res_p->conf[ins].history+4, "Sw", 2);
-                    
+
                     /* apply rotation to each atom */
                     for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                         if (!res_p->conf[ins].atom[i_atom].on) continue;
                         geom_apply(op, &res_p->conf[ins].atom[i_atom].xyz);
                     }
-                    
+
                     /* rotate in the other direction */
                     geom_reset(&op);
                     geom_roll(&op, -res_p->phi_swing, axis);
-                    
+
                     /* add a copy of the current conformer */
                     ins = ins_conf(res_p, res_p->n_conf, res_p->conf[i_conf].n_atom);
                     if (ins == USERERR) return USERERR;
                     cpy_conf(&res_p->conf[ins], &res_p->conf[i_conf]);
                     strncpy(res_p->conf[ins].history+4, "Sw", 2);
-                    
+
                     /* apply rotation to each atom */
                     for (i_atom = 0; i_atom < res_p->conf[i_conf].n_atom; i_atom++) {
                         if (!res_p->conf[ins].atom[i_atom].on) continue;
                         geom_apply(op, &res_p->conf[ins].atom[i_atom].xyz);
                     }
-                    
+
                 }
-                
+
             }
-            
+
         }
     }
     return 0;
@@ -1542,16 +1542,16 @@ int prune_by_vdw_res(int kr, PROT prot, float delta_E)
     int n = 0;
     int kc;
     float E_low;
-    
+
     if (prot.res[kr].n_conf > 1) E_low = prot.res[kr].conf[1].E_self;
-    
+
     for (kc=1; kc<prot.res[kr].n_conf; kc++) {
         if (E_low>prot.res[kr].conf[kc].E_self) E_low = prot.res[kr].conf[kc].E_self;
     }
-    
+
     /* keep all conformers that have favorable self energy */
     if (E_low < 0) E_low = 0;
-    
+
     for (kc=2; kc<prot.res[kr].n_conf; kc++) {
         if (prot.res[kr].conf[kc].E_self - E_low > delta_E) {
             del_conf(&prot.res[kr], kc);
@@ -1559,7 +1559,7 @@ int prune_by_vdw_res(int kr, PROT prot, float delta_E)
             n++;
         }
     }
-    
+
     return n;
 }
 
@@ -1612,8 +1612,8 @@ int rot_pack(PROT prot, int n)
 
     /* timing begins, estimate T from counter */
     nowA = time(NULL);
-    
-    /* increase vdw radii of carbon atoms 
+
+    /* increase vdw radii of carbon atoms
     for (i_res = 0; i_res < prot.n_res; i_res++) {
         for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
             for (i_atom=0; i_atom<prot.res[i_res].conf[i_conf].n_atom; i_atom++) {
@@ -1625,7 +1625,7 @@ int rot_pack(PROT prot, int n)
         }
     }
     */
-    
+
     get_vdw0(prot);
     get_vdw1(prot);
     for (i_res=0; i_res<prot.n_res; i_res++) {
@@ -1633,12 +1633,12 @@ int rot_pack(PROT prot, int n)
             prot.res[i_res].conf[i_conf].E_torsion = torsion_conf(&prot.res[i_res].conf[i_conf]);
             prot.res[i_res].conf[i_conf].E_self = prot.res[i_res].conf[i_conf].E_vdw0
             + prot.res[i_res].conf[i_conf].E_vdw1 + prot.res[i_res].conf[i_conf].E_torsion;
-            
+
             /* ignore favorable energies */
             if (prot.res[i_res].conf[i_conf].E_self < 0) prot.res[i_res].conf[i_conf].E_self = 0.;
         }
     }
-    
+
     /* Setup for fast vdw calculations */
     setup_vdw_fast(prot);
 
@@ -1688,7 +1688,7 @@ int rot_pack(PROT prot, int n)
             n_ngh = prot.res[i_res].n_ngh;
             prot.res[i_res].ngh = realloc(prot.res[i_res].ngh, n_ngh*sizeof(void *));
             prot.res[i_res].ngh[n_ngh-1] = &prot.res[j_res];
-            
+
             /* memory for vdw matrix */
             pairwise[i_res] = realloc(pairwise[i_res], n_ngh*sizeof(void *));
             pairwise[i_res][n_ngh-1] = malloc(prot.res[i_res].n_conf * sizeof(void *));
@@ -1704,20 +1704,20 @@ int rot_pack(PROT prot, int n)
                 if (!prot.res[i_res].conf[i_conf].n_atom) continue;
                 for (j_conf=1; j_conf<prot.res[j_res].n_conf; j_conf++) {
                     if (!prot.res[j_res].conf[j_conf].n_atom) continue;
-                    
+
                     pair_vdw = vdw_conf_fast(i_res,i_conf,j_res,j_conf,prot,0);
 
                     /* ignore favorable energies */
                     if (env.repack_fav_vdw_off == 1) {
                         if (pair_vdw < 0.) pair_vdw = 0.;
                     }
-                    
+
                     /* H bond energy correction */
                     /* turned off, low energy from h bond traps conformer in certain positions, and loses occupancy for other (exposed) conformers -Yifan */
                     //pair_vdw += hbond_extra(prot.res[i_res].conf[i_conf], prot.res[j_res].conf[j_conf]);
 
                     pairwise[i_res][n_ngh-1][i_conf][j_conf] = pair_vdw;
-                    
+
                     if (fabs(pair_vdw) > env.ngh_vdw_thr) {
                         all_small = 0;
                     }
@@ -1738,9 +1738,9 @@ int rot_pack(PROT prot, int n)
         printf("%s %c%4d, n_ngh=%3d, sas=%8.2f%%\n",
         prot.res[i_res].resName,prot.res[i_res].chainID,prot.res[i_res].resSeq,prot.res[i_res].n_ngh,100.*prot.res[i_res].sas);
         */
-        
+
     }
-    
+
     /* free the memory used by connectivity table */
     for (i_res=0; i_res<prot.n_res; i_res++) {
         free_connect_res(prot,i_res);
@@ -1764,7 +1764,7 @@ int rot_pack(PROT prot, int n)
     }
     for (i_counter=0;i_counter<21;i_counter++) printf("%d\n", vdw_counter[i_counter]);
     */
-    
+
     nowB= time(NULL);
     i=nowB - nowA;
     printf("      Actual time is %d\n", i);
@@ -1895,7 +1895,7 @@ int rot_pack(PROT prot, int n)
         prot.res[i_res].ngh = NULL;
         prot.res[i_res].n_ngh = 0;
     }
-    
+
     /* delete low occpancy conformers */
     C = 0;
     for (i=0; i<prot.n_res; i++) {
@@ -1910,7 +1910,7 @@ int rot_pack(PROT prot, int n)
                 C++;
             }
         }
-        
+
         /* if there are more than 1 exposed conformer, delete the low occupancy ones */
         for (j=prot.res[i].n_conf_ori; j<prot.res[i].n_conf; j++) {
             if (prot.res[i].conf[j].history[2] != 'E') continue;
@@ -1932,7 +1932,7 @@ int rot_pack(PROT prot, int n)
     /* remove protons again */
     delete_h(prot);
     rm_dupconf_hv(prot);
-    
+
     free(state.res);
     for (i_res = 0; i_res < prot.n_res; i_res++) {
         if (!prot.res[i_res].n_ngh) continue;
@@ -1993,7 +1993,7 @@ int rot_refine(PROT prot, MICROSTATE state, float ****pairwise) {
             switching = 1;
             n_candidate = 0;
         }
-        
+
         if (switching) {
             /* collect candidates */
             for (i_conf=1; i_conf<prot.res[i_res].n_conf; i_conf++) {
@@ -2003,7 +2003,7 @@ int rot_refine(PROT prot, MICROSTATE state, float ****pairwise) {
                     candidate[n_candidate-1] = i_conf;
                 }
             }
-            
+
             i_conf = state.res[i_res];
             prot.res[i_res].conf[i_conf].on = 0;
             i_conf = candidate[(int)(ran2(&idum) * (float)n_candidate)];
@@ -2012,7 +2012,7 @@ int rot_refine(PROT prot, MICROSTATE state, float ****pairwise) {
             state.res[i_res] = i_conf;
             n++;
         }
-        
+
         for (i_conf=1; i_conf<prot.res[i_res].n_conf; i_conf++) {
             if (E_state[i_conf] - E_min < repack_e_thr) {
                 prot.res[i_res].conf[i_conf].counter_trial = 1;
@@ -2065,9 +2065,9 @@ int place_missing(PROT prot, int handle_addconf) {
     char resName[4];
     int  Missing, n_added=0;
     STRINGS     conflist;
-    
+
     memset(dummy_atom,0,MAX_CONNECTED*sizeof(ATOM));
-    
+
     for (i_res=0; i_res<prot.n_res; i_res++) {
         res_p = &prot.res[i_res];
         for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
@@ -2120,7 +2120,7 @@ int place_missing(PROT prot, int handle_addconf) {
             //int k_conf; /* used for checking duplicates later in the loop */
             conf_p = &prot.res[i_res].conf[i_conf];
             for (i_atom=0; i_atom<prot.res[i_res].conf[i_conf].n_atom; i_atom++) {
-                
+
                 atom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
                 if (!atom_p->on) continue;
                 if( param_get("CONNECT", conf_p->confName, atom_p->name, &connect) ) {
@@ -2132,7 +2132,7 @@ int place_missing(PROT prot, int handle_addconf) {
                 //printf("orbital %s\n",connect.orbital);
                 strip(orbital, connect.orbital);
                 if (!strcmp(orbital,"ion")) continue;
-                
+
                 /* Collect known atoms and unknown atoms */
                 memset(known_atoms,0,MAX_CONNECTED*sizeof(void *));
                 memset(to_complete_atoms,0,MAX_CONNECTED*sizeof(void *));
@@ -2145,10 +2145,10 @@ int place_missing(PROT prot, int handle_addconf) {
                                 if (!strncmp(connect.atom[t_connect].name, " CB ", 4)) break;
                             }
                             if (t_connect == connect.n) break;
-                            else { 
+                            else {
                                 param_get("CONFLIST", prot.res[i_res].resName, "", &conflist);
                                 int tem_n_atom;
-                                param_get("NATOM", conflist.strings[1], "", &tem_n_atom); 
+                                param_get("NATOM", conflist.strings[1], "", &tem_n_atom);
                                 ins = ins_conf(&prot.res[i_res], prot.res[i_res].n_conf, tem_n_atom);
                                 strcpy(prot.res[i_res].conf[ins].confName, conflist.strings[1]);
                                 strcpy(prot.res[i_res].conf[ins].history, atom_p->history);
@@ -2168,9 +2168,9 @@ int place_missing(PROT prot, int handle_addconf) {
                         to_complete_atoms[n_complete-1] = atom_p->connect12[i_connect];
                     }
                 }
-                
+
                 if (!n_complete) continue;
-                
+
                 if (!strcmp(orbital, "sp3")) {
                     /* If total number connected atoms is less than 4 for sp3, use dummy atoms to complete 4 slots */
                     if ( (n_known + n_complete) < 4 ) {
@@ -2178,17 +2178,17 @@ int place_missing(PROT prot, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 3) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp3_3known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
                         known_atoms[2]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -2199,7 +2199,7 @@ int place_missing(PROT prot, int handle_addconf) {
                         bond_angle = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
 
                         //printf("   Debugging! Case sp3, n_known = 2\n");
-                        
+
                         sp3_2known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
@@ -2207,11 +2207,11 @@ int place_missing(PROT prot, int handle_addconf) {
                         &to_complete_atoms[1]->xyz,
                         bond_length,
                         bond_angle);
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
-                        
+
                         if (!i_conf) continue; /* do not add extra conf for backbone */
                         //printf("   Debugging! Case sp3, n_known = 2, i_conf!=0\n");
                         if (!handle_addconf) continue; /* do not add extra conf if the flag is 0 */
@@ -2219,13 +2219,13 @@ int place_missing(PROT prot, int handle_addconf) {
                             if (to_complete_atoms[1]->name[1] == 'H') continue; /* do not add extra conf if added atoms are all protons */
                         }
                         //printf("   Debugging! Case sp3, n_known = 2, handle_addconf !=0\n");
-                        
+
                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                         if (ins == USERERR) return USERERR;
                         conf_p = &prot.res[i_res].conf[i_conf]; /* reassign conf_p because ins_conf changes the memory position of conf array */
                         if (cpy_conf(&res_p->conf[res_p->n_conf-1], conf_p)) {printf("   Error! place_missing(): couldn't copy the conformer \"%s\" in residue %s %d, to new position k_conf = %d\n",conf_p->confName,res_p->resName, res_p->resSeq, res_p->n_conf-1); fatal++;}
                         get_connect12_conf(i_res, res_p->n_conf-1, prot);
-                        
+
                         sp3_2known( atom_p->xyz,
                             known_atoms[0]->xyz,
                             known_atoms[1]->xyz,
@@ -2234,7 +2234,7 @@ int place_missing(PROT prot, int handle_addconf) {
                             bond_length,
                             bond_angle);
                         //printf("debug %s %s\n",prot.res[i_res].resName,to_complete_atoms[0]->name);
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res, i_conf, prot);
@@ -2275,7 +2275,7 @@ int place_missing(PROT prot, int handle_addconf) {
                                 error++;
                             }
                         }
-                        
+
                         if (strcmp(atom_p->name, tors.atom1)) {
                             printf("   Error! Atom %s is in torsion parameter of conformer %s atom %s, but connected atom %s was found\n",
                             tors.atom1,conf_p->confName,to_complete_atoms[0]->name,atom_p->name);
@@ -2297,10 +2297,10 @@ int place_missing(PROT prot, int handle_addconf) {
                             atom_p->name, res_p->resName, res_p->resSeq, atom_p->name, known_atoms[0]->name);
                             continue;
                         }
-                        
+
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
                         bond_angle  = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
-                        
+
                         n_fold = tors.n_fold[0];
                         /*
                         if (tors.n_fold[0] != 1 && handle_addconf ==2) {
@@ -2320,7 +2320,7 @@ int place_missing(PROT prot, int handle_addconf) {
                             if (i_fold) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
-                                
+
                                 if (to_complete_atoms[0]->name[1] == 'H') {
                                     if (to_complete_atoms[1]->name[1] == 'H') {
                                         if (to_complete_atoms[2]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons (methyl) */
@@ -2334,7 +2334,7 @@ int place_missing(PROT prot, int handle_addconf) {
                                 get_connect12_conf(i_res, res_p->n_conf-1, prot);
                                 //printf("   Debugging! residue %s%4d,conformer %s to conformer %s\n", res_p->resName,res_p->resSeq,conf_p->confName,res_p->conf[res_p->n_conf-1].confName);
                             }
-                            
+
                             torsion_angle = (env.PI + tors.gamma[0] + (i_fold)*2.*env.PI)/n_fold;
                             sp3_1known(atom_p->xyz,
                             known_atoms[0]->xyz,
@@ -2345,7 +2345,7 @@ int place_missing(PROT prot, int handle_addconf) {
                             bond_length,
                             bond_angle,
                             torsion_angle );
-                            
+
                             //printf("   Debugging! i_fold %d, n_fold %f, residue %s%4d,history %s, pos %d\n",i_fold,tors.n_fold[0], res_p->resName,res_p->resSeq,conf_p->history,i_conf);
                             //printf("   Debugging2! residue%d %s%4d,conformer%d %s and last conformer %s\n", i_res, res_p->resName,res_p->resSeq,i_conf,conf_p->confName,res_p->conf[res_p->n_conf-1].confName);
                             to_complete_atoms[0]->on = 1;
@@ -2364,29 +2364,29 @@ int place_missing(PROT prot, int handle_addconf) {
                         v.x = -a; v.y =  a; v.z = -a; corners[2] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y = -a; v.z = -a; corners[3] = vector_vplusv(atom_p->xyz, v);
                         for (i_corner = 0; i_corner < 4; i_corner++) {
-                            
+
                             if (n_complete <=1) start = 3; else start = i_corner+1;
                             for (j_corner = start; j_corner < 4; j_corner++) {
-                                
+
                                 if (n_complete <=2) start = 3; else start = j_corner+1;
                                 for (k_corner = start; k_corner < 4; k_corner++) {
-                                    
+
                                     if (n_complete <=3) start = 3; else start = k_corner+1;
                                     for (l_corner = start; l_corner < 4; l_corner++) {
-                                        
+
                                         to_complete_atoms[0]->xyz = corners[i_corner];
                                         to_complete_atoms[1]->xyz = corners[j_corner];
                                         to_complete_atoms[2]->xyz = corners[k_corner];
                                         to_complete_atoms[3]->xyz = corners[l_corner];
-                                        
+
                                         to_complete_atoms[0]->on = 1;
                                         to_complete_atoms[1]->on = 1;
                                         to_complete_atoms[2]->on = 1;
                                         to_complete_atoms[3]->on = 1;
                                         n_added++;
-                                        
+
                                         if (!handle_addconf) continue;
-                                        
+
                                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                         if (ins == USERERR) return USERERR;
                                         conf_p = &prot.res[i_res].conf[i_conf];
@@ -2396,33 +2396,33 @@ int place_missing(PROT prot, int handle_addconf) {
                                 }
                             }
                         }
-                        
+
                         v.x = -a; v.y = -a; v.z = -a; corners[0] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y =  a; v.z = -a; corners[1] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y = -a; v.z =  a; corners[2] = vector_vplusv(atom_p->xyz, v);
                         v.x = -a; v.y =  a; v.z =  a; corners[3] = vector_vplusv(atom_p->xyz, v);
                         for (i_corner = 0; i_corner < 4; i_corner++) {
-                            
+
                             if (n_complete <=1) start = 3; else start = i_corner+1;
                             for (j_corner = start; j_corner < 4; j_corner++) {
-                                
+
                                 if (n_complete <=2) start = 3; else start = j_corner+1;
                                 for (k_corner = start; k_corner < 4; k_corner++) {
-                                    
+
                                     if (n_complete <=3) start = 3; else start = k_corner+1;
                                     for (l_corner = start; l_corner < 4; l_corner++) {
-                                        
+
                                         to_complete_atoms[0]->xyz = corners[i_corner];
                                         to_complete_atoms[1]->xyz = corners[j_corner];
                                         to_complete_atoms[2]->xyz = corners[k_corner];
                                         to_complete_atoms[3]->xyz = corners[l_corner];
-                                        
+
                                         to_complete_atoms[0]->on = 1;
                                         to_complete_atoms[1]->on = 1;
                                         to_complete_atoms[2]->on = 1;
                                         to_complete_atoms[3]->on = 1;
                                         n_added++;
-                                        
+
                                         if (!handle_addconf) continue;
                                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                         if (ins == USERERR) return USERERR;
@@ -2433,7 +2433,7 @@ int place_missing(PROT prot, int handle_addconf) {
                                 }
                             }
                         }
-                        
+
                         if (handle_addconf) {
                             del_conf(res_p, res_p->n_conf-1);
                         }
@@ -2471,7 +2471,7 @@ int place_missing(PROT prot, int handle_addconf) {
                             bond_length,
                             bond_angle );
                         }
-                        
+
                         to_complete_atoms[0]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res, i_conf, prot);
@@ -2531,7 +2531,7 @@ int place_missing(PROT prot, int handle_addconf) {
                             to_complete_atoms[0]->name,atom_p->name,to_complete_atoms[0]->name,res_p->resName,res_p->chainID,res_p->resSeq);
                             continue;
                         }
-                        
+
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
                         bond_angle = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
                         //bond_angle = 120.;
@@ -2555,11 +2555,11 @@ int place_missing(PROT prot, int handle_addconf) {
                             if (i_fold) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
-                                
+
                                 if (to_complete_atoms[0]->name[1] == 'H') {
                                     if (to_complete_atoms[1]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
                                 }
-                                
+
                                 ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                 if (ins == USERERR) return USERERR;
                                 conf_p = &prot.res[i_res].conf[i_conf];
@@ -2574,12 +2574,12 @@ int place_missing(PROT prot, int handle_addconf) {
                             bond_length,
                             bond_angle,
                             torsion_angle );
-                            
+
                             to_complete_atoms[0]->on = 1;
                             n_added++;
                             get_connect12_conf(i_res,i_conf,prot);
                         }
-                        
+
                         /* only 1 atom is added, rollback to add the second */
                         i_atom--;
                         continue;
@@ -2598,17 +2598,17 @@ int place_missing(PROT prot, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 3) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp2d_3known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
                         known_atoms[2]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -2624,10 +2624,10 @@ int place_missing(PROT prot, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 5) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp3d2_5known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
@@ -2636,7 +2636,7 @@ int place_missing(PROT prot, int handle_addconf) {
                         known_atoms[4]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -2664,7 +2664,7 @@ int place_missing(PROT prot, int handle_addconf) {
                 /* END of this atom */
             }
         }
-        
+
         while (1) {
             int  counter, j_conf;
             for (i_conf=0; i_conf<res_p->n_conf; i_conf++) {
@@ -2681,7 +2681,7 @@ int place_missing(PROT prot, int handle_addconf) {
             }
         }
     }
-    
+
     /* Check for if there are still missing atoms after protonation. the way of treating NTR and CTR here is not good and standard */
     if (!n_added) {
         Missing = 0;
@@ -2698,8 +2698,8 @@ int place_missing(PROT prot, int handle_addconf) {
                         else {
                             if (!strcmp(prot.res[kr-1].resName, "NTR") || !strcmp(prot.res[kr-1].resName, "NTG")) {
                                 if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
-                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = '1';
-                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = '1';
+                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' '; // sbuff[0] = '1'
+                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' '; // sbuff[0] = '1'
                                 if (!param_get("IATOM","NTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTR01",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTGBK",sbuff,sbuff2)) continue;
@@ -2747,16 +2747,16 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
     char sbuff[MAXCHAR_LINE],sbuff2[MAXCHAR_LINE], siatom[MAXCHAR_LINE];
     char resName[4];
     int  Missing, n_added=0;
-    
+
     memset(dummy_atom,0,MAX_CONNECTED*sizeof(ATOM));
-    
+
     res_p = &prot.res[i_res];
     for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
         conf_p = &prot.res[i_res].conf[i_conf];
         for (i_atom=0; i_atom<prot.res[i_res].conf[i_conf].n_atom; i_atom++) {
             atom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
             if (atom_p->on) continue;
-            
+
             sprintf(sbuffer,"%d",i_atom);
             if( param_get("ATOMNAME", conf_p->confName, sbuffer, name) ) {
                 strcpy(name, "    ");
@@ -2783,14 +2783,14 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 }
                             }
                         }
-                        
+
                         //printf("    Warning! May add heavy atom %s onto residue \"%s %c%04d\"\n",atom_p->name, res_p->resName, res_p->chainID, res_p->resSeq);
                     }
                 }
             }
         }
     }
-    
+
     for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
         get_connect12_conf(i_res, i_conf, prot);
     }
@@ -2800,7 +2800,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
             //int k_conf; /* used for checking duplicates later in the loop */
             conf_p = &prot.res[i_res].conf[i_conf];
             for (i_atom=0; i_atom<prot.res[i_res].conf[i_conf].n_atom; i_atom++) {
-                
+
                 atom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
                 if (!atom_p->on) continue;
                 if( param_get("CONNECT", conf_p->confName, atom_p->name, &connect) ) {
@@ -2812,7 +2812,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                 //printf("orbital %s\n",connect.orbital);
                 strip(orbital, connect.orbital);
                 if (!strcmp(orbital,"ion")) continue;
-                
+
                 /* Collect known atoms and unknown atoms */
                 memset(known_atoms,0,MAX_CONNECTED*sizeof(void *));
                 memset(to_complete_atoms,0,MAX_CONNECTED*sizeof(void *));
@@ -2829,9 +2829,9 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         to_complete_atoms[n_complete-1] = atom_p->connect12[i_connect];
                     }
                 }
-                
+
                 if (!n_complete) continue;
-                
+
                 if (!strcmp(orbital, "sp3")) {
                     /* If total number connected atoms is less than 4 for sp3, use dummy atoms to complete 4 slots */
                     if ( (n_known + n_complete) < 4 ) {
@@ -2839,17 +2839,17 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 3) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp3_3known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
                         known_atoms[2]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -2860,7 +2860,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         bond_angle = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
 
                         //printf("   Debugging! Case sp3, n_known = 2\n");
-                        
+
                         sp3_2known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
@@ -2868,11 +2868,11 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         &to_complete_atoms[1]->xyz,
                         bond_length,
                         bond_angle);
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
-                        
+
                         if (!i_conf) continue; /* do not add extra conf for backbone */
                         //printf("   Debugging! Case sp3, n_known = 2, i_conf!=0\n");
                         if (!handle_addconf) continue; /* do not add extra conf if the flag is 0 */
@@ -2880,13 +2880,13 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             if (to_complete_atoms[1]->name[1] == 'H') continue; /* do not add extra conf if added atoms are all protons */
                         }
                         //printf("   Debugging! Case sp3, n_known = 2, handle_addconf !=0\n");
-                        
+
                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                         if (ins == USERERR) return USERERR;
                         conf_p = &prot.res[i_res].conf[i_conf]; /* reassign conf_p because ins_conf changes the memory position of conf array */
                         if (cpy_conf(&res_p->conf[res_p->n_conf-1], conf_p)) {printf("   Error! place_missing(): couldn't copy the conformer \"%s\" in residue %s %d, to new position k_conf = %d\n",conf_p->confName,res_p->resName, res_p->resSeq, res_p->n_conf-1); fatal++;}
                         get_connect12_conf(i_res, res_p->n_conf-1, prot);
-                        
+
                         sp3_2known( atom_p->xyz,
                             known_atoms[0]->xyz,
                             known_atoms[1]->xyz,
@@ -2895,7 +2895,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             bond_length,
                             bond_angle);
                         //printf("debug %s %s\n",prot.res[i_res].resName,to_complete_atoms[0]->name);
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res, i_conf, prot);
@@ -2936,7 +2936,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 error++;
                             }
                         }
-                        
+
                         if (strcmp(atom_p->name, tors.atom1)) {
                             printf("   Error! Atom %s is in torsion parameter of conformer %s atom %s, but connected atom %s was found\n",
                             tors.atom1,conf_p->confName,to_complete_atoms[0]->name,atom_p->name);
@@ -2958,10 +2958,10 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             atom_p->name, res_p->resName, res_p->resSeq, atom_p->name, known_atoms[0]->name);
                             continue;
                         }
-                        
+
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
                         bond_angle  = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
-                        
+
                         n_fold = tors.n_fold[0];
                         /*
                         if (tors.n_fold[0] != 1 && handle_addconf ==2) {
@@ -2972,7 +2972,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             if (i_fold) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
-                                
+
                                 if (to_complete_atoms[0]->name[1] == 'H') {
                                     if (to_complete_atoms[1]->name[1] == 'H') {
                                         if (to_complete_atoms[2]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
@@ -2986,7 +2986,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 get_connect12_conf(i_res, res_p->n_conf-1, prot);
                                 //printf("   Debugging! residue %s%4d,conformer %s to conformer %s\n", res_p->resName,res_p->resSeq,conf_p->confName,res_p->conf[res_p->n_conf-1].confName);
                             }
-                            
+
                             torsion_angle = (env.PI + tors.gamma[0] + (i_fold)*2.*env.PI)/n_fold;
                             sp3_1known(atom_p->xyz,
                             known_atoms[0]->xyz,
@@ -2997,7 +2997,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             bond_length,
                             bond_angle,
                             torsion_angle );
-                            
+
                             //printf("   Debugging! i_fold %d, n_fold %f, residue %s%4d,history %s, pos %d\n",i_fold,tors.n_fold[0], res_p->resName,res_p->resSeq,conf_p->history,i_conf);
                             //printf("   Debugging2! residue%d %s%4d,conformer%d %s and last conformer %s\n", i_res, res_p->resName,res_p->resSeq,i_conf,conf_p->confName,res_p->conf[res_p->n_conf-1].confName);
                             to_complete_atoms[0]->on = 1;
@@ -3016,29 +3016,29 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         v.x = -a; v.y =  a; v.z = -a; corners[2] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y = -a; v.z = -a; corners[3] = vector_vplusv(atom_p->xyz, v);
                         for (i_corner = 0; i_corner < 4; i_corner++) {
-                            
+
                             if (n_complete <=1) start = 3; else start = i_corner+1;
                             for (j_corner = start; j_corner < 4; j_corner++) {
-                                
+
                                 if (n_complete <=2) start = 3; else start = j_corner+1;
                                 for (k_corner = start; k_corner < 4; k_corner++) {
-                                    
+
                                     if (n_complete <=3) start = 3; else start = k_corner+1;
                                     for (l_corner = start; l_corner < 4; l_corner++) {
-                                        
+
                                         to_complete_atoms[0]->xyz = corners[i_corner];
                                         to_complete_atoms[1]->xyz = corners[j_corner];
                                         to_complete_atoms[2]->xyz = corners[k_corner];
                                         to_complete_atoms[3]->xyz = corners[l_corner];
-                                        
+
                                         to_complete_atoms[0]->on = 1;
                                         to_complete_atoms[1]->on = 1;
                                         to_complete_atoms[2]->on = 1;
                                         to_complete_atoms[3]->on = 1;
                                         n_added++;
-                                        
+
                                         if (!handle_addconf) continue;
-                                        
+
                                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                         if (ins == USERERR) return USERERR;
                                         conf_p = &prot.res[i_res].conf[i_conf];
@@ -3048,33 +3048,33 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 }
                             }
                         }
-                        
+
                         v.x = -a; v.y = -a; v.z = -a; corners[0] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y =  a; v.z = -a; corners[1] = vector_vplusv(atom_p->xyz, v);
                         v.x =  a; v.y = -a; v.z =  a; corners[2] = vector_vplusv(atom_p->xyz, v);
                         v.x = -a; v.y =  a; v.z =  a; corners[3] = vector_vplusv(atom_p->xyz, v);
                         for (i_corner = 0; i_corner < 4; i_corner++) {
-                            
+
                             if (n_complete <=1) start = 3; else start = i_corner+1;
                             for (j_corner = start; j_corner < 4; j_corner++) {
-                                
+
                                 if (n_complete <=2) start = 3; else start = j_corner+1;
                                 for (k_corner = start; k_corner < 4; k_corner++) {
-                                    
+
                                     if (n_complete <=3) start = 3; else start = k_corner+1;
                                     for (l_corner = start; l_corner < 4; l_corner++) {
-                                        
+
                                         to_complete_atoms[0]->xyz = corners[i_corner];
                                         to_complete_atoms[1]->xyz = corners[j_corner];
                                         to_complete_atoms[2]->xyz = corners[k_corner];
                                         to_complete_atoms[3]->xyz = corners[l_corner];
-                                        
+
                                         to_complete_atoms[0]->on = 1;
                                         to_complete_atoms[1]->on = 1;
                                         to_complete_atoms[2]->on = 1;
                                         to_complete_atoms[3]->on = 1;
                                         n_added++;
-                                        
+
                                         if (!handle_addconf) continue;
                                         ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                         if (ins == USERERR) return USERERR;
@@ -3085,7 +3085,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 }
                             }
                         }
-                        
+
                         if (handle_addconf) {
                             del_conf(res_p, res_p->n_conf-1);
                         }
@@ -3123,7 +3123,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             bond_length,
                             bond_angle );
                         }
-                        
+
                         to_complete_atoms[0]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res, i_conf, prot);
@@ -3183,7 +3183,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             to_complete_atoms[0]->name,atom_p->name,to_complete_atoms[0]->name,res_p->resName,res_p->chainID,res_p->resSeq);
                             continue;
                         }
-                        
+
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
                         bond_angle = get_bond_angle(conf_p, atom_p, known_atoms[0], to_complete_atoms[0], orbital);
                         //bond_angle = 120.;
@@ -3198,11 +3198,11 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             if (i_fold) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
-                                
+
                                 if (to_complete_atoms[0]->name[1] == 'H') {
                                     if (to_complete_atoms[1]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
                                 }
-                                
+
                                 ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
                                 if (ins == USERERR) return USERERR;
                                 conf_p = &prot.res[i_res].conf[i_conf];
@@ -3217,12 +3217,12 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             bond_length,
                             bond_angle,
                             torsion_angle );
-                            
+
                             to_complete_atoms[0]->on = 1;
                             n_added++;
                             get_connect12_conf(i_res,i_conf,prot);
                         }
-                        
+
                         /* only 1 atom is added, rollback to add the second */
                         i_atom--;
                         continue;
@@ -3241,17 +3241,17 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 3) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp2d_3known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
                         known_atoms[2]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -3267,10 +3267,10 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                             to_complete_atoms[i_dummy] = &dummy_atom[i_dummy];
                         }
                     }
-                    
+
                     if (n_known == 5) {
                         bond_length = get_bond_length(conf_p,atom_p,to_complete_atoms[0]);
-                        
+
                         sp3d2_5known( atom_p->xyz,
                         known_atoms[0]->xyz,
                         known_atoms[1]->xyz,
@@ -3279,7 +3279,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         known_atoms[4]->xyz,
                         &to_complete_atoms[0]->xyz,
                         bond_length );
-                        
+
                         for (i_complete=0; i_complete<n_complete; i_complete++) to_complete_atoms[i_complete]->on = 1;
                         n_added++;
                         get_connect12_conf(i_res,i_conf,prot);
@@ -3307,7 +3307,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                 /* END of this atom */
             }
         }
-        
+
         while (1) {
             int  counter, j_conf;
             for (i_conf=0; i_conf<res_p->n_conf; i_conf++) {
@@ -3323,7 +3323,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                 counter++;
             }
         }
-    
+
     /* Check for if there are still missing atoms after protonation. the way of treating NTR and CTR here is not good and standard */
     if (!n_added) {
         Missing = 0;
@@ -3384,7 +3384,7 @@ void sp3_3known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR *r4, float bo
     VECTOR n02;
     VECTOR n03;
     VECTOR n04;
-    
+
     n01 = vector_normalize(vector_vminusv(r1, r0));
     n02 = vector_normalize(vector_vminusv(r2, r0));
     n03 = vector_normalize(vector_vminusv(r3, r0));
@@ -3394,7 +3394,7 @@ void sp3_3known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR *r4, float bo
 }
 
 void sp3_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, float bond_len_03, float bond_angle_304) {
-    
+
     /*
     .    r3 r4
     .     \/
@@ -3423,7 +3423,7 @@ void sp3_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, float b
     norm102 = vector_normalize(vector_vxv(n01, n02));
 
     half_angle = bond_angle_304 / 2.;
-    
+
     if (r3) *r3 = vector_vplusv(
                         r0,
                         vector_rescale(
@@ -3431,7 +3431,7 @@ void sp3_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, float b
                                         vector_rescale(bisect304,cos(half_angle)),
                                         vector_rescale(norm102,sin(half_angle))),
                                 bond_len_03));
-    
+
     if (r4) *r4 = vector_vplusv(
                         r0,
                         vector_rescale(
@@ -3439,14 +3439,14 @@ void sp3_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, float b
                                         vector_rescale(bisect304,cos(half_angle)),
                                         vector_rescale(norm102,sin(half_angle))),
                                 bond_len_03));
-    
+
 
     //if (r3) *r3 = r0[i] + bond_len_03 * (bisect304[i] * cos(half_angle) + norm102[i] * sin(half_angle));
     //if (r4) *r4 = r0[i] + bond_len_03 * (bisect304[i] * cos(half_angle) - norm102[i] * sin(half_angle));
 }
 
 void sp3_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, VECTOR *r5, float bond_len_03, float bond_angle_103, float torsion_angle_3012) {
-    
+
     /*
     .	r3 r4 r5
     .	  \|/
@@ -3474,7 +3474,7 @@ void sp3_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, VECTOR 
 
     norm012 = vector_normalize(vector_vxv(n10,n12));
     norm_0_1_n012 = vector_normalize(vector_vxv(n10,norm012));
-    
+
     theta = env.PI - bond_angle_103;
     if (r3) {
         phi = torsion_angle_3012 - env.PI/2.;
@@ -3515,8 +3515,8 @@ void sp3_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, VECTOR 
     if (r4) {
 	phi = ( torsion_angle_3012 + 30 );
         for (i=0; i<3; i++) {
-            r4[i] = r0[i] + bond_len_03 * (norm012[i]*cos(phi)*sin(theta) 
-            +                        norm_0_1_n012[i]*sin(phi)*sin(theta) 
+            r4[i] = r0[i] + bond_len_03 * (norm012[i]*cos(phi)*sin(theta)
+            +                        norm_0_1_n012[i]*sin(phi)*sin(theta)
             +                                  n10[i]         *cos(theta) );
         }
     }
@@ -3525,7 +3525,7 @@ void sp3_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, VECTOR 
 	phi = ( torsion_angle_3012 + 150 );
         for (i=0; i<3; i++) {
             r5[i] = r0[i] + bond_len_03 * (norm012[i]*cos(phi)*sin(theta)
-            +                        norm_0_1_n012[i]*sin(phi)*sin(theta) 
+            +                        norm_0_1_n012[i]*sin(phi)*sin(theta)
             +                                  n10[i]         *cos(theta) );
         }
     }
@@ -3533,19 +3533,19 @@ void sp3_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, VECTOR *r4, VECTOR 
 }
 
 void sp2_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03) {
-    
+
     /*
     .     r3
     .     |
     .     r0
     .    / \
     .  r1   r2
-    . 
+    .
     . r0 is sp3 type.
     . r0, r1, r2's coordinates are known.
     . r3's coordinate is to be determined.
     */
-    
+
     VECTOR n01;
     VECTOR n02;
     VECTOR n03;
@@ -3558,19 +3558,19 @@ void sp2_2known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03) 
 }
 
 void sp2_2known_with_angle(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03, float bond_angle_103) {
-    
+
     /*
     .     r3
     .     |               y (norm_0_1_n012)
     .     r0               \
     .    / \               /
     .  r1   r2  	      x (n01)
-    . 
+    .
     . r0 is sp3 type.
     . r0, r1, r2's coordinates are known.
     . r3's coordinate is to be determined.
     */
-    
+
     VECTOR n01;
     VECTOR n02;
     VECTOR n03;
@@ -3589,7 +3589,7 @@ void sp2_2known_with_angle(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bo
 }
 
 void sp2_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03, float bond_angle_103, float torsion_angle_3012) {
-    
+
     /*
     .	r3   r4
     .	  \ /
@@ -3601,7 +3601,7 @@ void sp2_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03, 
     . r0 is sp3 type.
     . r0, r3, r4's coordinates are known.
     . r1, r2's coordinates are to be determined.
-    
+
     */
 
     VECTOR n10;
@@ -3631,7 +3631,7 @@ void sp2_1known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR *r3, float bond_len_03, 
     /*
     for (i=0; i<3; i++) {
         r3[i] = r0[i] + bond_len_03 * (norm012[i]*cos(phi)*sin(theta)
-        +                        norm_0_1_n012[i]*sin(phi)*sin(theta) 
+        +                        norm_0_1_n012[i]*sin(phi)*sin(theta)
         +                                  n10[i]         *cos(theta) );
     }
 
@@ -3690,12 +3690,12 @@ void sp2d_3known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR *r4, float b
         n02 = n01;
         n01 = swp;
     }
-    
+
     /* consider if r1,r2,r3 are a little bended, try to guess the direction for r4 */
     n13 = vector_normalize(vector_vminusv(n03,n01)); /* average of n01 and n03 (if they are not exactly on a line */
     n02 = vector_normalize(vector_vminusv(n02,vector_rescale(n02, vdotv(n02,n13)))); /* n02 should be normal to n13 */
     n04 = vector_neg(n02);
-    
+
     if (r4) *r4  = vector_vplusv(r0, vector_rescale(n04, bond_len_04));
 }
 
@@ -3741,7 +3741,7 @@ void sp3d2_5known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR r4, VECTOR 
             perpend = i;
         }
     }
-    
+
     /* find r1-r3 and r2-r4 */
     p13 = 0;
     p24 = 0;
@@ -3749,7 +3749,7 @@ void sp3d2_5known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR r4, VECTOR 
         if (i == perpend) continue;
         for (j=i+1;j<6;j++) {
             if (j == perpend) continue;
-            
+
             if (fabs(vdotv(n[i],n[j])) > p13) {
                 p24 = p13;
                 n24 = n13;
@@ -3762,7 +3762,7 @@ void sp3d2_5known(VECTOR r0, VECTOR r1, VECTOR r2, VECTOR r3, VECTOR r4, VECTOR 
             }
         }
     }
-    
+
     n[0] = vector_normalize(vector_vxv(n13,n24));
     if (vdotv(n[perpend],n[0]) > 0) {
         n[0] = vector_neg(n[0]);
@@ -3821,7 +3821,7 @@ float get_bond_length(CONF *conf_p, ATOM *atom1_p, ATOM *atom2_p) {
             return len;
         }
     }
-    
+
     exist = 1;
     if ( param_get("BOND_LEN",conf_p->confName, atom2_p->name, bond_len) ) {
         strncpy(resName, conf_p->confName, 3); resName[3] = '\0';
@@ -3859,7 +3859,7 @@ float get_bond_length(CONF *conf_p, ATOM *atom1_p, ATOM *atom2_p) {
 float get_bond_angle(CONF *conf_p, ATOM *atom0_p, ATOM *atom1_p, ATOM *atom2_p, char *orbital) {
     char  bond_ang[MAXCHAR_LINE], *sbuff, *sbuffer1, *sbuffer2, resName[4];
     int   tpl_exist;
-    
+
     tpl_exist = 1;
     if ( param_get("BOND_ANG",conf_p->confName, atom0_p->name, bond_ang) ) {
         strncpy(resName, conf_p->confName, 3); resName[3] = '\0';
@@ -3867,7 +3867,7 @@ float get_bond_angle(CONF *conf_p, ATOM *atom0_p, ATOM *atom1_p, ATOM *atom2_p, 
             tpl_exist = 0;
         }
     }
-    
+
     /*
     .....................01234567890123456789012345678901234567890
     .0123456789012345678901234567890123456789012345678901234567890
@@ -3900,9 +3900,9 @@ float get_bond_angle(CONF *conf_p, ATOM *atom0_p, ATOM *atom1_p, ATOM *atom2_p, 
             else break;
         }
     }
-    
+
     if (!orbital) return -1;
-    
+
     if (!strcmp(orbital, "sp2"))         return env.d2r * 120.;
     else if (!strcmp(orbital, "sp3"))    return env.d2r * 109.;
     else if (!strcmp(orbital, "sp3d2"))  return env.d2r * 90.;
@@ -3925,11 +3925,11 @@ int ionization(PROT prot)
       for (kc=1; kc<prot.res[kr].n_conf; kc++) {
           prot.res[kr].conf[kc].tmp_flag = 1; /* mark the existing conformers */
       }
-      
+
       for (kc=1; kc<prot.res[kr].n_conf; kc++) {
           if (!prot.res[kr].conf[kc].n_atom) continue;
           if (!prot.res[kr].conf[kc].tmp_flag) continue; /* do not duplicate for conformers created here */
-          
+
           /* each conformer will be multipied to the conformers in the conflist */
          for (ic=1; ic<confs.n; ic++) {
             if (strcmp(prot.res[kr].conf[kc].confName, confs.strings[ic])) {
@@ -3963,7 +3963,7 @@ int ionization(PROT prot)
                            continue;
                        }
                    }
-                       
+
                   ia = iatom(prot.res[kr].conf[ins].confName, prot.res[kr].conf[kc].atom[ka].name);
                   if (prot.res[kr].conf[kc].atom[ka].on && ia>=0) {
                      strcpy(prot.res[kr].conf[ins].atom[ia].confName, confs.strings[ic]); /* update confname */
@@ -4273,7 +4273,7 @@ int prune_hdirected(PROT prot)
          for (jres=0; jres<prot.res[ires].n_ngh; jres++) {
             if (prot.res[ires].ngh[jres]->i_res_prot <= ires) continue;
             j_nconf = prot.res[ires].ngh[jres]->n_conf;
-            
+
 	    for (jconf=1; jconf<j_nconf; jconf++) {
                if (prot.res[ires].ngh[jres]->conf[jconf].history[2] == 'H') break;
 
@@ -4724,10 +4724,10 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
    int deleting;
    int i_res, j_res, i_conf, j_conf, i_atom, j_atom;
    long    idum;
-   
+
    if (env.test_seed < 0) idum = time(NULL); //allows random numbers to be fixed for testing
    else idum = env.test_seed;
-   
+
    int i;
 
     for (i=0;i<500;i++) {
@@ -4735,7 +4735,7 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
     }
 
    id_conf(prot); /* is conf ID used here? - y*/
-   
+
    /* calculate conformer netcrg */
    for (ir=0; ir<prot.n_res; ir++) {
       for (ic=1; ic<prot.res[ir].n_conf; ic++) {
@@ -4746,14 +4746,14 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
          }
       }
    }
-   
+
    /* set flags for all conformer */
    for (ir = 0; ir< prot.n_res; ir++) {
        for (ic = 1; ic< prot.res[ir].n_conf; ic++) {
            prot.res[ir].conf[ic].on =1;
        }
    }
-   
+
    /* set up neighbor list */
    assign_rad(prot);
    assign_crg(prot);
@@ -4772,22 +4772,22 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
    for (i_res = 0; i_res < prot.n_res; i_res++) {
        prot.res[i_res].n_ngh = 0;
        prot.res[i_res].ngh = NULL;
-       
+
        for (j_res = 0; j_res< prot.n_res; j_res++) {
            int found;
            if (i_res == j_res) continue;
-           
+
            /* check if distance within the threshold */
            if (out_of_range(prot.res[i_res].r_min,prot.res[i_res].r_max,prot.res[j_res].r_min,prot.res[j_res].r_max,36.)) continue;  /* 8� away */
            found = 0;
            for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
                for (j_conf=0; j_conf<prot.res[j_res].n_conf; j_conf++) {
-                   
+
                    for (i_atom=0; i_atom<prot.res[i_res].conf[i_conf].n_atom; i_atom++) {
                        if (!prot.res[i_res].conf[i_conf].atom[i_atom].on) continue;
                        for (j_atom=0; j_atom<prot.res[j_res].conf[j_conf].n_atom; j_atom++) {
                            if (!prot.res[j_res].conf[j_conf].atom[j_atom].on) continue;
-                           
+
                            if (ddvv(prot.res[i_res].conf[i_conf].atom[i_atom].xyz,prot.res[j_res].conf[j_conf].atom[j_atom].xyz) < 64.) { /* 8� away */
                                found = 1;
                                break;
@@ -4800,19 +4800,19 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
                if (found) break;
            }
            if (!found) continue;
-           
+
            prot.res[i_res].n_ngh++;
            prot.res[i_res].ngh = realloc(prot.res[i_res].ngh, prot.res[i_res].n_ngh * sizeof(RES *));
            prot.res[i_res].ngh[prot.res[i_res].n_ngh-1] = &prot.res[j_res];
        }
    }
 
-   
-   /* get pairwise vector, ele pairwise + vdw pairwise 
+
+   /* get pairwise vector, ele pairwise + vdw pairwise
     * We may want to keep the first generation conformers, non-rotamers,
     * jmao Original conformer won't be pruned.
     */
-    
+
    /* adding recursion here (originally outside of the subroutine, which makes self-energy calculations unnecessarily repeated) */
    deleting = 1;
    while (deleting) {
@@ -4824,7 +4824,7 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
          for (jc=ic+1; jc<prot.res[ir].n_conf; jc++) {
             if (!prot.res[ir].conf[jc].on) continue;
             //if (!prot.res[ir].conf[jc].history[2] == 'E') continue; /* do not compare exposed conformers, they have too few interactions to distinguish */
-            
+
             //if (prot.res[ir].conf[jc].history[2] == 'O') continue;
             if (strcmp(prot.res[ir].conf[ic].confName, prot.res[ir].conf[jc].confName)) continue;
             if (fabs(prot.res[ir].conf[ic].E_self-prot.res[ir].conf[jc].E_self) > cutoff_vdw) continue;
@@ -4836,10 +4836,10 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
             else {
             	if (over_vdw(prot, ir, ic, jc, cutoff_vdw)) continue;
             }
-            	
+
             //printf("Self energies of the kept and pruned conformers are %8.3f and %8.3f\n", prot.res[ir].conf[ic].E_self,prot.res[ir].conf[jc].E_self);
 			//prot.res[ir].conf[jc].on = 0;
-            
+
             deleting = 1;
             if (prot.res[ir].conf[ic].history[2] == 'O' && prot.res[ir].conf[jc].history[2] == 'O') {
 			    if (ran2(&idum) < 0.5) prot.res[ir].conf[ic].on = 0;
@@ -4863,13 +4863,13 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
       }
    }
    }
-   
+
    /* clean up neighbor list */
    for (i_res = 0; i_res < prot.n_res; i_res++) {
        prot.res[i_res].n_ngh = 0;
        free(prot.res[i_res].ngh);
    }
-   
+
    /* delete conformers */
    for (ir=0; ir<prot.n_res; ir++) {
       for (ic=prot.res[ir].n_conf-1; ic>1; ic--) {
@@ -4879,7 +4879,7 @@ int prune_pv(PROT prot, float c1, float c2, float c3)
          }
       }
    }
-   
+
    return n;
 }
 
@@ -4904,13 +4904,13 @@ int over_ele(PROT prot, int i_res, int i_conf, int j_conf, float cutoff)
 {
     int k_res, k_conf, i_ngh;
     float Ei, Ej;
-    
+
     for (i_ngh = 0; i_ngh < prot.res[i_res].n_ngh; i_ngh++) {
         k_res = prot.res[i_res].ngh[i_ngh]->i_res_prot;
-        
+
         for (k_conf=0; k_conf < prot.res[k_res].n_conf; k_conf++) {
             if (!prot.res[k_res].conf[k_conf].on) continue;
-            
+
             Ei = Ecoulomb_conf2conf(prot, i_res, i_conf, k_res, k_conf, env.epsilon_prot);
             Ej = Ecoulomb_conf2conf(prot, i_res, j_conf, k_res, k_conf, env.epsilon_prot);
             if (fabs(Ei-Ej)>cutoff) return 1;
@@ -4924,19 +4924,19 @@ int over_vdw(PROT prot, int i_res, int i_conf, int j_conf, float cutoff)
 {
     int k_res, k_conf, i_ngh;
     float Ei, Ej;
-    
+
     for (i_ngh = 0; i_ngh < prot.res[i_res].n_ngh; i_ngh++) {
         k_res = prot.res[i_res].ngh[i_ngh]->i_res_prot;
-        
+
         for (k_conf=0; k_conf < prot.res[k_res].n_conf; k_conf++) {
             if (!prot.res[k_res].conf[k_conf].on) continue;
-            
+
             Ei = Evdw_conf2conf(prot, i_res, i_conf, k_res, k_conf);
             Ej = Evdw_conf2conf(prot, i_res, j_conf, k_res, k_conf);
             if (!(Ei>10.0 && Ej>10.0) && fabs(Ei-Ej)>cutoff) return 1;
         }
     }
-    
+
     return 0;
 }
 
@@ -4947,7 +4947,7 @@ int label_exposed(PROT prot)
 
    //sas_native(prot);
    sas_ionizable(prot, env.radius_probe); /* changed to using exposure of terminal atoms of ionizable residues -Yifan */
-   
+
    for (kr=0; kr<prot.n_res; kr++) {
        /*
        for (kc=1; kc<prot.res[kr].n_conf; kc++) {
@@ -4960,11 +4960,11 @@ int label_exposed(PROT prot)
                av_sas += prot.res[kr].conf[kc].atom[ka].sas * 4 * 3.1415926 * prot.res[kr].conf[kc].atom[ka].rad * prot.res[kr].conf[kc].atom[ka].rad;
            }
            av_sas /= n_atom;
-           
+
            prot.res[kr].conf[kc].E_rxn =av_sas;
        }
        */
-       
+
        /* find the conformer with the maximum ASA */
        if (prot.res[kr].n_conf>1) {
            i=1;
@@ -4978,7 +4978,7 @@ int label_exposed(PROT prot)
            }
            //printf("  %3s %c%04d%c%03d %8.3f %8.3f\n", prot.res[kr].resName,prot.res[kr].chainID,prot.res[kr].resSeq,prot.res[kr].iCode,kc,max_sas,prot.res[kr].conf[kc].sas_fraction);
        }
-      
+
       /* 5% threshold is for the percentile exposed surface */
       //if (max_sas > 0.05 && i && prot.res[kr].conf[i].history[2] != 'O') {
           /* Here we found the non-native exposed side chain confomer
@@ -4986,7 +4986,7 @@ int label_exposed(PROT prot)
           */
           /* printf("   %s%4d Before = %.3f", prot.res[kr].resName, prot.res[kr].resSeq, prot.res[kr].conf[i].sas_fraction);
           printf(" After = %.3f\n", max_confSAS(prot, kr, i)); */
-          
+
           /* this function does not include self energy for optimization and uses a wrong ASA calculation, turned off by Yifan */
           //max_confSAS(prot, kr, i);
       //}
@@ -5092,14 +5092,14 @@ int rebuild_sc(PROT prot) {
         }
         /* pad copy_atoms string with a few spaces */
         strcpy(copy_atoms+strlen(copy_atoms), "    ");
-        
+
         if (prot.res[i_res].n_conf > 1) {
             int i_atom;
             /* make a copy of the first sidechain */
             int k_conf = prot.res[i_res].n_conf;
             ins_conf(&prot.res[i_res], k_conf, prot.res[i_res].conf[1].n_atom);
             cpy_conf(&prot.res[i_res].conf[k_conf], &prot.res[i_res].conf[1]);
-            
+
             prot.res[i_res].conf[k_conf].history[2] = 'B'; /* Label */
 
             for (i_atom=0; i_atom<prot.res[i_res].conf[k_conf].n_atom; i_atom++) {
@@ -5108,7 +5108,7 @@ int rebuild_sc(PROT prot) {
                     prot.res[i_res].conf[k_conf].atom[i_atom].on = 0;
                 }
             }
-            
+
             /* rebuild */
             while(place_missing(prot,1) > 0);
             rm_dupconf(prot, 0.005);
@@ -5127,7 +5127,7 @@ int rebuild_sc(PROT prot) {
             }
         }
         prune_by_vdw(prot, env.vdw_cutoff);
-    
+
     return 0;
 }
 
@@ -5141,7 +5141,7 @@ void del_non_common_h(PROT prot)
                 ATOM * atom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
                 if (!prot.res[i_res].conf[i_conf].atom[i_atom].on) continue;
                 if (prot.res[i_res].conf[i_conf].atom[i_atom].name[1] != 'H') continue;
-                
+
                 /* check if COMMON_H parameter has been saved */
                 if (param_get("COMMON_H", prot.res[i_res].resName, atom_p->name, &common_h)) {
                     STRINGS conf_types;
@@ -5154,7 +5154,7 @@ void del_non_common_h(PROT prot)
                         param_sav("COMMON_H", prot.res[i_res].resName, atom_p->name, &common_h, sizeof(int));
                         continue;
                     }
-                    
+
                     common_h = 1;
                     for (i_conf_type=1; i_conf_type<conf_types.n; i_conf_type++) {
                         int buff;
@@ -5165,7 +5165,7 @@ void del_non_common_h(PROT prot)
                     }
                     param_sav("COMMON_H", prot.res[i_res].resName, atom_p->name, &common_h, sizeof(int));
                 }
-                
+
                 if (!common_h) {
                     /* delete if not common */
                     prot.res[i_res].conf[i_conf].atom[i_atom].on = 0;
@@ -5178,16 +5178,16 @@ void del_non_common_h(PROT prot)
 int rand_conf_prune(PROT prot)
 {
     int i_res, i_conf;
-    
+
     if (env.test_seed < 0) idum = time(NULL); //allows random numbers to be fixed for testing
     else idum = env.test_seed;
-    
+
     for (i_conf=0;i_conf<2000;i_conf++) ran2(&idum);
-    
+
     for (i_res=0; i_res<prot.n_res; ++i_res) {
         int n_orig = 0;
         int n_hv_conf_limit = env.n_hv_conf_limit;
-        
+
         for (i_conf=1; i_conf<prot.res[i_res].n_conf; ++i_conf) {
             if (prot.res[i_res].conf[i_conf].history[2] == 'O') n_orig++;
             else if (prot.res[i_res].conf[i_conf].history[2] == 'X') n_orig++;
@@ -5195,13 +5195,13 @@ int rand_conf_prune(PROT prot)
         }
 
         if (n_hv_conf_limit < n_orig) n_hv_conf_limit = n_orig;
-        
+
         while (prot.res[i_res].n_conf-1 > n_hv_conf_limit) {
             i_conf = 1 + ran2(&idum) * (float) (prot.res[i_res].n_conf-1);
             if (prot.res[i_res].conf[i_conf].history[2] == 'O') continue;
             if (prot.res[i_res].conf[i_conf].history[2] == 'X') continue;
             if (prot.res[i_res].conf[i_conf].history[2] == 'Y') continue;
-            
+
             del_conf(&prot.res[i_res], i_conf);
         }
     }
@@ -5216,25 +5216,25 @@ int over_vdw_mhd(PROT prot, int i_res, int  i_conf, int j_conf, float cutoff)
     int k_res, k_conf, i_ngh, i_res_conf, k_res_conf;
     float Ei, Ej;
 
-    
+
     for (i_ngh = 0; i_ngh < prot.res[i_res].n_ngh; i_ngh++) {
         k_res = prot.res[i_res].ngh[i_ngh]->i_res_prot;
 
-        
+
 	float min_vdw = 99999.;
 	for (i_res_conf = 1; i_res_conf < prot.res[i_res].n_conf; i_res_conf++) {
 	for (k_res_conf = 1; k_res_conf < prot.res[k_res].n_conf; k_res_conf++) {
 	float pw_vdw = vdw_conf(i_res, i_res_conf, k_res, k_res_conf, prot);
 	if (pw_vdw < min_vdw) {min_vdw = pw_vdw;}
-			}	
-		}	
+			}
+		}
 	if (min_vdw < 0.) { min_vdw = 0.; }
 
 
         for (k_conf=0; k_conf < prot.res[k_res].n_conf; k_conf++) {
             if (!prot.res[k_res].conf[k_conf].on) continue;
 
-            
+
             Ei = vdw_conf(i_res, i_conf, k_res, k_conf, prot);
             Ej = vdw_conf(i_res, j_conf, k_res, k_conf, prot);
             if (!(Ei>(min_vdw+10.0) && Ej>(min_vdw+10.0)) && fabs(Ei-Ej)>cutoff) return 1;
@@ -5242,23 +5242,23 @@ int over_vdw_mhd(PROT prot, int i_res, int  i_conf, int j_conf, float cutoff)
         }
     }
 
-    
+
     return 0;
 }
 
 int rand_conf_prune_mhd(PROT prot)
 {
     int i_res, i_conf;
-    
+
     if (env.test_seed < 0) idum = time(NULL); //allows random numbers to be fixed for testing
     else idum = env.test_seed;
-    
+
     for (i_conf=0;i_conf<2000;i_conf++) ran2(&idum);
-    
+
     for (i_res=0; i_res<prot.n_res; ++i_res) {
         int n_orig = 0;
         int n_hv_conf_limit = env.n_hv_conf_limit;
-        
+
         for (i_conf=1; i_conf<prot.res[i_res].n_conf; ++i_conf) {
             if (prot.res[i_res].conf[i_conf].history[2] == 'O') n_orig++;
             else if (prot.res[i_res].conf[i_conf].history[2] == 'X') n_orig++;
@@ -5266,13 +5266,13 @@ int rand_conf_prune_mhd(PROT prot)
         }
 
         if (n_hv_conf_limit < n_orig) n_hv_conf_limit = n_orig;
-        
+
         while (prot.res[i_res].n_conf-1 > n_hv_conf_limit) {
             i_conf = 1 + ran2(&idum) * (float) (prot.res[i_res].n_conf-1);
             if (prot.res[i_res].conf[i_conf].history[2] == 'O') continue;
             if (prot.res[i_res].conf[i_conf].history[2] == 'X') continue;
             if (prot.res[i_res].conf[i_conf].history[2] == 'E') continue;
-            
+
             del_conf(&prot.res[i_res], i_conf);
         }
     }

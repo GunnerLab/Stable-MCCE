@@ -15,6 +15,8 @@ import logging
 peptide = {" N  ": (-1, " C  "),
            " C  ": (1,  " N  ")}
 
+ctr_connect = {" C  ": "-1    CA  0     O   0     OXT"}
+
 disulfur = ["CYD01"]
 
 def residues_in_db(freedb):
@@ -32,31 +34,35 @@ def create_connect(key, value):
     orbital = fields[0]
     connected = [x.strip().strip("\"") for x in fields[1:]]
 
-    nvalue = []
-    for x in connected:
-        if len(x) != 4:
-            print("ATOM \"%s\" is not 4 characters" % x)
-            sys.exit()
 
-        if x == " ?  ":
-            if atom in peptide:
-                offset = "%-3d" % peptide[atom][0]
-                connected_atom = peptide[atom][1]
+    if conf[:3] == "CTR" and atom in ctr_connect:
+        line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, ctr_connect[atom])
+    else:
+        nvalue = []
+        for x in connected:
+            if len(x) != 4:
+                print("ATOM \"%s\" is not 4 characters" % x)
+                sys.exit()
+
+            if x == " ?  ":
+                if atom in peptide:
+                    offset = "%-3d" % peptide[atom][0]
+                    connected_atom = peptide[atom][1]
+                else:
+                    offset = "LIG"
+                    connected_atom = " ?  "
             else:
+                offset = "0  "
+                connected_atom = x
+            if conf in disulfur and x == " SG ":
                 offset = "LIG"
-                connected_atom = " ?  "
-        else:
-            offset = "0  "
-            connected_atom = x
-        if conf in disulfur and x == " SG ":
-            offset = "LIG"
-            connected_atom = " SG "
+                connected_atom = " SG "
 
 
-        nvalue.append("%s  %s" % (offset, connected_atom))
+            nvalue.append("%s  %s" % (offset, connected_atom))
 
-    nvalue_str = " ".join(nvalue)
-    line = "CONNECT  %5s %4s %-5s     %s\n" % (conf, atom, orbital, nvalue_str)
+        nvalue_str = " ".join(nvalue)
+        line = "CONNECT  %5s %4s %-5s     %s\n" % (conf, atom, orbital, nvalue_str)
 
     return line
 
