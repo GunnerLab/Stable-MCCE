@@ -18,8 +18,8 @@ Input and Output:
 prot.pdb                                                    (INPDB)
 
 Steps:
-t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-f        step 2: make rotatmers                             (DO_ROTAMERS)
+f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+t        step 2: make rotatmers                             (DO_ROTAMERS)
 f        step 3: do energy calculations                     (DO_ENERGY)
 f        step 4: monte carlo sampling                       (DO_MONTE)
 ==============================================================================
