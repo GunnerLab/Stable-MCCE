@@ -136,6 +136,7 @@ RELAX    _CL        t
 #-------|-----|----|----|----|----|----|---------|---------|---------|---------|---------|---------|---------|---------|---------
 #        CONF  ATOM ATOM ATOM ATOM relx Vn/2(kcal)  n_fold   gamma    Vn/2(kcal)  n_fold   gamma    Vn/2(kcal)  n_fold   gamma
 TORSION  NTR    H2   N    CA   C    f      1.400         3      0.00
+TORSION  NTR01  H    N    CA   C    f        0.0         2    180.00
 TORSION  CTR01  HO   O    C    CA   t      1.800         2    180.00     1.360         1      0.00
 TORSION  CTR02  HXT  OXT  C    CA   t      1.800         2    180.00     1.360         1      0.00
 
@@ -785,7 +786,7 @@ VDW_RAD  ARG02  NH1 1.824
 VDW_RAD  ARG02 HH11 0.6
 VDW_RAD  ARG02  NH2 1.824
 VDW_RAD  ARG02 HH21 0.6
-VDW_RAD  ARG02 HH23 0.6
+VDW_RAD  ARG02 HH22 0.6
 VDW_RAD  ARG03  CB  1.908
 VDW_RAD  ARG03  HB2 1.487
 VDW_RAD  ARG03  HB3 1.487
