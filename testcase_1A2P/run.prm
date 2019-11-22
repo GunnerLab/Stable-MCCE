@@ -67,14 +67,14 @@ step 2:
 f        Use specific control (head1.lst) on rotamer making (ROT_SPECIF)
 
 t        Do swap (stereo isotope)                           (ROT_SWAP)
-f        Do rotate?                                         (PACK)
+t        Do rotate?                                         (PACK)
 0        number of rotamers in a bond rotation              (ROTATIONS)
 1.00     SAS Threshold not making rotamers                  (SAS_CUTOFF)
 10.0     Cutoff of self vdw in kcal/mol                     (VDW_CUTOFF)
 5000     number of repacks                                  (REPACKS)
 0.01     occupancy cutoff of repacks                        (REPACK_CUTOFF)
 
-f        h-bond directed rotamer making, requir 't' on Do rotate  (HDIRECTED)
+t        h-bond directed rotamer making, requir 't' on Do rotate  (HDIRECTED)
 1.0      threshold for two conformers being different       (HDIRDIFF)
 36       Limit number of the Hbond conformers               (HDIRLIMT)
 
@@ -91,7 +91,7 @@ f        h-bond directed rotamer making, requir 't' on Do rotate  (HDIRECTED)
 0.3      threshold used to define a charged atom, see hv_relax_elec_dist_thr (HV_RELAX_ELEC_CRG_THR)
 2.0      only relax electrostatically favorable pairs that has charged atom distance shorter than this (HV_RELAX_ELEC_DIST_THR)
 
-f        Do relaxation on hydrogens                         (RELAX_H)
+t        Do relaxation on hydrogens                         (RELAX_H)
 -1.0     Energy threshold for keeping the conformer         (RELAX_E_THR)
 100      Loop over N local microstates                      (RELAX_NSTATES)
 36       default number of hydroxyl positions               (RELAX_N_HYD)
