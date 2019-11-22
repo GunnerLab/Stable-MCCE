@@ -15,6 +15,7 @@ import logging
 peptide = {" N  ": (-1, " C  "),
            " C  ": (1,  " N  ")}
 
+ntr_connect = {" CA ": "0     N   +1    C   +1    CB  0     HA"}
 ctr_connect = {" C  ": "-1    CA  0     O   0     OXT"}
 
 disulfur = ["CYD01"]
@@ -37,6 +38,8 @@ def create_connect(key, value):
 
     if conf[:3] == "CTR" and atom in ctr_connect:
         line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, ctr_connect[atom])
+    elif conf[:3] == "NTR" and atom in ntr_connect:
+        line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, ntr_connect[atom])
     else:
         nvalue = []
         for x in connected:
@@ -164,8 +167,8 @@ def convert(filename, epsilon):
             atom = key3
             charge = float(value_string)
 
-            if abs(charge) > 0.001:
-                record = "CHARGE   %5s %4s %6.2f\n" % (conf, atom, charge)
+            if abs(charge) > 0.0001:
+                record = "CHARGE   %5s %4s %6.3f\n" % (conf, atom, charge)
                 charge_records.append(record)
 
         key = (key1, key2, key3)
