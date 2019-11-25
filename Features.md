@@ -9,17 +9,22 @@
 * [ ] Keep original H position for conformer 0 if H coordinates were provided by PDB. Good for connection with MD.
    * only the completly filled conformer is labeled as native
 * [ ] Step 3 pairwise interaction benchmark.
+* [ ] Step 3 multiple threads support
+   * [ ] write ele part only in opp at delphi
+   * [ ] finish up / merge opp files
 * [ ] Microstate output - Xiu Hong
   * [x] upload previous code
   * [ ] change microstate output format
 * [ ] Hydrogen network report - Xiu Hong
-* [ ] phi map
-   * [ ] most occupied confomer pdb file
-   * [ ] delphi calculation (set up script)
-   * [ ] phi map file
 * [ ] mfe in the analysis report
+* [ ] Control of MC: standard, with complete ms out, diff ms out.
+* [ ] Tools:
+   * [ ] vdw clash for a specific conformer at atom level.
+   * [ ] phi map
+   * [ ] most occupied confomer pdb file
+   * [ ] phi map file
+   * [ ] Why ms hb analysis is slow? 
 
-   
 ## Wanted
  * [ ] Chemical potential titration
  * [ ] Parallel threads
@@ -28,4 +33,5 @@
  * [ ] Other PB solvers
     * new delphi
     * apbs
-  
+ * [ ] How does reduced MC improve acceptance?
+ * [ ] Improved running energy and Average energy output
