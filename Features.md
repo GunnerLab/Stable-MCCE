@@ -35,3 +35,10 @@
     * apbs
  * [ ] How does reduced MC improve acceptance?
  * [ ] Improved running energy and Average energy output
+ 
+## TODO next week
+ * [ ] Fix Taichi's TYR problem.
+ * [ ] benchmark step 3
+ * [ ] Native H in step 2
+ * [ ] Intruction on cofactor ftpl
+ * [ ] Intruction how to run to step 3
