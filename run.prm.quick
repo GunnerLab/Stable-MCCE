@@ -34,8 +34,8 @@ surface  self/surface, APBS always use rxn self energy      (RXN_METHOD)
 Less modified entries
 ------------------------------------------------------------------------------
 4.0      Protein dielectric constant for DelPhi             (EPSILON_PROT)
-/home/mcce/mcce2.5.1/extra.tpl                              (EXTRA)
-/home/mcce/mcce2.5.1/name.txt MCCE renaming rule.           (RENAME_RULES)
+/home/mcce/Stable-MCCE/extra.tpl                              (EXTRA)
+/home/mcce/Stable-MCCE/name.txt MCCE renaming rule.           (RENAME_RULES)
 
 ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 0.0      Initial pH                                         (TITR_PH0)
@@ -50,7 +50,7 @@ ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 #############################################################################
 MODIFYING FOLLOWING ENTRIES REQUIRE ADVANCED KNOWLEDGE:
 -----------------------------------------------------------------------------
-/home/mcce/mcce2.5.1                                        (MCCE_HOME)
+/home/mcce/Stable-MCCE                                        (MCCE_HOME)
 t       Minimize output files                               (MINIMIZE_SIZE)
 t       Print trace file                                    (DO_TRACE)
 
@@ -110,7 +110,7 @@ step 3:
 1.4      Radius of the probe                                (RADIUS_PROBE)
 2.0      Ion radius                                         (IONRAD)
 0.15     Salt                                               (SALT)
-/home/mcce/mcce2.5.1/bin/delphi DelPhi executable           (DELPHI_EXE)
+/home/mcce/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
 /home/mcce/mcce2.5.1/bin/apbs APBS executable               (APBS_EXE)
 
 
