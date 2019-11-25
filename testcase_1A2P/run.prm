@@ -19,8 +19,8 @@ prot.pdb                                                    (INPDB)
 
 Steps:
 f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-t        step 2: make rotatmers                             (DO_ROTAMERS)
-f        step 3: do energy calculations                     (DO_ENERGY)
+f        step 2: make rotatmers                             (DO_ROTAMERS)
+t        step 3: do energy calculations                     (DO_ENERGY)
 f        step 4: monte carlo sampling                       (DO_MONTE)
 ==============================================================================
 
@@ -107,7 +107,7 @@ step 3:
 1.4      Radius of the probe                                (RADIUS_PROBE)
 2.0      Ion radius                                         (IONRAD)
 0.15     Salt                                               (SALT)
-../bin/delphi DelPhi executable           (DELPHI_EXE)
+/home/jmao/projects/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
 
 
 step 4:
