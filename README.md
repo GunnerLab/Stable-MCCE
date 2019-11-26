@@ -22,6 +22,7 @@ Add the executable to your path:
 export PATH={/path/to/mcce/}bin:$PATH
 ```
 
+{/path/to/mcce/} is the path to the MCCE installation directory. 
 
 **Troubleshooting:**
 
@@ -44,27 +45,41 @@ void free_param() {
 If you see glib.h error:
 
 Install glib:
+
 ```sudo apt-get install libglib2.0-dev```
 
 See the command options:
+
 ```pkg-config --cflags --libs glib-2.0```
 
 Add the above output to makefile as compiler option (the next is an example):
+
 ```-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  -lglib-2.0```
 
 
 If you see glib.h error
 
 Install glib:
+
 ```sudo apt-get install libglib2.0-dev```
 
 See the command options:
+
 ```pkg-config --cflags --libs glib-2.0```
 
 Add the above output to makefile as compiler option (the next is an example):
+
 ```-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  -lglib-2.0```
 
 ## Prepare a working directory and pdb file 
 
+Working directory:
 ```
 mkdir test_lysozyme
+cd test_lysozyme
+```
+
+Get a pdb file"
+```
+getpdb 1dpx
+```
