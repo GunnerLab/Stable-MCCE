@@ -83,3 +83,69 @@ Get a pdb file"
 ```
 getpdb 1dpx
 ```
+
+You now have a pdb file 1DPX in the working directory.
+
+MCCE requires a file run.prm to guide the run.
+```
+cp {/path/to/mcce/}run.prm.quick ./run.prm
+```
+
+{/path/to/mcce/} is the path to the MCCE installation directory. Edit the following lines in run.prm:
+
+---
+```
+prot.pdb                                                    (INPDB)
+```
+to 
+```
+1DPX.pdb                                                    (INPDB)
+```
+
+---
+```
+f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+f        step 2: make rotatmers                             (DO_ROTAMERS)
+f        step 3: do energy calculations                     (DO_ENERGY)
+f        step 4: monte carlo sampling                       (DO_MONTE)
+f        step 6: analysis                                   (DO_ANALYSIS)
+```
+to 
+```
+t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+t        step 2: make rotatmers                             (DO_ROTAMERS)
+t        step 3: do energy calculations                     (DO_ENERGY)
+t        step 4: monte carlo sampling                       (DO_MONTE)
+t        step 6: analysis                                   (DO_ANALYSIS)
+```
+
+---
+```
+/home/mcce/Stable-MCCE/extra.tpl                              (EXTRA)
+/home/mcce/Stable-MCCE/name.txt MCCE renaming rule.           (RENAME_RULES)
+```
+to 
+```
+{/path/to/mcce/}extra.tpl                                   (EXTRA)
+{/path/to/mcce/}name.txt MCCE renaming rule.                (RENAME_RULES)
+```
+
+---
+```
+/home/mcce/Stable-MCCE                                        (MCCE_HOME)
+```
+
+to
+```
+{/path/to/mcce/}                                              (MCCE_HOME)
+```
+
+---
+```
+/home/mcce/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
+```
+
+to
+```
+{/path/to/mcce/}bin/delphi DelPhi executable                  (DELPHI_EXE)
+```
