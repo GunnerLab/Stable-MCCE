@@ -58,4 +58,5 @@ delphi
 delphi/delphi
 lib/delphi/delphi
 mcce
-
+*.opp
+testcase_1A2P/energies/
