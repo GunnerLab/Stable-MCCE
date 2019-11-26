@@ -79,7 +79,7 @@ mkdir test_lysozyme
 cd test_lysozyme
 ```
 
-Get a pdb file"
+Get a pdb file
 ```
 getpdb 1dpx
 ```
@@ -148,4 +148,13 @@ to
 to
 ```
 {/path/to/mcce/}bin/delphi DelPhi executable                  (DELPHI_EXE)
+```
+---
+
+```
+/scratch     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
+```
+to
+```
+/tmp     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
 ```
