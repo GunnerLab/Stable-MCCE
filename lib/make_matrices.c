@@ -216,7 +216,7 @@ int make_matrices(PROT prot, char *dir)
 }
 
 int load_energies(EMATRIX *ematrix, char *dir)
-/* this program returns number of conformers loaded, or -1 if no exsiting energy table
+/* this program returns number of conformers loaded, or -1 if no existing energy table
  * It has been rewritten in v2.7 to load opp files under dir/PW_DIR/
  *
  */
