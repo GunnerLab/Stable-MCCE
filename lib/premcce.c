@@ -724,16 +724,17 @@ int premcce_clash(PROT prot)
     float dd;
     int n=0;
 
+    prot_atom_element(prot)
     for (kr=0; kr<prot.n_res; kr++) {
         for (ir=kr+1; ir<prot.n_res; ir++) {
             for (kc=0; kc<prot.res[kr].n_conf; kc++) {
                 for (ka=0; ka<prot.res[kr].conf[kc].n_atom; ka++) {
                     if (prot.res[kr].conf[kc].atom[ka].on == 0 ||
-                        prot.res[kr].conf[kc].atom[ka].name[1] == 'H') continue;
+                        prot.res[kr].conf[kc].atom[ka].element[1] == 'H') continue;
                     for (ic=0; ic<prot.res[ir].n_conf; ic++) {
                         for (ia=0; ia<prot.res[ir].conf[ic].n_atom; ia++) {
                             if (prot.res[ir].conf[ic].atom[ia].on == 0 ||
-                                prot.res[ir].conf[ic].atom[ia].name[1] == 'H') continue;
+                                prot.res[ir].conf[ic].atom[ia].element[1] == 'H') continue;
                             if ((dd=ddvv(prot.res[kr].conf[kc].atom[ka].xyz, prot.res[ir].conf[ic].atom[ia].xyz)) < 12.0) {
                                 /* exclude normal bonds */
                                 if (dd<limit) {
