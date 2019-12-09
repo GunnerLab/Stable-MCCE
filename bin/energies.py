@@ -94,6 +94,7 @@ if __name__ == "__main__":
 
     prot = Prot()
 
+    prot.runprm_set("DO_ENERGY", "t")
 
     if args.r:
         prot.runprm_set("PBE_START", "1")
@@ -102,4 +103,19 @@ if __name__ == "__main__":
         logging.info("Create a single thread to run this job.")
         x  = threading.Thread(target=mcce_thread, args=(args.e, 1))
         x.start()
-    elif
+    else:
+        nrange = args.c[1] - args.c[0] + 1
+        if prot.nconf < nrange:
+            nconf = prot.nconf
+        else:
+            nconf = nrange
+
+        # loop over number of threads
+        for i in range(args.p):
+            start = int(args.c[0] + i * nconf/args.p)
+            end = int(args.c[0] + (i+1) * nconf/args.p)
+            prot.runprm_set("PBE_START", str(start))
+            prot.runprm_set("PBE_END", str(end))
+            prot.runprm_write()
+            shutil.copy("run.prm", "run.prm.%d" % i)
+
