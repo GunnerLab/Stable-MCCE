@@ -29,64 +29,39 @@ int make_matrices(PROT prot, char *dir)
        n_conf+=(prot.res[kr].n_conf-1);
     }
 
-    /* Try to load an existing energy table */
+    /* Initialize a new energy table */
     ematrix.n = 0; /* the load_energies program relies on n to determine the validation of pointers */
     if (load_energies(&ematrix, dir) == n_conf) {   /* partial run exits */
        printf("   File %s/%s exists, updating this file and corresponding opp files.\n", dir, FN_CONFLIST3);
     }
-    else {  /* initialize a new one with current run */
-       free_ematrix(&ematrix); /* if ematrix.n is 0, nothing would happen */
-       ematrix.n = n_conf;
-       if (!(ematrix.conf = (CONF_HEAD *) calloc(ematrix.n, sizeof(CONF_HEAD)))) {
-          printf("   Allocate memory error\n");
-          return USERERR;
-       }
-       if (!(ematrix.pw = (PAIRWISE **) calloc(ematrix.n, sizeof(PAIRWISE *)))) {
-          printf("   Allocate memory error\n");
-          return USERERR;
-       }
-       for (i=0; i<ematrix.n; i++) {
-          if (!(ematrix.pw[i] = (PAIRWISE *) calloc(ematrix.n, sizeof(PAIRWISE)))) {
-             printf("   Allocate memory error\n");
-             return USERERR;
-          }
-       }
-       for (i=0; i<ematrix.n; i++) {
+    else { /* initialize a new one with current run */
+        free_ematrix(&ematrix); /* if ematrix.n is 0, nothing would happen */
+        ematrix.n = n_conf;
+        if (!(ematrix.conf = (CONF_HEAD *) calloc(ematrix.n, sizeof(CONF_HEAD)))) {
+           printf("   Allocate memory error\n");
+           return USERERR;
+        }
+        if (!(ematrix.pw = (PAIRWISE **) calloc(ematrix.n, sizeof(PAIRWISE *)))) {
+           printf("   Allocate memory error\n");
+           return USERERR;
+        }
+        for (i=0; i<ematrix.n; i++) {
+           if (!(ematrix.pw[i] = (PAIRWISE *) calloc(ematrix.n, sizeof(PAIRWISE)))) {
+              printf("   Allocate memory error\n");
+              return USERERR;
+           }
+        }
+        for (i=0; i<ematrix.n; i++) {
            ematrix.conf[i].on = 'f';
-       }
-    }
-
-
-    counter = 0; n_dummies = 0;
-    for (kr=0; kr<prot.n_res; kr++) {
-       for (kc=1; kc<prot.res[kr].n_conf; kc++) {
-          strcpy(ematrix.conf[counter].uniqID, prot.res[kr].conf[kc].uniqID);
-          strcpy(ematrix.conf[counter].history, prot.res[kr].conf[kc].history);
-          strncpy(confName, ematrix.conf[counter].uniqID, 5); confName[5] = '\0';
-          if (param_get("NATOM", confName, "", &natom)) {
-             printf("   WARNING: no NATOM for %s, 0 assumed\n", confName);
-             natom = 0;
-             param_sav("NATOM", confName, "", &natom, sizeof(int));
-          }
-          if (natom == 0) { /* dummy */
-             n_dummies ++;
-             ematrix.conf[counter].on = 't';
-             counter ++;
-             continue;
-          }
-          ematrix.conf[counter].netcrg = prot.res[kr].conf[kc].netcrg;
-          if (env.recalc_tors)
-              ematrix.conf[counter].E_tors = torsion_conf(&prot.res[kr].conf[kc]);
-          /* other parameters will be updated by head3lst_update once uniqID is defined*/
-          counter++;
-       }
+        }
     }
 
     /* updating self energy terms for conformers in current delphi */
-    refresh_prot(prot);
     counter = 0; n_dummies = 0;
     for (kr=0; kr<prot.n_res;kr++) {
        for (kc=1; kc<prot.res[kr].n_conf; kc++) {
+        strcpy(ematrix.conf[counter].uniqID, prot.res[kr].conf[kc].uniqID);
+        strcpy(ematrix.conf[counter].history, prot.res[kr].conf[kc].history);
         strncpy(confName, ematrix.conf[counter].uniqID, 5); confName[5] = '\0';
         if (param_get("NATOM", confName, "", &natom)) {
            printf("   WARNING: no NATOM for %s, 0 assumed\n", confName);
@@ -95,7 +70,7 @@ int make_matrices(PROT prot, char *dir)
         }
         if (natom == 0) { /* dummy */
            n_dummies ++;
-           ematrix.conf[counter].on = 't';
+           ematrix.conf[counter].on = 'd';
            counter ++;
            continue;
         }
@@ -125,7 +100,7 @@ int make_matrices(PROT prot, char *dir)
         }
         if (natom == 0) { /* dummy */
            n_dummies ++;
-           ematrix.conf[kc].on = 't';
+           ematrix.conf[kc].on = 'd';
            for (i=0; i<ematrix.n; i++) {
               ematrix.pw[kc][i].ele = ematrix.pw[kc][i].vdw = ematrix.pw[kc][i].crt = ematrix.pw[kc][i].ori = 0.0;
               ematrix.pw[kc][i].mark[0] = '\0';
@@ -216,7 +191,7 @@ int make_matrices(PROT prot, char *dir)
 }
 
 int load_energies(EMATRIX *ematrix, char *dir)
-/* this program returns number of conformers loaded, or -1 if no exsiting energy table
+/* this program returns number of conformers loaded, or -1 if no existing energy table
  * It has been rewritten in v2.7 to load opp files under dir/PW_DIR/
  *
  */
@@ -292,6 +267,9 @@ int load_energies(EMATRIX *ematrix, char *dir)
        &ematrix->conf[counter].E_extra,
        ematrix->conf[counter].history,
        &ematrix->conf[counter].on);
+       /* reset conf[i].on to "f" and use opp files to decide the flag */
+       ematrix->conf[counter].on = 'f';
+
        /* recover E_rxn from E_dsolv */
        strncpy(sbuff,  ematrix->conf[counter].uniqID, 5); sbuff[5] = '\0';
          if (param_get("RXN",sbuff, "", &rxn0)) {
@@ -309,10 +287,14 @@ int load_energies(EMATRIX *ematrix, char *dir)
     for (i=0; i<ematrix->n; i++) {
        sprintf(sbuff, "%s/%s/%s.opp", dir, PW_DIR, ematrix->conf[i].uniqID);
        if (!(fp=fopen(sbuff, "r"))) {
-         printf("   Open file %s to read error\n", sbuff);
-         return USERERR;
+         continue;
        }
+       else {
+        ematrix->conf[i].on = 't';
+       }
+
        while(fgets(sbuff, sizeof(sbuff), fp)) {
+          mark[0] = '\0';
           sscanf(sbuff, "%d %s %f %f %f %f %s", &t, uniqID, &ele, &vdw, &crt, &ori, mark);
           if (strcmp(ematrix->conf[t-1].uniqID, uniqID)) {
              printf("Conformer name mismatch at slot %d, name from head3 = %s, name from opp = %s", t-1, ematrix->conf[t-1].uniqID, uniqID);
@@ -323,6 +305,10 @@ int load_energies(EMATRIX *ematrix, char *dir)
           ematrix->pw[i][t-1].crt = crt;
           ematrix->pw[i][t-1].ori = ori;
           strcpy(ematrix->pw[i][t-1].mark, mark);
+          /* debug, check mark
+          printf("%s\n", sbuff);
+          printf("%d->%d:%s - %s\n", i, t-1, mark, ematrix->pw[i][t-1].mark );
+          */
        }
        fclose(fp);
     }
@@ -345,19 +331,22 @@ int extract_matrix(EMATRIX *ematrix, char *dir)
    }
 
    for (i=0; i<ematrix->n; i++) {
-      sprintf(sbuff, "%s/%s.opp", dir, ematrix->conf[i].uniqID);
-      if (!(fp=fopen(sbuff, "w"))) {
-         printf("   Open file %s error\n", sbuff);
-         return USERERR;
-      }
-      for (j=0; j<ematrix->n; j++) {
-         if (fabs(ematrix->pw[i][j].ele) > PW_CUTOFF ||
-             fabs(ematrix->pw[i][j].vdw) > PW_CUTOFF ||
-             fabs(ematrix->pw[i][j].crt) > PW_CUTOFF ||
-             fabs(ematrix->pw[i][j].ori) > PW_CUTOFF)
-         fprintf(fp, "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n", j+1, ematrix->conf[j].uniqID, ematrix->pw[i][j].ele, ematrix->pw[i][j].vdw, ematrix->pw[i][j].crt, ematrix->pw[i][j].ori, ematrix->pw[i][j].mark);
-      }
-      fclose(fp);
+       //printf("%s flag %c\n", ematrix->conf[i].uniqID, ematrix->conf[i].on);
+       if (ematrix->conf[i].on == 't') {
+          sprintf(sbuff, "%s/%s.opp", dir, ematrix->conf[i].uniqID);
+          if (!(fp=fopen(sbuff, "w"))) {
+             printf("   Open file %s error\n", sbuff);
+             return USERERR;
+          }
+          for (j=0; j<ematrix->n; j++) {
+             if (fabs(ematrix->pw[i][j].ele) > PW_CUTOFF ||
+                 fabs(ematrix->pw[i][j].vdw) > PW_CUTOFF ||
+                 fabs(ematrix->pw[i][j].crt) > PW_CUTOFF ||
+                 fabs(ematrix->pw[i][j].ori) > PW_CUTOFF)
+             fprintf(fp, "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n", j+1, ematrix->conf[j].uniqID, ematrix->pw[i][j].ele, ematrix->pw[i][j].vdw, ematrix->pw[i][j].crt, ematrix->pw[i][j].ori, ematrix->pw[i][j].mark);
+          }
+          fclose(fp);
+       }
    }
 
    /* write head3.lst
@@ -454,8 +443,8 @@ int head3lst_param(EMATRIX ematrix)
          ematrix.conf[kc].E_dsolv = ematrix.conf[kc].E_rxn - ematrix.conf[kc].E_rxn0;
 
          /* label unrealistic values */
-         if (ematrix.conf[kc].E_vdw0 > 999.0) ematrix.conf[kc].E_vdw0 = 999.0;
-         if (ematrix.conf[kc].E_vdw1 > 999.0) ematrix.conf[kc].E_vdw1 = 999.0;
+         if (ematrix.conf[kc].E_vdw0 > 500.0) ematrix.conf[kc].E_vdw0 = 999.0;
+         if (ematrix.conf[kc].E_vdw1 > 500.0) ematrix.conf[kc].E_vdw1 = 999.0;
    }
 
    return 0;
@@ -465,7 +454,6 @@ int write_energies(EMATRIX *ematrix, char *dir)
 {   FILE *fp, *fp2;
     int i, j;
     char fname[MAXCHAR_LINE];
-
 
 
     /* correction on pairwise interaction */
@@ -531,29 +519,6 @@ int write_energies(EMATRIX *ematrix, char *dir)
     }
 
 
-    /* write out the matrices
-    fp2 = tmpfile();
-    fprintf(fp2, "%d\n", ematrix->n);
-    fwrite(ematrix->conf, sizeof(CONF_HEAD), ematrix->n, fp2);
-    for (i=0; i<ematrix->n; i++) {
-        fwrite(ematrix->pw[i], sizeof(PAIRWISE), ematrix->n, fp2);
-    }
-    fputc(EOF, fp2); rewind(fp2);
-
-    sprintf(fname, "%s/%s", dir, ENERGY_TABLE);
-    if (!(fp = fopen(fname, "w"))) {
-        printf("   Can not open file %s to write. Abort ...\n", fname);
-        return USERERR;
-    }
-
-    if (def(fp2, fp, 9) != Z_OK) {
-        printf("Compress file %s error\n", fname);
-        fclose(fp);
-        fclose(fp2);
-        return USERERR;
-    }
-    fclose(fp2); fclose(fp);
-    */
     sprintf(fname, "%s/%s", dir, PW_DIR);
     if (extract_matrix(ematrix, fname)) return USERERR;
 

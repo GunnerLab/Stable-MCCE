@@ -633,7 +633,7 @@ typedef struct {
     float prune_rmsd;
     float prune_ele;
     float prune_vdw;
-    char  ms_gold_out;  //Cai 
+    char  ms_gold_out;  //Cai
 
     float sas2vdw;
 
