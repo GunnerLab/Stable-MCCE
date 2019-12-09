@@ -314,7 +314,7 @@ int energies()
    printf("%d dummy conformers were added.\n", add_dummies(prot));
    printf("   Done\n\n");
 
-   /* write compressed pw table */
+   /* write pw table */
    printf("   Making pairwise energy matrices and conformer summary ... \n"); fflush(stdout);
    if (make_matrices(prot, cur_folder)) return USERERR;
    printf("   Done\n\n"); fflush(stdout);
