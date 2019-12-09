@@ -35,6 +35,7 @@ Mechanism:
 import sys, argparse, shutil
 import logging
 import threading
+import time
 import subprocess
 
 
@@ -72,8 +73,9 @@ class Prot:
         return
 
 def mcce_thread(mcce, name):
-    logging.info("Thread %s: staring", name)
+    logging.info("Thread %s: starting", name)
     subprocess.run(mcce)
+    #time.sleep(name+2)
     logging.info("Thread %s: finishing", name)
 
     return
@@ -111,11 +113,21 @@ if __name__ == "__main__":
             nconf = nrange
 
         # loop over number of threads
+        threads = []
         for i in range(args.p):
             start = int(args.c[0] + i * nconf/args.p)
-            end = int(args.c[0] + (i+1) * nconf/args.p)
+            end = int(args.c[0] -1 + (i+1) * nconf/args.p)
             prot.runprm_set("PBE_START", str(start))
             prot.runprm_set("PBE_END", str(end))
             prot.runprm_write()
-            shutil.copy("run.prm", "run.prm.%d" % i)
+#           shutil.copy("run.prm", "run.prm.%d" % i)
+            x  = threading.Thread(target=mcce_thread, args=(args.e, i))
+            threads.append(x)
+            time.sleep(5)
+            x.start()
 
+        for i, x in enumerate(threads):
+            x.join()
+            logging.info("Main: join thread %d" % i)
+
+        logging.info("Main: Done")
