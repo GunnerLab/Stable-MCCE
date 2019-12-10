@@ -120,11 +120,11 @@ if __name__ == "__main__":
             prot.runprm_set("PBE_START", str(start))
             prot.runprm_set("PBE_END", str(end))
             prot.runprm_write()
-#           shutil.copy("run.prm", "run.prm.%d" % i)
+            shutil.copy("run.prm", "run.prm.%d" % i)
             x  = threading.Thread(target=mcce_thread, args=(args.e, i))
             threads.append(x)
-            time.sleep(5)
             x.start()
+            time.sleep(5)
 
         for i, x in enumerate(threads):
             x.join()
