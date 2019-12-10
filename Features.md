@@ -8,15 +8,15 @@
    * [x] change the code to determin H atom based on element field
 * [ ] Keep original H position for conformer 0 if H coordinates were provided by PDB. Good for connection with MD.
    * only the completly filled conformer is labeled as native
-* [ ] Step 3 pairwise interaction benchmark.
-* [ ] Step 3 multiple threads support
-   * [ ] write ele part only in opp at delphi
-   * [ ] finish up / merge opp files
+* [x] Step 3 pairwise interaction benchmark.
+* [x] Step 3 multiple threads support
+   * [x] write ele part only in opp at delphi
+   * [x] finish up / merge opp files
 * [ ] Microstate output - Xiu Hong
   * [x] upload previous code
   * [ ] change microstate output format
 * [ ] Hydrogen network report - Xiu Hong
-* [ ] mfe in the analysis report
+* [x] mfe in the analysis report
 * [ ] Control of MC: standard, with complete ms out, diff ms out.
 * [ ] Tools:
    * [ ] vdw clash for a specific conformer at atom level.
@@ -37,9 +37,5 @@
  * [ ] Improved running energy and Average energy output
  
 ## TODO next week
- * [ ] Fix Taichi's TYR problem.
- * [ ] benchmark step 3
  * [ ] Native H in step 2
- * [ ] Intruction on cofactor ftpl
- * [ ] Intruction how to run to step 3
- * [ ] Announce the addition and changes in mcce.c 
+ 
