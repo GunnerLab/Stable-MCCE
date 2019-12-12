@@ -1,0 +1,971 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+# References for pKa and Em
+#1.	Munro, O. Q., and Marques, H. M. (1996) Inorg. Chem. 35, 3752-3767.
+#2.	Vashi, P. R., and Marques, H. M. (2004) J. Inorg. Biochem. 98, 1471-1482.
+#3.	Marques, H. M., Cukrowski, I., and Vashi, P. R. (2000) J.Chem.Soc.,Dalton Trans. 2000, 1335-1342.
+#4.	Santucci, R., Reinhard, H., and Brunori, M. (1988) J. Am. Chem. Soc. 110, 8536-8357.
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G
+#3.Atom Parameters: Partial Charges and Radii
+# Radii(vdw) were collected from http://www.webelements.com/
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, HE3: HE3BK, HE30W, HE3+W, HE30H, HE3+H, HE3+O
+
+# Atom definition
+CONNECT, "FE  ", HE30W: sp3d2, " N A", " N B", " N C", " N D", " NE2", " O  "
+CONNECT, " CHA", HE30W: sp2, " C1A", " C4D", " HHA"
+CONNECT, " CHB", HE30W: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HE30W: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HE30W: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HE30W: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HE30W: sp2, " CHA", " N A", " C2A"
+CONNECT, " C2A", HE30W: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HE30W: sp2, " C2A", " C4A", " CMA"
+CONNECT, " C4A", HE30W: sp2, " CHB", " N A", " C3A"
+CONNECT, " CMA", HE30W: sp2, " C3A", " HMA", " OMA"
+CONNECT, " OMA", HE30W: sp2, " CMA"
+CONNECT, " N B", HE30W: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HE30W: sp2, " CHB", " N B", " C2B"
+CONNECT, " C2B", HE30W: sp2, " C1B", " C3B", " CMB"
+CONNECT, " C3B", HE30W: sp2, " C2B", " C4B", " ?  "
+CONNECT, " C4B", HE30W: sp2, " CHC", " N B", " C3B"
+CONNECT, " CMB", HE30W: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HE30W: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HE30W: sp2, " CHC", " N C", " C2C"
+CONNECT, " C2C", HE30W: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C3C", HE30W: sp2, " C2C", " C4C", " CAC"
+CONNECT, " C4C", HE30W: sp2, " CHD", " N C", " C3C"
+CONNECT, " CMC", HE30W: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HE30W: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HE30W: sp2, " CAC", "1HBC", "2HBC"
+CONNECT, " N D", HE30W: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HE30W: sp2, " CHD", " N D", " C2D"
+CONNECT, " C2D", HE30W: sp2, " C1D", " C3D", " CMD"
+CONNECT, " C3D", HE30W: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HE30W: sp2, " CHA", " N D", " C3D"
+CONNECT, " CMD", HE30W: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HE30W: s, " CHA"
+CONNECT, " HHB", HE30W: s, " CHB"
+CONNECT, " HHC", HE30W: s, " CHC"
+CONNECT, " HHD", HE30W: s, " CHD"
+CONNECT, " HMA", HE30W: s, " CMA"
+CONNECT, "1HMB", HE30W: s, " CMB"
+CONNECT, "2HMB", HE30W: s, " CMB"
+CONNECT, "3HMB", HE30W: s, " CMB"
+CONNECT, "1HMC", HE30W: s, " CMC"
+CONNECT, "2HMC", HE30W: s, " CMC"
+CONNECT, "3HMC", HE30W: s, " CMC"
+CONNECT, " HAC", HE30W: s, " CAC"
+CONNECT, "1HBC", HE30W: s, " CBC"
+CONNECT, "2HBC", HE30W: s, " CBC"
+CONNECT, "1HMD", HE30W: s, " CMD"
+CONNECT, "2HMD", HE30W: s, " CMD"
+CONNECT, "3HMD", HE30W: s, " CMD"
+CONNECT, " CB ", HE30W: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", HE30W: s, " CB "
+CONNECT, "2HB ", HE30W: s, " CB "
+CONNECT, " CG ", HE30W: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HE30W: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HE30W: s, " ND1"
+CONNECT, " CE1", HE30W: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HE30W: s, " CE1"
+CONNECT, " NE2", HE30W: sp2, "FE  ", " CE1", " CD2"
+CONNECT, " CD2", HE30W: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HE30W: s, " CD2"
+CONNECT, " O  ", HE30W: sp3, "FE  ", "1H  ", "2H  "
+CONNECT, "1H  ", HE30W: s, " O  "
+CONNECT, "2H  ", HE30W: s, " O  "
+CONNECT, "FE  ", HE3+W: sp3d2, " N A", " N B", " N C", " N D", " NE2", " O  "
+CONNECT, " CHA", HE3+W: sp2, " C1A", " C4D", " HHA"
+CONNECT, " CHB", HE3+W: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HE3+W: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HE3+W: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HE3+W: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HE3+W: sp2, " CHA", " N A", " C2A"
+CONNECT, " C2A", HE3+W: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HE3+W: sp2, " C2A", " C4A", " CMA"
+CONNECT, " C4A", HE3+W: sp2, " CHB", " N A", " C3A"
+CONNECT, " CMA", HE3+W: sp2, " C3A", " HMA", " OMA"
+CONNECT, " OMA", HE3+W: sp2, " CMA"
+CONNECT, " N B", HE3+W: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HE3+W: sp2, " CHB", " N B", " C2B"
+CONNECT, " C2B", HE3+W: sp2, " C1B", " C3B", " CMB"
+CONNECT, " C3B", HE3+W: sp2, " C2B", " C4B", " ?  "
+CONNECT, " C4B", HE3+W: sp2, " CHC", " N B", " C3B"
+CONNECT, " CMB", HE3+W: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HE3+W: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HE3+W: sp2, " CHC", " N C", " C2C"
+CONNECT, " C2C", HE3+W: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C3C", HE3+W: sp2, " C2C", " C4C", " CAC"
+CONNECT, " C4C", HE3+W: sp2, " CHD", " N C", " C3C"
+CONNECT, " CMC", HE3+W: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HE3+W: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HE3+W: sp2, " CAC", "1HBC", "2HBC"
+CONNECT, " N D", HE3+W: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HE3+W: sp2, " CHD", " N D", " C2D"
+CONNECT, " C2D", HE3+W: sp2, " C1D", " C3D", " CMD"
+CONNECT, " C3D", HE3+W: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HE3+W: sp2, " CHA", " N D", " C3D"
+CONNECT, " CMD", HE3+W: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HE3+W: s, " CHA"
+CONNECT, " HHB", HE3+W: s, " CHB"
+CONNECT, " HHC", HE3+W: s, " CHC"
+CONNECT, " HHD", HE3+W: s, " CHD"
+CONNECT, " HMA", HE3+W: s, " CMA"
+CONNECT, "1HMB", HE3+W: s, " CMB"
+CONNECT, "2HMB", HE3+W: s, " CMB"
+CONNECT, "3HMB", HE3+W: s, " CMB"
+CONNECT, "1HMC", HE3+W: s, " CMC"
+CONNECT, "2HMC", HE3+W: s, " CMC"
+CONNECT, "3HMC", HE3+W: s, " CMC"
+CONNECT, " HAC", HE3+W: s, " CAC"
+CONNECT, "1HBC", HE3+W: s, " CBC"
+CONNECT, "2HBC", HE3+W: s, " CBC"
+CONNECT, "1HMD", HE3+W: s, " CMD"
+CONNECT, "2HMD", HE3+W: s, " CMD"
+CONNECT, "3HMD", HE3+W: s, " CMD"
+CONNECT, " CB ", HE3+W: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", HE3+W: s, " CB "
+CONNECT, "2HB ", HE3+W: s, " CB "
+CONNECT, " CG ", HE3+W: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HE3+W: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HE3+W: s, " ND1"
+CONNECT, " CE1", HE3+W: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HE3+W: s, " CE1"
+CONNECT, " NE2", HE3+W: sp2, "FE  ", " CE1", " CD2"
+CONNECT, " CD2", HE3+W: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HE3+W: s, " CD2"
+CONNECT, " O  ", HE3+W: sp3, "FE  ", "1H  ", "2H  "
+CONNECT, "1H  ", HE3+W: s, " O  "
+CONNECT, "2H  ", HE3+W: s, " O  "
+CONNECT, "FE  ", HE30H: sp3d2, " N A", " N B", " N C", " N D", " NE2", " O  "
+CONNECT, " CHA", HE30H: sp2, " C1A", " C4D", " HHA"
+CONNECT, " CHB", HE30H: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HE30H: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HE30H: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HE30H: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HE30H: sp2, " CHA", " N A", " C2A"
+CONNECT, " C2A", HE30H: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HE30H: sp2, " C2A", " C4A", " CMA"
+CONNECT, " C4A", HE30H: sp2, " CHB", " N A", " C3A"
+CONNECT, " CMA", HE30H: sp2, " C3A", " HMA", " OMA"
+CONNECT, " OMA", HE30H: sp2, " CMA"
+CONNECT, " N B", HE30H: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HE30H: sp2, " CHB", " N B", " C2B"
+CONNECT, " C2B", HE30H: sp2, " C1B", " C3B", " CMB"
+CONNECT, " C3B", HE30H: sp2, " C2B", " C4B", " ?  "
+CONNECT, " C4B", HE30H: sp2, " CHC", " N B", " C3B"
+CONNECT, " CMB", HE30H: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HE30H: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HE30H: sp2, " CHC", " N C", " C2C"
+CONNECT, " C2C", HE30H: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C3C", HE30H: sp2, " C2C", " C4C", " CAC"
+CONNECT, " C4C", HE30H: sp2, " CHD", " N C", " C3C"
+CONNECT, " CMC", HE30H: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HE30H: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HE30H: sp2, " CAC", "1HBC", "2HBC"
+CONNECT, " N D", HE30H: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HE30H: sp2, " CHD", " N D", " C2D"
+CONNECT, " C2D", HE30H: sp2, " C1D", " C3D", " CMD"
+CONNECT, " C3D", HE30H: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HE30H: sp2, " CHA", " N D", " C3D"
+CONNECT, " CMD", HE30H: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HE30H: s, " CHA"
+CONNECT, " HHB", HE30H: s, " CHB"
+CONNECT, " HHC", HE30H: s, " CHC"
+CONNECT, " HHD", HE30H: s, " CHD"
+CONNECT, " HMA", HE30H: s, " CMA"
+CONNECT, "1HMB", HE30H: s, " CMB"
+CONNECT, "2HMB", HE30H: s, " CMB"
+CONNECT, "3HMB", HE30H: s, " CMB"
+CONNECT, "1HMC", HE30H: s, " CMC"
+CONNECT, "2HMC", HE30H: s, " CMC"
+CONNECT, "3HMC", HE30H: s, " CMC"
+CONNECT, " HAC", HE30H: s, " CAC"
+CONNECT, "1HBC", HE30H: s, " CBC"
+CONNECT, "2HBC", HE30H: s, " CBC"
+CONNECT, "1HMD", HE30H: s, " CMD"
+CONNECT, "2HMD", HE30H: s, " CMD"
+CONNECT, "3HMD", HE30H: s, " CMD"
+CONNECT, " CB ", HE30H: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", HE30H: s, " CB "
+CONNECT, "2HB ", HE30H: s, " CB "
+CONNECT, " CG ", HE30H: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HE30H: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HE30H: s, " ND1"
+CONNECT, " CE1", HE30H: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HE30H: s, " CE1"
+CONNECT, " NE2", HE30H: sp2, "FE  ", " CE1", " CD2"
+CONNECT, " CD2", HE30H: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HE30H: s, " CD2"
+CONNECT, " O  ", HE30H: sp3, "FE  ", " H  "
+CONNECT, " H  ", HE30H: s, " O  "
+CONNECT, "FE  ", HE3+H: sp3d2, " N A", " N B", " N C", " N D", " NE2", " O  "
+CONNECT, " CHA", HE3+H: sp2, " C1A", " C4D", " HHA"
+CONNECT, " CHB", HE3+H: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HE3+H: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HE3+H: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HE3+H: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HE3+H: sp2, " CHA", " N A", " C2A"
+CONNECT, " C2A", HE3+H: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HE3+H: sp2, " C2A", " C4A", " CMA"
+CONNECT, " C4A", HE3+H: sp2, " CHB", " N A", " C3A"
+CONNECT, " CMA", HE3+H: sp2, " C3A", " HMA", " OMA"
+CONNECT, " OMA", HE3+H: sp2, " CMA"
+CONNECT, " N B", HE3+H: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HE3+H: sp2, " CHB", " N B", " C2B"
+CONNECT, " C2B", HE3+H: sp2, " C1B", " C3B", " CMB"
+CONNECT, " C3B", HE3+H: sp2, " C2B", " C4B", " ?  "
+CONNECT, " C4B", HE3+H: sp2, " CHC", " N B", " C3B"
+CONNECT, " CMB", HE3+H: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HE3+H: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HE3+H: sp2, " CHC", " N C", " C2C"
+CONNECT, " C2C", HE3+H: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C3C", HE3+H: sp2, " C2C", " C4C", " CAC"
+CONNECT, " C4C", HE3+H: sp2, " CHD", " N C", " C3C"
+CONNECT, " CMC", HE3+H: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HE3+H: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HE3+H: sp2, " CAC", "1HBC", "2HBC"
+CONNECT, " N D", HE3+H: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HE3+H: sp2, " CHD", " N D", " C2D"
+CONNECT, " C2D", HE3+H: sp2, " C1D", " C3D", " CMD"
+CONNECT, " C3D", HE3+H: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HE3+H: sp2, " CHA", " N D", " C3D"
+CONNECT, " CMD", HE3+H: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HE3+H: s, " CHA"
+CONNECT, " HHB", HE3+H: s, " CHB"
+CONNECT, " HHC", HE3+H: s, " CHC"
+CONNECT, " HHD", HE3+H: s, " CHD"
+CONNECT, " HMA", HE3+H: s, " CMA"
+CONNECT, "1HMB", HE3+H: s, " CMB"
+CONNECT, "2HMB", HE3+H: s, " CMB"
+CONNECT, "3HMB", HE3+H: s, " CMB"
+CONNECT, "1HMC", HE3+H: s, " CMC"
+CONNECT, "2HMC", HE3+H: s, " CMC"
+CONNECT, "3HMC", HE3+H: s, " CMC"
+CONNECT, " HAC", HE3+H: s, " CAC"
+CONNECT, "1HBC", HE3+H: s, " CBC"
+CONNECT, "2HBC", HE3+H: s, " CBC"
+CONNECT, "1HMD", HE3+H: s, " CMD"
+CONNECT, "2HMD", HE3+H: s, " CMD"
+CONNECT, "3HMD", HE3+H: s, " CMD"
+CONNECT, " CB ", HE3+H: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", HE3+H: s, " CB "
+CONNECT, "2HB ", HE3+H: s, " CB "
+CONNECT, " CG ", HE3+H: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HE3+H: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HE3+H: s, " ND1"
+CONNECT, " CE1", HE3+H: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HE3+H: s, " CE1"
+CONNECT, " NE2", HE3+H: sp2, "FE  ", " CE1", " CD2"
+CONNECT, " CD2", HE3+H: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HE3+H: s, " CD2"
+CONNECT, " O  ", HE3+H: sp3, "FE  ", " H  "
+CONNECT, " H  ", HE3+H: s, " O  "
+CONNECT, "FE  ", HE3+O: sp3d2, " N A", " N B", " N C", " N D", " NE2", " O  "
+CONNECT, " CHA", HE3+O: sp2, " C1A", " C4D", " HHA"
+CONNECT, " CHB", HE3+O: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HE3+O: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HE3+O: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HE3+O: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HE3+O: sp2, " CHA", " N A", " C2A"
+CONNECT, " C2A", HE3+O: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HE3+O: sp2, " C2A", " C4A", " CMA"
+CONNECT, " C4A", HE3+O: sp2, " CHB", " N A", " C3A"
+CONNECT, " CMA", HE3+O: sp2, " C3A", " HMA", " OMA"
+CONNECT, " OMA", HE3+O: sp2, " CMA"
+CONNECT, " N B", HE3+O: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HE3+O: sp2, " CHB", " N B", " C2B"
+CONNECT, " C2B", HE3+O: sp2, " C1B", " C3B", " CMB"
+CONNECT, " C3B", HE3+O: sp2, " C2B", " C4B", " ?  "
+CONNECT, " C4B", HE3+O: sp2, " CHC", " N B", " C3B"
+CONNECT, " CMB", HE3+O: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HE3+O: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HE3+O: sp2, " CHC", " N C", " C2C"
+CONNECT, " C2C", HE3+O: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C3C", HE3+O: sp2, " C2C", " C4C", " CAC"
+CONNECT, " C4C", HE3+O: sp2, " CHD", " N C", " C3C"
+CONNECT, " CMC", HE3+O: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HE3+O: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HE3+O: sp2, " CAC", "1HBC", "2HBC"
+CONNECT, " N D", HE3+O: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HE3+O: sp2, " CHD", " N D", " C2D"
+CONNECT, " C2D", HE3+O: sp2, " C1D", " C3D", " CMD"
+CONNECT, " C3D", HE3+O: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HE3+O: sp2, " CHA", " N D", " C3D"
+CONNECT, " CMD", HE3+O: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HE3+O: s, " CHA"
+CONNECT, " HHB", HE3+O: s, " CHB"
+CONNECT, " HHC", HE3+O: s, " CHC"
+CONNECT, " HHD", HE3+O: s, " CHD"
+CONNECT, " HMA", HE3+O: s, " CMA"
+CONNECT, "1HMB", HE3+O: s, " CMB"
+CONNECT, "2HMB", HE3+O: s, " CMB"
+CONNECT, "3HMB", HE3+O: s, " CMB"
+CONNECT, "1HMC", HE3+O: s, " CMC"
+CONNECT, "2HMC", HE3+O: s, " CMC"
+CONNECT, "3HMC", HE3+O: s, " CMC"
+CONNECT, " HAC", HE3+O: s, " CAC"
+CONNECT, "1HBC", HE3+O: s, " CBC"
+CONNECT, "2HBC", HE3+O: s, " CBC"
+CONNECT, "1HMD", HE3+O: s, " CMD"
+CONNECT, "2HMD", HE3+O: s, " CMD"
+CONNECT, "3HMD", HE3+O: s, " CMD"
+CONNECT, " CB ", HE3+O: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", HE3+O: s, " CB "
+CONNECT, "2HB ", HE3+O: s, " CB "
+CONNECT, " CG ", HE3+O: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HE3+O: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HE3+O: s, " ND1"
+CONNECT, " CE1", HE3+O: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HE3+O: s, " CE1"
+CONNECT, " NE2", HE3+O: sp2, "FE  ", " CE1", " CD2"
+CONNECT, " CD2", HE3+O: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HE3+O: s, " CD2"
+CONNECT, " O  ", HE3+O: sp3, "FE  "
+
+# Atom charges
+CHARGE, HE30W, "FE  ":  2.000
+CHARGE, HE30W, " CHA":  0.000
+CHARGE, HE30W, " CHB":  0.000
+CHARGE, HE30W, " CHC":  0.000
+CHARGE, HE30W, " CHD":  0.000
+CHARGE, HE30W, " N A": -0.500
+CHARGE, HE30W, " C1A":  0.000
+CHARGE, HE30W, " C2A":  0.000
+CHARGE, HE30W, " C3A":  0.000
+CHARGE, HE30W, " C4A":  0.000
+CHARGE, HE30W, " CMA":  0.300
+CHARGE, HE30W, " OMA": -0.300
+CHARGE, HE30W, " N B": -0.500
+CHARGE, HE30W, " C1B":  0.000
+CHARGE, HE30W, " C2B":  0.000
+CHARGE, HE30W, " C3B":  0.000
+CHARGE, HE30W, " C4B":  0.000
+CHARGE, HE30W, " CMB":  0.000
+CHARGE, HE30W, " N C": -0.500
+CHARGE, HE30W, " C1C":  0.000
+CHARGE, HE30W, " C2C":  0.000
+CHARGE, HE30W, " C3C":  0.000
+CHARGE, HE30W, " C4C":  0.000
+CHARGE, HE30W, " CMC":  0.000
+CHARGE, HE30W, " CAC":  0.000
+CHARGE, HE30W, " CBC":  0.000
+CHARGE, HE30W, " N D": -0.500
+CHARGE, HE30W, " C1D":  0.000
+CHARGE, HE30W, " C2D":  0.000
+CHARGE, HE30W, " C3D":  0.000
+CHARGE, HE30W, " C4D":  0.000
+CHARGE, HE30W, " CMD":  0.000
+CHARGE, HE30W, " HHA":  0.000
+CHARGE, HE30W, " HHB":  0.000
+CHARGE, HE30W, " HHC":  0.000
+CHARGE, HE30W, " HHD":  0.000
+CHARGE, HE30W, " HMA":  0.000
+CHARGE, HE30W, "1HMB":  0.000
+CHARGE, HE30W, "2HMB":  0.000
+CHARGE, HE30W, "3HMB":  0.000
+CHARGE, HE30W, "1HMC":  0.000
+CHARGE, HE30W, "2HMC":  0.000
+CHARGE, HE30W, "3HMC":  0.000
+CHARGE, HE30W, " HAC":  0.000
+CHARGE, HE30W, "1HBC":  0.000
+CHARGE, HE30W, "2HBC":  0.000
+CHARGE, HE30W, "1HMD":  0.000
+CHARGE, HE30W, "2HMD":  0.000
+CHARGE, HE30W, "3HMD":  0.000
+CHARGE, HE30W, " CB ":  0.125
+CHARGE, HE30W, "1HB ":  0.000
+CHARGE, HE30W, "2HB ":  0.000
+CHARGE, HE30W, " CG ":  0.155
+CHARGE, HE30W, " ND1": -0.400
+CHARGE, HE30W, " HD1":  0.400
+CHARGE, HE30W, " CE1":  0.155
+CHARGE, HE30W, " HE1":  0.125
+CHARGE, HE30W, " NE2": -0.560
+CHARGE, HE30W, " CD2": -0.125
+CHARGE, HE30W, " HD2":  0.125
+CHARGE, HE30W, " O  ": -0.800
+CHARGE, HE30W, "1H  ":  0.400
+CHARGE, HE30W, "2H  ":  0.400
+CHARGE, HE3+W, "FE  ":  3.000
+CHARGE, HE3+W, " CHA":  0.000
+CHARGE, HE3+W, " CHB":  0.000
+CHARGE, HE3+W, " CHC":  0.000
+CHARGE, HE3+W, " CHD":  0.000
+CHARGE, HE3+W, " N A": -0.500
+CHARGE, HE3+W, " C1A":  0.000
+CHARGE, HE3+W, " C2A":  0.000
+CHARGE, HE3+W, " C3A":  0.000
+CHARGE, HE3+W, " C4A":  0.000
+CHARGE, HE3+W, " CMA":  0.300
+CHARGE, HE3+W, " OMA": -0.300
+CHARGE, HE3+W, " N B": -0.500
+CHARGE, HE3+W, " C1B":  0.000
+CHARGE, HE3+W, " C2B":  0.000
+CHARGE, HE3+W, " C3B":  0.000
+CHARGE, HE3+W, " C4B":  0.000
+CHARGE, HE3+W, " CMB":  0.000
+CHARGE, HE3+W, " N C": -0.500
+CHARGE, HE3+W, " C1C":  0.000
+CHARGE, HE3+W, " C2C":  0.000
+CHARGE, HE3+W, " C3C":  0.000
+CHARGE, HE3+W, " C4C":  0.000
+CHARGE, HE3+W, " CMC":  0.000
+CHARGE, HE3+W, " CAC":  0.000
+CHARGE, HE3+W, " CBC":  0.000
+CHARGE, HE3+W, " N D": -0.500
+CHARGE, HE3+W, " C1D":  0.000
+CHARGE, HE3+W, " C2D":  0.000
+CHARGE, HE3+W, " C3D":  0.000
+CHARGE, HE3+W, " C4D":  0.000
+CHARGE, HE3+W, " CMD":  0.000
+CHARGE, HE3+W, " HHA":  0.000
+CHARGE, HE3+W, " HHB":  0.000
+CHARGE, HE3+W, " HHC":  0.000
+CHARGE, HE3+W, " HHD":  0.000
+CHARGE, HE3+W, " HMA":  0.000
+CHARGE, HE3+W, "1HMB":  0.000
+CHARGE, HE3+W, "2HMB":  0.000
+CHARGE, HE3+W, "3HMB":  0.000
+CHARGE, HE3+W, "1HMC":  0.000
+CHARGE, HE3+W, "2HMC":  0.000
+CHARGE, HE3+W, "3HMC":  0.000
+CHARGE, HE3+W, " HAC":  0.000
+CHARGE, HE3+W, "1HBC":  0.000
+CHARGE, HE3+W, "2HBC":  0.000
+CHARGE, HE3+W, "1HMD":  0.000
+CHARGE, HE3+W, "2HMD":  0.000
+CHARGE, HE3+W, "3HMD":  0.000
+CHARGE, HE3+W, " CB ":  0.125
+CHARGE, HE3+W, "1HB ":  0.000
+CHARGE, HE3+W, "2HB ":  0.000
+CHARGE, HE3+W, " CG ":  0.155
+CHARGE, HE3+W, " ND1": -0.400
+CHARGE, HE3+W, " HD1":  0.400
+CHARGE, HE3+W, " CE1":  0.155
+CHARGE, HE3+W, " HE1":  0.125
+CHARGE, HE3+W, " NE2": -0.560
+CHARGE, HE3+W, " CD2": -0.125
+CHARGE, HE3+W, " HD2":  0.125
+CHARGE, HE3+W, " O  ": -0.800
+CHARGE, HE3+W, "1H  ":  0.400
+CHARGE, HE3+W, "2H  ":  0.400
+CHARGE, HE30H, "FE  ":  2.000
+CHARGE, HE30H, " CHA":  0.000
+CHARGE, HE30H, " CHB":  0.000
+CHARGE, HE30H, " CHC":  0.000
+CHARGE, HE30H, " CHD":  0.000
+CHARGE, HE30H, " N A": -0.500
+CHARGE, HE30H, " C1A":  0.000
+CHARGE, HE30H, " C2A":  0.000
+CHARGE, HE30H, " C3A":  0.000
+CHARGE, HE30H, " C4A":  0.000
+CHARGE, HE30H, " CMA":  0.300
+CHARGE, HE30H, " OMA": -0.300
+CHARGE, HE30H, " N B": -0.500
+CHARGE, HE30H, " C1B":  0.000
+CHARGE, HE30H, " C2B":  0.000
+CHARGE, HE30H, " C3B":  0.000
+CHARGE, HE30H, " C4B":  0.000
+CHARGE, HE30H, " CMB":  0.000
+CHARGE, HE30H, " N C": -0.500
+CHARGE, HE30H, " C1C":  0.000
+CHARGE, HE30H, " C2C":  0.000
+CHARGE, HE30H, " C3C":  0.000
+CHARGE, HE30H, " C4C":  0.000
+CHARGE, HE30H, " CMC":  0.000
+CHARGE, HE30H, " CAC":  0.000
+CHARGE, HE30H, " CBC":  0.000
+CHARGE, HE30H, " N D": -0.500
+CHARGE, HE30H, " C1D":  0.000
+CHARGE, HE30H, " C2D":  0.000
+CHARGE, HE30H, " C3D":  0.000
+CHARGE, HE30H, " C4D":  0.000
+CHARGE, HE30H, " CMD":  0.000
+CHARGE, HE30H, " HHA":  0.000
+CHARGE, HE30H, " HHB":  0.000
+CHARGE, HE30H, " HHC":  0.000
+CHARGE, HE30H, " HHD":  0.000
+CHARGE, HE30H, " HMA":  0.000
+CHARGE, HE30H, "1HMB":  0.000
+CHARGE, HE30H, "2HMB":  0.000
+CHARGE, HE30H, "3HMB":  0.000
+CHARGE, HE30H, "1HMC":  0.000
+CHARGE, HE30H, "2HMC":  0.000
+CHARGE, HE30H, "3HMC":  0.000
+CHARGE, HE30H, " HAC":  0.000
+CHARGE, HE30H, "1HBC":  0.000
+CHARGE, HE30H, "2HBC":  0.000
+CHARGE, HE30H, "1HMD":  0.000
+CHARGE, HE30H, "2HMD":  0.000
+CHARGE, HE30H, "3HMD":  0.000
+CHARGE, HE30H, " CB ":  0.125
+CHARGE, HE30H, "1HB ":  0.000
+CHARGE, HE30H, "2HB ":  0.000
+CHARGE, HE30H, " CG ":  0.155
+CHARGE, HE30H, " ND1": -0.400
+CHARGE, HE30H, " HD1":  0.400
+CHARGE, HE30H, " CE1":  0.155
+CHARGE, HE30H, " HE1":  0.125
+CHARGE, HE30H, " NE2": -0.560
+CHARGE, HE30H, " CD2": -0.125
+CHARGE, HE30H, " HD2":  0.125
+CHARGE, HE30H, " O  ": -1.200
+CHARGE, HE30H, " H  ":  0.200
+CHARGE, HE3+H, "FE  ":  3.000
+CHARGE, HE3+H, " CHA":  0.000
+CHARGE, HE3+H, " CHB":  0.000
+CHARGE, HE3+H, " CHC":  0.000
+CHARGE, HE3+H, " CHD":  0.000
+CHARGE, HE3+H, " N A": -0.500
+CHARGE, HE3+H, " C1A":  0.000
+CHARGE, HE3+H, " C2A":  0.000
+CHARGE, HE3+H, " C3A":  0.000
+CHARGE, HE3+H, " C4A":  0.000
+CHARGE, HE3+H, " CMA":  0.300
+CHARGE, HE3+H, " OMA": -0.300
+CHARGE, HE3+H, " N B": -0.500
+CHARGE, HE3+H, " C1B":  0.000
+CHARGE, HE3+H, " C2B":  0.000
+CHARGE, HE3+H, " C3B":  0.000
+CHARGE, HE3+H, " C4B":  0.000
+CHARGE, HE3+H, " CMB":  0.000
+CHARGE, HE3+H, " N C": -0.500
+CHARGE, HE3+H, " C1C":  0.000
+CHARGE, HE3+H, " C2C":  0.000
+CHARGE, HE3+H, " C3C":  0.000
+CHARGE, HE3+H, " C4C":  0.000
+CHARGE, HE3+H, " CMC":  0.000
+CHARGE, HE3+H, " CAC":  0.000
+CHARGE, HE3+H, " CBC":  0.000
+CHARGE, HE3+H, " N D": -0.500
+CHARGE, HE3+H, " C1D":  0.000
+CHARGE, HE3+H, " C2D":  0.000
+CHARGE, HE3+H, " C3D":  0.000
+CHARGE, HE3+H, " C4D":  0.000
+CHARGE, HE3+H, " CMD":  0.000
+CHARGE, HE3+H, " HHA":  0.000
+CHARGE, HE3+H, " HHB":  0.000
+CHARGE, HE3+H, " HHC":  0.000
+CHARGE, HE3+H, " HHD":  0.000
+CHARGE, HE3+H, " HMA":  0.000
+CHARGE, HE3+H, "1HMB":  0.000
+CHARGE, HE3+H, "2HMB":  0.000
+CHARGE, HE3+H, "3HMB":  0.000
+CHARGE, HE3+H, "1HMC":  0.000
+CHARGE, HE3+H, "2HMC":  0.000
+CHARGE, HE3+H, "3HMC":  0.000
+CHARGE, HE3+H, " HAC":  0.000
+CHARGE, HE3+H, "1HBC":  0.000
+CHARGE, HE3+H, "2HBC":  0.000
+CHARGE, HE3+H, "1HMD":  0.000
+CHARGE, HE3+H, "2HMD":  0.000
+CHARGE, HE3+H, "3HMD":  0.000
+CHARGE, HE3+H, " CB ":  0.125
+CHARGE, HE3+H, "1HB ":  0.000
+CHARGE, HE3+H, "2HB ":  0.000
+CHARGE, HE3+H, " CG ":  0.155
+CHARGE, HE3+H, " ND1": -0.400
+CHARGE, HE3+H, " HD1":  0.400
+CHARGE, HE3+H, " CE1":  0.155
+CHARGE, HE3+H, " HE1":  0.125
+CHARGE, HE3+H, " NE2": -0.560
+CHARGE, HE3+H, " CD2": -0.125
+CHARGE, HE3+H, " HD2":  0.125
+CHARGE, HE3+H, " O  ": -1.200
+CHARGE, HE3+H, " H  ":  0.200
+CHARGE, HE3+O, "FE  ":  0.610
+CHARGE, HE3+O, " CHA": -0.100
+CHARGE, HE3+O, " CHB": -0.070
+CHARGE, HE3+O, " CHC": -0.020
+CHARGE, HE3+O, " CHD": -0.070
+CHARGE, HE3+O, " N A": -0.130
+CHARGE, HE3+O, " C1A":  0.330
+CHARGE, HE3+O, " C2A": -0.300
+CHARGE, HE3+O, " C3A": -0.310
+CHARGE, HE3+O, " C4A":  0.280
+CHARGE, HE3+O, " CMA":  0.500
+CHARGE, HE3+O, " OMA": -0.590
+CHARGE, HE3+O, " N B": -0.080
+CHARGE, HE3+O, " C1B":  0.240
+CHARGE, HE3+O, " C2B": -0.280
+CHARGE, HE3+O, " C3B": -0.290
+CHARGE, HE3+O, " C4B":  0.250
+CHARGE, HE3+O, " CMB": -0.270
+CHARGE, HE3+O, " N C": -0.070
+CHARGE, HE3+O, " C1C":  0.240
+CHARGE, HE3+O, " C2C": -0.280
+CHARGE, HE3+O, " C3C": -0.270
+CHARGE, HE3+O, " C4C":  0.220
+CHARGE, HE3+O, " CMC": -0.270
+CHARGE, HE3+O, " CAC": -0.150
+CHARGE, HE3+O, " CBC": -0.420
+CHARGE, HE3+O, " N D": -0.120
+CHARGE, HE3+O, " C1D":  0.270
+CHARGE, HE3+O, " C2D": -0.310
+CHARGE, HE3+O, " C3D": -0.300
+CHARGE, HE3+O, " C4D":  0.330
+CHARGE, HE3+O, " CMD": -0.270
+CHARGE, HE3+O, " HHA":  0.180
+CHARGE, HE3+O, " HHB":  0.190
+CHARGE, HE3+O, " HHC":  0.170
+CHARGE, HE3+O, " HHD":  0.190
+CHARGE, HE3+O, " HMA":  0.090
+CHARGE, HE3+O, "1HMB":  0.090
+CHARGE, HE3+O, "2HMB":  0.090
+CHARGE, HE3+O, "3HMB":  0.090
+CHARGE, HE3+O, "1HMC":  0.090
+CHARGE, HE3+O, "2HMC":  0.090
+CHARGE, HE3+O, "3HMC":  0.090
+CHARGE, HE3+O, " HAC":  0.150
+CHARGE, HE3+O, "1HBC":  0.210
+CHARGE, HE3+O, "2HBC":  0.210
+CHARGE, HE3+O, "1HMD":  0.090
+CHARGE, HE3+O, "2HMD":  0.090
+CHARGE, HE3+O, "3HMD":  0.090
+CHARGE, HE3+O, " CB ": -0.090
+CHARGE, HE3+O, "1HB ":  0.090
+CHARGE, HE3+O, "2HB ":  0.090
+CHARGE, HE3+O, " CG ": -0.050
+CHARGE, HE3+O, " ND1": -0.360
+CHARGE, HE3+O, " HD1":  0.320
+CHARGE, HE3+O, " CE1":  0.250
+CHARGE, HE3+O, " HE1":  0.130
+CHARGE, HE3+O, " NE2": -0.700
+CHARGE, HE3+O, " CD2":  0.220
+CHARGE, HE3+O, " HD2":  0.100
+CHARGE, HE3+O, " O  ": -0.500
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  HE30W,  "FE  ": 1.950,   2.000,   0.173
+RADIUS,  HE30W,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " N A": 1.550,   1.750,   0.160
+RADIUS,  HE30W,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C2A": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C3A": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CMA": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " OMA": 1.520,   1.600,   0.200
+RADIUS,  HE30W,  " N B": 1.550,   1.750,   0.160
+RADIUS,  HE30W,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CMB": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " N C": 1.550,   1.750,   0.160
+RADIUS,  HE30W,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CMC": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " N D": 1.550,   1.750,   0.160
+RADIUS,  HE30W,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " CMD": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " HHA": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " HMA": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30W,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HE30W,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  HE30W,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  HE30W,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HE30W,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HE30W,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HE30W,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HE30W,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HE30W,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HE30W,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HE30W,  "1H  ": 1.000,   1.000,   0.020
+RADIUS,  HE30W,  "2H  ": 1.000,   1.000,   0.020
+RADIUS,  HE3+W,  "FE  ": 1.950,   2.000,   0.173
+RADIUS,  HE3+W,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " N A": 1.550,   1.750,   0.160
+RADIUS,  HE3+W,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C2A": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C3A": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CMA": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " OMA": 1.520,   1.600,   0.200
+RADIUS,  HE3+W,  " N B": 1.550,   1.750,   0.160
+RADIUS,  HE3+W,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CMB": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " N C": 1.550,   1.750,   0.160
+RADIUS,  HE3+W,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CMC": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " N D": 1.550,   1.750,   0.160
+RADIUS,  HE3+W,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " CMD": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " HHA": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " HMA": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+W,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HE3+W,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+W,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+W,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HE3+W,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HE3+W,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HE3+W,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HE3+W,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HE3+W,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HE3+W,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HE3+W,  "1H  ": 1.000,   1.000,   0.020
+RADIUS,  HE3+W,  "2H  ": 1.000,   1.000,   0.020
+RADIUS,  HE30H,  "FE  ": 1.950,   2.000,   0.173
+RADIUS,  HE30H,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " N A": 1.550,   1.750,   0.160
+RADIUS,  HE30H,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C2A": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C3A": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CMA": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " OMA": 1.520,   1.600,   0.200
+RADIUS,  HE30H,  " N B": 1.550,   1.750,   0.160
+RADIUS,  HE30H,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CMB": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " N C": 1.550,   1.750,   0.160
+RADIUS,  HE30H,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CMC": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " N D": 1.550,   1.750,   0.160
+RADIUS,  HE30H,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " CMD": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " HHA": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " HMA": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  HE30H,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HE30H,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  HE30H,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  HE30H,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HE30H,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HE30H,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HE30H,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HE30H,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HE30H,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HE30H,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HE30H,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  HE3+H,  "FE  ": 1.950,   2.000,   0.173
+RADIUS,  HE3+H,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " N A": 1.550,   1.750,   0.160
+RADIUS,  HE3+H,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C2A": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C3A": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CMA": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " OMA": 1.520,   1.600,   0.200
+RADIUS,  HE3+H,  " N B": 1.550,   1.750,   0.160
+RADIUS,  HE3+H,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CMB": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " N C": 1.550,   1.750,   0.160
+RADIUS,  HE3+H,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CMC": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " N D": 1.550,   1.750,   0.160
+RADIUS,  HE3+H,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " CMD": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " HHA": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " HMA": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+H,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HE3+H,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+H,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+H,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HE3+H,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HE3+H,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HE3+H,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HE3+H,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HE3+H,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HE3+H,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HE3+H,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  HE3+O,  "FE  ": 1.950,   2.000,   0.173
+RADIUS,  HE3+O,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " N A": 1.550,   1.750,   0.160
+RADIUS,  HE3+O,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C2A": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C3A": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CMA": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " OMA": 1.520,   1.600,   0.200
+RADIUS,  HE3+O,  " N B": 1.550,   1.750,   0.160
+RADIUS,  HE3+O,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CMB": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " N C": 1.550,   1.750,   0.160
+RADIUS,  HE3+O,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CMC": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " N D": 1.550,   1.750,   0.160
+RADIUS,  HE3+O,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " CMD": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " HHA": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " HHB": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " HHC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " HHD": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " HMA": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "1HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "2HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "3HMB": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "1HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "2HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "3HMC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " HAC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "1HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "2HBC": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "1HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "2HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  "3HMD": 1.200,   1.000,   0.020
+RADIUS,  HE3+O,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HE3+O,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+O,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  HE3+O,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HE3+O,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HE3+O,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HE3+O,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HE3+O,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HE3+O,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HE3+O,  " O  ": 1.600,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, HE30W: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=-5.700, rxn04= -5.700,rxn08=-5.700
+CONFORMER, HE3+W: Em0= -40.0, pKa0=  0.00, ne=-1, nH= 0, rxn02=-14.300, rxn04=-14.300,rxn08=-14.300
+CONFORMER, HE30H: Em0=   0.0, pKa0= 10.90, ne= 0, nH=-1, rxn02=-21.600, rxn04=-21.600,rxn=-21.600
+CONFORMER, HE3+H: Em0=-120.0, pKa0= 10.90, ne=-1, nH=-1, rxn02=-7.300,rxn04= -7.300,rxn08=-7.300
+CONFORMER, HE3+O: Em0=   0.0, pKa0=  7.00, ne=-2, nH=-2, rxn02=-2.570,rxn04= -2.570,rxn08=-2.570
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+TORSION, HE3,  H  :  O   FE    N A  f      0.000        12      0.00
+TORSION, HE3, 1H  :  O   FE    N A  f      0.000        12      0.00
