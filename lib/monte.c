@@ -86,7 +86,6 @@ void MC_smp(int n);
 
 STRINGS ms_spe_lst;
 FILE   *ms_fp;
-FILE   *re_ms_fp;  //readable ms.dat: re_ms.dat
 /* for the microstate */
 
 
@@ -243,32 +242,17 @@ int monte()
             env.ms_out = 0;
         }
         else {
-            if(env.re_ms_out) { //output microstate in binary file and readable file
-                ms_fp = fopen("ms.dat", "wb");
-                re_ms_fp=fopen("re_ms.dat", "w");
-                int i_spe;
-                fwrite(&ms_spe_lst.n, 1, sizeof(int), ms_fp);
-//checkpoint
-                fprintf(re_ms_fp, "residue number: %d\n", ms_spe_lst.n);
-                for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
-//checkpoint
-                    fprintf(re_ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
-                    fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp);
-                }
-                fprintf(re_ms_fp,"\n");
-            }
-            else { //only output microstate in binary formate
-                ms_fp = fopen("ms.dat", "wb");
-                int i_spe;
-                fwrite(&ms_spe_lst.n, 1, sizeof(int), ms_fp);
-//checkpoint
-                //printf("       writing ms.dat...\nresidue number: %d\n", ms_spe_lst.n);
-                for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
-//checkpoint
-                    //printf("       %s\n", ms_spe_lst.strings[i_spe]);
-                    fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp);
-                }
-             }
+            ms_fp = fopen("ms.dat", "w");
+            int i_spe;
+
+            fprintf(ms_fp, "residue number: %d\n", ms_spe_lst.n);
+            for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+
+               fprintf(ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
+               }
+            fprintf(ms_fp,"\n");
+
+
         }    
     }   
 
@@ -399,10 +383,8 @@ int monte()
         //if (enumerate(i) == -1) {
         if (enumerate_new(i) == -1) { // use new enumerate subroutine to output microstate
             if (env.ms_out){
-                fwrite("MONTERUNS", 9, sizeof(char), ms_fp); //The third line of ms.dat: method
-                if(env.re_ms_out) { //write out the method
-                    fprintf(re_ms_fp, "METHOD: %s\n", "MONTERUNS");
-                }
+                fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
+
             }
 
             /*
@@ -496,15 +478,10 @@ int monte()
     }
 
     //fclose(fp);
-    if (env.ms_out && env.re_ms_out){ // close the microstate output file if true
+    if (env.ms_out){ // close the microstate output file if true
     fclose(fp);
     fclose(ms_fp);
-    fclose(re_ms_fp);}
-    else if (env.ms_out && !env.re_ms_out){
-    fclose(fp);
-    fclose(ms_fp);}      // output microstate -- By Cai
-    else if (!env.ms_out && env.re_ms_out)
-    printf("   Warning: need to turn on (MS_OUT) in run.prm to get readable microstate file.\n");
+    }
     else
     fclose(fp);
 
@@ -2490,10 +2467,8 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     }
 
     if (env.ms_out) {
-        fwrite("ENUMERATE", 9, sizeof(char), ms_fp); //The third line of ms.dat: method
-        if(env.re_ms_out) { //write out the method
-            fprintf(re_ms_fp, "METHOD: %s\n", "ENUMERATE");
-        }
+        fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+
 
         //write each microstate: write first microstate
         update_conf_id(ms_state.conf_id, state);
@@ -2930,45 +2905,25 @@ int write_ms(MSRECORD *ms_state)
     int i_spe;
 
     //printf("writing ms ...\n");
-    if(env.re_ms_out){
     for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
-        fwrite(&ms_state->conf_id[i_spe], 1, sizeof(unsigned short), ms_fp);
-        fprintf(re_ms_fp,"%d\t", ms_state->conf_id[i_spe]);
-    }
-    }
-    else{
-    for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
-        fwrite(&ms_state->conf_id[i_spe], 1, sizeof(unsigned short), ms_fp);
-        //printf("%d\t", ms_state->conf_id[i_spe]);
-    }
+        fprintf(ms_fp,"%d\t", ms_state->conf_id[i_spe]);
     }
 
-    //write microstate at ms.dat, binary file
-    fwrite(&ms_state->H, 1, sizeof(double), ms_fp);
-    //fwrite(&ms_state->Hsq, 1, sizeof(double), ms_fp);
+    //write microstate at ms.dat
     if (enum_flag == 0) { //for MC sampling
         ms_state->Hav = ms_state->H/ms_state->counter;
-        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp);
-        fwrite(&ms_state->counter, 1, sizeof(int), ms_fp);
+        fprintf(ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
+        fprintf(ms_fp,"state energy: %lf\t", ms_state->Hav);
+        fprintf(ms_fp,"count: %d\n", ms_state->counter);
     }
     else {  //for enumerate, ms_state->counter is the occ of the microstate
         ms_state->Hav = ms_state->H;
-        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp);
-        fwrite(&ms_state->occ, 1, sizeof(double), ms_fp);
+        fprintf(ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
+        fprintf(ms_fp,"state energy: %lf\t", ms_state->Hav);
+        fprintf(ms_fp,"occ: %5.3f\n", ms_state->occ);
+
     }
 
-
-    //for readable ms.dat (re_ms.dat)
-    if (env.re_ms_out){
-        fprintf(re_ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
-        fprintf(re_ms_fp,"state energy: %lf\t", ms_state->Hav);
-
-        //fprintf(re_ms_fp,"cumulative energy^2: %lf\t", ms_state->Hsq);
-        if (enum_flag == 0 ){   //for MC sampling, ms_state->counter is the times the microstate stays
-        fprintf(re_ms_fp,"count: %d\n", ms_state->counter);}
-    else{ //for enumerate, ms_state->counter is the occ of the microstate
-        fprintf(re_ms_fp,"occ: %5.3f\n", ms_state->occ);}
-    }
 
     return 0;
 }
