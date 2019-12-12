@@ -762,7 +762,6 @@ typedef struct {
     int   mfe_flag;
     float  mfe_point;
     char   ms_out;             /*used for output binary microstate   by Cai */
-    char   re_ms_out;             /*used for output readable microstate    by Cai */
     char  always_scale_vdw;   /* used for monte_ms  by Cai */
 
 
