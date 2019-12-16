@@ -1,4 +1,6 @@
 # Multi-Conformation Continuum Electrostatics - MCCE
+<small><i>Page last updated on: {{ git_revision_date }}</i></small>
+
 MCCE is a biophysics simulation program combining continuum electrostatics and molecular mechanics. In this program, the protein side chain motions are simulated explicitly while the dielectric effect of solvent and bulk protein material is modeled by continuum electrostatics.
 
 ## What can MCCE do?

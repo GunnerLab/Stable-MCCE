@@ -6,7 +6,10 @@ nav:
     - Overview: index.md
     - Using MCCE:
         - Quick Start: quick.md
-        - Tutorial and Examples: examples.md
+        - Tutorial and Examples:
+          - pKa calculation: pkaexample.md
+          - Em calculation: emexample.md
+          - Hydrogen-bond network: hbexample.md
         - Tools Documentation: tools.md
         - How-Tos: howtos.md
 
@@ -54,3 +57,6 @@ markdown_extensions:
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+plugins:
+  - git-revision-date
