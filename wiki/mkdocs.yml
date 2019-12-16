@@ -1,0 +1,56 @@
+site_name: MCCE Documentation
+
+remote_name: upstream
+
+nav:
+    - Overview: index.md
+    - Using MCCE:
+        - Quick Start: quick.md
+        - Tutorial and Examples: examples.md
+        - Tools Documentation: tools.md
+        - How-Tos: howtos.md
+
+#theme: readthedocs
+
+theme:
+    name: material
+    logo:
+        icon: code
+    favicon: assets/favicon.ico
+    language: en
+    palette:
+        primary: teal
+        accent: orange
+    font:
+        text: Roboto
+        code: Roboto Mono
+    feature:
+        tabs: False
+
+markdown_extensions:
+    - toc:
+          permalink: true
+    - admonition
+    - markdown_blockdiag:
+          format: svg
+    - codehilite
+
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+          emoji_generator: !!python/name:pymdownx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+          custom_checkbox: true
+    - pymdownx.tilde
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
