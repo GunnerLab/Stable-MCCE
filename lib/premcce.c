@@ -724,7 +724,6 @@ int premcce_clash(PROT prot)
     float dd;
     int n=0;
 
-    prot_atom_element(prot)
     for (kr=0; kr<prot.n_res; kr++) {
         for (ir=kr+1; ir<prot.n_res; ir++) {
             for (kc=0; kc<prot.res[kr].n_conf; kc++) {
