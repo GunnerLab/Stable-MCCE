@@ -1,4 +1,5 @@
-# How to run mcce
+# MCCE quick start
+<small><i>Page last updated on: {{ git_revision_date }}</i></small>
 
 ## Get the code
 
@@ -59,19 +60,20 @@ Add the above output to makefile as compiler option (the next is an example):
 
 ## Prepare a working directory
 
-Working directory:
+### Working directory:
 ```
 mkdir test_lysozyme
 cd test_lysozyme
 ```
 
-Get a pdb file
+### Get a pdb file
 ```
 getpdb 1dpx
 ```
 
 You now have a pdb file 1DPX in the working directory.
 
+### run.prm
 MCCE requires a file run.prm to guide the run.
 ```
 cp {/path/to/mcce/}run.prm.quick ./run.prm
@@ -152,42 +154,4 @@ mcce > run.log &
 
 The log will be saved in file run.log.
 
-# Free format parameter file
 
-The parameter files are in param directory in free format.
-
-## If you have an existing mcce tpl file
-
-Suppose you have a glu.tpl file.
-
-1. Run this command to convert mcce format to free format.
-
-```tpl-mcce2free.py param04/glu.tpl > glu.ftpl```
-
-The above output file has most entries converted. 
-
-2. Then we can manually compile rxn values in CONFORMER records. First manually replace rxn= with rxn02=, rxn04=, rxn08= 
-depending on the dielectric constant of the tpl file that was converted from. 
-Since mcce tpl files at different dielectric constants are different only by rxn= values, 
-in the free format tpl files, they can be set in the same CONFORMER line.
-
-```CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -6.410, rxn04= -3.100, rxn08= -1.390```
-
-3. Now find the atom name difference, especially H atoms. PDB is using version 3 names and old mcce is using version 2 names.
-If you have a pdb file of the residue/ligand, we can test the ftpl file against that pdb file:
-
-```verify_tpl ftplfile pdbfile```
-
-It will report any atoms that can not be loaded by the converted ftpl file definition. Also ligand expo has the name comparison:
-http://ligand-expo.rcsb.org/index.html
-
-To change the name in ftpl file, from "1HB " to " HB2" in glu.ftpl for example:
-
-```sed -i 's/1HB / HB2/g' glu.ftpl ```
-
-You can verify the ftpl file again after the change of names.
-
-
-## Create new ftpl file
-
-Here is an old example. I will be glad to help you if you have a new cofactor.
