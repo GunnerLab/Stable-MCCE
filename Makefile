@@ -24,12 +24,12 @@ $(LIB): $(OBJ)
 	$(AR) $(ARFLAGS) $(LIB) $(OBJ)
 
 $(LDIR)/%.o: $(LDIR)/%.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS) -I/usr/include/glib-2.0
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 
 $(STEP6): lib/analysis.cpp $(DEPS)
 	cd $(LDIR)
-	$(CC2) -c -o $@ $< $(CFLAGS) -I/usr/include/glib-2.0
+	$(CC2) -c -o $@ $< $(CFLAGS)
 clean:
 	-rm -f bin/mcce bin/delphi $(LIB) $(LDIR)/*.o
 	$(MAKE) clean -C $(LDIR)/delphi
