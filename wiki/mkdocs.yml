@@ -10,6 +10,7 @@ nav:
           - pKa calculation: pkaexample.md
           - Em calculation: emexample.md
           - Hydrogen-bond network: hbexample.md
+          - Make new topology file: newftpl.md
         - Tools Documentation: tools.md
         - How-Tos: howtos.md
 

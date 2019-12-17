@@ -3,6 +3,28 @@
 
 ## Improving and helping runs
 
+---
+### energies.py
+*Run step3 with multiple threads.*
+
+**Syntax:**
+
+
+**Example:**
+
+
+---
+### getpdb
+*Download a pdb file by its PDB ID.*
+
+**Syntax:**
+
+
+**Example:**
+
+
+
+
 ## Result Analysis
 
 ## Parameter file preparation
