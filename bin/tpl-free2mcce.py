@@ -57,7 +57,7 @@ def create_connect(key, value):
             else:
                 offset = "0  "
                 connected_atom = x
-            if conf in disulfur and x == " SG ":
+            if conf in disulfur and atom == "  SG " and x == " SG ":
                 offset = "LIG"
                 connected_atom = " SG "
 
