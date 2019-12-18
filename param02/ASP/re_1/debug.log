@@ -1,0 +1,19 @@
+   Error! get_connect12(): connectivity of atom " N   ASP A0019" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   ASP A0019" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  ASPBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   ASPBK  HA      0.000
+CHARGE   ASP01  CB      0.000
+CHARGE   ASP01 1HB      0.000
+CHARGE   ASP01 2HB      0.000
+CHARGE   ASP-1  CB      0.000
+CHARGE   ASP-1 1HB      0.000
+CHARGE   ASP-1 2HB      0.000
+CHARGE   ASP02  CB      0.000
+CHARGE   ASP02 1HB      0.000
+CHARGE   ASP02 2HB      0.000

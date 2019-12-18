@@ -1,0 +1,23 @@
+   Error! get_connect12(): connectivity of atom " N   ILE A0139" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   ILE A0139" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  ILEBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   ILEBK  HA      0.000
+CHARGE   ILE01  CB      0.000
+CHARGE   ILE01  HB      0.000
+CHARGE   ILE01  CG1     0.000
+CHARGE   ILE01 1HG1     0.000
+CHARGE   ILE01 2HG1     0.000
+CHARGE   ILE01  CG2     0.000
+CHARGE   ILE01 1HG2     0.000
+CHARGE   ILE01 2HG2     0.000
+CHARGE   ILE01 3HG2     0.000
+CHARGE   ILE01  CD1     0.000
+CHARGE   ILE01 1HD1     0.000
+CHARGE   ILE01 2HD1     0.000
+CHARGE   ILE01 3HD1     0.000

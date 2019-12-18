@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+
+########################################################################
+#                                 getpdb                               #
+#                        Yanjun Wang, May 04, 2002                     #
+#     Revised by Junjun Mao to work with Python 3, June 17, 2019       #
+#                                                                      #
+# This program downloads pdb files from ftp://ftp.rcsb.org             #
+########################################################################
+
+import sys, os
+from urllib.request import urlopen
+
+if __name__ == '__main__':
+
+   if len(sys.argv) < 2:
+      print("getpdb pdbID [file]")
+      print('This program gets a pdb file from ftp://ftp.rcsb.org.  ---Yanjun')
+      sys.exit(0)
+
+   if len(sys.argv[1]) < 4:
+      print('Sorry, but you entered an invalid pdbID.')
+      sys.exit(0)
+
+   file = sys.argv[1]
+
+   f_dir = file[1:3].lower()     # the subdirectory of this pdb file
+   id = file[:4].lower()         # the pdb file name
+   id_ent = id + '.ent'
+   pdb_name = id + '.ent.gz'      # pdb file name
+
+   if len(sys.argv) > 2:
+      saved_pdb = sys.argv[2]
+   else:
+      saved_pdb = id.upper() + '.pdb'
+   remoteaddr = 'ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/' +\
+		 f_dir + '/pdb' + pdb_name
+
+   print('Inquiring the remote file', id.upper()+'.pdb ...')
+
+   try:
+      remotefile = urlopen(remoteaddr)
+   except IOError:
+      print('This pdb entry does not exist, or the connection lost.')
+      sys.exit(0)
+
+   localfile = open(pdb_name, 'wb')
+   print('Saving as', saved_pdb, '...')
+   localfile.write(remotefile.read())
+   localfile.close()
+   remotefile.close()
+
+   os.popen('gunzip ' + pdb_name)
+   os.popen('mv ' + id_ent + ' ' + saved_pdb)
+
+   print('Download completed. ')

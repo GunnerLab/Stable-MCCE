@@ -1,0 +1,18 @@
+   Error! get_connect12(): connectivity of atom " N   PRO A0011" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   PRO A0011" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+CHARGE   PROBK  HA      0.000
+CHARGE   PRO01  CB      0.000
+CHARGE   PRO01 1HB      0.000
+CHARGE   PRO01 2HB      0.000
+CHARGE   PRO01  CG      0.000
+CHARGE   PRO01 1HG      0.000
+CHARGE   PRO01 2HG      0.000
+CHARGE   PRO01  CD      0.000
+CHARGE   PRO01 1HD      0.000
+CHARGE   PRO01 2HD      0.000

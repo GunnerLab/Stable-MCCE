@@ -1,0 +1,14 @@
+   Error! get_connect12(): connectivity of atom " N   ALA A0069" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   ALA A0069" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  ALABK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   ALABK  HA      0.000
+CHARGE   ALA01  CB      0.000
+CHARGE   ALA01 1HB      0.000
+CHARGE   ALA01 2HB      0.000
+CHARGE   ALA01 3HB      0.000

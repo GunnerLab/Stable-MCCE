@@ -1,0 +1,19 @@
+VPATH=src
+#LINUX INTEL
+  FC=ifort -O5 -fcray-pointer -ffixed-line-length-none
+  CC=icc -O5
+
+# Double precision performance
+#RECFLAGS = -O3 -I$(VPATH)/ -DLINUX -DIFC -DDP -fdefault-real-8
+#FLAGS = -O3 -I$(VPATH)/   -DLINUX -DIFC  -DDP -fdefault-real-8
+RECFLAGS = -O5 -I$(VPATH)/ -DLINUX -DIFC -DDP 
+FLAGS = -O5 -I$(VPATH)/   -DLINUX -DIFC  -DDP
+CFLAGS = -O5  -DLINUX 
+LFLAGS = -O5  -L/usr/lib/ 
+#RECFLAGS = -g -I$(VPATH)/ -DLINUX -DIFC -DDP 
+#FLAGS = -g -I$(VPATH)/   -DLINUX -DIFC  -DDP
+#CFLAGS = -g  -DLINUX 
+#LFLAGS = -g  -L/usr/lib/ 
+
+
+include $(VPATH)/genericLinux.mk

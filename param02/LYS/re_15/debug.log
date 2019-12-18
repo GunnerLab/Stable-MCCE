@@ -1,0 +1,28 @@
+   Error! get_connect12(): connectivity of atom " N   LYS A0127" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   LYS A0127" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  LYSBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   LYSBK  HA      0.000
+CHARGE   LYS01 1HB      0.000
+CHARGE   LYS01 2HB      0.000
+CHARGE   LYS01  CG      0.000
+CHARGE   LYS01 1HG      0.000
+CHARGE   LYS01 2HG      0.000
+CHARGE   LYS01 1HD      0.000
+CHARGE   LYS01 2HD      0.000
+CHARGE   LYS01 1HE      0.000
+CHARGE   LYS01 2HE      0.000
+CHARGE   LYS+1 1HB      0.000
+CHARGE   LYS+1 2HB      0.000
+CHARGE   LYS+1  CG      0.000
+CHARGE   LYS+1 1HG      0.000
+CHARGE   LYS+1 2HG      0.000
+CHARGE   LYS+1 1HD      0.000
+CHARGE   LYS+1 2HD      0.000
+CHARGE   LYS+1 1HE      0.000
+CHARGE   LYS+1 2HE      0.000

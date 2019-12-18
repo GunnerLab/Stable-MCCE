@@ -1,0 +1,12 @@
+   Error! get_connect12(): connectivity of atom " N   SER A0059" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   SER A0059" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  SERBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   SERBK  HA      0.000
+CHARGE   SER01 1HB      0.000
+CHARGE   SER01 2HB      0.000

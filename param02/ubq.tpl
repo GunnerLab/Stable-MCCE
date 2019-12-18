@@ -1,0 +1,1406 @@
+CONFLIST UbQ        UbQBK UbQ01 UbQ-1 UbQ-2 UbQP1 UbQP2 UbQS1 UbQS2 UbQH2 
+
+NATOM    UbQBK      20
+NATOM    UbQ01      35
+NATOM    UbQ-1      35
+NATOM    UbQ-2      35
+NATOM    UbQP1      36
+NATOM    UbQP2      36
+NATOM    UbQS1      36
+NATOM    UbQS2      36
+NATOM    UbQH2      37
+
+IATOM    UbQBK  C12 0
+IATOM    UbQBK  C13 1
+IATOM    UbQBK  C14 2
+IATOM    UbQBK  C15 3
+IATOM    UbQBK  C16 4
+IATOM    UbQBK  C17 5
+IATOM    UbQBK  C18 6
+IATOM    UbQBK  C19 7
+IATOM    UbQBK  C20 8
+IATOM    UbQBK  C21 9
+IATOM    UbQBK  C22 10
+IATOM    UbQBK  C23 11
+IATOM    UbQBK  C24 12
+IATOM    UbQBK  C25 13
+IATOM    UbQBK  C26 14
+IATOM    UbQBK  C27 15
+IATOM    UbQBK  C28 16
+IATOM    UbQBK  C29 17
+IATOM    UbQBK  C30 18
+IATOM    UbQBK  C31 19
+IATOM    UbQ01  C1  0
+IATOM    UbQ01  C2  1
+IATOM    UbQ01  C3  2
+IATOM    UbQ01  C4  3
+IATOM    UbQ01  C5  4
+IATOM    UbQ01  C6  5
+IATOM    UbQ01  C1M 6
+IATOM    UbQ01  C3M 7
+IATOM    UbQ01  C4M 8
+IATOM    UbQ01  C7  9
+IATOM    UbQ01  C8  10
+IATOM    UbQ01  C9  11
+IATOM    UbQ01  C10 12
+IATOM    UbQ01  C11 13
+IATOM    UbQ01 1H1M 14
+IATOM    UbQ01 2H1M 15
+IATOM    UbQ01 3H1M 16
+IATOM    UbQ01 1H3M 17
+IATOM    UbQ01 2H3M 18
+IATOM    UbQ01 3H3M 19
+IATOM    UbQ01 1H4M 20
+IATOM    UbQ01 2H4M 21
+IATOM    UbQ01 3H4M 22
+IATOM    UbQ01 1H7  23
+IATOM    UbQ01 2H7  24
+IATOM    UbQ01  H8  25
+IATOM    UbQ01 1H10 26
+IATOM    UbQ01 2H10 27
+IATOM    UbQ01 3H10 28
+IATOM    UbQ01 1H11 29
+IATOM    UbQ01 2H11 30
+IATOM    UbQ01  O2  31
+IATOM    UbQ01  O5  32
+IATOM    UbQ01  O3  33
+IATOM    UbQ01  O4  34
+IATOM    UbQ-1  C1  0
+IATOM    UbQ-1  C2  1
+IATOM    UbQ-1  C3  2
+IATOM    UbQ-1  C4  3
+IATOM    UbQ-1  C5  4
+IATOM    UbQ-1  C6  5
+IATOM    UbQ-1  C1M 6
+IATOM    UbQ-1  C3M 7
+IATOM    UbQ-1  C4M 8
+IATOM    UbQ-1  C7  9
+IATOM    UbQ-1  C8  10
+IATOM    UbQ-1  C9  11
+IATOM    UbQ-1  C10 12
+IATOM    UbQ-1  C11 13
+IATOM    UbQ-1 1H1M 14
+IATOM    UbQ-1 2H1M 15
+IATOM    UbQ-1 3H1M 16
+IATOM    UbQ-1 1H3M 17
+IATOM    UbQ-1 2H3M 18
+IATOM    UbQ-1 3H3M 19
+IATOM    UbQ-1 1H4M 20
+IATOM    UbQ-1 2H4M 21
+IATOM    UbQ-1 3H4M 22
+IATOM    UbQ-1 1H7  23
+IATOM    UbQ-1 2H7  24
+IATOM    UbQ-1  H8  25
+IATOM    UbQ-1 1H10 26
+IATOM    UbQ-1 2H10 27
+IATOM    UbQ-1 3H10 28
+IATOM    UbQ-1 1H11 29
+IATOM    UbQ-1 2H11 30
+IATOM    UbQ-1  O2  31
+IATOM    UbQ-1  O5  32
+IATOM    UbQ-1  O3  33
+IATOM    UbQ-1  O4  34
+IATOM    UbQ-2  C1  0
+IATOM    UbQ-2  C2  1
+IATOM    UbQ-2  C3  2
+IATOM    UbQ-2  C4  3
+IATOM    UbQ-2  C5  4
+IATOM    UbQ-2  C6  5
+IATOM    UbQ-2  C1M 6
+IATOM    UbQ-2  C3M 7
+IATOM    UbQ-2  C4M 8
+IATOM    UbQ-2  C7  9
+IATOM    UbQ-2  C8  10
+IATOM    UbQ-2  C9  11
+IATOM    UbQ-2  C10 12
+IATOM    UbQ-2  C11 13
+IATOM    UbQ-2 1H1M 14
+IATOM    UbQ-2 2H1M 15
+IATOM    UbQ-2 3H1M 16
+IATOM    UbQ-2 1H3M 17
+IATOM    UbQ-2 2H3M 18
+IATOM    UbQ-2 3H3M 19
+IATOM    UbQ-2 1H4M 20
+IATOM    UbQ-2 2H4M 21
+IATOM    UbQ-2 3H4M 22
+IATOM    UbQ-2 1H7  23
+IATOM    UbQ-2 2H7  24
+IATOM    UbQ-2  H8  25
+IATOM    UbQ-2 1H10 26
+IATOM    UbQ-2 2H10 27
+IATOM    UbQ-2 3H10 28
+IATOM    UbQ-2 1H11 29
+IATOM    UbQ-2 2H11 30
+IATOM    UbQ-2  O2  31
+IATOM    UbQ-2  O5  32
+IATOM    UbQ-2  O3  33
+IATOM    UbQ-2  O4  34
+IATOM    UbQP1  C1  0
+IATOM    UbQP1  C2  1
+IATOM    UbQP1  C3  2
+IATOM    UbQP1  C4  3
+IATOM    UbQP1  C5  4
+IATOM    UbQP1  C6  5
+IATOM    UbQP1  C1M 6
+IATOM    UbQP1  C3M 7
+IATOM    UbQP1  C4M 8
+IATOM    UbQP1  C7  9
+IATOM    UbQP1  C8  10
+IATOM    UbQP1  C9  11
+IATOM    UbQP1  C10 12
+IATOM    UbQP1  C11 13
+IATOM    UbQP1 1H1M 14
+IATOM    UbQP1 2H1M 15
+IATOM    UbQP1 3H1M 16
+IATOM    UbQP1 1H3M 17
+IATOM    UbQP1 2H3M 18
+IATOM    UbQP1 3H3M 19
+IATOM    UbQP1 1H4M 20
+IATOM    UbQP1 2H4M 21
+IATOM    UbQP1 3H4M 22
+IATOM    UbQP1 1H7  23
+IATOM    UbQP1 2H7  24
+IATOM    UbQP1  H8  25
+IATOM    UbQP1 1H10 26
+IATOM    UbQP1 2H10 27
+IATOM    UbQP1 3H10 28
+IATOM    UbQP1 1H11 29
+IATOM    UbQP1 2H11 30
+IATOM    UbQP1  O3  31
+IATOM    UbQP1  O4  32
+IATOM    UbQP1  O2  33
+IATOM    UbQP1  O5  34
+IATOM    UbQP1  HO2 35
+IATOM    UbQP2  C1  0
+IATOM    UbQP2  C2  1
+IATOM    UbQP2  C3  2
+IATOM    UbQP2  C4  3
+IATOM    UbQP2  C5  4
+IATOM    UbQP2  C6  5
+IATOM    UbQP2  C1M 6
+IATOM    UbQP2  C3M 7
+IATOM    UbQP2  C4M 8
+IATOM    UbQP2  C7  9
+IATOM    UbQP2  C8  10
+IATOM    UbQP2  C9  11
+IATOM    UbQP2  C10 12
+IATOM    UbQP2  C11 13
+IATOM    UbQP2 1H1M 14
+IATOM    UbQP2 2H1M 15
+IATOM    UbQP2 3H1M 16
+IATOM    UbQP2 1H3M 17
+IATOM    UbQP2 2H3M 18
+IATOM    UbQP2 3H3M 19
+IATOM    UbQP2 1H4M 20
+IATOM    UbQP2 2H4M 21
+IATOM    UbQP2 3H4M 22
+IATOM    UbQP2 1H7  23
+IATOM    UbQP2 2H7  24
+IATOM    UbQP2  H8  25
+IATOM    UbQP2 1H10 26
+IATOM    UbQP2 2H10 27
+IATOM    UbQP2 3H10 28
+IATOM    UbQP2 1H11 29
+IATOM    UbQP2 2H11 30
+IATOM    UbQP2  O3  31
+IATOM    UbQP2  O4  32
+IATOM    UbQP2  O2  33
+IATOM    UbQP2  O5  34
+IATOM    UbQP2  HO5 35
+IATOM    UbQS1  C1  0
+IATOM    UbQS1  C2  1
+IATOM    UbQS1  C3  2
+IATOM    UbQS1  C4  3
+IATOM    UbQS1  C5  4
+IATOM    UbQS1  C6  5
+IATOM    UbQS1  C1M 6
+IATOM    UbQS1  C3M 7
+IATOM    UbQS1  C4M 8
+IATOM    UbQS1  C7  9
+IATOM    UbQS1  C8  10
+IATOM    UbQS1  C9  11
+IATOM    UbQS1  C10 12
+IATOM    UbQS1  C11 13
+IATOM    UbQS1 1H1M 14
+IATOM    UbQS1 2H1M 15
+IATOM    UbQS1 3H1M 16
+IATOM    UbQS1 1H3M 17
+IATOM    UbQS1 2H3M 18
+IATOM    UbQS1 3H3M 19
+IATOM    UbQS1 1H4M 20
+IATOM    UbQS1 2H4M 21
+IATOM    UbQS1 3H4M 22
+IATOM    UbQS1 1H7  23
+IATOM    UbQS1 2H7  24
+IATOM    UbQS1  H8  25
+IATOM    UbQS1 1H10 26
+IATOM    UbQS1 2H10 27
+IATOM    UbQS1 3H10 28
+IATOM    UbQS1 1H11 29
+IATOM    UbQS1 2H11 30
+IATOM    UbQS1  O3  31
+IATOM    UbQS1  O4  32
+IATOM    UbQS1  O2  33
+IATOM    UbQS1  O5  34
+IATOM    UbQS1  HO2 35
+IATOM    UbQS2  C1  0
+IATOM    UbQS2  C2  1
+IATOM    UbQS2  C3  2
+IATOM    UbQS2  C4  3
+IATOM    UbQS2  C5  4
+IATOM    UbQS2  C6  5
+IATOM    UbQS2  C1M 6
+IATOM    UbQS2  C3M 7
+IATOM    UbQS2  C4M 8
+IATOM    UbQS2  C7  9
+IATOM    UbQS2  C8  10
+IATOM    UbQS2  C9  11
+IATOM    UbQS2  C10 12
+IATOM    UbQS2  C11 13
+IATOM    UbQS2 1H1M 14
+IATOM    UbQS2 2H1M 15
+IATOM    UbQS2 3H1M 16
+IATOM    UbQS2 1H3M 17
+IATOM    UbQS2 2H3M 18
+IATOM    UbQS2 3H3M 19
+IATOM    UbQS2 1H4M 20
+IATOM    UbQS2 2H4M 21
+IATOM    UbQS2 3H4M 22
+IATOM    UbQS2 1H7  23
+IATOM    UbQS2 2H7  24
+IATOM    UbQS2  H8  25
+IATOM    UbQS2 1H10 26
+IATOM    UbQS2 2H10 27
+IATOM    UbQS2 3H10 28
+IATOM    UbQS2 1H11 29
+IATOM    UbQS2 2H11 30
+IATOM    UbQS2  O3  31
+IATOM    UbQS2  O4  32
+IATOM    UbQS2  O2  33
+IATOM    UbQS2  O5  34
+IATOM    UbQS2  HO5 35
+IATOM    UbQH2  C1  0
+IATOM    UbQH2  C2  1
+IATOM    UbQH2  C3  2
+IATOM    UbQH2  C4  3
+IATOM    UbQH2  C5  4
+IATOM    UbQH2  C6  5
+IATOM    UbQH2  C1M 6
+IATOM    UbQH2  C3M 7
+IATOM    UbQH2  C4M 8
+IATOM    UbQH2  C7  9
+IATOM    UbQH2  C8  10
+IATOM    UbQH2  C9  11
+IATOM    UbQH2  C10 12
+IATOM    UbQH2  C11 13
+IATOM    UbQH2 1H1M 14
+IATOM    UbQH2 2H1M 15
+IATOM    UbQH2 3H1M 16
+IATOM    UbQH2 1H3M 17
+IATOM    UbQH2 2H3M 18
+IATOM    UbQH2 3H3M 19
+IATOM    UbQH2 1H4M 20
+IATOM    UbQH2 2H4M 21
+IATOM    UbQH2 3H4M 22
+IATOM    UbQH2 1H7  23
+IATOM    UbQH2 2H7  24
+IATOM    UbQH2  H8  25
+IATOM    UbQH2 1H10 26
+IATOM    UbQH2 2H10 27
+IATOM    UbQH2 3H10 28
+IATOM    UbQH2 1H11 29
+IATOM    UbQH2 2H11 30
+IATOM    UbQH2  O3  31
+IATOM    UbQH2  O4  32
+IATOM    UbQH2  O2  33
+IATOM    UbQH2  O5  34
+IATOM    UbQH2  HO2 35
+IATOM    UbQH2  HO5 36
+
+ATOMNAME UbQBK    0  C12
+ATOMNAME UbQBK    1  C13
+ATOMNAME UbQBK    2  C14
+ATOMNAME UbQBK    3  C15
+ATOMNAME UbQBK    4  C16
+ATOMNAME UbQBK    5  C17
+ATOMNAME UbQBK    6  C18
+ATOMNAME UbQBK    7  C19
+ATOMNAME UbQBK    8  C20
+ATOMNAME UbQBK    9  C21
+ATOMNAME UbQBK   10  C22
+ATOMNAME UbQBK   11  C23
+ATOMNAME UbQBK   12  C24
+ATOMNAME UbQBK   13  C25
+ATOMNAME UbQBK   14  C26
+ATOMNAME UbQBK   15  C27
+ATOMNAME UbQBK   16  C28
+ATOMNAME UbQBK   17  C29
+ATOMNAME UbQBK   18  C30
+ATOMNAME UbQBK   19  C31
+ATOMNAME UbQ01    0  C1 
+ATOMNAME UbQ01    1  C2 
+ATOMNAME UbQ01    2  C3 
+ATOMNAME UbQ01    3  C4 
+ATOMNAME UbQ01    4  C5 
+ATOMNAME UbQ01    5  C6 
+ATOMNAME UbQ01    6  C1M
+ATOMNAME UbQ01    7  C3M
+ATOMNAME UbQ01    8  C4M
+ATOMNAME UbQ01    9  C7 
+ATOMNAME UbQ01   10  C8 
+ATOMNAME UbQ01   11  C9 
+ATOMNAME UbQ01   12  C10
+ATOMNAME UbQ01   13  C11
+ATOMNAME UbQ01   14 1H1M
+ATOMNAME UbQ01   15 2H1M
+ATOMNAME UbQ01   16 3H1M
+ATOMNAME UbQ01   17 1H3M
+ATOMNAME UbQ01   18 2H3M
+ATOMNAME UbQ01   19 3H3M
+ATOMNAME UbQ01   20 1H4M
+ATOMNAME UbQ01   21 2H4M
+ATOMNAME UbQ01   22 3H4M
+ATOMNAME UbQ01   23 1H7 
+ATOMNAME UbQ01   24 2H7 
+ATOMNAME UbQ01   25  H8 
+ATOMNAME UbQ01   26 1H10
+ATOMNAME UbQ01   27 2H10
+ATOMNAME UbQ01   28 3H10
+ATOMNAME UbQ01   29 1H11
+ATOMNAME UbQ01   30 2H11
+ATOMNAME UbQ01   31  O2 
+ATOMNAME UbQ01   32  O5 
+ATOMNAME UbQ01   33  O3 
+ATOMNAME UbQ01   34  O4 
+ATOMNAME UbQ-1    0  C1 
+ATOMNAME UbQ-1    1  C2 
+ATOMNAME UbQ-1    2  C3 
+ATOMNAME UbQ-1    3  C4 
+ATOMNAME UbQ-1    4  C5 
+ATOMNAME UbQ-1    5  C6 
+ATOMNAME UbQ-1    6  C1M
+ATOMNAME UbQ-1    7  C3M
+ATOMNAME UbQ-1    8  C4M
+ATOMNAME UbQ-1    9  C7 
+ATOMNAME UbQ-1   10  C8 
+ATOMNAME UbQ-1   11  C9 
+ATOMNAME UbQ-1   12  C10
+ATOMNAME UbQ-1   13  C11
+ATOMNAME UbQ-1   14 1H1M
+ATOMNAME UbQ-1   15 2H1M
+ATOMNAME UbQ-1   16 3H1M
+ATOMNAME UbQ-1   17 1H3M
+ATOMNAME UbQ-1   18 2H3M
+ATOMNAME UbQ-1   19 3H3M
+ATOMNAME UbQ-1   20 1H4M
+ATOMNAME UbQ-1   21 2H4M
+ATOMNAME UbQ-1   22 3H4M
+ATOMNAME UbQ-1   23 1H7 
+ATOMNAME UbQ-1   24 2H7 
+ATOMNAME UbQ-1   25  H8 
+ATOMNAME UbQ-1   26 1H10
+ATOMNAME UbQ-1   27 2H10
+ATOMNAME UbQ-1   28 3H10
+ATOMNAME UbQ-1   29 1H11
+ATOMNAME UbQ-1   30 2H11
+ATOMNAME UbQ-1   31  O2 
+ATOMNAME UbQ-1   32  O5 
+ATOMNAME UbQ-1   33  O3 
+ATOMNAME UbQ-1   34  O4 
+ATOMNAME UbQ-2    0  C1 
+ATOMNAME UbQ-2    1  C2 
+ATOMNAME UbQ-2    2  C3 
+ATOMNAME UbQ-2    3  C4 
+ATOMNAME UbQ-2    4  C5 
+ATOMNAME UbQ-2    5  C6 
+ATOMNAME UbQ-2    6  C1M
+ATOMNAME UbQ-2    7  C3M
+ATOMNAME UbQ-2    8  C4M
+ATOMNAME UbQ-2    9  C7 
+ATOMNAME UbQ-2   10  C8 
+ATOMNAME UbQ-2   11  C9 
+ATOMNAME UbQ-2   12  C10
+ATOMNAME UbQ-2   13  C11
+ATOMNAME UbQ-2   14 1H1M
+ATOMNAME UbQ-2   15 2H1M
+ATOMNAME UbQ-2   16 3H1M
+ATOMNAME UbQ-2   17 1H3M
+ATOMNAME UbQ-2   18 2H3M
+ATOMNAME UbQ-2   19 3H3M
+ATOMNAME UbQ-2   20 1H4M
+ATOMNAME UbQ-2   21 2H4M
+ATOMNAME UbQ-2   22 3H4M
+ATOMNAME UbQ-2   23 1H7 
+ATOMNAME UbQ-2   24 2H7 
+ATOMNAME UbQ-2   25  H8 
+ATOMNAME UbQ-2   26 1H10
+ATOMNAME UbQ-2   27 2H10
+ATOMNAME UbQ-2   28 3H10
+ATOMNAME UbQ-2   29 1H11
+ATOMNAME UbQ-2   30 2H11
+ATOMNAME UbQ-2   31  O2 
+ATOMNAME UbQ-2   32  O5 
+ATOMNAME UbQ-2   33  O3 
+ATOMNAME UbQ-2   34  O4 
+ATOMNAME UbQP1    0  C1 
+ATOMNAME UbQP1    1  C2 
+ATOMNAME UbQP1    2  C3 
+ATOMNAME UbQP1    3  C4 
+ATOMNAME UbQP1    4  C5 
+ATOMNAME UbQP1    5  C6 
+ATOMNAME UbQP1    6  C1M
+ATOMNAME UbQP1    7  C3M
+ATOMNAME UbQP1    8  C4M
+ATOMNAME UbQP1    9  C7 
+ATOMNAME UbQP1   10  C8 
+ATOMNAME UbQP1   11  C9 
+ATOMNAME UbQP1   12  C10
+ATOMNAME UbQP1   13  C11
+ATOMNAME UbQP1   14 1H1M
+ATOMNAME UbQP1   15 2H1M
+ATOMNAME UbQP1   16 3H1M
+ATOMNAME UbQP1   17 1H3M
+ATOMNAME UbQP1   18 2H3M
+ATOMNAME UbQP1   19 3H3M
+ATOMNAME UbQP1   20 1H4M
+ATOMNAME UbQP1   21 2H4M
+ATOMNAME UbQP1   22 3H4M
+ATOMNAME UbQP1   23 1H7 
+ATOMNAME UbQP1   24 2H7 
+ATOMNAME UbQP1   25  H8 
+ATOMNAME UbQP1   26 1H10
+ATOMNAME UbQP1   27 2H10
+ATOMNAME UbQP1   28 3H10
+ATOMNAME UbQP1   29 1H11
+ATOMNAME UbQP1   30 2H11
+ATOMNAME UbQP1   31  O3 
+ATOMNAME UbQP1   32  O4 
+ATOMNAME UbQP1   33  O2 
+ATOMNAME UbQP1   34  O5 
+ATOMNAME UbQP1   35  HO2
+ATOMNAME UbQP2    0  C1 
+ATOMNAME UbQP2    1  C2 
+ATOMNAME UbQP2    2  C3 
+ATOMNAME UbQP2    3  C4 
+ATOMNAME UbQP2    4  C5 
+ATOMNAME UbQP2    5  C6 
+ATOMNAME UbQP2    6  C1M
+ATOMNAME UbQP2    7  C3M
+ATOMNAME UbQP2    8  C4M
+ATOMNAME UbQP2    9  C7 
+ATOMNAME UbQP2   10  C8 
+ATOMNAME UbQP2   11  C9 
+ATOMNAME UbQP2   12  C10
+ATOMNAME UbQP2   13  C11
+ATOMNAME UbQP2   14 1H1M
+ATOMNAME UbQP2   15 2H1M
+ATOMNAME UbQP2   16 3H1M
+ATOMNAME UbQP2   17 1H3M
+ATOMNAME UbQP2   18 2H3M
+ATOMNAME UbQP2   19 3H3M
+ATOMNAME UbQP2   20 1H4M
+ATOMNAME UbQP2   21 2H4M
+ATOMNAME UbQP2   22 3H4M
+ATOMNAME UbQP2   23 1H7 
+ATOMNAME UbQP2   24 2H7 
+ATOMNAME UbQP2   25  H8 
+ATOMNAME UbQP2   26 1H10
+ATOMNAME UbQP2   27 2H10
+ATOMNAME UbQP2   28 3H10
+ATOMNAME UbQP2   29 1H11
+ATOMNAME UbQP2   30 2H11
+ATOMNAME UbQP2   31  O3 
+ATOMNAME UbQP2   32  O4 
+ATOMNAME UbQP2   33  O2 
+ATOMNAME UbQP2   34  O5 
+ATOMNAME UbQP2   35  HO5
+ATOMNAME UbQS1    0  C1 
+ATOMNAME UbQS1    1  C2 
+ATOMNAME UbQS1    2  C3 
+ATOMNAME UbQS1    3  C4 
+ATOMNAME UbQS1    4  C5 
+ATOMNAME UbQS1    5  C6 
+ATOMNAME UbQS1    6  C1M
+ATOMNAME UbQS1    7  C3M
+ATOMNAME UbQS1    8  C4M
+ATOMNAME UbQS1    9  C7 
+ATOMNAME UbQS1   10  C8 
+ATOMNAME UbQS1   11  C9 
+ATOMNAME UbQS1   12  C10
+ATOMNAME UbQS1   13  C11
+ATOMNAME UbQS1   14 1H1M
+ATOMNAME UbQS1   15 2H1M
+ATOMNAME UbQS1   16 3H1M
+ATOMNAME UbQS1   17 1H3M
+ATOMNAME UbQS1   18 2H3M
+ATOMNAME UbQS1   19 3H3M
+ATOMNAME UbQS1   20 1H4M
+ATOMNAME UbQS1   21 2H4M
+ATOMNAME UbQS1   22 3H4M
+ATOMNAME UbQS1   23 1H7 
+ATOMNAME UbQS1   24 2H7 
+ATOMNAME UbQS1   25  H8 
+ATOMNAME UbQS1   26 1H10
+ATOMNAME UbQS1   27 2H10
+ATOMNAME UbQS1   28 3H10
+ATOMNAME UbQS1   29 1H11
+ATOMNAME UbQS1   30 2H11
+ATOMNAME UbQS1   31  O3 
+ATOMNAME UbQS1   32  O4 
+ATOMNAME UbQS1   33  O2 
+ATOMNAME UbQS1   34  O5 
+ATOMNAME UbQS1   35  HO2
+ATOMNAME UbQS2    0  C1 
+ATOMNAME UbQS2    1  C2 
+ATOMNAME UbQS2    2  C3 
+ATOMNAME UbQS2    3  C4 
+ATOMNAME UbQS2    4  C5 
+ATOMNAME UbQS2    5  C6 
+ATOMNAME UbQS2    6  C1M
+ATOMNAME UbQS2    7  C3M
+ATOMNAME UbQS2    8  C4M
+ATOMNAME UbQS2    9  C7 
+ATOMNAME UbQS2   10  C8 
+ATOMNAME UbQS2   11  C9 
+ATOMNAME UbQS2   12  C10
+ATOMNAME UbQS2   13  C11
+ATOMNAME UbQS2   14 1H1M
+ATOMNAME UbQS2   15 2H1M
+ATOMNAME UbQS2   16 3H1M
+ATOMNAME UbQS2   17 1H3M
+ATOMNAME UbQS2   18 2H3M
+ATOMNAME UbQS2   19 3H3M
+ATOMNAME UbQS2   20 1H4M
+ATOMNAME UbQS2   21 2H4M
+ATOMNAME UbQS2   22 3H4M
+ATOMNAME UbQS2   23 1H7 
+ATOMNAME UbQS2   24 2H7 
+ATOMNAME UbQS2   25  H8 
+ATOMNAME UbQS2   26 1H10
+ATOMNAME UbQS2   27 2H10
+ATOMNAME UbQS2   28 3H10
+ATOMNAME UbQS2   29 1H11
+ATOMNAME UbQS2   30 2H11
+ATOMNAME UbQS2   31  O3 
+ATOMNAME UbQS2   32  O4 
+ATOMNAME UbQS2   33  O2 
+ATOMNAME UbQS2   34  O5 
+ATOMNAME UbQS2   35  HO5
+ATOMNAME UbQH2    0  C1 
+ATOMNAME UbQH2    1  C2 
+ATOMNAME UbQH2    2  C3 
+ATOMNAME UbQH2    3  C4 
+ATOMNAME UbQH2    4  C5 
+ATOMNAME UbQH2    5  C6 
+ATOMNAME UbQH2    6  C1M
+ATOMNAME UbQH2    7  C3M
+ATOMNAME UbQH2    8  C4M
+ATOMNAME UbQH2    9  C7 
+ATOMNAME UbQH2   10  C8 
+ATOMNAME UbQH2   11  C9 
+ATOMNAME UbQH2   12  C10
+ATOMNAME UbQH2   13  C11
+ATOMNAME UbQH2   14 1H1M
+ATOMNAME UbQH2   15 2H1M
+ATOMNAME UbQH2   16 3H1M
+ATOMNAME UbQH2   17 1H3M
+ATOMNAME UbQH2   18 2H3M
+ATOMNAME UbQH2   19 3H3M
+ATOMNAME UbQH2   20 1H4M
+ATOMNAME UbQH2   21 2H4M
+ATOMNAME UbQH2   22 3H4M
+ATOMNAME UbQH2   23 1H7 
+ATOMNAME UbQH2   24 2H7 
+ATOMNAME UbQH2   25  H8 
+ATOMNAME UbQH2   26 1H10
+ATOMNAME UbQH2   27 2H10
+ATOMNAME UbQH2   28 3H10
+ATOMNAME UbQH2   29 1H11
+ATOMNAME UbQH2   30 2H11
+ATOMNAME UbQH2   31  O3 
+ATOMNAME UbQH2   32  O4 
+ATOMNAME UbQH2   33  O2 
+ATOMNAME UbQH2   34  O5 
+ATOMNAME UbQH2   35  HO2
+ATOMNAME UbQH2   36  HO5
+#27 UbiQuinone conformer setting
+#Zhenyu Zhu 12/12/03
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#corrected rxn to kcal/mol 1/10/04 mg
+PROTON   UbQ01      0
+PROTON   UbQ-1      0
+PROTON   UbQ-2      0
+PROTON   UbQP1      1
+PROTON   UbQP2      1
+PROTON   UbQS1      1
+PROTON   UbQS2      1
+PROTON   UbQH2      2
+
+PKA      UbQ01      0.0
+PKA      UbQ-1      0.0
+PKA      UbQ-2      0.0
+PKA      UbQP1      0.95
+PKA      UbQP2      0.95
+PKA      UbQS1      4.90
+PKA      UbQS2      4.90
+PKA      UbQH2      3.98
+
+ELECTRON UbQ01      0
+ELECTRON UbQ-1      1
+ELECTRON UbQ-2      2
+ELECTRON UbQP1      1
+ELECTRON UbQP2      1
+ELECTRON UbQS1      2
+ELECTRON UbQS2      2
+ELECTRON UbQH2      2
+
+EM       UbQ01      0.0
+EM       UbQ-1      -145
+EM       UbQ-2      -170
+EM       UbQP1      88
+EM       UbQP2      88
+EM       UbQS1      63
+EM       UbQS2      63
+EM       UbQH2      294.
+
+RXN      UbQ01      -3.56      
+RXN      UbQ-1      -18.10     
+RXN      UbQ-2      -59.86     
+RXN      UbQP1      -2.91      
+RXN      UbQP2      -3.23      
+RXN      UbQS1      -19.82     
+RXN      UbQS2      -19.03     
+RXN      UbQH2      -4.07      
+
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+CONNECT  UbQBK  C12 sp2       0     C11 0     C13 
+CONNECT  UbQBK  C13 sp2       0     C12 0     C14 
+CONNECT  UbQBK  C14 sp3       0     C13 0     C15 0     C16 
+CONNECT  UbQBK  C15 sp3       0     C14      
+CONNECT  UbQBK  C16 sp3       0     C14 0     C17 
+CONNECT  UbQBK  C17 sp2       0     C14 0     C17 
+CONNECT  UbQBK  C18 sp2       0     C17 0     C19      
+CONNECT  UbQBK  C19 sp3       0     C18 0     C20 0     C21 
+CONNECT  UbQBK  C20 sp3       0     C19           
+CONNECT  UbQBK  C21 sp3       0     C19 0     C22 
+CONNECT  UbQBK  C22 sp2       0     C21 0     C23      
+CONNECT  UbQBK  C23 sp2       0     C22 0     C24      
+CONNECT  UbQBK  C24 sp3       0     C23 0     C25 0     C26 
+CONNECT  UbQBK  C25 sp3       0     C24      
+CONNECT  UbQBK  C26 sp3       0     C24 0     C27      
+CONNECT  UbQBK  C27 sp2       0     C26 0     C28      
+CONNECT  UbQBK  C28 sp2       0     C27 0     C29      
+CONNECT  UbQBK  C29 sp3       0     C28 0     C30 0     C31 
+CONNECT  UbQBK  C30 sp3       0     C29      
+CONNECT  UbQBK  C31 sp3       0     C29  
+
+#UbQ01----neutral quinone //proton #:0; electron #:0
+CONNECT  UbQ01  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQ01  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQ01  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQ01  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQ01  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQ01  C6  sp2       0     C5  0     C1  0     C7
+CONNECT  UbQ01  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQ01  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQ01  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQ01  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQ01  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQ01  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQ01  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQ01  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQ01 1H1M s         0     C1M           
+CONNECT  UbQ01 2H1M s         0     C1M           
+CONNECT  UbQ01 3H1M s         0     C1M           
+CONNECT  UbQ01 1H3M s         0     C3M           
+CONNECT  UbQ01 2H3M s         0     C3M           
+CONNECT  UbQ01 3H3M s         0     C3M           
+CONNECT  UbQ01 1H4M s         0     C4M           
+CONNECT  UbQ01 2H4M s         0     C4M           
+CONNECT  UbQ01 3H4M s         0     C4M           
+CONNECT  UbQ01 1H7  s         0     C7  
+CONNECT  UbQ01 2H7  s         0     C7  
+CONNECT  UbQ01  H8  s         0     C8  
+CONNECT  UbQ01 1H10 s         0     C10 
+CONNECT  UbQ01 2H10 s         0     C10      
+CONNECT  UbQ01 3H10 s         0     C10 
+CONNECT  UbQ01 1H11 s         0     C11 
+CONNECT  UbQ01 2H11 s         0     C11 
+CONNECT  UbQ01  O2  sp2       0     C2 
+CONNECT  UbQ01  O5  sp2       0     C5
+CONNECT  UbQ01  O3  sp2       0     C3  0    C3M
+CONNECT  UbQ01  O4  sp2       0     C4  0    C4M
+
+#UbQ-1----semiquone quinone //proton #:0; electron #:-1
+CONNECT  UbQ-1  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQ-1  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQ-1  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQ-1  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQ-1  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQ-1  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQ-1  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQ-1  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQ-1  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQ-1  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQ-1  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQ-1  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQ-1  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQ-1  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQ-1 1H1M s         0     C1M           
+CONNECT  UbQ-1 2H1M s         0     C1M           
+CONNECT  UbQ-1 3H1M s         0     C1M           
+CONNECT  UbQ-1 1H3M s         0     C3M           
+CONNECT  UbQ-1 2H3M s         0     C3M           
+CONNECT  UbQ-1 3H3M s         0     C3M           
+CONNECT  UbQ-1 1H4M s         0     C4M           
+CONNECT  UbQ-1 2H4M s         0     C4M           
+CONNECT  UbQ-1 3H4M s         0     C4M           
+CONNECT  UbQ-1 1H7  s         0     C7  
+CONNECT  UbQ-1 2H7  s         0     C7  
+CONNECT  UbQ-1  H8  s         0     C8  
+CONNECT  UbQ-1 1H10 s         0     C10 
+CONNECT  UbQ-1 2H10 s         0     C10      
+CONNECT  UbQ-1 3H10 s         0     C10 
+CONNECT  UbQ-1 1H11 s         0     C11 
+CONNECT  UbQ-1 2H11 s         0     C11 
+CONNECT  UbQ-1  O2  sp2       0     C2
+CONNECT  UbQ-1  O5  sp2       0     C5
+CONNECT  UbQ-1  O3  sp2       0     C3  0     C3M
+CONNECT  UbQ-1  O4  sp2       0     C4  0     C4M
+
+#UbQ-2----//proton #:0; electron #:-2
+CONNECT  UbQ-2  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQ-2  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQ-2  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQ-2  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQ-2  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQ-2  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQ-2  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQ-2  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQ-2  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQ-2  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQ-2  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQ-2  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQ-2  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQ-2  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQ-2 1H1M s         0     C1M           
+CONNECT  UbQ-2 2H1M s         0     C1M           
+CONNECT  UbQ-2 3H1M s         0     C1M           
+CONNECT  UbQ-2 1H3M s         0     C3M           
+CONNECT  UbQ-2 2H3M s         0     C3M           
+CONNECT  UbQ-2 3H3M s         0     C3M           
+CONNECT  UbQ-2 1H4M s         0     C4M           
+CONNECT  UbQ-2 2H4M s         0     C4M           
+CONNECT  UbQ-2 3H4M s         0     C4M           
+CONNECT  UbQ-2 1H7  s         0     C7  
+CONNECT  UbQ-2 2H7  s         0     C7  
+CONNECT  UbQ-2  H8  s         0     C8  
+CONNECT  UbQ-2 1H10 s         0     C10 
+CONNECT  UbQ-2 2H10 s         0     C10      
+CONNECT  UbQ-2 3H10 s         0     C10 
+CONNECT  UbQ-2 1H11 s         0     C11 
+CONNECT  UbQ-2 2H11 s         0     C11 
+CONNECT  UbQ-2  O2  sp2       0     C2 
+CONNECT  UbQ-2  O5  sp2       0     C5
+CONNECT  UbQ-2  O3  sp2       0     C3  0     C3M
+CONNECT  UbQ-2  O4  sp2       0     C4  0     C4M
+
+
+#UbQP1----//proton #:1; electron #:-1
+CONNECT  UbQP1  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQP1  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQP1  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQP1  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQP1  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQP1  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQP1  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQP1  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQP1  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQP1  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQP1  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQP1  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQP1  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQP1  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQP1 1H1M s         0     C1M           
+CONNECT  UbQP1 2H1M s         0     C1M           
+CONNECT  UbQP1 3H1M s         0     C1M           
+CONNECT  UbQP1 1H3M s         0     C3M           
+CONNECT  UbQP1 2H3M s         0     C3M           
+CONNECT  UbQP1 3H3M s         0     C3M           
+CONNECT  UbQP1 1H4M s         0     C4M           
+CONNECT  UbQP1 2H4M s         0     C4M           
+CONNECT  UbQP1 3H4M s         0     C4M           
+CONNECT  UbQP1 1H7  s         0     C7  
+CONNECT  UbQP1 2H7  s         0     C7  
+CONNECT  UbQP1  H8  s         0     C8  
+CONNECT  UbQP1 1H10 s         0     C10 
+CONNECT  UbQP1 2H10 s         0     C10      
+CONNECT  UbQP1 3H10 s         0     C10 
+CONNECT  UbQP1 1H11 s         0     C11 
+CONNECT  UbQP1 2H11 s         0     C11 
+CONNECT  UbQP1  O3  sp2       0     C3  0     C3M
+CONNECT  UbQP1  O4  sp2       0     C4  0     C4M
+CONNECT  UbQP1  O2  sp2       0     C2  0     HO2
+CONNECT  UbQP1  O5  sp2       0     C5
+CONNECT  UbQP1  HO2 s         0     O2 
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#-------|-----|----|----|----|----|----|---------|---------|---------|----
+#        CONF  ATOM ATOM ATOM ATOM      phi0(min)  n_fold   Amplitude(barrier,kcal/mol)    
+DONOR    UbQP1  HO2  O2 
+
+#UbQP2----//proton #:1; electron #:-1
+CONNECT  UbQP2  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQP2  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQP2  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQP2  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQP2  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQP2  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQP2  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQP2  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQP2  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQP2  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQP2  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQP2  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQP2  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQP2  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQP2 1H1M s         0     C1M           
+CONNECT  UbQP2 2H1M s         0     C1M           
+CONNECT  UbQP2 3H1M s         0     C1M           
+CONNECT  UbQP2 1H3M s         0     C3M           
+CONNECT  UbQP2 2H3M s         0     C3M           
+CONNECT  UbQP2 3H3M s         0     C3M           
+CONNECT  UbQP2 1H4M s         0     C4M           
+CONNECT  UbQP2 2H4M s         0     C4M           
+CONNECT  UbQP2 3H4M s         0     C4M           
+CONNECT  UbQP2 1H7  s         0     C7  
+CONNECT  UbQP2 2H7  s         0     C7  
+CONNECT  UbQP2  H8  s         0     C8  
+CONNECT  UbQP2 1H10 s         0     C10 
+CONNECT  UbQP2 2H10 s         0     C10      
+CONNECT  UbQP2 3H10 s         0     C10 
+CONNECT  UbQP2 1H11 s         0     C11 
+CONNECT  UbQP2 2H11 s         0     C11 
+CONNECT  UbQP2  O3  sp2       0     C3  0     C3M
+CONNECT  UbQP2  O4  sp2       0     C4  0     C4M
+CONNECT  UbQP2  O2  sp2       0     C2
+CONNECT  UbQP2  O5  sp2       0     C5  0     HO5
+CONNECT  UbQP2  HO5 s         0     O5 
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#-------|-----|----|----|----|----|----|---------|---------|---------|----
+#        CONF  ATOM ATOM ATOM ATOM      phi0(min)  n_fold   Amplitude(barrier,kcal/mol)    
+DONOR    UbQP2  HO5  O5 
+
+
+#UbQS1----//proton #:1; electron #:-2
+CONNECT  UbQS1  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQS1  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQS1  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQS1  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQS1  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQS1  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQS1  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQS1  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQS1  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQS1  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQS1  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQS1  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQS1  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQS1  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQS1 1H1M s         0     C1M           
+CONNECT  UbQS1 2H1M s         0     C1M           
+CONNECT  UbQS1 3H1M s         0     C1M           
+CONNECT  UbQS1 1H3M s         0     C3M           
+CONNECT  UbQS1 2H3M s         0     C3M           
+CONNECT  UbQS1 3H3M s         0     C3M           
+CONNECT  UbQS1 1H4M s         0     C4M           
+CONNECT  UbQS1 2H4M s         0     C4M           
+CONNECT  UbQS1 3H4M s         0     C4M           
+CONNECT  UbQS1 1H7  s         0     C7  
+CONNECT  UbQS1 2H7  s         0     C7  
+CONNECT  UbQS1  H8  s         0     C8  
+CONNECT  UbQS1 1H10 s         0     C10 
+CONNECT  UbQS1 2H10 s         0     C10      
+CONNECT  UbQS1 3H10 s         0     C10 
+CONNECT  UbQS1 1H11 s         0     C11 
+CONNECT  UbQS1 2H11 s         0     C11 
+CONNECT  UbQS1  O3  sp2       0     C3  0     C3M
+CONNECT  UbQS1  O4  sp2       0     C4  0     C4M
+CONNECT  UbQS1  O2  sp2       0     C2  0     HO2
+CONNECT  UbQS1  O5  sp2       0     C5
+CONNECT  UbQS1  HO2 s         0     O2 
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#-------|-----|----|----|----|----|----|---------|---------|---------|----
+#        CONF  ATOM ATOM ATOM ATOM      phi0(min)  n_fold   Amplitude(barrier,kcal/mol)    
+DONOR    UbQS1  HO2  O2 
+
+
+#UbQS2----//proton #:1; electron #:-2
+CONNECT  UbQS2  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQS2  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQS2  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQS2  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQS2  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQS2  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQS2  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQS2  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQS2  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQS2  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQS2  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQS2  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQS2  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQS2  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQS2 1H1M s         0     C1M           
+CONNECT  UbQS2 2H1M s         0     C1M           
+CONNECT  UbQS2 3H1M s         0     C1M           
+CONNECT  UbQS2 1H3M s         0     C3M           
+CONNECT  UbQS2 2H3M s         0     C3M           
+CONNECT  UbQS2 3H3M s         0     C3M           
+CONNECT  UbQS2 1H4M s         0     C4M           
+CONNECT  UbQS2 2H4M s         0     C4M           
+CONNECT  UbQS2 3H4M s         0     C4M           
+CONNECT  UbQS2 1H7  s         0     C7  
+CONNECT  UbQS2 2H7  s         0     C7  
+CONNECT  UbQS2  H8  s         0     C8  
+CONNECT  UbQS2 1H10 s         0     C10 
+CONNECT  UbQS2 2H10 s         0     C10      
+CONNECT  UbQS2 3H10 s         0     C10 
+CONNECT  UbQS2 1H11 s         0     C11 
+CONNECT  UbQS2 2H11 s         0     C11 
+CONNECT  UbQS2  O3  sp2       0     C3  0     C3M
+CONNECT  UbQS2  O4  sp2       0     C4  0     C4M
+CONNECT  UbQS2  O2  sp2       0     C2 
+CONNECT  UbQS2  O5  sp2       0     C5  0     HO5
+CONNECT  UbQS2  HO5 s         0     O5
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#-------|-----|----|----|----|----|----|---------|---------|---------|----
+#        CONF  ATOM ATOM ATOM ATOM      phi0(min)  n_fold   Amplitude(barrier,kcal/mol)    
+DONOR    UbQS2  HO5  O5 
+
+#UbQH2----//proton #:2; electron #:-2
+CONNECT  UbQH2  C1  sp2       0     C2  0     C6  0     C1M 
+CONNECT  UbQH2  C2  sp2       0     C1  0     C3  0     O2  
+CONNECT  UbQH2  C3  sp2       0     C2  0     C4  0     O3  
+CONNECT  UbQH2  C4  sp2       0     C3  0     C5  0     O4  
+CONNECT  UbQH2  C5  sp2       0     C4  0     C6  0     O5  
+CONNECT  UbQH2  C6  sp2       0     C5  0     C1  0     C7  
+CONNECT  UbQH2  C1M sp3       0     C1  0    1H1M 0    2H1M 0    3H1M 
+CONNECT  UbQH2  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M 
+CONNECT  UbQH2  C4M sp3       0     C4  0    1H4M 0    2H4M 0    3H4M 
+CONNECT  UbQH2  C7  sp3       0     C6  0     C8  0    1H7  0    2H7  
+CONNECT  UbQH2  C8  sp2       0     C7  0     C9  0     H8  
+CONNECT  UbQH2  C9  sp2       0     C8  0     C10 0     C11 
+CONNECT  UbQH2  C10 sp3       0     C9  0    1H10 0    2H10 0    3H10 
+CONNECT  UbQH2  C11 sp3       0     C9  0     C12 0    1H11 0    2H11         
+CONNECT  UbQH2 1H1M s         0     C1M           
+CONNECT  UbQH2 2H1M s         0     C1M           
+CONNECT  UbQH2 3H1M s         0     C1M           
+CONNECT  UbQH2 1H3M s         0     C3M           
+CONNECT  UbQH2 2H3M s         0     C3M           
+CONNECT  UbQH2 3H3M s         0     C3M           
+CONNECT  UbQH2 1H4M s         0     C4M           
+CONNECT  UbQH2 2H4M s         0     C4M           
+CONNECT  UbQH2 3H4M s         0     C4M           
+CONNECT  UbQH2 1H7  s         0     C7  
+CONNECT  UbQH2 2H7  s         0     C7  
+CONNECT  UbQH2  H8  s         0     C8  
+CONNECT  UbQH2 1H10 s         0     C10 
+CONNECT  UbQH2 2H10 s         0     C10      
+CONNECT  UbQH2 3H10 s         0     C10 
+CONNECT  UbQH2 1H11 s         0     C11 
+CONNECT  UbQH2 2H11 s         0     C11 
+CONNECT  UbQH2  O3  sp2       0     C3  0     C3M
+CONNECT  UbQH2  O4  sp2       0     C4  0     C4M
+CONNECT  UbQH2  O2  sp2       0     C2  0     HO2 
+CONNECT  UbQH2  O5  sp2       0     C5  0     HO5 
+CONNECT  UbQH2  HO2 s         0     O2 
+CONNECT  UbQH2  HO5 s         0     O5 
+
+#3.Atom Parameters: Partial Charges and Radii
+#23456789A123456789B123456789C
+RADIUS   UbQ    C1  1.80
+RADIUS   UbQ    C2  1.80
+RADIUS   UbQ    C3  1.80
+RADIUS   UbQ    C4  1.80
+RADIUS   UbQ    C5  1.80
+RADIUS   UbQ    C6  1.80
+RADIUS   UbQ    C1M 1.80
+RADIUS   UbQ    C3M 1.80
+RADIUS   UbQ    C4M 1.80
+RADIUS   UbQ    C7  1.80
+RADIUS   UbQ    C8  1.80
+RADIUS   UbQ    C9  1.80
+RADIUS   UbQ    C10 1.80
+RADIUS   UbQ    C11 1.80
+RADIUS   UbQ    C12 1.80
+RADIUS   UbQ    C13 1.80
+RADIUS   UbQ    C14 1.80
+RADIUS   UbQ    C15 1.80
+RADIUS   UbQ    C16 1.80
+RADIUS   UbQ    C17 1.80
+RADIUS   UbQ    C18 1.80
+RADIUS   UbQ    C19 1.80
+RADIUS   UbQ    C20 1.80
+RADIUS   UbQ    C21 1.80
+RADIUS   UbQ    C22 1.80
+RADIUS   UbQ    C23 1.80
+RADIUS   UbQ    C24 1.80
+RADIUS   UbQ    C25 1.80
+RADIUS   UbQ    C26 1.80
+RADIUS   UbQ    C27 1.80
+RADIUS   UbQ    C28 1.80
+RADIUS   UbQ    C29 1.80
+RADIUS   UbQ    C30 1.80
+RADIUS   UbQ    C31 1.80
+RADIUS   UbQ   1H1M 1.20
+RADIUS   UbQ   2H1M 1.20
+RADIUS   UbQ   3H1M 1.20
+RADIUS   UbQ   1H3M 1.20
+RADIUS   UbQ   2H3M 1.20
+RADIUS   UbQ   3H3M 1.20
+RADIUS   UbQ   1H4M 1.20
+RADIUS   UbQ   2H4M 1.20
+RADIUS   UbQ   3H4M 1.20
+RADIUS   UbQ   1H7  1.20 
+RADIUS   UbQ   2H7  1.20
+RADIUS   UbQ    H8  1.20  
+RADIUS   UbQ   1H10 1.20
+RADIUS   UbQ   2H10 1.20
+RADIUS   UbQ   3H10 1.20
+RADIUS   UbQ   1H11 1.20
+RADIUS   UbQ   2H11 1.20
+RADIUS   UbQ    O2  1.60
+RADIUS   UbQ    O3  1.60
+RADIUS   UbQ    O4  1.60
+RADIUS   UbQ    O5  1.60
+RADIUS   UbQ    HO2 1.20
+RADIUS   UbQ    HO5 1.20
+
+
+#23456789A123456789B123456789C
+#BAK
+CHARGE   UbQBK  C12  0.00
+CHARGE   UbQBK  C13  0.00
+CHARGE   UbQBK  C14  0.00
+CHARGE   UbQBK  C15  0.00
+CHARGE   UbQBK  C16  0.00
+CHARGE   UbQBK  C17  0.00
+CHARGE   UbQBK  C18  0.00
+CHARGE   UbQBK  C19  0.00
+CHARGE   UbQBK  C20  0.00
+CHARGE   UbQBK  C21  0.00
+CHARGE   UbQBK  C22  0.00
+CHARGE   UbQBK  C23  0.00
+CHARGE   UbQBK  C24  0.00
+CHARGE   UbQBK  C25  0.00
+CHARGE   UbQBK  C26  0.00
+CHARGE   UbQBK  C27  0.00
+CHARGE   UbQBK  C28  0.00
+CHARGE   UbQBK  C29  0.00
+CHARGE   UbQBK  C30  0.00
+CHARGE   UbQBK  C31  0.00
+
+CHARGE   UbQ01  C1   0.15
+CHARGE   UbQ01  C2   0.38
+CHARGE   UbQ01  C3   0.26
+CHARGE   UbQ01  C4  -0.15
+CHARGE   UbQ01  C5   0.65
+CHARGE   UbQ01  C6  -0.42
+CHARGE   UbQ01  C1M -0.30
+CHARGE   UbQ01 1H1M  0.12
+CHARGE   UbQ01 2H1M  0.11
+CHARGE   UbQ01 3H1M  0.11
+CHARGE   UbQ01  C3M  0.12
+CHARGE   UbQ01 1H3M  0.04
+CHARGE   UbQ01 2H3M  0.04
+CHARGE   UbQ01 3H3M  0.04
+CHARGE   UbQ01  C4M -0.03
+CHARGE   UbQ01 1H4M  0.07
+CHARGE   UbQ01 2H4M  0.07
+CHARGE   UbQ01 3H4M  0.07
+CHARGE   UbQ01  C7   0.28
+CHARGE   UbQ01 1H7   0.01
+CHARGE   UbQ01 2H7   0.01
+CHARGE   UbQ01  C8  -0.47
+CHARGE   UbQ01  H8   0.18
+CHARGE   UbQ01  C9   0.28
+CHARGE   UbQ01  C10 -0.35
+CHARGE   UbQ01 1H10  0.10
+CHARGE   UbQ01 2H10  0.10
+CHARGE   UbQ01 3H10  0.10
+CHARGE   UbQ01  C11 -0.26
+CHARGE   UbQ01 1H11  0.10
+CHARGE   UbQ01 2H11  0.11
+CHARGE   UbQ01  O2  -0.45
+CHARGE   UbQ01  O3  -0.33
+CHARGE   UbQ01  O4  -0.27
+CHARGE   UbQ01  O5  -0.47
+
+
+CHARGE   UbQ-1  C1  -0.03
+CHARGE   UbQ-1  C2   0.26
+CHARGE   UbQ-1  C3   0.13
+CHARGE   UbQ-1  C4  -0.12
+CHARGE   UbQ-1  C5   0.52
+CHARGE   UbQ-1  C6  -0.42
+CHARGE   UbQ-1  C1M -0.01
+CHARGE   UbQ-1 1H1M  0.03
+CHARGE   UbQ-1 2H1M -0.01
+CHARGE   UbQ-1 3H1M  0.02
+CHARGE   UbQ-1  C3M  0.04
+CHARGE   UbQ-1 1H3M  0.06
+CHARGE   UbQ-1 2H3M  0.03
+CHARGE   UbQ-1 3H3M  0.03
+CHARGE   UbQ-1  C4M  0.12
+CHARGE   UbQ-1 1H4M  0.02
+CHARGE   UbQ-1 2H4M  0.04
+CHARGE   UbQ-1 3H4M  0.00
+CHARGE   UbQ-1  C7   0.39
+CHARGE   UbQ-1 1H7  -0.02
+CHARGE   UbQ-1 2H7  -0.05
+CHARGE   UbQ-1  C8  -0.50
+CHARGE   UbQ-1  H8   0.21
+CHARGE   UbQ-1  C9   0.26
+CHARGE   UbQ-1  C10 -0.38
+CHARGE   UbQ-1 1H10  0.09
+CHARGE   UbQ-1 2H10  0.09
+CHARGE   UbQ-1 3H10  0.07
+CHARGE   UbQ-1  C11 -0.16
+CHARGE   UbQ-1 1H11  0.05
+CHARGE   UbQ-1 2H11  0.06
+CHARGE   UbQ-1  O2  -0.57
+CHARGE   UbQ-1  O3  -0.33
+CHARGE   UbQ-1  O4  -0.30
+CHARGE   UbQ-1  O5  -0.62
+
+CHARGE   UbQ-2  C1  -0.20
+CHARGE   UbQ-2  C2   0.26
+CHARGE   UbQ-2  C3   0.06
+CHARGE   UbQ-2  C4  -0.11
+CHARGE   UbQ-2  C5   0.45
+CHARGE   UbQ-2  C6  -0.41
+CHARGE   UbQ-2  C1M  0.21
+CHARGE   UbQ-2 1H1M -0.06
+CHARGE   UbQ-2 2H1M -0.08
+CHARGE   UbQ-2 3H1M -0.08
+CHARGE   UbQ-2  C3M  0.18
+CHARGE   UbQ-2 1H3M  0.03
+CHARGE   UbQ-2 2H3M -0.02
+CHARGE   UbQ-2 3H3M -0.05
+CHARGE   UbQ-2  C4M  0.26
+CHARGE   UbQ-2 1H4M  0.00
+CHARGE   UbQ-2 2H4M -0.07
+CHARGE   UbQ-2 3H4M -0.03
+CHARGE   UbQ-2  C7   0.37
+CHARGE   UbQ-2 1H7  -0.02
+CHARGE   UbQ-2 2H7  -0.06
+CHARGE   UbQ-2  C8  -0.45
+CHARGE   UbQ-2  H8   0.20
+CHARGE   UbQ-2  C9   0.16
+CHARGE   UbQ-2  C10 -0.24
+CHARGE   UbQ-2 1H10  0.05
+CHARGE   UbQ-2 2H10  0.05
+CHARGE   UbQ-2 3H10  0.01
+CHARGE   UbQ-2  C11 -0.05
+CHARGE   UbQ-2 1H11 -0.01
+CHARGE   UbQ-2 2H11 -0.01
+CHARGE   UbQ-2  O2  -0.79
+CHARGE   UbQ-2  O3  -0.37
+CHARGE   UbQ-2  O4  -0.36
+CHARGE   UbQ-2  O5  -0.82
+
+
+#UbQP1
+CHARGE   UbQP1  C3   0.160
+CHARGE   UbQP1 1H10  0.080
+CHARGE   UbQP1 1H1M  0.110
+CHARGE   UbQP1  C6  -0.500
+CHARGE   UbQP1 2H1M  0.160
+CHARGE   UbQP1  C1   0.240
+CHARGE   UbQP1  C4  -0.040
+CHARGE   UbQP1  O4  -0.280
+CHARGE   UbQP1  C7   0.540
+CHARGE   UbQP1 3H1M  0.120
+CHARGE   UbQP1  C1M -0.400
+CHARGE   UbQP1  O3  -0.340
+CHARGE   UbQP1  C4M  0.060
+CHARGE   UbQP1  C3M  0.080
+CHARGE   UbQP1 1H4M  0.050
+CHARGE   UbQP1 2H4M  0.050
+CHARGE   UbQP1 3H4M  0.050
+CHARGE   UbQP1 1H3M  0.050
+CHARGE   UbQP1 2H3M  0.040
+CHARGE   UbQP1 3H3M  0.040
+CHARGE   UbQP1 1H7  -0.070
+CHARGE   UbQP1 2H7  -0.050
+CHARGE   UbQP1  C8  -0.520
+CHARGE   UbQP1  C9   0.200
+CHARGE   UbQP1  H8   0.200
+CHARGE   UbQP1  C11 -0.070
+CHARGE   UbQP1  C10 -0.330
+CHARGE   UbQP1 1H11  0.040
+CHARGE   UbQP1 2H11  0.040
+CHARGE   UbQP1 2H10  0.090
+CHARGE   UbQP1 3H10  0.090
+CHARGE   UbQP1  C2   0.100
+CHARGE   UbQP1  C5   0.540
+CHARGE   UbQP1  O2  -0.520
+CHARGE   UbQP1  O5  -0.420
+CHARGE   UbQP1  HO2  0.410
+
+#UbQP2
+CHARGE   UbQP2  C3   0.080
+CHARGE   UbQP2 1H10  0.090
+CHARGE   UbQP2 1H1M  0.080
+CHARGE   UbQP2  C6  -0.310
+CHARGE   UbQP2 2H1M  0.110
+CHARGE   UbQP2  C1   0.030
+CHARGE   UbQP2  C4   0.040
+CHARGE   UbQP2  O4  -0.340
+CHARGE   UbQP2  C7   0.390
+CHARGE   UbQP2 3H1M  0.110
+CHARGE   UbQP2  C1M -0.270
+CHARGE   UbQP2  O3  -0.270
+CHARGE   UbQP2  C4M  0.110
+CHARGE   UbQP2  C3M -0.060
+CHARGE   UbQP2 1H4M  0.050
+CHARGE   UbQP2 2H4M  0.030
+CHARGE   UbQP2 3H4M  0.050
+CHARGE   UbQP2 1H3M  0.080
+CHARGE   UbQP2 2H3M  0.080
+CHARGE   UbQP2 3H3M  0.080
+CHARGE   UbQP2 1H7  -0.030
+CHARGE   UbQP2 2H7  -0.020
+CHARGE   UbQP2  C8  -0.470
+CHARGE   UbQP2  C9   0.210
+CHARGE   UbQP2  H8   0.190
+CHARGE   UbQP2  C11 -0.100
+CHARGE   UbQP2  C10 -0.350
+CHARGE   UbQP2 1H11  0.050
+CHARGE   UbQP2 2H11  0.050
+CHARGE   UbQP2 2H10  0.090
+CHARGE   UbQP2 3H10  0.090
+CHARGE   UbQP2  C2   0.380
+CHARGE   UbQP2  C5   0.270
+CHARGE   UbQP2  O2  -0.390
+CHARGE   UbQP2  O5  -0.540
+CHARGE   UbQP2  HO5  0.410
+
+#UbQS1
+CHARGE   UbQS1  C3   0.110
+CHARGE   UbQS1 1H10  0.050
+CHARGE   UbQS1 1H1M  0.030
+CHARGE   UbQS1  C6  -0.560
+CHARGE   UbQS1 2H1M  0.070
+CHARGE   UbQS1  C1   0.100
+CHARGE   UbQS1  C4  -0.150
+CHARGE   UbQS1  O4  -0.280
+CHARGE   UbQS1  C7   0.490
+CHARGE   UbQS1 3H1M  0.010
+CHARGE   UbQS1  C1M -0.120
+CHARGE   UbQS1  O3  -0.320
+CHARGE   UbQS1  C4M  0.030
+CHARGE   UbQS1  C3M  0.110
+CHARGE   UbQS1 1H4M  0.030
+CHARGE   UbQS1 2H4M  0.070
+CHARGE   UbQS1 3H4M  0.020
+CHARGE   UbQS1 1H3M  0.000
+CHARGE   UbQS1 2H3M  0.030
+CHARGE   UbQS1 3H3M  0.030
+CHARGE   UbQS1 1H7  -0.080
+CHARGE   UbQS1 2H7  -0.040
+CHARGE   UbQS1  C8  -0.550
+CHARGE   UbQS1  C9   0.250
+CHARGE   UbQS1  H8   0.240
+CHARGE   UbQS1  C11 -0.210
+CHARGE   UbQS1  C10 -0.240
+CHARGE   UbQS1 1H11  0.070
+CHARGE   UbQS1 2H11  0.050
+CHARGE   UbQS1 2H10  0.040
+CHARGE   UbQS1 3H10  0.040
+CHARGE   UbQS1  C2   0.060
+CHARGE   UbQS1  C5   0.550
+CHARGE   UbQS1  O2  -0.570
+CHARGE   UbQS1  O5  -0.730
+CHARGE   UbQS1  HO2  0.370
+
+#UbQS2
+CHARGE   UbQS2  C3  -0.010
+CHARGE   UbQS2 1H10  0.050
+CHARGE   UbQS2 1H1M  0.020
+CHARGE   UbQS2  C6  -0.440
+CHARGE   UbQS2 2H1M  0.060
+CHARGE   UbQS2  C1  -0.020
+CHARGE   UbQS2  C4  -0.020
+CHARGE   UbQS2  O4  -0.320
+CHARGE   UbQS2  C7   0.560
+CHARGE   UbQS2 3H1M  0.040
+CHARGE   UbQS2  C1M -0.140
+CHARGE   UbQS2  O3  -0.300
+CHARGE   UbQS2  C4M  0.090
+CHARGE   UbQS2  C3M  0.010
+CHARGE   UbQS2 1H4M  0.040
+CHARGE   UbQS2 2H4M  0.030
+CHARGE   UbQS2 3H4M  0.010
+CHARGE   UbQS2 1H3M  0.030
+CHARGE   UbQS2 2H3M  0.030
+CHARGE   UbQS2 3H3M  0.070
+CHARGE   UbQS2 1H7  -0.080
+CHARGE   UbQS2 2H7  -0.100
+CHARGE   UbQS2  C8  -0.510
+CHARGE   UbQS2  C9   0.220
+CHARGE   UbQS2  H8   0.220
+CHARGE   UbQS2  C11 -0.180
+CHARGE   UbQS2  C10 -0.260
+CHARGE   UbQS2 1H11  0.060
+CHARGE   UbQS2 2H11  0.050
+CHARGE   UbQS2 2H10  0.070
+CHARGE   UbQS2 3H10  0.050
+CHARGE   UbQS2  C2   0.350
+CHARGE   UbQS2  C5   0.230
+CHARGE   UbQS2  O2  -0.690
+CHARGE   UbQS2  O5  -0.590
+CHARGE   UbQS2  HO5  0.370
+
+#UbQH2
+CHARGE   UbQH2  C3   0.090
+CHARGE   UbQH2 1H10  0.070
+CHARGE   UbQH2 1H1M  0.080
+CHARGE   UbQH2  C6  -0.360
+CHARGE   UbQH2 2H1M  0.100
+CHARGE   UbQH2  C1   0.140
+CHARGE   UbQH2  C4  -0.020
+CHARGE   UbQH2  O4  -0.320
+CHARGE   UbQH2  C7   0.430
+CHARGE   UbQH2 3H1M  0.090
+CHARGE   UbQH2  C1M -0.240
+CHARGE   UbQH2  O3  -0.300
+CHARGE   UbQH2  C4M  0.150
+CHARGE   UbQH2  C3M  0.050
+CHARGE   UbQH2 1H4M  0.040
+CHARGE   UbQH2 2H4M  0.030
+CHARGE   UbQH2 3H4M  0.020
+CHARGE   UbQH2 1H3M  0.050
+CHARGE   UbQH2 2H3M  0.050
+CHARGE   UbQH2 3H3M  0.050
+CHARGE   UbQH2 1H7  -0.050
+CHARGE   UbQH2 2H7  -0.030
+CHARGE   UbQH2  C8  -0.520
+CHARGE   UbQH2  C9   0.290
+CHARGE   UbQH2  H8   0.210
+CHARGE   UbQH2  C11 -0.300
+CHARGE   UbQH2  C10 -0.300
+CHARGE   UbQH2 1H11  0.120
+CHARGE   UbQH2 2H11  0.120
+CHARGE   UbQH2 2H10  0.080
+CHARGE   UbQH2 3H10  0.080
+CHARGE   UbQH2  C2   0.100
+CHARGE   UbQH2  C5   0.260
+CHARGE   UbQH2  O2  -0.540
+CHARGE   UbQH2  O5  -0.540
+CHARGE   UbQH2  HO2  0.410
+CHARGE   UbQH2  HO5  0.410

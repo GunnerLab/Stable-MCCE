@@ -1,0 +1,56 @@
+>>>START of original comments, this file was converted from old format
+#CYS making disulfide bond to another CYS
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CYD: CYDBK, CYD01
+
+# Atom definition
+CONNECT, " N  ", CYDBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", CYDBK: s, " N  "
+CONNECT, " CA ", CYDBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", CYDBK: s, " CA "
+CONNECT, " C  ", CYDBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", CYDBK: sp2, " C  "
+CONNECT, " CB ", CYD01: sp3, " CA ", " SG ", " HB2", " HB3"
+CONNECT, " HB2", CYD01: s, " CB "
+CONNECT, " HB3", CYD01: s, " CB "
+CONNECT, " SG ", CYD01: sp2, " CB ", " SG "
+
+# Atom charges
+CHARGE, CYDBK, " N  ": -0.350
+CHARGE, CYDBK, " H  ":  0.250
+CHARGE, CYDBK, " CA ":  0.100
+CHARGE, CYDBK, " HA ":  0.000
+CHARGE, CYDBK, " C  ":  0.550
+CHARGE, CYDBK, " O  ": -0.550
+CHARGE, CYD01, " CB ":  0.000
+CHARGE, CYD01, " HB2":  0.000
+CHARGE, CYD01, " HB3":  0.000
+CHARGE, CYD01, " SG ":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  CYDBK,  " N  ": 1.550,   1.750,   0.160
+RADIUS,  CYDBK,  " H  ": 1.200,   1.000,   0.020
+RADIUS,  CYDBK,  " CA ": 1.700,   2.000,   0.150
+RADIUS,  CYDBK,  " HA ": 1.200,   1.000,   0.020
+RADIUS,  CYDBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  CYDBK,  " O  ": 1.520,   1.600,   0.200
+RADIUS,  CYD01,  " CB ": 1.700,   2.000,   0.150
+RADIUS,  CYD01,  " HB2": 1.200,   1.000,   0.020
+RADIUS,  CYD01,  " HB3": 1.200,   1.000,   0.020
+RADIUS,  CYD01,  " SG ": 1.800,   2.000,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CYD01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0.000,  rxn04= 0.000,  rxn08= 0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

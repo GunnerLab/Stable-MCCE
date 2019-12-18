@@ -1,0 +1,227 @@
+#2,3,6,7-tetramethyl, 1,4-Naphthoquinone        
+#Agnes 10/09  
+CONFLIST NTT        NTTBK NTT01 NTTDM
+
+NATOM    NTTDM      0
+NATOM    NTTBK      0
+NATOM    NTT01      30
+
+IATOM    NTT01  C1  0
+IATOM    NTT01  O1  1
+IATOM    NTT01  C2  2
+IATOM    NTT01  C2M 3
+IATOM    NTT01  C3  4
+IATOM    NTT01  C3M 5
+IATOM    NTT01  C4  6
+IATOM    NTT01  O4  7
+IATOM    NTT01  C5  8
+IATOM    NTT01  H5  9
+IATOM    NTT01  C6  10
+IATOM    NTT01  C6M 11
+IATOM    NTT01  C7  12
+IATOM    NTT01  C7M 13
+IATOM    NTT01  C8  14
+IATOM    NTT01  H8  15
+IATOM    NTT01  C9  16
+IATOM    NTT01  C10 17
+IATOM    NTT01 1H2M 18
+IATOM    NTT01 2H2M 19
+IATOM    NTT01 3H2M 20
+IATOM    NTT01 1H3M 21
+IATOM    NTT01 2H3M 22
+IATOM    NTT01 3H3M 23
+IATOM    NTT01 1H6M 24
+IATOM    NTT01 2H6M 25
+IATOM    NTT01 3H6M 26
+IATOM    NTT01 1H7M 27
+IATOM    NTT01 2H7M 28
+IATOM    NTT01 3H7M 29
+
+
+
+ATOMNAME NTT01    0  C1
+ATOMNAME NTT01    1  O1 
+ATOMNAME NTT01    2  C2 
+ATOMNAME NTT01    3  C2M
+ATOMNAME NTT01    4  C3 
+ATOMNAME NTT01    5  C3M
+ATOMNAME NTT01    6  C4 
+ATOMNAME NTT01    7  O4 
+ATOMNAME NTT01    8  C5 
+ATOMNAME NTT01    9  H5 
+ATOMNAME NTT01   10  C6 
+ATOMNAME NTT01   11  C6M
+ATOMNAME NTT01   12  C7 
+ATOMNAME NTT01   13  C7M
+ATOMNAME NTT01   14  C8 
+ATOMNAME NTT01   15  H8 
+ATOMNAME NTT01   16  C9 
+ATOMNAME NTT01   17  C10 
+ATOMNAME NTT01   18 1H2M
+ATOMNAME NTT01   19 2H2M
+ATOMNAME NTT01   20 3H2M
+ATOMNAME NTT01   21 1H3M
+ATOMNAME NTT01   22 2H3M
+ATOMNAME NTT01   23 3H3M
+ATOMNAME NTT01   24 1H6M
+ATOMNAME NTT01   25 2H6M
+ATOMNAME NTT01   26 3H6M
+ATOMNAME NTT01   27 1H7M
+ATOMNAME NTT01   28 2H7M
+ATOMNAME NTT01   29 3H7M
+
+
+#1.Basic conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+PROTON   NTT01      0
+
+PKA      NTT01      0.0
+
+ELECTRON NTT01      0
+
+EM       NTT01      0.0
+
+RXN      NTT01      -3.437
+
+
+#2.Structure connectivity
+#NEUTRAL-----------
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  NTT01  C1  sp2       0     O1  0     C2  0     C9
+CONNECT  NTT01  O1  s         0     C1
+CONNECT  NTT01  C2  sp2       0     C2M 0     C1  0     C3
+CONNECT  NTT01  C2M sp3       0     C2  0    1H2M 0    2H2M 0    3H2M
+CONNECT  NTT01  C3  sp2       0     C2  0     C3M 0     C4
+CONNECT  NTT01  C3M sp3       0     C3  0    1H3M 0    2H3M 0    3H3M
+CONNECT  NTT01  C4  sp2       0     C3  0     O4  0     C10
+CONNECT  NTT01  O4  s         0     C4
+CONNECT  NTT01  C5  sp2       0     C10 0     H5  0     C6
+CONNECT  NTT01  H5  s         0     C5
+CONNECT  NTT01  C6  sp2       0     C5  0     C7  0     C6M
+CONNECT  NTT01  C6M sp3       0     C6  0    1H6M 0    2H6M 0    3H6M
+CONNECT  NTT01  C7  sp2       0     C8  0     C6  0     C7M
+CONNECT  NTT01  C7M sp3       0     C7  0    1H7M 0    2H7M 0    3H7M
+CONNECT  NTT01  C8  sp2       0     C7  0     C9  0     H8 
+CONNECT  NTT01  H8  s         0     C8  
+CONNECT  NTT01  C9  sp2       0     C1  0     C8  0     C10
+CONNECT  NTT01  C10 sp2       0     C4  0     C5  0     C9
+CONNECT  NTT01 1H2M s         0     C2M
+CONNECT  NTT01 2H2M s         0     C2M
+CONNECT  NTT01 3H2M s         0     C2M
+CONNECT  NTT01 1H3M s         0     C3M
+CONNECT  NTT01 2H3M s         0     C3M
+CONNECT  NTT01 3H3M s         0     C3M
+CONNECT  NTT01 1H6M s         0     C6M
+CONNECT  NTT01 2H6M s         0     C6M
+CONNECT  NTT01 3H6M s         0     C6M
+CONNECT  NTT01 1H7M s         0     C7M
+CONNECT  NTT01 2H7M s         0     C7M
+CONNECT  NTT01 3H7M s         0     C7M
+
+
+
+#3.Atom Parameters: Partial charges and Radii
+#23456789A123456789B123456789C
+RADIUS   NTT    C1  1.70
+RADIUS   NTT    O1  1.40
+RADIUS   NTT    C2  1.70
+RADIUS   NTT    C2M 1.70
+RADIUS   NTT    C3  1.70
+RADIUS   NTT    C3M 1.70
+RADIUS   NTT    C4  1.70
+RADIUS   NTT    O4  1.40
+RADIUS   NTT    C5  1.70
+RADIUS   NTT    H5  1.00
+RADIUS   NTT    C6  1.70
+RADIUS   NTT    C6M 1.70
+RADIUS   NTT    C7  1.70
+RADIUS   NTT    C7M 1.70
+RADIUS   NTT    C8  1.70
+RADIUS   NTT    H8  1.00
+RADIUS   NTT    C9  1.70
+RADIUS   NTT    C10 1.70
+RADIUS   NTT   1H2M 1.00
+RADIUS   NTT   2H2M 1.00
+RADIUS   NTT   3H2M 1.00
+RADIUS   NTT   1H3M 1.00
+RADIUS   NTT   2H3M 1.00
+RADIUS   NTT   3H3M 1.00
+RADIUS   NTT   1H6M 1.00
+RADIUS   NTT   2H6M 1.00
+RADIUS   NTT   3H6M 1.00
+RADIUS   NTT   1H7M 1.00
+RADIUS   NTT   2H7M 1.00
+RADIUS   NTT   3H7M 1.00
+
+
+#NEUTRAL------
+#23456789A123456789B123456789C
+#opt ub3lyp/lanl2dz nosymm geom=connectivity  pop=chelpg scf(maxcycle=600)  Agnes 10/09
+CHARGE   NTT01  C1   0.47
+CHARGE   NTT01  O1  -0.48
+CHARGE   NTT01  C2  -0.08
+CHARGE   NTT01  C2M  0.01
+CHARGE   NTT01  C3  -0.12
+CHARGE   NTT01  C3M -0.06
+CHARGE   NTT01  C4   0.57
+CHARGE   NTT01  O4  -0.52
+CHARGE   NTT01  C5  -0.10
+CHARGE   NTT01  H5   0.12
+CHARGE   NTT01  C6   0.10
+CHARGE   NTT01  C6M -0.26
+CHARGE   NTT01  C7   0.07
+CHARGE   NTT01  C7M -0.23
+CHARGE   NTT01  C8  -0.12
+CHARGE   NTT01  H8   0.12
+CHARGE   NTT01  C9  -0.06
+CHARGE   NTT01  C10 -0.16
+CHARGE   NTT01 1H2M  0.03
+CHARGE   NTT01 2H2M  0.03
+CHARGE   NTT01 3H2M  0.03
+CHARGE   NTT01 1H3M  0.05 
+CHARGE   NTT01 2H3M  0.05
+CHARGE   NTT01 3H3M  0.05
+CHARGE   NTT01 1H6M  0.09
+CHARGE   NTT01 2H6M  0.08
+CHARGE   NTT01 3H6M  0.08
+CHARGE   NTT01 1H7M  0.08
+CHARGE   NTT01 2H7M  0.08
+CHARGE   NTT01 3H7M  0.08
+
+
+
+
+#TORSION  NTT    O2   C2   C1   O1   f        0.0         1    180.00  
+#TORSION  NTT    C8   C9   C1   O1   f        0.0         1    180.00  
+
+#TORSION  NTT    C7   C6   C5   C10  f        0.0         1      0.00 
+#TORSION  NTT    H5   C5   C10  C4   f        0.0         1      0.00
+#TORSION  NTT    C6   C7   C8   C9   f        0.0         1      0.00
+
+#TORSION  NTT    C7   C8   C9   C1   f        0.0         1      0.00 
+#TORSION  NTT    C5   C6   C7   C8   f        0.0         1      0.00
+#TORSION  NTT    H5   C5   C6   C7   f        0.0         1    180.00
+#TORSION  NTT    C6   C5   C10  C9   f        0.0         1    180.00 
+#TORSION  NTT    C6   C5   C10  C4   f        0.0         1      0.00 
+
+#TORSION  NTT    H5   C5   C10  C4   f        0.0         1      0.00
+
+#ParaNam|Res  |Atom|Param/toggle
+TRANS    NTT          t
+
+#====================================
+#        Res    #
+#23456789012345678901234567890123
+#-------|-----|----|----|----|----|
+#SPIN     NTT   0     C9 - C10- C1
+#SPIN     NTT   1     C8 - C5 - C10
+#SPIN     NTT   2     C1 - C4 - C9
+
+#=========================================================================
+#        Res    #      Axis     Rotated_Atoms
+#23456789012345678901234567890123
+#-------|-----|----|---------|----|----|----|----|----|----|----|
+ROTAMER  NTT   0     C1 - C4   WHOLE_CONF
+ROTAMER  NTT   1     C9 - C10  WHOLE_CONF
+ROTAMER  NTT   2     C2 - C7   WHOLE_CONF

@@ -1,0 +1,27 @@
+   Error! get_connect12(): connectivity of atom " N   GLU A0075" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   GLU A0075" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  GLUBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   GLUBK  HA      0.000
+CHARGE   GLU01  CB      0.000
+CHARGE   GLU01 1HB      0.000
+CHARGE   GLU01 2HB      0.000
+CHARGE   GLU01  CG      0.000
+CHARGE   GLU01 1HG      0.000
+CHARGE   GLU01 2HG      0.000
+CHARGE   GLU-1  CB      0.000
+CHARGE   GLU-1 1HB      0.000
+CHARGE   GLU-1 2HB      0.000
+CHARGE   GLU-1 1HG      0.000
+CHARGE   GLU-1 2HG      0.000
+CHARGE   GLU02  CB      0.000
+CHARGE   GLU02 1HB      0.000
+CHARGE   GLU02 2HB      0.000
+CHARGE   GLU02  CG      0.000
+CHARGE   GLU02 1HG      0.000
+CHARGE   GLU02 2HG      0.000

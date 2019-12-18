@@ -1,0 +1,16 @@
+   Error! get_connect12(): connectivity of atom " N   HIS A0121" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIS A0121" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  HISBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   HISBK  HA      0.000
+CHARGE   HIS01 1HB      0.000
+CHARGE   HIS01 2HB      0.000
+CHARGE   HIS+1 1HB      0.000
+CHARGE   HIS+1 2HB      0.000
+CHARGE   HIS02 1HB      0.000
+CHARGE   HIS02 2HB      0.000

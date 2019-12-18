@@ -1,0 +1,13 @@
+   Error! get_connect12(): connectivity of atom " N   ASN A0100" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   ASN A0100" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  ASNBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   ASNBK  HA      0.000
+CHARGE   ASN01  CB      0.000
+CHARGE   ASN01 1HB      0.000
+CHARGE   ASN01 2HB      0.000

@@ -1,0 +1,179 @@
+#tri-methyl lys,temporary, charges are taken from lys
+CONFLIST TML        TMLBK TML+1
+
+NATOM    TMLBK      6
+NATOM    TML+1      25
+
+IATOM    TMLBK  N   0
+IATOM    TMLBK  H   1
+IATOM    TMLBK  CA  2
+IATOM    TMLBK  HA  3
+IATOM    TMLBK  C   4
+IATOM    TMLBK  O   5
+IATOM    TML+1  CB  0
+IATOM    TML+1 1HB  1
+IATOM    TML+1 2HB  2
+IATOM    TML+1  CG  3
+IATOM    TML+1 1HG  4
+IATOM    TML+1 2HG  5
+IATOM    TML+1  CD  6
+IATOM    TML+1 1HD  7
+IATOM    TML+1 2HD  8
+IATOM    TML+1  CE  9
+IATOM    TML+1 1HE  10
+IATOM    TML+1 2HE  11
+IATOM    TML+1  NZ  12
+IATOM    TML+1  CH1 13
+IATOM    TML+1  CH2 14
+IATOM    TML+1  CH3 15
+IATOM    TML+1 1HC1 16
+IATOM    TML+1 2HC1 17
+IATOM    TML+1 3HC1 18
+IATOM    TML+1 1HC2 19
+IATOM    TML+1 2HC2 20
+IATOM    TML+1 3HC2 21
+IATOM    TML+1 1HC3 22
+IATOM    TML+1 2HC3 23
+IATOM    TML+1 3HC3 24
+
+ATOMNAME TMLBK    0  N  
+ATOMNAME TMLBK    1  H
+ATOMNAME TMLBK    2  CA 
+ATOMNAME TMLBK    3  HA 
+ATOMNAME TMLBK    4  C  
+ATOMNAME TMLBK    5  O  
+ATOMNAME TML+1    0  CB 
+ATOMNAME TML+1    1 1HB 
+ATOMNAME TML+1    2 2HB 
+ATOMNAME TML+1    3  CG 
+ATOMNAME TML+1    4 1HG 
+ATOMNAME TML+1    5 2HG 
+ATOMNAME TML+1    6  CD 
+ATOMNAME TML+1    7 1HD 
+ATOMNAME TML+1    8 2HD 
+ATOMNAME TML+1    9  CE 
+ATOMNAME TML+1   10 1HE 
+ATOMNAME TML+1   11 2HE 
+ATOMNAME TML+1   12  NZ 
+ATOMNAME TML+1   13  CH1 
+ATOMNAME TML+1   14  CH2 
+ATOMNAME TML+1   15  CH3
+ATOMNAME TML+1   16 1HC1
+ATOMNAME TML+1   17 2HC1
+ATOMNAME TML+1   18 3HC1
+ATOMNAME TML+1   19 1HC2
+ATOMNAME TML+1   20 2HC2
+ATOMNAME TML+1   21 3HC2
+ATOMNAME TML+1   22 1HC3
+ATOMNAME TML+1   23 2HC3
+ATOMNAME TML+1   24 3HC3
+
+
+
+
+
+
+#1.Basic Conformer Information: name, pka, em, rxn.
+PROTON   TML+1      +1
+PKA      TML+1      10.8
+ELECTRON TML+1      0
+EM       TML+1      0.0
+RXN      TML+1      -19.8
+
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+CONNECT  TMLBK  N   sp2       -1    C   0     CA  0     H
+CONNECT  TMLBK  H   s         0     N
+CONNECT  TMLBK  CA  sp3       0     N   0     C   0     CB  0     HA
+CONNECT  TMLBK  HA  s         0     CA
+CONNECT  TMLBK  C   sp2       0     CA  0     O   1     N
+CONNECT  TMLBK  O   sp2       0     C
+CONNECT  TML+1  CB  sp3       0     CA  0     CG  0    1HB  0    2HB
+CONNECT  TML+1 1HB  s         0     CB
+CONNECT  TML+1 2HB  s         0     CB
+CONNECT  TML+1  CG  sp3       0     CB  0     CD  0    1HG  0    2HG
+CONNECT  TML+1 1HG  s         0     CG
+CONNECT  TML+1 2HG  s         0     CG
+CONNECT  TML+1  CD  sp3       0     CG  0     CE  0    1HD  0    2HD
+CONNECT  TML+1 1HD  s         0     CD
+CONNECT  TML+1 2HD  s         0     CD
+CONNECT  TML+1  CE  sp3       0     CD  0     NZ  0    1HE  0    2HE
+CONNECT  TML+1 1HE  s         0     CE
+CONNECT  TML+1 2HE  s         0     CE
+CONNECT  TML+1  NZ  sp3       0     CE  0     CH1 0     CH2 0     CH3
+CONNECT  TML+1  CH1 sp3       0     NZ  0    1HC1 0    2HC1 0    3HC1 
+CONNECT  TML+1  CH2 sp3       0     NZ  0    1HC2 0    2HC2 0    3HC2
+CONNECT  TML+1  CH3 sp3       0     NZ  0    1HC3 0    2HC3 0    3HC3
+CONNECT  TML+1 1CH1 s         0     CH1
+CONNECT  TML+1 2CH1 s         0     CH1
+CONNECT  TML+1 3CH1 s         0     CH1
+CONNECT  TML+1 1CH2 s         0     CH2
+CONNECT  TML+1 2CH2 s         0     CH2
+CONNECT  TML+1 3CH2 s         0     CH2
+CONNECT  TML+1 1CH3 s         0     CH3
+CONNECT  TML+1 2CH3 s         0     CH3
+CONNECT  TML+1 3CH3 s         0     CH3
+
+
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+RADIUS   TML    N   1.50
+RADIUS   TML    H   1.00
+RADIUS   TML    CA  2.00
+RADIUS   TML    HA  0.00
+RADIUS   TML    C   1.70
+RADIUS   TML    O   1.40
+RADIUS   TML    CB  2.00
+RADIUS   TML   1HB  0.00
+RADIUS   TML   2HB  0.00
+RADIUS   TML    CG  2.00
+RADIUS   TML   1HG  0.00
+RADIUS   TML   2HG  0.00
+RADIUS   TML    CD  2.00
+RADIUS   TML   1HD  0.00
+RADIUS   TML   2HD  0.00
+RADIUS   TML    CE  2.00
+RADIUS   TML   1HE  0.00
+RADIUS   TML   2HE  0.00
+RADIUS   TML    NZ  1.50
+RADIUS   TML    CH1 2.00
+RADIUS   TML    CH2 2.00
+RADIUS   TML    CH3 2.0
+RADIUS   TML   1HC1 0.00
+RADIUS   TML   2HC1 0.00
+RADIUS   TML   3HC1 0.00
+RADIUS   TML   1HC2 0.00
+RADIUS   TML   2HC2 0.00
+RADIUS   TML   3HC2 0.00
+RADIUS   TML   1HC3 0.00
+RADIUS   TML   2HC3 0.00
+RADIUS   TML   3HC3 0.00
+
+CHARGE   TMLBK  N    -0.350
+CHARGE   TMLBK  H     0.250
+CHARGE   TMLBK  CA    0.100
+CHARGE   TMLBK  C     0.550
+CHARGE   TMLBK  O    -0.550
+CHARGE   TML+1  CB    0.000
+CHARGE   TML+1  CD    0.000
+CHARGE   TML+1  CE    0.330
+CHARGE   TML+1  NZ   -0.320
+CHARGE   TML+1  CH1   0.330
+CHARGE   TML+1  CH2   0.330
+CHARGE   TML+1  CH3   0.330
+
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+ROTAMER  TML   0     CA - CB   CG   CD   CE   NZ   CH1  CH2  CH3
+ROTAMER  TML   1     CB - CG   CD   CE   NZ   CH1  CH2  CH3
+ROTAMER  TML   2     CG - CD   CE   NZ   CH1  CH2  CH3
+ROTAMER  TML   3     CD - CE   NZ   CH1  CH2  CH3
+#=========================================================================
+

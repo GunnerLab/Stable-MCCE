@@ -1,0 +1,4 @@
+06/09/2014  xzhu
+================
+* fix a bug in optimizing the hydroxyl (check later).
+* move the original relax_h.c to relax_h.c_bak.

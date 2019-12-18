@@ -1,0 +1,165 @@
+MCCE CONFIGURATION FILE (default 09/15/2004)
+   This file must have name "run.prm" in the working directory. The first
+   field of the line is the value, and last string with parenthesis is
+   the key.
+
+   You need this configure file in your working directory.
+   You need to point out a pdb file to work on.
+
+   Optionally:
+   You may need file defined by "RENAME_RULES" to customize cofactors.
+   You may need file defined by "EXTRA" to customize advanced contols.
+
+==============================================================================
+Most modified entries
+------------------------------------------------------------------------------
+Input and Output:
+prot.pdb                                                    (INPDB)
+
+Steps:
+t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+t        step 2: make rotatmers                             (DO_ROTAMERS)
+t        step 3: do energy calculations                     (DO_ENERGY)
+f        step 4: monte carlo sampling                       (DO_MONTE)
+==============================================================================
+
+0        sidechain optimization: 0=mcce, 1=P.Comte's GA     (SIDECHAIN_OPT)
+delphi   Poisson-Boltzmann solver,apbs or delphi            (PBE_SOLVER)
+surface  self/surface, APBS always use rxn self energy      (RXN_METHOD)
+
+==============================================================================
+Less modified entries
+------------------------------------------------------------------------------
+2.0   Protein dielectric constant for DelPhi             (EPSILON_PROT)
+/home/xzhu/mcce2.5/extra.tpl                                (EXTRA)
+/home/xzhu/pfile/name.txt MCCE renaming rule.             (RENAME_RULES)
+
+ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
+0.0      Initial pH                                         (TITR_PH0)
+1.0      pH interval                                        (TITR_PHD)
+0.0      Initial Eh                                         (TITR_EH0)
+30.0     Eh interval (in mV)                                (TITR_EHD)
+15       Number of titration points                         (TITR_STEPS)
+=============================================================================
+
+
+
+#############################################################################
+MODIFYING FOLLOWING ENTRIES REQUIRE ADVANCED KNOWLEDGE:
+-----------------------------------------------------------------------------
+/home/xzhu/mcce2.5                                          (MCCE_HOME)
+t       Minimize output files                               (MINIMIZE_SIZE)
+
+Options specific to each step:
+
+step 1:
+f        Label terminal residues?                           (TERMINALS)
+2.0      distance limit of reporting clashes                (CLASH_DISTANCE)
+0.05     cut off water if % SAS exceeds this number         (H2O_SASCUTOFF)
+
+f        add neutral atoms to simulate a membrane slab      (IPECE_ADD_MEM)
+33.      the thichness of the membrane to be add            (IPECE_MEM_THICKNESS)
+M        the chain ID of the add atoms                      (IPECE_MEM_CHAINID)
+
+step 2:
+f        Use specific control (head1.lst) on rotamer making (ROT_SPECIF)
+f        Rebuild sidechain based on torsion minima          (REBUILD_SC)
+t        Do swap (stereo isotope)                           (ROT_SWAP)
+t        Do rotate?                                         (PACK)
+6        number of rotamers in a bond rotation              (ROTATIONS)
+1.00     SAS Threshold not making rotamers                  (SAS_CUTOFF)
+10.0     Cutoff of self vdw in kcal/mol                     (VDW_CUTOFF)
+5000     number of repacks                                  (REPACKS)
+0.01     occupancy cutoff of repacks                        (REPACK_CUTOFF)
+
+t        h-bond directed rotamer making, requir 't' on Do rotate  (HDIRECTED)
+1.0      threshold for two conformers being different       (HDIRDIFF)
+36       Limit number of the Hbond conformers               (HDIRLIMT)
+
+3        number of cycles to relax rotamer clash            (HV_RELAX_NCYCLE)
+4        time (in fs) for each relaxation iteration         (HV_RELAX_DT)
+100      number of iterations                               (HV_RELAX_NITER)
+2.       relax rotamer if vdw interaction is bigger than this (HV_RELAX_VDW_THR)
+10.      not relax rotamer if heavy atom vdw is bigger than this (HV_RELAX_HV_VDW_THR)
+20.      scaling factor for torsion during relaxation       (HV_TORS_SCALE)
+10000    maximun n steps of shake                           (HV_RELAX_N_SHAKE)
+1.0      constraint distance                                (HV_RELAX_CONSTRAINT)
+20.      constraint force for atom stay in original position (HV_RELAX_CONSTRAINT_FRC)
+-2.0     relax if electrostatic interaction is more favorable than this, and the charged groups are close  (HV_RELAX_ELEC_THR)
+0.3      threshold used to define a charged atom, see hv_relax_elec_dist_thr (HV_RELAX_ELEC_CRG_THR)
+2.0      only relax electrostatically favorable pairs that has charged atom distance shorter than this (HV_RELAX_ELEC_DIST_THR)
+
+f        Do relaxation on hydrogens                         (RELAX_H)
+-1.0     Energy threshold for keeping the conformer         (RELAX_E_THR)
+100      Loop over N local microstates                      (RELAX_NSTATES)
+72       default number of hydroxyl positions               (RELAX_N_HYD)
+5.       do not relax hydrogen if vdw bwt two sidechain conformer bigger than this    (RELAX_CLASH_THR)
+1.0      phi for each step of relaxation                    (RELAX_PHI)
+300      Maximum number of steps of relaxation              (RELAX_NITER)
+0.5      Torque threshold for keep relaxing                 (RELAX_TORQ_THR)
+
+step 3:
+80.0     Solvent dielectric constant for DelPhi             (EPSILON_SOLV)
+65       Grids in each DelPhi                               (GRIDS_DELPHI)
+2.0      The target grids per angstrom for DelPhi           (GRIDS_PER_ANG)
+1.4      Radius of the probe                                (RADIUS_PROBE)
+2.0      Ion radius                                         (IONRAD)
+0.15     Salt                                               (SALT)
+/home/mcce/mcce2.5/bin/delphi DelPhi executable             (DELPHI_EXE)
+/home/mcce/mcce2.5/bin/apbs APBS executable                 (APBS_EXE)
+
+step 4:
+f        Using Yifan's monte carlo                          (MONTE_ADV_OPT)
+5.0      Big pairwise threshold to make big list            (BIG_PAIRWISE)
+-1       Random seed, -1 uses time as random seed           (MONTE_SEED)
+298.15   Temperature                                        (MONTE_T)
+3        Number of flips                                    (MONTE_FLIPS)
+100      Annealing = n_start * confs                        (MONTE_NSTART)
+300      Equalibration = n_eq * confs                       (MONTE_NEQ)
+0.001    Cut-off occupancy of the reduction                 (MONTE_REDUCE)
+6        Independent monte carlo sampling                   (MONTE_RUNS)
+2000     Sampling = n_iter * confs                          (MONTE_NITER)
+50000    Trace energy each MONTE_TRACE steps, 0 no trace    (MONTE_TRACE)
+1000000  Maximum microstates for analytical solution        (NSTATE_MAX)
+
+t        Do entropy correction                              (MONTE_TSX)
+7        Specify mfe point, f=pKa/Em                        (MFE_POINT)
+0.01    MFE cutoff(Kcal), default 0.5                      (MFE_CUTOFF)
+
+# Advanced options:
+1         pbe    start conformer number, 0 based            (PBE_START)
+99999     pbe    end conformer number, self included        (PBE_END)
+6.0      dielectric constant for Coulomb's law              (EPSILON_COULOMB)
+
+#APBS
+65   number of grids                                         (GRIDS_APBS)
+mol   protein-solvent surface definition: mol/smol/spl2/spl4  (SURFACE_APBS)
+spl0  mapping the point charges to the grid: spl0/spl2/spl4   (CHARGES_APBS)
+sdh   type of PBE boundary condition: zero/sdh/mdh/focus      (BOUND_COND_APBS)
+
+##############################################################################
+
+###########PASCAL COMTE GENETIC ALGORITHM PARAMETERS FOR STEP 2################
+-1       Random seed value, use -1 for random value         (GA_SEED)
+6000     Population size of each GA: use up to 20k          (GA_POP_SIZE)
+0.1      Mutation rate for each GA                          (GA_MUTATION_RATE)
+0.0      Migration rate for each GA                         (GA_MIGRATION_RATE)
+0.9      Crossover rate for each GA                         (GA_CROSSOVER_RATE)
+30       Max nb. of rnd cut points for crossover            (GA_RANDOM_CUT_POINTS)
+
+10       Nb. of GA rounds without convergence check         (GA_PHASE)
+5        Nb. of GA rounds with convergence check            (GA_SHIFT)
+
+15.0     Distribution Center                                (GA_DIST_CENTER)
+2.0      solutions within EPS*DIST.CENTER in bucket         (GA_DIST_CENTER_EPS)
+
+400000   Max nb. protein conformations in final bucket      (GA_MAX_BUCKET_POP)
+5.0      Local Residue lowest occupied energy cutoff        (GA_RESIDUE_MIN_ENERGY_CUTOFF)
+0.0      Occupied conformers in MIN_ENRG_CUTOFF are deleted (GA_OCCUPANCY_CUTOFF)
+0.7      Pop. %  for dE calculation                         (GA_DELTA_E)
+
+-1       Disabled when -1                                   (GA_SPHERE_FOCUS_RESID)
+20.0     Up to how many Angstorms to include residues       (GA_SPHERE_PROBE_RADIUS)
+
+0        GA output format: 0 display screen, 1 file         (GA_OUTPUT)
+##############################################################################

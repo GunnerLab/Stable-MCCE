@@ -1,0 +1,1570 @@
+####################################
+# Topology File for:
+# param/STI.tpl
+# /home/salah/mcce-charges/epik_inhibitors/output/Imatinib/Imatinib
+#
+# Created on: 2016-06-12
+#
+# Created with: make_tpl_1.py by Salah Salah
+####################################
+
+# neural always starts with 0
+# numberical value means the charge is 1
+# alphabet lower case means the charge is 2
+# alphabet upper case means the charge is 3
+# nothing for charge of 4, this code will not work
+
+CONFLIST STI        STIBK STI+1 STI+2 STI01 STI+a STI+b STIDM
+
+NATOM    STIBK      0
+NATOM    STI+1      69
+NATOM    STI+2      69
+NATOM    STI01      68
+NATOM    STI+a      70
+NATOM    STI+b      70
+NATOM    STIDM      0
+
+IATOM    STI+1    C1    0
+IATOM    STI+1    C6    1
+IATOM    STI+1    C5    2
+IATOM    STI+1    C4    3
+IATOM    STI+1    N3    4
+IATOM    STI+1    C2    5
+IATOM    STI+1    C7    6
+IATOM    STI+1   C12    7
+IATOM    STI+1   C11    8
+IATOM    STI+1   N10    9
+IATOM    STI+1    C9   10
+IATOM    STI+1    N8   11
+IATOM    STI+1   N13   12
+IATOM    STI+1   C14   13
+IATOM    STI+1   C19   14
+IATOM    STI+1   C18   15
+IATOM    STI+1   C17   16
+IATOM    STI+1   C16   17
+IATOM    STI+1   C15   18
+IATOM    STI+1   N21   19
+IATOM    STI+1   C22   20
+IATOM    STI+1   C23   21
+IATOM    STI+1   C25   22
+IATOM    STI+1   C26   23
+IATOM    STI+1   C27   24
+IATOM    STI+1   C28   25
+IATOM    STI+1   C29   26
+IATOM    STI+1   C46   27
+IATOM    STI+1   N48   28
+IATOM    STI+1   C53   29
+IATOM    STI+1   C52   30
+IATOM    STI+1   N51   31
+IATOM    STI+1   C54   32
+IATOM    STI+1   C50   33
+IATOM    STI+1   C49   34
+IATOM    STI+1   O29   35
+IATOM    STI+1   C20   36
+IATOM    STI+1   H11   37
+IATOM    STI+1   H61   38
+IATOM    STI+1   H41   39
+IATOM    STI+1   H21   40
+IATOM    STI+1  H121   41
+IATOM    STI+1  H111   42
+IATOM    STI+1  H131   43
+IATOM    STI+1  H181   44
+IATOM    STI+1  H171   45
+IATOM    STI+1  H151   46
+IATOM    STI+1  H211   47
+IATOM    STI+1  H251   48
+IATOM    STI+1  H261   49
+IATOM    STI+1  H281   50
+IATOM    STI+1  H291   51
+IATOM    STI+1  H461   52
+IATOM    STI+1  H462   53
+IATOM    STI+1  H531   54
+IATOM    STI+1  H532   55
+IATOM    STI+1  H521   56
+IATOM    STI+1  H522   57
+IATOM    STI+1  H541   58
+IATOM    STI+1  H542   59
+IATOM    STI+1  H543   60
+IATOM    STI+1  H501   61
+IATOM    STI+1  H502   62
+IATOM    STI+1  H491   63
+IATOM    STI+1  H492   64
+IATOM    STI+1  H201   65
+IATOM    STI+1  H202   66
+IATOM    STI+1  H203   67
+IATOM    STI+1   H69   68
+
+IATOM    STI+2    C1    0
+IATOM    STI+2    C6    1
+IATOM    STI+2    C5    2
+IATOM    STI+2    C4    3
+IATOM    STI+2    N3    4
+IATOM    STI+2    C2    5
+IATOM    STI+2    C7    6
+IATOM    STI+2   C12    7
+IATOM    STI+2   C11    8
+IATOM    STI+2   N10    9
+IATOM    STI+2    C9   10
+IATOM    STI+2    N8   11
+IATOM    STI+2   N13   12
+IATOM    STI+2   C14   13
+IATOM    STI+2   C19   14
+IATOM    STI+2   C18   15
+IATOM    STI+2   C17   16
+IATOM    STI+2   C16   17
+IATOM    STI+2   C15   18
+IATOM    STI+2   N21   19
+IATOM    STI+2   C22   20
+IATOM    STI+2   C23   21
+IATOM    STI+2   C25   22
+IATOM    STI+2   C26   23
+IATOM    STI+2   C27   24
+IATOM    STI+2   C28   25
+IATOM    STI+2   C29   26
+IATOM    STI+2   C46   27
+IATOM    STI+2   N48   28
+IATOM    STI+2   C53   29
+IATOM    STI+2   C52   30
+IATOM    STI+2   N51   31
+IATOM    STI+2   C54   32
+IATOM    STI+2   C50   33
+IATOM    STI+2   C49   34
+IATOM    STI+2   O29   35
+IATOM    STI+2   C20   36
+IATOM    STI+2   H11   37
+IATOM    STI+2   H61   38
+IATOM    STI+2   H41   39
+IATOM    STI+2   H21   40
+IATOM    STI+2  H121   41
+IATOM    STI+2  H111   42
+IATOM    STI+2  H131   43
+IATOM    STI+2  H181   44
+IATOM    STI+2  H171   45
+IATOM    STI+2  H151   46
+IATOM    STI+2  H211   47
+IATOM    STI+2  H251   48
+IATOM    STI+2  H261   49
+IATOM    STI+2  H281   50
+IATOM    STI+2  H291   51
+IATOM    STI+2  H461   52
+IATOM    STI+2  H462   53
+IATOM    STI+2  H531   54
+IATOM    STI+2  H532   55
+IATOM    STI+2  H521   56
+IATOM    STI+2  H522   57
+IATOM    STI+2  H541   58
+IATOM    STI+2  H542   59
+IATOM    STI+2  H543   60
+IATOM    STI+2  H501   61
+IATOM    STI+2  H502   62
+IATOM    STI+2  H491   63
+IATOM    STI+2  H492   64
+IATOM    STI+2  H201   65
+IATOM    STI+2  H202   66
+IATOM    STI+2  H203   67
+IATOM    STI+2   H69   68
+
+IATOM    STI01    C1    0
+IATOM    STI01    C6    1
+IATOM    STI01    C5    2
+IATOM    STI01    C4    3
+IATOM    STI01    N3    4
+IATOM    STI01    C2    5
+IATOM    STI01    C7    6
+IATOM    STI01   C12    7
+IATOM    STI01   C11    8
+IATOM    STI01   N10    9
+IATOM    STI01    C9   10
+IATOM    STI01    N8   11
+IATOM    STI01   N13   12
+IATOM    STI01   C14   13
+IATOM    STI01   C19   14
+IATOM    STI01   C18   15
+IATOM    STI01   C17   16
+IATOM    STI01   C16   17
+IATOM    STI01   C15   18
+IATOM    STI01   N21   19
+IATOM    STI01   C22   20
+IATOM    STI01   C23   21
+IATOM    STI01   C25   22
+IATOM    STI01   C26   23
+IATOM    STI01   C27   24
+IATOM    STI01   C28   25
+IATOM    STI01   C29   26
+IATOM    STI01   C46   27
+IATOM    STI01   N48   28
+IATOM    STI01   C53   29
+IATOM    STI01   C52   30
+IATOM    STI01   N51   31
+IATOM    STI01   C54   32
+IATOM    STI01   C50   33
+IATOM    STI01   C49   34
+IATOM    STI01   O29   35
+IATOM    STI01   C20   36
+IATOM    STI01   H11   37
+IATOM    STI01   H61   38
+IATOM    STI01   H41   39
+IATOM    STI01   H21   40
+IATOM    STI01  H121   41
+IATOM    STI01  H111   42
+IATOM    STI01  H131   43
+IATOM    STI01  H181   44
+IATOM    STI01  H171   45
+IATOM    STI01  H151   46
+IATOM    STI01  H211   47
+IATOM    STI01  H251   48
+IATOM    STI01  H261   49
+IATOM    STI01  H281   50
+IATOM    STI01  H291   51
+IATOM    STI01  H461   52
+IATOM    STI01  H462   53
+IATOM    STI01  H531   54
+IATOM    STI01  H532   55
+IATOM    STI01  H521   56
+IATOM    STI01  H522   57
+IATOM    STI01  H541   58
+IATOM    STI01  H542   59
+IATOM    STI01  H543   60
+IATOM    STI01  H501   61
+IATOM    STI01  H502   62
+IATOM    STI01  H491   63
+IATOM    STI01  H492   64
+IATOM    STI01  H201   65
+IATOM    STI01  H202   66
+IATOM    STI01  H203   67
+
+IATOM    STI+a    C1    0
+IATOM    STI+a    C6    1
+IATOM    STI+a    C5    2
+IATOM    STI+a    C4    3
+IATOM    STI+a    N3    4
+IATOM    STI+a    C2    5
+IATOM    STI+a    C7    6
+IATOM    STI+a   C12    7
+IATOM    STI+a   C11    8
+IATOM    STI+a   N10    9
+IATOM    STI+a    C9   10
+IATOM    STI+a    N8   11
+IATOM    STI+a   N13   12
+IATOM    STI+a   C14   13
+IATOM    STI+a   C19   14
+IATOM    STI+a   C18   15
+IATOM    STI+a   C17   16
+IATOM    STI+a   C16   17
+IATOM    STI+a   C15   18
+IATOM    STI+a   N21   19
+IATOM    STI+a   C22   20
+IATOM    STI+a   C23   21
+IATOM    STI+a   C25   22
+IATOM    STI+a   C26   23
+IATOM    STI+a   C27   24
+IATOM    STI+a   C28   25
+IATOM    STI+a   C29   26
+IATOM    STI+a   C46   27
+IATOM    STI+a   N48   28
+IATOM    STI+a   C53   29
+IATOM    STI+a   C52   30
+IATOM    STI+a   N51   31
+IATOM    STI+a   C54   32
+IATOM    STI+a   C50   33
+IATOM    STI+a   C49   34
+IATOM    STI+a   O29   35
+IATOM    STI+a   C20   36
+IATOM    STI+a   H11   37
+IATOM    STI+a   H61   38
+IATOM    STI+a   H41   39
+IATOM    STI+a   H21   40
+IATOM    STI+a  H121   41
+IATOM    STI+a  H111   42
+IATOM    STI+a  H131   43
+IATOM    STI+a  H181   44
+IATOM    STI+a  H171   45
+IATOM    STI+a  H151   46
+IATOM    STI+a  H211   47
+IATOM    STI+a  H251   48
+IATOM    STI+a  H261   49
+IATOM    STI+a  H281   50
+IATOM    STI+a  H291   51
+IATOM    STI+a  H461   52
+IATOM    STI+a  H462   53
+IATOM    STI+a  H531   54
+IATOM    STI+a  H532   55
+IATOM    STI+a  H521   56
+IATOM    STI+a  H522   57
+IATOM    STI+a  H541   58
+IATOM    STI+a  H542   59
+IATOM    STI+a  H543   60
+IATOM    STI+a  H501   61
+IATOM    STI+a  H502   62
+IATOM    STI+a  H491   63
+IATOM    STI+a  H492   64
+IATOM    STI+a  H201   65
+IATOM    STI+a  H202   66
+IATOM    STI+a  H203   67
+IATOM    STI+a   H69   68
+IATOM    STI+a   H70   69
+
+IATOM    STI+b    C1    0
+IATOM    STI+b    C6    1
+IATOM    STI+b    C5    2
+IATOM    STI+b    C4    3
+IATOM    STI+b    N3    4
+IATOM    STI+b    C2    5
+IATOM    STI+b    C7    6
+IATOM    STI+b   C12    7
+IATOM    STI+b   C11    8
+IATOM    STI+b   N10    9
+IATOM    STI+b    C9   10
+IATOM    STI+b    N8   11
+IATOM    STI+b   N13   12
+IATOM    STI+b   C14   13
+IATOM    STI+b   C19   14
+IATOM    STI+b   C18   15
+IATOM    STI+b   C17   16
+IATOM    STI+b   C16   17
+IATOM    STI+b   C15   18
+IATOM    STI+b   N21   19
+IATOM    STI+b   C22   20
+IATOM    STI+b   C23   21
+IATOM    STI+b   C25   22
+IATOM    STI+b   C26   23
+IATOM    STI+b   C27   24
+IATOM    STI+b   C28   25
+IATOM    STI+b   C29   26
+IATOM    STI+b   C46   27
+IATOM    STI+b   N48   28
+IATOM    STI+b   C53   29
+IATOM    STI+b   C52   30
+IATOM    STI+b   N51   31
+IATOM    STI+b   C54   32
+IATOM    STI+b   C50   33
+IATOM    STI+b   C49   34
+IATOM    STI+b   O29   35
+IATOM    STI+b   C20   36
+IATOM    STI+b   H11   37
+IATOM    STI+b   H61   38
+IATOM    STI+b   H41   39
+IATOM    STI+b   H21   40
+IATOM    STI+b  H121   41
+IATOM    STI+b  H111   42
+IATOM    STI+b  H131   43
+IATOM    STI+b  H181   44
+IATOM    STI+b  H171   45
+IATOM    STI+b  H151   46
+IATOM    STI+b  H211   47
+IATOM    STI+b  H251   48
+IATOM    STI+b  H261   49
+IATOM    STI+b  H281   50
+IATOM    STI+b  H291   51
+IATOM    STI+b  H461   52
+IATOM    STI+b  H462   53
+IATOM    STI+b  H531   54
+IATOM    STI+b  H532   55
+IATOM    STI+b  H521   56
+IATOM    STI+b  H522   57
+IATOM    STI+b  H541   58
+IATOM    STI+b  H542   59
+IATOM    STI+b  H543   60
+IATOM    STI+b  H501   61
+IATOM    STI+b  H502   62
+IATOM    STI+b  H491   63
+IATOM    STI+b  H492   64
+IATOM    STI+b  H201   65
+IATOM    STI+b  H202   66
+IATOM    STI+b  H203   67
+IATOM    STI+b   H69   68
+IATOM    STI+b   H70   69
+
+ATOMNAME STI+1     0  C1
+ATOMNAME STI+1     1  C6
+ATOMNAME STI+1     2  C5
+ATOMNAME STI+1     3  C4
+ATOMNAME STI+1     4  N3
+ATOMNAME STI+1     5  C2
+ATOMNAME STI+1     6  C7
+ATOMNAME STI+1     7 C12
+ATOMNAME STI+1     8 C11
+ATOMNAME STI+1     9 N10
+ATOMNAME STI+1    10  C9
+ATOMNAME STI+1    11  N8
+ATOMNAME STI+1    12 N13
+ATOMNAME STI+1    13 C14
+ATOMNAME STI+1    14 C19
+ATOMNAME STI+1    15 C18
+ATOMNAME STI+1    16 C17
+ATOMNAME STI+1    17 C16
+ATOMNAME STI+1    18 C15
+ATOMNAME STI+1    19 N21
+ATOMNAME STI+1    20 C22
+ATOMNAME STI+1    21 C23
+ATOMNAME STI+1    22 C25
+ATOMNAME STI+1    23 C26
+ATOMNAME STI+1    24 C27
+ATOMNAME STI+1    25 C28
+ATOMNAME STI+1    26 C29
+ATOMNAME STI+1    27 C46
+ATOMNAME STI+1    28 N48
+ATOMNAME STI+1    29 C53
+ATOMNAME STI+1    30 C52
+ATOMNAME STI+1    31 N51
+ATOMNAME STI+1    32 C54
+ATOMNAME STI+1    33 C50
+ATOMNAME STI+1    34 C49
+ATOMNAME STI+1    35 O29
+ATOMNAME STI+1    36 C20
+ATOMNAME STI+1    37 H11
+ATOMNAME STI+1    38 H61
+ATOMNAME STI+1    39 H41
+ATOMNAME STI+1    40 H21
+ATOMNAME STI+1    41H121
+ATOMNAME STI+1    42H111
+ATOMNAME STI+1    43H131
+ATOMNAME STI+1    44H181
+ATOMNAME STI+1    45H171
+ATOMNAME STI+1    46H151
+ATOMNAME STI+1    47H211
+ATOMNAME STI+1    48H251
+ATOMNAME STI+1    49H261
+ATOMNAME STI+1    50H281
+ATOMNAME STI+1    51H291
+ATOMNAME STI+1    52H461
+ATOMNAME STI+1    53H462
+ATOMNAME STI+1    54H531
+ATOMNAME STI+1    55H532
+ATOMNAME STI+1    56H521
+ATOMNAME STI+1    57H522
+ATOMNAME STI+1    58H541
+ATOMNAME STI+1    59H542
+ATOMNAME STI+1    60H543
+ATOMNAME STI+1    61H501
+ATOMNAME STI+1    62H502
+ATOMNAME STI+1    63H491
+ATOMNAME STI+1    64H492
+ATOMNAME STI+1    65H201
+ATOMNAME STI+1    66H202
+ATOMNAME STI+1    67H203
+ATOMNAME STI+1    68 H69
+
+ATOMNAME STI+2     0  C1
+ATOMNAME STI+2     1  C6
+ATOMNAME STI+2     2  C5
+ATOMNAME STI+2     3  C4
+ATOMNAME STI+2     4  N3
+ATOMNAME STI+2     5  C2
+ATOMNAME STI+2     6  C7
+ATOMNAME STI+2     7 C12
+ATOMNAME STI+2     8 C11
+ATOMNAME STI+2     9 N10
+ATOMNAME STI+2    10  C9
+ATOMNAME STI+2    11  N8
+ATOMNAME STI+2    12 N13
+ATOMNAME STI+2    13 C14
+ATOMNAME STI+2    14 C19
+ATOMNAME STI+2    15 C18
+ATOMNAME STI+2    16 C17
+ATOMNAME STI+2    17 C16
+ATOMNAME STI+2    18 C15
+ATOMNAME STI+2    19 N21
+ATOMNAME STI+2    20 C22
+ATOMNAME STI+2    21 C23
+ATOMNAME STI+2    22 C25
+ATOMNAME STI+2    23 C26
+ATOMNAME STI+2    24 C27
+ATOMNAME STI+2    25 C28
+ATOMNAME STI+2    26 C29
+ATOMNAME STI+2    27 C46
+ATOMNAME STI+2    28 N48
+ATOMNAME STI+2    29 C53
+ATOMNAME STI+2    30 C52
+ATOMNAME STI+2    31 N51
+ATOMNAME STI+2    32 C54
+ATOMNAME STI+2    33 C50
+ATOMNAME STI+2    34 C49
+ATOMNAME STI+2    35 O29
+ATOMNAME STI+2    36 C20
+ATOMNAME STI+2    37 H11
+ATOMNAME STI+2    38 H61
+ATOMNAME STI+2    39 H41
+ATOMNAME STI+2    40 H21
+ATOMNAME STI+2    41H121
+ATOMNAME STI+2    42H111
+ATOMNAME STI+2    43H131
+ATOMNAME STI+2    44H181
+ATOMNAME STI+2    45H171
+ATOMNAME STI+2    46H151
+ATOMNAME STI+2    47H211
+ATOMNAME STI+2    48H251
+ATOMNAME STI+2    49H261
+ATOMNAME STI+2    50H281
+ATOMNAME STI+2    51H291
+ATOMNAME STI+2    52H461
+ATOMNAME STI+2    53H462
+ATOMNAME STI+2    54H531
+ATOMNAME STI+2    55H532
+ATOMNAME STI+2    56H521
+ATOMNAME STI+2    57H522
+ATOMNAME STI+2    58H541
+ATOMNAME STI+2    59H542
+ATOMNAME STI+2    60H543
+ATOMNAME STI+2    61H501
+ATOMNAME STI+2    62H502
+ATOMNAME STI+2    63H491
+ATOMNAME STI+2    64H492
+ATOMNAME STI+2    65H201
+ATOMNAME STI+2    66H202
+ATOMNAME STI+2    67H203
+ATOMNAME STI+2    68 H69
+
+ATOMNAME STI01     0  C1
+ATOMNAME STI01     1  C6
+ATOMNAME STI01     2  C5
+ATOMNAME STI01     3  C4
+ATOMNAME STI01     4  N3
+ATOMNAME STI01     5  C2
+ATOMNAME STI01     6  C7
+ATOMNAME STI01     7 C12
+ATOMNAME STI01     8 C11
+ATOMNAME STI01     9 N10
+ATOMNAME STI01    10  C9
+ATOMNAME STI01    11  N8
+ATOMNAME STI01    12 N13
+ATOMNAME STI01    13 C14
+ATOMNAME STI01    14 C19
+ATOMNAME STI01    15 C18
+ATOMNAME STI01    16 C17
+ATOMNAME STI01    17 C16
+ATOMNAME STI01    18 C15
+ATOMNAME STI01    19 N21
+ATOMNAME STI01    20 C22
+ATOMNAME STI01    21 C23
+ATOMNAME STI01    22 C25
+ATOMNAME STI01    23 C26
+ATOMNAME STI01    24 C27
+ATOMNAME STI01    25 C28
+ATOMNAME STI01    26 C29
+ATOMNAME STI01    27 C46
+ATOMNAME STI01    28 N48
+ATOMNAME STI01    29 C53
+ATOMNAME STI01    30 C52
+ATOMNAME STI01    31 N51
+ATOMNAME STI01    32 C54
+ATOMNAME STI01    33 C50
+ATOMNAME STI01    34 C49
+ATOMNAME STI01    35 O29
+ATOMNAME STI01    36 C20
+ATOMNAME STI01    37 H11
+ATOMNAME STI01    38 H61
+ATOMNAME STI01    39 H41
+ATOMNAME STI01    40 H21
+ATOMNAME STI01    41H121
+ATOMNAME STI01    42H111
+ATOMNAME STI01    43H131
+ATOMNAME STI01    44H181
+ATOMNAME STI01    45H171
+ATOMNAME STI01    46H151
+ATOMNAME STI01    47H211
+ATOMNAME STI01    48H251
+ATOMNAME STI01    49H261
+ATOMNAME STI01    50H281
+ATOMNAME STI01    51H291
+ATOMNAME STI01    52H461
+ATOMNAME STI01    53H462
+ATOMNAME STI01    54H531
+ATOMNAME STI01    55H532
+ATOMNAME STI01    56H521
+ATOMNAME STI01    57H522
+ATOMNAME STI01    58H541
+ATOMNAME STI01    59H542
+ATOMNAME STI01    60H543
+ATOMNAME STI01    61H501
+ATOMNAME STI01    62H502
+ATOMNAME STI01    63H491
+ATOMNAME STI01    64H492
+ATOMNAME STI01    65H201
+ATOMNAME STI01    66H202
+ATOMNAME STI01    67H203
+
+ATOMNAME STI+a     0  C1
+ATOMNAME STI+a     1  C6
+ATOMNAME STI+a     2  C5
+ATOMNAME STI+a     3  C4
+ATOMNAME STI+a     4  N3
+ATOMNAME STI+a     5  C2
+ATOMNAME STI+a     6  C7
+ATOMNAME STI+a     7 C12
+ATOMNAME STI+a     8 C11
+ATOMNAME STI+a     9 N10
+ATOMNAME STI+a    10  C9
+ATOMNAME STI+a    11  N8
+ATOMNAME STI+a    12 N13
+ATOMNAME STI+a    13 C14
+ATOMNAME STI+a    14 C19
+ATOMNAME STI+a    15 C18
+ATOMNAME STI+a    16 C17
+ATOMNAME STI+a    17 C16
+ATOMNAME STI+a    18 C15
+ATOMNAME STI+a    19 N21
+ATOMNAME STI+a    20 C22
+ATOMNAME STI+a    21 C23
+ATOMNAME STI+a    22 C25
+ATOMNAME STI+a    23 C26
+ATOMNAME STI+a    24 C27
+ATOMNAME STI+a    25 C28
+ATOMNAME STI+a    26 C29
+ATOMNAME STI+a    27 C46
+ATOMNAME STI+a    28 N48
+ATOMNAME STI+a    29 C53
+ATOMNAME STI+a    30 C52
+ATOMNAME STI+a    31 N51
+ATOMNAME STI+a    32 C54
+ATOMNAME STI+a    33 C50
+ATOMNAME STI+a    34 C49
+ATOMNAME STI+a    35 O29
+ATOMNAME STI+a    36 C20
+ATOMNAME STI+a    37 H11
+ATOMNAME STI+a    38 H61
+ATOMNAME STI+a    39 H41
+ATOMNAME STI+a    40 H21
+ATOMNAME STI+a    41H121
+ATOMNAME STI+a    42H111
+ATOMNAME STI+a    43H131
+ATOMNAME STI+a    44H181
+ATOMNAME STI+a    45H171
+ATOMNAME STI+a    46H151
+ATOMNAME STI+a    47H211
+ATOMNAME STI+a    48H251
+ATOMNAME STI+a    49H261
+ATOMNAME STI+a    50H281
+ATOMNAME STI+a    51H291
+ATOMNAME STI+a    52H461
+ATOMNAME STI+a    53H462
+ATOMNAME STI+a    54H531
+ATOMNAME STI+a    55H532
+ATOMNAME STI+a    56H521
+ATOMNAME STI+a    57H522
+ATOMNAME STI+a    58H541
+ATOMNAME STI+a    59H542
+ATOMNAME STI+a    60H543
+ATOMNAME STI+a    61H501
+ATOMNAME STI+a    62H502
+ATOMNAME STI+a    63H491
+ATOMNAME STI+a    64H492
+ATOMNAME STI+a    65H201
+ATOMNAME STI+a    66H202
+ATOMNAME STI+a    67H203
+ATOMNAME STI+a    68 H69
+ATOMNAME STI+a    69 H70
+
+ATOMNAME STI+b     0  C1
+ATOMNAME STI+b     1  C6
+ATOMNAME STI+b     2  C5
+ATOMNAME STI+b     3  C4
+ATOMNAME STI+b     4  N3
+ATOMNAME STI+b     5  C2
+ATOMNAME STI+b     6  C7
+ATOMNAME STI+b     7 C12
+ATOMNAME STI+b     8 C11
+ATOMNAME STI+b     9 N10
+ATOMNAME STI+b    10  C9
+ATOMNAME STI+b    11  N8
+ATOMNAME STI+b    12 N13
+ATOMNAME STI+b    13 C14
+ATOMNAME STI+b    14 C19
+ATOMNAME STI+b    15 C18
+ATOMNAME STI+b    16 C17
+ATOMNAME STI+b    17 C16
+ATOMNAME STI+b    18 C15
+ATOMNAME STI+b    19 N21
+ATOMNAME STI+b    20 C22
+ATOMNAME STI+b    21 C23
+ATOMNAME STI+b    22 C25
+ATOMNAME STI+b    23 C26
+ATOMNAME STI+b    24 C27
+ATOMNAME STI+b    25 C28
+ATOMNAME STI+b    26 C29
+ATOMNAME STI+b    27 C46
+ATOMNAME STI+b    28 N48
+ATOMNAME STI+b    29 C53
+ATOMNAME STI+b    30 C52
+ATOMNAME STI+b    31 N51
+ATOMNAME STI+b    32 C54
+ATOMNAME STI+b    33 C50
+ATOMNAME STI+b    34 C49
+ATOMNAME STI+b    35 O29
+ATOMNAME STI+b    36 C20
+ATOMNAME STI+b    37 H11
+ATOMNAME STI+b    38 H61
+ATOMNAME STI+b    39 H41
+ATOMNAME STI+b    40 H21
+ATOMNAME STI+b    41H121
+ATOMNAME STI+b    42H111
+ATOMNAME STI+b    43H131
+ATOMNAME STI+b    44H181
+ATOMNAME STI+b    45H171
+ATOMNAME STI+b    46H151
+ATOMNAME STI+b    47H211
+ATOMNAME STI+b    48H251
+ATOMNAME STI+b    49H261
+ATOMNAME STI+b    50H281
+ATOMNAME STI+b    51H291
+ATOMNAME STI+b    52H461
+ATOMNAME STI+b    53H462
+ATOMNAME STI+b    54H531
+ATOMNAME STI+b    55H532
+ATOMNAME STI+b    56H521
+ATOMNAME STI+b    57H522
+ATOMNAME STI+b    58H541
+ATOMNAME STI+b    59H542
+ATOMNAME STI+b    60H543
+ATOMNAME STI+b    61H501
+ATOMNAME STI+b    62H502
+ATOMNAME STI+b    63H491
+ATOMNAME STI+b    64H492
+ATOMNAME STI+b    65H201
+ATOMNAME STI+b    66H202
+ATOMNAME STI+b    67H203
+ATOMNAME STI+b    68 H69
+ATOMNAME STI+b    69 H70
+
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+
+# PROTON SECTION: PROTON means charge
+
+PROTON   STI+1      0    
+PROTON   STI+2      0    
+PROTON   STI01      0    
+PROTON   STI+a      0    
+PROTON   STI+b      0    
+PROTON   STIDM      0    
+
+# Solution pKa Section: pKa data from CRC Handbook of Chemistry and Physics
+# pka is set to zero
+PKA      STI+1         0.000
+PKA      STI+2         0.000
+PKA      STI01         0.000
+PKA      STI+a         0.000
+PKA      STI+b         0.000
+PKA      STIDM         0.000
+
+#ELECTRON SECTION:
+ELECTRON STI+1      0.0  
+ELECTRON STI+2      0.0  
+ELECTRON STI01      0.0  
+ELECTRON STI+a      0.0  
+ELECTRON STI+b      0.0  
+ELECTRON STIDM      0.0  
+
+# EM SECTION:
+EM       STI+1      0.0  
+EM       STI+2      0.0  
+EM       STI01      0.0  
+EM       STI+a      0.0  
+EM       STI+b      0.0  
+EM       STIDM      0.0  
+
+# REACTION FIELD ENERGY SECTION:
+RXN      STI+1      -21.158  
+RXN      STI+2      -22.069
+RXN      STI01      -10.281
+RXN      STI+a      -37.053
+RXN      STI+b      -37.000
+
+#  STI+1
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  STI+1  C1     sp2     0    C6   0    C2   0   H11  
+CONNECT  STI+1  C6     sp2     0    C1   0    C5   0   H61  
+CONNECT  STI+1  C5     sp2     0    C6   0    C4   0    C7  
+CONNECT  STI+1  C4     sp2     0    C5   0    N3   0   H41  
+CONNECT  STI+1  N3     sp2     0    C4   0    C2  
+CONNECT  STI+1  C2     sp2     0    C1   0    N3   0   H21  
+CONNECT  STI+1  C7     sp2     0    C5   0   C12   0    N8  
+CONNECT  STI+1 C12     sp2     0    C7   0   C11   0   H121 
+CONNECT  STI+1 C11     sp2     0   C12   0   N10   0   H111 
+CONNECT  STI+1 N10     sp2     0   C11   0    C9  
+CONNECT  STI+1  C9     sp2     0   N10   0    N8   0   N13  
+CONNECT  STI+1  N8     sp2     0    C7   0    C9  
+CONNECT  STI+1 N13     sp2     0    C9   0   C14   0   H131 
+CONNECT  STI+1 C14     sp2     0   N13   0   C19   0   C15  
+CONNECT  STI+1 C19     sp2     0   C14   0   C18   0   C20  
+CONNECT  STI+1 C18     sp2     0   C19   0   C17   0   H181 
+CONNECT  STI+1 C17     sp2     0   C18   0   C16   0   H171 
+CONNECT  STI+1 C16     sp2     0   C17   0   C15   0   N21  
+CONNECT  STI+1 C15     sp2     0   C14   0   C16   0   H151 
+CONNECT  STI+1 N21     sp2     0   C16   0   C22   0   H211 
+CONNECT  STI+1 C22     sp2     0   N21   0   C23   0   O29  
+CONNECT  STI+1 C23     sp2     0   C22   0   C25   0   C29  
+CONNECT  STI+1 C25     sp2     0   C23   0   C26   0   H251 
+CONNECT  STI+1 C26     sp2     0   C25   0   C27   0   H261 
+CONNECT  STI+1 C27     sp2     0   C26   0   C28   0   C46  
+CONNECT  STI+1 C28     sp2     0   C27   0   C29   0   H281 
+CONNECT  STI+1 C29     sp2     0   C23   0   C28   0   H291 
+CONNECT  STI+1 C46     sp3     0   C27   0   N48   0   H461  0   H462 
+CONNECT  STI+1 N48     sp3     0   C46   0   C53   0   C49   0   H69  
+CONNECT  STI+1 C53     sp3     0   N48   0   C52   0   H531  0   H532 
+CONNECT  STI+1 C52     sp3     0   C53   0   N51   0   H521  0   H522 
+CONNECT  STI+1 N51     sp2     0   C52   0   C54   0   C50  
+CONNECT  STI+1 C54     sp3     0   N51   0   H541  0   H542  0   H543 
+CONNECT  STI+1 C50     sp3     0   N51   0   C49   0   H501  0   H502 
+CONNECT  STI+1 C49     sp3     0   N48   0   C50   0   H491  0   H492 
+CONNECT  STI+1 O29     sp2     0   C22  
+CONNECT  STI+1 C20     sp3     0   C19   0   H201  0   H202  0   H203 
+CONNECT  STI+1 H11      s      0    C1  
+CONNECT  STI+1 H61      s      0    C6  
+CONNECT  STI+1 H41      s      0    C4  
+CONNECT  STI+1 H21      s      0    C2  
+CONNECT  STI+1 H121     s      0   C12  
+CONNECT  STI+1 H111     s      0   C11  
+CONNECT  STI+1 H131     s      0   N13  
+CONNECT  STI+1 H181     s      0   C18  
+CONNECT  STI+1 H171     s      0   C17  
+CONNECT  STI+1 H151     s      0   C15  
+CONNECT  STI+1 H211     s      0   N21  
+CONNECT  STI+1 H251     s      0   C25  
+CONNECT  STI+1 H261     s      0   C26  
+CONNECT  STI+1 H281     s      0   C28  
+CONNECT  STI+1 H291     s      0   C29  
+CONNECT  STI+1 H461     s      0   C46  
+CONNECT  STI+1 H462     s      0   C46  
+CONNECT  STI+1 H531     s      0   C53  
+CONNECT  STI+1 H532     s      0   C53  
+CONNECT  STI+1 H521     s      0   C52  
+CONNECT  STI+1 H522     s      0   C52  
+CONNECT  STI+1 H541     s      0   C54  
+CONNECT  STI+1 H542     s      0   C54  
+CONNECT  STI+1 H543     s      0   C54  
+CONNECT  STI+1 H501     s      0   C50  
+CONNECT  STI+1 H502     s      0   C50  
+CONNECT  STI+1 H491     s      0   C49  
+CONNECT  STI+1 H492     s      0   C49  
+CONNECT  STI+1 H201     s      0   C20  
+CONNECT  STI+1 H202     s      0   C20  
+CONNECT  STI+1 H203     s      0   C20  
+CONNECT  STI+1 H69      s      0   N48  
+
+#  STI+2
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  STI+2  C1     sp2     0    C6   0    C2   0   H11  
+CONNECT  STI+2  C6     sp2     0    C1   0    C5   0   H61  
+CONNECT  STI+2  C5     sp2     0    C6   0    C4   0    C7  
+CONNECT  STI+2  C4     sp2     0    C5   0    N3   0   H41  
+CONNECT  STI+2  N3     sp2     0    C4   0    C2  
+CONNECT  STI+2  C2     sp2     0    C1   0    N3   0   H21  
+CONNECT  STI+2  C7     sp2     0    C5   0   C12   0    N8  
+CONNECT  STI+2 C12     sp2     0    C7   0   C11   0   H121 
+CONNECT  STI+2 C11     sp2     0   C12   0   N10   0   H111 
+CONNECT  STI+2 N10     sp2     0   C11   0    C9  
+CONNECT  STI+2  C9     sp2     0   N10   0    N8   0   N13  
+CONNECT  STI+2  N8     sp3     0    C7   0    C9  
+CONNECT  STI+2 N13     sp2     0    C9   0   C14   0   H131 
+CONNECT  STI+2 C14     sp2     0   N13   0   C19   0   C15  
+CONNECT  STI+2 C19     sp2     0   C14   0   C18   0   C20  
+CONNECT  STI+2 C18     sp2     0   C19   0   C17   0   H181 
+CONNECT  STI+2 C17     sp2     0   C18   0   C16   0   H171 
+CONNECT  STI+2 C16     sp2     0   C17   0   C15   0   N21  
+CONNECT  STI+2 C15     sp2     0   C14   0   C16   0   H151 
+CONNECT  STI+2 N21     sp2     0   C16   0   C22   0   H211 
+CONNECT  STI+2 C22     sp2     0   N21   0   C23   0   O29  
+CONNECT  STI+2 C23     sp2     0   C22   0   C25   0   C29  
+CONNECT  STI+2 C25     sp2     0   C23   0   C26   0   H251 
+CONNECT  STI+2 C26     sp2     0   C25   0   C27   0   H261 
+CONNECT  STI+2 C27     sp2     0   C26   0   C28   0   C46  
+CONNECT  STI+2 C28     sp2     0   C27   0   C29   0   H281 
+CONNECT  STI+2 C29     sp2     0   C23   0   C28   0   H291 
+CONNECT  STI+2 C46     sp3     0   C27   0   N48   0   H461  0   H462 
+CONNECT  STI+2 N48     sp2     0   C46   0   C53   0   C49  
+CONNECT  STI+2 C53     sp3     0   N48   0   C52   0   H531  0   H532 
+CONNECT  STI+2 C52     sp3     0   C53   0   N51   0   H521  0   H522 
+CONNECT  STI+2 N51     sp3     0   C52   0   C54   0   C50   0   H69  
+CONNECT  STI+2 C54     sp3     0   N51   0   H541  0   H542  0   H543 
+CONNECT  STI+2 C50     sp3     0   N51   0   C49   0   H501  0   H502 
+CONNECT  STI+2 C49     sp3     0   N48   0   C50   0   H491  0   H492 
+CONNECT  STI+2 O29     sp2     0   C22  
+CONNECT  STI+2 C20     sp3     0   C19   0   H201  0   H202  0   H203 
+CONNECT  STI+2 H11      s      0    C1  
+CONNECT  STI+2 H61      s      0    C6  
+CONNECT  STI+2 H41      s      0    C4  
+CONNECT  STI+2 H21      s      0    C2  
+CONNECT  STI+2 H121     s      0   C12  
+CONNECT  STI+2 H111     s      0   C11  
+CONNECT  STI+2 H131     s      0   N13  
+CONNECT  STI+2 H181     s      0   C18  
+CONNECT  STI+2 H171     s      0   C17  
+CONNECT  STI+2 H151     s      0   C15  
+CONNECT  STI+2 H211     s      0   N21  
+CONNECT  STI+2 H251     s      0   C25  
+CONNECT  STI+2 H261     s      0   C26  
+CONNECT  STI+2 H281     s      0   C28  
+CONNECT  STI+2 H291     s      0   C29  
+CONNECT  STI+2 H461     s      0   C46  
+CONNECT  STI+2 H462     s      0   C46  
+CONNECT  STI+2 H531     s      0   C53  
+CONNECT  STI+2 H532     s      0   C53  
+CONNECT  STI+2 H521     s      0   C52  
+CONNECT  STI+2 H522     s      0   C52  
+CONNECT  STI+2 H541     s      0   C54  
+CONNECT  STI+2 H542     s      0   C54  
+CONNECT  STI+2 H543     s      0   C54  
+CONNECT  STI+2 H501     s      0   C50  
+CONNECT  STI+2 H502     s      0   C50  
+CONNECT  STI+2 H491     s      0   C49  
+CONNECT  STI+2 H492     s      0   C49  
+CONNECT  STI+2 H201     s      0   C20  
+CONNECT  STI+2 H202     s      0   C20  
+CONNECT  STI+2 H203     s      0   C20  
+CONNECT  STI+2 H69      s      0   N51  
+
+#  STI01
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  STI01  C1     sp2     0    C6   0    C2   0   H11  
+CONNECT  STI01  C6     sp2     0    C1   0    C5   0   H61  
+CONNECT  STI01  C5     sp2     0    C6   0    C4   0    C7  
+CONNECT  STI01  C4     sp2     0    C5   0    N3   0   H41  
+CONNECT  STI01  N3     sp2     0    C4   0    C2  
+CONNECT  STI01  C2     sp2     0    C1   0    N3   0   H21  
+CONNECT  STI01  C7     sp2     0    C5   0   C12   0    N8  
+CONNECT  STI01 C12     sp2     0    C7   0   C11   0   H121 
+CONNECT  STI01 C11     sp2     0   C12   0   N10   0   H111 
+CONNECT  STI01 N10     sp2     0   C11   0    C9  
+CONNECT  STI01  C9     sp2     0   N10   0    N8   0   N13  
+CONNECT  STI01  N8     sp2     0    C7   0    C9  
+CONNECT  STI01 N13     sp2     0    C9   0   C14   0   H131 
+CONNECT  STI01 C14     sp2     0   N13   0   C19   0   C15  
+CONNECT  STI01 C19     sp2     0   C14   0   C18   0   C20  
+CONNECT  STI01 C18     sp2     0   C19   0   C17   0   H181 
+CONNECT  STI01 C17     sp2     0   C18   0   C16   0   H171 
+CONNECT  STI01 C16     sp2     0   C17   0   C15   0   N21  
+CONNECT  STI01 C15     sp2     0   C14   0   C16   0   H151 
+CONNECT  STI01 N21     sp2     0   C16   0   C22   0   H211 
+CONNECT  STI01 C22     sp2     0   N21   0   C23   0   O29  
+CONNECT  STI01 C23     sp2     0   C22   0   C25   0   C29  
+CONNECT  STI01 C25     sp2     0   C23   0   C26   0   H251 
+CONNECT  STI01 C26     sp2     0   C25   0   C27   0   H261 
+CONNECT  STI01 C27     sp2     0   C26   0   C28   0   C46  
+CONNECT  STI01 C28     sp2     0   C27   0   C29   0   H281 
+CONNECT  STI01 C29     sp2     0   C23   0   C28   0   H291 
+CONNECT  STI01 C46     sp3     0   C27   0   N48   0   H461  0   H462 
+CONNECT  STI01 N48     sp2     0   C46   0   C53   0   C49  
+CONNECT  STI01 C53     sp3     0   N48   0   C52   0   H531  0   H532 
+CONNECT  STI01 C52     sp3     0   C53   0   N51   0   H521  0   H522 
+CONNECT  STI01 N51     sp2     0   C52   0   C54   0   C50  
+CONNECT  STI01 C54     sp3     0   N51   0   H541  0   H542  0   H543 
+CONNECT  STI01 C50     sp3     0   N51   0   C49   0   H501  0   H502 
+CONNECT  STI01 C49     sp3     0   N48   0   C50   0   H491  0   H492 
+CONNECT  STI01 O29     sp2     0   C22  
+CONNECT  STI01 C20     sp3     0   C19   0   H201  0   H202  0   H203 
+CONNECT  STI01 H11      s      0    C1  
+CONNECT  STI01 H61      s      0    C6  
+CONNECT  STI01 H41      s      0    C4  
+CONNECT  STI01 H21      s      0    C2  
+CONNECT  STI01 H121     s      0   C12  
+CONNECT  STI01 H111     s      0   C11  
+CONNECT  STI01 H131     s      0   N13  
+CONNECT  STI01 H181     s      0   C18  
+CONNECT  STI01 H171     s      0   C17  
+CONNECT  STI01 H151     s      0   C15  
+CONNECT  STI01 H211     s      0   N21  
+CONNECT  STI01 H251     s      0   C25  
+CONNECT  STI01 H261     s      0   C26  
+CONNECT  STI01 H281     s      0   C28  
+CONNECT  STI01 H291     s      0   C29  
+CONNECT  STI01 H461     s      0   C46  
+CONNECT  STI01 H462     s      0   C46  
+CONNECT  STI01 H531     s      0   C53  
+CONNECT  STI01 H532     s      0   C53  
+CONNECT  STI01 H521     s      0   C52  
+CONNECT  STI01 H522     s      0   C52  
+CONNECT  STI01 H541     s      0   C54  
+CONNECT  STI01 H542     s      0   C54  
+CONNECT  STI01 H543     s      0   C54  
+CONNECT  STI01 H501     s      0   C50  
+CONNECT  STI01 H502     s      0   C50  
+CONNECT  STI01 H491     s      0   C49  
+CONNECT  STI01 H492     s      0   C49  
+CONNECT  STI01 H201     s      0   C20  
+CONNECT  STI01 H202     s      0   C20  
+CONNECT  STI01 H203     s      0   C20  
+
+#  STI+a
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  STI+a  C1     sp2     0    C6   0    C2   0   H11  
+CONNECT  STI+a  C6     sp2     0    C1   0    C5   0   H61  
+CONNECT  STI+a  C5     sp2     0    C6   0    C4   0    C7  
+CONNECT  STI+a  C4     sp2     0    C5   0    N3   0   H41  
+CONNECT  STI+a  N3     sp2     0    C4   0    C2   0   H70  
+CONNECT  STI+a  C2     sp2     0    C1   0    N3   0   H21  
+CONNECT  STI+a  C7     sp2     0    C5   0   C12   0    N8  
+CONNECT  STI+a C12     sp2     0    C7   0   C11   0   H121 
+CONNECT  STI+a C11     sp2     0   C12   0   N10   0   H111 
+CONNECT  STI+a N10     sp2     0   C11   0    C9  
+CONNECT  STI+a  C9     sp2     0   N10   0    N8   0   N13  
+CONNECT  STI+a  N8     sp3     0    C7   0    C9  
+CONNECT  STI+a N13     sp2     0    C9   0   C14   0   H131 
+CONNECT  STI+a C14     sp2     0   N13   0   C19   0   C15  
+CONNECT  STI+a C19     sp2     0   C14   0   C18   0   C20  
+CONNECT  STI+a C18     sp2     0   C19   0   C17   0   H181 
+CONNECT  STI+a C17     sp2     0   C18   0   C16   0   H171 
+CONNECT  STI+a C16     sp2     0   C17   0   C15   0   N21  
+CONNECT  STI+a C15     sp2     0   C14   0   C16   0   H151 
+CONNECT  STI+a N21     sp2     0   C16   0   C22   0   H211 
+CONNECT  STI+a C22     sp2     0   N21   0   C23   0   O29  
+CONNECT  STI+a C23     sp2     0   C22   0   C25   0   C29  
+CONNECT  STI+a C25     sp2     0   C23   0   C26   0   H251 
+CONNECT  STI+a C26     sp2     0   C25   0   C27   0   H261 
+CONNECT  STI+a C27     sp2     0   C26   0   C28   0   C46  
+CONNECT  STI+a C28     sp2     0   C27   0   C29   0   H281 
+CONNECT  STI+a C29     sp2     0   C23   0   C28   0   H291 
+CONNECT  STI+a C46     sp3     0   C27   0   N48   0   H461  0   H462 
+CONNECT  STI+a N48     sp3     0   C46   0   C53   0   C49   0   H69  
+CONNECT  STI+a C53     sp3     0   N48   0   C52   0   H531  0   H532 
+CONNECT  STI+a C52     sp3     0   C53   0   N51   0   H521  0   H522 
+CONNECT  STI+a N51     sp2     0   C52   0   C54   0   C50  
+CONNECT  STI+a C54     sp3     0   N51   0   H541  0   H542  0   H543 
+CONNECT  STI+a C50     sp3     0   N51   0   C49   0   H501  0   H502 
+CONNECT  STI+a C49     sp3     0   N48   0   C50   0   H491  0   H492 
+CONNECT  STI+a O29     sp2     0   C22  
+CONNECT  STI+a C20     sp3     0   C19   0   H201  0   H202  0   H203 
+CONNECT  STI+a H11      s      0    C1  
+CONNECT  STI+a H61      s      0    C6  
+CONNECT  STI+a H41      s      0    C4  
+CONNECT  STI+a H21      s      0    C2  
+CONNECT  STI+a H121     s      0   C12  
+CONNECT  STI+a H111     s      0   C11  
+CONNECT  STI+a H131     s      0   N13  
+CONNECT  STI+a H181     s      0   C18  
+CONNECT  STI+a H171     s      0   C17  
+CONNECT  STI+a H151     s      0   C15  
+CONNECT  STI+a H211     s      0   N21  
+CONNECT  STI+a H251     s      0   C25  
+CONNECT  STI+a H261     s      0   C26  
+CONNECT  STI+a H281     s      0   C28  
+CONNECT  STI+a H291     s      0   C29  
+CONNECT  STI+a H461     s      0   C46  
+CONNECT  STI+a H462     s      0   C46  
+CONNECT  STI+a H531     s      0   C53  
+CONNECT  STI+a H532     s      0   C53  
+CONNECT  STI+a H521     s      0   C52  
+CONNECT  STI+a H522     s      0   C52  
+CONNECT  STI+a H541     s      0   C54  
+CONNECT  STI+a H542     s      0   C54  
+CONNECT  STI+a H543     s      0   C54  
+CONNECT  STI+a H501     s      0   C50  
+CONNECT  STI+a H502     s      0   C50  
+CONNECT  STI+a H491     s      0   C49  
+CONNECT  STI+a H492     s      0   C49  
+CONNECT  STI+a H201     s      0   C20  
+CONNECT  STI+a H202     s      0   C20  
+CONNECT  STI+a H203     s      0   C20  
+CONNECT  STI+a H69      s      0   N48  
+CONNECT  STI+a H70      s      0    N3  
+
+#  STI+b
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  STI+b  C1     sp2     0    C6   0    C2   0   H11  
+CONNECT  STI+b  C6     sp2     0    C1   0    C5   0   H61  
+CONNECT  STI+b  C5     sp2     0    C6   0    C4   0    C7  
+CONNECT  STI+b  C4     sp2     0    C5   0    N3   0   H41  
+CONNECT  STI+b  N3     sp2     0    C4   0    C2   0   H70  
+CONNECT  STI+b  C2     sp2     0    C1   0    N3   0   H21  
+CONNECT  STI+b  C7     sp2     0    C5   0   C12   0    N8  
+CONNECT  STI+b C12     sp2     0    C7   0   C11   0   H121 
+CONNECT  STI+b C11     sp2     0   C12   0   N10   0   H111 
+CONNECT  STI+b N10     sp2     0   C11   0    C9  
+CONNECT  STI+b  C9     sp2     0   N10   0    N8   0   N13  
+CONNECT  STI+b  N8     sp3     0    C7   0    C9  
+CONNECT  STI+b N13     sp2     0    C9   0   C14   0   H131 
+CONNECT  STI+b C14     sp2     0   N13   0   C19   0   C15  
+CONNECT  STI+b C19     sp2     0   C14   0   C18   0   C20  
+CONNECT  STI+b C18     sp2     0   C19   0   C17   0   H181 
+CONNECT  STI+b C17     sp2     0   C18   0   C16   0   H171 
+CONNECT  STI+b C16     sp2     0   C17   0   C15   0   N21  
+CONNECT  STI+b C15     sp2     0   C14   0   C16   0   H151 
+CONNECT  STI+b N21     sp2     0   C16   0   C22   0   H211 
+CONNECT  STI+b C22     sp2     0   N21   0   C23   0   O29  
+CONNECT  STI+b C23     sp2     0   C22   0   C25   0   C29  
+CONNECT  STI+b C25     sp2     0   C23   0   C26   0   H251 
+CONNECT  STI+b C26     sp2     0   C25   0   C27   0   H261 
+CONNECT  STI+b C27     sp2     0   C26   0   C28   0   C46  
+CONNECT  STI+b C28     sp2     0   C27   0   C29   0   H281 
+CONNECT  STI+b C29     sp2     0   C23   0   C28   0   H291 
+CONNECT  STI+b C46     sp3     0   C27   0   N48   0   H461  0   H462 
+CONNECT  STI+b N48     sp2     0   C46   0   C53   0   C49  
+CONNECT  STI+b C53     sp3     0   N48   0   C52   0   H531  0   H532 
+CONNECT  STI+b C52     sp3     0   C53   0   N51   0   H521  0   H522 
+CONNECT  STI+b N51     sp3     0   C52   0   C54   0   C50   0   H69  
+CONNECT  STI+b C54     sp3     0   N51   0   H541  0   H542  0   H543 
+CONNECT  STI+b C50     sp3     0   N51   0   C49   0   H501  0   H502 
+CONNECT  STI+b C49     sp3     0   N48   0   C50   0   H491  0   H492 
+CONNECT  STI+b O29     sp2     0   C22  
+CONNECT  STI+b C20     sp3     0   C19   0   H201  0   H202  0   H203 
+CONNECT  STI+b H11      s      0    C1  
+CONNECT  STI+b H61      s      0    C6  
+CONNECT  STI+b H41      s      0    C4  
+CONNECT  STI+b H21      s      0    C2  
+CONNECT  STI+b H121     s      0   C12  
+CONNECT  STI+b H111     s      0   C11  
+CONNECT  STI+b H131     s      0   N13  
+CONNECT  STI+b H181     s      0   C18  
+CONNECT  STI+b H171     s      0   C17  
+CONNECT  STI+b H151     s      0   C15  
+CONNECT  STI+b H211     s      0   N21  
+CONNECT  STI+b H251     s      0   C25  
+CONNECT  STI+b H261     s      0   C26  
+CONNECT  STI+b H281     s      0   C28  
+CONNECT  STI+b H291     s      0   C29  
+CONNECT  STI+b H461     s      0   C46  
+CONNECT  STI+b H462     s      0   C46  
+CONNECT  STI+b H531     s      0   C53  
+CONNECT  STI+b H532     s      0   C53  
+CONNECT  STI+b H521     s      0   C52  
+CONNECT  STI+b H522     s      0   C52  
+CONNECT  STI+b H541     s      0   C54  
+CONNECT  STI+b H542     s      0   C54  
+CONNECT  STI+b H543     s      0   C54  
+CONNECT  STI+b H501     s      0   C50  
+CONNECT  STI+b H502     s      0   C50  
+CONNECT  STI+b H491     s      0   C49  
+CONNECT  STI+b H492     s      0   C49  
+CONNECT  STI+b H201     s      0   C20  
+CONNECT  STI+b H202     s      0   C20  
+CONNECT  STI+b H203     s      0   C20  
+CONNECT  STI+b H69      s      0   N51  
+CONNECT  STI+b H70      s      0    N3  
+
+# Atom Parameters:
+# Van Der Waals Radii. See source for reference
+RADIUS   STI    C1        1.7
+RADIUS   STI    C6        1.7
+RADIUS   STI    C5        1.7
+RADIUS   STI    C4        1.7
+RADIUS   STI    N3       1.55
+RADIUS   STI    C2        1.7
+RADIUS   STI    C7        1.7
+RADIUS   STI    C12       1.7
+RADIUS   STI    C11       1.7
+RADIUS   STI    N10      1.55
+RADIUS   STI    C9        1.7
+RADIUS   STI    N8       1.55
+RADIUS   STI    N13      1.55
+RADIUS   STI    C14       1.7
+RADIUS   STI    C19       1.7
+RADIUS   STI    C18       1.7
+RADIUS   STI    C17       1.7
+RADIUS   STI    C16       1.7
+RADIUS   STI    C15       1.7
+RADIUS   STI    N21      1.55
+RADIUS   STI    C22       1.7
+RADIUS   STI    C23       1.7
+RADIUS   STI    C25       1.7
+RADIUS   STI    C26       1.7
+RADIUS   STI    C27       1.7
+RADIUS   STI    C28       1.7
+RADIUS   STI    C29       1.7
+RADIUS   STI    C46       1.7
+RADIUS   STI    N48      1.55
+RADIUS   STI    C53       1.7
+RADIUS   STI    C52       1.7
+RADIUS   STI    N51      1.55
+RADIUS   STI    C54       1.7
+RADIUS   STI    C50       1.7
+RADIUS   STI    C49       1.7
+RADIUS   STI    O29      1.52
+RADIUS   STI    C20       1.7
+RADIUS   STI    H11       1.2
+RADIUS   STI    H61       1.2
+RADIUS   STI    H41       1.2
+RADIUS   STI    H21       1.2
+RADIUS   STI    H121      1.2
+RADIUS   STI    H111      1.2
+RADIUS   STI    H131      1.2
+RADIUS   STI    H181      1.2
+RADIUS   STI    H171      1.2
+RADIUS   STI    H151      1.2
+RADIUS   STI    H211      1.2
+RADIUS   STI    H251      1.2
+RADIUS   STI    H261      1.2
+RADIUS   STI    H281      1.2
+RADIUS   STI    H291      1.2
+RADIUS   STI    H461      1.2
+RADIUS   STI    H462      1.2
+RADIUS   STI    H531      1.2
+RADIUS   STI    H532      1.2
+RADIUS   STI    H521      1.2
+RADIUS   STI    H522      1.2
+RADIUS   STI    H541      1.2
+RADIUS   STI    H542      1.2
+RADIUS   STI    H543      1.2
+RADIUS   STI    H501      1.2
+RADIUS   STI    H502      1.2
+RADIUS   STI    H491      1.2
+RADIUS   STI    H492      1.2
+RADIUS   STI    H201      1.2
+RADIUS   STI    H202      1.2
+RADIUS   STI    H203      1.2
+RADIUS   STI    H69       1.2
+RADIUS   STI    H70       1.2
+
+CHARGE   STI+1  C1  -0.2557
+CHARGE   STI+1  C6  -0.0476
+CHARGE   STI+1  C5  -0.2837
+CHARGE   STI+1  C4   0.4206
+CHARGE   STI+1  N3  -0.6659
+CHARGE   STI+1  C2   0.4135
+CHARGE   STI+1  C7   0.5481
+CHARGE   STI+1  C12 -0.4053
+CHARGE   STI+1  C11  0.4605
+CHARGE   STI+1  N10 -0.7396
+CHARGE   STI+1  C9   0.8862
+CHARGE   STI+1  N8  -0.7615
+CHARGE   STI+1  N13 -0.7456
+CHARGE   STI+1  C14  0.1758
+CHARGE   STI+1  C19 -0.1065
+CHARGE   STI+1  C18 -0.0979
+CHARGE   STI+1  C17 -0.1485
+CHARGE   STI+1  C16  0.0518
+CHARGE   STI+1  C15  -0.159
+CHARGE   STI+1  N21 -0.4534
+CHARGE   STI+1  C22  0.6694
+CHARGE   STI+1  C23 -0.1041
+CHARGE   STI+1  C25 -0.0782
+CHARGE   STI+1  C26 -0.1229
+CHARGE   STI+1  C27 -0.1534
+CHARGE   STI+1  C28 -0.1229
+CHARGE   STI+1  C29 -0.0782
+CHARGE   STI+1  C46  0.1693
+CHARGE   STI+1  N48 -0.6879
+CHARGE   STI+1  C53  0.1091
+CHARGE   STI+1  C52   0.143
+CHARGE   STI+1  N51 -0.7414
+CHARGE   STI+1  C54  0.1527
+CHARGE   STI+1  C50   0.143
+CHARGE   STI+1  C49  0.1091
+CHARGE   STI+1  O29 -0.5716
+CHARGE   STI+1  C20  -0.055
+CHARGE   STI+1  H11  0.1498
+CHARGE   STI+1  H61  0.1561
+CHARGE   STI+1  H41  0.0243
+CHARGE   STI+1  H21  0.0298
+CHARGE   STI+1  H121   0.161
+CHARGE   STI+1  H111  0.0281
+CHARGE   STI+1  H131  0.4574
+CHARGE   STI+1  H181  0.1443
+CHARGE   STI+1  H171  0.1729
+CHARGE   STI+1  H151  0.1457
+CHARGE   STI+1  H211  0.3204
+CHARGE   STI+1  H251  0.1726
+CHARGE   STI+1  H261  0.1396
+CHARGE   STI+1  H281  0.1396
+CHARGE   STI+1  H291  0.1726
+CHARGE   STI+1  H461  0.1075
+CHARGE   STI+1  H462  0.1075
+CHARGE   STI+1  H531  0.1096
+CHARGE   STI+1  H532  0.1096
+CHARGE   STI+1  H521  0.0748
+CHARGE   STI+1  H522  0.0748
+CHARGE   STI+1  H541  0.0575
+CHARGE   STI+1  H542  0.0575
+CHARGE   STI+1  H543  0.0575
+CHARGE   STI+1  H501  0.0748
+CHARGE   STI+1  H502  0.0748
+CHARGE   STI+1  H491  0.1096
+CHARGE   STI+1  H492  0.1096
+CHARGE   STI+1  H201  0.0501
+CHARGE   STI+1  H202  0.0501
+CHARGE   STI+1  H203  0.0501
+CHARGE   STI+1  H69  0.4443
+
+CHARGE   STI+2  C1   -0.251
+CHARGE   STI+2  C6  -0.0574
+CHARGE   STI+2  C5  -0.2757
+CHARGE   STI+2  C4   0.4175
+CHARGE   STI+2  N3  -0.6633
+CHARGE   STI+2  C2   0.4054
+CHARGE   STI+2  C7   0.5361
+CHARGE   STI+2  C12 -0.4066
+CHARGE   STI+2  C11  0.4617
+CHARGE   STI+2  N10 -0.7323
+CHARGE   STI+2  C9   0.8918
+CHARGE   STI+2  N8  -0.7552
+CHARGE   STI+2  N13 -0.7604
+CHARGE   STI+2  C14  0.1801
+CHARGE   STI+2  C19  -0.072
+CHARGE   STI+2  C18 -0.1038
+CHARGE   STI+2  C17 -0.1501
+CHARGE   STI+2  C16  0.0605
+CHARGE   STI+2  C15 -0.1987
+CHARGE   STI+2  N21  -0.461
+CHARGE   STI+2  C22  0.6757
+CHARGE   STI+2  C23 -0.1276
+CHARGE   STI+2  C25  -0.089
+CHARGE   STI+2  C26 -0.1247
+CHARGE   STI+2  C27 -0.0979
+CHARGE   STI+2  C28 -0.1247
+CHARGE   STI+2  C29  -0.089
+CHARGE   STI+2  C46  0.2248
+CHARGE   STI+2  N48 -0.7571
+CHARGE   STI+2  C53  0.1521
+CHARGE   STI+2  C52  0.1062
+CHARGE   STI+2  N51 -0.6838
+CHARGE   STI+2  C54  0.0834
+CHARGE   STI+2  C50  0.1062
+CHARGE   STI+2  C49  0.1521
+CHARGE   STI+2  O29 -0.5802
+CHARGE   STI+2  C20 -0.0516
+CHARGE   STI+2  H11  0.1478
+CHARGE   STI+2  H61  0.1502
+CHARGE   STI+2  H41  0.0271
+CHARGE   STI+2  H21  0.0272
+CHARGE   STI+2  H121  0.1621
+CHARGE   STI+2  H111   0.031
+CHARGE   STI+2  H131  0.4614
+CHARGE   STI+2  H181  0.1426
+CHARGE   STI+2  H171  0.1735
+CHARGE   STI+2  H151  0.1324
+CHARGE   STI+2  H211  0.3181
+CHARGE   STI+2  H251  0.1581
+CHARGE   STI+2  H261   0.141
+CHARGE   STI+2  H281   0.141
+CHARGE   STI+2  H291  0.1581
+CHARGE   STI+2  H461  0.0588
+CHARGE   STI+2  H462  0.0588
+CHARGE   STI+2  H531  0.0772
+CHARGE   STI+2  H532  0.0772
+CHARGE   STI+2  H521  0.1107
+CHARGE   STI+2  H522  0.1107
+CHARGE   STI+2  H541   0.106
+CHARGE   STI+2  H542   0.106
+CHARGE   STI+2  H543   0.106
+CHARGE   STI+2  H501  0.1107
+CHARGE   STI+2  H502  0.1107
+CHARGE   STI+2  H491  0.0772
+CHARGE   STI+2  H492  0.0772
+CHARGE   STI+2  H201  0.0514
+CHARGE   STI+2  H202  0.0514
+CHARGE   STI+2  H203  0.0514
+CHARGE   STI+2  H69  0.4464
+
+CHARGE   STI01  C1  -0.2506
+CHARGE   STI01  C6  -0.0576
+CHARGE   STI01  C5  -0.2754
+CHARGE   STI01  C4   0.4185
+CHARGE   STI01  N3  -0.6646
+CHARGE   STI01  C2   0.4036
+CHARGE   STI01  C7   0.5309
+CHARGE   STI01  C12 -0.3958
+CHARGE   STI01  C11  0.4592
+CHARGE   STI01  N10 -0.7297
+CHARGE   STI01  C9   0.8725
+CHARGE   STI01  N8  -0.7446
+CHARGE   STI01  N13 -0.6994
+CHARGE   STI01  C14  0.1634
+CHARGE   STI01  C19 -0.1429
+CHARGE   STI01  C18   -0.09
+CHARGE   STI01  C17 -0.1565
+CHARGE   STI01  C16  0.0779
+CHARGE   STI01  C15 -0.1923
+CHARGE   STI01  N21 -0.4722
+CHARGE   STI01  C22  0.6803
+CHARGE   STI01  C23  -0.152
+CHARGE   STI01  C25 -0.0932
+CHARGE   STI01  C26 -0.1282
+CHARGE   STI01  C27 -0.0607
+CHARGE   STI01  C28 -0.1282
+CHARGE   STI01  C29 -0.0932
+CHARGE   STI01  C46  0.2146
+CHARGE   STI01  N48 -0.7418
+CHARGE   STI01  C53  0.1724
+CHARGE   STI01  C52  0.1701
+CHARGE   STI01  N51  -0.737
+CHARGE   STI01  C54  0.1592
+CHARGE   STI01  C50  0.1701
+CHARGE   STI01  C49  0.1724
+CHARGE   STI01  O29 -0.5828
+CHARGE   STI01  C20  -0.053
+CHARGE   STI01  H11  0.1466
+CHARGE   STI01  H61  0.1506
+CHARGE   STI01  H41  0.0279
+CHARGE   STI01  H21  0.0256
+CHARGE   STI01  H121  0.1614
+CHARGE   STI01  H111   0.029
+CHARGE   STI01  H131  0.4403
+CHARGE   STI01  H181  0.1352
+CHARGE   STI01  H171  0.1656
+CHARGE   STI01  H151   0.168
+CHARGE   STI01  H211  0.3201
+CHARGE   STI01  H251  0.1477
+CHARGE   STI01  H261  0.1449
+CHARGE   STI01  H281  0.1449
+CHARGE   STI01  H291  0.1477
+CHARGE   STI01  H461  0.0437
+CHARGE   STI01  H462  0.0437
+CHARGE   STI01  H531  0.0384
+CHARGE   STI01  H532  0.0384
+CHARGE   STI01  H521  0.0377
+CHARGE   STI01  H522  0.0377
+CHARGE   STI01  H541  0.0323
+CHARGE   STI01  H542  0.0323
+CHARGE   STI01  H543  0.0323
+CHARGE   STI01  H501  0.0377
+CHARGE   STI01  H502  0.0377
+CHARGE   STI01  H491  0.0384
+CHARGE   STI01  H492  0.0384
+CHARGE   STI01  H201  0.0439
+CHARGE   STI01  H202  0.0439
+CHARGE   STI01  H203  0.0439
+
+CHARGE   STI+a  C1  -0.1332
+CHARGE   STI+a  C6   0.0072
+CHARGE   STI+a  C5  -0.1309
+CHARGE   STI+a  C4   0.0919
+CHARGE   STI+a  N3  -0.4508
+CHARGE   STI+a  C2   0.0813
+CHARGE   STI+a  C7   0.4938
+CHARGE   STI+a  C12 -0.4068
+CHARGE   STI+a  C11  0.4921
+CHARGE   STI+a  N10 -0.7167
+CHARGE   STI+a  C9     0.92
+CHARGE   STI+a  N8   -0.758
+CHARGE   STI+a  N13 -0.7329
+CHARGE   STI+a  C14   0.157
+CHARGE   STI+a  C19  -0.078
+CHARGE   STI+a  C18    -0.1
+CHARGE   STI+a  C17 -0.1409
+CHARGE   STI+a  C16  0.0706
+CHARGE   STI+a  C15 -0.1963
+CHARGE   STI+a  N21 -0.4636
+CHARGE   STI+a  C22  0.6742
+CHARGE   STI+a  C23 -0.1046
+CHARGE   STI+a  C25 -0.0826
+CHARGE   STI+a  C26 -0.1115
+CHARGE   STI+a  C27 -0.1573
+CHARGE   STI+a  C28 -0.1115
+CHARGE   STI+a  C29 -0.0826
+CHARGE   STI+a  C46  0.1621
+CHARGE   STI+a  N48 -0.6853
+CHARGE   STI+a  C53  0.1063
+CHARGE   STI+a  C52  0.1518
+CHARGE   STI+a  N51 -0.7441
+CHARGE   STI+a  C54  0.1538
+CHARGE   STI+a  C50  0.1518
+CHARGE   STI+a  C49  0.1063
+CHARGE   STI+a  O29 -0.5602
+CHARGE   STI+a  C20 -0.0519
+CHARGE   STI+a  H11  0.2078
+CHARGE   STI+a  H61  0.2071
+CHARGE   STI+a  H41  0.2182
+CHARGE   STI+a  H21  0.2147
+CHARGE   STI+a  H121  0.1558
+CHARGE   STI+a  H111  0.0545
+CHARGE   STI+a  H131  0.4746
+CHARGE   STI+a  H181  0.1508
+CHARGE   STI+a  H171  0.1827
+CHARGE   STI+a  H151  0.1365
+CHARGE   STI+a  H211  0.3189
+CHARGE   STI+a  H251  0.1698
+CHARGE   STI+a  H261  0.1465
+CHARGE   STI+a  H281  0.1465
+CHARGE   STI+a  H291  0.1698
+CHARGE   STI+a  H461  0.1083
+CHARGE   STI+a  H462  0.1083
+CHARGE   STI+a  H531  0.1084
+CHARGE   STI+a  H532  0.1084
+CHARGE   STI+a  H521  0.0732
+CHARGE   STI+a  H522  0.0732
+CHARGE   STI+a  H541  0.0587
+CHARGE   STI+a  H542  0.0587
+CHARGE   STI+a  H543  0.0587
+CHARGE   STI+a  H501  0.0732
+CHARGE   STI+a  H502  0.0732
+CHARGE   STI+a  H491  0.1084
+CHARGE   STI+a  H492  0.1084
+CHARGE   STI+a  H201  0.0512
+CHARGE   STI+a  H202  0.0512
+CHARGE   STI+a  H203  0.0512
+CHARGE   STI+a  H69  0.4507
+CHARGE   STI+a  H70  0.5017
+
+CHARGE   STI+b  C1  -0.1334
+CHARGE   STI+b  C6   0.0078
+CHARGE   STI+b  C5  -0.1277
+CHARGE   STI+b  C4   0.0893
+CHARGE   STI+b  N3  -0.4508
+CHARGE   STI+b  C2   0.0822
+CHARGE   STI+b  C7   0.4994
+CHARGE   STI+b  C12 -0.4118
+CHARGE   STI+b  C11  0.4861
+CHARGE   STI+b  N10 -0.6957
+CHARGE   STI+b  C9   0.9227
+CHARGE   STI+b  N8  -0.7834
+CHARGE   STI+b  N13 -0.7295
+CHARGE   STI+b  C14  0.1536
+CHARGE   STI+b  C19 -0.0761
+CHARGE   STI+b  C18  -0.097
+CHARGE   STI+b  C17 -0.1391
+CHARGE   STI+b  C16  0.0774
+CHARGE   STI+b  C15 -0.1934
+CHARGE   STI+b  N21 -0.4692
+CHARGE   STI+b  C22  0.6811
+CHARGE   STI+b  C23 -0.1334
+CHARGE   STI+b  C25 -0.0881
+CHARGE   STI+b  C26 -0.1233
+CHARGE   STI+b  C27 -0.0903
+CHARGE   STI+b  C28 -0.1233
+CHARGE   STI+b  C29 -0.0881
+CHARGE   STI+b  C46  0.2216
+CHARGE   STI+b  N48 -0.7549
+CHARGE   STI+b  C53  0.1498
+CHARGE   STI+b  C52  0.1057
+CHARGE   STI+b  N51 -0.6827
+CHARGE   STI+b  C54  0.0832
+CHARGE   STI+b  C50  0.1057
+CHARGE   STI+b  C49  0.1498
+CHARGE   STI+b  O29 -0.5677
+CHARGE   STI+b  C20  -0.054
+CHARGE   STI+b  H11  0.2077
+CHARGE   STI+b  H61  0.2036
+CHARGE   STI+b  H41   0.217
+CHARGE   STI+b  H21  0.2141
+CHARGE   STI+b  H121  0.1551
+CHARGE   STI+b  H111  0.0511
+CHARGE   STI+b  H131  0.4611
+CHARGE   STI+b  H181  0.1506
+CHARGE   STI+b  H171  0.1837
+CHARGE   STI+b  H151  0.1315
+CHARGE   STI+b  H211   0.318
+CHARGE   STI+b  H251  0.1567
+CHARGE   STI+b  H261  0.1442
+CHARGE   STI+b  H281  0.1442
+CHARGE   STI+b  H291  0.1567
+CHARGE   STI+b  H461  0.0604
+CHARGE   STI+b  H462  0.0604
+CHARGE   STI+b  H531  0.0774
+CHARGE   STI+b  H532  0.0774
+CHARGE   STI+b  H521  0.1119
+CHARGE   STI+b  H522  0.1119
+CHARGE   STI+b  H541  0.1076
+CHARGE   STI+b  H542  0.1076
+CHARGE   STI+b  H543  0.1076
+CHARGE   STI+b  H501  0.1119
+CHARGE   STI+b  H502  0.1119
+CHARGE   STI+b  H491  0.0774
+CHARGE   STI+b  H492  0.0774
+CHARGE   STI+b  H201   0.051
+CHARGE   STI+b  H202   0.051
+CHARGE   STI+b  H203   0.051
+CHARGE   STI+b  H69  0.4466
+CHARGE   STI+b  H70  0.5012
+
+
+
+# EXTRA energy for tautomers:
+EXTRA    STI+1         0.316
+EXTRA    STI+2         0.573
+EXTRA    STI01         2.031
+EXTRA    STI+a         5.430
+EXTRA    STI+b         5.687

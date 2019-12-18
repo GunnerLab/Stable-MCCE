@@ -1,0 +1,11 @@
+   Error! get_connect12(): connectivity of atom " N   GLY A0107" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   GLY A0107" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  GLYBK  H    N    CA   C    f        0.0         2    180.00
+CHARGE   GLYBK 1HA      0.000
+CHARGE   GLYBK 2HA      0.000

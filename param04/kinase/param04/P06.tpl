@@ -1,0 +1,563 @@
+####################################
+# Topology File for:
+# param/P06.tpl
+# /home/salah/mcce-charges/epik_inhibitors/output/Dabrafenib/Dabrafenib
+#
+# Created on: 2016-06-12
+#
+# Created with: make_tpl_1.py by Salah Salah
+####################################
+
+# neural always starts with 0
+# numberical value means the charge is 1
+# alphabet lower case means the charge is 2
+# alphabet upper case means the charge is 3
+# nothing for charge of 4, this code will not work
+
+CONFLIST P06        P06BK P06-1 P0601 P06DM
+
+NATOM    P06BK      0
+NATOM    P06-1      54
+NATOM    P0601      55
+NATOM    P06DM      0
+
+IATOM    P06-1    C1    0
+IATOM    P06-1    C2    1
+IATOM    P06-1    N3    2
+IATOM    P06-1    C4    3
+IATOM    P06-1    N6    4
+IATOM    P06-1    C7    5
+IATOM    P06-1    N9    6
+IATOM    P06-1   C12    7
+IATOM    P06-1   S13    8
+IATOM    P06-1   C14    9
+IATOM    P06-1   N15   10
+IATOM    P06-1   C16   11
+IATOM    P06-1   C17   12
+IATOM    P06-1   C18   13
+IATOM    P06-1   C22   14
+IATOM    P06-1   C26   15
+IATOM    P06-1   C30   16
+IATOM    P06-1   C31   17
+IATOM    P06-1   C32   18
+IATOM    P06-1   C33   19
+IATOM    P06-1   C35   20
+IATOM    P06-1   C37   21
+IATOM    P06-1   F39   22
+IATOM    P06-1   N40   23
+IATOM    P06-1   S42   24
+IATOM    P06-1   C43   25
+IATOM    P06-1   C44   26
+IATOM    P06-1   C46   27
+IATOM    P06-1   C47   28
+IATOM    P06-1   C49   29
+IATOM    P06-1   C50   30
+IATOM    P06-1   F52   31
+IATOM    P06-1   F53   32
+IATOM    P06-1   O54   33
+IATOM    P06-1   O55   34
+IATOM    P06-1    H1   35
+IATOM    P06-1    H2   36
+IATOM    P06-1    H3   37
+IATOM    P06-1    H4   38
+IATOM    P06-1    H5   39
+IATOM    P06-1    H6   40
+IATOM    P06-1    H7   41
+IATOM    P06-1    H8   42
+IATOM    P06-1    H9   43
+IATOM    P06-1   H10   44
+IATOM    P06-1   H11   45
+IATOM    P06-1   H12   46
+IATOM    P06-1   H13   47
+IATOM    P06-1   H14   48
+IATOM    P06-1   H15   49
+IATOM    P06-1   H16   50
+IATOM    P06-1   H18   51
+IATOM    P06-1   H19   52
+IATOM    P06-1   H20   53
+
+IATOM    P0601    C1    0
+IATOM    P0601    C2    1
+IATOM    P0601    N3    2
+IATOM    P0601    C4    3
+IATOM    P0601    N6    4
+IATOM    P0601    C7    5
+IATOM    P0601    N9    6
+IATOM    P0601   C12    7
+IATOM    P0601   S13    8
+IATOM    P0601   C14    9
+IATOM    P0601   N15   10
+IATOM    P0601   C16   11
+IATOM    P0601   C17   12
+IATOM    P0601   C18   13
+IATOM    P0601   C22   14
+IATOM    P0601   C26   15
+IATOM    P0601   C30   16
+IATOM    P0601   C31   17
+IATOM    P0601   C32   18
+IATOM    P0601   C33   19
+IATOM    P0601   C35   20
+IATOM    P0601   C37   21
+IATOM    P0601   F39   22
+IATOM    P0601   N40   23
+IATOM    P0601   S42   24
+IATOM    P0601   C43   25
+IATOM    P0601   C44   26
+IATOM    P0601   C46   27
+IATOM    P0601   C47   28
+IATOM    P0601   C49   29
+IATOM    P0601   C50   30
+IATOM    P0601   F52   31
+IATOM    P0601   F53   32
+IATOM    P0601   O54   33
+IATOM    P0601   O55   34
+IATOM    P0601    H1   35
+IATOM    P0601    H2   36
+IATOM    P0601    H3   37
+IATOM    P0601    H4   38
+IATOM    P0601    H5   39
+IATOM    P0601    H6   40
+IATOM    P0601    H7   41
+IATOM    P0601    H8   42
+IATOM    P0601    H9   43
+IATOM    P0601   H10   44
+IATOM    P0601   H11   45
+IATOM    P0601   H12   46
+IATOM    P0601   H13   47
+IATOM    P0601   H14   48
+IATOM    P0601   H15   49
+IATOM    P0601   H16   50
+IATOM    P0601   H17   51
+IATOM    P0601   H18   52
+IATOM    P0601   H19   53
+IATOM    P0601   H20   54
+
+ATOMNAME P06-1     0  C1
+ATOMNAME P06-1     1  C2
+ATOMNAME P06-1     2  N3
+ATOMNAME P06-1     3  C4
+ATOMNAME P06-1     4  N6
+ATOMNAME P06-1     5  C7
+ATOMNAME P06-1     6  N9
+ATOMNAME P06-1     7 C12
+ATOMNAME P06-1     8 S13
+ATOMNAME P06-1     9 C14
+ATOMNAME P06-1    10 N15
+ATOMNAME P06-1    11 C16
+ATOMNAME P06-1    12 C17
+ATOMNAME P06-1    13 C18
+ATOMNAME P06-1    14 C22
+ATOMNAME P06-1    15 C26
+ATOMNAME P06-1    16 C30
+ATOMNAME P06-1    17 C31
+ATOMNAME P06-1    18 C32
+ATOMNAME P06-1    19 C33
+ATOMNAME P06-1    20 C35
+ATOMNAME P06-1    21 C37
+ATOMNAME P06-1    22 F39
+ATOMNAME P06-1    23 N40
+ATOMNAME P06-1    24 S42
+ATOMNAME P06-1    25 C43
+ATOMNAME P06-1    26 C44
+ATOMNAME P06-1    27 C46
+ATOMNAME P06-1    28 C47
+ATOMNAME P06-1    29 C49
+ATOMNAME P06-1    30 C50
+ATOMNAME P06-1    31 F52
+ATOMNAME P06-1    32 F53
+ATOMNAME P06-1    33 O54
+ATOMNAME P06-1    34 O55
+ATOMNAME P06-1    35  H1
+ATOMNAME P06-1    36  H2
+ATOMNAME P06-1    37  H3
+ATOMNAME P06-1    38  H4
+ATOMNAME P06-1    39  H5
+ATOMNAME P06-1    40  H6
+ATOMNAME P06-1    41  H7
+ATOMNAME P06-1    42  H8
+ATOMNAME P06-1    43  H9
+ATOMNAME P06-1    44 H10
+ATOMNAME P06-1    45 H11
+ATOMNAME P06-1    46 H12
+ATOMNAME P06-1    47 H13
+ATOMNAME P06-1    48 H14
+ATOMNAME P06-1    49 H15
+ATOMNAME P06-1    50 H16
+ATOMNAME P06-1    51 H18
+ATOMNAME P06-1    52 H19
+ATOMNAME P06-1    53 H20
+
+ATOMNAME P0601     0  C1
+ATOMNAME P0601     1  C2
+ATOMNAME P0601     2  N3
+ATOMNAME P0601     3  C4
+ATOMNAME P0601     4  N6
+ATOMNAME P0601     5  C7
+ATOMNAME P0601     6  N9
+ATOMNAME P0601     7 C12
+ATOMNAME P0601     8 S13
+ATOMNAME P0601     9 C14
+ATOMNAME P0601    10 N15
+ATOMNAME P0601    11 C16
+ATOMNAME P0601    12 C17
+ATOMNAME P0601    13 C18
+ATOMNAME P0601    14 C22
+ATOMNAME P0601    15 C26
+ATOMNAME P0601    16 C30
+ATOMNAME P0601    17 C31
+ATOMNAME P0601    18 C32
+ATOMNAME P0601    19 C33
+ATOMNAME P0601    20 C35
+ATOMNAME P0601    21 C37
+ATOMNAME P0601    22 F39
+ATOMNAME P0601    23 N40
+ATOMNAME P0601    24 S42
+ATOMNAME P0601    25 C43
+ATOMNAME P0601    26 C44
+ATOMNAME P0601    27 C46
+ATOMNAME P0601    28 C47
+ATOMNAME P0601    29 C49
+ATOMNAME P0601    30 C50
+ATOMNAME P0601    31 F52
+ATOMNAME P0601    32 F53
+ATOMNAME P0601    33 O54
+ATOMNAME P0601    34 O55
+ATOMNAME P0601    35  H1
+ATOMNAME P0601    36  H2
+ATOMNAME P0601    37  H3
+ATOMNAME P0601    38  H4
+ATOMNAME P0601    39  H5
+ATOMNAME P0601    40  H6
+ATOMNAME P0601    41  H7
+ATOMNAME P0601    42  H8
+ATOMNAME P0601    43  H9
+ATOMNAME P0601    44 H10
+ATOMNAME P0601    45 H11
+ATOMNAME P0601    46 H12
+ATOMNAME P0601    47 H13
+ATOMNAME P0601    48 H14
+ATOMNAME P0601    49 H15
+ATOMNAME P0601    50 H16
+ATOMNAME P0601    51 H17
+ATOMNAME P0601    52 H18
+ATOMNAME P0601    53 H19
+ATOMNAME P0601    54 H20
+
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+
+# PROTON SECTION: PROTON means charge
+
+PROTON   P06-1      0    
+PROTON   P0601      0    
+PROTON   P06DM      0    
+
+# Solution pKa Section: pKa data from CRC Handbook of Chemistry and Physics
+# pka is set to zero
+PKA      P06-1         0.000
+PKA      P0601         0.000
+PKA      P06DM         0.000
+
+#ELECTRON SECTION:
+ELECTRON P06-1      0.0  
+ELECTRON P0601      0.0  
+ELECTRON P06DM      0.0  
+
+# EM SECTION:
+EM       P06-1      0.0  
+EM       P0601      0.0  
+EM       P06DM      0.0  
+
+# REACTION FIELD ENERGY SECTION:
+RXN      P06-1      -20.418
+RXN      P0601      -9.392
+
+#  P06-1
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  P06-1  C1     sp2     0    N9   0    N3   0    N6  
+CONNECT  P06-1  C2     sp2     0    N3   0   C12   0    C4  
+CONNECT  P06-1  N3     sp2     0    C1   0    C2  
+CONNECT  P06-1  C4     sp2     0    C2   0    H1   0    C7  
+CONNECT  P06-1  N6     sp2     0    C1   0    C7  
+CONNECT  P06-1  C7     sp2     0    C4   0    N6   0    H2  
+CONNECT  P06-1  N9     sp2     0    C1   0    H3   0    H4  
+CONNECT  P06-1 C12     sp2     0    C2   0   C16   0   S13  
+CONNECT  P06-1 S13     sp3     0   C12   0   C14  
+CONNECT  P06-1 C14     sp2     0   S13   0   C17   0   N15  
+CONNECT  P06-1 N15     sp2     0   C14   0   C16  
+CONNECT  P06-1 C16     sp2     0   C12   0   N15   0   C30  
+CONNECT  P06-1 C17     sp3     0   C14   0   C26   0   C18   0   C22  
+CONNECT  P06-1 C18     sp3     0   C17   0    H5   0    H6   0    H7  
+CONNECT  P06-1 C22     sp3     0   C17   0    H8   0    H9   0   H10  
+CONNECT  P06-1 C26     sp3     0   C17   0   H11   0   H12   0   H13  
+CONNECT  P06-1 C30     sp2     0   C16   0   C32   0   C35  
+CONNECT  P06-1 C31     sp2     0   C32   0   C33   0   N40  
+CONNECT  P06-1 C32     sp2     0   C30   0   C31   0   F39  
+CONNECT  P06-1 C33     sp2     0   C31   0   C37   0   H14  
+CONNECT  P06-1 C35     sp2     0   C30   0   H15   0   C37  
+CONNECT  P06-1 C37     sp2     0   C33   0   C35   0   H16  
+CONNECT  P06-1 F39      sp     0   C32  
+CONNECT  P06-1 N40     sp2     0   C31   0   S42        
+CONNECT  P06-1 S42     sp3     0   N40   0   O55   0   O54   0   C43  
+CONNECT  P06-1 C43     sp2     0   S42   0   C46   0   C49  
+CONNECT  P06-1 C44     sp2     0   C46   0   H18   0   C47  
+CONNECT  P06-1 C46     sp2     0   C43   0   C44   0   F53  
+CONNECT  P06-1 C47     sp2     0   C44   0   C50   0   H19  
+CONNECT  P06-1 C49     sp2     0   C43   0   F52   0   C50  
+CONNECT  P06-1 C50     sp2     0   C47   0   C49   0   H20  
+CONNECT  P06-1 F52      sp     0   C49  
+CONNECT  P06-1 F53      sp     0   C46  
+CONNECT  P06-1 O54     sp2     0   S42  
+CONNECT  P06-1 O55     sp2     0   S42  
+CONNECT  P06-1  H1      s      0    C4  
+CONNECT  P06-1  H2      s      0    C7  
+CONNECT  P06-1  H3      s      0    N9  
+CONNECT  P06-1  H4      s      0    N9  
+CONNECT  P06-1  H5      s      0   C18  
+CONNECT  P06-1  H6      s      0   C18  
+CONNECT  P06-1  H7      s      0   C18  
+CONNECT  P06-1  H8      s      0   C22  
+CONNECT  P06-1  H9      s      0   C22  
+CONNECT  P06-1 H10      s      0   C22  
+CONNECT  P06-1 H11      s      0   C26  
+CONNECT  P06-1 H12      s      0   C26  
+CONNECT  P06-1 H13      s      0   C26  
+CONNECT  P06-1 H14      s      0   C33  
+CONNECT  P06-1 H15      s      0   C35  
+CONNECT  P06-1 H16      s      0   C37  
+CONNECT  P06-1 H18      s      0   C44  
+CONNECT  P06-1 H19      s      0   C47  
+CONNECT  P06-1 H20      s      0   C50  
+
+#  P0601
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn 
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|
+CONNECT  P0601  C1     sp2     0    N9   0    N3   0    N6  
+CONNECT  P0601  C2     sp2     0    N3   0   C12   0    C4  
+CONNECT  P0601  N3     sp2     0    C1   0    C2  
+CONNECT  P0601  C4     sp2     0    C2   0    H1   0    C7  
+CONNECT  P0601  N6     sp2     0    C1   0    C7  
+CONNECT  P0601  C7     sp2     0    C4   0    N6   0    H2  
+CONNECT  P0601  N9     sp2     0    C1   0    H3   0    H4  
+CONNECT  P0601 C12     sp2     0    C2   0   C16   0   S13  
+CONNECT  P0601 S13     sp3     0   C12   0   C14  
+CONNECT  P0601 C14     sp2     0   S13   0   C17   0   N15  
+CONNECT  P0601 N15     sp2     0   C14   0   C16  
+CONNECT  P0601 C16     sp2     0   C12   0   N15   0   C30  
+CONNECT  P0601 C17     sp3     0   C14   0   C26   0   C18   0   C22  
+CONNECT  P0601 C18     sp3     0   C17   0    H5   0    H6   0    H7  
+CONNECT  P0601 C22     sp3     0   C17   0    H8   0    H9   0   H10  
+CONNECT  P0601 C26     sp3     0   C17   0   H11   0   H12   0   H13  
+CONNECT  P0601 C30     sp2     0   C16   0   C32   0   C35  
+CONNECT  P0601 C31     sp2     0   C32   0   C33   0   N40  
+CONNECT  P0601 C32     sp2     0   C30   0   C31   0   F39  
+CONNECT  P0601 C33     sp2     0   C31   0   C37   0   H14  
+CONNECT  P0601 C35     sp2     0   C30   0   H15   0   C37  
+CONNECT  P0601 C37     sp2     0   C33   0   C35   0   H16  
+CONNECT  P0601 F39      sp     0   C32  
+CONNECT  P0601 N40     sp2     0   C31   0   H17   0   S42  
+CONNECT  P0601 S42     sp3     0   N40   0   O55   0   O54   0   C43  
+CONNECT  P0601 C43     sp2     0   S42   0   C46   0   C49  
+CONNECT  P0601 C44     sp2     0   C46   0   H18   0   C47  
+CONNECT  P0601 C46     sp2     0   C43   0   C44   0   F53  
+CONNECT  P0601 C47     sp2     0   C44   0   C50   0   H19  
+CONNECT  P0601 C49     sp2     0   C43   0   F52   0   C50  
+CONNECT  P0601 C50     sp2     0   C47   0   C49   0   H20  
+CONNECT  P0601 F52      sp     0   C49  
+CONNECT  P0601 F53      sp     0   C46  
+CONNECT  P0601 O54     sp2     0   S42  
+CONNECT  P0601 O55     sp2     0   S42  
+CONNECT  P0601  H1      s      0    C4  
+CONNECT  P0601  H2      s      0    C7  
+CONNECT  P0601  H3      s      0    N9  
+CONNECT  P0601  H4      s      0    N9  
+CONNECT  P0601  H5      s      0   C18  
+CONNECT  P0601  H6      s      0   C18  
+CONNECT  P0601  H7      s      0   C18  
+CONNECT  P0601  H8      s      0   C22  
+CONNECT  P0601  H9      s      0   C22  
+CONNECT  P0601 H10      s      0   C22  
+CONNECT  P0601 H11      s      0   C26  
+CONNECT  P0601 H12      s      0   C26  
+CONNECT  P0601 H13      s      0   C26  
+CONNECT  P0601 H14      s      0   C33  
+CONNECT  P0601 H15      s      0   C35  
+CONNECT  P0601 H16      s      0   C37  
+CONNECT  P0601 H17      s      0   N40  
+CONNECT  P0601 H18      s      0   C44  
+CONNECT  P0601 H19      s      0   C47  
+CONNECT  P0601 H20      s      0   C50  
+
+# Atom Parameters:
+# Van Der Waals Radii. See source for reference
+RADIUS   P06    C1        1.7
+RADIUS   P06    C2        1.7
+RADIUS   P06    N3       1.55
+RADIUS   P06    C4        1.7
+RADIUS   P06    N6       1.55
+RADIUS   P06    C7        1.7
+RADIUS   P06    N9       1.55
+RADIUS   P06    C12       1.7
+RADIUS   P06    S13       1.8
+RADIUS   P06    C14       1.7
+RADIUS   P06    N15      1.55
+RADIUS   P06    C16       1.7
+RADIUS   P06    C17       1.7
+RADIUS   P06    C18       1.7
+RADIUS   P06    C22       1.7
+RADIUS   P06    C26       1.7
+RADIUS   P06    C30       1.7
+RADIUS   P06    C31       1.7
+RADIUS   P06    C32       1.7
+RADIUS   P06    C33       1.7
+RADIUS   P06    C35       1.7
+RADIUS   P06    C37       1.7
+RADIUS   P06    F39      1.47
+RADIUS   P06    N40      1.55
+RADIUS   P06    S42       1.8
+RADIUS   P06    C43       1.7
+RADIUS   P06    C44       1.7
+RADIUS   P06    C46       1.7
+RADIUS   P06    C47       1.7
+RADIUS   P06    C49       1.7
+RADIUS   P06    C50       1.7
+RADIUS   P06    F52      1.47
+RADIUS   P06    F53      1.47
+RADIUS   P06    O54      1.52
+RADIUS   P06    O55      1.52
+RADIUS   P06    H1        1.2
+RADIUS   P06    H2        1.2
+RADIUS   P06    H3        1.2
+RADIUS   P06    H4        1.2
+RADIUS   P06    H5        1.2
+RADIUS   P06    H6        1.2
+RADIUS   P06    H7        1.2
+RADIUS   P06    H8        1.2
+RADIUS   P06    H9        1.2
+RADIUS   P06    H10       1.2
+RADIUS   P06    H11       1.2
+RADIUS   P06    H12       1.2
+RADIUS   P06    H13       1.2
+RADIUS   P06    H14       1.2
+RADIUS   P06    H15       1.2
+RADIUS   P06    H16       1.2
+RADIUS   P06    H17       1.2
+RADIUS   P06    H18       1.2
+RADIUS   P06    H19       1.2
+RADIUS   P06    H20       1.2
+
+CHARGE   P06-1  C1   0.8343
+CHARGE   P06-1  C2   0.5708
+CHARGE   P06-1  N3  -0.7434
+CHARGE   P06-1  C4  -0.3634
+CHARGE   P06-1  N6  -0.7517
+CHARGE   P06-1  C7   0.4531
+CHARGE   P06-1  N9  -0.9088
+CHARGE   P06-1  C12 -0.2724
+CHARGE   P06-1  S13 -0.1213
+CHARGE   P06-1  C14  0.4113
+CHARGE   P06-1  N15 -0.5997
+CHARGE   P06-1  C16   0.466
+CHARGE   P06-1  C17 -0.0826
+CHARGE   P06-1  C18 -0.0865
+CHARGE   P06-1  C22 -0.0865
+CHARGE   P06-1  C26 -0.0865
+CHARGE   P06-1  C30 -0.1522
+CHARGE   P06-1  C31  0.3926
+CHARGE   P06-1  C32  0.0559
+CHARGE   P06-1  C33 -0.2479
+CHARGE   P06-1  C35 -0.1974
+CHARGE   P06-1  C37 -0.0988
+CHARGE   P06-1  F39 -0.1408
+CHARGE   P06-1  N40  -0.931
+CHARGE   P06-1  S42  1.6169
+CHARGE   P06-1  C43 -0.3127
+CHARGE   P06-1  C44 -0.2291
+CHARGE   P06-1  C46  0.2323
+CHARGE   P06-1  C47  -0.073
+CHARGE   P06-1  C49  0.2323
+CHARGE   P06-1  C50 -0.2291
+CHARGE   P06-1  F52 -0.1215
+CHARGE   P06-1  F53 -0.1215
+CHARGE   P06-1  O54 -0.7137
+CHARGE   P06-1  O55 -0.7137
+CHARGE   P06-1  H1   0.1762
+CHARGE   P06-1  H2   0.0246
+CHARGE   P06-1  H3    0.405
+CHARGE   P06-1  H4    0.405
+CHARGE   P06-1  H5   0.0409
+CHARGE   P06-1  H6   0.0409
+CHARGE   P06-1  H7   0.0409
+CHARGE   P06-1  H8   0.0409
+CHARGE   P06-1  H9   0.0409
+CHARGE   P06-1  H10  0.0409
+CHARGE   P06-1  H11  0.0409
+CHARGE   P06-1  H12  0.0409
+CHARGE   P06-1  H13  0.0409
+CHARGE   P06-1  H14  0.1265
+CHARGE   P06-1  H15  0.1207
+CHARGE   P06-1  H16  0.1087
+CHARGE   P06-1  H18  0.1336
+CHARGE   P06-1  H19  0.1182
+CHARGE   P06-1  H20  0.1336
+
+CHARGE   P0601  C1   0.8637
+CHARGE   P0601  C2   0.5562
+CHARGE   P0601  N3  -0.7533
+CHARGE   P0601  C4  -0.3922
+CHARGE   P0601  N6   -0.744
+CHARGE   P0601  C7    0.464
+CHARGE   P0601  N9  -0.9256
+CHARGE   P0601  C12 -0.2697
+CHARGE   P0601  S13 -0.0205
+CHARGE   P0601  C14  0.4006
+CHARGE   P0601  N15 -0.6074
+CHARGE   P0601  C16  0.4061
+CHARGE   P0601  C17 -0.0866
+CHARGE   P0601  C18 -0.0875
+CHARGE   P0601  C22 -0.0875
+CHARGE   P0601  C26 -0.0875
+CHARGE   P0601  C30 -0.1366
+CHARGE   P0601  C31  0.1023
+CHARGE   P0601  C32   0.149
+CHARGE   P0601  C33 -0.1163
+CHARGE   P0601  C35 -0.0847
+CHARGE   P0601  C37  -0.132
+CHARGE   P0601  F39 -0.1221
+CHARGE   P0601  N40 -0.7851
+CHARGE   P0601  S42  1.5189
+CHARGE   P0601  C43 -0.4365
+CHARGE   P0601  C44 -0.2144
+CHARGE   P0601  C46  0.2609
+CHARGE   P0601  C47 -0.0226
+CHARGE   P0601  C49  0.2609
+CHARGE   P0601  C50 -0.2144
+CHARGE   P0601  F52 -0.1061
+CHARGE   P0601  F53 -0.1061
+CHARGE   P0601  O54 -0.6306
+CHARGE   P0601  O55 -0.6306
+CHARGE   P0601  H1   0.1632
+CHARGE   P0601  H2   0.0292
+CHARGE   P0601  H3   0.4276
+CHARGE   P0601  H4   0.4276
+CHARGE   P0601  H5   0.0441
+CHARGE   P0601  H6   0.0441
+CHARGE   P0601  H7   0.0441
+CHARGE   P0601  H8   0.0441
+CHARGE   P0601  H9   0.0441
+CHARGE   P0601  H10  0.0441
+CHARGE   P0601  H11  0.0441
+CHARGE   P0601  H12  0.0441
+CHARGE   P0601  H13  0.0441
+CHARGE   P0601  H14   0.141
+CHARGE   P0601  H15  0.1529
+CHARGE   P0601  H16  0.1418
+CHARGE   P0601  H17  0.4665
+CHARGE   P0601  H18  0.1606
+CHARGE   P0601  H19   0.149
+CHARGE   P0601  H20  0.1606
+
+# EXTRA energy for tautomers:
+EXTRA    P06-1         0.191
+EXTRA    P0601         0.763
