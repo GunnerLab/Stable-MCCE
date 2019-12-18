@@ -31,7 +31,7 @@ def residues_in_db(freedb):
 def create_connect(key, value):
     atom = key[1]
     conf = key[2]
-    fields = value.strip().split(",")
+    fields = value.strip().strip(",").split(",")
     orbital = fields[0]
     connected = [x.strip().strip("\"") for x in fields[1:]]
 
@@ -44,7 +44,7 @@ def create_connect(key, value):
         nvalue = []
         for x in connected:
             if len(x) != 4:
-                print("ATOM \"%s\" is not 4 characters" % x)
+                print("%s ==%s== ATOM \"%s\" is not 4 characters" % (key, value, x))
                 sys.exit()
 
             if x == " ?  ":
