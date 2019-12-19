@@ -3029,7 +3029,6 @@ int write_state_Enum(int *state, float E_tot, double occ)
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"occ: %5.3f\n", occ);
 
-    }
 
     return 0;
 }
