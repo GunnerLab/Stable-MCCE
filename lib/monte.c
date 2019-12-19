@@ -2484,7 +2484,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.H = E_states[istate] + E_base;
         // ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(&state, E_states[istate]+E_base, occ_states[istate] );
+        write_state_Enum(state, E_states[istate]+E_base, occ_states[istate] );
     }
 
 
@@ -2512,7 +2512,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.H = E_states[istate] + E_base;
         //ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(&state, E_states[istate]+E_base, occ_states[istate] );
+        write_state_Enum(state, E_states[istate]+E_base, occ_states[istate] );
         }
 
 
@@ -2857,7 +2857,7 @@ void MC_smp(int n)
             if (dE < 0.0 || (float) rand()/RAND_MAX < exp(b*dE)) {                                 /* go to new low */
                 if (ms_state.counter != 0) {
                     write_ms(&ms_state);
-                    write_state_MC(&old_state, old_E+E_base, count);
+                    write_state_MC(old_state, old_E+E_base, count);
                 }
                 update_conf_id(ms_state.conf_id, state);
                 ms_state.counter = 1;
@@ -2903,7 +2903,7 @@ void MC_smp(int n)
     }
     if (ms_state.counter != 0) {
         write_ms(&ms_state);
-        write_state_MC(&state, E_state+E_base, count);
+        write_state_MC(state, E_state+E_base, count);
     }
 
     E_entropy = get_totalTS();
