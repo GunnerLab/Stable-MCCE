@@ -21,6 +21,7 @@
 #define FN_CONFLIST3 "head3.lst"
 #define ROTSTAT      "rot_stat"
 #define MC_OUT       "mc_out"
+#define MS_DIR       "ms_out"
 #define DETAIL       "fort.36"
 #define OCC_TABLE    "fort.38"
 #define TOT_CRG      "sum_crg.out"

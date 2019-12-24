@@ -89,6 +89,7 @@ void MC_smp(int n);
 STRINGS ms_spe_lst;
 FILE   *ms_fp;
 FILE   *ms_fp1;
+FILE   *ms_fp2;
 /* for the microstate */
 
 
@@ -144,6 +145,7 @@ int monte()
     float *sigma, sigma_max, t;
     int N_smp;
     float S_max;
+    char sbuff[MAXCHAR_LINE];  //Store ms file name--Cai
 
     timerA = time(NULL);
     strcpy(env.entropy_converge_error, "");
@@ -232,7 +234,15 @@ int monte()
     }
 
     /* Microstate ---By Cai: inititalize ms.dat writing */
+    /* INITIALIZE MICROSTATE FOLDER AND FILE FOR EACH TITRATION POINT*/
     if (env.ms_out) {
+
+        if (mkdir(dir, 0755)){
+            print("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR)
+            return USERERR;
+        }
+
+
         ms_fp1 = fopen("ms1.dat", "w");
 
         memset(&ms_spe_lst, 0, sizeof(STRINGS));
@@ -381,6 +391,14 @@ int monte()
            fprintf(fp, "Done, exit at max entropy convergence %.3f \n\n", S_max);
         }
 
+        if (env.ms_out){
+            sprintf(sbuff, "%s/ph%.1feh%.1f.ms", MS_DIR, ph, eh);
+            if (!(ms_fp2=fopen(sbuff, "w"))){
+                printf("   Open file %s error.\n", sbuff);
+                return USERERR;
+            }
+            fprintf(ms_fp2, "pH:%6.2f, eH:%6.2f\n", ph, eh);
+        }
 
 
         E_base = get_base();
@@ -390,6 +408,7 @@ int monte()
             if (env.ms_out){
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
                 fprintf(ms_fp1, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
 
             }
 
@@ -488,6 +507,7 @@ int monte()
     fclose(fp);
     fclose(ms_fp);
     fclose(ms_fp1);
+    fclose(ms_fp2);
     }
     else
     fclose(fp);
@@ -2476,6 +2496,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     if (env.ms_out) {
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp1, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
 
 
         //write each microstate: write first microstate
@@ -3001,12 +3022,15 @@ int write_state_MC(int *state, float E_tot, int count)
 
     for (i_free=0; i_free<n_free; i_free++) {
         fprintf(ms_fp1,"%d, ", state[i_free]);
+        fprintf(ms_fp2,"%d, ", state[i_free]);
     }
 
     //write microstate at ms.dat
     //for MC sampling
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"count: %d\n", count);
+    fprintf(ms_fp2,"state energy: %lf, ", E_tot);
+    fprintf(ms_fp2,"count: %d\n", count);
 
 
     return 0;
@@ -3021,6 +3045,7 @@ int write_state_Enum(int *state, float E_tot, double occ)
 
     for (i_free=0; i_free<n_free; i_free++) {
         fprintf(ms_fp1,"%d, ", state[i_free]);
+        fprintf(ms_fp2,"%d, ", state[i_free]);
     }
 
     //write microstate at ms.dat
@@ -3028,6 +3053,8 @@ int write_state_Enum(int *state, float E_tot, double occ)
     //for enumerate, ms_state->counter is the occ of the microstate
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"occ: %5.3f\n", occ);
+    fprintf(ms_fp2,"state energy: %lf, ", E_tot);
+    fprintf(ms_fp2,"occ: %5.3f\n", occ);
 
 
     return 0;
