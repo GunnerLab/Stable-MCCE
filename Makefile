@@ -8,7 +8,10 @@ ARFLAGS = rvs
 STEP6 = $(LDIR)/analysis.o
 
 SRC = $(wildcard $(LDIR)/*.c)
-DELPHI = bin/delphi
+#DELPHI = bin/delphi
+DELPHI = bin
+
+
 
 bin/mcce: mcce.c $(LIB) $(DEPS) $(DELPHI) $(STEP6)
 	$(CC2) -o bin/mcce mcce.c $(STEP6) $(LIB) -lm 

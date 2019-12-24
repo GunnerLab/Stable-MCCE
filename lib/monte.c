@@ -237,8 +237,8 @@ int monte()
     /* INITIALIZE MICROSTATE FOLDER AND FILE FOR EACH TITRATION POINT*/
     if (env.ms_out) {
 
-        if (mkdir(dir, 0755)){
-            print("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR)
+        if (mkdir(MS_DIR, 0755)){
+            printf("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR);
             return USERERR;
         }
 
