@@ -75,6 +75,8 @@ typedef struct {
     int counter; //to store counter for MC sampling
     double occ;  // to store occ for enumeration
     double Hav; // to store average state energy
+    int *conf_flip_id; // to store conf ids that get flip
+    int n_flip; // to store the number of conf ids that get flip
 } MSRECORD;
 
 int enum_flag = 0; //flag to judge if run enumerate(): analytical solution;
@@ -82,7 +84,7 @@ int enum_flag = 0; //flag to judge if run enumerate(): analytical solution;
 int   load_ms_gold(STRINGS *str);
 int   update_conf_id(unsigned short *conf_id, int *state);
 int   write_ms(MSRECORD *ms_state);
-int   write_state_MC(int *state, float E_tot, int count);
+int   write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count);
 int   write_state_Enum(int *state, float E_tot, double occ);
 void MC_smp(int n);
 
@@ -392,12 +394,12 @@ int monte()
         }
 
         if (env.ms_out){
-            sprintf(sbuff, "%s/ph%.1feh%.1f.ms", MS_DIR, ph, eh);
+            sprintf(sbuff, "%s/ph%.0feh%.0f.ms", MS_DIR, ph, eh);
             if (!(ms_fp2=fopen(sbuff, "w"))){
                 printf("   Open file %s error.\n", sbuff);
                 return USERERR;
             }
-            fprintf(ms_fp2, "pH:%6.2f, eH:%6.2f\n", ph, eh);
+            fprintf(ms_fp2, "T:%6.2f,pH:%6.2f, eH:%6.2f\n",env.monte_temp, ph, eh);
         }
 
 
@@ -2789,11 +2791,13 @@ void MC_smp(int n)
     H_noTS = 0.0;
 
     /* Cai */
-    MSRECORD ms_state;
+    MSRECORD ms_state, old_ms_state;
     ms_state.conf_id = (unsigned short *) calloc(ms_spe_lst.n,  sizeof(unsigned short));
     ms_state.H       = 0.0;
     ms_state.counter = 0;
     ms_state.occ = 0.0;
+    ms_state.conf_flip_id = (int *) malloc(mem);
+    ms_state.n_flip = 0;
 
     int count;
     count = 0;
@@ -2813,6 +2817,8 @@ void MC_smp(int n)
             /*  save state */
             old_E = E_state;
             memcpy(old_state, state, mem);
+            memcpy(old_ms_state.conf_flip_id, ms_state.conf_flip_id, mem);
+            old_ms_state.n_flip=ms_state.n_flip;
 
             /* 1st flip */
             ires  = rand()/(RAND_MAX/n_free + 1);
@@ -2822,6 +2828,8 @@ void MC_smp(int n)
                 new_conf = free_res[ires].conf[iconf];
                 if (old_conf != new_conf) break;
             }
+            ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+            ms_state.n_flip = 1;
             state[ires] = new_conf;
             E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
             for (j=0; j<n_free; j++) {
@@ -2847,6 +2855,8 @@ void MC_smp(int n)
                         old_conf = state[iflip];
                         new_conf = free_res[iflip].conf[iconf];
 
+                        ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+
                         state[iflip] = new_conf;
                         E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
                         for (j=0; j<n_free; j++) {
@@ -2855,6 +2865,7 @@ void MC_smp(int n)
                     }
                 }
             }
+            ms_state.n_flip = nflips;
 
 
             /* DEBUG
@@ -2878,7 +2889,7 @@ void MC_smp(int n)
             if (dE < 0.0 || (float) rand()/RAND_MAX < exp(b*dE)) {                                 /* go to new low */
                 if (ms_state.counter != 0) {
                     write_ms(&ms_state);
-                    write_state_MC(old_state, old_E+E_base, count);
+                    write_state_MC(&old_ms_state, old_state, old_E+E_base, count);
                 }
                 update_conf_id(ms_state.conf_id, state);
                 ms_state.counter = 1;
@@ -2889,6 +2900,8 @@ void MC_smp(int n)
             else {                                                    /* stay, restore the state */
                 memcpy(state, old_state, mem);
                 E_state = old_E;
+                memcpy(ms_state.conf_flip_id,old_ms_state.conf_flip_id,  mem);
+                ms_state.n_flip=old_ms_state.n_flip;
                 if (ms_state.counter != 0) {
                     ms_state.counter++;
                     count++;
@@ -2924,7 +2937,7 @@ void MC_smp(int n)
     }
     if (ms_state.counter != 0) {
         write_ms(&ms_state);
-        write_state_MC(state, E_state+E_base, count);
+        write_state_MC(&ms_state,state, E_state+E_base, count);
     }
 
     E_entropy = get_totalTS();
@@ -3015,21 +3028,24 @@ int update_conf_id(unsigned short *conf_id, int *state)
 }   
 
 
-int write_state_MC(int *state, float E_tot, int count)
+int write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count)
 {
 
     int i_free;
+    int i_flip;
 
     for (i_free=0; i_free<n_free; i_free++) {
         fprintf(ms_fp1,"%d, ", state[i_free]);
-        fprintf(ms_fp2,"%d, ", state[i_free]);
+    }
+    for (i_flip=0; i_flip<ms_state.n_flip; i_flip++) {
+        fprintf(ms_fp2,"%d, ", ms_state.conf_flip_id[i_flip]);
     }
 
     //write microstate at ms.dat
     //for MC sampling
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"count: %d\n", count);
-    fprintf(ms_fp2,"state energy: %lf, ", E_tot);
+    fprintf(ms_fp2,"E: %lf, ", E_tot);
     fprintf(ms_fp2,"count: %d\n", count);
 
 
