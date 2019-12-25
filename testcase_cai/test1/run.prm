@@ -42,7 +42,7 @@ ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 1.0      pH interval                                        (TITR_PHD)
 0.0      Initial Eh                                         (TITR_EH0)
 30.0     Eh interval (in mV)                                (TITR_EHD)
-1       Number of titration points                         (TITR_STEPS)
+2       Number of titration points                         (TITR_STEPS)
 =============================================================================
 
 

@@ -394,7 +394,7 @@ int monte()
         }
 
         if (env.ms_out){
-            sprintf(sbuff, "%s/ph%.0feh%.0f.ms", MS_DIR, ph, eh);
+            sprintf(sbuff, "%s/ph%.0feh%.0fms.dat", MS_DIR, ph, eh);
             if (!(ms_fp2=fopen(sbuff, "w"))){
                 printf("   Open file %s error.\n", sbuff);
                 return USERERR;
@@ -2798,6 +2798,8 @@ void MC_smp(int n)
     ms_state.occ = 0.0;
     ms_state.conf_flip_id = (int *) malloc(mem);
     ms_state.n_flip = 0;
+    old_ms_state.conf_flip_id = (int *) malloc(mem);
+    old_ms_state.n_flip = 0;
 
     int count;
     count = 0;
@@ -2828,7 +2830,7 @@ void MC_smp(int n)
                 new_conf = free_res[ires].conf[iconf];
                 if (old_conf != new_conf) break;
             }
-            ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+            ms_state.conf_flip_id[0]=new_conf; //store conf_id that get flipped.
             ms_state.n_flip = 1;
             state[ires] = new_conf;
             E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
@@ -2856,6 +2858,7 @@ void MC_smp(int n)
                         new_conf = free_res[iflip].conf[iconf];
 
                         ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+			ms_state.n_flip +=1;
 
                         state[iflip] = new_conf;
                         E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
@@ -2865,7 +2868,7 @@ void MC_smp(int n)
                     }
                 }
             }
-            ms_state.n_flip = nflips;
+            
 
 
             /* DEBUG
@@ -2900,7 +2903,7 @@ void MC_smp(int n)
             else {                                                    /* stay, restore the state */
                 memcpy(state, old_state, mem);
                 E_state = old_E;
-                memcpy(ms_state.conf_flip_id,old_ms_state.conf_flip_id,  mem);
+                memcpy(ms_state.conf_flip_id,old_ms_state.conf_flip_id, old_ms_state.n_flip * sizeof(int));
                 ms_state.n_flip=old_ms_state.n_flip;
                 if (ms_state.counter != 0) {
                     ms_state.counter++;
@@ -3037,8 +3040,8 @@ int write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count)
     for (i_free=0; i_free<n_free; i_free++) {
         fprintf(ms_fp1,"%d, ", state[i_free]);
     }
-    for (i_flip=0; i_flip<ms_state.n_flip; i_flip++) {
-        fprintf(ms_fp2,"%d, ", ms_state.conf_flip_id[i_flip]);
+    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
+        fprintf(ms_fp2,"%d, ", ms_state->conf_flip_id[i_flip]);
     }
 
     //write microstate at ms.dat
