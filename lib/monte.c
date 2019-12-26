@@ -89,6 +89,7 @@ int   write_state_Enum(int *state, float E_tot, double occ);
 void MC_smp(int n);
 
 STRINGS ms_spe_lst;
+FILE   *ms_fp_test;
 FILE   *ms_fp;
 FILE   *ms_fp1;
 FILE   *ms_fp2;
@@ -259,13 +260,16 @@ int monte()
             env.ms_out = 0;
         }
         else {
-            ms_fp = fopen("ms.dat", "w");
+            ms_fp_test= fopen("ms.dat","wb");
+            ms_fp = fopen("ms_re.dat", "w");
             int i_spe;
 
+            fwrite(&ms_spe_lst.n,1,sizeof(int), ms_fp_test);
             fprintf(ms_fp, "residue number: %d\n", ms_spe_lst.n);
             for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
 
                fprintf(ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
+               fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp_test);
                }
             fprintf(ms_fp,"\n");
 
@@ -408,9 +412,11 @@ int monte()
         //if (enumerate(i) == -1) {
         if (enumerate_new(i) == -1) { // use new enumerate subroutine to output microstate
             if (env.ms_out){
+                fwrite("MONTERUNS", 9, sizeof(char), ms_fp_test);
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
                 fprintf(ms_fp1, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
                 fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //The third line of ms.dat: method
 
             }
 
@@ -507,6 +513,7 @@ int monte()
     //fclose(fp);
     if (env.ms_out){ // close the microstate output file if true
     fclose(fp);
+    fclose(ms_fp_test);
     fclose(ms_fp);
     fclose(ms_fp1);
     fclose(ms_fp2);
@@ -2496,9 +2503,11 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     }
 
     if (env.ms_out) {
+        fwrite("ENUMERATE", 9, sizeof(char), ms_fp_test);
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp1, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //The third line of ms.dat: method
 
 
         //write each microstate: write first microstate
@@ -2966,18 +2975,24 @@ int write_ms(MSRECORD *ms_state)
 
     //printf("writing ms ...\n");
     for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+        fwrite(&ms_state->conf_id[i_spe],1,sizeof(unsigned short), ms_fp_test);
         fprintf(ms_fp,"%d\t", ms_state->conf_id[i_spe]);
     }
 
     //write microstate at ms.dat
+    fwrite(&ms_state->H, 1, sizeof(double), ms_fp_test);
     if (enum_flag == 0) { //for MC sampling
         ms_state->Hav = ms_state->H/ms_state->counter;
+        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp_test);
+        fwrite(&ms_state->counter,1, sizeof(int), ms_fp_test);
         fprintf(ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
         fprintf(ms_fp,"state energy: %lf\t", ms_state->Hav);
         fprintf(ms_fp,"count: %d\n", ms_state->counter);
     }
     else {  //for enumerate, ms_state->counter is the occ of the microstate
         ms_state->Hav = ms_state->H;
+        fwrite(&ms_state->Hav, 1, sizeof(double), ms_fp_test);
+        fwrite(&ms_state->occ,1, sizeof(double), ms_fp_test);
         fprintf(ms_fp,"\ncumulative energy: %lf\t", ms_state->H);
         fprintf(ms_fp,"state energy: %lf\t", ms_state->Hav);
         fprintf(ms_fp,"occ: %5.3f\n", ms_state->occ);
