@@ -416,7 +416,11 @@ int monte()
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
                 fprintf(ms_fp1, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
                 fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#FLIPS. ENERGY, COUNT\n"); //The third line of ms.dat: method
 
             }
 
@@ -446,7 +450,10 @@ int monte()
                 fprintf(fp, "Doing MC %2d ... \n", j+1); fflush(fp);
                 //if (N_smp) MC(N_smp);
                 if (N_smp) {            //Cai: microstate output or not
-                    if (env.ms_out) MC_smp(N_smp);   // Using MC_smp to write out microstate
+                    if (env.ms_out) {
+                    fprintf(ms_fp2, "\nMC: %d\n", j);
+                    MC_smp(N_smp);   // Using MC_smp to write out microstate
+                    }
                     else MC(N_smp);  //initial MC without writing out microstate  
                 }
 
@@ -2394,6 +2401,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     int     ires,jres,iconf,old_conf,new_conf;
     float   *E_states,*occ_states;
     float   E_min, tot_occ;
+    int     i,j;
     b = -KCAL2KT/(env.monte_temp/ROOMT);
 
     if (!n_free) {
@@ -2433,6 +2441,8 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     ms_state.H       = 0.0;
     ms_state.counter = 0;
     ms_state.occ = 0.0;
+    ms_state.conf_flip_id=(int *) malloc(n_free * sizeof(int));
+    ms_state.n_flip = 0;
 
 
     while (1) {
@@ -2507,7 +2517,26 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp1, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID\n"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID\n"); //The third line of ms.dat: method
         fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //The third line of ms.dat: method
+
+        /* write out the first microstate */
+        fprintf(ms_fp2, "%d: ", n_fixed);
+        for (i=0; i<n_fixed; i++) {
+            for (j=0; j<fixed_res[i].n; j++) {
+                // this will be a problem, if partial occ is assigned
+                if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
+                    fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
+                    break;
+                }
+            }
+        }
+        fprintf(ms_fp2, '\n');
+        fprintf(ms_fp2, "%d: ", n_free);
+        for (i=0; i<n_free; i++) {
+            fprintf(ms_fp2,"%d, ", state[i]);
+        }
 
 
         //write each microstate: write first microstate
@@ -2516,7 +2545,8 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.H = E_states[istate] + E_base;
         // ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(state, E_states[istate]+E_base, occ_states[istate] );
+        write_state_Enum(&ms_state,state, E_states[istate]+E_base, occ_states[istate] );
+
     }
 
 
@@ -2528,7 +2558,10 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         while (free_res[ires].on>=free_res[ires].n) {
             free_res[ires].on=0;
             new_conf = state[ires] = free_res[ires].conf[0];
-
+            if (env.ms_out) {
+            ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+			ms_state.n_flip +=1;
+			}
             ires++;
             if (ires==n_free) break;
             free_res[ires].on++;
@@ -2537,14 +2570,18 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
 
         new_conf = state[ires] = free_res[ires].conf[free_res[ires].on];
 
+
         if (env.ms_out) {
         //write each microstate
+        ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
+		ms_state.n_flip +=1;
         update_conf_id(ms_state.conf_id, state);
         ms_state.occ = occ_states[istate];
         ms_state.H = E_states[istate] + E_base;
         //ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(state, E_states[istate]+E_base, occ_states[istate] );
+        write_state_Enum(&ms_state,state, E_states[istate]+E_base, occ_states[istate] );
+        ms_state.n_flip = 0;
         }
 
 
@@ -2813,6 +2850,24 @@ void MC_smp(int n)
     int count;
     count = 0;
 
+    /* write out the beginning testing microstate */
+    fprintf(ms_fp2, "%d: ", n_fixed);
+    for (i=0; i<n_fixed; i++) {
+        for (j=0; j<fixed_res[i].n; j++) {
+            // this will be a problem, if partial occ is assigned
+            if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
+                fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
+                break;
+            }
+        }
+    }
+    fprintf(ms_fp2, '\n');
+    fprintf(ms_fp2, "%d: ", n_free);
+    for (i=0; i<n_free; i++) {
+        fprintf(ms_fp2,"%d, ", state[i]);
+    }
+
+
 
     for (i=0; i<cycles; i++) {
         /*
@@ -2867,7 +2922,7 @@ void MC_smp(int n)
                         new_conf = free_res[iflip].conf[iconf];
 
                         ms_state.conf_flip_id[ms_state.n_flip]=new_conf; //store conf_id that get flipped.
-			ms_state.n_flip +=1;
+			            ms_state.n_flip +=1;
 
                         state[iflip] = new_conf;
                         E_state += conflist.conf[new_conf].E_self - conflist.conf[old_conf].E_self;
@@ -3063,8 +3118,8 @@ int write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count)
     //for MC sampling
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"count: %d\n", count);
-    fprintf(ms_fp2,"E: %lf, ", E_tot);
-    fprintf(ms_fp2,"count: %d\n", count);
+    fprintf(ms_fp2,"%lf, ", E_tot);
+    fprintf(ms_fp2,"%d\n", count);
 
 
     return 0;
@@ -3072,14 +3127,17 @@ int write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count)
 
 
 
-int write_state_Enum(int *state, float E_tot, double occ)
+int write_state_Enum(MSRECORD *ms_state,int *state, float E_tot, double occ)
 {
 
     int i_free;
+    int i_flip;
 
     for (i_free=0; i_free<n_free; i_free++) {
         fprintf(ms_fp1,"%d, ", state[i_free]);
-        fprintf(ms_fp2,"%d, ", state[i_free]);
+    }
+    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
+        fprintf(ms_fp2,"%d, ", ms_state->conf_flip_id[i_flip]);
     }
 
     //write microstate at ms.dat
@@ -3087,8 +3145,8 @@ int write_state_Enum(int *state, float E_tot, double occ)
     //for enumerate, ms_state->counter is the occ of the microstate
     fprintf(ms_fp1,"state energy: %lf, ", E_tot);
     fprintf(ms_fp1,"occ: %5.3f\n", occ);
-    fprintf(ms_fp2,"state energy: %lf, ", E_tot);
-    fprintf(ms_fp2,"occ: %5.3f\n", occ);
+    fprintf(ms_fp2,"%lf, ", E_tot);
+    fprintf(ms_fp2,"%5.3f\n", occ);
 
 
     return 0;
