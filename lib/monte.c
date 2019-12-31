@@ -148,6 +148,7 @@ int monte()
     int N_smp;
     float S_max;
     char sbuff[MAXCHAR_LINE];  //Store ms file name--Cai
+    int i_fix, j_fix; // index for microstate write out.
 
     timerA = time(NULL);
     strcpy(env.entropy_converge_error, "");
@@ -414,22 +415,23 @@ int monte()
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
 
                 fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#FLIPS. ENERGY, COUNT\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of ms.dat: method
                 fprintf(ms_fp2, "%d: ", n_fixed);
-                for (i=0; i<n_fixed; i++) {
-                    for (j=0; j<fixed_res[i].n; j++) {
+                for (i_fix=0; i_fix<n_fixed; i_fix++) {
+                    for (j_fix=0; j_fix<fixed_res[i].n; j_fix++) {
                         // this will be a problem, if partial occ is assigned
-                        if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
-                            fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
+                        if (conflist.conf[fixed_res[i_fix].conf[j_fix]].occ > 0.99) {
+                            fprintf(ms_fp2,"%d, ", fixed_res[i_fix].conf[j_fix]);
                             break;
                         }
                     }
                 }
                 fprintf(ms_fp2, "\n");
+                fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //The third line of ms.dat: method
+
 
 
             }
@@ -2525,9 +2527,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         fwrite("ENUMERATE", 9, sizeof(char), ms_fp_test);
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID\n"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID\n"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of ms.dat: method
 
         /* write out the first microstate */
         fprintf(ms_fp2, "%d: ", n_fixed);
@@ -2541,6 +2541,10 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
             }
         }
         fprintf(ms_fp2, "\n");
+
+        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //The third line of ms.dat: method
+        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //The third line of ms.dat: method
+
         fprintf(ms_fp2, "%d: ", n_free);
         for (i=0; i<n_free; i++) {
             fprintf(ms_fp2,"%d, ", state[i]);
@@ -2854,6 +2858,7 @@ void MC_smp(int n)
     ms_state.n_flip = 0;
     old_ms_state.conf_flip_id = (int *) malloc(mem);
     old_ms_state.n_flip = 0;
+    old_ms_state.counter=0;
 
 
 
@@ -2883,6 +2888,7 @@ void MC_smp(int n)
 
             memcpy(old_ms_state.conf_flip_id, ms_state.conf_flip_id, mem);  //store the old ms_state at old_ms_state
             old_ms_state.n_flip=ms_state.n_flip;
+            old_ms_state.counter=ms_state.counter;
 
             /* 1st flip */
             ires  = rand()/(RAND_MAX/n_free + 1);

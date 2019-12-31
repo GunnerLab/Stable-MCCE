@@ -16,5 +16,5 @@
 #$ -e error.log
 
 # Now comes the commands to be executed
-/home/cai/mcce3.5_enum_ms/mcce 
-#../../bin/mcce
+#/home/cai/mcce3.5_enum_ms/mcce 
+../../bin/mcce
