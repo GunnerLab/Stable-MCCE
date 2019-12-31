@@ -5,3 +5,5 @@ terminate called after throwing an instance of 'std::length_error'
 Aborted (core dumped)
 Segmentation fault (core dumped)
 Floating point exception (core dumped)
+sh: 1: .//bin/tpl-free2mcce.py: not found
+Segmentation fault (core dumped)

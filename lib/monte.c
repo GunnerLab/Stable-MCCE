@@ -85,7 +85,7 @@ int   load_ms_gold(STRINGS *str);
 int   update_conf_id(unsigned short *conf_id, int *state);
 int   write_ms(MSRECORD *ms_state);
 int   write_state_MC(MSRECORD *ms_state, int *state, float E_tot, int count);
-int   write_state_Enum(int *state, float E_tot, double occ);
+int   write_state_Enum(MSRECORD *ms_state, int *state, float E_tot, double occ);
 void MC_smp(int n);
 
 STRINGS ms_spe_lst;
@@ -421,6 +421,18 @@ int monte()
                 fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID\n"); //The third line of ms.dat: method
                 fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID\n"); //The third line of ms.dat: method
                 fprintf(ms_fp2, "#FLIPS. ENERGY, COUNT\n"); //The third line of ms.dat: method
+                fprintf(ms_fp2, "%d: ", n_fixed);
+                for (i=0; i<n_fixed; i++) {
+                    for (j=0; j<fixed_res[i].n; j++) {
+                        // this will be a problem, if partial occ is assigned
+                        if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
+                            fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
+                            break;
+                        }
+                    }
+                }
+                fprintf(ms_fp2, "\n");
+
 
             }
 
@@ -2532,12 +2544,12 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
                 }
             }
         }
-        fprintf(ms_fp2, '\n');
+        fprintf(ms_fp2, "\n");
         fprintf(ms_fp2, "%d: ", n_free);
         for (i=0; i<n_free; i++) {
             fprintf(ms_fp2,"%d, ", state[i]);
         }
-
+        fprintf(ms_fp2, "\n");
 
         //write each microstate: write first microstate
         update_conf_id(ms_state.conf_id, state);
@@ -2851,21 +2863,11 @@ void MC_smp(int n)
     count = 0;
 
     /* write out the beginning testing microstate */
-    fprintf(ms_fp2, "%d: ", n_fixed);
-    for (i=0; i<n_fixed; i++) {
-        for (j=0; j<fixed_res[i].n; j++) {
-            // this will be a problem, if partial occ is assigned
-            if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
-                fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
-                break;
-            }
-        }
-    }
-    fprintf(ms_fp2, '\n');
     fprintf(ms_fp2, "%d: ", n_free);
     for (i=0; i<n_free; i++) {
         fprintf(ms_fp2,"%d, ", state[i]);
     }
+    fprintf(ms_fp2, "\n");
 
 
 
