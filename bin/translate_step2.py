@@ -13,4 +13,7 @@ if __name__ == "__main__":
         if line[:6] == "ATOM  " or line[:6] == "HETATM":
             if line[12:20] in CONVERT:
                 print(line[:12]+CONVERT[line[12:20]]+line[20:].rstrip())
+            else:
+                print(line, end="")
+        print(line,end="")
 
