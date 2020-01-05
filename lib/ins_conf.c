@@ -25,7 +25,7 @@ int ins_conf(RES *res, int ins, int n_atom)
     memset(&res->conf[ins], 0, sizeof(CONF));
     res->conf[ins].n_atom = n_atom;
     if (n_atom) {
-        if (!(res->conf[ins].atom = (ATOM *) calloc(n_atom*sizeof(ATOM))))
+        if (!(res->conf[ins].atom = (ATOM *) malloc(n_atom*sizeof(ATOM))))
         {
             printf("ins_conf(): Fails allocating memory for atoms.\n");
             return USERERR;
