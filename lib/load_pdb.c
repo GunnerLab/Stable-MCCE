@@ -62,8 +62,6 @@ PROT load_pdb(FILE *fp)
                 continue;
             }
 
-            printf("confname=%s, n_atom=%d\n", confName, n_atom);
-
             ins_conf(&prot.res[k_res], 0, n_atom);
             strcpy(prot.res[k_res].conf[0].confName, confName);
             strcpy(prot.res[k_res].conf[0].confID, "000");
@@ -120,8 +118,6 @@ PROT load_pdb(FILE *fp)
             continue;
         }
 
-        printf("%s", line);
-        printf("%d %d %d\n", k_res, k_conf, k_atom);
         prot.res[k_res].conf[k_conf].atom[k_atom] = atom;
         prot.res[k_res].conf[k_conf].atom[k_atom].on = 1;
 
