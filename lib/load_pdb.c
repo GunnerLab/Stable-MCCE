@@ -85,6 +85,8 @@ PROT load_pdb(FILE *fp)
                 printf("   WARNING: load_pdb(): \"No NATOM for conformer %s, set to 0.\"\n",atom.confName);
                 continue;
             }
+            printf("res=%d; conf=%d, n_atom=%d\n", k_res, prot.res[k_res].n_conf, n_atom);
+
             k_conf = ins_conf(&prot.res[k_res], prot.res[k_res].n_conf, n_atom);
             strcpy(prot.res[k_res].conf[k_conf].confName, atom.confName);
             strcpy(prot.res[k_res].conf[k_conf].confID, atom.confID);
