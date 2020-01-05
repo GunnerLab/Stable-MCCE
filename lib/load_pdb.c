@@ -117,8 +117,8 @@ PROT load_pdb(FILE *fp)
             continue;
         }
 
-        printf(line);
-        printf("%d, %d %d\n" k_res, k_conf, k_atom);
+        printf("%s", line);
+        printf("%d %d %d\n", k_res, k_conf, k_atom);
         prot.res[k_res].conf[k_conf].atom[k_atom] = atom;
         prot.res[k_res].conf[k_conf].atom[k_atom].on = 1;
 
