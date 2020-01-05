@@ -33,5 +33,7 @@ int ins_conf(RES *res, int ins, int n_atom)
         memset( res->conf[ins].atom, 0, (n_atom * sizeof(ATOM)) );
     }
 
+    printf("natom=%d\n", n_atom);
+    printf("%s -> %d; %s -> %d; %s -> %d; \n", res->conf[ins].atom[0].name, res->conf[ins].atom[0].on, res->conf[ins].atom[1].name, res->conf[ins].atom[1].on,res->conf[ins].atom[2].name, res->conf[ins].atom[2].on);
     return ins;
 }
