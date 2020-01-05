@@ -15,7 +15,16 @@ CONVERT = {"1H   HOH": " H1  HOH",
            "1HB  ALA": " HB1 ALA",
            "2HB  ALA": " HB2 ALA",
            "3HB  ALA": " HB3 ALA",
-
+           "1HB  LEU": " HB2 LEU",
+           "2HB  LEU": " HB3 LEU",
+           "1HD1 LEU": "HD11 LEU",
+           "2HD1 LEU": "HD12 LEU",
+           "3HD1 LEU": "HD13 LEU",
+           "1HD2 LEU": "HD21 LEU",
+           "2HD2 LEU": "HD22 LEU",
+           "3HD2 LEU": "HD23 LEU",
+           "1HB  TRP": " HB2 TRP",
+           "2HB  TRP": " HB3 TRP",
            }
 
 if __name__ == "__main__":
