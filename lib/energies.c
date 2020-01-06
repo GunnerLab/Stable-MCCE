@@ -677,16 +677,20 @@ int conf_energies(int kr, int kc, PROT prot)
    /* get rxn */
    fprintf(fp, "RXNMULTI  ");
    for (i=0; i<del_runs; i++) {
-      sprintf(fname, "delphi%02d.log", i+1);
-      fp2 = fopen(fname, "r");
-      while (fgets(sbuff, sizeof(sbuff), fp2)) {
-         if (strstr(sbuff, "corrected reaction field energy:")) {
-            fprintf(fp, "%10.3f", atof(sbuff+34)/KCAL2KT);
-            break;
-         }
+      if (weight < 0.0001) {
+         fprintf(fp, "%10.3f", 0.0);
       }
-      fclose(fp2);
-
+      else {
+          sprintf(fname, "delphi%02d.log", i+1);
+          fp2 = fopen(fname, "r");
+          while (fgets(sbuff, sizeof(sbuff), fp2)) {
+             if (strstr(sbuff, "corrected reaction field energy:")) {
+                fprintf(fp, "%10.3f", atof(sbuff+34)/KCAL2KT);
+                break;
+             }
+          }
+          fclose(fp2);
+      }
    }
    fprintf(fp, "\n");
 
