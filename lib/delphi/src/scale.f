@@ -6,7 +6,8 @@ c (S. Sridharan         May 1994)
         integer iab1(0:lcb1,0:mcb1,0:ncb1),iab2(0:lcb1,0:mcb1,0:ncb1)
      &	,icume(1)
         integer cbn1(1),cbn2(1),cbal(1)
-	integer nbra(1000)
+c       1000->5000 by jmao        
+	integer nbra(5000)
 	integer atndx(1)
 	real xn1(3,natom),rad3(natom),oldmid(3),vnr(3,ibnum)
 	real vcrd(3,ibnum),dis,dist
