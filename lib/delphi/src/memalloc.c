@@ -27,7 +27,7 @@ void *memalloc( void **ptr,int *entry_size, int *new_size )
 	else      {
             	// jmao realloc gives segmentation fault
                 //newptr=realloc(*ptr, (size_t)((*new_size)*(*entry_size)));
-	             free(ptr);
+	             free(*ptr);
 	             newptr=calloc((size_t)(*new_size),(size_t)(*entry_size));
                  }
 
