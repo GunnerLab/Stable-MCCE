@@ -119,8 +119,8 @@ c it finds pairs.......
         limu=cbn2(ix1+1+(lcb+1)*ix2+(lcb+1)*(mcb+1)*ix3)
 
         if((npr+limu-liml+1).gt.nprt)then
-          nprt=nprt+1000
-          write(*,*) "size=", 3*nprt
+          nprt=nprt+100
+          write(*,*) "size=", nprt
           i_pls= memalloc(i_pls,4,3*nprt)
         endif
 
