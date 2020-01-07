@@ -127,8 +127,8 @@ f        Specify mfe point, f=pKa/Em                        (MFE_POINT)
 -1.0      MFE cutoff(Kcal), default 0.5                     (MFE_CUTOFF)
 
 # Advanced options:
-1         delphi start conformer number, 0 based            (PBE_START)
-99999     delphi end conformer number, self included        (PBE_END)
+1        delphi start conformer number, 0 based            (PBE_START)
+2        delphi end conformer number, self included        (PBE_END)
 /tmp      delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
 6.0      dielectric constant for Coulomb's law              (EPSILON_COULOMB)
 
