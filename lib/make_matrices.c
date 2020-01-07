@@ -76,6 +76,7 @@ int make_matrices(PROT prot, char *dir)
         }
 
         if (((counter-n_dummies+1) >= env.pbe_start && (counter-n_dummies+1) <= env.pbe_end)) {
+            ematrix.conf[counter].netcrg = prot.res[kr].conf[kc].netcrg;
             ematrix.conf[counter].E_vdw0 = prot.res[kr].conf[kc].E_vdw0;
             ematrix.conf[counter].E_vdw1 = prot.res[kr].conf[kc].E_vdw1;
             ematrix.conf[counter].E_tors = prot.res[kr].conf[kc].E_tors;
@@ -348,37 +349,6 @@ int extract_matrix(EMATRIX *ematrix, char *dir)
           fclose(fp);
        }
    }
-
-   /* write head3.lst
-   sprintf(fname, "%s/%s", dir, FN_CONFLIST3);
-   if (!(fp = fopen(fname, "w"))) {
-      printf("   Can not open file %s to write. Abort ...\n", fname);
-      return USERERR;
-   }
-
-
-   fprintf(fp, "iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history\n");
-   for (i=0; i<ematrix->n; i++) {
-         fprintf(fp, "%05d %s %c %4.2f %6.3f %5.0f %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %10s\n",
-                                                                    i+1,
-                                                                    ematrix->conf[i].uniqID,
-                                                                    'f', 0.00,
-                                                                    ematrix->conf[i].netcrg,
-                                                                    ematrix->conf[i].Em,
-                                                                    ematrix->conf[i].pKa,
-                                                                    ematrix->conf[i].e,
-                                                                    ematrix->conf[i].H,
-                                                                    ematrix->conf[i].E_vdw0,
-                                                                    ematrix->conf[i].E_vdw1,
-                                                                    ematrix->conf[i].E_tors,
-                                                                    ematrix->conf[i].E_epol,
-                                                                    ematrix->conf[i].E_dsolv,
-                                                                    ematrix->conf[i].E_extra,
-                                                                    ematrix->conf[i].history);
-   }
-
-   fclose(fp);
-   */
 
    return 0;
 }
