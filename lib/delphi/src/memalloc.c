@@ -22,13 +22,12 @@ void *memalloc( void **ptr,int *entry_size, int *new_size )
 	}
 
 	if(!*ptr) {
+                  //printf("calloc reached\n");
                   newptr=calloc((size_t)(*new_size),(size_t)(*entry_size));
                   }
 	else      {
-            	// jmao realloc gives segmentation fault
-                //newptr=realloc(*ptr, (size_t)((*new_size)*(*entry_size)));
-	             free(*ptr);
-	             newptr=calloc((size_t)(*new_size),(size_t)(*entry_size));
+                //  printf("realloc reached\n");
+                  newptr=realloc(*ptr, (size_t)((*new_size)*(*entry_size)));
                  }
 
 

@@ -119,8 +119,8 @@ c it finds pairs.......
         limu=cbn2(ix1+1+(lcb+1)*ix2+(lcb+1)*(mcb+1)*ix3)
 
         if((npr+limu-liml+1).gt.nprt)then
-          nprt=nprt+5000
-          write(*,*) "size=", nprt
+          nprt=nprt+10000
+c        jmao 5000->10000 to avoid calling realloc at memalloc.c line 27 which crashes program
           i_pls= memalloc(i_pls,4,3*nprt)
         endif
 
