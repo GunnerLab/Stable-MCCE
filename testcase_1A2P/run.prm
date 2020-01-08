@@ -165,4 +165,4 @@ sdh   type of PBE boundary condition: zero/sdh/mdh/focus      (BOUND_COND_APBS)
 
 0        GA output format: 0 display screen, 1 file         (GA_OUTPUT)
 ###########PASCAL COMTE GENETIC ALGORITHM PARAMETERS FOR STEP 2################
-
+f        clean up delphi focusing directory?                (DELPHI_CLEAN)
