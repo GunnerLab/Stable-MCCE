@@ -25,7 +25,7 @@ c a third field in pls takes into account the correspondence nprobj-npr
         real tmp3,rad2
 c coi contains circle of intersection data for pairs when
 c objects are involved
-c 1,2,3 = vector applied in the center of the sphere and pointing 
+c 1,2,3 = vector applied in the center of the sphere and pointing
 c to the center of the coi
 c 4 => coi radius
 c 5 => number of the intersections between an atom and an object
@@ -119,7 +119,8 @@ c it finds pairs.......
         limu=cbn2(ix1+1+(lcb+1)*ix2+(lcb+1)*(mcb+1)*ix3)
 
         if((npr+limu-liml+1).gt.nprt)then
-          nprt=nprt+5000
+          nprt=nprt+10000
+c        jmao 5000->10000 to avoid calling realloc at memalloc.c line 27 which crashes program
           i_pls= memalloc(i_pls,4,3*nprt)
         endif
 
@@ -155,9 +156,9 @@ c e++++++++++++++++
 c b+++++++++++++++++++++
         if (j.ne.jprec) then
 c it finds out if there is intersection between i and kk
-c and it generates suitable parameters 
+c and it generates suitable parameters
 c kk= objectnumber
-         kk=j-natom 
+         kk=j-natom
          strtmp=dataobject(kk,1)
          strtmp1=dataobject(kk,2)
          inter=0
@@ -481,7 +482,7 @@ c working on x interval
                 coi(nprobj,5)=inter
              endif
            endif
-         end if 
+         end if
         end if
 c end of j.le.natom
         endif
@@ -595,7 +596,7 @@ c b+++++++++++++++++++++++++++++
          inter=coi(nprobj,5)
          if (inter.gt.1) then
 c if inter>1 we are close to tips in object, thus, false vertices might
-c have been previously generated, so now, if a vertex is outside the 
+c have been previously generated, so now, if a vertex is outside the
 c object it is fictiously checked for occlusion by oti but discarded
 c afterwards
 c kk= objectnumber
@@ -605,7 +606,7 @@ c kk= objectnumber
            xq(3)=cf3
            call distobj(xq,dx,dy,dz,nobject,kk,radprb(1),dist,.true.,
      &  zeta,axdist)
-           if (dist.gt.5.0e-4) then 
+           if (dist.gt.5.0e-4) then
              oti(iv)=j
              goto 10
            end if
@@ -654,7 +655,7 @@ c e+++++++++++++++++++++
 	st(nst)=ie
 20	continue
 	endif
-	
+
 	if(nst.gt.0)then
 30	ie=st(nst)
 	nst=nst-1
@@ -804,18 +805,18 @@ c nside = number of initial subdivisions
 c for objects, only water probes involved
 
 c OSS: migliorare la stima di sideinter in funfione delle dimensioni
-c del più piccolo oggetto e di radprobe, qui è troppo piccolo!!
+c del piï¿½ piccolo oggetto e di radprobe, qui ï¿½ troppo piccolo!!
           tmp=max(omax(1)-omin(1),omax(2)-omin(2))
           tmp=max(tmp,omax(3)-omin(3))+2*radprb(1)
 80        continue
           side=tmp/float(nside)
           do i=1,3
             xmin(i)=omin(i)-radprb(1)+.5*side
-            xmax(i)=omax(i)+radprb(1)-.5*side      
+            xmax(i)=omax(i)+radprb(1)-.5*side
             xmax(i)=omin(i)+side*(0.5+int(0.999+(xmax(i)-xmin(i))/side))
           end do
           h=1./scale
-          sideinter=max(radprb(1)/4.,0.05) 
+          sideinter=max(radprb(1)/4.,0.05)
           sidemin=sideinter/4
           write(6,*)'Generating vertices between objects:'
           write(6,*)'Finite difference grid spacing:',h
