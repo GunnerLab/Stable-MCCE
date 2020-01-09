@@ -26,6 +26,24 @@
 
 
 ## Result Analysis
+---
+### state.py
+*Analyze how a microstate energy is composed.*
+
+**Syntax:**
+```
+state.py
+```
+
+**Required files:**
+
+ * run.prm
+ * head3.lst
+ * extra.tpl for scaling factors that are not equal to 1.
+ * energies/\*.opp for pairwise interactions 
+
+**Example:**
+
 
 ## Parameter file preparation
 
