@@ -1,0 +1,105 @@
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+
+   Loading file "ms_gold"
+      Done, 75 residue(s) marked.
+
+   Monte Carlo set up time: 2 seconds.
+   Titration  1:    80 seconds, biggest stdev of conformer occ = 0.023
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 88 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
