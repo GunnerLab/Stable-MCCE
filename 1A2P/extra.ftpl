@@ -1,0 +1,25 @@
+# Detected these conformers: []
+
+# Values of the same key are appended and separated by ","
+
+# Atom definition
+
+# Atom charges
+
+# Atom radius, dielelctric boundary radius, van der Waals radius, and energy well depth
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+EXTRAE, ARG+1,     : 0.0
+EXTRAE, ASP-1,     : -0.85
+EXTRAE, GLU-1,     : -0.3
+EXTRAE, CTR-1,     : 0.0
+EXTRAE, HIS+1,     : -1.00
+EXTRAE, LYS+1,     :  0.40
+EXTRAE, NTG+1,     : -1.3
+EXTRAE, NTR+1,     : -1.3
+EXTRAE, PAA-1,     : 1.0
+EXTRAE, PDD-1,     : 1.0
+EXTRAE, TYR-1,     : -0.5
+
