@@ -80,6 +80,7 @@ typedef struct {
 } MSRECORD;
 
 int enum_flag = 0; //flag to judge if run enumerate(): analytical solution;
+int new_ms_flag =0; // flag to trigger on or off new format ms.dat output.
 
 int   load_ms_gold(STRINGS *str);
 int   update_conf_id(unsigned short *conf_id, int *state);
@@ -240,7 +241,7 @@ int monte()
     /* INITIALIZE MICROSTATE FOLDER AND FILE FOR EACH TITRATION POINT*/
     if (env.ms_out) {
 
-        if (mkdir(MS_DIR, 0755)){
+        if (new_ms_flag && mkdir(MS_DIR, 0755)){
             printf("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR);
             return USERERR;
         }
@@ -396,13 +397,13 @@ int monte()
            fprintf(fp, "Done, exit at max entropy convergence %.3f \n\n", S_max);
         }
 
-        if (env.ms_out){
+        if (env.ms_out && new_ms_flag){
             sprintf(sbuff, "%s/ph%.0feh%.0fms.dat", MS_DIR, ph, eh);
             if (!(ms_fp2=fopen(sbuff, "w"))){
                 printf("   Open file %s error.\n", sbuff);
                 return USERERR;
             }
-            fprintf(ms_fp2, "T:%6.2f,pH:%6.2f, eH:%6.2f\n",env.monte_temp, ph, eh);
+            fprintf(ms_fp2, "T:%6.2f,pH:%6.2f, eH:%6.2f\n",env.monte_temp, ph, eh); //first line of new ms.dat.
         }
 
 
@@ -414,9 +415,10 @@ int monte()
                 fwrite("MONTERUNS", 9, sizeof(char), ms_fp_test);
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
 
-                fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "%d: ", n_fixed);
+                if (new_ms_flag){
+                fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The second line of new ms.dat: method
+                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of new ms.dat: comment
+                fprintf(ms_fp2, "%d: ", n_fixed);  //The fourth line of new ms.dat: fixed confs.
                 for (i_fix=0; i_fix<n_fixed; i_fix++) {
                     for (j_fix=0; j_fix<fixed_res[i].n; j_fix++) {
                         // this will be a problem, if partial occ is assigned
@@ -427,11 +429,11 @@ int monte()
                     }
                 }
                 fprintf(ms_fp2, "\n");
-                fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //The third line of ms.dat: method
-                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //The third line of ms.dat: method
-
+                fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //new ms.dat: comment
+                }
 
 
             }
@@ -463,7 +465,7 @@ int monte()
                 //if (N_smp) MC(N_smp);
                 if (N_smp) {            //Cai: microstate output or not
                     if (env.ms_out) {
-                    fprintf(ms_fp2, "\nMC: %d\n", j);
+                    if (new_ms_flag) fprintf(ms_fp2, "\nMC: %d\n", j);
                     MC_smp(N_smp);   // Using MC_smp to write out microstate
                     }
                     else MC(N_smp);  //initial MC without writing out microstate  
@@ -534,7 +536,7 @@ int monte()
     fclose(fp);
     fclose(ms_fp_test);
     fclose(ms_fp);
-    fclose(ms_fp2);
+    if (new_ms_flag) fclose(ms_fp2);
     }
     else
     fclose(fp);
@@ -2526,10 +2528,12 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     if (env.ms_out) {
         fwrite("ENUMERATE", 9, sizeof(char), ms_fp_test);
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of ms.dat: method
+        
+        if (new_ms_flag) {
+        fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //new ms.dat: method
+        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //new ms.dat: comment
 
-        /* write out the first microstate */
+        /* write out the first microstate: fixed conf id */
         fprintf(ms_fp2, "%d: ", n_fixed);
         for (i=0; i<n_fixed; i++) {
             for (j=0; j<fixed_res[i].n; j++) {
@@ -2542,14 +2546,16 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         }
         fprintf(ms_fp2, "\n");
 
-        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //The third line of ms.dat: method
-        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //The third line of ms.dat: method
-
+        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //new ms.dat: comment
+        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //new ms.dat: comment
+        
+        /* write out the first microstate: free conf id */
         fprintf(ms_fp2, "%d: ", n_free);
         for (i=0; i<n_free; i++) {
             fprintf(ms_fp2,"%d, ", state[i]);
         }
         fprintf(ms_fp2, "\n");
+        }
 
         //write each microstate: write first microstate
         update_conf_id(ms_state.conf_id, state);
@@ -2557,7 +2563,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.H = E_states[istate] + E_base;
         // ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(&ms_state);
+        if (new_ms_flag) write_state_Enum(&ms_state);
 
     }
 
@@ -2592,7 +2598,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.H = E_states[istate] + E_base;
         //ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
         write_ms(&ms_state);
-        write_state_Enum(&ms_state);
+        if (new_ms_flag) write_state_Enum(&ms_state);
         ms_state.n_flip = 0;
         }
 
@@ -2863,11 +2869,13 @@ void MC_smp(int n)
 
 
     /* write out the beginning testing microstate */
+    if (new_ms_flag) {
     fprintf(ms_fp2, "%d: ", n_free);
     for (i=0; i<n_free; i++) {
         fprintf(ms_fp2,"%d, ", state[i]);
     }
     fprintf(ms_fp2, "\n");
+    }
 
 
 
@@ -2961,7 +2969,7 @@ void MC_smp(int n)
             if (dE < 0.0 || (float) rand()/RAND_MAX < exp(b*dE)) {                                 /* go to new low */
                 if (ms_state.counter != 0) {
                     write_ms(&ms_state);
-                    write_state_MC(&old_ms_state, old_E+E_base);
+                    if (new_ms_flag) write_state_MC(&old_ms_state, old_E+E_base);
                 }
                 update_conf_id(ms_state.conf_id, state);
                 ms_state.counter = 1;
@@ -3009,7 +3017,7 @@ void MC_smp(int n)
     }
     if (ms_state.counter != 0) {
         write_ms(&ms_state);
-        write_state_MC(&ms_state, E_state+E_base);
+        if (new_ms_flag) write_state_MC(&ms_state, E_state+E_base);
     }
 
     E_entropy = get_totalTS();
