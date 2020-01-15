@@ -104,7 +104,7 @@ t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
 t        step 2: make rotatmers                             (DO_ROTAMERS)
 t        step 3: do energy calculations                     (DO_ENERGY)
 t        step 4: monte carlo sampling                       (DO_MONTE)
-t        step 6: analysis                                   (DO_ANALYSIS)
+f        step 6: analysis                                   (DO_ANALYSIS)
 ```
 
 ---
