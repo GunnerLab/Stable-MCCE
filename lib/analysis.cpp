@@ -388,6 +388,7 @@ int hbond_network()
 		totalState += count;
 //		if (totalRecords % PRINT_INTERVAL == 0) cout << totalRecords << " records have been loaded." << endl;
 
+
 		for (int i_res=0; i_res<n_spe; i_res++) {
 			for (int j_res=0; j_res<n_spe; j_res++) {
 				if (j_res == i_res) continue;
