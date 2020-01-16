@@ -4,15 +4,17 @@ remote_name: upstream
 
 nav:
     - Overview: index.md
-    - Using MCCE:
-        - Quick Start: quick.md
-        - Tutorial and Examples:
-          - pKa calculation: pkaexample.md
-          - Em calculation: emexample.md
-          - Hydrogen-bond network: hbexample.md
-          - Make new topology file: newftpl.md
-        - Tools Documentation: tools.md
-        - How-Tos: howtos.md
+    - Quick Start: quick.md
+    - Tutorial and Examples:
+      - pKa calculation: pkaexample.md
+      - Em calculation: emexample.md
+      - Hydrogen-bond network: hbexample.md
+    - Tools Program Reference: tools.md
+    - How-Tos:
+      - Customize run.prm: runprm.md
+      - Convert mcce tpl file: mcce2free.md
+      - Make a new topology file: newftpl.md
+
 
 #theme: readthedocs
 
