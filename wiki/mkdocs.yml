@@ -14,7 +14,7 @@ nav:
       - Customize run.prm: runprm.md
       - Convert mcce tpl file: mcce2free.md
       - Make a new topology file: newftpl.md
-
+      - Analyze ionization energy: mfehowto.md
 
 #theme: readthedocs
 

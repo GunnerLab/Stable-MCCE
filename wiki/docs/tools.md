@@ -8,7 +8,9 @@
 *Run step3 with multiple threads.*
 
 **Syntax:**
+```
 energies.py [-h] [-p processes] [-r] [-c start end] [-e /path/to/mcce]
+```
 
 **Optional arguments:**
 
@@ -51,9 +53,27 @@ in run.prm file might be altered.
 *Download a pdb file by its PDB ID.*
 
 **Syntax:**
-
+```
+getpbd pdbid [saved name]
+```
 
 **Example:**
+```
+getpdb 1akk
+Inquiring the remote file 1AKK.pdb ...
+Saving as 1AKK.pdb ...
+Download completed. 
+```
+
+Or 
+```
+getpdb 1akk prot.pdb
+Inquiring the remote file 1AKK.pdb ...
+Saving as prot.pdb ...
+Download completed. 
+```
+
+to save as specified name.
 
 
 ---
@@ -61,10 +81,22 @@ in run.prm file might be altered.
 *Translate old atom names in step2_out to new PDB v3 names.*
 
 **Syntax:**
+```
+translate_step2.py step2_out.pdb
+```
 
+Hydrogen names in PDB v3 are significantly different from PDB v2. Due to the randomness in step 2, 
+it is sometimes desired to preserve step2_out.pdb. This tool translates the names so that step2_out.pdb so that it 
+can be used by new mcce.
 
+This program prints the translated content on screen. So the user is responsible to make backup of the step2_out.pdb 
+file and redirect the outcome to a new step2_out.pdb.  
+  
 **Example:**
-
+```
+cp step2_out.pdb step2_out.pdb.bak
+translate_step2.py step2_out.pdb.bak > step2_out.pdb
+```
 
 
 ## Result Analysis
