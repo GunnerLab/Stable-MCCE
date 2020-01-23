@@ -115,9 +115,35 @@ state.py
  * head3.lst
  * extra.tpl for scaling factors that are not equal to 1.
  * energies/\*.opp for pairwise interactions 
+ * microstate file named "states"
+ 
+The microstate file is in a fixed format. The first line is like:
+```
+T=298.15, ph=7.0, eh=0.0
+```
 
+It specifies the the environment variables which affects the energy calculation. Variables are separated by ",
+". The variable names are **not** case sensitive. 
+
+ * T: Temperature. Room temperature is 298.15 K
+ * ph: pH value.
+ * eh: Eh value, the electric potential for potential titration.
+
+The rest of the lines are microstates. One line per state. Each line consists the index number of conformers (0 
+based). Numbers can be separated by either comma or space.
+ 
 **Example:**
 
+Make a states file:
+
+```
+
+```
+
+Run 
+```
+state.py
+```
 
 ## Parameter file preparation
 

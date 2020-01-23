@@ -227,7 +227,8 @@ int is_hb( CONF *conf1, CONF *conf2)
 //				}
 				for (iA=0; iA<Aatoms.n; iA++) {
 					if (param_get((char *) "IATOM", conf2->confName, Aatoms.strings[iA], &Aseq)) {
-					    printf("   ERROR: can not determin iatom of %s %s\n", conf2->confName, Aatoms.strings[iA]);
+					    printf("   ERROR: can not determin iatom of \"%s\" \"%s\"\n", conf2->confName, Aatoms
+					    .strings[iA]);
 					}
 					d = ddvv(conf1->atom[Dseq].xyz, conf2->atom[Aseq].xyz);
 

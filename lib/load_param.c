@@ -1,6 +1,6 @@
 /*******************************************************************************
  * NAME
- *        load_param - load a parameter file into parameter database and convert 
+ *        load_param - load a parameter file into parameter database and convert
  *                     the parameter value to appropiate data type.
  *
  * SYNOPSIS
@@ -18,7 +18,7 @@
  *        is the atom name.  The leading and ending spaces of 3 keys are stripped
  *        off at the time the parameter entry is saved.
  *
- *        The value has  been either  converted  to the the  appropriate types if 
+ *        The value has  been either  converted  to the the  appropriate types if
  *        listed below or left as a string and you can process it later.  Here is
  *        a table of the converted values:
  *
@@ -97,7 +97,7 @@ int load_param(char *fname)
        printf("FATAL: There is an error in tpl file %s\n", fname);
        return USERERR;
    }
-   
+
    /* open the parameter file, return -1 on failure */
    if ((fp=fopen(fname, "r")) == NULL) {
       printf("load_param(): failed oppening file \"%s\".\n", fname);
@@ -192,7 +192,9 @@ int load_param(char *fname)
               ) { /* convert to STRINGS */
          STRINGS value;
          strip(sbuff, line+LEN_KEY1+LEN_KEY2+LEN_KEY3);
-         value.n = strlen(sbuff)/5+1;  /* 4 char for each atom name, 1 separation space, # of donor/acceptor atom (hydrogen) */
+         value.n = (int)((float)((strlen(sbuff))-0.1)/5)+1;  /* 4 char for each atom name, 1 separation space,
+         # of
+         donor/acceptor atom (hydrogen) */
 
          /* allocate string array from the number of atom names */
          value.strings = (char **) malloc(value.n*sizeof(char *));
@@ -204,6 +206,12 @@ int load_param(char *fname)
             /* copy the donor/acceptor atom name */
             strncpy(value.strings[Counter], sbuff+Counter*5, 4);
             value.strings[Counter][4] = '\0';
+            for(i=strlen(value.strings[Counter])-1;i>=0;i--) {
+               if (value.strings[Counter][i]=='\n') value.strings[Counter][i]=' ';
+               else if (value.strings[Counter][i]=='\0') value.strings[Counter][i]=' ';
+               else if (value.strings[Counter][i]=='\r') value.strings[Counter][i]=' ';
+               else break;
+            }
          }
          /* save this STRINGS structure */
          param_sav(key1, key2, key3, &value, sizeof(value));
@@ -266,7 +274,7 @@ int load_param(char *fname)
              value.swap_atom1[i_swap][4] = '\0';
              strncpy(value.swap_atom2[i_swap], sbuffer+5, 4);
              value.swap_atom2[i_swap][4] = '\0';
-             
+
              if (strlen(sbuffer)>=10) sbuffer+=10;
              else sbuffer+=(strlen(sbuffer));
          }
