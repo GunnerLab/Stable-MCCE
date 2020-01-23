@@ -43,21 +43,6 @@ void free_param() {
 }
 ```
 
-If you see glib.h error:
-
-Install glib:
-
-```sudo apt-get install libglib2.0-dev```
-
-See the command options:
-
-```pkg-config --cflags --libs glib-2.0```
-
-Add the above output to makefile as compiler option (the next is an example):
-
-```-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  -lglib-2.0```
-
-
 ## Prepare a working directory
 
 ### Working directory:
@@ -104,7 +89,7 @@ t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
 t        step 2: make rotatmers                             (DO_ROTAMERS)
 t        step 3: do energy calculations                     (DO_ENERGY)
 t        step 4: monte carlo sampling                       (DO_MONTE)
-t        step 6: analysis                                   (DO_ANALYSIS)
+f        step 6: analysis                                   (DO_ANALYSIS)
 ```
 
 ---
