@@ -25,15 +25,15 @@ make a working directory and go to the working directory. MCCE will generate int
 the current directory, so it's best to prepare one directory for calculation on one structure.
  
 ```
-mkdir 3wum
-cd 3wum
+mkdir 4lzt
+cd 4lzt
 ```
  
-Then download pdb file 3WUM to the working directory:
+Then download pdb file 4LZT to the working directory:
 ```
-jmao@jmao-desktop ~/3wum $ getpdb 3wum
-Inquiring the remote file 3WUM.pdb ...
-Saving as 3WUM.pdb ...
+jmao@jmao-desktop ~/4lzt $ getpdb 4lzt
+Inquiring the remote file 4LZT.pdb ...
+Saving as 4LZT.pdb ...
 Download completed. 
 ```
 
@@ -74,7 +74,7 @@ prot.pdb                                                    (INPDB)
 
 It's a good idea to keep the downloaded pdb file 3WUM.pdb, so we make a copy named prot.pdb:
 ```
-cp 3WUM.pdb prot.pdb
+cp 4LZT.pdb prot.pdb
 ```
 
 Since we are calculating pKas, we need to run from step 1 to 4. Mark these steps "t" for "true".
@@ -156,4 +156,18 @@ to put the program in background.
 ## Results
 The pKa report is in file pK.out.
 
+```
+cat pK.out
+```
 
+From the result, GLU 35 has a higher pKa than ASP 52.
+
+To analyze the ionization energy of an ionizable residue at ph 5:
+```
+mfe.py ASP-A0052_  5
+```
+
+at ph 7:
+```
+mfe.py ASP-A0052_  7
+```
