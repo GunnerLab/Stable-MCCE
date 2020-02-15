@@ -186,7 +186,6 @@ int get_env()
     env.ionrad = 0.0;
     env.salt =0.00;
     env.ms_out            =    0;    /* Standard microstate output flag ----Cai */
-    env.re_ms_out            =    0;    /* Readable Standard microstate output flag ----Cai */
     env.always_scale_vdw  =    1;    /* monte_ms variable ----Cai */
 
 
@@ -591,13 +590,6 @@ int get_env()
             if (str1[0] == 't' || str1[0] == 'T') env.ms_out = 1;
             else env.ms_out = 0;
         }
-        /* Output readable microstate --Cai*/
-        else if (strstr(sbuff, "(RE_MS_OUT)")) {
-            str1 = strtok(sbuff, " ");
-            if (str1[0] == 't' || str1[0] == 'T') env.re_ms_out = 1;
-            else env.re_ms_out = 0;
-        }
-
         else if (strstr(sbuff, "(MONTE_SEED)")) {
             env.monte_seed = atoi(strtok(sbuff, " "));
         }
@@ -1081,10 +1073,6 @@ int get_env()
                         /* Output microState at standard Monte Carlo --Cai  */
                         else if (strstr(trbuff, "(MS_OUT)")) {
                                 fprintf(tr, "%31s%31s\t%31s%31d\n", "(MS_OUT)", strtok(trbuff, " "), "env.ms_out", env.ms_out);
-                        }
-                        /* Output readable microstate --Cai */
-                        else if (strstr(trbuff, "(RE_MS_OUT)")) {
-                                fprintf(tr, "%31s%31s\t%31s%31d\n", "(RE_MS_OUT)", strtok(trbuff, " "), "env.re_ms_out", env.re_ms_out);
                         }
                         else if (strstr(trbuff, "(MS_GOLD_OUT)")) {
                                 fprintf(tr, "%31s%31s\t%31s%31d\n", "(MS_GOLD_OUT)", strtok(trbuff, " "), "env.ms_gold_out", env.ms_gold_out);

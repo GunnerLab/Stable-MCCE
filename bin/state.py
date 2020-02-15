@@ -18,11 +18,12 @@ if __name__ == "__main__":
     mc_parm = {}
     for field in fields:
         key, value = field.split("=")
+        key = key.upper()
         mc_parm[key.strip()] = float(value)
 
     T = mc_parm["T"]
-    ph = mc_parm["ph"]
-    eh = mc_parm["eh"]
+    ph = mc_parm["PH"]
+    eh = mc_parm["EH"]
 
 
 

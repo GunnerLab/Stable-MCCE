@@ -46,8 +46,8 @@ int load_head3lst();
 
 
 int analysis()
-{   
-    
+{
+
     /* Load step2_out.pdb and get residue list for the microstate output  */
     /*
     if (env.get_ms_gold){
@@ -62,12 +62,12 @@ int analysis()
     if (env.get_hbond_matrix){
         printf("   Load step2_out.pdb and get hydrogen bond matrix ...\n"); fflush(stdout);
         if (hbond_matrix()) {
-	printf("   Fatal error detected in hbond_matrix().\n"); 
+	printf("   Fatal error detected in hbond_matrix().\n");
 	return USERERR;
 	}
         else printf("   Files hb.dat and hah.txt are obtained.\n\n");
     }
-    
+
     /*Load hb.dat and ms.dat and combine them to get hydrogen bond network */
     if (env.get_hbond_network){
         printf("   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...\n"); fflush(stdout);
@@ -218,13 +218,18 @@ int is_hb( CONF *conf1, CONF *conf2)
 //			conf2->confName, Datoms.n);                    //test--Cai
 		if (!param_get((char *)"HACCEPT", conf2->confName,(char *) "", &Aatoms)) {
 			for (iD=0; iD<Datoms.n; iD++) {
-				param_get((char *)"IATOM", conf1->confName, Datoms.strings[iD], &Dseq);
+				if (param_get((char *)"IATOM", conf1->confName, Datoms.strings[iD], &Dseq)) {
+				    printf("   ERROR: can not determin iatom of %s %s\n", conf1->confName, Datoms.strings[iD]);
+				}
 //				if (!strcmp(conf1->confName, "HOH-1")) {
 //					printf("Donor: %s, Datoms.n: %d, Dseq: %d, atom name %s\n", conf1->confName,
 //						Datoms.n, Dseq, Datoms.strings[iD]);
 //				}
 				for (iA=0; iA<Aatoms.n; iA++) {
-					param_get((char *) "IATOM", conf2->confName, Aatoms.strings[iA], &Aseq);
+					if (param_get((char *) "IATOM", conf2->confName, Aatoms.strings[iA], &Aseq)) {
+					    printf("   ERROR: can not determin iatom of \"%s\" \"%s\"\n", conf2->confName, Aatoms
+					    .strings[iA]);
+					}
 					d = ddvv(conf1->atom[Dseq].xyz, conf2->atom[Aseq].xyz);
 
 //					d = ddvv(conf1->atom[Dseq].connect12[0]->xyz, conf2->atom[Aseq].xyz);  //*****
@@ -240,7 +245,7 @@ int is_hb( CONF *conf1, CONF *conf2)
 			}
 		}
 	}
-	
+
 	return isHb;
 }
 
@@ -383,6 +388,7 @@ int hbond_network()
 		totalRecords++;
 		totalState += count;
 //		if (totalRecords % PRINT_INTERVAL == 0) cout << totalRecords << " records have been loaded." << endl;
+
 
 		for (int i_res=0; i_res<n_spe; i_res++) {
 			for (int j_res=0; j_res<n_spe; j_res++) {

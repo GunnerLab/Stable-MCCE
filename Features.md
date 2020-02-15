@@ -12,9 +12,9 @@
 * [x] Step 3 multiple threads support
    * [x] write ele part only in opp at delphi
    * [x] finish up / merge opp files
-* [ ] Microstate output - Xiu Hong
+* [x] Microstate output - Xiu Hong
   * [x] upload previous code
-  * [ ] change microstate output format
+  * [x] change microstate output format
 * [ ] Hydrogen network report - Xiu Hong
 * [x] mfe in the analysis report
 * [ ] Control of MC: standard, with complete ms out, diff ms out.

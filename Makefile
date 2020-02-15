@@ -1,5 +1,5 @@
 CC      = gcc -g
-CC2 = g++ -g 
+CC2 = g++ -g
 LDIR = lib
 DEPS    = $(LDIR)/mcce.h
 LIB     = $(LDIR)/mcce.a
@@ -11,7 +11,7 @@ SRC = $(wildcard $(LDIR)/*.c)
 DELPHI = bin/delphi
 
 bin/mcce: mcce.c $(LIB) $(DEPS) $(DELPHI) $(STEP6)
-	$(CC2) -o bin/mcce mcce.c $(STEP6) $(LIB) -lm 
+	$(CC2) -o bin/mcce mcce.c $(STEP6) $(LIB) -lm
 
 $(DELPHI): $(LDIR)/delphi/delphi
 	$(MAKE) -C $(LDIR)/delphi

@@ -59,5 +59,8 @@ delphi/delphi
 lib/delphi/delphi
 mcce
 *.opp
+*.dat
 testcase_1A2P/energies/*.opp
-wiki/site
+testcase_cai/test1/ms1.dat
+testcase_cai/test1/ms.dat
+testcase_cai/test1/ms_out/*

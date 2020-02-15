@@ -61,6 +61,7 @@ PROT load_pdb(FILE *fp)
                 n_atom=0;
                 continue;
             }
+
             ins_conf(&prot.res[k_res], 0, n_atom);
             strcpy(prot.res[k_res].conf[0].confName, confName);
             strcpy(prot.res[k_res].conf[0].confID, "000");
