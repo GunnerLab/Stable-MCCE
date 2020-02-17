@@ -145,6 +145,74 @@ Run
 state.py
 ```
 
+---
+### mfe.py
+*Analyze ionization energy by mean field approach.*
+
+**Syntax:**
+```
+state.py Residue_ID pH [pairwise interaction cut_off]
+```
+
+* Residue_ID: Residue ID as in pK.out
+* pH: pH value at which ionization energy is calculated. Environment pH is a factor of AH <=> A- + H+ reaction. Also the calculation will use the conformation of other residues at this pH. 
+* cut_off: Report only pairwise interaction bigger than this cut off value.
+
+**Required files:**
+
+ * run.prm
+ * head3.lst
+ * extra.tpl for scaling factors that are not equal to 1.
+ * energies/\*.opp for pairwise interactions 
+
+ 
+**Example:**
+
+Check titration result in pKa.out:
+```
+cat pK.out
+... 
+ ASP-A0052_        2.275
+...
+```
+
+ASP-A0052 is the residue_ID. Its calculated pKa is 2.275. At this point, the free energy of reaction from ASP neutral to ASP ionized should be close to 0.
+
+Run 
+```
+jmao@jmao-desktop ~/3wum $ mfe.py ASP-A0052_  2.275 0.1
+Residue ASP-A0052_ pKa/Em=2.275
+=================================
+Terms          pH     meV    Kcal
+---------------------------------
+vdw0        -0.01   -0.71   -0.02
+vdw1         0.00    0.20    0.00
+tors        -0.08   -4.47   -0.10
+ebkb        -0.82  -47.40   -1.11
+dsol         1.22   71.06    1.67
+offset      -0.62  -36.17   -0.85
+pH&pK0       2.48  143.66    3.38
+Eh&Em0       0.00    0.00    0.00
+residues    -2.17 -126.03   -2.96
+*********************************
+TOTAL        0.00    0.14    0.00  sum_crg
+*********************************
+ASNA0044_   -0.65  -37.99   -0.89    0.00
+ARGA0045_   -0.11   -6.45   -0.15    1.00
+ASNA0046_   -0.61  -35.50   -0.83    0.00
+ASPA0048_    0.33   19.44    0.46   -0.58
+GLNA0057_    0.15    8.84    0.21    0.00
+ASNA0059_   -0.69  -40.19   -0.94    0.00
+ARGA0061_   -0.25  -14.74   -0.35    1.00
+ASPA0066_    0.14    8.38    0.20   -0.41
+ARGA0112_   -0.18  -10.37   -0.24    1.00
+=================================
+```
+
+You can do mfe calculation at pH other than mid-point.
+
+
+
 ## Parameter file preparation
 
 ## Connecting to other programs
