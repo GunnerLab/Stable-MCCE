@@ -14,8 +14,10 @@ bin/mcce: mcce.c $(LIB) $(DEPS) $(DELPHI) $(STEP6)
 	$(CC2) -o bin/mcce mcce.c $(STEP6) $(LIB) -lm
 
 $(DELPHI): $(LDIR)/delphi/delphi
-	$(MAKE) -C $(LDIR)/delphi
 	cp $(LDIR)/delphi/delphi $(DELPHI)
+
+$(LDIR)/delphi/delphi:
+	$(MAKE) -C $(LDIR)/delphi
 
 OBJ     = $(SRC:.c=.o)
 
