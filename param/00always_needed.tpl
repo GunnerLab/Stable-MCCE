@@ -129,6 +129,13 @@ RELAX    VAL        t
 RELAX    HOH        t
 RELAX    _CL        t
 
+
+# Swap conformer
+ROT_SWAP ASN   0     OD1- ND2
+ROT_SWAP GLN   0     OE1- NE2
+ROT_SWAP HIS   0     ND1- CD2  CE1- NE2
+
+
 ### parameters for calculate torsion energy
 # torsion energy = Vn/2 * [1 + cos(n_fold * torsion_angle - gamma)]
 #123456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
