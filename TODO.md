@@ -1,5 +1,7 @@
 What needs to be done to have a working version (without step6)
-I’d like to have fort.38 in step 4 and sum_crg.out; pK.out etc in step 5
+
+  [ ] I’d like to have fort.38 in step 4 and sum_crg.out; pK.out etc in step 5
+
 The corrected sum_crg (using head3.lst for charge)
 the mfe analysis in pK.out (and an ability to change the mfe point from pK to a pH by retuning step 5
 Change in chemical potential of a ligand chosen in run.prm
