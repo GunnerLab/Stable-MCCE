@@ -1396,7 +1396,7 @@ void load_headlst(PROT prot) {
     
 
     /* always read the head1.lst */
-//    if (env.rot_specif) {
+    if (env.rot_specif) {
     if ( (fp = fopen(FN_CONFLIST1,"r")) ) {
         while(fgets(sbuff, sizeof(sbuff), fp)) {
             rm_comment(sbuff2, sbuff);
@@ -1442,6 +1442,7 @@ void load_headlst(PROT prot) {
             }
         }
         fclose(fp);
+    }
     }
 }
 

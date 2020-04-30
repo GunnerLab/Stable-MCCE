@@ -53,8 +53,7 @@ def write_runprm(args):
                 runprm[key] = value
             except ValueError:
                 print("Argument must be \"KEY=VALUE\" format, but got \"%s\" instead" % field)
-    else:
-        print("No user options")
+
 
     # write
     lines = []
