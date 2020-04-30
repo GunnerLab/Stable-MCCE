@@ -14,8 +14,9 @@
 
 ## Improvement 
  - [ ] Do not pass 0 radius H to delphi to see if this fixes delphi surface error.
- - [ ] Strip down and reorganize run.prm; have full.prm (with all possibilities) on Wiki. **Good idea, group options that default to a pre-defined choices**
- - [ ] One run.prm with a toggle for run quick or default (rather than 2 different basic input files) **Questionaire for determining the run.prm**
+ - [X] Strip down and reorganize run.prm; 
+ - [ ] have full.prm (with all possibilities) on Wiki. **Good idea, group options that default to a pre-defined choices**
+ - [X] One run.prm with a toggle for run quick or default (rather than 2 different basic input files) **Questionaire for determining the run.prm**
 
 ## Open questions (are these done or for next version?)
 
