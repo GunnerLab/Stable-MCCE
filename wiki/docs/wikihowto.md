@@ -85,17 +85,18 @@ If upstream is not pointing to https://github.com/GunnerLab/Stable-MCCE.git, run
 git remote add upstream https://github.com/GunnerLab/Stable-MCCE.git
 ```
 
-Under wiki folder
+Under wiki folder, run ```gh-deploy```
+```
+(base) jmao@pc:~/projects/Stable-MCCE/wiki$ mkdocs gh-deploy
+INFO    -  Cleaning site directory 
+INFO    -  Building documentation to directory: /home/jmao/projects/Stable-MCCE/wiki/site 
+INFO    -  Copying '/home/jmao/projects/Stable-MCCE/wiki/site' to 'gh-pages' branch and pushing to GitHub. 
+INFO    -  Your documentation should shortly be available at: https://GunnerLab.github.io/Stable-MCCE/ 
+```
 
-To deploy site, you can
-
- 1. create a pull request so that the GunnerLab repo administrator can merge and deploy for you.
-
-or
-
-deploy directly by running gh-deploy under directory wiki/. You need GunnerLab repo member permission to do this.
 If gh-deploy reports conflict in special branch gh-pages, use "--force" switch to overwrite:
-
-
+```
 mkdocs gh-deploy --force
-The published site is on: https://gunnerlab.github.io/Develop-MCCE/.
+```
+
+The published site is on: https://gunnerlab.github.io/Stable-MCCE/.
