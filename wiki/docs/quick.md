@@ -90,4 +90,7 @@ This setp simulates a titration and write out the conformation and ionization st
 step4.py
 ```
 
-For more detailed command usages, use "-h" switch in each command above.
+## Notes
+
+* For more detailed command usages, use "-h" switch in each command above.
+* Some steps take hours to finish, so it is recommended to run at the background. For example ```step3.py > run.log &```
