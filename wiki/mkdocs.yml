@@ -15,6 +15,7 @@ nav:
       - Convert mcce tpl file: mcce2free.md
       - Make a new topology file: newftpl.md
       - Analyze ionization energy: mfehowto.md
+      - How to write documentation: wikihowto.md
 
 #theme: readthedocs
 

@@ -4,26 +4,32 @@
 ## Get the code
 
 ### To download the latest code:
+Under a terminal window, run:
 
-git clone https://github.com/GunnerLab/Stable-MCCE.git
+    git clone https://github.com/GunnerLab/Stable-MCCE.git
 
 ### Compile the code:
-
-Compile:
+This creates a directory Stable-MCCE, enter the directory and compile:
 
 ```
+cd Stable-MCCE
 make clean
 make
 ```
 
+Find the path of Stable-MCCE installation directory:
+```
+(base) jmao@pc:~/projects/Stable-MCCE$ pwd
+/home/jmao/projects/Stable-MCCE
+```
+In my case the {/path/to/mcce/} is /home/jmao/projects/Stable-MCCE
 
 Add the executable to your path:
-
 ```
 export PATH={/path/to/mcce/}bin:$PATH
 ```
 
-{/path/to/mcce/} is the path to the MCCE installation directory. 
+Also put this line at the end of .bashrc file under your home directory so that the environment is properly set everytime you open a terminal window.
 
 **Troubleshooting:**
 
@@ -43,9 +49,9 @@ void free_param() {
 }
 ```
 
-## Prepare a working directory
+## Run MCCE is simplest way
 
-### Working directory:
+### Prepare a working directory:
 ```
 mkdir test_lysozyme
 cd test_lysozyme
@@ -56,87 +62,35 @@ cd test_lysozyme
 getpdb 1dpx
 ```
 
-You now have a pdb file 1DPX in the working directory.
+You now have a pdb file 1DPX.pdb in the working directory.
 
-### run.prm
-MCCE requires a file run.prm to guide the run.
-```
-cp {/path/to/mcce/}run.prm.quick ./run.prm
-```
+The simplest way to run mcce is do these four steps:
 
-{/path/to/mcce/} is the path to the MCCE installation directory. Edit the following lines in run.prm:
-
----
+### Step 1 convert PDB file into MCCE PDB
+This step proof reads the structure file and cut terminal residues and complex cofactors into smaller ones if necessary.
 ```
-prot.pdb                                                    (INPDB)
-```
-to 
-```
-1DPX.pdb                                                    (INPDB)
+step1.py 1DPX.pdb
 ```
 
----
+### Step 2 make side chain conformers
+This step makes alternative side chain locations and ionization states.
 ```
-f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-f        step 2: make rotatmers                             (DO_ROTAMERS)
-f        step 3: do energy calculations                     (DO_ENERGY)
-f        step 4: monte carlo sampling                       (DO_MONTE)
-f        step 6: analysis                                   (DO_ANALYSIS)
-```
-to 
-```
-t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-t        step 2: make rotatmers                             (DO_ROTAMERS)
-t        step 3: do energy calculations                     (DO_ENERGY)
-t        step 4: monte carlo sampling                       (DO_MONTE)
-f        step 6: analysis                                   (DO_ANALYSIS)
+step2.py
 ```
 
----
+### Step 3 make energy table
+This step calculates conformer self energy and pairwise interaction table.
 ```
-/home/mcce/Stable-MCCE/extra.tpl                              (EXTRA)
-/home/mcce/Stable-MCCE/name.txt MCCE renaming rule.           (RENAME_RULES)
-```
-to 
-```
-{/path/to/mcce/}extra.tpl                                   (EXTRA)
-{/path/to/mcce/}name.txt MCCE renaming rule.                (RENAME_RULES)
+step3.py
 ```
 
----
+### Step 4 Simulate a titration with Monte Carlo sampling
+This setp simulates a titration and write out the conformation and ionization states of each side chain at various conditions.
 ```
-/home/mcce/Stable-MCCE                                        (MCCE_HOME)
-```
-
-to
-```
-{/path/to/mcce/}                                              (MCCE_HOME)
+step4.py
 ```
 
----
-```
-/home/mcce/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
-```
+## Notes
 
-to
-```
-{/path/to/mcce/}bin/delphi DelPhi executable                  (DELPHI_EXE)
-```
----
-
-```
-/scratch     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
-```
-to
-```
-/tmp     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
-```
-
-## Run mcce
-```
-mcce > run.log &
-```
-
-The log will be saved in file run.log.
-
-
+* For more detailed command usages, use "-h" switch in each command above.
+* Some steps take hours to finish, so it is recommended to run at the background. For example ```step3.py > run.log &```
