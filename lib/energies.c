@@ -451,7 +451,7 @@ int conf_energies(int kr, int kc, PROT prot)
 
              fp = fopen("fort.10", "w");
              fprintf(fp, "gsize=%d\n", env.grids_delphi);
-             fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2, del_runs-1));
+             fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2, del_runs-1)* pow(0.9, n_retry));
              fprintf(fp, "in(unpdb,file=\"fort.13\")\n");
              fprintf(fp, "indi=%.1f\n", env.epsilon_prot);
              fprintf(fp, "exdi=%.1f\n", env.epsilon_solv);
@@ -468,9 +468,9 @@ int conf_energies(int kr, int kc, PROT prot)
 
              sprintf(sbuff, "%s>delphi%02d.log 2>/dev/null", env.delphi_exe, 1);
 
-             if (n_retry<5) {
-            system(sbuff);
-         }
+             if (n_retry<10) {
+                system(sbuff);
+             }
              else {
                 printf("   FATAL: too many failed delphi runs (%d), quitting...\n", n_retry);
                 return USERERR;
@@ -479,7 +479,7 @@ int conf_energies(int kr, int kc, PROT prot)
              for (i=1; i<del_runs; i++) {
                 fp = fopen("fort.10", "w");
                 fprintf(fp, "gsize=%d\n", env.grids_delphi);
-                fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2,del_runs-1-i));
+                fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2,del_runs-1-i)* pow(0.9, n_retry));
                 fprintf(fp, "in(unpdb,file=\"fort.13\")\n");
                 fprintf(fp, "in(phi,file=\"run%02d.phi\")\n", i);
                 fprintf(fp, "indi=%.1f\n", env.epsilon_prot);
@@ -495,7 +495,7 @@ int conf_energies(int kr, int kc, PROT prot)
                 fclose(fp);
 
                 sprintf(sbuff, "%s>delphi%02d.log 2>/dev/null", env.delphi_exe, i+1);
-                if (n_retry<5) {
+                if (n_retry<10) {
                    system(sbuff);
                 }
                 else {
@@ -905,6 +905,8 @@ int conf_rxn(int kr, int kc, PROT prot)
           rxn_min = 0.0;
       }
       else {
+
+
           fp = fopen("fort.27", "w");
           fprintf(fp, "ATOM  %5d  C   CEN  %04d    %8.3f%8.3f%8.3f\n", 1, 1,
                                                                    center.x,
@@ -913,9 +915,14 @@ int conf_rxn(int kr, int kc, PROT prot)
           fclose(fp);
 
 
+
+          notpassed = 1;
+
+          while (notpassed) {
+
           fp = fopen("fort.10", "w");
           fprintf(fp, "gsize=%d\n", env.grids_delphi);
-          fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2, del_runs-1));
+          fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2, del_runs-1) * pow(0.9, n_retry));
           fprintf(fp, "in(unpdb,file=\"fort.13\")\n");
           fprintf(fp, "indi=%.1f\n", env.epsilon_prot);
           fprintf(fp, "exdi=%.1f\n", env.epsilon_solv);
@@ -944,7 +951,7 @@ int conf_rxn(int kr, int kc, PROT prot)
 
 
           sprintf(sbuff, "%s>rxn%02d.log", env.delphi_exe, 1);
-          if (n_retry<5) system(sbuff);
+          if (n_retry<10) system(sbuff);
           else {
              printf("   FATAL: too many failed delphi runs (%d), quitting...\n", n_retry);
              return USERERR;
@@ -953,7 +960,7 @@ int conf_rxn(int kr, int kc, PROT prot)
           for (i=1; i<del_runs; i++) {
              fp = fopen("fort.10", "w");
              fprintf(fp, "gsize=%d\n", env.grids_delphi);
-             fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2,del_runs-1-i));
+             fprintf(fp, "scale=%.2f\n", env.grids_per_ang/pow(2,del_runs-1-i)* pow(0.9, n_retry));
              fprintf(fp, "in(unpdb,file=\"fort.13\")\n");
              fprintf(fp, "in(phi,file=\"run%02d.phi\")\n", i);
              fprintf(fp, "indi=%.1f\n", env.epsilon_prot);
@@ -968,7 +975,7 @@ int conf_rxn(int kr, int kc, PROT prot)
              fprintf(fp, "energy(g,an,sol)\n");
              fclose(fp);
              sprintf(sbuff, "%s>rxn%02d.log", env.delphi_exe, i+1);
-             if (n_retry<5) system(sbuff);
+             if (n_retry<10) system(sbuff);
              else {
                 printf("   FATAL: too many failed delphi runs (%d), quitting...\n", n_retry);
                 return USERERR;
@@ -984,7 +991,7 @@ int conf_rxn(int kr, int kc, PROT prot)
              n_retry++;
              remove("ARCDAT");
              del_err = 1;
-             return (USERERR);
+             continue;
           }
 
           /* skip 12 lines */
@@ -1029,7 +1036,7 @@ int conf_rxn(int kr, int kc, PROT prot)
           if (del_err) notpassed = 1;
           else notpassed = 0; /* so far so good */
        }
-
+        }
       /* turn off this conformer */
       for (i=0; i<prot.res[kr].conf[kc].n_atom; i++) {
          if (!prot.res[kr].conf[kc].atom[i].on) continue;
