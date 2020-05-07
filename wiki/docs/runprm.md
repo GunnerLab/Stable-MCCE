@@ -37,7 +37,7 @@ Th parameter "INPDB" specifies a pdb file as the initial input structure.
 MCCE can be divided into four steps.
 
 blockdiag {
-   A [label = "Step 1\nProof read structure"];
+   A [label = "Step 1\nProof read structure'];
    B [label = "Step 2\nMake conformers"];
    C [label = "Step 3\nMake energy table"];
    D [label = "Step 4\nSimulated titration"];

@@ -13,7 +13,8 @@
  - [ ] write out for Asp, Glu, Arg, Lys: which ones are <90% ionized and the total number (if you have a lot of neutral Arg the run is likely to be bad) **A tool or step 4, print out abnoramlies, chi2, n etc**
 
 ## Improvement 
- - [ ] Do not pass 0 radius H to delphi to see if this fixes delphi surface error.
+ - [?] Do not pass 0 radius H to delphi to see if this fixes delphi surface error.
+ - [X] Fix delphi run time error.
  - [X] Strip down and reorganize run.prm; 
  - [ ] have full.prm (with all possibilities) on Wiki. **Good idea, group options that default to a pre-defined choices**
  - [X] One run.prm with a toggle for run quick or default (rather than 2 different basic input files) **Questionaire for determining the run.prm**
