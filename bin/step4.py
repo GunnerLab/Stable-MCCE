@@ -36,6 +36,8 @@ Usage examples:
 import os, argparse
 import subprocess
 import sys
+from mccesteps import *
+
 
 def write_runprm(args):
     runprm = {}
@@ -84,11 +86,8 @@ def write_runprm(args):
                 print("Argument must be \"KEY=VALUE\" format, but got \"%s\" instead" % field)
 
     # write
-    lines = []
-    for key in runprm:
-        line = "%-20s    (%s)\n" % (runprm[key], key)
-        lines.append(line)
-    open("run.prm", "w").writelines(lines)
+    export_runprm(runprm)
+    record_runprm(runprm, "#STEP4")
 
     return
 
@@ -97,7 +96,7 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Run mcce step 4, Monte Carlo sampling to simulate a titration."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("--dry", default=False, help="Dry run, create run.prm but do not run step 1", action="store_true")
+    parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 4", action="store_true")
     parser.add_argument("-i", metavar="initial ph/eh", default="0.0", help="Initial pH/Eh of titration")
     parser.add_argument("-d", metavar="interval", default="1.0", help="titration interval in pJ or mV")
     parser.add_argument("-n", metavar="steps", default="15", help="number of steps of titration")
@@ -111,7 +110,7 @@ if __name__ == "__main__":
     #print(args)
 
     write_runprm(args)
-    if not args.dry:
+    if not args.norun:
         mcce = args.e
         process = subprocess.Popen([mcce], stdout=subprocess.PIPE)
         for line in process.stdout:

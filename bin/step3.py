@@ -39,7 +39,7 @@ import threading
 import time
 import os
 import subprocess
-
+from mccesteps import *
 
 def mcce_thread(mcce, name):
     logging.info("Thread %s: starting", name)
@@ -100,38 +100,47 @@ def process(args):
                 conformers.append(uniqID)
     nconf = len(conformers)
 
-    if args.r:
-        runprm["PBE_START"] = "1"
-        runprm["PBE_END"] = "-11"
-        write_runprm(runprm)
+    # write run.prm.record as a single thread run.prm
+    runprm["PBE_START"] = "1"
+    runprm["PBE_END"] = "99999"
+    record_runprm(runprm, "#STEP3")
 
-        logging.info("Create a single thread to run this job.")
-        x = threading.Thread(target=mcce_thread, args=(args.e, 1))
-        x.start()
+    if args.norun:
+        export_runprm(runprm)
+        record_runprm(runprm, "#STEP3")
     else:
-        nrange = args.c[1] - args.c[0] + 1
-        if nconf >= nrange:
-            nconf = nrange
-
-        # loop over number of threads
-        threads = []
-        for i in range(args.p):
-            start = int(args.c[0] + i * nconf/args.p)
-            end = int(args.c[0] -1 + (i+1) * nconf/args.p)
-            runprm["PBE_START"] = str(start)
-            runprm["PBE_END"] = str(end)
+        if args.r:
+            runprm["PBE_START"] = "1"
+            runprm["PBE_END"] = "-11"
             write_runprm(runprm)
 
-            x = threading.Thread(target=mcce_thread, args=(args.e, i))
-            threads.append(x)
+            logging.info("Create a single thread to run this job.")
+            x = threading.Thread(target=mcce_thread, args=(args.e, 1))
             x.start()
-            time.sleep(5)
+        else:
+            nrange = args.c[1] - args.c[0] + 1
+            if nconf >= nrange:
+                nconf = nrange
 
-        for i, x in enumerate(threads):
-            x.join()
-            logging.info("Main: join thread %d" % i)
+            # loop over number of threads
+            threads = []
+            for i in range(args.p):
+                start = int(args.c[0] + i * nconf/args.p)
+                end = int(args.c[0] -1 + (i+1) * nconf/args.p)
+                runprm["PBE_START"] = str(start)
+                runprm["PBE_END"] = str(end)
+                write_runprm(runprm)
 
-        logging.info("Main: Done")
+                x = threading.Thread(target=mcce_thread, args=(args.e, i))
+                threads.append(x)
+                x.start()
+                time.sleep(5)
+
+            for i, x in enumerate(threads):
+                x.join()
+                logging.info("Main: join thread %d" % i)
+
+            logging.info("Main: Done")
 
     return
 
@@ -151,6 +160,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", default=False, help="refresh opp files and head3.lst without running delphi", action="store_true")
     parser.add_argument("-u", metavar="Key=Value", default="", help="User customized variables")
     parser.add_argument("-x", metavar="/path/to/delphi", default="delphi", help="delphi executable location, default to \"delphi\"")
+    parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 3", action="store_true")
 
     args = parser.parse_args()
 
