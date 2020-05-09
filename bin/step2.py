@@ -14,8 +14,8 @@ Usage examples:
 1. Run step 1 with default (quick conformers)
     step2.py
 
-2. Write run.prm for step 2, do not actually run step 2. (Dry run)
-    step2.py --dry
+2. Write run.prm for step 2, do not actually run step 2.
+    step2.py --norun
 
 3. Run step 2 with quick (default), medium, and comprehensive conformer making
     step2.py -l 1   # quick
@@ -35,6 +35,7 @@ Usage examples:
 import os, argparse
 import subprocess
 import sys
+from mccesteps import *
 
 def write_runprm(args):
     runprm = {}
@@ -65,6 +66,7 @@ def write_runprm(args):
     runprm["NCONF_LIMIT"] = "999"
 
     runprm["MINIMIZE_SIZE"] = "t"
+
 
     if args.l == 1:
         runprm["PACK"] = "f"
@@ -159,11 +161,9 @@ def write_runprm(args):
                 print("Argument must be \"KEY=VALUE\" format, but got \"%s\" instead" % field)
 
     # write
-    lines = []
-    for key in runprm:
-        line = "%-20s    (%s)\n" % (runprm[key], key)
-        lines.append(line)
-    open("run.prm", "w").writelines(lines)
+    # write run.prm
+    export_runprm(runprm)
+    record_runprm(runprm, "#STEP2")
 
     return
 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Run mcce step 2, make side chain conformers from step1_out.pdb."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("--dry", default=False, help="Dry run, create run.prm but do not run step 1", action="store_true")
+    parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 2", action="store_true")
     parser.add_argument("-d", metavar="epsilon", default="4.0", help="dielectric constant for optimizing conformers")
     parser.add_argument("-e", metavar="/path/to/mcce", default="mcce", help="mcce executable location, default to \"mcce\"")
     parser.add_argument("-u", metavar="Key=Value", default="", help="User customized variables")
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     #print(args)
 
     write_runprm(args)
-    if not args.dry:
+    if not args.norun:
         mcce = args.e
         process = subprocess.Popen([mcce], stdout=subprocess.PIPE)
         for line in process.stdout:
