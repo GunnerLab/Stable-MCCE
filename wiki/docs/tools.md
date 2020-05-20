@@ -2,6 +2,105 @@
 <small><i>Page last updated on: {{ git_revision_date }}</i></small>
 
 ## Improving and helping runs
+---
+### 4-step mcce run scripts
+MCCE involves 4 main steps:
+
+1. Step 1: Convert raw PDB file to MCCE PDB file, reformat terminal residues, and strip off surface water and ions.
+2. Step 2: Make side chain conformers, including rotamers and ionization conformers.
+3. Step 3: Compute self-energy of conformers and pairwise energy lookup table.
+4. Step 4: Monte Carlo sampling to evaluate favorable side chain position and ionization at various conditions.
+
+While the control of these 4 steps is fully configured in run.prm and executed by mcce command, the 4 steps can be carried out by python wrapper scripts without configuring run.prm.
+
+####  Step 1:
+```
+usage: step1.py [-h] [--norun] [--noter] [-e /path/to/mcce] [-u Key=Value]
+                [-d epsilon] [--dry]
+                pdb
+
+Run mcce step 1, premcce to format PDB file to MCCE PDB format.
+
+positional arguments:
+  pdb
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 1
+  --noter           Do not label terminal residues (for making ftpl).
+  -e /path/to/mcce  mcce executable location, default to "mcce"
+  -u Key=Value      User customized variables
+  -d epsilon        protein dielectric constant for delphi, default to 4.0
+  --dry             Delete all water molecules.
+```
+
+####  Step 2:
+```
+usage: step2.py [-h] [--norun] [-d epsilon] [-e /path/to/mcce] [-u Key=Value]
+                [-l level]
+
+Run mcce step 2, make side chain conformers from step1_out.pdb.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 2
+  -d epsilon        dielectric constant for optimizing conformers
+  -e /path/to/mcce  mcce executable location, default to "mcce"
+  -u Key=Value      User customized variables
+  -l level          conformer level 1: quick, 2: medium, 3: comprehensive
+```
+
+####  Step 3:
+```
+usage: step3.py [-h] [-c start end] [-d epsilon] [-e /path/to/mcce]
+                [-f tmp folder] [-p processes] [-r] [-u Key=Value]
+                [-x /path/to/delphi] [--norun]
+
+Run mcce step 3, energy calculations, with multiple threads.
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -c start end        starting and ending conformer, default to 1 and 9999
+  -d epsilon          protein dielectric constant for delphi, default to 4.0
+  -e /path/to/mcce    mcce executable location, default to "mcce"
+  -f tmp folder       delphi temporary folder, default to /tmp
+  -p processes        run mcce with number of processes, default to 1
+  -r                  refresh opp files and head3.lst without running delphi
+  -u Key=Value        User customized variables
+  -x /path/to/delphi  delphi executable location, default to "delphi"
+  --norun             Create run.prm but do not run step 3
+```
+
+step3.py is able to run in multiple threads.
+
+####  Step 4:
+```
+usage: step4.py [-h] [--norun] [-i initial ph/eh] [-d interval] [-n steps]
+                [--xts] [--ms] [-e /path/to/mcce] [-t ph or eh] [-u Key=Value]
+
+Run mcce step 4, Monte Carlo sampling to simulate a titration.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 4
+  -i initial ph/eh  Initial pH/Eh of titration
+  -d interval       titration interval in pJ or mV
+  -n steps          number of steps of titration
+  --xts             Enable entropy correction, default is false
+  --ms              Enable microstate output
+  -e /path/to/mcce  mcce executable location, default to "mcce"
+  -t ph or eh       titration type, pH or Eh
+  -u Key=Value      User customized variables
+```
+
+#### Combine 4 steps
+``` bash
+#!/bin/bash
+step1.py input.pdb
+step2.py
+step3.py
+step4.py
+```
 
 ---
 ### energies.py
