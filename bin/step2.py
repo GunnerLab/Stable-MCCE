@@ -176,7 +176,7 @@ if __name__ == "__main__":
     parser.add_argument("-d", metavar="epsilon", default="4.0", help="dielectric constant for optimizing conformers")
     parser.add_argument("-e", metavar="/path/to/mcce", default="mcce", help="mcce executable location, default to \"mcce\"")
     parser.add_argument("-u", metavar="Key=Value", default="", help="User customized variables")
-    parser.add_argument("-l", metavar="level", default=1, help="conformer level 1: quick, 2: medium, 3: comnprehensive", type=int)
+    parser.add_argument("-l", metavar="level", default=1, help="conformer level 1: quick, 2: medium, 3: comnrehensive", type=int)
     args = parser.parse_args()
 
     #print(args)
