@@ -40,11 +40,15 @@ def write_runprm(args):
     runprm["DO_PREMCCE"] = "t"
     runprm["MCCE_HOME"] = base_path
     runprm["MINIMIZE_SIZE"] = "t"
-    runprm["TERMINALS"] = "t"
+    if args.noter:
+        runprm["TERMINALS"] = "f"
+    else:
+        runprm["TERMINALS"] = "t"
     runprm["CLASH_DISTANCE"] = "2.0"
     runprm["H2O_SASCUTOFF"] = "0.05"
     runprm["IGNORE_INPUT_H"] = "t"
     runprm["RENAME_RULES"] = "%s/name.txt" % base_path
+    runprm["EPSILON_PROT"] = args.d
 
     if args.dry:
         runprm["H2O_SASCUTOFF"] = "-0.01"
@@ -70,8 +74,10 @@ if __name__ == "__main__":
     helpmsg = "Run mcce step 1, premcce to format PDB file to MCCE PDB format."
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 1", action="store_true")
+    parser.add_argument("--noter", default=False, help="Do not label terminal residues (for making ftpl).", action="store_true")
     parser.add_argument("-e", metavar="/path/to/mcce", default="mcce", help="mcce executable location, default to \"mcce\"")
     parser.add_argument("-u", metavar="Key=Value", default="", help="User customized variables")
+    parser.add_argument("-d", metavar="epsilon", default="4.0", help="protein dielectric constant for delphi, default to 4.0")
     parser.add_argument("--dry", default=False, help="Delete all water molecules.", action="store_true")
     parser.add_argument("prot", metavar="pdb", nargs=1)
     args = parser.parse_args()

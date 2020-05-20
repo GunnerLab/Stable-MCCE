@@ -91,6 +91,12 @@ class Atom():
 
 class Pdb2ftpl:
     def __init__(self, arguments):
+        if len(arguments.c) != 2:
+            print("The conformer type ID has to be 2 characters, such as 01, 02, -1, +1, DM")
+            return
+        else:
+            self.confid = arguments.c
+
         self.resname = []
         self.atoms = self.file2atoms(arguments.pdbfile[0])
         if len(self.resname) != 1:
@@ -204,18 +210,21 @@ class Pdb2ftpl:
 
     def print_conflist(self):
         print("# Conformer definition")
-        print("CONFLIST, %s: %s01" % (self.resname[0], self.resname[0]))
+        if self.confid == "BK":
+            print("CONFLIST, %s: %s%s" % (self.resname[0], self.resname[0], self.confid))
+        else:
+            print("CONFLIST, %s: %sBK, %s%s" % (self.resname[0], self.resname[0], self.resname[0], self.confid))
 
     def print_connect(self):
         print("# ATOM name and bonds")
         for atom in self.atoms:
             connected_atoms = ",".join(["\"%s\"" % x.name for x in atom.connect])
-            print("CONNECT, \"%s\", %s01: %4s, %s" % (atom.name, self.resname[0], atom.orbital, connected_atoms))
+            print("CONNECT, \"%s\", %s%s: %4s, %s" % (atom.name, self.resname[0], self.confid, atom.orbital, connected_atoms))
 
     def print_charge(self):
         print("# ATOM charges")
         for atom in self.atoms:
-            print("CHARGE, %s01, \"%s\": to_be_filled" % (self.resname[0], atom.name))
+            print("CHARGE, %s%s, \"%s\": to_be_filled" % (self.resname[0], self.confid, atom.name))
 
     def print_radius(self):
         print("# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth")
@@ -230,11 +239,11 @@ class Pdb2ftpl:
             else:
                 rvdw, well = vdw_parm[" X"]
 
-            print("RADIUS, %s01, \"%s\": %6.3f, %6.3f, %6.3f" % (self.resname[0], atom.name, rbd, rvdw, well))
+            print("RADIUS, %s%s, \"%s\": %6.3f, %6.3f, %6.3f" % (self.resname[0], self.confid, atom.name, rbd, rvdw, well))
 
     def print_conformer(self):
         print("# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn")
-        print("CONFORMER, %s01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= to_be_filled, rxn04= to_be_filled, rxn08= to_be_filled" % (self.resname[0]))
+        print("CONFORMER, %s%s:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0" % (self.resname[0], self.confid))
 
 
 if __name__ == "__main__":
@@ -242,6 +251,7 @@ if __name__ == "__main__":
     helpmsg = "Create a ftpl template file from a cofactor PDB file. The atoms in the input files are considered as one molecule."
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("-d", default=False, help="Ignore CONNECT, use distance to determine bond", action="store_true")
+    parser.add_argument("-c", metavar="conformer type", default="01", help="Specify a 2-character conformer type ID, default 01")
     parser.add_argument("pdbfile", metavar="pdbfile", nargs=1)
     args = parser.parse_args()
 

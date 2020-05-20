@@ -65,6 +65,7 @@ def process(args):
     path = str(os.path.dirname(os.path.abspath(__file__)))
     base_path = os.path.dirname(path)
 
+    runprm["MCCE_HOME"] = base_path
     runprm["DO_ENERGY"] = "t"
     runprm["PBE_SOLVER"] = "delphi"
     runprm["EPSILON_PROT"] = args.d

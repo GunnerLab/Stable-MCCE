@@ -1,0 +1,58 @@
+# Conformer definition
+CONFLIST, ACY: ACYBK, ACY01, ACY-1
+
+# ATOM name and bonds
+CONNECT, " C  ", ACY01:  sp2, " O  "," OXT"," CH3"
+CONNECT, " O  ", ACY01:  sp3, " C  "
+CONNECT, " OXT", ACY01:  sp2, " C  "," HXT"
+CONNECT, " CH3", ACY01:  sp3, " C  "," H1 "," H2 "," H3 "
+CONNECT, " HXT", ACY01:    s, " OXT"
+CONNECT, " H1 ", ACY01:    s, " CH3"
+CONNECT, " H2 ", ACY01:    s, " CH3"
+CONNECT, " H3 ", ACY01:    s, " CH3"
+CONNECT, " C  ", ACY-1:  sp2, " O  "," OXT"," CH3"
+CONNECT, " O  ", ACY-1:  sp3, " C  "
+CONNECT, " OXT", ACY-1:  sp3, " C  "
+CONNECT, " CH3", ACY-1:  sp3, " C  "," H1 "," H2 "," H3 "
+CONNECT, " H1 ", ACY-1:    s, " CH3"
+CONNECT, " H2 ", ACY-1:    s, " CH3"
+CONNECT, " H3 ", ACY-1:    s, " CH3"
+
+# ATOM charges
+CHARGE, ACY01, " C  ": 0.680
+CHARGE, ACY01, " O  ": -0.590
+CHARGE, ACY01, " OXT": -0.774
+CHARGE, ACY01, " CH3": -0.606
+CHARGE, ACY01, " HXT": 0.433
+CHARGE, ACY01, " H1 ": 0.283
+CHARGE, ACY01, " H2 ": 0.287
+CHARGE, ACY01, " H3 ": 0.287
+CHARGE, ACY-1, " C  ": 0.577
+CHARGE, ACY-1, " O  ": -0.768
+CHARGE, ACY-1, " OXT": -0.699
+CHARGE, ACY-1, " CH3": -0.714
+CHARGE, ACY-1, " H1 ": 0.198
+CHARGE, ACY-1, " H2 ": 0.202
+CHARGE, ACY-1, " H3 ": 0.204
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, ACY01, " C  ":  1.700,  2.000,  0.150
+RADIUS, ACY01, " O  ":  1.400,  1.600,  0.200
+RADIUS, ACY01, " OXT":  1.400,  1.600,  0.200
+RADIUS, ACY01, " CH3":  1.700,  2.000,  0.150
+RADIUS, ACY01, " HXT":  1.000,  1.000,  0.020
+RADIUS, ACY01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, ACY01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, ACY01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, ACY-1, " C  ":  1.700,  2.000,  0.150
+RADIUS, ACY-1, " O  ":  1.400,  1.600,  0.200
+RADIUS, ACY-1, " OXT":  1.400,  1.600,  0.200
+RADIUS, ACY-1, " CH3":  1.700,  2.000,  0.150
+RADIUS, ACY-1, " H1 ":  1.000,  1.000,  0.020
+RADIUS, ACY-1, " H2 ":  1.000,  1.000,  0.020
+RADIUS, ACY-1, " H3 ":  1.000,  1.000,  0.020
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ACY01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -11.413, rxn04= -5.495, rxn08= -2.548
+CONFORMER, ACY-1:  Em0=0.0, pKa0=4.75, ne=0, nH=-1, rxn02= -47.119, rxn04= -22.902, rxn08= -10.801

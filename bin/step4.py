@@ -45,6 +45,7 @@ def write_runprm(args):
     path = str(os.path.dirname(os.path.abspath(__file__)))
     base_path = os.path.dirname(path)
     #print(base_path)
+    runprm["MCCE_HOME"] = base_path
     runprm["DO_MONTE"] = "t"
     runprm["EXTRA"] = "%s/extra.tpl" % base_path
     runprm["TITR_TYPE"] = args.t.lower()

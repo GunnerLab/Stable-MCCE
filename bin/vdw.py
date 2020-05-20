@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
  Calculate vdw energy table.
  This is a separate calculation at atom level. The result is not used by MCCE. However the conformer level vdw terms
@@ -24,9 +24,9 @@ if __name__ == "__main__":
     protein.make_connect14()
 
     if len(sys.argv) < 2:
-        print "vdw.py conformerID cutoff"
-        print "Example: vdw.py GLU-1A0060_005 0.00"
-        print "Note: conformerID is in head3.lst."
+        print("vdw.py conformerID cutoff")
+        print("Example: vdw.py GLU-1A0060_005 0.00")
+        print("Note: conformerID is in head3.lst.")
         sys.exit()
 
     resName = sys.argv[1][:3]
@@ -58,16 +58,16 @@ if __name__ == "__main__":
                         vdwt = libvdw.vdw_conf(conf, res2.conf[0])
                         vdw1 += vdwt
                         if abs(vdwt) > libvdw.print_cutoff:
-                            print "Backbone(Accumulative): %s -> %s: %.3f" % (conf.confID, res2.conf[0].confID, vdw1)
+                            print("Backbone(Accumulative): %s -> %s: %.3f" % (conf.confID, res2.conf[0].confID, vdw1))
                         for conf2 in res2.conf[1:]:
                             if conf2 == conf:  # Intra
                                 vdw0 = libvdw.vdw_conf(conf, conf2)
-                                print "Intra: %s -> %s: %.3f *" % (conf.confID, conf2.confID, vdw0)
+                                print("Intra: %s -> %s: %.3f *" % (conf.confID, conf2.confID, vdw0))
                             elif res == res2:  # same residue to other conformers
                                 vdwt = 0.0
                             else:
                                 vdwt = libvdw.vdw_conf(conf, conf2)
                                 if abs(vdwt) > libvdw.print_cutoff:
-                                    print "Pairwise: %s -> %s: %.3f" % (conf.confID, conf2.confID, vdwt)
+                                    print("Pairwise: %s -> %s: %.3f" % (conf.confID, conf2.confID, vdwt))
 
-    print "%s: vdw0=%.3f, vdw1=%.3f" % (sys.argv[1], vdw0, vdw1)
+    print("%s: vdw0=%.3f, vdw1=%.3f" % (sys.argv[1], vdw0, vdw1))
