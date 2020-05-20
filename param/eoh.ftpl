@@ -1,0 +1,38 @@
+# Conformer definition
+CONFLIST, EOH: EOHBK, EOH01
+
+# ATOM name and bonds
+CONNECT, " C1 ", EOH01:  sp3, " C2 "," O  "," H11"," H12"
+CONNECT, " C2 ", EOH01:  sp3, " C1 "," H21"," H22"," H23"
+CONNECT, " O  ", EOH01:  sp3, " C1 "," HO "
+CONNECT, " H11", EOH01:    s, " C1 "
+CONNECT, " H12", EOH01:    s, " C1 "
+CONNECT, " H21", EOH01:    s, " C2 "
+CONNECT, " H22", EOH01:    s, " C2 "
+CONNECT, " H23", EOH01:    s, " C2 "
+CONNECT, " HO ", EOH01:    s, " O  "
+
+# ATOM charges
+CHARGE, EOH01, " C1 ": -0.085
+CHARGE, EOH01, " C2 ": -0.554
+CHARGE, EOH01, " O  ": -0.746
+CHARGE, EOH01, " H11": 0.177
+CHARGE, EOH01, " H12": 0.177
+CHARGE, EOH01, " H21": 0.237
+CHARGE, EOH01, " H22": 0.237
+CHARGE, EOH01, " H23": 0.209
+CHARGE, EOH01, " HO ": 0.351
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, EOH01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, EOH01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, EOH01, " O  ":  1.400,  1.600,  0.200
+RADIUS, EOH01, " H11":  1.000,  1.000,  0.020
+RADIUS, EOH01, " H12":  1.000,  1.000,  0.020
+RADIUS, EOH01, " H21":  1.000,  1.000,  0.020
+RADIUS, EOH01, " H22":  1.000,  1.000,  0.020
+RADIUS, EOH01, " H23":  1.000,  1.000,  0.020
+RADIUS, EOH01, " HO ":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -8.5, rxn04= -4.076, rxn08= -1.875
