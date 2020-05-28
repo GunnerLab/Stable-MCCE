@@ -1,0 +1,59 @@
+Segmentation fault (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stoi
+Aborted (core dumped)
+Segmentation fault (core dumped)
+Segmentation fault (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+Aborted (core dumped)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+Aborted (core dumped)
+Segmentation fault (core dumped)
+Segmentation fault (core dumped)
