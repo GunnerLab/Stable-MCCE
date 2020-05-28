@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 /* Add H bond analysis---Cai */
    if (env.do_analysis){
       printf("Step 6. Hydrogen Bond Network Analysis\n"); fflush(stdout);
-      if (analysis()) { return USERERR;}
+      if (analysis_adv()) { return USERERR;}
       else printf("Step 6 Done.\n\n");
    }
    else printf("Not doing \"Step 6. Hydrogen Bond Network Analysis\"\n\n");

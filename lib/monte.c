@@ -80,7 +80,7 @@ typedef struct {
 } MSRECORD;
 
 int enum_flag = 0; //flag to judge if run enumerate(): analytical solution;
-int new_ms_flag =0; // flag to trigger on or off new format ms.dat output.
+int new_ms_flag =1; // flag to trigger on or off new format ms.dat output.
 
 int   load_ms_gold(STRINGS *str);
 int   update_conf_id(unsigned short *conf_id, int *state);
@@ -149,7 +149,7 @@ int monte()
     int N_smp;
     float S_max;
     char sbuff[MAXCHAR_LINE];  //Store ms file name--Cai
-    int i_fix, j_fix; // index for microstate write out.
+    int i_fix, j_fix, i_free, j_free; // index for microstate write out.
 
     timerA = time(NULL);
     strcpy(env.entropy_converge_error, "");
@@ -398,12 +398,12 @@ int monte()
         }
 
         if (env.ms_out && new_ms_flag){
-            sprintf(sbuff, "%s/ph%.0feh%.0fms.dat", MS_DIR, ph, eh);
+            sprintf(sbuff, "%s/ph%.0feh%.0fms.txt", MS_DIR, ph, eh);
             if (!(ms_fp2=fopen(sbuff, "w"))){
                 printf("   Open file %s error.\n", sbuff);
                 return USERERR;
             }
-            fprintf(ms_fp2, "T:%6.2f,pH:%6.2f, eH:%6.2f\n",env.monte_temp, ph, eh); //first line of new ms.dat.
+            fprintf(ms_fp2, "T:%.2f,pH:%.2f,eH:%.2f\n",env.monte_temp, ph, eh); //first line of new ms.dat.
         }
 
 
@@ -416,23 +416,35 @@ int monte()
                 fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
 
                 if (new_ms_flag){
-                fprintf(ms_fp2, "METHOD: %s\n", "MONTERUNS"); //The second line of new ms.dat: method
-                fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //The third line of new ms.dat: comment
-                fprintf(ms_fp2, "%d: ", n_fixed);  //The fourth line of new ms.dat: fixed confs.
+                fprintf(ms_fp2, "METHOD:%s\n", "MONTERUNS"); //The second line of new ms.dat: method
+                fprintf(ms_fp2, "#N_FIXED:FIXED_CONF_ID\n"); //The third line of new ms.dat: comment
+                fprintf(ms_fp2, "%d:", n_fixed);  //The fourth line of new ms.dat: fixed confs.
                 for (i_fix=0; i_fix<n_fixed; i_fix++) {
-                    for (j_fix=0; j_fix<fixed_res[i].n; j_fix++) {
+                    for (j_fix=0; j_fix<fixed_res[i_fix].n; j_fix++) {
                         // this will be a problem, if partial occ is assigned
                         if (conflist.conf[fixed_res[i_fix].conf[j_fix]].occ > 0.99) {
-                            fprintf(ms_fp2,"%d, ", fixed_res[i_fix].conf[j_fix]);
+                            fprintf(ms_fp2,"%d ", fixed_res[i_fix].conf[j_fix]);
                             break;
                         }
                     }
                 }
                 fprintf(ms_fp2, "\n");
+
+                /* write out the conformer id for each free residues */
+                fprintf(ms_fp2, "#N_FREE residues:CONF_IDs for each free residues\n"); 
+                fprintf(ms_fp2, "%d:", n_free);  //The fourth line of new ms.dat: fixed confs.
+                for (i_free=0; i_free<n_free; i_free++) {
+                    for (j_free=0; j_free<free_res[i_free].n; j_free++) {
+                        fprintf(ms_fp2, "%d ", free_res[i_free].conf[j_free]);
+                    }
+                    fprintf(ms_fp2,";");
+                }
+                fprintf(ms_fp2, "\n");
+
                 fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //new ms.dat: comment
-                fprintf(ms_fp2, "#ITER_MONTERUNS\n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#MC:ITER_MONTERUNS\n"); //new ms.dat: comment
                 fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //new ms.dat: comment
-                fprintf(ms_fp2, "#FLIPS, ENERGY, COUNT\n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#ENERGY, COUNT,FLIPS \n"); //new ms.dat: comment
                 }
 
 
@@ -465,7 +477,7 @@ int monte()
                 //if (N_smp) MC(N_smp);
                 if (N_smp) {            //Cai: microstate output or not
                     if (env.ms_out) {
-                    if (new_ms_flag) fprintf(ms_fp2, "\nMC: %d\n", j);
+                    if (new_ms_flag) fprintf(ms_fp2, "\nMC:%d\n", j);
                     MC_smp(N_smp);   // Using MC_smp to write out microstate
                     }
                     else MC(N_smp);  //initial MC without writing out microstate  
@@ -2530,29 +2542,41 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
         
         if (new_ms_flag) {
-        fprintf(ms_fp2, "METHOD: %s\n", "ENUMERATE"); //new ms.dat: method
-        fprintf(ms_fp2, "#N_FIXED: FIXED_CONF_ID,\n"); //new ms.dat: comment
+        fprintf(ms_fp2, "METHOD:%s\n", "ENUMERATE"); //new ms.dat: method
+        fprintf(ms_fp2, "#N_FIXED:FIXED_CONF_ID,\n"); //new ms.dat: comment
 
         /* write out the first microstate: fixed conf id */
-        fprintf(ms_fp2, "%d: ", n_fixed);
+        fprintf(ms_fp2, "%d:", n_fixed);
         for (i=0; i<n_fixed; i++) {
             for (j=0; j<fixed_res[i].n; j++) {
                 // this will be a problem, if partial occ is assigned
                 if (conflist.conf[fixed_res[i].conf[j]].occ > 0.99) {
-                    fprintf(ms_fp2,"%d, ", fixed_res[i].conf[j]);
+                    fprintf(ms_fp2,"%d ", fixed_res[i].conf[j]);
                     break;
                 }
             }
         }
         fprintf(ms_fp2, "\n");
 
-        fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //new ms.dat: comment
-        fprintf(ms_fp2, "#FLIPS, ENERGY, OCC\n"); //new ms.dat: comment
+        /* write out the conformer id for each free residues */
+        fprintf(ms_fp2, "#N_FREE residues:CONF_IDs for each free residues\n"); 
+        fprintf(ms_fp2, "%d:", n_free);
+        for (i=0; i<n_free; i++) {
+            for (j=0; j< free_res[i].n; j++) {
+                fprintf(ms_fp2, "%d ", free_res[i].conf[j]);
+            }
+            fprintf(ms_fp2,"; ");
+        }
+        fprintf(ms_fp2, "\n");
+
+        fprintf(ms_fp2, "#N_FREE:FREE_CONF_ID,\n"); //new ms.dat: comment
+        fprintf(ms_fp2, "#ENERGY,OCC,FLIPS,\n"); //new ms.dat: comment
+        
         
         /* write out the first microstate: free conf id */
-        fprintf(ms_fp2, "%d: ", n_free);
+        fprintf(ms_fp2, "%d:", n_free);
         for (i=0; i<n_free; i++) {
-            fprintf(ms_fp2,"%d, ", state[i]);
+            fprintf(ms_fp2,"%d ", state[i]);
         }
         fprintf(ms_fp2, "\n");
         }
@@ -2867,12 +2891,11 @@ void MC_smp(int n)
     old_ms_state.counter=0;
 
 
-
-    /* write out the beginning testing microstate */
     if (new_ms_flag) {
-    fprintf(ms_fp2, "%d: ", n_free);
+    /* write out the beginning testing microstate */
+    fprintf(ms_fp2, "%d:", n_free);
     for (i=0; i<n_free; i++) {
-        fprintf(ms_fp2,"%d, ", state[i]);
+        fprintf(ms_fp2,"%d ", state[i]);
     }
     fprintf(ms_fp2, "\n");
     }
@@ -3119,16 +3142,22 @@ int write_state_MC(MSRECORD *ms_state, float E_tot)
 
     int i_flip;
 
-
-    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
-        fprintf(ms_fp2,"%d, ", ms_state->conf_flip_id[i_flip]);
-    }
-
     //write microstate at ms.dat
     //for MC sampling
 
-    fprintf(ms_fp2,"%lf, ", E_tot);
-    fprintf(ms_fp2,"%d\n", ms_state->counter);
+    //switch flips and energy positions
+    fprintf(ms_fp2,"%lf,", E_tot);
+    fprintf(ms_fp2,"%d,", ms_state->counter);
+
+    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
+        fprintf(ms_fp2,"%d ", ms_state->conf_flip_id[i_flip]);
+    }
+    fprintf(ms_fp2, "\n");
+
+
+    //switch flips and energy positions
+    //fprintf(ms_fp2,"%lf, ", E_tot);
+    //fprintf(ms_fp2,"%d\n", ms_state->counter);
 
 
     return 0;
@@ -3141,17 +3170,21 @@ int write_state_Enum(MSRECORD *ms_state)
 
     int i_flip;
 
-
-    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
-        fprintf(ms_fp2,"%d, ", ms_state->conf_flip_id[i_flip]);
-    }
-
     //write microstate at ms.dat
 
     //for enumerate, ms_state->counter is the occ of the microstate
+    fprintf(ms_fp2,"%lf,", ms_state->H);
+    fprintf(ms_fp2,"%5.3f,", ms_state->occ);
 
-    fprintf(ms_fp2,"%lf, ", ms_state->H);
-    fprintf(ms_fp2,"%5.3f\n", ms_state->occ);
+    for (i_flip=0; i_flip<ms_state->n_flip; i_flip++) {
+        fprintf(ms_fp2,"%d ", ms_state->conf_flip_id[i_flip]);
+    }
+    fprintf(ms_fp2,"\n");
+
+
+    //Switch the flip and Energy positions
+    //fprintf(ms_fp2,"%lf, ", ms_state->H);
+    //fprintf(ms_fp2,"%5.3f\n", ms_state->occ);
 
 
     return 0;
