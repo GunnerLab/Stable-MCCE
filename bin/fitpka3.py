@@ -31,7 +31,7 @@ while fort38_lines and head3_lines:
     fields = head3_data.split()
 
     if confname != fields[1]:
-        print "Confomer %s in fort.38 does not match %s in head3.lst" % (confname, fields[1])
+        print("Confomer %s in fort.38 does not match %s in head3.lst" % (confname, fields[1]))
         sys.exit()
 
     crg = fields[4]
