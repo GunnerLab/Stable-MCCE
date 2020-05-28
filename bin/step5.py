@@ -30,8 +30,8 @@ from scipy.optimize import curve_fit
 
 
 PH2KCAL = 1.364
-fname_sumcrg = "sum_crg.out"
-fname_pkout = "pK.out"
+fname_sumcrg = "sum_crg2.out"
+fname_pkout = "pK2.out"
 
 def sigmoid(x, x0, k):
     e = np.exp(k * (x - x0))
@@ -259,8 +259,6 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Run mcce step 5, generate net charge, fit titration curve, and do energy analysis on each ionizable residue."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("--xts", default=False, help="Enable entropy correction, default is false", action="store_true")
-    parser.add_argument("-p", metavar="titration point", default="m", help="pH or Eh value, or \'m\' for midpoint")
     args = parser.parse_args()
 
     titration = Titration(args)
