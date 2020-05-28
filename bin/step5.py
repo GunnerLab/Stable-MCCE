@@ -26,8 +26,18 @@ Usage examples:
 import argparse
 import sys
 import numpy as np
+from scipy.optimize import curve_fit
+
 
 PH2KCAL = 1.364
+fname_sumcrg = "sum_crg.out"
+fname_pkout = "pK.out"
+
+def sigmoid(x, x0, k):
+    e = np.exp(k * (x - x0))
+    y = -e / (1.0 + e)
+    return y
+
 
 class Conformer:
     def __init__(self):
@@ -49,7 +59,7 @@ class Conformer:
 class Residue:
     def __init__(self):
         self.resid = ""
-        self.charge_type = "0"
+        self.state_flag = "0"
         self.conformers = []
         self.netcrg = []
         self.ground_state = []
@@ -59,26 +69,131 @@ class Residue:
 
 class Titration:
     def __init__(self, args):
-        self.titration_type = "PH"
+        self.titration_type = "pH"
         self.xts = args.xts
         self.mfe_point = args.p
         self.titration_points = []
-        conformers = self.load_confs()
-        self.residues = self.group_residues(conformers)
+        self.residues = self.group_residues(self.load_confs())
 
-        # get sum_crg
+        self.sum_crg()
+        self.fitpka()
+
+        return
+
+
+    def sum_crg(self):
+        # get sum_crg and charge originated from 1) proton, 2) electron - redox, 3) ion
         npoints = len(self.titration_points)
-
+        total_crg = [0 for i in range(npoints)]
+        total_proton_crg = [0 for i in range(npoints)]
+        total_redox_crg = [0 for i in range(npoints)]
+        total_ion_crg = [0 for i in range(npoints)]
         for res in self.residues:
             net_crg = [0.0 for i in range(npoints)]
             for conf in res.conformers:
                 net_crg = [net_crg[i]+conf.crg*conf.occ[i] for i in range(npoints)]
+                total_crg = [total_crg[i] + conf.crg*conf.occ[i] for i in range(npoints)]
+                total_proton_crg = [total_proton_crg[i] + conf.nh*conf.occ[i] for i in range(npoints)]
+                total_redox_crg = [total_redox_crg[i] - conf.ne*conf.occ[i] for i in range(npoints)]
+                total_ion_crg = [total_ion_crg[i] + (conf.crg-conf.nh+conf.ne)*conf.occ[i] for i in range(npoints)]
             res.netcrg = net_crg
 
+        # prepare for print
+        lines = []
+        headline = " %3s       %s\n" % (self.titration_type, " ".join(["%5.2f" % x for x in self.titration_points]))
+        lines.append(headline)
+        for res in self.residues:
+            has_negative = False
+            has_positive = False
+            for conf in res.conformers:
+                if conf.crg < -0.999:
+                    has_negative = True
+                if conf.crg > 0.999:
+                    has_positive = True
 
+            if has_positive and has_negative:
+                state_flag = "*"
+            elif has_negative:
+                state_flag = "-"
+            elif has_positive:
+                state_flag = "+"
+            else:
+                state_flag = "0"
 
+            res.state_flag = state_flag
+            if state_flag != "0":    # print charged residues only
+                res_str = res.resid[:3] + state_flag + res.resid[3:]
+                lines.append("%s %s\n" % (res_str, " ".join(["%5.2f" % x for x in res.netcrg])))
+        lines.append("---------\n")
+        lines.append("Net_charge %s\n" % (" ".join(["%5.2f" % x for x in total_crg])))
+        lines.append("Proton_crg %s\n" % (" ".join(["%5.2f" % x for x in total_proton_crg])))
+        lines.append("Redox_crg  %s\n" % (" ".join(["%5.2f" % x for x in total_redox_crg])))
+        lines.append("Ion_charge %s\n" % (" ".join(["%5.2f" % x for x in total_ion_crg])))
+        open(fname_sumcrg, "w").writelines(lines)
         return
 
+    def fitpka(self):
+        titration_type = self.titration_type
+        npoints = len(self.titration_points)
+        if npoints < 2:
+            print("Single point titration detected, can not fit titration curve.")
+            sys.exit()
+
+        titration_delta = abs(self.titration_points[1] - self.titration_points[0])
+        titration_lb = self.titration_points[0]
+        titration_ub = self.titration_points[-1]
+
+        pkout = ["  %s             pKa/Em  n(slope) 1000*chi2\n" % titration_type]
+        xvalue = np.array(self.titration_points)
+        x0 = xvalue[0]
+        k0 = xvalue[1] - xvalue[0]
+
+        xdata = np.array([float(i) for i in range(npoints)])
+        for res in self.residues:
+            if res.state_flag != "0":
+                res_str = res.resid[:3] + res.state_flag + res.resid[3:]
+
+                # ydata of sigmoid function is always positive [0, 1] but our net charge is [-1, 0]
+                ydata = np.array(res.netcrg)
+                # print(xdata)
+                # print("Before:",ydata)
+                if ydata.mean() > 0:
+                    ydata += -1.0  # acid[0, -1], base[+1, 0] -> [0, -1]
+                if ydata[-1] - ydata[0] > 0.0:
+                    ydata = -ydata - 1
+                    # print("After:", ydata)
+                msg = ""
+                try:
+                    (popt, pcov) = curve_fit(sigmoid, xdata, ydata, bounds=(0, [npoints, 4]))
+                    # (popt, pcov) = curve_fit(sigmoid, xdata, ydata)
+                except RuntimeError:
+                    msg = "Titration out of range"
+                except ValueError:
+                    msg = "Input value not valid"
+
+                print(res_str, popt)
+                if popt[0] < 0.001 or popt[0] > npoints - 1.001:  # x from 0 to 14 as 15 points
+                    msg = "Titration out of range"
+
+                if msg:
+                    pkout.append("%s         %s\n" % (res_str, msg))
+                else:
+                    chi_squared = np.sum([(sigmoid(xdata, *popt) - ydata) ** 2])
+                    midpoint = popt[0] * k0 + x0
+                    if titration_type.upper() == "PH":
+                        nslope = 0.4342 * popt[1] / titration_delta
+                    elif titration_type.upper() == "EM":
+                        nslope = 0.4342 * popt[1] / titration_delta * 58.0
+                    elif titration_type.upper() == "CH" or titration_type.upper() == "EXTRA":
+                        nslope = 0.4342 * popt[1] / titration_delta * PH2KCAL
+                    else:
+                        print("Why am I here?")
+                    pka_str = "%9.3f %9.3f %9.3f" % (midpoint, nslope, chi_squared * 1000.0)
+                    pkout.append("%s    %s\n" % (res_str, pka_str))
+
+            open(fname_pkout, "w").writelines(pkout)
+
+        return
 
     def load_confs(self):
         conformers = []
@@ -87,7 +202,7 @@ class Titration:
         head3_lines = open("head3.lst").readlines()
         line = fort38_lines.pop(0)
         fields = line.split()
-        self.titration_type = fields[0].upper()
+        self.titration_type = fields[0]
         self.titration_points = [float(x) for x in fields[1:]]
         head3_lines.pop(0)
 
