@@ -30,8 +30,8 @@ from scipy.optimize import curve_fit
 
 
 PH2KCAL = 1.364
-fname_sumcrg = "sum_crg.out"
-fname_pkout = "pK.out"
+fname_sumcrg = "sum_crg2.out"
+fname_pkout = "pK2.out"
 
 def sigmoid(x, x0, k):
     e = np.exp(k * (x - x0))
@@ -70,12 +70,11 @@ class Residue:
 class Titration:
     def __init__(self, args):
         self.titration_type = "pH"
-        self.xts = args.xts
-        self.mfe_point = args.p
         self.titration_points = []
         self.residues = self.group_residues(self.load_confs())
 
         self.sum_crg()
+
         self.fitpka()
 
         return
@@ -171,7 +170,7 @@ class Titration:
                 except ValueError:
                     msg = "Input value not valid"
 
-                print(res_str, popt)
+                #print(res_str, popt)
                 if popt[0] < 0.001 or popt[0] > npoints - 1.001:  # x from 0 to 14 as 15 points
                     msg = "Titration out of range"
 
@@ -259,8 +258,6 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Run mcce step 5, generate net charge, fit titration curve, and do energy analysis on each ionizable residue."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("--xts", default=False, help="Enable entropy correction, default is false", action="store_true")
-    parser.add_argument("-p", metavar="titration point", default="m", help="pH or Eh value, or \'m\' for midpoint")
     args = parser.parse_args()
 
     titration = Titration(args)

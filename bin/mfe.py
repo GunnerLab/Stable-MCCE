@@ -460,7 +460,16 @@ def print_crg(RES):
    line=l.readlines()
    found=1
    for eachline in line:
-      tok=eachline.split()
+      tok=eachline.split()    # Get the command arguments
+    helpmsg = "Calculate mean field energy analysis on ionazable residue."
+    parser = argparse.ArgumentParser(description=helpmsg)
+    parser.add_argument("-p", metavar="titration_point", default="m", help="pH or Eh value, or \'m\' for midpoint")
+    parser.add_argument("-x", metavar="entropy_correction", default="r", help="\`f\`: False, \`t\`: True, or `\r\`: determined by run.prm (default)")
+    parser.add_argument("res", metavar="residueID", nargs=1)
+    parser.add_argument("-c", metavar="cutoff", default="-0.01", help="pairwise cutoff, not to report pw less than this value, default to report all.", type=float)
+
+    args = parser.parse_args()
+
       a=tok[0]
       a1=a[0:2]+a[4:9]
       b=RES[0:2]+RES[3:8]
