@@ -74,6 +74,7 @@ class Titration:
         self.residues = self.group_residues(self.load_confs())
 
         self.sum_crg()
+
         self.fitpka()
 
         return

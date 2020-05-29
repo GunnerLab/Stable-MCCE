@@ -391,6 +391,50 @@ CHARGE   7MQ-1 3H14 -0.010
 CHARGE   7MQ-1 1H15  0.097
 CHARGE   7MQ-1 2H15  0.097
 
+CONFLIST _CL        _CLBK _CL-1 _CLDM
+
+NATOM    _CLBK      0  
+NATOM    _CL-1      1  
+NATOM    _CLDM      0  
+
+IATOM    _CL-1 CL   0  
+
+ATOMNAME _CL-1    0 CL  
+
+CONNECT  _CL-1 CL   ion       
+
+PROTON   _CL-1      0 
+PKA      _CL-1      0.00
+ELECTRON _CL-1      0 
+EM       _CL-1      0.00
+RXN      _CL-1      -20.32
+
+RADIUS   _CL   CL   1.94
+
+CHARGE   _CL-1 CL   -1.000
+
+CONFLIST _NA        _NABK _NA+1 _NADM
+
+NATOM    _NABK      0  
+NATOM    _NA+1      1  
+NATOM    _NADM      0  
+
+IATOM    _NA+1 NA   0  
+
+ATOMNAME _NA+1    0 NA  
+
+CONNECT  _NA+1 NA   ion       
+
+PROTON   _NA+1      0 
+PKA      _NA+1      0.00
+ELECTRON _NA+1      0 
+EM       _NA+1      0.00
+RXN      _NA+1      -20.40
+
+RADIUS   _NA   NA   1.73
+
+CHARGE   _NA+1 NA    1.000
+
 CONFLIST _ZN        _ZNBK _ZN+2 _ZNDM
 
 NATOM    _ZNBK      0  
@@ -2281,7 +2325,7 @@ CONNECT  CYDBK  O   sp2       0     C
 CONNECT  CYD01  CB  sp3       0     CA  0     SG  0     HB2 0     HB3
 CONNECT  CYD01  HB2 s         0     CB 
 CONNECT  CYD01  HB3 s         0     CB 
-CONNECT  CYD01  SG  sp2       0     CB  0     SG 
+CONNECT  CYD01  SG  sp2       0     CB  LIG   SG 
 
 PROTON   CYD01      0 
 PKA      CYD01      0.00
