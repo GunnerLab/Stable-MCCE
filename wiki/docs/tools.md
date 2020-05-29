@@ -93,6 +93,22 @@ optional arguments:
   -u Key=Value      User customized variables
 ```
 
+#### Step 5:
+Step 5 is optional. It writes net charge of each residue in sum_crg2.out and fits the titration curve in pK2.out.
+```
+usage: step5.py [-h]
+
+Run mcce step 5, generate net charge, fit titration curve.
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+#### Step 6:
+Step 6 is for hydrogen bond network analysis. It requires step 4 to output microstates.
+
+
+
 #### Combine 4 steps
 ``` bash
 #!/bin/bash
