@@ -952,7 +952,11 @@ int get_env()
     */
     /* altered to read from the converted mcce.tpl */
     sprintf(sbuff, "%s/bin/tpl-free2mcce.py", env.mcce_home);
-    system(sbuff);
+    if (system(sbuff) != 0) {
+        printf("   Fatal: Command %s not found, check if this command is in your $PATH\n");
+        exit(-1);
+    }
+
     sprintf(env.param, "./param");
 
     /* sets env.ga_seed and env.monte_seed equal to env.test_seed if env.test_seed has been set to a
