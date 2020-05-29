@@ -22,7 +22,6 @@
 #define ROTSTAT      "rot_stat"
 #define MC_OUT       "mc_out"
 #define MS_DIR       "ms_out"
-#define HB_DIR       "hb_out"
 #define DETAIL       "fort.36"
 #define OCC_TABLE    "fort.38"
 #define TOT_CRG      "sum_crg.out"
@@ -902,4 +901,3 @@ int energies2();
 int monte();
 int monte2();
 int analysis(); /* step 6 ---Cai */
-int analysis_adv(); /* step 6: analysis with new format ms.dat ---Cai */
