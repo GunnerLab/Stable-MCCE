@@ -256,7 +256,7 @@ class Titration:
 if __name__ == "__main__":
 
     # Get the command arguments
-    helpmsg = "Run mcce step 5, generate net charge, fit titration curve, and do energy analysis on each ionizable residue."
+    helpmsg = "Run mcce step 5, generate net charge, fit titration curve."
     parser = argparse.ArgumentParser(description=helpmsg)
     args = parser.parse_args()
 

@@ -3,7 +3,7 @@
 
 ## Improving and helping runs
 ---
-### 4-step mcce run scripts
+### step by step mcce run scripts
 MCCE involves 4 main steps:
 
 1. Step 1: Convert raw PDB file to MCCE PDB file, reformat terminal residues, and strip off surface water and ions.
@@ -13,7 +13,7 @@ MCCE involves 4 main steps:
 
 While the control of these 4 steps is fully configured in run.prm and executed by mcce command, the 4 steps can be carried out by python wrapper scripts without configuring run.prm.
 
-####  Step 1:
+####  Step 1: prepare structure
 ```
 usage: step1.py [-h] [--norun] [--noter] [-e /path/to/mcce] [-u Key=Value]
                 [-d epsilon] [--dry]
@@ -34,7 +34,7 @@ optional arguments:
   --dry             Delete all water molecules.
 ```
 
-####  Step 2:
+####  Step 2: make conformers
 ```
 usage: step2.py [-h] [--norun] [-d epsilon] [-e /path/to/mcce] [-u Key=Value]
                 [-l level]
@@ -50,7 +50,7 @@ optional arguments:
   -l level          conformer level 1: quick, 2: medium, 3: comprehensive
 ```
 
-####  Step 3:
+####  Step 3: energy calculation
 ```
 usage: step3.py [-h] [-c start end] [-d epsilon] [-e /path/to/mcce]
                 [-f tmp folder] [-p processes] [-r] [-u Key=Value]
@@ -73,7 +73,7 @@ optional arguments:
 
 step3.py is able to run in multiple threads.
 
-####  Step 4:
+####  Step 4: Monte Carlo sampling
 ```
 usage: step4.py [-h] [--norun] [-i initial ph/eh] [-d interval] [-n steps]
                 [--xts] [--ms] [-e /path/to/mcce] [-t ph or eh] [-u Key=Value]
@@ -93,7 +93,41 @@ optional arguments:
   -u Key=Value      User customized variables
 ```
 
-#### Combine 4 steps
+#### Step 5: titration fitting
+Step 5 is optional. It writes net charge of each residue in sum_crg2.out and fits the titration curve in pK2.out.
+```
+usage: step5.py [-h]
+
+Run mcce step 5, generate net charge, fit titration curve.
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+#### Step 6: hydrogen bond
+Step 6 is for hydrogen bond network analysis. It requires step 4 to output microstates.
+
+```
+usage: step6.py [-h] [--norun] [-e /path/to/mcce] [-u Key=Value]
+
+Run step 6, hydrogen bond analysis, requires microstate output from step 4.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 6
+  -e /path/to/mcce  mcce executable location, default to "mcce"
+  -u Key=Value      User customized variables
+```
+
+Example:
+```
+step4.py --ms
+step6.py
+```
+
+#### Combine first 4 steps
+The first 4 steps are essential steps.
+
 ``` bash
 #!/bin/bash
 step1.py input.pdb

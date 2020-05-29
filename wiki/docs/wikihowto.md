@@ -34,9 +34,9 @@ pip install mkdocs-git-revision-date-plugin
 All documentation files reside under folder wiki/
 
 * mkdocs.yml : configuration file, also defines the menu
-* docs/users/ : location of documentation files for users
-* docs/developers/ : location of documentation files for developers
-* site/ : site web pages published by command mkdocs gh-deploy
+* docs/ : location of documentation files
+* img/ : location for image files
+* site/ : site web pages published by command mkdocs gh-deploy, do not edit this directory.
 
 Under wiki/ directory, run
 ```

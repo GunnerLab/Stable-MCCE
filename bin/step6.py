@@ -52,7 +52,7 @@ def write_runprm(args):
 if __name__ == "__main__":
 
     # Get the command arguments
-    helpmsg = "Run mcce step 4, Monte Carlo sampling to simulate a titration."
+    helpmsg = "Run step 6, hydrogen bond analysis, requires microstate output from step 4."
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 6", action="store_true")
     parser.add_argument("-e", metavar="/path/to/mcce", default="mcce", help="mcce executable location, default to \"mcce\"")
