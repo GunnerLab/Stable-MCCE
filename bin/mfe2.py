@@ -79,7 +79,7 @@ def mfe(args):
 
     # mfe_ph
     if args.p == "m":  # determined by pKa
-        
+
 
     return
 

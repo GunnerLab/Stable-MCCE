@@ -70,12 +70,11 @@ class Residue:
 class Titration:
     def __init__(self, args):
         self.titration_type = "pH"
-        self.xts = args.xts
-        self.mfe_point = args.p
         self.titration_points = []
         self.residues = self.group_residues(self.load_confs())
 
         self.sum_crg()
+
         self.fitpka()
 
         return
@@ -171,7 +170,7 @@ class Titration:
                 except ValueError:
                     msg = "Input value not valid"
 
-                print(res_str, popt)
+                #print(res_str, popt)
                 if popt[0] < 0.001 or popt[0] > npoints - 1.001:  # x from 0 to 14 as 15 points
                     msg = "Titration out of range"
 
