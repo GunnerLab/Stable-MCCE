@@ -15,22 +15,22 @@ Usage examples:
     step4.py
 
 2. Write run.prm for step 4, do not actually run step 4. (Dry run)
-    step4.py --dry
+    step4.py --norun
 
 3. Run step 4 at defined points
     step4.py -i 0.0 -d 1 -n 15
 
 4. Run step 4 with entropy correction
-    step2.py --xts
+    step4.py --xts
 
 5. Run step 4 using specific mcce executable
-    step2.py -e /path/to/mcce
+    step4.py -e /path/to/mcce
 
 6. Run step 4 using Eh titration
-    step2.py -t eh
+    step4.py -t eh
 
 7. Run step 4 with other customized parameters
-    step1.py -u EXTRA=./extra.tpl
+    step4.py -u EXTRA=./extra.tpl
 """
 
 import os, argparse

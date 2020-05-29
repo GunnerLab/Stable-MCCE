@@ -44,6 +44,7 @@ def write_runprm(args):
     base_path = os.path.dirname(path)
     #print(base_path)
     runprm["DO_ROTAMERS"] = "t"
+    runprm["MS_GOLD_OUT"] = "t"
     runprm["MCCE_HOME"] = base_path
     runprm["EXTRA"] = "%s/extra.tpl" % base_path
     runprm["EPSILON_PROT"] = args.d
