@@ -18,10 +18,10 @@ Input and Output:
 prot.pdb                                                    (INPDB)
 
 Steps:
-f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-f        step 2: make rotatmers                             (DO_ROTAMERS)
-f        step 3: do energy calculations                     (DO_ENERGY)
-f        step 4: monte carlo sampling                       (DO_MONTE)
+t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
+t        step 2: make rotatmers                             (DO_ROTAMERS)
+t        step 3: do energy calculations                     (DO_ENERGY)
+t        step 4: monte carlo sampling                       (DO_MONTE)
 t        step 6: analysis                                   (DO_ANALYSIS)
 ==============================================================================
 
@@ -35,14 +35,14 @@ Less modified entries
 ------------------------------------------------------------------------------
 4.0      Protein dielectric constant for DelPhi             (EPSILON_PROT)
 ./extra.tpl                              (EXTRA)
-../../name.txt MCCE renaming rule.           (RENAME_RULES)
+./name.txt MCCE renaming rule.           (RENAME_RULES)
 
 ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 7.0      Initial pH                                         (TITR_PH0)
 1.0      pH interval                                        (TITR_PHD)
 0.0      Initial Eh                                         (TITR_EH0)
 30.0     Eh interval (in mV)                                (TITR_EHD)
-2       Number of titration points                         (TITR_STEPS)
+1       Number of titration points                         (TITR_STEPS)
 =============================================================================
 
 
