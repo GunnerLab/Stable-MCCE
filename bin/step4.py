@@ -49,8 +49,14 @@ def write_runprm(args):
     runprm["DO_MONTE"] = "t"
     runprm["EXTRA"] = "%s/extra.tpl" % base_path
     runprm["TITR_TYPE"] = args.t.lower()
-    runprm["TITR_PH0"] = args.i
-    runprm["TITR_EH0"] = args.i
+
+    if runprm["TITR_TYPE"] == "ph":
+        runprm["TITR_PH0"] = args.i
+        runprm["TITR_EH0"] = "0.0"
+    elif runprm["TITR_TYPE"] == "eh":
+        runprm["TITR_PH0"] = "7.0"
+        runprm["TITR_EH0"] = args.i
+
     runprm["TITR_PHD"] = args.d
     runprm["TITR.EHD"] = args.d
     runprm["TITR_STEPS"] = args.n

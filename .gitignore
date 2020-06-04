@@ -60,5 +60,7 @@ lib/delphi/delphi
 mcce
 *.opp
 *.dat
-testcase_1A2P/*
-testcase_cai/*
+testcase_1A2P/
+testcase_cai/
+6JYT/
+wiki/site/
