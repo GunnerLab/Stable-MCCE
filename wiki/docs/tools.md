@@ -280,16 +280,17 @@ state.py
 
 ---
 ### mfe.py
-*Analyze ionization energy by mean field approach.*
+*Analyze ionization free energy of a residue. It tells you why a residue has that pKa and what factors played a role.*
 
-**Syntax:**
+**Syntax**
 ```
-state.py Residue_ID pH [pairwise interaction cut_off]
+mfe.py [-h] [-p pH/Eh] [-x TS_correction] [-c cutoff] residue
 ```
 
-* Residue_ID: Residue ID as in pK.out
-* pH: pH value at which ionization energy is calculated. Environment pH is a factor of AH <=> A- + H+ reaction. Also the calculation will use the conformation of other residues at this pH. 
-* cut_off: Report only pairwise interaction bigger than this cut off value.
+ * residue: residue ID as in pK.out
+ * pH/Eh: pH value at which ionization energy is calculated. Default is the pKa (midpoint) where dG = 0.
+ * cut_off: Report only pairwise interaction bigger than this value.
+ * TS_correction: "t" to include entropy in G, "f" not to include, "r" (default) will look for run.prm. If entropy correction was turned on in step 4, mfe should not include this term as entropy has been "removed".
 
 **Required files:**
 
@@ -298,14 +299,13 @@ state.py Residue_ID pH [pairwise interaction cut_off]
  * extra.tpl for scaling factors that are not equal to 1.
  * energies/\*.opp for pairwise interactions 
 
- 
 **Example:**
 
 Check titration result in pKa.out:
 ```
 cat pK.out
 ... 
- ASP-A0052_        2.275
+ASP-A0044_        3.947
 ...
 ```
 
@@ -313,32 +313,39 @@ ASP-A0052 is the residue_ID. Its calculated pKa is 2.275. At this point, the fre
 
 Run 
 ```
-jmao@jmao-desktop ~/3wum $ mfe.py ASP-A0052_  2.275 0.1
-Residue ASP-A0052_ pKa/Em=2.275
+$ mfe.py -c 0.01 ASP-A0044_ 
+Residue ASP-A0044_ pKa/Em=3.947
 =================================
 Terms          pH     meV    Kcal
 ---------------------------------
-vdw0        -0.01   -0.71   -0.02
-vdw1         0.00    0.20    0.00
-tors        -0.08   -4.47   -0.10
-ebkb        -0.82  -47.40   -1.11
-dsol         1.22   71.06    1.67
+vdw0        -0.00   -0.27   -0.01
+vdw1        -0.01   -0.59   -0.01
+tors        -0.15   -8.63   -0.20
+ebkb        -0.67  -38.66   -0.91
+dsol         0.26   15.35    0.36
 offset      -0.62  -36.17   -0.85
-pH&pK0       2.48  143.66    3.38
+pH&pK0       0.80   46.61    1.10
 Eh&Em0       0.00    0.00    0.00
-residues    -2.17 -126.03   -2.96
+-TS          0.58   33.46    0.79
+residues    -0.19  -11.14   -0.26
 *********************************
-TOTAL        0.00    0.14    0.00  sum_crg
+TOTAL       -0.00   -0.05   -0.00  sum_crg
 *********************************
-ASNA0044_   -0.65  -37.99   -0.89    0.00
-ARGA0045_   -0.11   -6.45   -0.15    1.00
-ASNA0046_   -0.61  -35.50   -0.83    0.00
-ASPA0048_    0.33   19.44    0.46   -0.58
-GLNA0057_    0.15    8.84    0.21    0.00
-ASNA0059_   -0.69  -40.19   -0.94    0.00
-ARGA0061_   -0.25  -14.74   -0.35    1.00
-ASPA0066_    0.14    8.38    0.20   -0.41
-ARGA0112_   -0.18  -10.37   -0.24    1.00
+NTRA0003_   -0.03   -1.66   -0.04    1.00
+ASPA0022_    0.02    0.95    0.02   -0.86
+ASNA0023_   -0.01   -0.68   -0.02    0.00
+LYSA0027_   -0.01   -0.77   -0.02    1.00
+LYSA0039_   -0.14   -8.23   -0.19    1.00
+ASNA0041_   -0.01   -0.62   -0.01    0.00
+LYSA0049_   -0.04   -2.10   -0.05    1.00
+ASPA0054_    0.01    0.69    0.02   -0.95
+GLUA0073_    0.01    0.79    0.02   -0.99
+ASPA0075_    0.05    2.85    0.07   -1.00
+TYRA0078_    0.02    1.05    0.02   -0.00
+SERA0080_    0.02    1.19    0.03    0.00
+ARGA0083_   -0.04   -2.51   -0.06    1.00
+ARGA0087_   -0.03   -1.49   -0.04    1.00
+HISA0102_   -0.02   -1.02   -0.02    1.00
 =================================
 ```
 

@@ -1,625 +1,630 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+
+import argparse
 import sys
-import string
-#import re
+import os
+import math
 
-class CONFORMER:
-   def __init__(self):
-      self.occ = []
+fname_fort38 = "fort.38"
+fname_head3lst = "head3.lst"
+fname_pkout = "pK.out"
+fname_sumcrg = "sum_crg.out"
 
-class E_IONIZE:
-   def __init__(self):
-      self.mfe = []
-
-#Global variables and default values
-ph1         = 0.0
-eh1         = 0.0
-scale_ele   = 1.0
-scale_vdw   = 1.0
-scale_vdw0  = 1.0
-scale_vdw1  = 1.0
-scale_tors  = 1.0
-scale_dsolv = 1.0
-fname_extra = ""
 ph2Kcal = 1.364
 mev2Kcal = 0.0235
-Kcal2kT  = 1.688
-conformers = []
-residues = []
-titration_range = []
-titration_type = ""
+Kcal2kT = 1.688
 
-#special residue whose groud state and excited state are defined here:
+# Normally a residue is divided into two groups based on total charge. If more than two charge states are detected or
+# a mfe analysis is needed for groups with the same charge, you can specify the grouping rule here.
 #              RES  : ground  excited
-Special_res = {"_CU":(["+1"], ["+2"]),   
-               "UbQ":(["01"], ["-1"])}
+Special_res = {"_CU": (["+1"], ["+2"]),
+               "UbQ": (["01"], ["-1"]),
+               "HOH": (["01"], ["DM"])}
+
+class E_IONIZE:
+    def __init__(self):
+        self.mfe = []
+        return
+
+class Conformer:
+    def __init__(self):
+        self.name = ""
+        self.fl = ""
+        self.occ = []
+        self.crg = 0.0
+        self.em0 = 0.0
+        self.pka0 = 0.0
+        self.ne = 0
+        self.nh = 0
+        self.vdw0 = 0.0
+        self.vdw1 = 0.0
+        self.tors = 0.0
+        self.epol = 0.0
+        self.dsolv = 0.0
+        self.extra = 0.0
+        return
 
 
-def first_ph():
-   global ph1, eh1, scale_ele, scale_vdw, scale_vdw0, scale_vdw1, scale_tors, scale_dsolv,fname_extra
-   lines=open("run.prm").readlines()
-   for line in lines:
-      if    line.find("(TITR_PH0)")>=0:
-         ph1 = float(line.split()[0])
-      elif line.find("(TITR_EH0)")>=0:
-         eh1 = float(line.split()[0])
-      elif line.find("(EXTRA)")>=0:
-         fname_extra = line.split()[0]
-      elif line.find("(EPSILON_PROT)")>=0:
-         epsilon = int(float(line.split()[0]))
+class Residue:
+    def __init__(self):
+        self.resid = ""
+        self.conformers = []
+        return
 
-   scale_ele   = 1.0
-   scale_vdw   = 1.0/epsilon
-   scale_vdw0  = 1.0/epsilon
-   scale_vdw1  = 1.0/epsilon
-   scale_tors  = 1.0/epsilon
-   scale_dsolv = 1.0
-   
-   if fname_extra:
-      lines=open(fname_extra).readlines()
-      for line in lines:
-         fields = line.split()
-         if len(fields) != 3:
-	    continue  
-	 elif fields[0]+fields[1] == "SCALINGVDW0":
-	    scale_vdw0 = float(fields[2])
-	 elif fields[0]+fields[1] == "SCALINGVDW1":
-	    scale_vdw1 = float(fields[2])
-	 elif fields[0]+fields[1] == "SCALINGVDW":
-	    scale_vdw = float(fields[2])
-	 elif fields[0]+fields[1] == "SCALINGTORS":
-	    scale_tors = float(fields[2])
-	 elif fields[0]+fields[1] == "SCALINGELE":
-	    scale_ele = float(fields[2])
-	 elif fields[0]+fields[1] == "SCALINGDSOLV":
-	    scale_dsolv = float(fields[2])
-	     
-   for line in lines:
-      if   line.find("(SCALE_ELE)")>=0:
-         scale_ele = float(line.split()[0])
-      elif line.find("(SCALE_VDW)")>=0:
-         scale_vdw = float(line.split()[0])
-         scale_vdw0 = float(line.split()[0])
-         scale_vdw1 = float(line.split()[0])
 
-   return
+class Titration:
+    def __init__(self):
+        self.range = []
+        self.type = ""
+        self.conformers = []
+        self.residues = []
+        return
 
-def read_headlst():
-   global conformers
-   global titration_range,titration_type,titration_unit, scale_ele, scale_vdw
+    def read_confs(self, env):
+        scale_ele = env["scale_ele"]
+        scale_vdw = env["scale_vdw"]
+        scale_vdw0 = env["scale_vdw0"]
+        scale_vdw1 = env["scale_vdw1"]
+        scale_tors = env["scale_tors"]
+        scale_dsolv = env["scale_dsolv"]
 
-   lines = open("head3.lst").readlines()
-   lines.pop(0)   # remove the title line
+        fort38_lines = open(fname_fort38).readlines()
+        head3_lines = open(fname_head3lst).readlines()
+        line = fort38_lines.pop(0)
+        fields = line.split()
+        self.type = fields[0]
+        self.range = [float(x) for x in fields[1:]]
+        head3_lines.pop(0)
 
-   if len(conformers) > 0:
-      print "WARNING: adding to non empty conformer list."
+        while fort38_lines and head3_lines:
+            fort38_data = fort38_lines.pop(0)
+            head3_data = head3_lines.pop(0)
+            conf = Conformer()
 
-   for line in lines:
-      fields = line.split()
-      conformer = CONFORMER()
-      conformer.id   = fields[1]
-      conformer.fl   = fields[2]
-      conformer.hocc  = float(fields[3]) # occ in head3.lst
-      conformer.crg  = float(fields[4])
-      conformer.Em0  = float(fields[5])
-      conformer.pKa0 = float(fields[6])
-      conformer.ne   = int(fields[7])
-      conformer.nH   = int(fields[8])
-      conformer.vdw0 = float(fields[9]) * scale_vdw0
-      conformer.vdw1 = float(fields[10])* scale_vdw1
-      conformer.tors = float(fields[11])* scale_tors
-      conformer.epol = float(fields[12])* scale_ele
-      conformer.dsolv= float(fields[13])* scale_dsolv
-      conformer.extra= float(fields[14])
-      conformer.self = conformer.vdw0+conformer.vdw1+conformer.tors+conformer.epol+conformer.dsolv+conformer.extra
-      conformers.append(conformer)
-   return
+            fields = fort38_data.split()
+            conf.name = fields[0]
+            conf.occ = [float(x) for x in fields[1:]]
 
-def read_fort38():
-   global conformers
-   global titration_range,titration_type,titration_unit
+            fields = head3_data.split()
+            if conf.name != fields[1]:
+                print("Confomer %s in fort.38 does not match %s in head3.lst" % (conf.name, fields[1]))
+                sys.exit()
 
-   #lines = [x for x in open("fort.38").readlines() if x.find("DM") == -1]
-   lines = open("fort.38").readlines()
+            conf.fl = fields[2]
+            conf.hocc = float(fields[3])  # occ in head3.lst
+            conf.crg = float(fields[4])
+            conf.em0 = float(fields[5])
+            conf.pka0 = float(fields[6])
+            conf.ne = int(fields[7])
+            conf.nh = int(fields[8])
+            conf.vdw0 = float(fields[9]) * scale_vdw0
+            conf.vdw1 = float(fields[10]) * scale_vdw1
+            conf.tors = float(fields[11]) * scale_tors
+            conf.epol = float(fields[12]) * scale_ele
+            conf.dsolv = float(fields[13]) * scale_dsolv
+            conf.extra = float(fields[14])
+            conf.self = conf.vdw0 + conf.vdw1 + conf.tors + conf.epol + conf.dsolv + conf.extra
 
-   temp = lines[0].split()
-   ttype = temp[0].strip().upper()
-   if   ttype == 'EH':
-      titration_type = 'Eh'
-      titration_unit = 'mV'
-   elif ttype == 'PH':
-      titration_type = 'pH'
-      titration_unit = 'pH'
-   else:
-      titration_type = ttype
-      titration_unit = '?'
-   titration_range = [float(x) for x in temp[1:]]
-   lines.pop(0)
+            self.conformers.append(conf)
 
-   for i in range(len(conformers)):
-      line = lines[i].split()
-      if conformers[i].id != line[0]:
-         print "ERROR, %s in head3.lst doesn't match %s in fort.38" %(conformers[i].id, line[0])
-         return
-      conformers[i].occ = [float(x) for x in line[1:]]
+        return
 
-   return
-
-def group_residues():
-   global conformers
-   global titration_range,titration_type,titration_unit, residues
-
-   if len(conformers) < 1: return residues    # no conformers
-   old_resid = conformers[0].id[:3] + conformers[0].id[5:11]
-   residue = [old_resid, [], []]
-  
-   if Special_res.has_key(conformers[0].id[:3]):
-      if conformers[0].id[3:5] in Special_res[conformers[0].id[:3]][0]:
-         residue[1].append(conformers[0])
-      elif conformers[0].id[3:5] in Special_res[conformers[0].id[:3]][1]:
-         residue[2].append(conformers[0])
-      else:
-         print "This conformer was not defined in either ground or excited group."
-
-   else:
-      if conformers[0].id[3] == '0' or conformers[0].id[3] == 'D':
-         residue[1].append(conformers[0])
-      else:
-         residue[2].append(conformers[0])
-
-   for conformer in conformers[1:]:
-      current_resid = conformer.id[:3] + conformer.id[5:11]
-      if current_resid == old_resid:
-         
-         if Special_res.has_key(conformer.id[:3]):
-            if conformer.id[3:5] in Special_res[conformer.id[:3]][0]:
-               residue[1].append(conformer)
-            elif conformer.id[3:5] in Special_res[conformer.id[:3]][1]:
-               residue[2].append(conformer)
+    def group_residues(self):
+        res_ids = []
+        residues = {}
+        for conf in self.conformers:
+            resid = conf.name[:3] + conf.name[5:11]
+            if resid in res_ids:
+                res = residues[resid]
             else:
-               print "This conformer was not defined in either ground or excited group."
+                res = Residue()
+                res.resid = resid
+                residues[resid] = res
+                res_ids.append(resid)
+            res.conformers.append(conf)
 
-         else:
-            if conformer.id[3] == '0' or conformer.id[3] == 'D':
-               residue[1].append(conformer)
+        self.residues = [residues[x] for x in res_ids]
+        return
+
+
+def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
+    scale_ele = env["scale_ele"]
+    scale_vdw = env["scale_vdw"]
+    scale_vdw0 = env["scale_vdw0"]
+    scale_vdw1 = env["scale_vdw1"]
+    scale_tors = env["scale_tors"]
+    scale_dsolv = env["scale_dsolv"]
+
+    this_resid = residue[:3]+residue[4:]
+
+    ph1 = 7.0
+    if "TITR_PH0" in env:
+        ph1 = float(env["TITR_PH0"])
+
+    eh1 = 0.0
+    if "TITR_EH0" in env:
+        eh1 = float(env["TITR_EH0"])
+
+    report_lines = []
+
+    titration = Titration()
+    titration.read_confs(env)
+    titration.group_residues()
+
+    mfe_conformers = []
+    resid = residue[:3]+residue[4:]
+    found = False
+    for res in titration.residues:
+        if resid ==(res.resid):
+            mfe_conformers = res.conformers
+            found = True
+            break
+
+    if not found:
+        print("Residue %s not found in head3.lst" % resid)
+        sys.exit()
+
+    # divide in to two states:
+    ground_conformers = []
+    exited_conformers = []
+    if residue[:3] in Special_res:  # group by type name if defined
+        ground_typeid = Special_res[residue[:3][0]]
+        exited_typeid = Special_res[residue[:3][1]]
+        for conf in mfe_conformers:
+            if conf.name[3:5] in ground_typeid:
+                ground_conformers.append(conf)
+            elif conf.name[3:5] in exited_typeid:
+                exited_conformers.append(conf)
+    else:   # group conformers by charge if not defined
+        for conf in mfe_conformers:
+            if abs(conf.crg) < 0.01:
+                ground_conformers.append(conf)
             else:
-               residue[2].append(conformer)
-         
-      else: # a new residue
-         residues.append(residue)
-         old_resid = current_resid
-         residue = [old_resid, [], []]
-         if Special_res.has_key(conformer.id[:3]):
-            #print "KKK"
-            if conformer.id[3:5] in Special_res[conformer.id[:3]][0]:
-               residue[1].append(conformer)
-            elif conformer.id[3:5] in Special_res[conformer.id[:3]][1]:
-               residue[2].append(conformer)
+                exited_conformers.append(conf)
+
+    for conf in mfe_conformers:
+        conf.pHeffect = [0.0 for i in range(len(titration.range))]
+        conf.Eheffect = [0.0 for i in range(len(titration.range))]
+        conf.res_mfe = [[0.0 for i in range(len(titration.range))] for x in titration.residues]
+        conf.mfe_total = [0.0 for i in range(len(titration.range))]
+        conf.E_total = [0.0 for i in range(len(titration.range))]
+
+        # pairwise energy table
+        pairwise = {}
+        if os.path.exists:
+            lines = open("energies/" + conf.name + ".opp").readlines()
+            for line in lines:
+                fields = line.split()
+                if len(fields) >= 3:
+                    # check the vdw clash
+                    if fields[3].find("999.000") >= 0:
+                        pairwise[fields[1]] = 999.000
+                    else:
+                        if len(fields[3]) > 8:
+                            fields[3] = fields[3][:-8]
+                        pairwise[fields[1]] = float(fields[2]) * scale_ele + float(fields[3]) * scale_vdw
+
+        # make conformer mfe
+        for i in range(len(titration.range)):
+
+            point = titration.range[i]
+            conf_mfe = [0.0 for x in titration.range]
+
+            # pH effect in Kcal/mol
+            if titration.type.upper() == 'PH':
+                conf.pHeffect[i] = (point - conf.pka0) * conf.nh * ph2Kcal
             else:
-               print "This conformer was not defined in either ground or excited group."
+                conf.pHeffect[i] = (ph1 - conf.pka0) * conf.nh * ph2Kcal
 
-         else:
-            if conformer.id[3] == '0' or conformer.id[3] == 'D':
-               residue[1].append(conformer)
+            # Eh effect in Kcal/mol
+            if titration.type.upper() == 'EH':
+                conf.Eheffect[i] = (point - conf.em0) * conf.ne * mev2Kcal
             else:
-               residue[2].append(conformer)
+                conf.Eheffect[i] = (eh1 - conf.em0) * conf.ne * mev2Kcal
 
-   residues.append(residue)
-   
-   return
 
-def read_pK():
-   lines = open("pK.out").readlines()
-   pK = [[line[:10], line[10:]] for line in lines]
-   return pK
+            for j in range(len(titration.residues)):
+                res = titration.residues[j]
+                if res.resid == this_resid:
+                    mfe = 0.0
+                else:
+                    mfe = 0.0
+                    for conf2 in res.conformers:
+                        if conf2.name in pairwise:
+                            mfe += pairwise[conf2.name] * conf2.occ[i]
+                # This mfe is at 1 titration point, from one residue
 
-def E_ionize(res_pKa_name):
-   global residues
-   import math
-
-   res_name = res_pKa_name[:3] + res_pKa_name[4:]
-   found = 0
-   for residue in residues:
-      if res_name == residue[0]:
-         found = 1
-         break
-
-   if found==0:
-      print "Residue %s not found in fort.38" % res_name
-      sys.exit(0)
-
-   dG_ionize = E_IONIZE()
-
-   # mfe for each conformer
-   for conformer in residue[1]+residue[2]:
-      conformer.pHeffect = [0.0 for i in range(len(titration_range))]
-      conformer.Eheffect = [0.0 for i in range(len(titration_range))]
-      conformer.res_mfe =  [[0.0 for i in range(len(titration_range))] for x in residues]
-      conformer.mfe_total= [0.0 for i in range(len(titration_range))]
-      conformer.E_total =  [0.0 for i in range(len(titration_range))]
-
-      # pairwise energy table
-      if conformer.id.find("DM") > -1:
-        for i in range(len(titration_range)):
-            conformer.pHeffect[i] = 0
-            conformer.Eheffect[i] = 0
-            for j in range(len(residues)):
-               conformer.res_mfe[j][i] = 0
-            conformer.mfe_total[i] = 0
+                conf.res_mfe[j][i] = mfe
+                conf.mfe_total[i] += mfe
 
             # update conformer E_total
-            conformer.E_total[i] = conformer.mfe_total[i]\
-                   +conformer.pHeffect[i]\
-                   +conformer.Eheffect[i]\
-                   +conformer.self
+            conf.E_total[i] = conf.mfe_total[i] \
+                                   + conf.pHeffect[i] \
+                                   + conf.Eheffect[i] \
+                                   + conf.self
 
-      else:
-        lines = open("energies/"+conformer.id+".opp").readlines()
-        pairwise = {}
-      for line in lines:
-        line = line.split()
-        if len(line) >= 3:
-           # check the vdw clash
-           if line[3].find("999.000") >= 0:
-              pairwise[line[1]] = 999.000
-           else:
-              if len(line[3]) > 8:
-                 line[3] = line[3][:(len(line[3])-8)]
-              pairwise[line[1]] = float(line[2])*scale_ele + float(line[3])*scale_vdw
+    # Reference energy: lowest E
+    Eref = ground_conformers[0].E_total[0]  # reference E (lowest of this res)
+    for conf in mfe_conformers:
+        for i in range(len(titration.range)):
+            if Eref > conf.E_total[i]:
+                Eref = conf.E_total[i]
 
-     # make conformer mfe
-      for i in range(len(titration_range)):
-        point = titration_range[i]
-        conf_mfe = [0.0 for x in titration_range]
+    # Calculate mfe occupancy of each conformer
+    SigmaE = [0.0 for i in range(len(titration.range))]
+    for i in range(len(titration.range)):
+        Ei = [math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) for conformer in mfe_conformers]
+        SigmaE[i] = sum(Ei)
 
-        # pH effect in Kcal/mol
-        if titration_type == 'pH':
-           conformer.pHeffect[i] = (point-conformer.pKa0)*conformer.nH*ph2Kcal
+    for conformer in mfe_conformers:
+        conformer.rocc = [0.0 for x in titration.range]
+        for i in range(len(titration.range)):
+            if conformer.fl.upper() == 'T':
+                # print conformer.hocc
+                if conformer.hocc < 0.001:
+                    conformer.rocc[i] = 0.0
+                elif conformer.hocc > 0.999:
+                    conformer.rocc[i] = 1.00
+                else:
+                    print()
+                    "Error: partial occupancy was assigned in head3.lst"
+                    sys.exit()
+            else:
+                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]  # recovered occ
+
+    # Override the 0 occupance if all 0 in a group
+    all0 = True
+    for conformer in ground_conformers:
+        if conformer.hocc > 0.001:
+            all0 = False
+            break
+    if all0:
+        for conformer in ground_conformers:
+            for i in range(len(titration.range)):
+                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]
+
+    all0 = True
+    for conformer in exited_conformers:
+        if conformer.hocc > 0.001:
+            all0 = False
+            break
+    if all0:
+        for conformer in exited_conformers:
+            for i in range(len(titration.range)):
+                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]
+
+    SigmaOcc = [0.0 for i in range(len(titration.range))]
+    for conformer in ground_conformers:
+        for i in range(len(titration.range)): SigmaOcc[i] += conformer.rocc[i]
+    for conformer in ground_conformers:
+        conformer.nocc = []
+        for i in range(len(titration.range)):
+            if SigmaOcc[i] < 1.0E-25 and conformer.rocc[i] < 1.0E-25:
+                conformer.nocc.append(1.0)
+            else:
+                conformer.nocc.append(conformer.rocc[i] / SigmaOcc[i])
+
+    SigmaOcc = [0.0 for i in range(len(titration.range))]
+    for conformer in exited_conformers:
+        for i in range(len(titration.range)): SigmaOcc[i] += conformer.rocc[i]
+    for conformer in exited_conformers:
+        conformer.nocc = []
+        for i in range(len(titration.range)):
+            if SigmaOcc[i] < 1.0E-25 and conformer.rocc[i] < 1.0E-25:
+                conformer.nocc.append(1.0)
+            else:
+                conformer.nocc.append(conformer.rocc[i] / SigmaOcc[i])
+
+    # energy terms of ground state
+    ground_state = E_IONIZE()
+    ground_state.vdw0 = [0.0 for x in titration.range]
+    ground_state.vdw1 = [0.0 for x in titration.range]
+    ground_state.tors = [0.0 for x in titration.range]
+    ground_state.epol = [0.0 for x in titration.range]
+    ground_state.dsolv = [0.0 for x in titration.range]
+    ground_state.extra = [0.0 for x in titration.range]
+    ground_state.pHeffect = [0.0 for x in titration.range]
+    ground_state.Eheffect = [0.0 for x in titration.range]
+    ground_state.mfe_total = [0.0 for x in titration.range]
+    ground_state.res_mfe = [[0.0 for x in titration.range] for x in titration.residues]
+    ground_state.E_total = [0.0 for x in titration.range]
+    ground_state.TS = [0.0 for x in titration.range]
+    for conformer in ground_conformers:
+        for i in range(len(titration.range)):
+            ground_state.vdw0[i] += conformer.nocc[i] * conformer.vdw0
+            ground_state.vdw1[i] += conformer.nocc[i] * conformer.vdw1
+            ground_state.tors[i] += conformer.nocc[i] * conformer.tors
+            ground_state.epol[i] += conformer.nocc[i] * conformer.epol
+            ground_state.dsolv[i] += conformer.nocc[i] * conformer.dsolv
+            ground_state.extra[i] += conformer.nocc[i] * conformer.extra
+            ground_state.pHeffect[i] += conformer.nocc[i] * conformer.pHeffect[i]
+            ground_state.Eheffect[i] += conformer.nocc[i] * conformer.Eheffect[i]
+            ground_state.mfe_total[i] += conformer.nocc[i] * conformer.mfe_total[i]
+            ground_state.E_total[i] += conformer.nocc[i] * conformer.E_total[i]
+            if conformer.nocc[i] > 0.000001:
+                ground_state.TS[i] += -conformer.nocc[i] * math.log(conformer.nocc[i]) / Kcal2kT
+        for j in range(len(titration.residues)):
+            for i in range(len(titration.range)):
+                ground_state.res_mfe[j][i] += conformer.nocc[i] * conformer.res_mfe[j][i]
+
+    if mfe_xts:
+        ground_state.G = [ground_state.E_total[i] - ground_state.TS[i] for i in range(len(titration.range))]
+    else:
+        ground_state.G = [ground_state.E_total[i] for i in range(len(titration.range))]
+
+    # energy terms of charged state
+    charged_state = E_IONIZE()
+    charged_state.vdw0 = [0.0 for x in titration.range]
+    charged_state.vdw1 = [0.0 for x in titration.range]
+    charged_state.tors = [0.0 for x in titration.range]
+    charged_state.epol = [0.0 for x in titration.range]
+    charged_state.dsolv = [0.0 for x in titration.range]
+    charged_state.extra = [0.0 for x in titration.range]
+    charged_state.pHeffect = [0.0 for x in titration.range]
+    charged_state.Eheffect = [0.0 for x in titration.range]
+    charged_state.res_mfe = [[0.0 for x in titration.range] for x in titration.residues]
+    charged_state.mfe_total = [0.0 for x in titration.range]
+    charged_state.E_total = [0.0 for x in titration.range]
+    charged_state.TS = [0.0 for x in titration.range]
+    for conformer in exited_conformers:
+        for i in range(len(titration.range)):
+            charged_state.vdw0[i] += conformer.nocc[i] * conformer.vdw0
+            charged_state.vdw1[i] += conformer.nocc[i] * conformer.vdw1
+            charged_state.tors[i] += conformer.nocc[i] * conformer.tors
+            charged_state.epol[i] += conformer.nocc[i] * conformer.epol
+            charged_state.dsolv[i] += conformer.nocc[i] * conformer.dsolv
+            charged_state.extra[i] += conformer.nocc[i] * conformer.extra
+            charged_state.pHeffect[i] += conformer.nocc[i] * conformer.pHeffect[i]
+            charged_state.Eheffect[i] += conformer.nocc[i] * conformer.Eheffect[i]
+            charged_state.mfe_total[i] += conformer.nocc[i] * conformer.mfe_total[i]
+            charged_state.E_total[i] += conformer.nocc[i] * conformer.E_total[i]
+            if conformer.nocc[i] > 0.000001:
+                charged_state.TS[i] += -conformer.nocc[i] * math.log(conformer.nocc[i]) / Kcal2kT
+        for j in range(len(titration.residues)):
+            for i in range(len(titration.range)):
+                charged_state.res_mfe[j][i] += conformer.nocc[i] * conformer.res_mfe[j][i]
+
+    if mfe_xts:
+        charged_state.G = [charged_state.E_total[i] - charged_state.TS[i] for i in range(len(titration.range))]
+    else:
+        charged_state.G = [charged_state.E_total[i] for i in range(len(titration.range))]
+
+    dG = E_IONIZE()
+    dG.ground_state = ground_state
+    dG.charged_state = charged_state
+    dG.ground_confs = ground_conformers
+    dG.charged_confs = exited_conformers
+    dG.resID = this_resid
+
+    # decide which two columns will be used to get residue mfe
+    t_low_found = t_high_found = 0
+    i_low = 0
+    i_high = 0
+    for i in range(len(titration.range)):
+        if mfe_ph > titration.range[i] - 0.001:
+            i_low = i
+            t_low_found = 1
+
+    for i in range(len(titration.range)):
+        if mfe_ph < titration.range[i] + 0.001:
+            i_high = i
+            t_high_found = 1
+            break
+
+    if not t_low_found or not t_high_found:
+        print("titration_point out off range")
+        sys.exit()
+
+    # get to this pH/Eh
+    dG_point = E_IONIZE()
+
+    if i_low == i_high:  # one point
+        dG_point.vdw0 = charged_state.vdw0[i_low] - ground_state.vdw0[i_low]
+        dG_point.vdw1 = charged_state.vdw1[i_low] - ground_state.vdw1[i_low]
+        dG_point.tors = charged_state.tors[i_low] - ground_state.tors[i_low]
+        dG_point.epol = charged_state.epol[i_low] - ground_state.epol[i_low]
+        dG_point.dsolv = charged_state.dsolv[i_low] - ground_state.dsolv[i_low]
+        dG_point.extra = charged_state.extra[i_low] - ground_state.extra[i_low]
+        dG_point.pHeffect = charged_state.pHeffect[i_low] - ground_state.pHeffect[i_low]
+        dG_point.Eheffect = charged_state.Eheffect[i_low] - ground_state.Eheffect[i_low]
+        dG_point.mfe_total = charged_state.mfe_total[i_low] - ground_state.mfe_total[i_low]
+        dG_point.E_total = charged_state.E_total[i_low] - ground_state.E_total[i_low]
+        # entropy should be used only when MC is carried out
+        dG_point.TS = charged_state.TS[i_low] - ground_state.TS[i_low]
+
+        for i in range(len(charged_state.res_mfe)):
+            dG_point.mfe.append(charged_state.res_mfe[i][i_low] - ground_state.res_mfe[i][i_low])
+        dG_point.G = charged_state.G[i_low] - ground_state.G[i_low]
+
+    else:  # scale average of two points
+        k = (mfe_ph - titration.range[i_low]) / (titration.range[i_high] - titration.range[i_low])
+        dG_point.vdw0 = (1 - k) * (charged_state.vdw0[i_low] - ground_state.vdw0[i_low]) \
+                        + k * (charged_state.vdw0[i_high] - ground_state.vdw0[i_high])
+        dG_point.vdw1 = (1 - k) * (charged_state.vdw1[i_low] - ground_state.vdw1[i_low]) \
+                        + k * (charged_state.vdw1[i_high] - ground_state.vdw1[i_high])
+        dG_point.tors = (1 - k) * (charged_state.tors[i_low] - ground_state.tors[i_low]) \
+                        + k * (charged_state.tors[i_high] - ground_state.tors[i_high])
+        dG_point.epol = (1 - k) * (charged_state.epol[i_low] - ground_state.epol[i_low]) \
+                        + k * (charged_state.epol[i_high] - ground_state.epol[i_high])
+        dG_point.dsolv = (1 - k) * (charged_state.dsolv[i_low] - ground_state.dsolv[i_low]) \
+                         + k * (charged_state.dsolv[i_high] - ground_state.dsolv[i_high])
+        dG_point.extra = (1 - k) * (charged_state.extra[i_low] - ground_state.extra[i_low]) \
+                         + k * (charged_state.extra[i_high] - ground_state.extra[i_high])
+        dG_point.pHeffect = (1 - k) * (charged_state.pHeffect[i_low] - ground_state.pHeffect[i_low]) \
+                            + k * (charged_state.pHeffect[i_high] - ground_state.pHeffect[i_high])
+        dG_point.Eheffect = (1 - k) * (charged_state.Eheffect[i_low] - ground_state.Eheffect[i_low]) \
+                            + k * (charged_state.Eheffect[i_high] - ground_state.Eheffect[i_high])
+        dG_point.mfe_total = (1 - k) * (charged_state.mfe_total[i_low] - ground_state.mfe_total[i_low]) \
+                             + k * (charged_state.mfe_total[i_high] - ground_state.mfe_total[i_high])
+        dG_point.E_total = (1 - k) * (charged_state.E_total[i_low] - ground_state.E_total[i_low]) \
+                           + k * (charged_state.E_total[i_high] - ground_state.E_total[i_high])
+        dG_point.TS = (1-k)*(charged_state.TS[i_low] - ground_state.TS[i_low])\
+                        + k*(charged_state.TS[i_high] - ground_state.TS[i_high])
+
+        for i in range(len(charged_state.res_mfe)):
+            dG_point.mfe.append((1 - k) * (charged_state.res_mfe[i][i_low] - ground_state.res_mfe[i][i_low]) \
+                                + k * (charged_state.res_mfe[i][i_high] - ground_state.res_mfe[i][i_high]))
+
+        dG_point.G = (1 - k) * (charged_state.G[i_low] - ground_state.G[i_low]) \
+                     + k * (charged_state.G[i_high] - ground_state.G[i_high])
+
+
+    # net charge of residues at mfe_ph
+    res_crg = {}
+    lines = open(fname_sumcrg).readlines()
+    lines.pop(0)
+    for line in lines:
+        fields = line.split()
+        if len(fields) > 1:
+            key = fields[0][:3]+fields[0][4:]
+            res_crg[key] = [float(x) for x in fields[1:]]
+
+    for res in titration.residues:
+        if res.resid in res_crg:
+            res.crg = res_crg[res.resid]
         else:
-           conformer.pHeffect[i] = (ph1-conformer.pKa0)*conformer.nH*ph2Kcal
+            res.crg = [0.0 for x in titration.range]
 
-        # Eh effect in Kcal/mol
-        if titration_type == 'Eh':
-           conformer.Eheffect[i] = (point-conformer.Em0)*conformer.ne*mev2Kcal
+        if i_low == i_high:
+            res.point_crg = res.crg[i_low]
         else:
-           conformer.Eheffect[i] = (eh1-conformer.Em0)*conformer.ne*mev2Kcal
+            res.point_crg = (1-k)*res.crg[i_low] + k*res.crg[i_high]
 
-        for j in range(len(residues)):
-           res = residues[j]
-           if res[0] == residue[0]:
-              mfe = 0.0
-           else:
-              mfe = 0.0
-              for conf in res[1]+res[2]:
-                 if not pairwise.has_key(conf.id):pairwise[conf.id] = 0.0
-                 mfe+=pairwise[conf.id]*conf.occ[i]
-           # This mfe is at 1 titration point, from one residue
-           conformer.res_mfe[j][i] = mfe
-           conformer.mfe_total[i] += mfe
-
-
-        # update conformer E_total
-        conformer.E_total[i] = conformer.mfe_total[i]\
-                    +conformer.pHeffect[i]\
-                    +conformer.Eheffect[i]\
-                    +conformer.self
-
-
-   Eref=residue[1][0].E_total[0]    # reference E (lowest of this res)
-   for conf in residue[1]+residue[2]:
-      for i in range(len(titration_range)):
-         if Eref > conf.E_total[i]: Eref=conf.E_total[i]
-
-   # Calculate mfe occupancy of each conformer
-   SigmaE = [0.0 for i in range(len(titration_range))]
-   for i in range(len(titration_range)):
-      Ei = [math.exp(-(conformer.E_total[i]-Eref)*Kcal2kT) for conformer in residue[1]+residue[2]]
-      for x in Ei: SigmaE[i] += x
-
-   for conformer in residue[1]+residue[2]:
-      conformer.rocc = [0.0 for x in titration_range]
-      for i in range(len(titration_range)):
-         if conformer.fl == 'T' or conformer.fl == 't':
-            #print conformer.hocc
-            if conformer.hocc <0.001: conformer.rocc[i] = 0.0
-            elif conformer.hocc >0.999: conformer.rocc[i] = 1000.0/SigmaE[i]  # 1000 times more occupied than the lowest
-            else: 
-               print "Error: partial occupancy was assigned in head3.lst"
-               sys.exit()
-         else:
-            conformer.rocc[i] = math.exp(-(conformer.E_total[i]-Eref)*Kcal2kT)/SigmaE[i]  # recovered occ
-
-   # Override the 0 occupance if all 0 in a group            
-   all0 = True
-   for conformer in residue[1]:
-      if conformer.hocc > 0.001:
-         all0 = False
-         break
-   if all0:
-      for conformer in residue[1]:
-         for i in range(len(titration_range)):
-            conformer.rocc[i] = math.exp(-(conformer.E_total[i]-Eref)*Kcal2kT)/SigmaE[i]
-         
-   all0 = True
-   for conformer in residue[2]:
-      if conformer.hocc > 0.001:
-         all0 = False
-         break
-   if all0:
-      for conformer in residue[2]:
-         for i in range(len(titration_range)):
-            conformer.rocc[i] = math.exp(-(conformer.E_total[i]-Eref)*Kcal2kT)/SigmaE[i]
-            
-            
-   SigmaOcc = [0.0 for i in range(len(titration_range))]
-   for conformer in residue[1]:
-      for i in range(len(titration_range)):SigmaOcc[i] += conformer.rocc[i]
-   for conformer in residue[1]:
-      conformer.nocc = []
-      for i in range(len(titration_range)):
-         if SigmaOcc[i] <1.0E-25 and conformer.rocc[i] <1.0E-25:
-            conformer.nocc.append(1.0)
-            #print "Assign 1.0"
-         else:
-            conformer.nocc.append(conformer.rocc[i]/SigmaOcc[i])
-            #print "calculated"
-
-   SigmaOcc = [0.0 for i in range(len(titration_range))]
-   for conformer in residue[2]:
-      for i in range(len(titration_range)):SigmaOcc[i] += conformer.rocc[i]
-   for conformer in residue[2]:
-      conformer.nocc = []
-      for i in range(len(titration_range)):
-         if SigmaOcc[i] <1.0E-25 and conformer.rocc[i] <1.0E-25:
-            conformer.nocc.append(1.0)
-         else:
-            conformer.nocc.append(conformer.rocc[i]/SigmaOcc[i])
+    report_lines.append("Residue %s pKa/Em=%s\n" % (residue, pKa))
+    report_lines.append("=================================\n")
+    report_lines.append("Terms          pH     meV    Kcal\n")
+    report_lines.append("---------------------------------\n")
+    report_lines.append("vdw0     %8.2f%8.2f%8.2f\n" % (dG_point.vdw0 / ph2Kcal, dG_point.vdw0 / mev2Kcal, dG_point.vdw0))
+    report_lines.append("vdw1     %8.2f%8.2f%8.2f\n" % (dG_point.vdw1 / ph2Kcal, dG_point.vdw1 / mev2Kcal, dG_point.vdw1))
+    report_lines.append("tors     %8.2f%8.2f%8.2f\n" % (dG_point.tors / ph2Kcal, dG_point.tors / mev2Kcal, dG_point.tors))
+    report_lines.append("ebkb     %8.2f%8.2f%8.2f\n" % (dG_point.epol / ph2Kcal, dG_point.epol / mev2Kcal, dG_point.epol))
+    report_lines.append("dsol     %8.2f%8.2f%8.2f\n" % (dG_point.dsolv / ph2Kcal, dG_point.dsolv / mev2Kcal, dG_point.dsolv))
+    report_lines.append("offset   %8.2f%8.2f%8.2f\n" % (dG_point.extra / ph2Kcal, dG_point.extra / mev2Kcal, dG_point.extra))
+    report_lines.append("pH&pK0   %8.2f%8.2f%8.2f\n" % (dG_point.pHeffect / ph2Kcal, dG_point.pHeffect / mev2Kcal, dG_point.pHeffect))
+    report_lines.append("Eh&Em0   %8.2f%8.2f%8.2f\n" % (dG_point.Eheffect / ph2Kcal, dG_point.Eheffect / mev2Kcal, dG_point.Eheffect))
+    if mfe_xts:
+        report_lines.append("-TS      %8.2f%8.2f%8.2f\n" % (-dG_point.TS/ph2Kcal, -dG_point.TS/mev2Kcal, -dG_point.TS))
+    report_lines.append("residues %8.2f%8.2f%8.2f\n" % (dG_point.mfe_total / ph2Kcal, dG_point.mfe_total / mev2Kcal, dG_point.mfe_total))
+    report_lines.append("*********************************\n")
+    report_lines.append("TOTAL    %8.2f%8.2f%8.2f%8.9s\n" % (dG_point.G / ph2Kcal, dG_point.G / mev2Kcal,
+                                       dG_point.G, "  sum_crg"))
+    report_lines.append("*********************************\n")
+    for i in range(len(dG_point.mfe)):
+        if abs(dG_point.mfe[i] / ph2Kcal) > mfe_pwcut:
+            ion_state = titration.residues[i].point_crg
+            report_lines.append("%-9s%8.2f%8.2f%8.2f%8.2f\n" % (titration.residues[i].resid, dG_point.mfe[i] / ph2Kcal,
+                                          dG_point.mfe[i] / mev2Kcal, dG_point.mfe[i], ion_state))
+    report_lines.append("=================================\n")
 
 
-   # energy terms of ground state
-   ground_state = E_IONIZE()
-   ground_state.vdw0  = [0.0 for x in titration_range]
-   ground_state.vdw1  = [0.0 for x in titration_range]
-   ground_state.tors  = [0.0 for x in titration_range]
-   ground_state.epol  = [0.0 for x in titration_range]
-   ground_state.dsolv = [0.0 for x in titration_range]
-   ground_state.extra = [0.0 for x in titration_range]
-   ground_state.pHeffect= [0.0 for x in titration_range]
-   ground_state.Eheffect= [0.0 for x in titration_range]
-   ground_state.mfe_total=[0.0 for x in titration_range]
-   ground_state.res_mfe = [[0.0 for x in titration_range] for x in residues]
-   ground_state.E_total  =[0.0 for x in titration_range]
-   ground_state.TS       =[0.0 for x in titration_range]
-   for conformer in residue[1]:
-      for i in range(len(titration_range)):
-         ground_state.vdw0[i]     += conformer.nocc[i]*conformer.vdw0
-         ground_state.vdw1[i]     += conformer.nocc[i]*conformer.vdw1
-         ground_state.tors[i]     += conformer.nocc[i]*conformer.tors
-         ground_state.epol[i]     += conformer.nocc[i]*conformer.epol
-         ground_state.dsolv[i]    += conformer.nocc[i]*conformer.dsolv
-         ground_state.extra[i]   += conformer.nocc[i]*conformer.extra
-         ground_state.pHeffect[i] += conformer.nocc[i]*conformer.pHeffect[i]
-         ground_state.Eheffect[i] += conformer.nocc[i]*conformer.Eheffect[i]
-         ground_state.mfe_total[i]+= conformer.nocc[i]*conformer.mfe_total[i]
-         ground_state.E_total[i]  += conformer.nocc[i]*conformer.E_total[i]
-         if conformer.nocc[i]>0.000001:
-            ground_state.TS[i]       +=-conformer.nocc[i]*math.log(conformer.nocc[i])/Kcal2kT
-      for j in range(len(residues)):
-         for i in range(len(titration_range)):
-            ground_state.res_mfe[j][i] += conformer.nocc[i]*conformer.res_mfe[j][i]
+    return report_lines
 
-   #ground_state.G = [ground_state.E_total[i] - ground_state.TS[i] for i in range(len(titration_range))]
-   ground_state.G = [ground_state.E_total[i] for i in range(len(titration_range))]
 
-   # energy terms of charged state
-   charged_state = E_IONIZE()
-   charged_state.vdw0  = [0.0 for x in titration_range]
-   charged_state.vdw1  = [0.0 for x in titration_range]
-   charged_state.tors  = [0.0 for x in titration_range]
-   charged_state.epol  = [0.0 for x in titration_range]
-   charged_state.dsolv = [0.0 for x in titration_range]
-   charged_state.extra = [0.0 for x in titration_range]
-   charged_state.pHeffect= [0.0 for x in titration_range]
-   charged_state.Eheffect= [0.0 for x in titration_range]
-   charged_state.res_mfe = [[0.0 for x in titration_range] for x in residues]
-   charged_state.mfe_total=[0.0 for x in titration_range]
-   charged_state.E_total  =[0.0 for x in titration_range]
-   charged_state.TS       =[0.0 for x in titration_range]
-   for conformer in residue[2]:
-      for i in range(len(titration_range)):
-         charged_state.vdw0[i]     += conformer.nocc[i]*conformer.vdw0
-         charged_state.vdw1[i]     += conformer.nocc[i]*conformer.vdw1
-         charged_state.tors[i]     += conformer.nocc[i]*conformer.tors
-         charged_state.epol[i]     += conformer.nocc[i]*conformer.epol
-         charged_state.dsolv[i]    += conformer.nocc[i]*conformer.dsolv
-         charged_state.extra[i]   += conformer.nocc[i]*conformer.extra
-         charged_state.pHeffect[i] += conformer.nocc[i]*conformer.pHeffect[i]
-         charged_state.Eheffect[i] += conformer.nocc[i]*conformer.Eheffect[i]
-         charged_state.mfe_total[i]+= conformer.nocc[i]*conformer.mfe_total[i]
-         charged_state.E_total[i]  += conformer.nocc[i]*conformer.E_total[i]
-         if conformer.nocc[i]>0.000001:
-            charged_state.TS[i]       +=-conformer.nocc[i]*math.log(conformer.nocc[i])/Kcal2kT
-      for j in range(len(residues)):
-         for i in range(len(titration_range)):
-            charged_state.res_mfe[j][i] += conformer.nocc[i]*conformer.res_mfe[j][i]
+def get_residue_pKa(res_name):
+    pka = "Residue %s not found in file %s" % (res_name, fname_pkout)
+    lines = open(fname_pkout).readlines()
+    for line in lines:
+        fields = line.split()
 
-   #charged_state.G = [charged_state.E_total[i] - charged_state.TS[i] for i in range(len(titration_range))]
-   charged_state.G = [charged_state.E_total[i] for i in range(len(titration_range))]
+        if fields[0] == res_name:
+            try:
+                pka = float(fields[1])
+                break
+            except ValueError:
+                pka = "Titration of residue %s out of range" % res_name
 
-   dG_ionize.ground_state = ground_state
-   dG_ionize.charged_state = charged_state
-   dG_ionize.ground_confs = residue[1]
-   dG_ionize.charged_confs = residue[2]
-   dG_ionize.resID = residue[0]
+    return pka
 
-   return dG_ionize
 
-def print_crg(RES):
-    
-   l=open('sum_crg.out','r')
-   line=l.readlines()
-   found=1
-   for eachline in line:
-      tok=eachline.split()    # Get the command arguments
-    helpmsg = "Calculate mean field energy analysis on ionazable residue."
+def load_runprm(env):
+    lines = open("run.prm").readlines()
+    for line in lines:
+        fields = line.split("#", 1)[0].strip().split()
+        if len(fields) > 1 and fields[-1].find("(") >= 0 and fields[-1].find(")") > fields[-1].find("("):
+            key = fields[-1].strip("()").strip()
+            env[key] = fields[0]
+
+    if "MONTE_TSX" not in env:
+        env["MONTE_TSX"] = "f"
+
+    return
+
+
+def load_scaling(env):
+    lines = open(env["EXTRA"]).readlines()
+    for line in lines:
+        fields = line.split()
+        if len(fields) > 2 and fields[0] == "SCALING":
+            if fields[1] == "ELE":
+                env["scale_ele"] = float(fields[2])
+            elif fields[1] == "VDW":
+                env["scale_vdw"] = float(fields[2])
+            elif fields[1] == "VDW0":
+                env["scale_vdw0"] = float(fields[2])
+            elif fields[1] == "VDW1":
+                env["scale_vdw1"] = float(fields[2])
+            elif fields[1] == "TORS":
+                env["scale_tors"] = float(fields[2])
+            elif fields[1] == "DSOLV":
+                env["scale_dsolv"] = float(fields[2])
+    return
+
+
+def mfe(args):
+    # prepare mfe environment
+    env = {"scale_ele": 1.0,
+           "scale_vdw": 1.0,
+           "scale_vdw0": 1.0,
+           "scale_vdw1": 1.0,
+           "scale_tors": 1.0,
+           "scale_dsolv": 1.0,
+           "mfe_res_name": args.residue[0],
+           "mfe_pwcutoff": args.c}
+
+    load_runprm(env)
+    if env["EXTRA"]:
+        load_scaling(env)
+
+    mfe_xts = True
+    if args.x == "t":
+        mfe_xts = True
+    elif args.x == "f":
+        mfe_xts = False
+    elif env["MONTE_TSX"].upper() == "T":
+        mfe_xts = False    # Did entropy correction in Monte Carlo already, TS term should not be in mfe
+    else:
+        mfe_xts = True
+
+    # mfe_ph
+    pKa = get_residue_pKa(args.residue[0])
+    if args.p == "m":  # determined by pKa
+        mfe_ph = pKa
+    else:
+        mfe_ph = float(args.p)
+
+    if isinstance(mfe_ph, float):
+        mfe_pwcut = float(args.c)
+
+        # By now we have residue name in args.residue[0], mfe_ph, mfe_xts and pw cutoff in arges.c
+        report = get_mfe(env=env, residue=args.residue[0], mfe_ph=mfe_ph, mfe_xts=mfe_xts, mfe_pwcut=mfe_pwcut, pKa = pKa)
+        sys.stdout.writelines(report)
+    else:
+        print(mfe_ph)
+
+    return
+
+
+if __name__ == "__main__":
+    # Get the command arguments
+    helpmsg = "Calculate mean field energy ionization energy on ionazable residue at a specific pH/eH."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("-p", metavar="titration_point", default="m", help="pH or Eh value, or \'m\' for midpoint")
-    parser.add_argument("-x", metavar="entropy_correction", default="r", help="\`f\`: False, \`t\`: True, or `\r\`: determined by run.prm (default)")
-    parser.add_argument("res", metavar="residueID", nargs=1)
-    parser.add_argument("-c", metavar="cutoff", default="-0.01", help="pairwise cutoff, not to report pw less than this value, default to report all.", type=float)
+    parser.add_argument("-p", metavar="pH/Eh", default="m",
+                        help="pH or Eh mfe analysis is carried out, or \'m\' for midpoint")
+    parser.add_argument("-x", metavar="TS_correction", default="r",
+                        help="f: False, t: True, or r: determined by run.prm (default)")
+    parser.add_argument("-c", metavar="cutoff", default="-0.01", help="pairwise cutoff in reporting", type=float)
+    parser.add_argument("residue", metavar="residue", help="the residue name as in pK.out", nargs=1)
 
     args = parser.parse_args()
 
-      a=tok[0]
-      a1=a[0:2]+a[4:9]
-      b=RES[0:2]+RES[3:8]
-      if (a1==b):
-         found=0
-         
-         for y in range(len(titration_range)):
-            if(abs(t_point-titration_range[y])==0):
-               break
-            if(abs(t_point-titration_range[y])==0.5):
-               break   
-            if(abs(titration_range[y]-t_point)<0.5):
-               break
-         return tok[y+1]
-         
-         close(l)
-   if(found==1):
-      return 0.0
-
-if __name__ == '__main__':
-
-   if (len(sys.argv) < 3):
-      print "mfe.py res_id titration_point [pH_cutoff]"
-      print "   res_id:          The residue ID in pK.out"
-      print "   titration_point: Titration point that mfe is calculated."
-      print "                    If this number is between two calculated titration"
-      print "                    values, a linear average will be performed."
-      print "   pH_cutoff:       display pairwise interaction bigger than this value"
-      sys.exit(0)
-   else:
-      t_point = float(sys.argv[2])
-      
-   pH_cutoff = -0.001
-   if len(sys.argv) > 3:
-      pH_cutoff = float(sys.argv[3])
-
-   # read run.prm
-   first_ph()
-
-   #read head list
-   read_headlst()
-
-   # read pK.out
-   pK = read_pK()
-
-   # read fort.38
-   read_fort38()
-
-   group_residues()
-   
-   
-   # decide which two columns will be used to get residue mfe
-   t_low_found = t_high_found = 0
-   for i in range(len(titration_range)):
-      if t_point > titration_range[i]-0.001:
-         i_low = i
-         t_low_found = 1
-         
-   for i in range(len(titration_range)):
-      if t_point < titration_range[i]+0.001:
-         i_high = i
-         t_high_found = 1
-         break
-
-   if not t_low_found or not t_high_found:
-      print "titration_point out off range"
-      sys.exit(0)
-
-   dG = E_ionize(sys.argv[1]);
-   dG_point = E_IONIZE()
-   
-   if abs(titration_range[i_low] -titration_range[i_high]) < 0.01: # one point
-      dG_point.vdw0 = dG.charged_state.vdw0[i_low] - dG.ground_state.vdw0[i_low]
-      dG_point.vdw1 = dG.charged_state.vdw1[i_low] - dG.ground_state.vdw1[i_low]
-      dG_point.tors = dG.charged_state.tors[i_low] - dG.ground_state.tors[i_low]
-      dG_point.epol = dG.charged_state.epol[i_low] - dG.ground_state.epol[i_low]
-      dG_point.dsolv = dG.charged_state.dsolv[i_low] - dG.ground_state.dsolv[i_low]
-      dG_point.extra = dG.charged_state.extra[i_low] - dG.ground_state.extra[i_low]
-      dG_point.pHeffect = dG.charged_state.pHeffect[i_low] - dG.ground_state.pHeffect[i_low]
-      dG_point.Eheffect = dG.charged_state.Eheffect[i_low] - dG.ground_state.Eheffect[i_low]
-      dG_point.mfe_total = dG.charged_state.mfe_total[i_low] - dG.ground_state.mfe_total[i_low]
-      dG_point.E_total = dG.charged_state.E_total[i_low] - dG.ground_state.E_total[i_low]
-      # entropy should be used only when MC is carried out
-      #dG_point.TS = dG.charged_state.TS[i_low] - dG.ground_state.TS[i_low]
-      
-      for i in range(len(dG.charged_state.res_mfe)):
-         dG_point.mfe.append(dG.charged_state.res_mfe[i][i_low] - dG.ground_state.res_mfe[i][i_low])
-      dG_point.G = dG.charged_state.G[i_low] - dG.ground_state.G[i_low]
-      
-   else: # scale average of two points
-      k = (t_point - titration_range[i_low])/(titration_range[i_high] - titration_range[i_low])
-      dG_point.vdw0 = (1-k)*(dG.charged_state.vdw0[i_low] - dG.ground_state.vdw0[i_low])\
-                      +   k*(dG.charged_state.vdw0[i_high] - dG.ground_state.vdw0[i_high])
-      dG_point.vdw1 = (1-k)*(dG.charged_state.vdw1[i_low] - dG.ground_state.vdw1[i_low])\
-                      +   k*(dG.charged_state.vdw1[i_high] - dG.ground_state.vdw1[i_high])
-      dG_point.tors = (1-k)*(dG.charged_state.tors[i_low] - dG.ground_state.tors[i_low])\
-                      +   k*(dG.charged_state.tors[i_high] - dG.ground_state.tors[i_high])
-      dG_point.epol = (1-k)*(dG.charged_state.epol[i_low] - dG.ground_state.epol[i_low])\
-                      +   k*(dG.charged_state.epol[i_high] - dG.ground_state.epol[i_high])
-      dG_point.dsolv =(1-k)*(dG.charged_state.dsolv[i_low] - dG.ground_state.dsolv[i_low])\
-                      +   k*(dG.charged_state.dsolv[i_high] - dG.ground_state.dsolv[i_high])
-      dG_point.extra =(1-k)*(dG.charged_state.extra[i_low] - dG.ground_state.extra[i_low])\
-                      +   k*(dG.charged_state.extra[i_high] - dG.ground_state.extra[i_high])
-      dG_point.pHeffect =(1-k)*(dG.charged_state.pHeffect[i_low] - dG.ground_state.pHeffect[i_low])\
-                      +      k*(dG.charged_state.pHeffect[i_high] - dG.ground_state.pHeffect[i_high])
-      dG_point.Eheffect =(1-k)*(dG.charged_state.Eheffect[i_low] - dG.ground_state.Eheffect[i_low])\
-                      +      k*(dG.charged_state.Eheffect[i_high] - dG.ground_state.Eheffect[i_high])
-      dG_point.mfe_total =(1-k)*(dG.charged_state.mfe_total[i_low] - dG.ground_state.mfe_total[i_low])\
-                      +      k*(dG.charged_state.mfe_total[i_high] - dG.ground_state.mfe_total[i_high])
-      dG_point.E_total =(1-k)*(dG.charged_state.E_total[i_low] - dG.ground_state.E_total[i_low])\
-                      +      k*(dG.charged_state.E_total[i_high] - dG.ground_state.E_total[i_high])
-      #dG_point.TS = (1-k)*(dG.charged_state.TS[i_low] - dG.ground_state.TS[i_low])\
-      #                + k*(dG.charged_state.TS[i_high] - dG.ground_state.TS[i_high])
-      
-      for i in range(len(dG.charged_state.res_mfe)):
-         dG_point.mfe.append((1-k)*(dG.charged_state.res_mfe[i][i_low] - dG.ground_state.res_mfe[i][i_low])\
-                            +k*(dG.charged_state.res_mfe[i][i_high] - dG.ground_state.res_mfe[i][i_high]))
-
-      dG_point.G = (1-k)*(dG.charged_state.G[i_low] - dG.ground_state.G[i_low])\
-                      +k*(dG.charged_state.G[i_high] - dG.ground_state.G[i_high])
-
-
-   # print
-   for x in pK:
-      if (sys.argv[1][:3] == x[0][:3] and sys.argv[1][4:] == x[0][4:]):
-         res_pKa = x[1].split()[0]
-   print "Residue %s pKa/Em=%s" % (sys.argv[1], res_pKa)
-   print "================================="
-   print "Terms          pH     meV    Kcal"
-   print "---------------------------------"
-   print "vdw0     %8.2f%8.2f%8.2f" % (dG_point.vdw0/ph2Kcal, dG_point.vdw0/mev2Kcal, dG_point.vdw0)
-   print "vdw1     %8.2f%8.2f%8.2f" % (dG_point.vdw1/ph2Kcal, dG_point.vdw1/mev2Kcal, dG_point.vdw1)
-   print "tors     %8.2f%8.2f%8.2f" % (dG_point.tors/ph2Kcal, dG_point.tors/mev2Kcal, dG_point.tors)
-   print "ebkb     %8.2f%8.2f%8.2f" % (dG_point.epol/ph2Kcal, dG_point.epol/mev2Kcal, dG_point.epol)
-   print "dsol     %8.2f%8.2f%8.2f" % (dG_point.dsolv/ph2Kcal, dG_point.dsolv/mev2Kcal, dG_point.dsolv)
-   print "offset   %8.2f%8.2f%8.2f" % (dG_point.extra/ph2Kcal, dG_point.extra/mev2Kcal, dG_point.extra)
-   print "pH&pK0   %8.2f%8.2f%8.2f" % (dG_point.pHeffect/ph2Kcal, dG_point.pHeffect/mev2Kcal, dG_point.pHeffect)
-   print "Eh&Em0   %8.2f%8.2f%8.2f" % (dG_point.Eheffect/ph2Kcal, dG_point.Eheffect/mev2Kcal, dG_point.Eheffect)
-   #print "-TS      %8.2f%8.2f%8.2f" % (-dG_point.TS/ph2Kcal, -dG_point.TS/mev2Kcal, -dG_point.TS)
-   print "residues %8.2f%8.2f%8.2f" % (dG_point.mfe_total/ph2Kcal, dG_point.mfe_total/mev2Kcal, dG_point.mfe_total)
-   print "*********************************"
-   print "TOTAL    %8.2f%8.2f%8.2f%8.9s" % (dG_point.G/ph2Kcal, dG_point.G/mev2Kcal, 
-dG_point.G,"  sum_crg")
-   print "*********************************"
-   for i in range(len(dG_point.mfe)):
-      if abs(dG_point.mfe[i]/ph2Kcal) > pH_cutoff:
-         ion_state=print_crg(residues[i][0])   
-         print "%-9s%8.2f%8.2f%8.2f%8.2f" % (residues[i][0], dG_point.mfe[i]/ph2Kcal, 
-dG_point.mfe[i]/mev2Kcal, dG_point.mfe[i],float(ion_state) 
-)
-   print "================================="
-   
-   
+    mfe(args)
