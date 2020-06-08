@@ -28,6 +28,7 @@ import sys
 import numpy as np
 from scipy.optimize import curve_fit
 
+from sanity import *
 
 PH2KCAL = 1.364
 fname_sumcrg = "sum_crg2.out"
@@ -258,6 +259,20 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Run mcce step 5, generate net charge, fit titration curve."
     parser = argparse.ArgumentParser(description=helpmsg)
+    parser.add_argument("-f", metavar="rule_file", default="", help='''User defined rule file. File format example:
+# Residue_name: lower_bound, upper_bound
+ASP-: 1, 6
+HIS+: 6, 9
+LYS+: 9, 13
+ARG+: 10, 14
+HEM+: 100, 400       
+''')
     args = parser.parse_args()
 
+    print("Compute charge of residues and titration curve ...", end = " ")
     titration = Titration(args)
+    print("Done.")
+
+    print("Checking abnormal ionizations ...")
+    sanity_check(args)
+    print("Done.")

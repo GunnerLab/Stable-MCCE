@@ -126,8 +126,6 @@ def reasonable_charge(resname, ph, charge):
     return msg
 
 
-
-
 def get_ph1():
     # get ph1 from run.prm
     lines = open("run.prm").readlines()
