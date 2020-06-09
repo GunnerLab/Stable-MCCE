@@ -191,8 +191,9 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
 
         # pairwise energy table
         pairwise = {}
-        if os.path.exists:
-            lines = open("energies/" + conf.name + ".opp").readlines()
+        opp_path = "energies/" + conf.name + ".opp"
+        if os.path.exists(opp_path):
+            lines = open(opp_path).readlines()
             for line in lines:
                 fields = line.split()
                 if len(fields) >= 3:
@@ -504,6 +505,8 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
     report_lines.append("Eh&Em0   %8.2f%8.2f%8.2f\n" % (dG_point.Eheffect / ph2Kcal, dG_point.Eheffect / mev2Kcal, dG_point.Eheffect))
     if mfe_xts:
         report_lines.append("-TS      %8.2f%8.2f%8.2f\n" % (-dG_point.TS/ph2Kcal, -dG_point.TS/mev2Kcal, -dG_point.TS))
+    else:
+        report_lines.append("-TS      %8.2f%8.2f%8.2f\n" % (0.0 / ph2Kcal, 0.0 / mev2Kcal, 0.0))
     report_lines.append("residues %8.2f%8.2f%8.2f\n" % (dG_point.mfe_total / ph2Kcal, dG_point.mfe_total / mev2Kcal, dG_point.mfe_total))
     report_lines.append("*********************************\n")
     report_lines.append("TOTAL    %8.2f%8.2f%8.2f%8.9s\n" % (dG_point.G / ph2Kcal, dG_point.G / mev2Kcal,
@@ -607,11 +610,10 @@ def mfe(args):
 
         # By now we have residue name in args.residue[0], mfe_ph, mfe_xts and pw cutoff in arges.c
         report = get_mfe(env=env, residue=args.residue[0], mfe_ph=mfe_ph, mfe_xts=mfe_xts, mfe_pwcut=mfe_pwcut, pKa = pKa)
-        sys.stdout.writelines(report)
     else:
-        print(mfe_ph)
+        report = ["%s\n" % mfe_ph]
 
-    return
+    return report
 
 
 if __name__ == "__main__":
@@ -627,4 +629,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    mfe(args)
+    report = mfe(args)
+    sys.stdout.writelines(report)
+

@@ -351,7 +351,63 @@ HISA0102_   -0.02   -1.02   -0.02    1.00
 
 You can do mfe calculation at pH other than mid-point.
 
+---
+### mfe_all.py
+Perform mfe analysis on all ionizable residues.
 
+**Syntax**
+```
+mfe_all.py [-h] [-p pH/Eh] [-x TS_correction] [-f format] [-o filename]
+```
+
+ * pH/Eh: pH value at which ionization energy is calculated. Default is the pKa (midpoint) where dG = 0.
+ * TS_correction: "t" to include entropy in G, "f" not to include, "r" (default) will look for run.prm. If entropy correction was turned on in step 4, mfe should not include this term as entropy has been "removed".
+ * format: output file format, xlsx, csv, or html. The default is excel format xlsx.
+ * filename: output file name. The default is mfe_all.\[ext\]
+
+**Required files:**
+
+ * run.prm
+ * head3.lst
+ * extra.tpl for scaling factors that are not equal to 1.
+ * energies/\*.opp for pairwise interactions
+
+**Example:**
+```
+mfe_all.py -f html
+MFE output saved in file mfe_all.html
+```
+
+---
+### sanity.py
+*Quick check on the charge state of ionizable residues abd report unusual charge.*
+
+**Syntax**
+```
+sanity.py
+```
+
+**Required files:**
+
+ * run.prm
+ * sum_crg.out
+
+**Example:**
+```
+$ sanity.py 
+TYR-A0013_: charge  0.00 expected near -1.0 at pH=12.0
+HIS+A0018_: charge  0.00 expected near  1.0 at pH= 0.0
+TYR-A0024_: charge  0.00 expected near -1.0 at pH=12.0
+LYS+A0062_: charge  0.55 expected near  0.0 at pH=13.0
+GLU-A0073_: charge -0.74 expected near  0.0 at pH= 2.0
+ASP-A0075_: charge -1.00 expected near  0.0 at pH= 0.0
+TYR-A0078_: charge  0.00 expected near -1.0 at pH=12.0
+TYR-A0090_: charge -0.09 expected near -1.0 at pH=12.0
+ASP-A0093_: charge -0.83 expected near  0.0 at pH= 1.0
+TYR-A0097_: charge -0.17 expected near -1.0 at pH=12.0
+TYR-A0103_: charge  0.00 expected near -1.0 at pH=12.0
+```
+---
 
 ## Parameter file preparation
 
