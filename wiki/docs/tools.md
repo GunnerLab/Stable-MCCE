@@ -393,7 +393,6 @@ sanity.py
  * sum_crg.out
 
 **Example:**
-
 ```
 $ sanity.py 
 TYR-A0013_: charge  0.00 expected near -1.0 at pH=12.0
