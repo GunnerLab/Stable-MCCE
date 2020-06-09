@@ -30,13 +30,55 @@ import os, argparse, shutil
 import subprocess
 from mccesteps import *
 
+def fix_format(fname):
+    # make sure NT atoms appear before CTR atoms.
+    # truncate ending special characters from Windows.
+    NTR_atoms = [" CA ", " N  ", " HA ", " H  ", " H2 ", " H3 "]
+    CTR_atoms = [" C  ", " O  ", " HO ", " OXT", " HXT"]
+
+    pdblines = open(fname).readlines()
+
+    new_pdblines = []
+    cur_resid = ""
+    ntr_atoms = []
+    mid_atoms = []
+    ctr_atoms = []
+    for line in pdblines:
+        line = line.rstrip() + "\n"   # remove any special char and replace it by Linux end of line
+        if line[:6] == "ATOM  " or line[:6] == "HETATM":
+            resid = line[17:27]
+            if resid != cur_resid:
+                new_pdblines += ntr_atoms
+                new_pdblines += mid_atoms
+                new_pdblines += ctr_atoms
+                ntr_atoms = []
+                mid_atoms = []
+                ctr_atoms = []
+                cur_resid = resid
+            if line[12:16] in NTR_atoms:
+                ntr_atoms.append(line)
+            elif line[12:16] in CTR_atoms:
+                ctr_atoms.append(line)
+            else:
+                mid_atoms.append(line)
+        else:
+            new_pdblines.append(line)
+
+    # last one
+    new_pdblines += ntr_atoms
+    new_pdblines += mid_atoms
+    new_pdblines += ctr_atoms
+
+    open("step0_out.pdb", "w").writelines(new_pdblines)
+    return
+
 def write_runprm(args):
     runprm = {}
 
     path = str(os.path.dirname(os.path.abspath(__file__)))
     base_path = os.path.dirname(path)
     #print(base_path)
-    runprm["INPDB"] = args.prot[0]
+    runprm["INPDB"] = "step0_out.pdb"
     runprm["DO_PREMCCE"] = "t"
     runprm["MCCE_HOME"] = base_path
     runprm["MINIMIZE_SIZE"] = "t"
@@ -86,6 +128,8 @@ if __name__ == "__main__":
 
     write_runprm(args)
     if not args.norun:
+        fix_format(args.prot[0])
+
         mcce = args.e
         process = subprocess.Popen(["mcce"], stdout=subprocess.PIPE)
         for line in process.stdout:
