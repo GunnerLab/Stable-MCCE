@@ -3,9 +3,9 @@
 ## General
  - [X] I’d like to have fort.38 in step 4 and sum_crg.out; pK.out etc in step 5 **alrady have it in step 4, script to do it again**
  - [X] The corrected sum_crg (using head3.lst for charge)
- - [ ] the mfe analysis in pK.out (and an ability to change the mfe point from pK to a pH by retuning step 5 **mfe.py**
+ - [X] the mfe analysis in pK.out (and an ability to change the mfe point from pK to a pH by retuning step 5 **mfe.py**
  - [ ] Change in chemical potential of a ligand chosen in run.prm, **temp fix script, automated**
- - [ ] Bug, step1 can not handle NTR and CTR correctly when the NTR and CTR atoms are out of order. 
+ - [X] Bug, step1 can not handle NTR and CTR correctly when the NTR and CTR atoms are out of order. 
 
 ## Error checking
  - [ ] The program stops and returns an error message **From users' feedback**
