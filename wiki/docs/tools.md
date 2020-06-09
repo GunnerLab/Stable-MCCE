@@ -352,6 +352,33 @@ HISA0102_   -0.02   -1.02   -0.02    1.00
 You can do mfe calculation at pH other than mid-point.
 
 ---
+### mfe_all.py
+Perform mfe analysis on all ionizable residues.
+
+**Syntax**
+```
+mfe_all.py [-h] [-p pH/Eh] [-x TS_correction] [-f format] [-o filename]
+```
+
+ * pH/Eh: pH value at which ionization energy is calculated. Default is the pKa (midpoint) where dG = 0.
+ * TS_correction: "t" to include entropy in G, "f" not to include, "r" (default) will look for run.prm. If entropy correction was turned on in step 4, mfe should not include this term as entropy has been "removed".
+ * format: output file format, xlsx, csv, or html. The default is excel format xlsx.
+ * filename: output file name. The default is mfe_all.\[ext\]
+
+**Required files:**
+
+ * run.prm
+ * head3.lst
+ * extra.tpl for scaling factors that are not equal to 1.
+ * energies/\*.opp for pairwise interactions
+
+**Example:**
+```
+mfe_all.py -f html
+MFE output saved in file mfe_all.html
+```
+
+---
 ### sanity.py
 *Quick check on the charge state of ionizable residues abd report unusual charge.*
 
