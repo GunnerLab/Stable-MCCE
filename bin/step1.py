@@ -44,6 +44,7 @@ def fix_format(fname):
     mid_atoms = []
     ctr_atoms = []
     for line in pdblines:
+        line = line.rstrip() + "\n"   # remove any special char and replace it by Linux end of line
         if line[:6] == "ATOM  " or line[:6] == "HETATM":
             resid = line[17:27]
             if resid != cur_resid:
@@ -68,7 +69,7 @@ def fix_format(fname):
     new_pdblines += mid_atoms
     new_pdblines += ctr_atoms
 
-    open("%s.fixed" % fname, "w").writelines(new_pdblines)
+    open("step0_out.pdb", "w").writelines(new_pdblines)
     return
 
 def write_runprm(args):
@@ -77,7 +78,7 @@ def write_runprm(args):
     path = str(os.path.dirname(os.path.abspath(__file__)))
     base_path = os.path.dirname(path)
     #print(base_path)
-    runprm["INPDB"] = args.prot[0]+".fixed"
+    runprm["INPDB"] = "step0_out.pdb"
     runprm["DO_PREMCCE"] = "t"
     runprm["MCCE_HOME"] = base_path
     runprm["MINIMIZE_SIZE"] = "t"
