@@ -258,7 +258,7 @@ if __name__ == "__main__":
 
     # Get the command arguments
     helpmsg = "Run mcce step 5, generate net charge, fit titration curve."
-    parser = argparse.ArgumentParser(description=helpmsg)
+    parser = argparse.ArgumentParser(description=helpmsg, formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-f", metavar="rule_file", default="", help='''User defined rule file. File format example:
 # Residue_name: lower_bound, upper_bound
 ASP-: 1, 6
