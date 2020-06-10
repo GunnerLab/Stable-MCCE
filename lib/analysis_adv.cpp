@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <dirent.h>
 //#include "mcce.h"
 extern "C" {
 #include "mcce.h"
@@ -24,9 +25,8 @@ extern "C" {
 #include <map>
 #include <iomanip>
 
-#include <boost/filesystem.hpp>
 #include <sstream>
-using namespace boost::filesystem;
+
 
 
 using namespace std;
@@ -49,7 +49,7 @@ int hbond_matrix();
 int hbond_network();
 int hbond_network_new(); // read new format of ms.dat in ms_out folder and do hydrobond anaysis
 
-int new_ms_flag_hb=2; // flag to trigger on or off new format ms.dat hbond analysis.
+int new_ms_flag_hb=1; // flag to trigger on or off new format ms.dat hbond analysis.
 
 int is_hb(CONF *conf1, CONF *conf2);
 int load_head3lst();
@@ -438,6 +438,7 @@ int hbond_network()
 }
 
 
+
 int hbond_network_new()
 {
 	time_t time_start = time(NULL);
@@ -487,275 +488,254 @@ int hbond_network_new()
 	int totalRecords = 0;
 	char sbuff[MAXCHAR_LINE];  //Store hb file name--Cai
 
+	DIR *dir;      	       /* DIR returned by opendir() */
+	STRINGS files;
+	char fullname[MAXCHAR_LINE];
+
 	//initialize conf_index-res_index map
 	vector<int> conf_res_inter;
 	conf_res_inter.resize(n_conf);
 
-	if (mkdir(HB_DIR, 0755)){
+	dir = opendir(HB_DIR);
+	if (dir) {
+		//printf("   Deleting folder %s ...\n", HB_DIR);
+		char tmp_folder[300];
+		sprintf(tmp_folder, "%s", HB_DIR);
+		del_dir(tmp_folder);   //remove HB_DIR folder if exists
+	}
+	if (mkdir(HB_DIR, 0775)){
 		printf("   FATAL: Failed creating directory %s, no write permission.\n", HB_DIR);
 		return USERERR;
     }
 
-	path p(MS_DIR);
-	for (auto i_file = directory_iterator(p); i_file != directory_iterator(); i_file++)
-	{
-		if (!is_directory(i_file->path())) //we eliminate directories
-		{
-			
-			ifstream iMsfile(i_file->path().c_str());
-			if (!iMsfile.is_open()){
-				cout << "   File " << i_file->path().filename().string() << " in " << MS_DIR << "failed to open" << endl; 
-				return USERERR;
-			}
-			cout << "   Reading " << MS_DIR << "/" << i_file->path().filename().string() << "..." << endl;
-		
-			n_lines = 0;
-			while (getline(iMsfile,line)) {
-				if (line[0] == '#' || line.length() ==0 ) continue; //Keep reading a new line while line is starting with "#" (comments) or blank lines
-				n_lines++;
-				std::istringstream ss(line);
-				if (n_lines == 1) {  //read line 1
-					getline(ss, tempName, ':');
-					getline(ss, tempString, ',');
-					temperature = stof(tempString);
-					
-					getline(ss, tempName, ':');
-					getline(ss, tempString, ',');
-					pH= stof(tempString);
-					getline(ss, tempName, ':');				
-					getline(ss, tempString, ',');
-					eH= stof(tempString);
-					cout << "   Temp: "<< temperature << ", pH: " << pH << ", eH: " << eH << endl;
-
-				}
-
-				else if (n_lines == 2) { //read line 2
-					getline(ss, tempName, ':');
-					getline(ss, method, ',');
-					
-					cout << "   The microstates are obtained from Method: "<< method << endl;
-				}
-
-				else if (n_lines == 3) { //read line 3
-					getline(ss, tempString, ':');
-					n_fixed = stoi(tempString);
-					n_conf_fixed=0;
-					while(getline(ss, tempString, ' ')){
-						conf = stoi(tempString);
-						iconf_fixed.push_back(conf);					
-						n_conf_fixed++; 
-					}
-					cout << "   n_fixed residues: " << n_fixed << ". n_conf_fixed (occ > 0.99): " << n_conf_fixed<< endl;
-
-					if ( n_conf_fixed > n_fixed){ //check if number is correct
-						cout << "   File " << i_file->path().filename().string() << " in " << MS_DIR << "has mismatched n_fixed number." << endl; 
-						return USERERR;
-					}
-
-				}
-
-
-				else if (n_lines == 4) { //read line 4
-					getline(ss, tempString, ':');
-					n_free = stoi(tempString);
-					int n_free_check = 0;
-					while(getline(ss, tempString, ';')){
-						std::istringstream ssub(tempString);
-						while(getline(ssub,tempConf, ' ')) {
-							conf = stoi(tempConf);
-							conf_res_inter[conf] = n_free_check;
-						}
-						n_free_check++;
-						
-					}
-					cout << "   n_free residues (check if equal): " << n_free << ", " << n_free_check << endl;
-		
-					if ( n_free != n_free_check) { //check if number is correct
-						cout << "   File " << i_file->path().filename().string() << " in " << MS_DIR << "has mismatched n_free number." << endl; 
-						return USERERR;
-					}
-
-					//set resName for each fixed residues
-					for (int i_res = 0; i_res < n_conf_fixed; i_res++) {
-						std::ostringstream oss;
-						oss <<conflist.conf[iconf_fixed[i_res]].resName <<conflist.conf[iconf_fixed[i_res]].chainID << std::setw(4) << std::setfill('0') << conflist.conf[iconf_fixed[i_res]].resSeq;
-						std::string tempString = oss.str();
-						resName.push_back(tempString);
-
-						//check
-
-						//cout << tempString << " resname ";
-					}
-					//cout << endl;
-
-					//initialize res-res matrix
-					n_res_total=n_conf_fixed + n_free;
-					resinter.resize(n_res_total);
-					for (size_t i=0; i< n_res_total; i++) resinter[i].resize(n_res_total);
-
-					//calculate hbonds info for fixed residues 
-					for (int i_res=0; i_res<n_conf_fixed; i_res++) {
-						for (int j_res=0; j_res<n_conf_fixed; j_res++) {
-							if (j_res == i_res) continue;
-							resinter[i_res][j_res] += hinter[iconf_fixed[i_res]][iconf_fixed[j_res]];
-
-							//check
-							//if (resinter[i_res][j_res] > 0.0)
-							//	cout << resName[i_res] << " " << resName[j_res] << " " << resinter[i_res][j_res] << endl;
-						}
-					}		
-
-
-				}
-
-
-				else if (line.substr(0,2) == "MC") { //read each MC sampling cycle
-					getline(ss, tempName, ':');
-					getline(ss, tempString, ',');
-					i_MC = stoi(tempString);
-					cout << "   Reading : "<< i_MC << "-th MC sampling data ..." << endl;
-
-					state = NULL;
-					state = (int*)realloc(state, n_free*sizeof(int));
-
-					getline(iMsfile,line);
-					std::istringstream ss(line);
-					getline(ss, tempString, ':');
-					for (i_res = 0; i_res < n_free; i_res++){
-						getline(ss, tempString, ' ');
-						conf = stoi(tempString);
-						state[i_res]= conf;
-					}
-
-				}
-
-				else {
-					getline(ss, tempString, ',');
-					Hav_state = stod(tempString);
-					getline(ss, tempString, ',');
-					count = stoi(tempString);
-					
-					while (getline(ss, tempString, ' ')){
-						if (tempString.length() == 0) break;
-						conf=stoi(tempString);
-						i_conf_flipped.push_back(conf);
-					}
-
-					for(i_conf=0; i_conf<i_conf_flipped.size(); i_conf++){
-						state[conf_res_inter[i_conf_flipped[i_conf]]] = i_conf_flipped[i_conf];
-						
-					}
-
-					/*
-					for(int i_res=0; i_res< n_free; i_res++)
-						cout << state[i_res] << ' ';
-					cout << endl;
-					*/
-					totalRecords++;
-					totalState += count;
-
-					//calculate hbonds info for free residues 
-					for (int i_res=0; i_res<n_conf_fixed; i_res++) {
-						for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++){
-							resinter[i_res][j_res] += hinter[iconf_fixed[i_res]][state[j_res - n_conf_fixed]] * count;
-						}
-					}
-					for (int i_res=n_conf_fixed; i_res<n_res_total; i_res++) {
-						for (int j_res=0; j_res<n_conf_fixed; j_res++) {
-							resinter[i_res][j_res] += hinter[state[i_res - n_conf_fixed]][iconf_fixed[j_res]] * count;
-						}
-						for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++) {
-							if (j_res == i_res) continue;
-							resinter[i_res][j_res] += hinter[state[i_res - n_conf_fixed]][state[j_res - n_conf_fixed]] * count;
-						}
-					}
-
-					i_conf_flipped.clear();
-
-					/*
-					if (totalRecords >= 10) {
-						break;
-					}
-					*/
-
-				}
-
-			}
-
-
-
-			cout << "   "  << totalRecords << " records and " << totalState << " states has been loaded." << endl;
-			cout << "   Total time to load ms.dat: " << time(NULL) - time_start << "." << endl;
-			const float THRESHOLD_TO_WRITE = 0.001;
-
-
-			//set resName for each free residues
-			for (int i_res = 0; i_res < n_free; i_res++) {
-				//cout << conflist.conf[state[i_res]].resName << conflist.conf[state[i_res]].chainID << conflist.conf[state[i_res]].resSeq << endl;
-				std::ostringstream oss;
-				oss <<conflist.conf[state[i_res]].resName <<conflist.conf[state[i_res]].chainID << std::setw(4) << std::setfill('0') << conflist.conf[state[i_res]].resSeq;
-				std::string tempString = oss.str();
-
-				resName.push_back(tempString);
-
-				//check
-				//cout << tempString << " " ;
-			}
-			//cout << endl;
-
-
-			sprintf(sbuff, "%s/ph%.0feh%.0fhb.txt", HB_DIR, pH, eH);
-			cout << "   Writing " << sbuff << "..." << endl;
-			ofstream ofile(sbuff, ios::out);
-
-			//n_conf_fixed X n_conf_fixed
-			for (int i_res=0; i_res<n_conf_fixed; i_res++) {
-				for (int j_res=0; j_res<n_conf_fixed; j_res++) {
-					if ((float) resinter[i_res][j_res] >= THRESHOLD_TO_WRITE) { //fixed -fixed matrix, doesn't need to be devided by totalState
-						ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]) << endl;
-					}
-				}
-			}
-
-			//n_conf_fixed X n_free
-			for (int i_res=0; i_res<n_conf_fixed; i_res++) {
-				for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++){
-					if ((float) resinter[i_res][j_res]/totalState >= THRESHOLD_TO_WRITE) {
-						ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]/totalState) << endl;;
-					}
-					
-				}
-			}
-
-			// n_free X (n_conf_fixed + n_free)
-			for (int i_res=n_conf_fixed; i_res<n_res_total; i_res++) {
-				for (int j_res=0; j_res<n_res_total; j_res++) {
-					if ((float) resinter[i_res][j_res]/totalState >= THRESHOLD_TO_WRITE) {
-						ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]/totalState) << endl;;
-					}
-				}
-			}
-				
-
-			ofile.close();
-			iconf_fixed.clear();
-			iconf_free.clear();
-			resinter.clear();
-
-		}
-		else
-			continue;
+	files = get_files(MS_DIR);
+	if(files.n == 0) {
+		printf("   FATAL: load_all_param(): \"Invalid or empty directory.\"\n");
+		return USERERR;
 	}
 
+	/* load each file in this directory */
+   	for (int i_file=0; i_file<files.n; i_file++) {
+   		/* create the full file name with path */
+      	//if (!strstr(files.strings[i], ".tpl")) continue;
+      	if (strcmp(files.strings[i_file]+(strlen(files.strings[i_file])-4),".txt")) continue;
+      	sprintf(fullname, "%s/%s", MS_DIR, files.strings[i_file]);
+
+      	/* load the file */
+      	/* printf("   loading \"%s\"\n", fullname);*/
+      	ifstream iMsfile(fullname);
+		if (!iMsfile.is_open()){
+			cout << "   File " << fullname << "failed to open" << endl; 
+			return USERERR;
+		}
+		cout << "   Reading " << fullname << "..." << endl;
+		
+		n_lines = 0;
+		while (getline(iMsfile,line)) {
+			if (line[0] == '#' || line.length() ==0 ) continue; //Keep reading a new line while line is starting with "#" (comments) or blank lines
+			n_lines++;
+			std::istringstream ss(line);
+			if (n_lines == 1) {  //read line 1: ph, eh, temp
+				getline(ss, tempName, ':');
+				getline(ss, tempString, ',');
+				temperature = stof(tempString);
+					
+				getline(ss, tempName, ':');
+				getline(ss, tempString, ',');
+				pH= stof(tempString);
+				getline(ss, tempName, ':');				
+				getline(ss, tempString, ',');
+				eH= stof(tempString);
+				cout << "   Temp: "<< temperature << ", pH: " << pH << ", eH: " << eH << endl;
+			}
+
+			else if (n_lines == 2) { //read line 2: method
+				getline(ss, tempName, ':');
+				getline(ss, method, ',');
+				
+				cout << "   The microstates are obtained from Method: "<< method << endl;
+			}
+
+			else if (n_lines == 3) { //read line 3: fixed conformer ids
+				getline(ss, tempString, ':');
+				n_fixed = stoi(tempString);
+				n_conf_fixed=0;
+				while(getline(ss, tempString, ' ')){
+					conf = stoi(tempString);
+					iconf_fixed.push_back(conf);					
+					n_conf_fixed++; 
+				}
+				//cout << "   n_fixed residues: " << n_fixed << ". n_conf_fixed (occ > 0.99): " << n_conf_fixed<< endl;
+
+				if ( n_conf_fixed > n_fixed){ //check if number is correct
+					cout << "   File " << fullname << "has mismatched n_fixed number." << endl; 
+					return USERERR;
+				}
+
+			}
 
 
+			else if (n_lines == 4) { //read line 4: conformer ids of each fixed residue
+				getline(ss, tempString, ':');
+				n_free = stoi(tempString);
+				int n_free_check = 0;
+				while(getline(ss, tempString, ';')){
+					std::istringstream ssub(tempString);
+					while(getline(ssub,tempConf, ' ')) {
+						conf = stoi(tempConf);
+						conf_res_inter[conf] = n_free_check;
+					}
+					n_free_check++;				
+				}
+				//cout << "   n_free residues (check if equal): " << n_free << ", " << n_free_check << endl;
+		
+				if ( n_free != n_free_check) { //check if number is correct
+					cout << "   File " << fullname << "has mismatched n_free number." << endl; 
+					return USERERR;
+				}
+
+				//set resName for each fixed residues
+				for (int i_res = 0; i_res < n_conf_fixed; i_res++) {
+					std::ostringstream oss;
+					oss <<conflist.conf[iconf_fixed[i_res]].resName <<conflist.conf[iconf_fixed[i_res]].chainID << std::setw(4) << std::setfill('0') << conflist.conf[iconf_fixed[i_res]].resSeq;
+					std::string tempString = oss.str();
+					resName.push_back(tempString);
+				}
+
+				//initialize res-res matrix
+				n_res_total=n_conf_fixed + n_free;
+				resinter.resize(n_res_total);
+				for (size_t i=0; i< n_res_total; i++) resinter[i].resize(n_res_total);
+
+				//calculate hbonds info for fixed residues: 0 for none, 1 for hydrogen-bonded 
+				for (int i_res=0; i_res<n_conf_fixed; i_res++) {
+					for (int j_res=0; j_res<n_conf_fixed; j_res++) {
+						if (j_res == i_res) continue;
+						resinter[i_res][j_res] += hinter[iconf_fixed[i_res]][iconf_fixed[j_res]];
+					}
+				}		
+			}
+
+			else if (line.substr(0,2) == "MC") { //read each MC sampling cycle
+				getline(ss, tempName, ':');
+				getline(ss, tempString, ',');
+				i_MC = stoi(tempString);
+				cout << "   Reading : "<< i_MC << "-th MC sampling data ..." << endl;
+
+				state = NULL;
+				state = (int*)realloc(state, n_free*sizeof(int));
+
+				getline(iMsfile,line);
+				std::istringstream ss(line);
+				getline(ss, tempString, ':');
+				for (i_res = 0; i_res < n_free; i_res++){
+					getline(ss, tempString, ' ');
+					conf = stoi(tempString);
+					state[i_res]= conf;
+				}
+			}
+
+			else {   //read each flips for every MC sampling
+				getline(ss, tempString, ',');
+				Hav_state = stod(tempString);
+				getline(ss, tempString, ',');
+				count = stoi(tempString);
+					
+				while (getline(ss, tempString, ' ')){
+					if (tempString.length() == 0) break;
+					conf=stoi(tempString);
+					i_conf_flipped.push_back(conf);
+				}
+
+				for(i_conf=0; i_conf<i_conf_flipped.size(); i_conf++){
+					state[conf_res_inter[i_conf_flipped[i_conf]]] = i_conf_flipped[i_conf];				
+				}
+				/*
+				for(int i_res=0; i_res< n_free; i_res++)
+					cout << state[i_res] << ' ';
+				cout << endl;
+				*/
+				totalRecords++;
+				totalState += count;
+				
+				//calculate hbonds info for free residues 
+				for (int i_res=0; i_res<n_conf_fixed; i_res++) {
+					for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++){
+						resinter[i_res][j_res] += hinter[iconf_fixed[i_res]][state[j_res - n_conf_fixed]] * count;
+					}
+				}
+				for (int i_res=n_conf_fixed; i_res<n_res_total; i_res++) {
+					for (int j_res=0; j_res<n_conf_fixed; j_res++) {
+						resinter[i_res][j_res] += hinter[state[i_res - n_conf_fixed]][iconf_fixed[j_res]] * count;
+					}
+					for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++) {
+						if (j_res == i_res) continue;
+						resinter[i_res][j_res] += hinter[state[i_res - n_conf_fixed]][state[j_res - n_conf_fixed]] * count;
+					}
+				}
+
+				i_conf_flipped.clear();
+
+			}
+
+		}
+
+		cout << "   "  << totalRecords << " records and " << totalState << " states has been loaded." << endl;
+		cout << "   Total time to load ms.dat: " << time(NULL) - time_start << "." << endl;
+		const float THRESHOLD_TO_WRITE = 0.001;
+
+		//set resName for each free residues
+		for (int i_res = 0; i_res < n_free; i_res++) {
+			//cout << conflist.conf[state[i_res]].resName << conflist.conf[state[i_res]].chainID << conflist.conf[state[i_res]].resSeq << endl;
+			std::ostringstream oss;
+			oss <<conflist.conf[state[i_res]].resName <<conflist.conf[state[i_res]].chainID << std::setw(4) << std::setfill('0') << conflist.conf[state[i_res]].resSeq;
+			std::string tempString = oss.str();
+
+			resName.push_back(tempString);
+			//check
+			//cout << tempString << " " ;
+		}
+		//cout << endl;
+
+		sprintf(sbuff, "%s/pH%.0feH%.0fhb.txt", HB_DIR, pH, eH);
+		cout << "   Writing " << sbuff << "..." << endl;
+		ofstream ofile(sbuff, ios::out);
+		//n_conf_fixed * n_conf_fixed: fixed residues matrix is only calculated once, so it should not be devided by total States #
+		for (int i_res=0; i_res<n_conf_fixed; i_res++) {
+			for (int j_res=0; j_res<n_conf_fixed; j_res++) {
+				if ((float) resinter[i_res][j_res] >= THRESHOLD_TO_WRITE) { //fixed -fixed matrix, doesn't need to be devided by totalState
+					ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]) << endl;
+				}
+			}
+		}
+		//n_conf_fixed * n_free
+		for (int i_res=0; i_res<n_conf_fixed; i_res++) {
+			for (int j_res=n_conf_fixed; j_res<n_res_total; j_res++){
+				if ((float) resinter[i_res][j_res]/totalState >= THRESHOLD_TO_WRITE) {
+					ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]/totalState) << endl;;
+				}		
+			}
+		}
+
+		// n_free * (n_conf_fixed + n_free)
+		for (int i_res=n_conf_fixed; i_res<n_res_total; i_res++) {
+			for (int j_res=0; j_res<n_res_total; j_res++) {
+				if ((float) resinter[i_res][j_res]/totalState >= THRESHOLD_TO_WRITE) {
+					ofile << resName[i_res] << '\t' << resName[j_res] << '\t' << fixed << setprecision(3) << ((float) resinter[i_res][j_res]/totalState) << endl;;
+				}
+			}
+		}
+				
+		ofile.close();
+		iconf_fixed.clear();
+		iconf_free.clear();
+		resinter.clear();
+
+	}
 
 	cout << "   Total time: " << time(NULL) - time_start << "." << endl;
-
+	free_strings(&files);
     return 0;
 }
-
-
-
 
 

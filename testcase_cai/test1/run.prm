@@ -21,7 +21,7 @@ Steps:
 f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
 f        step 2: make rotatmers                             (DO_ROTAMERS)
 f        step 3: do energy calculations                     (DO_ENERGY)
-f        step 4: monte carlo sampling                       (DO_MONTE)
+t        step 4: monte carlo sampling                       (DO_MONTE)
 t        step 6: analysis                                   (DO_ANALYSIS)
 ==============================================================================
 
@@ -42,7 +42,7 @@ ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
 1.0      pH interval                                        (TITR_PHD)
 0.0      Initial Eh                                         (TITR_EH0)
 30.0     Eh interval (in mV)                                (TITR_EHD)
-2       Number of titration points                         (TITR_STEPS)
+1       Number of titration points                         (TITR_STEPS)
 =============================================================================
 
 
@@ -116,7 +116,6 @@ step 3:
 
 step 4:
 t        Output Microstate from standard monte carlo        (MS_OUT)
-t        Output readable micristate file from standard monte carlo (RE_MS_OUT)
 
 5.0      Big pairwise threshold to make big list            (BIG_PAIRWISE)
 -1       Random seed, -1 uses time as random seed           (MONTE_SEED)
@@ -134,7 +133,7 @@ f        Specify mfe point, f=pKa/Em                        (MFE_POINT)
 -1.0      MFE cutoff(Kcal), default 0.5                     (MFE_CUTOFF)
 
 Step 6:
-t        Obtain hydrogen bond matrix                        (GET_HBOND_MATRIX)
+f        Obtain hydrogen bond matrix                        (GET_HBOND_MATRIX)
 1.2      Lower limit of hydrogen bond H--B distance         (HBOND_LOWER_LIMIT)
 3.2      Upper limit of hydrogen bond H--B distance         (HBOND_UPPER_LIMIT)
 90.0     Angle cutoff of hydrogen bond                      (HBOND_ANG_CUTOFF)

@@ -4,6 +4,7 @@
 #include <time.h>
 #include <math.h>
 #include <stdbool.h>
+#include <dirent.h>
 #include "mcce.h"
 
 /* normal pw is garanteed to be smaller than 2000. When it is is bigger than 5000, it is
@@ -241,40 +242,49 @@ int monte()
     /* INITIALIZE MICROSTATE FOLDER AND FILE FOR EACH TITRATION POINT*/
     if (env.ms_out) {
 
-        if (new_ms_flag && mkdir(MS_DIR, 0755)){
-            printf("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR);
-            return USERERR;
+        if (new_ms_flag==1 || new_ms_flag == 2){  //write out new format microstate
+            DIR *dir;
+            if (dir = opendir(MS_DIR)) {
+                //printf("   Deleting folder %s ...\n", MS_DIR);
+                char tmp_folder[300];
+                sprintf(tmp_folder, "%s", MS_DIR);
+                del_dir(tmp_folder);   //remove HB_DIR folder if exists
+            }
+            if (mkdir(MS_DIR, 0755)) {
+                printf("   FATAL: Failed creating directory %s, no write permission.\n", MS_DIR);
+                return USERERR;
+            }
         }
 
 
+        if (new_ms_flag == 0 || new_ms_flag ==2 ){  //write out old format microstate
+            memset(&ms_spe_lst, 0, sizeof(STRINGS));
+            ms_spe_lst.n = 0;
+            if (load_ms_gold(&ms_spe_lst)) {
+                printf("   Load file ms_gold error: ms_gold file for Output Microstate (MONTE_MS) is missing. If you do not want microstates reported, turn (MS_OUT) to f. If you do want microstate reported, include ms_gold file.\n");
+                printf("   Formate of ms_gold:\n   GLUA0286\n   TYRA0288\n   THRA0288\n   Or formate of pdb file.\n");
+                return USERERR;
+            }
+            if (ms_spe_lst.n == 0) {
+                printf("Load 0 ms gold residue, don't output ms_out\n");
+                env.ms_out = 0;
+            }
+            else {
+                ms_fp_test= fopen("ms.dat","wb");
+                ms_fp = fopen("ms_re.dat", "w");
+                int i_spe;
 
-        memset(&ms_spe_lst, 0, sizeof(STRINGS));
-        ms_spe_lst.n = 0;
-        if (load_ms_gold(&ms_spe_lst)) {
-            printf("   Load file ms_gold error: ms_gold file for Output Microstate (MONTE_MS) is missing. If you do not want microstates reported, turn (MS_OUT) to f. If you do want microstate reported, include ms_gold file.\n");
-            printf("   Formate of ms_gold:\n   GLUA0286\n   TYRA0288\n   THRA0288\n   Or formate of pdb file.\n");
-            return USERERR;
+                fwrite(&ms_spe_lst.n,1,sizeof(int), ms_fp_test);
+                fprintf(ms_fp, "residue number: %d\n", ms_spe_lst.n);
+                for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
+
+                    fprintf(ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
+                    fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp_test);
+                    }
+                fprintf(ms_fp,"\n");
+            }
         }
-        if (ms_spe_lst.n == 0) {
-            printf("Load 0 ms gold residue, don't output ms_out\n");
-            env.ms_out = 0;
-        }
-        else {
-            ms_fp_test= fopen("ms.dat","wb");
-            ms_fp = fopen("ms_re.dat", "w");
-            int i_spe;
 
-            fwrite(&ms_spe_lst.n,1,sizeof(int), ms_fp_test);
-            fprintf(ms_fp, "residue number: %d\n", ms_spe_lst.n);
-            for (i_spe=0; i_spe<ms_spe_lst.n; i_spe++) {
-
-               fprintf(ms_fp,"%s\t", ms_spe_lst.strings[i_spe]);
-               fwrite(ms_spe_lst.strings[i_spe], 8, sizeof(char), ms_fp_test);
-               }
-            fprintf(ms_fp,"\n");
-
-
-        }    
     }   
 
 
@@ -398,7 +408,7 @@ int monte()
         }
 
         if (env.ms_out && new_ms_flag){
-            sprintf(sbuff, "%s/ph%.0feh%.0fms.txt", MS_DIR, ph, eh);
+            sprintf(sbuff, "%s/pH%.0feH%.0fms.txt", MS_DIR, ph, eh);
             if (!(ms_fp2=fopen(sbuff, "w"))){
                 printf("   Open file %s error.\n", sbuff);
                 return USERERR;
@@ -412,8 +422,10 @@ int monte()
         //if (enumerate(i) == -1) {
         if (enumerate_new(i) == -1) { // use new enumerate subroutine to output microstate
             if (env.ms_out){
-                fwrite("MONTERUNS", 9, sizeof(char), ms_fp_test);
-                fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
+                if (new_ms_flag ==0 || new_ms_flag ==2){
+                    fwrite("MONTERUNS", 9, sizeof(char), ms_fp_test);
+                    fprintf(ms_fp, "METHOD: %s\n", "MONTERUNS"); //The third line of ms.dat: method
+                }
 
                 if (new_ms_flag){
                 fprintf(ms_fp2, "METHOD:%s\n", "MONTERUNS"); //The second line of new ms.dat: method
@@ -444,7 +456,7 @@ int monte()
                 fprintf(ms_fp2, "#EVERY MONTERUN START FROM A NEW STATE\n"); //new ms.dat: comment
                 fprintf(ms_fp2, "#MC:ITER_MONTERUNS\n"); //new ms.dat: comment
                 fprintf(ms_fp2, "#N_FREE: FREE_CONF_ID,\n"); //new ms.dat: comment
-                fprintf(ms_fp2, "#ENERGY, COUNT,FLIPS \n"); //new ms.dat: comment
+                fprintf(ms_fp2, "#ENERGY, COUNT,NEW_CONF \n"); //new ms.dat: comment
                 }
 
 
@@ -545,10 +557,13 @@ int monte()
 
     //fclose(fp);
     if (env.ms_out){ // close the microstate output file if true
-    fclose(fp);
-    fclose(ms_fp_test);
-    fclose(ms_fp);
-    if (new_ms_flag) fclose(ms_fp2);
+        fclose(fp);
+        if (new_ms_flag==0 || new_ms_flag ==2) {
+            fclose(ms_fp_test);
+            fclose(ms_fp);
+        }
+    
+        if (new_ms_flag) fclose(ms_fp2);
     }
     else
     fclose(fp);
@@ -2538,8 +2553,10 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
     }
 
     if (env.ms_out) {
-        fwrite("ENUMERATE", 9, sizeof(char), ms_fp_test);
-        fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+        if (new_ms_flag == 0 || new_ms_flag ==2){
+            fwrite("ENUMERATE", 9, sizeof(char), ms_fp_test);
+            fprintf(ms_fp, "METHOD: %s\n", "ENUMERATE"); //The third line of ms.dat: method
+        }
         
         if (new_ms_flag) {
         fprintf(ms_fp2, "METHOD:%s\n", "ENUMERATE"); //new ms.dat: method
@@ -2570,7 +2587,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         fprintf(ms_fp2, "\n");
 
         fprintf(ms_fp2, "#N_FREE:FREE_CONF_ID,\n"); //new ms.dat: comment
-        fprintf(ms_fp2, "#ENERGY,OCC,FLIPS,\n"); //new ms.dat: comment
+        fprintf(ms_fp2, "#ENERGY,OCC,NEW_CONF,\n"); //new ms.dat: comment
         
         
         /* write out the first microstate: free conf id */
@@ -2586,7 +2603,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.occ = occ_states[istate];
         ms_state.H = E_states[istate] + E_base;
         // ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
-        write_ms(&ms_state);
+        if (new_ms_flag ==0 || new_ms_flag ==2) write_ms(&ms_state);
         if (new_ms_flag) write_state_Enum(&ms_state);
 
     }
@@ -2621,7 +2638,7 @@ int enumerate_new(int i_ph_eh)  // new eneumerate subroutine to output microstat
         ms_state.occ = occ_states[istate];
         ms_state.H = E_states[istate] + E_base;
         //ms_state.Hsq = (E_states[istate] + E_base) * (E_states[istate] + E_base);
-        write_ms(&ms_state);
+        if (new_ms_flag ==0 || new_ms_flag ==2) write_ms(&ms_state);
         if (new_ms_flag) write_state_Enum(&ms_state);
         ms_state.n_flip = 0;
         }
@@ -2991,7 +3008,7 @@ void MC_smp(int n)
 
             if (dE < 0.0 || (float) rand()/RAND_MAX < exp(b*dE)) {                                 /* go to new low */
                 if (ms_state.counter != 0) {
-                    write_ms(&ms_state);
+                    if (new_ms_flag == 0 || new_ms_flag ==2) write_ms(&ms_state);
                     if (new_ms_flag) write_state_MC(&old_ms_state, old_E+E_base);
                 }
                 update_conf_id(ms_state.conf_id, state);
@@ -3039,7 +3056,7 @@ void MC_smp(int n)
         }
     }
     if (ms_state.counter != 0) {
-        write_ms(&ms_state);
+        if (new_ms_flag==0 || new_ms_flag ==2) write_ms(&ms_state);
         if (new_ms_flag) write_state_MC(&ms_state, E_state+E_base);
     }
 
