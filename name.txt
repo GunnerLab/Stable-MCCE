@@ -13,7 +13,6 @@
 # The replace is accumulative in the order of appearing in this file.
 #
 ####_###_#_###  ####_###_#_###
-*D************  *H************      rename all atom D to H
 ***** ********  *****_********
 ****** *******  ******_*******
 ******* ******  *******_******

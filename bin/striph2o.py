@@ -11,7 +11,7 @@ DEFAULT_RAD = 1.8
 probe_rad = 1.4
 area_k = 4.0*math.pi
 
-BOX_SIZE = 2.75 + probe_rad    # roughly = max atom radius + probe radius
+BOX_SIZE = 2.3 + probe_rad    # roughly = max atom radius + probe radius
 
 
 radius = {" H": 1.2,
@@ -35,133 +35,27 @@ radius = {" H": 1.2,
           "BR": 1.85
 }
 
-point_preset = [
-    ( 0.580799102783,      0.760826885700,      0.289507985115),
-    ( 0.525731086731,      0.850650787354,      0.000000000000),
-    ( 0.000000000000,      0.525731086731,     -0.850650787354),
-    (-0.525731086731,      0.850650787354,      0.000000000000),
-    ( 0.000000000000,      0.525731086731,      0.850650787354),
-    ( 0.850650787354,      0.000000000000,      0.525731086731),
-    (-0.850650787354,      0.000000000000,      0.525731086731),
-    ( 0.000000000000,     -0.525731086731,      0.850650787354),
-    (-0.850650787354,      0.000000000000,     -0.525731086731),
-    (-0.525731086731,     -0.850650787354,      0.000000000000),
-    ( 0.850650787354,      0.000000000000,     -0.525731086731),
-    ( 0.525731086731,     -0.850650787354,      0.000000000000),
-    ( 0.000000000000,     -0.525731086731,     -0.850650787354),
-    ( 0.577350258827,      0.577350258827,      0.577350258827),
-    ( 0.356822103262,      0.000000000000,     -0.934172332287),
-    (-0.577350258827,      0.577350258827,     -0.577350258827),
-    (-0.356822103262,      0.000000000000,      0.934172332287),
-    ( 0.934172332287,      0.356822103262,      0.000000000000),
-    ( 0.000000000000,      0.934172332287,     -0.356822103262),
-    (-0.577350258827,      0.577350258827,      0.577350258827),
-    ( 0.577350258827,     -0.577350258827,      0.577350258827),
-    (-0.934172332287,     -0.356822103262,      0.000000000000),
-    ( 0.577350258827,      0.577350258827,     -0.577350258827),
-    ( 0.000000000000,      0.934172332287,      0.356822103262),
-    (-0.577350258827,     -0.577350258827,      0.577350258827),
-    ( 0.934172332287,     -0.356822103262,      0.000000000000),
-    ( 0.356822103262,      0.000000000000,      0.934172332287),
-    (-0.356822103262,      0.000000000000,     -0.934172332287),
-    ( 0.000000000000,     -0.934172332287,     -0.356822103262),
-    ( 0.577350258827,     -0.577350258827,     -0.577350258827),
-    ( 0.000000000000,     -0.934172332287,      0.356822103262),
-    (-0.934172332287,      0.356822103262,      0.000000000000),
-    (-0.577350258827,     -0.577350258827,     -0.577350258827),
-    ( 1.000000000000,      0.000000000000,      0.000000000000),
-    (-0.500000000000,     -0.309017002583,     -0.809017002583),
-    (-1.000000000000,      0.000000000000,      0.000000000000),
-    ( 0.500000000000,     -0.309017002583,      0.809017002583),
-    ( 0.500000000000,      0.309017002583,     -0.809017002583),
-    (-0.500000000000,      0.309017002583,     -0.809017002583),
-    (-0.500000000000,     -0.309017002583,      0.809017002583),
-    ( 0.809017002583,     -0.500000000000,     -0.309017002583),
-    (-0.309017002583,     -0.809017002583,      0.500000000000),
-    (-0.309017002583,      0.809017002583,     -0.500000000000),
-    (-0.809017002583,      0.500000000000,      0.309017002583),
-    ( 0.000000000000,     -1.000000000000,      0.000000000000),
-    ( 0.809017002583,      0.500000000000,     -0.309017002583),
-    ( 0.000000000000,      1.000000000000,      0.000000000000),
-    (-0.809017002583,     -0.500000000000,      0.309017002583),
-    ( 0.809017002583,      0.500000000000,      0.309017002583),
-    ( 0.309017002583,      0.809017002583,     -0.500000000000),
-    (-0.309017002583,     -0.809017002583,     -0.500000000000),
-    ( 0.000000000000,      0.000000000000,      1.000000000000),
-    ( 0.309017002583,      0.809017002583,      0.500000000000),
-    ( 0.000000000000,      0.000000000000,     -1.000000000000),
-    ( 0.309017002583,     -0.809017002583,      0.500000000000),
-    (-0.309017002583,      0.809017002583,      0.500000000000),
-    ( 0.309017002583,     -0.809017002583,     -0.500000000000),
-    (-0.809017002583,      0.500000000000,     -0.309017002583),
-    (-0.809017002583,     -0.500000000000,     -0.309017002583),
-    ( 0.809017002583,     -0.500000000000,      0.309017002583),
-    ( 0.500000000000,      0.309017002583,      0.809017002583),
-    ( 0.500000000000,     -0.309017002583,     -0.809017002583),
-    (-0.500000000000,      0.309017002583,      0.809017002583),
-    ( 0.178925782442,      0.291291087866,     -0.939752638340),
-    (-0.580799102783,      0.760826885700,     -0.289507985115),
-    (-0.178925782442,      0.291291087866,      0.939752638340),
-    ( 0.759724855423,      0.650244653225,     -0.000000000141),
-    (-0.291291087866,      0.939752638340,     -0.178925782442),
-    (-0.289507985115,      0.580799102783,      0.760826885700),
-    ( 0.760826885700,     -0.289507985115,      0.580799102783),
-    (-0.939752638340,     -0.178925782442,      0.291291087866),
-    ( 0.580799102783,      0.760826885700,     -0.289507985115),
-    (-0.000000000141,      0.759724855423,      0.650244653225),
-    (-0.289507985115,     -0.580799102783,      0.760826885700),
-    ( 0.939752638340,     -0.178925782442,      0.291291087866),
-    ( 0.289507985115,      0.580799102783,      0.760826885700),
-    (-0.178925782442,     -0.291291087866,      0.939752638340),
-    ( 0.178925782442,      0.291291087866,      0.939752638340),
-    (-0.291291087866,      0.939752638340,      0.178925782442),
-    (-0.650244653225,     -0.000000000141,     -0.759724855423),
-    (-0.760826885700,     -0.289507985115,      0.580799102783),
-    (-0.580799102783,      0.760826885700,      0.289507985115),
-    (-0.760826885700,      0.289507985115,     -0.580799102783),
-    (-0.291291087866,     -0.939752638340,     -0.178925782442),
-    ( 0.650244653225,     -0.000000000141,      0.759724855423),
-    ( 0.760826885700,     -0.289507985115,     -0.580799102783),
-    ( 0.291291087866,      0.939752638340,     -0.178925782442),
-    ( 0.760826885700,      0.289507985115,      0.580799102783),
-    ( 0.939752638340,     -0.178925782442,     -0.291291087866),
-    (-0.178925782442,      0.291291087866,     -0.939752638340),
-    ( 0.291291087866,     -0.939752638340,      0.178925782442),
-    (-0.939752638340,      0.178925782442,      0.291291087866),
-    ( 0.000000000141,     -0.759724855423,      0.650244653225),
-    (-0.760826885700,      0.289507985115,      0.580799102783),
-    (-0.580799102783,     -0.760826885700,     -0.289507985115),
-    ( 0.289507985115,     -0.580799102783,      0.760826885700),
-    (-0.650244653225,      0.000000000141,      0.759724855423),
-    ( 0.291291087866,     -0.939752638340,     -0.178925782442),
-    ( 0.939752638340,      0.178925782442,      0.291291087866),
-    ( 0.178925782442,     -0.291291087866,      0.939752638340),
-    ( 0.650244653225,      0.000000000141,     -0.759724855423),
-    (-0.759724855423,     -0.650244653225,     -0.000000000141),
-    ( 0.580799102783,     -0.760826885700,      0.289507985115),
-    (-0.289507985115,     -0.580799102783,     -0.760826885700),
-    ( 0.289507985115,      0.580799102783,     -0.760826885700),
-    (-0.760826885700,     -0.289507985115,     -0.580799102783),
-    (-0.759724855423,      0.650244653225,      0.000000000141),
-    ( 0.000000000141,      0.759724855423,     -0.650244653225),
-    ( 0.289507985115,     -0.580799102783,     -0.760826885700),
-    (-0.939752638340,     -0.178925782442,     -0.291291087866),
-    (-0.289507985115,      0.580799102783,     -0.760826885700),
-    ( 0.939752638340,      0.178925782442,     -0.291291087866),
-    (-0.000000000141,     -0.759724855423,     -0.650244653225),
-    ( 0.760826885700,      0.289507985115,     -0.580799102783),
-    (-0.939752638340,      0.178925782442,     -0.291291087866),
-    ( 0.178925782442,     -0.291291087866,     -0.939752638340),
-    ( 0.580799102783,     -0.760826885700,     -0.289507985115),
-    (-0.580799102783,     -0.760826885700,      0.289507985115),
-    (-0.291291087866,     -0.939752638340,      0.178925782442),
-    ( 0.291291087866,      0.939752638340,      0.178925782442),
-    (-0.178925782442,     -0.291291087866,     -0.939752638340),
-    ( 0.759724855423,     -0.650244653225,      0.000000000141)
-]
 
-n_points = len(point_preset)
+def fibonacci_sphere(samples):
 
+    points = []
+    phi = math.pi * (3. - math.sqrt(5.))  # golden angle in radians
+
+    for i in range(samples):
+        y = 1 - (i / float(samples - 1)) * 2  # y goes from 1 to -1
+        radius = math.sqrt(1 - y * y)  # radius at y
+
+        theta = phi * i  # golden angle increment
+
+        x = math.cos(theta) * radius
+        z = math.sin(theta) * radius
+
+        points.append((x, y, z))
+
+    return points
+
+n_points = 36    # 122
+point_preset = fibonacci_sphere(n_points)
 
 
 class Atom:
@@ -268,6 +162,12 @@ class Protein:
         # last one
         self.residues.append(new_res)
 
+        point_preset = fibonacci_sphere(122)
+        for res in self.residues:
+            res.max_exposed = 0.0
+            for atom in new_res.atoms:
+                res.max_exposed += atomacc_in_res(atom, res.atoms, point_preset)
+
         return
 
     def print_me(self):
@@ -308,7 +208,7 @@ class Protein:
                 self.upper_bound[2] = atom.xyz[2]
         # This boundary encloses all atoms. There is no need to expand boundary.
 
-        print("   Box dimension (%.2f, %.2f, %.2f) - (%.2f, %.2f, %.2f)" % (self.lower_bound[0],
+        print("      Box dimension (%.2f, %.2f, %.2f) - (%.2f, %.2f, %.2f)" % (self.lower_bound[0],
                                                                              self.lower_bound[1],
                                                                              self.lower_bound[2],
                                                                              self.upper_bound[0],
@@ -317,7 +217,7 @@ class Protein:
         ncells_x = math.ceil((self.upper_bound[0] - self.lower_bound[0])/BOX_SIZE)
         ncells_y = math.ceil((self.upper_bound[1] - self.lower_bound[1])/BOX_SIZE)
         ncells_z = math.ceil((self.upper_bound[2] - self.lower_bound[2])/BOX_SIZE)
-        print("   Number of boxes = %d x %d x %d = %d" % (ncells_x, ncells_y, ncells_z, ncells_x*ncells_y*ncells_z))
+        print("      Number of boxes = %d x %d x %d = %d" % (ncells_x, ncells_y, ncells_z, ncells_x*ncells_y*ncells_z), end=",")
 
         self.boxes = {}
         for atom in self.atoms:
@@ -333,10 +233,10 @@ class Protein:
 
         return
 
-    def atom_sas(self):
+    def atom_sas(self, point_preset):
         for res in self.residues:
             for atom in res.atoms:
-
+                n_points = len(point_preset)
                 counter = n_points
                 for p_raw in point_preset:
                     point = (p_raw[0] * atom.rad_ext + atom.xyz[0],
@@ -378,15 +278,14 @@ class Protein:
 
     def res_sas(self):
         for res in self.residues:
-            max_exposed = 0.0
             total_exposed = 0.0
             for atom in res.atoms:
-                max_exposed += atomacc_in_res(atom, res.atoms)
                 total_exposed += atom.sas
             res.sas = total_exposed
-            res.sas_fraction = total_exposed / max_exposed
+            res.sas_fraction = total_exposed / res.max_exposed
 
         return
+
 
     def bulk_remove(self, args):
         cofactors = args.c
@@ -398,7 +297,7 @@ class Protein:
                     box_allcofactor[box] = False
                     break
 
-        for res in self.residues:
+        for res in self.residues:          
             touch_protein = False
             for atom in res.atoms:
                 if touch_protein:
@@ -421,7 +320,7 @@ class Protein:
             if not touch_protein:
                 res.sas_fraction = 1.0
 
-        print("   Delete bulk cofactors ...")
+        print("\n      Delete bulk cofactors ...", end=" ")
         remove_atom = set()
         remove_res = set()
         cutoff = float(args.s)
@@ -432,19 +331,20 @@ class Protein:
         prot.atoms = list(set(prot.atoms) - remove_atom)
         prot.residues = list(set(prot.residues) - remove_res)
         n_stripped = len(remove_res)
-        print("   Stripped %d cofactors" % n_stripped)
+        print("%d cofactors deleted" % n_stripped)
 
         return
 
-def atomacc_in_res(atom, all_atoms):
+
+def atomacc_in_res(atom, all_atoms, point_preset):
     r_extended = probe_rad + atom.rad
+    n_points = len(point_preset)
     counter = n_points
     for p_raw in point_preset:
         point = (p_raw[0] * r_extended + atom.xyz[0],
                  p_raw[1] * r_extended + atom.xyz[1],
                  p_raw[2] * r_extended + atom.xyz[2])
 
-        buried = False
         for atom2 in all_atoms:
             if atom2 != atom:
                 dx = point[0] - atom2.xyz[0]
@@ -452,7 +352,6 @@ def atomacc_in_res(atom, all_atoms):
                 dz = point[2] - atom2.xyz[2]
                 dd = dx * dx + dy * dy + dz * dz
                 if dd < atom2.rad_ext * atom2.rad_ext:
-                    buried = True
                     counter -= 1
                     break
     sas = area_k * atom.rad_ext * atom.rad_ext * counter / n_points
@@ -460,28 +359,29 @@ def atomacc_in_res(atom, all_atoms):
     return sas
 
 
-def strip_surface(prot, args):
-    cutoff = float(args.s)
+def strip_surface(prot, cutoff, point_preset, ncycle = 10):
     n_stripped = 1
-    while n_stripped:
+
+    current_cycle = 1
+    while n_stripped and current_cycle <= ncycle:
         timeD = time.time()
 
-        print("   Index boxes %d atoms of %d cofactors ..." % (len(prot.atoms), len(prot.residues)))
+        print("      Total atoms: %d; processing cofactors: %d ..." % (len(prot.atoms), len(prot.residues)))
         prot.make_regions()
         timeC = time.time()
-        print("   Done in %.3f seconds\n" % (timeC-timeD))
+        print("takes %.3f seconds" % (timeC-timeD))
 
-        print("   Compute atom sas ...")
-        prot.atom_sas()
+        print("      Compute atom sas ...", end=" ")
+        prot.atom_sas(point_preset)
         timeD = time.time()
-        print("   Done in %.3f seconds\n" % (timeD-timeC))
+        print("takes %.3f seconds" % (timeD-timeC))
 
-        print("   Compute residue sas ...")
+        print("      Compute residue sas ...", end=" ")
         prot.res_sas()
         timeC = time.time()
-        print("   Done in %.3f seconds\n" % (timeC-timeD))
+        print("      takes in %.3f seconds" % (timeC-timeD))
 
-        print("   Delete surface cofactors ...")
+        print("      Delete surface cofactors cycle %d ..." % current_cycle, end=" ")
         remove_atom = set()
         remove_res = set()
         for res in prot.residues:
@@ -491,10 +391,8 @@ def strip_surface(prot, args):
         prot.atoms = list(set(prot.atoms) - remove_atom)
         prot.residues = list(set(prot.residues) - remove_res)
         n_stripped = len(remove_res)
-        print("   Stripped %d cofactors" % n_stripped)
-        timeD = time.time()
-        print("   Done in %.3f seconds\n\n" % (timeD-timeC))
-
+        print("%d\n" % n_stripped)
+        current_cycle += 1
     return
 
 
@@ -512,34 +410,46 @@ if __name__ == "__main__":
     prot = Protein()
 
     timeLast = time.time()
-    print("Read in structure ...")
+    timeStart = timeLast
+    print("Start at time 0.000 ...")
+
+    print("   Read in structure ...", end=" ")
     prot.loadpdb(args.f)
     timeNow = time.time()
-    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    print("takes %.3f seconds" % (timeNow-timeLast))
     timeLast = timeNow
 
-    print("Group into residues ...")
+    print("   Group into residues ...", end=" ")
     prot.group_residues(args.c)
     timeNow = time.time()
-    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    print("takes %.3f seconds\n" % (timeNow-timeLast))
     timeLast = timeNow
 
 
-    print("Bulk strip off surface %s ..." % " ".join(args.c))
-    print("   Index boxes %d atoms of %d cofactors ..." % (len(prot.atoms), len(prot.residues)))
+    print("   Bulk strip off surface %s ..." % " ".join(args.c))
+    print("      Total atom: %d; processed cofactors: %d" % (len(prot.atoms), len(prot.residues)))
     prot.make_regions()
     prot.bulk_remove(args)
     timeNow = time.time()
-    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    print("   Bulk strip off process takes %.3f seconds\n" % (timeNow-timeLast))
     timeLast = timeNow
 
+    n_steps = [12, 48, 100]
+    for n in n_steps:
+        print("   Layered strip off surface %s at precision +-%.3f ..." % (" ".join(args.c), 1.0/n))
+        point_preset = fibonacci_sphere(n)
 
-    print("Layer strip off surface %s ..." % " ".join(args.c))
-    cutoff = float(args.s)
-    strip_surface(prot, args)
-    timeNow = time.time()
-    print("Done in %.3f seconds\n" % (timeNow-timeLast))
-    timeLast = timeNow
+        if n == n_steps[-1]:
+            ncycles = 9999
+            cutoff = float(args.s)
+        else:
+            ncycles = 12
+            cutoff = float(args.s) + 1.0 / n
+
+        strip_surface(prot, cutoff, point_preset, ncycle=ncycles)
+        timeNow = time.time()
+        print("   takes %.3f seconds\n" % (timeNow - timeLast))
+        timeLast = timeNow
 
 
     if args.o:
@@ -553,3 +463,6 @@ if __name__ == "__main__":
     prot.writepdb(fname)
     filename, extension = os.path.splitext(args.f)
     prot.writesas("%s.acc" % filename)
+
+    timeEnd = time.time()
+    print("Total time: %.3f" % (timeEnd - timeStart))
