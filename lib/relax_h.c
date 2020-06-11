@@ -1335,6 +1335,7 @@ int relax(int n_relax, RELAX_ATOM **relax_atoms, PROT prot)
 
 int water_orient(VECTOR v0, VECTOR v1, VECTOR v2, float *theta, float *phi, float *psi)
 {
+    float v;
     VECTOR i,j,k,i_p,j_p;
     VECTOR v01,v02,v12,bisect102,bisect102_p;
     /*
@@ -1351,10 +1352,17 @@ int water_orient(VECTOR v0, VECTOR v1, VECTOR v2, float *theta, float *phi, floa
     v12 = vector_normalize(vector_vminusv(v2,v1));
     
     bisect102 = vector_normalize(vector_vplusv(v01,v02));
-    *theta = acos(vdotv(k,bisect102));
-    
+
+    v = vdotv(k,bisect102);
+    if (v>1.0) v = 1.0;
+    if (v<-1.0) v = -1.0;
+    *theta = acos(v);
     bisect102_p = vector_normalize(vector_vminusv(bisect102, vector_rescale(k,vdotv(k,bisect102))));
-    *phi = acos(vdotv(i,bisect102_p));
+
+    v = vdotv(i,bisect102_p);
+    if (v>1.0) v = 1.0;
+    if (v<-1.0) v = -1.0;
+    *phi = acos(v);
     if (vdotv(j,bisect102_p)<0) *phi = 2.*env.PI - *phi;
     
     i_p.x = cos(*theta)*cos(*phi);
@@ -1364,8 +1372,11 @@ int water_orient(VECTOR v0, VECTOR v1, VECTOR v2, float *theta, float *phi, floa
     j_p.x = -sin(*phi);
     j_p.y =  cos(*phi);
     j_p.z =  0.;
-    
-    *psi=acos(vdotv(i_p,v12));
+
+    v = vdotv(i_p,v12);
+    if (v>1.0) v = 1.0;
+    if (v<-1.0) v = -1.0;
+    *psi=acos(v);
     if (vdotv(j_p,v12)<0) *psi = 2.*env.PI - *psi;
     
     return 0;

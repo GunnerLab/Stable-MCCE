@@ -175,6 +175,7 @@ class Atom:
         self.xyz = ()
         self.resid = ()  # (resname, chainid, seqnum, icode)
         self.rad = DEFAULT_RAD
+        self.rad_ext = DEFAULT_RAD + probe_rad
         self.crg = 0.0
         self.sas = 0.0
         self.ibox = ()
@@ -197,7 +198,7 @@ class Atom:
         self.resid = (self.resname, self.chainid, self.seqnum, self.icode)
         if self.element in radius:
             self.rad = radius[self.element]
-
+            self.rad_ext = self.rad + probe_rad
         return
 
     def print_me(self):
@@ -250,6 +251,7 @@ class Protein:
     def group_residues(self, cofactors):
         cur_resid = ()
         new_res = None
+        self.residues = []
         for atom in self.atoms:
             # ignore residues we don't care
             if atom.resname not in cofactors:
@@ -300,6 +302,7 @@ class Protein:
         ncells_z = math.ceil((self.upper_bound[2] - self.lower_bound[2])/BOX_SIZE)
         print("   Number of boxes = %d x %d x %d = %d" % (ncells_x, ncells_y, ncells_z, ncells_x*ncells_y*ncells_z))
 
+        self.boxes = {}
         for atom in self.atoms:
             ix = math.floor((atom.xyz[0] - self.lower_bound[0])/BOX_SIZE)
             iy = math.floor((atom.xyz[1] - self.lower_bound[1])/BOX_SIZE)
@@ -316,13 +319,12 @@ class Protein:
     def atom_sas(self):
         for res in self.residues:
             for atom in res.atoms:
-                r_extended = probe_rad + atom.rad
 
                 counter = n_points
                 for p_raw in point_preset:
-                    point = (p_raw[0] * r_extended + atom.xyz[0],
-                             p_raw[1] * r_extended + atom.xyz[1],
-                             p_raw[2] * r_extended + atom.xyz[2])
+                    point = (p_raw[0] * atom.rad_ext + atom.xyz[0],
+                             p_raw[1] * atom.rad_ext + atom.xyz[1],
+                             p_raw[2] * atom.rad_ext + atom.xyz[2])
 
                     ibox = (math.floor((point[0] - self.lower_bound[0])/BOX_SIZE),
                             math.floor((point[1] - self.lower_bound[1])/BOX_SIZE),
@@ -344,18 +346,18 @@ class Protein:
                                 if neighbor_box in self.boxes:
                                     for atom2 in self.boxes[neighbor_box]:
                                         if atom2 != atom:
-                                            dclash = atom2.rad + probe_rad
+                                            atom2.rad_ext
                                             dx = point[0] - atom2.xyz[0]
                                             dy = point[1] - atom2.xyz[1]
                                             dz = point[2] - atom2.xyz[2]
                                             dd = dx*dx + dy*dy + dz*dz
-                                            if dd < dclash * dclash:
+                                            if dd < atom2.rad_ext * atom2.rad_ext:
                                                 buried = True
                                                 counter -= 1
                                                 break
 
                 #print(counter)
-                atom.sas = area_k * atom.rad * atom.rad * counter / n_points
+                atom.sas = area_k * atom.rad_ext * atom.rad_ext * counter / n_points
                 #print(atom.name, atom.sas)
 
     def res_sas(self):
@@ -382,25 +384,63 @@ def atomacc_in_res(atom, all_atoms):
         buried = False
         for atom2 in all_atoms:
             if atom2 != atom:
-                dclash = atom2.rad + probe_rad
                 dx = point[0] - atom2.xyz[0]
                 dy = point[1] - atom2.xyz[1]
                 dz = point[2] - atom2.xyz[2]
                 dd = dx * dx + dy * dy + dz * dz
-                if dd < dclash * dclash:
+                if dd < atom2.rad_ext * atom2.rad_ext:
                     buried = True
                     counter -= 1
                     break
-    sas = area_k * atom.rad * atom.rad * counter / n_points
+    sas = area_k * atom.rad_ext * atom.rad_ext * counter / n_points
 
     return sas
+
+
+def strip_surface(prot, args):
+    cutoff = float(args.s)
+    n_stripped = 1
+    while n_stripped:
+        timeD = time.time()
+
+        print("   Index boxes %d atoms of %d cofactors ..." % (len(prot.atoms), len(prot.residues)))
+        prot.make_regions()
+        timeC = time.time()
+        print("   Done in %.3f seconds\n" % (timeC-timeD))
+
+        print("   Compute atom sas ...")
+        prot.atom_sas()
+        timeD = time.time()
+        print("   Done in %.3f seconds\n" % (timeD-timeC))
+
+        print("   Compute residue sas ...")
+        prot.res_sas()
+        timeC = time.time()
+        print("   Done in %.3f seconds\n" % (timeC-timeD))
+
+        print("   Delete surface cofactors ...")
+        remove_atom = set()
+        remove_res = set()
+        for res in prot.residues:
+            if res.sas_fraction > cutoff:
+                remove_atom.update(res.atoms)
+                remove_res.add(res)
+        prot.atoms = list(set(prot.atoms) - remove_atom)
+        prot.residues = list(set(prot.residues) - remove_res)
+        n_stripped = len(remove_res)
+        print("   Stripped %d cofactors" % n_stripped)
+        timeD = time.time()
+        print("   Done in %.3f seconds\n\n" % (timeD-timeC))
+
+    return
+
 
 if __name__ == "__main__":
 
     # Get the command arguments
     helpmsg = "Strip off exposed cofactors like water and ions based on solvent accessible surface area."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("-c", metavar="RES", nargs="+", default="HOH", help="Specify cofactor names to strip off, default is HOH.")
+    parser.add_argument("-c", metavar="RES", nargs="+", default=["HOH"], help="Specify cofactor names to strip off, default is HOH.")
     parser.add_argument("-s", metavar="exposure", help="Fraction exposure threshold to be cut. Default is 0.05.", default=0.05, type=float)
     parser.add_argument("-f", metavar="inputfile", help="Input file name.", required=True)
     parser.add_argument("-o", metavar="outputfile", help="Output file name, default is inputfile name with extension .stripped.")
@@ -417,23 +457,11 @@ if __name__ == "__main__":
     print("Group into residues ...")
     prot.group_residues(args.c)
     timeA = time.time()
-    print("Done in %.3f seconds\n" % (timeA-timeB))
+    print("Done in %.3f seconds\n" % (timeA - timeB))
 
-    print("Index boxes for atoms ...")
-    prot.make_regions()
+    print("Strip off surface %s ..." % " ".join(args.c))
+    cutoff = float(args.s)
+    strip_surface(prot, args)
     timeB = time.time()
     print("Done in %.3f seconds\n" % (timeB-timeA))
 
-    print("Compute atom sas ...")
-    cofactors = args.c
-    prot.atom_sas()
-    timeA = time.time()
-    print("Done in %.3f seconds\n" % (timeA-timeB))
-
-    print("Compute residue sas ...")
-    prot.res_sas()
-    timeB = time.time()
-    print("Done in %.3f seconds\n" % (timeB-timeA))
-
-    for res in prot.residues:
-        print(res.resid, res.sas, res.sas_fraction)
