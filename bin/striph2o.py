@@ -363,7 +363,6 @@ class Protein:
                                 if neighbor_box in self.boxes:
                                     for atom2 in self.boxes[neighbor_box]:
                                         if atom2 != atom:
-                                            atom2.rad_ext
                                             dx = point[0] - atom2.xyz[0]
                                             dy = point[1] - atom2.xyz[1]
                                             dz = point[2] - atom2.xyz[2]
@@ -389,6 +388,53 @@ class Protein:
 
         return
 
+    def bulk_remove(self, args):
+        cofactors = args.c
+        box_allcofactor = {}
+        for box in self.boxes.keys():
+            box_allcofactor[box] = True
+            for atom in self.boxes[box]:
+                if atom.resname not in cofactors:
+                    box_allcofactor[box] = False
+                    break
+
+        for res in self.residues:
+            touch_protein = False
+            for atom in res.atoms:
+                if touch_protein:
+                    break
+                ibox = atom.ibox
+                for ix in range(ibox[0] - 2, ibox[0] + 3):
+                    if touch_protein:
+                        break
+                    for iy in range(ibox[1] - 2, ibox[1] + 3):
+                        if touch_protein:
+                            break
+                        for iz in range(ibox[2] - 2, ibox[2] + 3):
+                            if touch_protein:
+                                break
+                            neighbor_box = (ix, iy, iz)
+                            if neighbor_box in self.boxes:
+                                if not box_allcofactor[neighbor_box]:
+                                    touch_protein = True
+                                    break
+            if not touch_protein:
+                res.sas_fraction = 1.0
+
+        print("   Delete bulk cofactors ...")
+        remove_atom = set()
+        remove_res = set()
+        cutoff = float(args.s)
+        for res in prot.residues:
+            if res.sas_fraction > cutoff:
+                remove_atom.update(res.atoms)
+                remove_res.add(res)
+        prot.atoms = list(set(prot.atoms) - remove_atom)
+        prot.residues = list(set(prot.residues) - remove_res)
+        n_stripped = len(remove_res)
+        print("   Stripped %d cofactors" % n_stripped)
+
+        return
 
 def atomacc_in_res(atom, all_atoms):
     r_extended = probe_rad + atom.rad
@@ -465,22 +511,36 @@ if __name__ == "__main__":
 
     prot = Protein()
 
-    timeA = time.time()
+    timeLast = time.time()
     print("Read in structure ...")
     prot.loadpdb(args.f)
-    timeB = time.time()
-    print("Done in %.3f seconds\n" % (timeB-timeA))
+    timeNow = time.time()
+    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    timeLast = timeNow
 
     print("Group into residues ...")
     prot.group_residues(args.c)
-    timeA = time.time()
-    print("Done in %.3f seconds\n" % (timeA - timeB))
+    timeNow = time.time()
+    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    timeLast = timeNow
 
-    print("Strip off surface %s ..." % " ".join(args.c))
+
+    print("Bulk strip off surface %s ..." % " ".join(args.c))
+    print("   Index boxes %d atoms of %d cofactors ..." % (len(prot.atoms), len(prot.residues)))
+    prot.make_regions()
+    prot.bulk_remove(args)
+    timeNow = time.time()
+    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    timeLast = timeNow
+
+
+    print("Layer strip off surface %s ..." % " ".join(args.c))
     cutoff = float(args.s)
     strip_surface(prot, args)
-    timeB = time.time()
-    print("Done in %.3f seconds\n" % (timeB-timeA))
+    timeNow = time.time()
+    print("Done in %.3f seconds\n" % (timeNow-timeLast))
+    timeLast = timeNow
+
 
     if args.o:
         fname = args.o
