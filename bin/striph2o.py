@@ -4,6 +4,7 @@ import argparse
 import sys
 import time
 import math
+import os
 
 
 DEFAULT_RAD = 1.8
@@ -274,6 +275,22 @@ class Protein:
             print(res.resid)
             sys.stdout.writelines(res.print_me())
 
+    def writepdb(self, fname):
+        lines = []
+        for atom in self.atoms:
+            line = atom.print_me()
+            lines.append(line)
+        open(fname, "w").writelines(lines)
+        return
+
+    def writesas(self, fname):
+        lines = []
+        for res in self.residues:
+            line = "%s %8.3f %8.3f\n" % (str(res.resid), res.sas, res.sas_fraction)
+            lines.append(line)
+        open(fname, "w").writelines(lines)
+        return
+
     def make_regions(self):
         # make a 10x10x10 boxes so that we only need to consider atoms within neighboring boxes when compute sas
         for atom in self.atoms:
@@ -465,3 +482,14 @@ if __name__ == "__main__":
     timeB = time.time()
     print("Done in %.3f seconds\n" % (timeB-timeA))
 
+    if args.o:
+        fname = args.o
+    else:
+        filename, extension = os.path.splitext(args.f)
+        if extension == ".pdb":
+            fname = "%s-stripped.pdb" % filename
+        else:
+            fname = "%s-stripped.pdb" % args.f
+    prot.writepdb(fname)
+    filename, extension = os.path.splitext(args.f)
+    prot.writesas("%s.acc" % filename)
