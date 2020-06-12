@@ -463,6 +463,7 @@ if __name__ == "__main__":
     prot.writepdb(fname)
     filename, extension = os.path.splitext(args.f)
     prot.writesas("%s.acc" % filename)
+    print("Output structure file: %s; accessibility: %s" % (fname, "%s.acc" % filename))
 
     timeEnd = time.time()
     print("Total time: %.3f" % (timeEnd - timeStart))

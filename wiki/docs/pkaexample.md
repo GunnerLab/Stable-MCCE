@@ -13,7 +13,7 @@ Crystal structure of hen egg white lysozyme - PDB ID 3WUM
 The residue GLU 35 and ASP 52 have been identified as two active sites. The pKas of these two residues play an important
  role in the enzyme's activity. In order for lysozyme to attack the glucose molecule of the substrate, 
  GLU has high pKa and ASP 52 has low pKa. This way GLU 35 acts a proton donor, cuts the glucose with protonation of the 
- glycosidic oxygen and a deprotonated GLU 52 stabilizes the highly charged intermediate, making the reaction easier. 
+ glycosidic oxygen and a deprotonated ASP 52 stabilizes the highly charged intermediate, making the reaction easier.
 
 [Jens Erik Nielsen and J. Andrew McCammon, Protein Sci. 2003 Sep; 12(9): 1894–1901](https://www.ncbi.nlm.nih
 .gov/pmc/articles/PMC2323987/)  
