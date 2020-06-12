@@ -38,739 +38,694 @@ Not doing "Step 2. Make multi side chain conformers"
 
 Not doing "Step 3. Compute energy lookup table"
 
-Not doing "Step 4. Monte Carlo Sampling"
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    29 seconds, biggest stdev of conformer occ = 0.026
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 32 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    28 seconds, biggest stdev of conformer occ = 0.027
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 31 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    28 seconds, biggest stdev of conformer occ = 0.026
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 31 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+
+   Loading file "ms_gold"
+      Done, 75 residue(s) marked.
+
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    83 seconds, biggest stdev of conformer occ = 0.017
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 89 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+
+   Loading file "ms_gold"
+      Done, 75 residue(s) marked.
+
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    83 seconds, biggest stdev of conformer occ = 0.020
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 87 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    27 seconds, biggest stdev of conformer occ = 0.031
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 30 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+Not doing "Step 6. Hydrogen Bond Network Analysis"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.8                                    
+MCCE Home Page: https://sites.google.com/site/mccewiki 
+Support:        mgunner@ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   06/04/2018: Removed dependency on gdbm
+   06/04/2018: Clear text energy table in step 3 and 4 
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "./param" ... 
+   Done
+
+   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    29 seconds, biggest stdev of conformer occ = 0.022
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 32 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
 
 Step 6. Hydrogen Bond Network Analysis
    Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
+   Reading ms_out/pH7eH0ms.txt...
    Temp: 298.15, pH: 7, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   10 records and 36 states has been loaded.
-   Total time to load ms.dat: 0.
-   Total time: 0.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   10 records and 36 states has been loaded.
-   Total time to load ms.dat: 0.
-   Total time: 0.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 35.
-   Total time: 35.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   There are 75 key residues.
-   The microstates are obtained from: MONTERUNS.
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 122.
-   Total time: 122.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 37.
-   Total time: 37.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.999): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   FATAL: Failed creating directory hb_out, no write permission.
-   Fatal error detected in hbond_network().
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
+   1429786 records and 7800000 states has been loaded.
+   Total time to load ms.dat: 89.
+   Writing hb_out/pH7eH0hb.txt...
+   Total time: 89.
    Files hb.txt are obtained.
 
 Step 6 Done.
@@ -815,329 +770,93 @@ Not doing "Step 2. Make multi side chain conformers"
 
 Not doing "Step 3. Compute energy lookup table"
 
-Not doing "Step 4. Monte Carlo Sampling"
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 2 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 1 seconds.
+   Titration  1:    29 seconds, biggest stdev of conformer occ = 0.030
+   Titration  2:    29 seconds, biggest stdev of conformer occ = 0.022
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 62 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
 
 Step 6. Hydrogen Bond Network Analysis
    Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
+   Reading ms_out/pH7eH0ms.txt...
    Temp: 298.15, pH: 7, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
+   1375603 records and 7487781 states has been loaded.
+   Total time to load ms.dat: 85.
+   Writing hb_out/pH7eH0hb.txt...
+   Reading ms_out/pH8eH0ms.txt...
+   Temp: 298.15, pH: 8, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 36.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 36.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-META0001 resname GLNA0002 resname LEUA0005 resname ILEA0006 resname LEUA0007 resname ASNA0008 resname LEUA0012 resname ALAA0020 resname VALA0021 resname ALAA0023 resname ALAA0024 resname ALAA0026 resname VALA0029 resname PHEA0030 resname GLNA0032 resname ALAA0034 resname ASNA0037 resname VALA0039 resname TRPA0043 resname ALAA0048 resname PHEA0052 resname VALA0054 resname 
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 73.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 73.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-META0001 resname GLNA0002 resname LEUA0005 resname ILEA0006 resname LEUA0007 resname ASNA0008 resname LEUA0012 resname ALAA0020 resname VALA0021 resname ALAA0023 resname ALAA0024 resname ALAA0026 resname VALA0029 resname PHEA0030 resname GLNA0032 resname ALAA0034 resname ASNA0037 resname VALA0039 resname TRPA0043 resname ALAA0048 resname PHEA0052 resname VALA0054 resname 
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 74.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 74.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   FATAL: Failed creating directory hb_out, no write permission.
-   Fatal error detected in hbond_network().
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 32. n_conf_fixed (occ > 0.99): 22
-   n_free residues (check if equal): 44, 44
-META0001 resname GLNA0002 resname LEUA0005 resname ILEA0006 resname LEUA0007 resname ASNA0008 resname LEUA0012 resname ALAA0020 resname VALA0021 resname ALAA0023 resname ALAA0024 resname ALAA0026 resname VALA0029 resname PHEA0030 resname GLNA0032 resname ALAA0034 resname ASNA0037 resname VALA0039 resname TRPA0043 resname ALAA0048 resname PHEA0052 resname VALA0054 resname 
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1452630 records and 8100000 states has been loaded.
-   Total time to load ms.dat: 76.
-NTRA0001 TYRA0003 LYSA0010 THRA0011 GLUA0015 THRA0016 THRA0017 THRA0018 GLUA0019 ASPA0022 THRA0025 LYSA0028 LYSA0031 TYRA0033 ASNA0035 ASPA0036 ASPA0040 GLUA0042 THRA0044 TYRA0045 THRA0049 THRA0051 THRA0053 THRA0055 GLUA0056 CTRA0056 HOHA0057 HOHA0059 HOHA0060 HOHA0062 HOHA0070 HOHA0071 HOHA0079 HOHA0080 HOHA0083 HOHA0090 HOHA0099 HOHA0109 HOHA0114 HOHA0130 HOHA0142 HOHA0150 HOHA0156 HOHA0171 
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 76.
+   2946668 records and 15287781 states has been loaded.
+   Total time to load ms.dat: 179.
+   Writing hb_out/pH8eH0hb.txt...
+   Total time: 179.
    Files hb.txt are obtained.
 
 Step 6 Done.
@@ -1228,14 +947,14 @@ Step 4. Monte Carlo Sampling
       Done, 75 residue(s) marked.
 
    Monte Carlo set up time: 1 seconds.
-   Titration  1:    83 seconds, biggest stdev of conformer occ = 0.019
+   Titration  1:    78 seconds, biggest stdev of conformer occ = 0.035
    Done
 
    Fit titration curves to get pKa/Em ...
    MFE: didn't specify mfe point, do mfe at pKa or Em 
    Done
 
-   Total time on MC: 89 seconds
+   Total time on MC: 84 seconds
 
    Output files:
       mc_out          : MC progress and convergence.
@@ -1247,210 +966,31 @@ Step 4 Done.
 
 Step 6. Hydrogen Bond Network Analysis
    Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
+   Reading ms_out/pH7eH0ms.txt...
    Temp: 298.15, pH: 7, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 35. n_conf_fixed (occ > 0.99): 35
-   n_free residues (check if equal): 41, 41
-META0001 resname GLNA0002 resname LYSA0004 resname LEUA0005 resname ILEA0006 resname LEUA0007 resname ASNA0008 resname LEUA0012 resname LYSA0013 resname GLUA0015 resname ALAA0020 resname VALA0021 resname ASPA0022 resname ALAA0023 resname ALAA0024 resname ALAA0026 resname GLUA0027 resname VALA0029 resname PHEA0030 resname GLNA0032 resname ALAA0034 resname ASNA0037 resname VALA0039 resname ASPA0040 resname TRPA0043 resname ASPA0046 resname ASPA0047 resname ALAA0048 resname LYSA0050 resname PHEA0052 resname VALA0054 resname HOHA0094 resname HOHA0106 resname HOHA0115 resname HOHA0132 resname 
-LYSA0004 GLUA0015 1
-LYSA0050 META0001 1
-LYSA0050 ASPA0047 1
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1503254 records and 7800000 states has been loaded.
-   Total time to load ms.dat: 93.
-NTRA0001 TYRA0003 LYSA0010 THRA0011 THRA0016 THRA0017 THRA0018 GLUA0019 THRA0025 LYSA0028 LYSA0031 TYRA0033 ASNA0035 ASPA0036 GLUA0042 THRA0044 TYRA0045 THRA0049 THRA0051 THRA0053 THRA0055 GLUA0056 CTRA0056 HOHA0057 HOHA0059 HOHA0060 HOHA0062 HOHA0070 HOHA0071 HOHA0079 HOHA0080 HOHA0083 HOHA0090 HOHA0099 HOHA0109 HOHA0114 HOHA0130 HOHA0142 HOHA0150 HOHA0156 HOHA0171 
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 93.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   There are 75 key residues.
-   The microstates are obtained from: MONTERUNS.
-   1503254 records and 7800000 states has been loaded.
-   Total time to load ms.dat: 126.
-   Total time: 126.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
+   1432610 records and 7800000 states has been loaded.
+   Total time to load ms.dat: 88.
+   Writing hb_out/pH7eH0hb.txt...
+   Reading ms_out/pH8eH0ms.txt...
+   Temp: 298.15, pH: 8, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 35. n_conf_fixed (occ > 0.99): 35
-   n_free residues (check if equal): 41, 41
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1503254 records and 7800000 states has been loaded.
-   Total time to load ms.dat: 90.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 90.
-   Files hb.txt are obtained.
-
-Step 6 Done.
-
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   There are 75 key residues.
-   The microstates are obtained from: MONTERUNS.
-   1503254 records and 7800000 states has been loaded.
-   Total time to load ms.dat: 125.
-   Total time: 125.
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 35. n_conf_fixed (occ > 0.99): 35
-   n_free residues (check if equal): 41, 41
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1503254 records and 7800000 states has been loaded.
-   Total time to load ms.dat: 90.
-   Writing hb_out/ph7eh0hb.txt...
-   Total time: 90.
+   3003675 records and 15600000 states has been loaded.
+   Total time to load ms.dat: 180.
+   Writing hb_out/pH8eH0hb.txt...
+   Total time: 180.
    Files hb.txt are obtained.
 
 Step 6 Done.
@@ -1534,104 +1074,21 @@ Step 4. Monte Carlo Sampling
    VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
    Conformer flags updated due to self consistancy.
 
-   Do titration at 2 points...
-   Detailed progress is in file "mc_out"
-   FATAL: Failed creating directory ms_out, no write permission.
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Step 4. Monte Carlo Sampling
-   Load conformer list from file "head3.lst" ...
-   Scaling factors:
-   VDW0  = 1.000:
-   VDW1  = 1.000:
-   VDW   = 1.000:
-   TORS  = 1.000:
-   ELE   = 1.000:
-   DSOLV = 1.000:
-   Done
-
-   Load pairwise interactions ...
-   Done
-
-   Verify self consistancy of conformer flag ...
-   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
-   Conformer flags updated due to self consistancy.
-
-   Do titration at 2 points...
+   Do titration at 1 points...
    Detailed progress is in file "mc_out"
 
    Loading file "ms_gold"
       Done, 75 residue(s) marked.
 
    Monte Carlo set up time: 2 seconds.
-   Titration  1:    81 seconds, biggest stdev of conformer occ = 0.032
-   Titration  2:    87 seconds, biggest stdev of conformer occ = 0.020
+   Titration  1:    75 seconds, biggest stdev of conformer occ = 0.032
    Done
 
    Fit titration curves to get pKa/Em ...
    MFE: didn't specify mfe point, do mfe at pKa or Em 
    Done
 
-   Total time on MC: 175 seconds
+   Total time on MC: 80 seconds
 
    Output files:
       mc_out          : MC progress and convergence.
@@ -1645,125 +1102,9 @@ Step 6. Hydrogen Bond Network Analysis
    Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
    There are 75 key residues.
    The microstates are obtained from: MONTERUNS.
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   There are 75 key residues.
-   The microstates are obtained from: MONTERUNS.
-===========================================================
-<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
- Marilyn Gunner's Lab at City College of New York, 2005    
------------------------------------------------------------
-Version:        2.8                                    
-MCCE Home Page: https://sites.google.com/site/mccewiki 
-Support:        mgunner@ccny.cuny.edu                   
-Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
-Reference MCCE: If you publish data calculated with MCCE,  
-                you need to cite papers suggested in MCCE  
-                Home Page.                                 
-===========================================================
-
-Last Updates:                                              
-   06/04/2018: Removed dependency on gdbm
-   06/04/2018: Clear text energy table in step 3 and 4 
-===========================================================
-
-Step 0. Initialize enviroment
-   Load run control file "run.prm"...
-   Done
-
-   Tentatively load local param file "new.tpl"...   No such file, ignore.
-   Done
-
-   Load parameters from directory "./param" ... 
-   Done
-
-   Load linear free energy correction parameters from "./extra.tpl"..../extra.tpl
-   File loaded.
-   Done
-
-Step 0 Done.
-
-Not doing "Step 1. Test and format structral file"
-
-Not doing "Step 2. Make multi side chain conformers"
-
-Not doing "Step 3. Compute energy lookup table"
-
-Not doing "Step 4. Monte Carlo Sampling"
-
-Step 6. Hydrogen Bond Network Analysis
-   Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
-   Temp: 298.15, pH: 7, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 33. n_conf_fixed (occ > 0.99): 33
-   n_free residues (check if equal): 43, 43
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   1433471 records and 7831974 states has been loaded.
-   Total time to load ms.dat: 89.
-   Writing hb_out/ph7eh0hb.txt...
-   Reading ms_out/ph8eh0ms.txt...
-   Temp: 298.15, pH: 8, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 39. n_conf_fixed (occ > 0.99): 39
-   n_free residues (check if equal): 37, 37
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   3065763 records and 15331974 states has been loaded.
-   Total time to load ms.dat: 180.
-   Writing hb_out/ph8eh0hb.txt...
-   Total time: 180.
+   1396340 records and 7800000 states has been loaded.
+   Total time to load ms.dat: 116.
+   Total time: 116.
    Files hb.txt are obtained.
 
 Step 6 Done.
@@ -1808,39 +1149,89 @@ Not doing "Step 2. Make multi side chain conformers"
 
 Not doing "Step 3. Compute energy lookup table"
 
-Not doing "Step 4. Monte Carlo Sampling"
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   MET01A0001_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0002_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0005_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0006_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0007_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0012_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0020_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0023_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0024_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0026_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0029_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0030_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   GLN01A0032_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0034_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ASN01A0037_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0039_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0043_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0052_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0054_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+
+   Loading file "ms_gold"
+      Done, 75 residue(s) marked.
+
+   Monte Carlo set up time: 2 seconds.
+   Titration  1:    76 seconds, biggest stdev of conformer occ = 0.027
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 82 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
 
 Step 6. Hydrogen Bond Network Analysis
    Load hb.dat and ms.dat and combine them to get hydrogen bond network ...
-   Reading ms_out/ph7eh0ms.txt...
+   There are 75 key residues.
+   The microstates are obtained from: MONTERUNS.
+   1413998 records and 7800000 states has been loaded.
+   Total time to load ms.dat: 117.
+   Total time: 117.
+   Reading ms_out/pH7eH0ms.txt...
    Temp: 298.15, pH: 7, eH: 0
    The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 33. n_conf_fixed (occ > 0.99): 33
-   n_free residues (check if equal): 43, 43
    Reading : 0-th MC sampling data ...
    Reading : 1-th MC sampling data ...
    Reading : 2-th MC sampling data ...
    Reading : 3-th MC sampling data ...
    Reading : 4-th MC sampling data ...
    Reading : 5-th MC sampling data ...
-   1433471 records and 7831974 states has been loaded.
-   Total time to load ms.dat: 89.
-   Writing hb_out/ph7eh0hb.txt...
-   Reading ms_out/ph8eh0ms.txt...
-   Temp: 298.15, pH: 8, eH: 0
-   The microstates are obtained from Method: MONTERUNS
-   n_fixed residues: 39. n_conf_fixed (occ > 0.99): 39
-   n_free residues (check if equal): 37, 37
-   Reading : 0-th MC sampling data ...
-   Reading : 1-th MC sampling data ...
-   Reading : 2-th MC sampling data ...
-   Reading : 3-th MC sampling data ...
-   Reading : 4-th MC sampling data ...
-   Reading : 5-th MC sampling data ...
-   3065763 records and 15331974 states has been loaded.
-   Total time to load ms.dat: 180.
-   Writing hb_out/ph8eh0hb.txt...
-   Total time: 180.
+   1413998 records and 7800000 states has been loaded.
+   Total time to load ms.dat: 87.
+   Writing hb_out/pH7eH0hb.txt...
+   Total time: 87.
    Files hb.txt are obtained.
 
 Step 6 Done.

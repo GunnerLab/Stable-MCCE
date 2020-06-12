@@ -5,7 +5,7 @@ DEPS    = $(LDIR)/mcce.h
 LIB     = $(LDIR)/mcce.a
 AR      = ar
 ARFLAGS = rvs
-STEP6 = $(LDIR)/analysis.o
+STEP6 = $(LDIR)/analysis_adv.o
 
 SRC = $(wildcard $(LDIR)/*.c)
 DELPHI = bin/delphi
@@ -32,6 +32,7 @@ $(LDIR)/%.o: $(LDIR)/%.c $(DEPS)
 $(STEP6): lib/analysis.cpp $(DEPS)
 	cd $(LDIR)
 	$(CC2) -c -o $@ $< $(CFLAGS)
+
 clean:
 	-rm -f bin/mcce bin/delphi $(LIB) $(LDIR)/*.o
 	$(MAKE) clean -C $(LDIR)/delphi

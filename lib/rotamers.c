@@ -90,7 +90,8 @@ int rotamers()
    printf("   Done\n\n"); fflush(stdout);
    fclose(fp);
 
-   /* write out ms_gold --by Cai*/
+   /*
+   //write out ms_gold --by Cai
    if (env.ms_gold_out) {
        printf("   Writing ms_gold ...\n");
        fflush(stdout);
@@ -102,6 +103,7 @@ int rotamers()
    else {
       printf("   NOT output ms_gold file.\n");
    }
+   */
 
 
    /* load CONFLIST1 */
@@ -659,7 +661,7 @@ int rotamers()
    printf("      %-16s: conformer summary\n", FN_CONFLIST2);
    printf("      %-16s: rotamers without pairwise pruning.\n", "step2_out.full");
    printf("      %-16s: heavy atom rotamers, can be used recursively by step 2\n", FN_HVROT);
-   printf("      %-16s: residue name list, can be used for step 4 to output microstate\n", "ms_gold");        // for ms_gold file, Cai
+   //printf("      %-16s: residue name list, can be used for step 4 to output microstate\n", "ms_gold");        // for ms_gold file, Cai
    printf("\n"); fflush(stdout);
 
    /* clean up memory */
