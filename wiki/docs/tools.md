@@ -412,3 +412,42 @@ TYR-A0103_: charge  0.00 expected near -1.0 at pH=12.0
 ## Parameter file preparation
 
 ## Connecting to other programs
+
+---
+### striph2o.py
+*This tool strips away specified surface molecules layer by layer until all left are buried*
+
+**Syntax**
+```
+usage: striph2o.py [-h] [-c RES [RES ...]] [-s exposure] -f inputfile
+                   [-o outputfile]
+
+Strip off exposed cofactors like water and ions based on solvent accessible
+surface area.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -c RES [RES ...]  Specify cofactor names to strip off, default is HOH.
+  -s exposure       Fraction exposure threshold to be cut. Default is 0.05.
+  -f inputfile      Input file name.
+  -o outputfile     Output file name, default is inputfile name with extension
+                    .stripped.
+```
+
+This program does not only strip off water, it also strip off any molecule as named in the command line. So one can use it to delete ions and lipid bilayers in the input structure.
+
+**Required files:**
+
+ * input pdb file
+
+**Output files**
+
+* input_file-stripped.pdb for stripped pdb file unless otherwise named
+* input_file.acc for residue solvent accessibility
+
+
+**Example:**
+```
+striph2o.py -f frame32_50.pdb -c HOH CLA SOD BGA POP DLP
+```
+---
