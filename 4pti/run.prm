@@ -1,0 +1,8 @@
+/home/junjunmao/projects/Stable-MCCE    (MCCE_HOME)
+t                       (DO_ANALYSIS)
+t                       (GET_HBOND_MATRIX)
+/home/junjunmao/projects/Stable-MCCE/extra.tpl    (EXTRA)
+1.2                     (HBOND_LOWER_LIMIT)
+3.2                     (HBOND_UPPER_LIMIT)
+90.0                    (HBOND_ANG_CUTOFF)
+t                       (GET_HBOND_NETWORK)
