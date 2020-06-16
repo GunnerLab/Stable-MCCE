@@ -9,7 +9,7 @@ t                       (TERMINALS)
 t                       (IGNORE_INPUT_H)
 /home/junjunmao/projects/Stable-MCCE/name.txt    (RENAME_RULES)
 4.0                     (EPSILON_PROT)
-#STEP2: 2020/0612, 15:08:13
+#STEP2: 2020/0615, 19:45:50
 t                       (DO_ROTAMERS)
 t                       (MS_GOLD_OUT)
 /home/junjunmao/projects/Stable-MCCE    (MCCE_HOME)

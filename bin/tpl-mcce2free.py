@@ -89,7 +89,7 @@ class Paramfile:
             self.tplout += self.make_charge(conf)
 
         # Make radius records
-        self.tplout.append("\n# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth\n")
+        self.tplout.append("\n# Atom radius, dielectric boundary radius, VDW radius, and energy well depth\n")
         for conf in conformers:
             self.tplout += self.make_radius(conf)
 
@@ -99,7 +99,8 @@ class Paramfile:
 
         # Make rotatable bonds
         self.tplout.append("\n# Rotatable bonds. The atoms extended in the bond direction will all be rotated.\n")
-        lines = []
+        rotates = []
+        residue = ""
         for key in self.mccedb.keys():
             if key[0] == "ROTAMER":
                 residue = key[1]
@@ -107,9 +108,11 @@ class Paramfile:
                 atom1 = "\"%s\"" % value[:4]
                 atom2 = "\"%s\"" % value[5:9]
                 bond = "%s - %s" % (atom1, atom2)
-                line = "ROTATE, %s: %s\n" % (residue, bond)
-                lines.append(line)
-        self.tplout += lines
+                rotates.append(bond)
+
+        if residue:
+            line = "ROTATE, %s: %s\n" % (residue, ", ".join(rotates))
+            self.tplout.append(line)
 
         # Direct translate: This part directly translate mcce to free format
         lines = []

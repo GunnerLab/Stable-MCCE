@@ -44,23 +44,23 @@ int cmp_conf_hv(CONF conf1, CONF conf2, float IDEN_THR) {
     /* check if they same number of heavy atoms */
     for (iatom = 0; iatom<conf1.n_atom; iatom++) {
         if (!conf1.atom[iatom].on) continue;
-        if (conf1.atom[iatom].name[1] == 'H') continue;
+        if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
         n_hv1++;
     }
     for (jatom = 0; jatom<conf2.n_atom; jatom++) {
         if (!conf2.atom[jatom].on) continue;
-        if (conf2.atom[jatom].name[1] == 'H') continue;
+        if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
         n_hv2++;
     }
     if (n_hv1!=n_hv2) return -1;
     
     for (iatom = 0; iatom<conf1.n_atom; iatom++) {
         if (!conf1.atom[iatom].on) continue;
-        if (conf1.atom[iatom].name[1] == 'H') continue;
+        if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
         
         for (jatom = 0; jatom<conf2.n_atom; jatom++) {
             if (!conf2.atom[jatom].on) continue;
-            if (conf2.atom[jatom].name[1] == 'H') continue;
+            if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
             
             if (strncmp(conf1.atom[iatom].name+1, conf2.atom[jatom].name+1, 2) ) continue;
             if (ddvv(conf1.atom[iatom].xyz, conf2.atom[jatom].xyz) < IDEN_THR2) break;
@@ -79,12 +79,12 @@ float dist_conf_hv(CONF conf1, CONF conf2) {
     /* check if they have the same number of heavy atoms */
     for (iatom = 0; iatom<conf1.n_atom; iatom++) {
         if (!conf1.atom[iatom].on) continue;
-        if (conf1.atom[iatom].name[1] == 'H') continue;
+        if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
         n_hv1++;
     }
     for (jatom = 0; jatom<conf2.n_atom; jatom++) {
         if (!conf2.atom[jatom].on) continue;
-        if (conf2.atom[jatom].name[1] == 'H') continue;
+        if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
         n_hv2++;
     }
     if (n_hv1!=n_hv2) return 999.;
@@ -95,11 +95,11 @@ float dist_conf_hv(CONF conf1, CONF conf2) {
         next_test_dist = 0.;
         for (iatom = 0; iatom<conf1.n_atom; iatom++) {
             if (!conf1.atom[iatom].on) continue;
-            if (conf1.atom[iatom].name[1] == 'H') continue;
+            if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
             
             for (jatom = 0; jatom<conf2.n_atom; jatom++) {
                 if (!conf2.atom[jatom].on) continue;
-                if (conf2.atom[jatom].name[1] == 'H') continue;
+                if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
                 
                 if (strncmp(conf1.atom[iatom].name+1, conf2.atom[jatom].name+1, 2) ) continue;
                 if (ddvv(conf1.atom[iatom].xyz, conf2.atom[jatom].xyz) < test_dist2) break;
@@ -128,12 +128,12 @@ float rmsd_conf_hv(CONF conf1, CONF conf2) {
     /* check if they have the same number of heavy atoms */
     for (iatom = 0; iatom<conf1.n_atom; iatom++) {
         if (!conf1.atom[iatom].on) continue;
-        if (conf1.atom[iatom].name[1] == 'H') continue;
+        if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
         n_hv1++;
     }
     for (jatom = 0; jatom<conf2.n_atom; jatom++) {
         if (!conf2.atom[jatom].on) continue;
-        if (conf2.atom[jatom].name[1] == 'H') continue;
+        if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
         n_hv2++;
     }
     if (n_hv1!=n_hv2) return 999.;
@@ -142,11 +142,11 @@ float rmsd_conf_hv(CONF conf1, CONF conf2) {
     sum_distsq = 0.;
     for (iatom = 0; iatom<conf1.n_atom; iatom++) {
         if (!conf1.atom[iatom].on) continue;
-        if (conf1.atom[iatom].name[1] == 'H') continue;
+        if (!strncmp(conf1.atom[iatom].element, " H", 2)) continue;
         
         for (jatom = 0; jatom<conf2.n_atom; jatom++) {
             if (!conf2.atom[jatom].on) continue;
-            if (conf2.atom[jatom].name[1] == 'H') continue;
+            if (!strncmp(conf2.atom[jatom].element, " H", 2)) continue;
             
             if (!strcmp(conf1.atom[iatom].name, conf2.atom[jatom].name)) break;
         }

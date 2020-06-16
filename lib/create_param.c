@@ -108,7 +108,7 @@ int create_param(FILE *pdb_fp, int k_line) {
         
         for (j_atom=0; j_atom<conf.n_atom; j_atom++) {
             if (j_atom == i_atom) continue;
-            if (conf.atom[i_atom].name[1] == 'H' || conf.atom[j_atom].name[1] == 'H') {
+            if (!strncmp(conf.atom[i_atom].element, " H", 2) || !strncmp(conf.atom[j_atom].element, " H", 2)) {
                 if (dvv(conf.atom[i_atom].xyz, conf.atom[j_atom].xyz) > BOND_THR_H) continue;
             }
             else {

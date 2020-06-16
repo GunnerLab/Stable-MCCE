@@ -17,6 +17,13 @@ peptide = {" N  ": (-1, " C  "),
 
 ntr_connect = {" CA ": "0     N   +1    C   +1    CB  0     HA"}
 ctr_connect = {" C  ": "-1    CA  0     O   0     OXT"}
+hem_connect = {"FE  ": "0     NA  0     NB  0     NC  0     ND  LIG   NE2 LIG   SD ",
+               " C2A": "0     C1A 0     C3A +1    CAA",
+               " C3D": "0     C2D 0     C4D +2    CAD"
+               }
+paa_connect = {" CAA": "-1    C2A 0     CBA 0    HAA1 0    HAA2"}
+pdd_connect = {" CAD": "-2    C3D 0     CBD 0    HAD1 0    HAD2"}
+
 
 disulfur = ["CYD01"]
 
@@ -40,6 +47,12 @@ def create_connect(key, value):
         line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, ctr_connect[atom])
     elif conf[:3] == "NTR" and atom in ntr_connect:
         line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, ntr_connect[atom])
+    elif conf[:3] == "HEM" and atom in hem_connect:
+        line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, hem_connect[atom])
+    elif conf[:3] == "PAA" and atom in paa_connect:
+        line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, paa_connect[atom])
+    elif conf[:3] == "PDD" and atom in pdd_connect:
+        line = "CONNECT  %s %4s %-5s     %s\n" % (conf, atom, orbital, pdd_connect[atom])
     else:
         nvalue = []
         for x in connected:
@@ -150,6 +163,7 @@ def convert(filename, epsilon):
             pka0_records.append("PKA      %5s      %-.2f\n" % (conf, pka0))
             ne_records.append("ELECTRON %5s      %-2d\n" % (conf, ne))
             nh_records.append("PROTON   %5s      %-2d\n" % (conf, nh))
+            #print(conf)
             rxn_records.append("RXN      %5s      %-.2f\n" % (conf, rxn))
 
         elif key1 == "RADIUS":

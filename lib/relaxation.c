@@ -1488,7 +1488,7 @@ void get_frc(float tors_scale, PROT prot) {
             
             /* Extra constraint from its original position */
             dsq = ddvv(relax_atoms[i_relax].r,relax_atoms[i_relax].r_orig);
-            if (dsq < CONSTRAINT2 || relax_atoms[i_relax].atom_p->name[1] == 'H') relax_atoms[i_relax].constr_frc = zero;
+            if (dsq < CONSTRAINT2 || !strncmp(relax_atoms[i_relax].atom_p->element, " H", 2)) relax_atoms[i_relax].constr_frc = zero;
             else {
                 relax_atoms[i_relax].constr_frc = 
                 vector_rescale(vector_vminusv(relax_atoms[i_relax].r_orig, relax_atoms[i_relax].r), CONSTRAINT_FRC*(dsq-CONSTRAINT2));
