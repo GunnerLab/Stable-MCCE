@@ -517,7 +517,7 @@ PROTON   F86-1      0
 PKA      F86-1      0.00
 ELECTRON F86-1      0 
 EM       F86-1      0.00
-RXN      F86-1      -30.52
+RXN      F86-1      -14.19
 
 RADIUS   F86    C8  1.70
 RADIUS   F86    C5  1.70
@@ -1171,7 +1171,7 @@ PROTON   _CL-1      0
 PKA      _CL-1      0.00
 ELECTRON _CL-1      0 
 EM       _CL-1      0.00
-RXN      _CL-1      -20.32
+RXN      _CL-1      -10.10
 
 RADIUS   _CL   CL   1.94
 
@@ -1193,7 +1193,7 @@ PROTON   _NA+1      0
 PKA      _NA+1      0.00
 ELECTRON _NA+1      0 
 EM       _NA+1      0.00
-RXN      _NA+1      -20.40
+RXN      _NA+1      -10.20
 
 RADIUS   _NA   NA   1.73
 
@@ -1215,7 +1215,7 @@ PROTON   _ZN+2      0
 PKA      _ZN+2      0.00
 ELECTRON _ZN+2      0 
 EM       _ZN+2      0.00
-RXN      _ZN+2      -45.00
+RXN      _ZN+2      -20.20
 
 RADIUS   _ZN   ZN   1.73
 
@@ -1283,8 +1283,8 @@ ELECTRON ACY01      0
 ELECTRON ACY-1      0 
 EM       ACY01      0.00
 EM       ACY-1      0.00
-RXN      ACY01      -5.50
-RXN      ACY-1      -22.90
+RXN      ACY01      -2.55
+RXN      ACY-1      -10.80
 
 RADIUS   ACY    C   1.70
 RADIUS   ACY    O   1.40
@@ -1624,10 +1624,10 @@ EM       ARG01      0.00
 EM       ARG02      0.00
 EM       ARG03      0.00
 EM       ARG+1      0.00
-RXN      ARG01      -4.50
-RXN      ARG02      -5.00
-RXN      ARG03      -4.90
-RXN      ARG+1      -16.40
+RXN      ARG01      -2.03
+RXN      ARG02      -2.03
+RXN      ARG03      -2.03
+RXN      ARG+1      -7.79
 
 RADIUS   ARG    N   1.50
 RADIUS   ARG    H   1.00
@@ -1755,7 +1755,7 @@ PROTON   ASN01      0
 PKA      ASN01      0.00
 ELECTRON ASN01      0 
 EM       ASN01      0.00
-RXN      ASN01      -3.50
+RXN      ASN01      -1.64
 
 RADIUS   ASN    N   1.50
 RADIUS   ASN    H   1.00
@@ -1885,9 +1885,9 @@ ELECTRON ASP-1      0
 EM       ASP01      0.00
 EM       ASP02      0.00
 EM       ASP-1      0.00
-RXN      ASP01      -2.93
-RXN      ASP02      -3.13
-RXN      ASP-1      -20.20
+RXN      ASP01      -1.38
+RXN      ASP02      -1.38
+RXN      ASP-1      -9.57
 
 RADIUS   ASP    N   1.50
 RADIUS   ASP    H   1.00
@@ -2429,8 +2429,8 @@ ELECTRON BCL01      0
 ELECTRON BCL-1      0 
 EM       BCL01      0.00
 EM       BCL-1      0.00
-RXN      BCL01      -12.41
-RXN      BCL-1      -23.90
+RXN      BCL01      -6.20
+RXN      BCL-1      -11.95
 
 RADIUS   BCL    C1  1.80
 RADIUS   BCL    C2  1.80
@@ -3123,9 +3123,9 @@ ELECTRON CTR-1      0
 EM       CTR01      0.00
 EM       CTR02      0.00
 EM       CTR-1      0.00
-RXN      CTR01      -1.30
-RXN      CTR02      -1.30
-RXN      CTR-1      -19.70
+RXN      CTR01      -1.11
+RXN      CTR02      -1.11
+RXN      CTR-1      -9.95
 
 RADIUS   CTR    C   1.70
 RADIUS   CTR    O   1.40
@@ -3266,8 +3266,8 @@ ELECTRON CYS01      0
 ELECTRON CYS-1      0 
 EM       CYS01      0.00
 EM       CYS-1      0.00
-RXN      CYS01      -1.00
-RXN      CYS-1      -18.00
+RXN      CYS01      -0.46
+RXN      CYS-1      -8.75
 
 RADIUS   CYS    N   1.50
 RADIUS   CYS    H   1.00
@@ -3387,7 +3387,7 @@ PROTON   EOH01      0
 PKA      EOH01      0.00
 ELECTRON EOH01      0 
 EM       EOH01      0.00
-RXN      EOH01      -4.08
+RXN      EOH01      -1.88
 
 RADIUS   EOH    C1  1.70
 RADIUS   EOH    C2  1.70
@@ -3496,7 +3496,7 @@ PROTON   GLN01      0
 PKA      GLN01      0.00
 ELECTRON GLN01      0 
 EM       GLN01      0.00
-RXN      GLN01      -3.50
+RXN      GLN01      -1.65
 
 RADIUS   GLN    N   1.50
 RADIUS   GLN    H   1.00
@@ -3657,9 +3657,9 @@ ELECTRON GLU-1      0
 EM       GLU01      0.00
 EM       GLU02      0.00
 EM       GLU-1      0.00
-RXN      GLU01      -3.10
-RXN      GLU02      -3.10
-RXN      GLU-1      -20.20
+RXN      GLU01      -1.39
+RXN      GLU02      -1.39
+RXN      GLU-1      -9.59
 
 RADIUS   GLU    N   1.50
 RADIUS   GLU    H   1.00
@@ -4101,8 +4101,8 @@ ELECTRON HEM01      0
 ELECTRON HEM+1      -1
 EM       HEM01      0.00
 EM       HEM+1      -15.00
-RXN      HEM01      0.00
-RXN      HEM+1      0.00
+RXN      HEM01      -0.24
+RXN      HEM+1      -5.18
 
 RADIUS   HEM   FE   1.45
 RADIUS   HEM    CHA 1.80
@@ -4462,9 +4462,9 @@ ELECTRON HIS+1      0
 EM       HIS01      0.00
 EM       HIS02      0.00
 EM       HIS+1      0.00
-RXN      HIS01      -4.00
-RXN      HIS02      -4.00
-RXN      HIS+1      -16.10
+RXN      HIS01      -1.77
+RXN      HIS02      -2.65
+RXN      HIS+1      -7.72
 
 RADIUS   HIS    N   1.50
 RADIUS   HIS    H   1.00
@@ -4547,7 +4547,7 @@ ELECTRON HOH01      0
 ELECTRON HOHDM      0 
 EM       HOH01      0.00
 EM       HOHDM      0.00
-RXN      HOH01      -2.26
+RXN      HOH01      -1.04
 RXN      HOHDM      0.00
 
 RADIUS   HOH    O   1.60
@@ -4884,8 +4884,8 @@ ELECTRON LYS01      0
 ELECTRON LYS+1      0 
 EM       LYS01      0.00
 EM       LYS+1      0.00
-RXN      LYS01      -1.50
-RXN      LYS+1      -19.80
+RXN      LYS01      -0.65
+RXN      LYS+1      -9.36
 
 RADIUS   LYS    N   1.50
 RADIUS   LYS    H   1.00
@@ -9088,7 +9088,7 @@ PROTON   MET01      0
 PKA      MET01      0.00
 ELECTRON MET01      0 
 EM       MET01      0.00
-RXN      MET01      -0.10
+RXN      MET01      -0.03
 
 RADIUS   MET    N   1.50
 RADIUS   MET    H   1.00
@@ -9177,7 +9177,7 @@ ELECTRON NTR+1      0
 EM       NTR01      0.00
 EM       NTR+1      0.00
 RXN      NTR01      0.00
-RXN      NTR+1      -22.40
+RXN      NTR+1      -11.01
 
 RADIUS   NTR    CA  2.00
 RADIUS   NTR    HA2 0.00
@@ -9248,7 +9248,7 @@ ELECTRON NTR+1      0
 EM       NTR01      0.00
 EM       NTR+1      0.00
 RXN      NTR01      0.00
-RXN      NTR+1      -22.40
+RXN      NTR+1      -11.01
 
 RADIUS   NTR    CA  2.00
 RADIUS   NTR    HA  0.00
@@ -9376,9 +9376,9 @@ ELECTRON PAA-1      0
 EM       PAA01      0.00
 EM       PAA02      0.00
 EM       PAA-1      0.00
-RXN      PAA01      0.00
-RXN      PAA02      0.00
-RXN      PAA-1      0.00
+RXN      PAA01      -1.00
+RXN      PAA02      -1.00
+RXN      PAA-1      -8.59
 
 RADIUS   PAA    CAA 1.70
 RADIUS   PAA    CBA 1.70
@@ -9514,9 +9514,9 @@ ELECTRON PDD-1      0
 EM       PDD01      0.00
 EM       PDD02      0.00
 EM       PDD-1      0.00
-RXN      PDD01      0.00
-RXN      PDD02      0.00
-RXN      PDD-1      0.00
+RXN      PDD01      -1.00
+RXN      PDD02      -1.00
+RXN      PDD-1      -8.59
 
 RADIUS   PDD    CAD 1.70
 RADIUS   PDD    CBD 1.70
@@ -9766,7 +9766,7 @@ PROTON   SER01      0
 PKA      SER01      0.00
 ELECTRON SER01      0 
 EM       SER01      0.00
-RXN      SER01      -2.00
+RXN      SER01      -0.96
 
 RADIUS   SER    N   1.50
 RADIUS   SER    H   1.00
@@ -9843,7 +9843,7 @@ PROTON   THR01      0
 PKA      THR01      0.00
 ELECTRON THR01      0 
 EM       THR01      0.00
-RXN      THR01      -2.00
+RXN      THR01      -0.92
 
 RADIUS   THR    N   1.50
 RADIUS   THR    H   1.00
@@ -10110,8 +10110,8 @@ ELECTRON TYR01      0
 ELECTRON TYR-1      0 
 EM       TYR01      0.00
 EM       TYR-1      0.00
-RXN      TYR01      -2.70
-RXN      TYR-1      -19.70
+RXN      TYR01      -1.26
+RXN      TYR-1      -9.33
 
 RADIUS   TYR    N   1.50
 RADIUS   TYR    H   1.00

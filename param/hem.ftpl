@@ -350,7 +350,7 @@ RADIUS,  HEM+1,  "HMD2": 1.200,   1.000,   0.020
 RADIUS,  HEM+1,  "HMD3": 1.200,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, HEM01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
-CONFORMER, HEM+1: Em0= -15.0, pKa0=  0.00, ne=-1, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, HEM01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -1.13, rxn04= -0.54, rxn08= -0.24
+CONFORMER, HEM+1: Em0= -15.0, pKa0=  0.00, ne=-1, nH= 0, rxn02= -23.17, rxn04= -11.16, rxn08= -5.18
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.

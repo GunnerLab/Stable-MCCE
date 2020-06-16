@@ -95,9 +95,9 @@ RADIUS,  PDD-1,  "HBD1": 1.200,   1.000,   0.020
 RADIUS,  PDD-1,  "HBD2": 1.200,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, PDD01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=0, rxn08=0
-CONFORMER, PDD02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=0, rxn08=0
-CONFORMER, PDD-1: Em0=   0.0, pKa0=  4.90, ne= 0, nH=-1, rxn02=0, rxn04=0, rxn08=0
+CONFORMER, PDD01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=-4.20, rxn04=-1.60, rxn08=-1.00
+CONFORMER, PDD02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=-4.20, rxn04=-1.60, rxn08=-1.00
+CONFORMER, PDD-1: Em0=   0.0, pKa0=  4.90, ne= 0, nH=-1, rxn02=-37.43, rxn04=-18.20, rxn08=-8.59
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
 ROTATE, PDD: " C3D" - " CAD", " CAD" - " CBD", " CBD" - " CGD"

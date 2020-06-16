@@ -95,7 +95,7 @@ RADIUS,  PAA-1,  "HBA1": 1.200,   1.000,   0.020
 RADIUS,  PAA-1,  "HBA2": 1.200,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, PAA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
-CONFORMER, PAA02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
-CONFORMER, PAA-1: Em0=   0.0, pKa0=  4.90, ne= 0, nH=-1, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, PAA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -4.20, rxn04= -1.60, rxn08= -1.00
+CONFORMER, PAA02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -4.20, rxn04= -1.60, rxn08= -1.00
+CONFORMER, PAA-1: Em0=   0.0, pKa0=  4.90, ne= 0, nH=-1, rxn02= -37.43, rxn04= -18.20, rxn08= -8.59
 
