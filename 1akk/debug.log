@@ -1,0 +1,1077 @@
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+VDW_RAD  HEM01  NA    1.82
+VDW_EPS  HEM01  NA    0.17
+VDW_RAD  HEM01  NB    1.82
+VDW_EPS  HEM01  NB    0.17
+VDW_RAD  HEM01  NC    1.82
+VDW_EPS  HEM01  NC    0.17
+VDW_RAD  HEM01  ND    1.82
+VDW_EPS  HEM01  ND    0.17
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  HILBK  H    N    CA   C    f        0.0         2    180.00
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  MELBK  H    N    CA   C    f        0.0         2    180.00
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  MEL01  HE1  CE   SD   CG   f        0.0         3      0.00
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  HEM01 HMA1  CMA  C3A  C2A  f        0.0         3      0.00
+TORSION  HEM01 HMB1  CMB  C2B  C1B  f        0.0         3      0.00
+TORSION  HEM01 HBB1  CBB  CAB  C3B  f        0.0         3      0.00
+TORSION  HEM01 HMC1  CMC  C2C  C1C  f        0.0         3      0.00
+TORSION  HEM01 HBC1  CBC  CAC  C3C  f        0.0         3      0.00
+TORSION  HEM01 HMD1  CMD  C2D  C1D  f        0.0         3      0.00
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+VDW_RAD  HIL01  HB2   1.49
+VDW_EPS  HIL01  HB2   0.02
+VDW_RAD  HIL01  HB3   1.49
+VDW_EPS  HIL01  HB3   0.02
+VDW_RAD  MEL01  HB2   1.49
+VDW_EPS  MEL01  HB2   0.02
+VDW_RAD  MEL01  HB3   1.49
+VDW_EPS  MEL01  HB3   0.02
+VDW_RAD  MEL01  HG2   1.49
+VDW_EPS  MEL01  HG2   0.02
+VDW_RAD  MEL01  HG3   1.49
+VDW_EPS  MEL01  HG3   0.02
+VDW_RAD  MEL01  HE1   1.49
+VDW_EPS  MEL01  HE1   0.02
+VDW_RAD  MEL01  HE2   1.49
+VDW_EPS  MEL01  HE2   0.02
+VDW_RAD  MEL01  HE3   1.49
+VDW_EPS  MEL01  HE3   0.02
+VDW_RAD  HEM01 HMA1   1.49
+VDW_EPS  HEM01 HMA1   0.02
+VDW_RAD  HEM01 HMA2   1.49
+VDW_EPS  HEM01 HMA2   0.02
+VDW_RAD  HEM01 HMA3   1.49
+VDW_EPS  HEM01 HMA3   0.02
+VDW_RAD  HEM01 HMB1   1.49
+VDW_EPS  HEM01 HMB1   0.02
+VDW_RAD  HEM01 HMB2   1.49
+VDW_EPS  HEM01 HMB2   0.02
+VDW_RAD  HEM01 HMB3   1.49
+VDW_EPS  HEM01 HMB3   0.02
+VDW_RAD  HEM01 HBB1   1.49
+VDW_EPS  HEM01 HBB1   0.02
+VDW_RAD  HEM01 HBB2   1.49
+VDW_EPS  HEM01 HBB2   0.02
+VDW_RAD  HEM01 HBB3   1.49
+VDW_EPS  HEM01 HBB3   0.02
+VDW_RAD  HEM01 HMC1   1.49
+VDW_EPS  HEM01 HMC1   0.02
+VDW_RAD  HEM01 HMC2   1.49
+VDW_EPS  HEM01 HMC2   0.02
+VDW_RAD  HEM01 HMC3   1.49
+VDW_EPS  HEM01 HMC3   0.02
+VDW_RAD  HEM01 HBC1   1.49
+VDW_EPS  HEM01 HBC1   0.02
+VDW_RAD  HEM01 HBC2   1.49
+VDW_EPS  HEM01 HBC2   0.02
+VDW_RAD  HEM01 HBC3   1.49
+VDW_EPS  HEM01 HBC3   0.02
+VDW_RAD  HEM01 HMD1   1.49
+VDW_EPS  HEM01 HMD1   0.02
+VDW_RAD  HEM01 HMD2   1.49
+VDW_EPS  HEM01 HMD2   0.02
+VDW_RAD  HEM01 HMD3   1.49
+VDW_EPS  HEM01 HMD3   0.02
+VDW_RAD  PAA01 HAA1   1.49
+VDW_EPS  PAA01 HAA1   0.02
+VDW_RAD  PAA01 HAA2   1.49
+VDW_EPS  PAA01 HAA2   0.02
+VDW_RAD  PAA01 HBA1   1.49
+VDW_EPS  PAA01 HBA1   0.02
+VDW_RAD  PAA01 HBA2   1.49
+VDW_EPS  PAA01 HBA2   0.02
+VDW_RAD  PDD01 HAD1   1.49
+VDW_EPS  PDD01 HAD1   0.02
+VDW_RAD  PDD01 HAD2   1.49
+VDW_EPS  PDD01 HAD2   0.02
+VDW_RAD  PDD01 HBD1   1.49
+VDW_EPS  PDD01 HBD1   0.02
+VDW_RAD  PDD01 HBD2   1.49
+VDW_EPS  PDD01 HBD2   0.02
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+CHARGE   HILBK  HA      0.000
+CHARGE   HIL01  HB2     0.000
+CHARGE   HIL01  HB3     0.000
+CHARGE   MELBK  N       0.000
+CHARGE   MELBK  H       0.000
+CHARGE   MELBK  CA      0.000
+CHARGE   MELBK  HA      0.000
+CHARGE   MELBK  C       0.000
+CHARGE   MELBK  O       0.000
+CHARGE   MEL01  CB      0.000
+CHARGE   MEL01  HB2     0.000
+CHARGE   MEL01  HB3     0.000
+CHARGE   MEL01  HG2     0.000
+CHARGE   MEL01  HG3     0.000
+CHARGE   MEL01  HE1     0.000
+CHARGE   MEL01  HE2     0.000
+CHARGE   MEL01  HE3     0.000
+CHARGE   HEM01  CHA     0.000
+CHARGE   HEM01  CHB     0.000
+CHARGE   HEM01  CHC     0.000
+CHARGE   HEM01  CHD     0.000
+CHARGE   HEM01  C1A     0.000
+CHARGE   HEM01  C2A     0.000
+CHARGE   HEM01  C3A     0.000
+CHARGE   HEM01  C4A     0.000
+CHARGE   HEM01  CMA     0.000
+CHARGE   HEM01  C1B     0.000
+CHARGE   HEM01  C2B     0.000
+CHARGE   HEM01  C3B     0.000
+CHARGE   HEM01  C4B     0.000
+CHARGE   HEM01  CMB     0.000
+CHARGE   HEM01  CAB     0.000
+CHARGE   HEM01  CBB     0.000
+CHARGE   HEM01  C1C     0.000
+CHARGE   HEM01  C2C     0.000
+CHARGE   HEM01  C3C     0.000
+CHARGE   HEM01  C4C     0.000
+CHARGE   HEM01  CMC     0.000
+CHARGE   HEM01  CAC     0.000
+CHARGE   HEM01  CBC     0.000
+CHARGE   HEM01  C1D     0.000
+CHARGE   HEM01  C2D     0.000
+CHARGE   HEM01  C3D     0.000
+CHARGE   HEM01  C4D     0.000
+CHARGE   HEM01  CMD     0.000
+CHARGE   HEM01  HHA     0.000
+CHARGE   HEM01  HHB     0.000
+CHARGE   HEM01  HHC     0.000
+CHARGE   HEM01  HHD     0.000
+CHARGE   HEM01 HMA1     0.000
+CHARGE   HEM01 HMA2     0.000
+CHARGE   HEM01 HMA3     0.000
+CHARGE   HEM01 HMB1     0.000
+CHARGE   HEM01 HMB2     0.000
+CHARGE   HEM01 HMB3     0.000
+CHARGE   HEM01  HAB     0.000
+CHARGE   HEM01 HBB1     0.000
+CHARGE   HEM01 HBB2     0.000
+CHARGE   HEM01 HBB3     0.000
+CHARGE   HEM01 HMC1     0.000
+CHARGE   HEM01 HMC2     0.000
+CHARGE   HEM01 HMC3     0.000
+CHARGE   HEM01  HAC     0.000
+CHARGE   HEM01 HBC1     0.000
+CHARGE   HEM01 HBC2     0.000
+CHARGE   HEM01 HBC3     0.000
+CHARGE   HEM01 HMD1     0.000
+CHARGE   HEM01 HMD2     0.000
+CHARGE   HEM01 HMD3     0.000
+CHARGE   PAA01  CAA     0.000
+CHARGE   PAA01  CBA     0.000
+CHARGE   PAA01 HAA1     0.000
+CHARGE   PAA01 HAA2     0.000
+CHARGE   PAA01 HBA1     0.000
+CHARGE   PAA01 HBA2     0.000
+CHARGE   PDD01  CAD     0.000
+CHARGE   PDD01  CBD     0.000
+CHARGE   PDD01 HAD1     0.000
+CHARGE   PDD01 HAD2     0.000
+CHARGE   PDD01 HBD1     0.000
+CHARGE   PDD01 HBD2     0.000
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+TORSION  HEM+1 HMA1  CMA  C3A  C2A  f        0.0         3      0.00
+TORSION  HEM+1 HMB1  CMB  C2B  C1B  f        0.0         3      0.00
+TORSION  HEM+1 HBB1  CBB  CAB  C3B  f        0.0         3      0.00
+TORSION  HEM+1 HMC1  CMC  C2C  C1C  f        0.0         3      0.00
+TORSION  HEM+1 HBC1  CBC  CAC  C3C  f        0.0         3      0.00
+TORSION  HEM+1 HMD1  CMD  C2D  C1D  f        0.0         3      0.00
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+VDW_RAD  HIL02  HB2   1.49
+VDW_EPS  HIL02  HB2   0.02
+VDW_RAD  HIL02  HB3   1.49
+VDW_EPS  HIL02  HB3   0.02
+VDW_RAD  HEM+1  NA    1.82
+VDW_EPS  HEM+1  NA    0.17
+VDW_RAD  HEM+1  NB    1.82
+VDW_EPS  HEM+1  NB    0.17
+VDW_RAD  HEM+1  NC    1.82
+VDW_EPS  HEM+1  NC    0.17
+VDW_RAD  HEM+1  ND    1.82
+VDW_EPS  HEM+1  ND    0.17
+VDW_RAD  HEM+1 HMA1   1.49
+VDW_EPS  HEM+1 HMA1   0.02
+VDW_RAD  HEM+1 HMA2   1.49
+VDW_EPS  HEM+1 HMA2   0.02
+VDW_RAD  HEM+1 HMA3   1.49
+VDW_EPS  HEM+1 HMA3   0.02
+VDW_RAD  HEM+1 HMB1   1.49
+VDW_EPS  HEM+1 HMB1   0.02
+VDW_RAD  HEM+1 HMB2   1.49
+VDW_EPS  HEM+1 HMB2   0.02
+VDW_RAD  HEM+1 HMB3   1.49
+VDW_EPS  HEM+1 HMB3   0.02
+VDW_RAD  HEM+1 HBB1   1.49
+VDW_EPS  HEM+1 HBB1   0.02
+VDW_RAD  HEM+1 HBB2   1.49
+VDW_EPS  HEM+1 HBB2   0.02
+VDW_RAD  HEM+1 HBB3   1.49
+VDW_EPS  HEM+1 HBB3   0.02
+VDW_RAD  HEM+1 HMC1   1.49
+VDW_EPS  HEM+1 HMC1   0.02
+VDW_RAD  HEM+1 HMC2   1.49
+VDW_EPS  HEM+1 HMC2   0.02
+VDW_RAD  HEM+1 HMC3   1.49
+VDW_EPS  HEM+1 HMC3   0.02
+VDW_RAD  HEM+1 HBC1   1.49
+VDW_EPS  HEM+1 HBC1   0.02
+VDW_RAD  HEM+1 HBC2   1.49
+VDW_EPS  HEM+1 HBC2   0.02
+VDW_RAD  HEM+1 HBC3   1.49
+VDW_EPS  HEM+1 HBC3   0.02
+VDW_RAD  HEM+1 HMD1   1.49
+VDW_EPS  HEM+1 HMD1   0.02
+VDW_RAD  HEM+1 HMD2   1.49
+VDW_EPS  HEM+1 HMD2   0.02
+VDW_RAD  HEM+1 HMD3   1.49
+VDW_EPS  HEM+1 HMD3   0.02
+VDW_RAD  PAA-1 HAA1   1.49
+VDW_EPS  PAA-1 HAA1   0.02
+VDW_RAD  PAA-1 HAA2   1.49
+VDW_EPS  PAA-1 HAA2   0.02
+VDW_RAD  PAA-1 HBA1   1.49
+VDW_EPS  PAA-1 HBA1   0.02
+VDW_RAD  PAA-1 HBA2   1.49
+VDW_EPS  PAA-1 HBA2   0.02
+VDW_RAD  PAA02 HAA1   1.49
+VDW_EPS  PAA02 HAA1   0.02
+VDW_RAD  PAA02 HAA2   1.49
+VDW_EPS  PAA02 HAA2   0.02
+VDW_RAD  PAA02 HBA1   1.49
+VDW_EPS  PAA02 HBA1   0.02
+VDW_RAD  PAA02 HBA2   1.49
+VDW_EPS  PAA02 HBA2   0.02
+VDW_RAD  PDD-1 HAD1   1.49
+VDW_EPS  PDD-1 HAD1   0.02
+VDW_RAD  PDD-1 HAD2   1.49
+VDW_EPS  PDD-1 HAD2   0.02
+VDW_RAD  PDD-1 HBD1   1.49
+VDW_EPS  PDD-1 HBD1   0.02
+VDW_RAD  PDD-1 HBD2   1.49
+VDW_EPS  PDD-1 HBD2   0.02
+VDW_RAD  PDD02 HAD1   1.49
+VDW_EPS  PDD02 HAD1   0.02
+VDW_RAD  PDD02 HAD2   1.49
+VDW_EPS  PDD02 HAD2   0.02
+VDW_RAD  PDD02 HBD1   1.49
+VDW_EPS  PDD02 HBD1   0.02
+VDW_RAD  PDD02 HBD2   1.49
+VDW_EPS  PDD02 HBD2   0.02
+CHARGE   HIL02  HB2     0.000
+CHARGE   HIL02  HB3     0.000
+CHARGE   HEM+1  CHA     0.000
+CHARGE   HEM+1  CHB     0.000
+CHARGE   HEM+1  CHC     0.000
+CHARGE   HEM+1  CHD     0.000
+CHARGE   HEM+1  C1A     0.000
+CHARGE   HEM+1  C2A     0.000
+CHARGE   HEM+1  C3A     0.000
+CHARGE   HEM+1  C4A     0.000
+CHARGE   HEM+1  CMA     0.000
+CHARGE   HEM+1  C1B     0.000
+CHARGE   HEM+1  C2B     0.000
+CHARGE   HEM+1  C3B     0.000
+CHARGE   HEM+1  C4B     0.000
+CHARGE   HEM+1  CMB     0.000
+CHARGE   HEM+1  CAB     0.000
+CHARGE   HEM+1  CBB     0.000
+CHARGE   HEM+1  C1C     0.000
+CHARGE   HEM+1  C2C     0.000
+CHARGE   HEM+1  C3C     0.000
+CHARGE   HEM+1  C4C     0.000
+CHARGE   HEM+1  CMC     0.000
+CHARGE   HEM+1  CAC     0.000
+CHARGE   HEM+1  CBC     0.000
+CHARGE   HEM+1  C1D     0.000
+CHARGE   HEM+1  C2D     0.000
+CHARGE   HEM+1  C3D     0.000
+CHARGE   HEM+1  C4D     0.000
+CHARGE   HEM+1  CMD     0.000
+CHARGE   HEM+1  HHA     0.000
+CHARGE   HEM+1  HHB     0.000
+CHARGE   HEM+1  HHC     0.000
+CHARGE   HEM+1  HHD     0.000
+CHARGE   HEM+1 HMA1     0.000
+CHARGE   HEM+1 HMA2     0.000
+CHARGE   HEM+1 HMA3     0.000
+CHARGE   HEM+1 HMB1     0.000
+CHARGE   HEM+1 HMB2     0.000
+CHARGE   HEM+1 HMB3     0.000
+CHARGE   HEM+1  HAB     0.000
+CHARGE   HEM+1 HBB1     0.000
+CHARGE   HEM+1 HBB2     0.000
+CHARGE   HEM+1 HBB3     0.000
+CHARGE   HEM+1 HMC1     0.000
+CHARGE   HEM+1 HMC2     0.000
+CHARGE   HEM+1 HMC3     0.000
+CHARGE   HEM+1  HAC     0.000
+CHARGE   HEM+1 HBC1     0.000
+CHARGE   HEM+1 HBC2     0.000
+CHARGE   HEM+1 HBC3     0.000
+CHARGE   HEM+1 HMD1     0.000
+CHARGE   HEM+1 HMD2     0.000
+CHARGE   HEM+1 HMD3     0.000
+CHARGE   PAA-1  CAA     0.000
+CHARGE   PAA-1 HAA1     0.000
+CHARGE   PAA-1 HAA2     0.000
+CHARGE   PAA-1 HBA1     0.000
+CHARGE   PAA-1 HBA2     0.000
+CHARGE   PAA02  CAA     0.000
+CHARGE   PAA02  CBA     0.000
+CHARGE   PAA02 HAA1     0.000
+CHARGE   PAA02 HAA2     0.000
+CHARGE   PAA02 HBA1     0.000
+CHARGE   PAA02 HBA2     0.000
+CHARGE   PDD-1  CAD     0.000
+CHARGE   PDD-1 HAD1     0.000
+CHARGE   PDD-1 HAD2     0.000
+CHARGE   PDD-1 HBD1     0.000
+CHARGE   PDD-1 HBD2     0.000
+CHARGE   PDD02  CAD     0.000
+CHARGE   PDD02  CBD     0.000
+CHARGE   PDD02 HAD1     0.000
+CHARGE   PDD02 HAD2     0.000
+CHARGE   PDD02 HBD1     0.000
+CHARGE   PDD02 HBD2     0.000
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+   Error! get_connect12(): connectivity of atom " N   HIL A0018" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   HIL A0018" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+   Error! get_connect12(): connectivity of atom " N   MEL A0080" is not complete:
+
+          get_connect12(): atom  C   of residue i-1 is not found 
+
+   Error! get_connect12(): connectivity of atom " C   MEL A0080" is not complete:
+
+          get_connect12(): atom  N   of residue i+1 is not found 
+
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111
+Warning, bond length btw FE  - NA  in res HEM A0105 is    2.057
+Warning, bond length btw FE  - NC  in res HEM A0105 is    2.067
+Warning, bond length btw FE  - ND  in res HEM A0105 is    2.111
+Warning, bond length btw FE  - SD  in res HEM A0105 is    2.343
+Warning, bond length btw  NA -FE   in res HEM A0105 is    2.057
+Warning, bond length btw  NC -FE   in res HEM A0105 is    2.067
+Warning, bond length btw  ND -FE   in res HEM A0105 is    2.111

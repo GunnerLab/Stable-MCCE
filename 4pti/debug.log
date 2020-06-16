@@ -1,0 +1,285 @@
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+CHARGE   NTR01  HA      0.000
+CHARGE   ARG01  CB      0.000
+CHARGE   ARG01  HB2     0.000
+CHARGE   ARG01  HB3     0.000
+CHARGE   ARG01  CG      0.000
+CHARGE   ARG01  HG2     0.000
+CHARGE   ARG01  HG3     0.000
+CHARGE   ARG01  HD2     0.000
+CHARGE   ARG01  HD3     0.000
+CHARGE   PROBK  N       0.000
+CHARGE   PROBK  CA      0.000
+CHARGE   PROBK  HA      0.000
+CHARGE   PROBK  C       0.000
+CHARGE   PROBK  O       0.000
+CHARGE   PRO01  CB      0.000
+CHARGE   PRO01  HB2     0.000
+CHARGE   PRO01  HB3     0.000
+CHARGE   PRO01  CG      0.000
+CHARGE   PRO01  HG2     0.000
+CHARGE   PRO01  HG3     0.000
+CHARGE   PRO01  CD      0.000
+CHARGE   PRO01  HD2     0.000
+CHARGE   PRO01  HD3     0.000
+CHARGE   ASPBK  HA      0.000
+CHARGE   ASP01  CB      0.000
+CHARGE   ASP01  HB2     0.000
+CHARGE   ASP01  HB3     0.000
+CHARGE   PHEBK  HA      0.000
+CHARGE   PHE01  CB      0.000
+CHARGE   PHE01  HB2     0.000
+CHARGE   PHE01  HB3     0.000
+CHARGE   PHE01  CG      0.000
+CHARGE   PHE01  CD1     0.000
+CHARGE   PHE01  HD1     0.000
+CHARGE   PHE01  CD2     0.000
+CHARGE   PHE01  HD2     0.000
+CHARGE   PHE01  CE1     0.000
+CHARGE   PHE01  HE1     0.000
+CHARGE   PHE01  CE2     0.000
+CHARGE   PHE01  HE2     0.000
+CHARGE   PHE01  CZ      0.000
+CHARGE   PHE01  HZ      0.000
+CHARGE   CYDBK  HA      0.000
+CHARGE   CYD01  CB      0.000
+CHARGE   CYD01  HB2     0.000
+CHARGE   CYD01  HB3     0.000
+CHARGE   CYD01  SG      0.000
+CHARGE   LEUBK  HA      0.000
+CHARGE   LEU01  CB      0.000
+CHARGE   LEU01  HB2     0.000
+CHARGE   LEU01  HB3     0.000
+CHARGE   LEU01  CG      0.000
+CHARGE   LEU01  HG      0.000
+CHARGE   LEU01  CD1     0.000
+CHARGE   LEU01 HD11     0.000
+CHARGE   LEU01 HD12     0.000
+CHARGE   LEU01 HD13     0.000
+CHARGE   LEU01  CD2     0.000
+CHARGE   LEU01 HD21     0.000
+CHARGE   LEU01 HD22     0.000
+CHARGE   LEU01 HD23     0.000
+CHARGE   GLUBK  HA      0.000
+CHARGE   GLU01  CB      0.000
+CHARGE   GLU01  HB2     0.000
+CHARGE   GLU01  HB3     0.000
+CHARGE   GLU01  CG      0.000
+CHARGE   GLU01  HG2     0.000
+CHARGE   GLU01  HG3     0.000
+CHARGE   TYRBK  HA      0.000
+CHARGE   TYR01  HB2     0.000
+CHARGE   TYR01  HB3     0.000
+CHARGE   THRBK  HA      0.000
+CHARGE   THR01  CB      0.000
+CHARGE   THR01  HB      0.000
+CHARGE   THR01  CG2     0.000
+CHARGE   THR01 HG21     0.000
+CHARGE   THR01 HG22     0.000
+CHARGE   THR01 HG23     0.000
+CHARGE   GLYBK  HA2     0.000
+CHARGE   GLYBK  HA3     0.000
+CHARGE   LYSBK  HA      0.000
+CHARGE   LYS01  CB      0.000
+CHARGE   LYS01  HB2     0.000
+CHARGE   LYS01  HB3     0.000
+CHARGE   LYS01  CG      0.000
+CHARGE   LYS01  HG2     0.000
+CHARGE   LYS01  HG3     0.000
+CHARGE   LYS01  CD      0.000
+CHARGE   LYS01  HD2     0.000
+CHARGE   LYS01  HD3     0.000
+CHARGE   LYS01  CE      0.000
+CHARGE   LYS01  HE2     0.000
+CHARGE   LYS01  HE3     0.000
+CHARGE   ALABK  HA      0.000
+CHARGE   ALA01  CB      0.000
+CHARGE   ALA01  HB1     0.000
+CHARGE   ALA01  HB2     0.000
+CHARGE   ALA01  HB3     0.000
+CHARGE   ARGBK  HA      0.000
+CHARGE   ILEBK  HA      0.000
+CHARGE   ILE01  CB      0.000
+CHARGE   ILE01  HB      0.000
+CHARGE   ILE01  CG1     0.000
+CHARGE   ILE01 HG12     0.000
+CHARGE   ILE01 HG13     0.000
+CHARGE   ILE01  CG2     0.000
+CHARGE   ILE01 HG21     0.000
+CHARGE   ILE01 HG22     0.000
+CHARGE   ILE01 HG23     0.000
+CHARGE   ILE01  CD1     0.000
+CHARGE   ILE01 HD11     0.000
+CHARGE   ILE01 HD12     0.000
+CHARGE   ILE01 HD13     0.000
+CHARGE   ASNBK  HA      0.000
+CHARGE   ASN01  CB      0.000
+CHARGE   ASN01  HB2     0.000
+CHARGE   ASN01  HB3     0.000
+CHARGE   GLNBK  HA      0.000
+CHARGE   GLN01  CB      0.000
+CHARGE   GLN01  HB2     0.000
+CHARGE   GLN01  HB3     0.000
+CHARGE   GLN01  CG      0.000
+CHARGE   GLN01  HG2     0.000
+CHARGE   GLN01  HG3     0.000
+CHARGE   VALBK  HA      0.000
+CHARGE   VAL01  CB      0.000
+CHARGE   VAL01  HB      0.000
+CHARGE   VAL01  CG1     0.000
+CHARGE   VAL01 HG11     0.000
+CHARGE   VAL01 HG12     0.000
+CHARGE   VAL01 HG13     0.000
+CHARGE   VAL01  CG2     0.000
+CHARGE   VAL01 HG21     0.000
+CHARGE   VAL01 HG22     0.000
+CHARGE   VAL01 HG23     0.000
+CHARGE   SERBK  HA      0.000
+CHARGE   SER01  CB      0.000
+CHARGE   SER01  HB2     0.000
+CHARGE   SER01  HB3     0.000
+CHARGE   METBK  HA      0.000
+CHARGE   MET01  CB      0.000
+CHARGE   MET01  HB2     0.000
+CHARGE   MET01  HB3     0.000
+CHARGE   MET01  HG2     0.000
+CHARGE   MET01  HG3     0.000
+CHARGE   MET01  HE1     0.000
+CHARGE   MET01  HE2     0.000
+CHARGE   MET01  HE3     0.000
+CHARGE   CTR01  C       0.000
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+TORSION  NTR+1  H    N    CA   C    f        0.0         3      0.00
+CHARGE   NTR+1  HA      0.000
+CHARGE   ARG+1  CB      0.000
+CHARGE   ARG+1  HB2     0.000
+CHARGE   ARG+1  HB3     0.000
+CHARGE   ARG+1  CG      0.000
+CHARGE   ARG+1  HG2     0.000
+CHARGE   ARG+1  HG3     0.000
+CHARGE   ARG+1  HD2     0.000
+CHARGE   ARG+1  HD3     0.000
+CHARGE   ARG03  CB      0.000
+CHARGE   ARG03  HB2     0.000
+CHARGE   ARG03  HB3     0.000
+CHARGE   ARG03  CG      0.000
+CHARGE   ARG03  HG2     0.000
+CHARGE   ARG03  HG3     0.000
+CHARGE   ARG03  HD2     0.000
+CHARGE   ARG03  HD3     0.000
+CHARGE   ARG02  CB      0.000
+CHARGE   ARG02  HB2     0.000
+CHARGE   ARG02  HB3     0.000
+CHARGE   ARG02  CG      0.000
+CHARGE   ARG02  HG2     0.000
+CHARGE   ARG02  HG3     0.000
+CHARGE   ARG02  HD2     0.000
+CHARGE   ARG02  HD3     0.000
+CHARGE   ASP-1  CB      0.000
+CHARGE   ASP-1  HB2     0.000
+CHARGE   ASP-1  HB3     0.000
+CHARGE   ASP02  CB      0.000
+CHARGE   ASP02  HB2     0.000
+CHARGE   ASP02  HB3     0.000
+CHARGE   GLU-1  CB      0.000
+CHARGE   GLU-1  HB2     0.000
+CHARGE   GLU-1  HB3     0.000
+CHARGE   GLU-1  CG      0.000
+CHARGE   GLU-1  HG2     0.000
+CHARGE   GLU-1  HG3     0.000
+CHARGE   GLU02  CB      0.000
+CHARGE   GLU02  HB2     0.000
+CHARGE   GLU02  HB3     0.000
+CHARGE   GLU02  CG      0.000
+CHARGE   GLU02  HG2     0.000
+CHARGE   GLU02  HG3     0.000
+CHARGE   TYR-1  HB2     0.000
+CHARGE   TYR-1  HB3     0.000
+CHARGE   LYS+1  CB      0.000
+CHARGE   LYS+1  HB2     0.000
+CHARGE   LYS+1  HB3     0.000
+CHARGE   LYS+1  CG      0.000
+CHARGE   LYS+1  HG2     0.000
+CHARGE   LYS+1  HG3     0.000
+CHARGE   LYS+1  CD      0.000
+CHARGE   LYS+1  HD2     0.000
+CHARGE   LYS+1  HD3     0.000
+CHARGE   LYS+1  HE2     0.000
+CHARGE   LYS+1  HE3     0.000
+CHARGE   CTR02  C       0.000
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0005 is    2.050
+Warning, bond length btw  SG - SG  in res CYD A0014 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0030 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0038 is    2.088
+Warning, bond length btw  SG - SG  in res CYD A0051 is    2.024
+Warning, bond length btw  SG - SG  in res CYD A0055 is    2.050

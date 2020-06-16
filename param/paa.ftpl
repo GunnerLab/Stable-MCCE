@@ -1,0 +1,101 @@
+# Values of the same key are appended and separated by ","
+CONFLIST, PAA: PAABK, PAA01, PAA02, PAA-1
+
+# Atom definition
+CONNECT, " CAA", PAA01: sp3, " ?  ", " CBA", "HAA1", "HAA2"
+CONNECT, " CBA", PAA01: sp3, " CAA", " CGA", "HBA1", "HBA2"
+CONNECT, " CGA", PAA01: sp2, " CBA", " O1A", " O2A"
+CONNECT, " O1A", PAA01: sp3, " CGA", " H1A"
+CONNECT, " O2A", PAA01: sp2, " CGA"
+CONNECT, "HAA1", PAA01: s, " CAA"
+CONNECT, "HAA2", PAA01: s, " CAA"
+CONNECT, "HBA1", PAA01: s, " CBA"
+CONNECT, "HBA2", PAA01: s, " CBA"
+CONNECT, " H1A", PAA01: s, " O1A"
+CONNECT, " CAA", PAA02: sp3, " ?  ", " CBA", "HAA1", "HAA2"
+CONNECT, " CBA", PAA02: sp3, " CAA", " CGA", "HBA1", "HBA2"
+CONNECT, " CGA", PAA02: sp2, " CBA", " O1A", " O2A"
+CONNECT, " O1A", PAA02: sp2, " CGA"
+CONNECT, " O2A", PAA02: sp3, " CGA", " H2A"
+CONNECT, "HAA1", PAA02: s, " CAA"
+CONNECT, "HAA2", PAA02: s, " CAA"
+CONNECT, "HBA1", PAA02: s, " CBA"
+CONNECT, "HBA2", PAA02: s, " CBA"
+CONNECT, " H2A", PAA02: s, " O2A"
+CONNECT, " CAA", PAA-1: sp3, " ?  ", " CBA", "HAA1", "HAA2"
+CONNECT, " CBA", PAA-1: sp3, " CAA", " CGA", "HBA1", "HBA2"
+CONNECT, " CGA", PAA-1: sp2, " CBA", " O1A", " O2A"
+CONNECT, " O1A", PAA-1: sp2, " CGA"
+CONNECT, " O2A", PAA-1: sp2, " CGA"
+CONNECT, "HAA1", PAA-1: s, " CAA"
+CONNECT, "HAA2", PAA-1: s, " CAA"
+CONNECT, "HBA1", PAA-1: s, " CBA"
+CONNECT, "HBA2", PAA-1: s, " CBA"
+
+# Atom charges
+CHARGE, PAA01, " CAA":  0.000
+CHARGE, PAA01, " CBA":  0.000
+CHARGE, PAA01, " CGA":  0.550
+CHARGE, PAA01, " O1A": -0.475
+CHARGE, PAA01, " O2A": -0.475
+CHARGE, PAA01, "HAA1":  0.000
+CHARGE, PAA01, "HAA2":  0.000
+CHARGE, PAA01, "HBA1":  0.000
+CHARGE, PAA01, "HBA2":  0.000
+CHARGE, PAA01, " H1A":  0.400
+CHARGE, PAA02, " CAA":  0.000
+CHARGE, PAA02, " CBA":  0.000
+CHARGE, PAA02, " CGA":  0.550
+CHARGE, PAA02, " O1A": -0.475
+CHARGE, PAA02, " O2A": -0.475
+CHARGE, PAA02, "HAA1":  0.000
+CHARGE, PAA02, "HAA2":  0.000
+CHARGE, PAA02, "HBA1":  0.000
+CHARGE, PAA02, "HBA2":  0.000
+CHARGE, PAA02, " H2A":  0.400
+CHARGE, PAA-1, " CAA":  0.000
+CHARGE, PAA-1, " CBA": -0.160
+CHARGE, PAA-1, " CGA":  0.360
+CHARGE, PAA-1, " O1A": -0.600
+CHARGE, PAA-1, " O2A": -0.600
+CHARGE, PAA-1, "HAA1":  0.000
+CHARGE, PAA-1, "HAA2":  0.000
+CHARGE, PAA-1, "HBA1":  0.000
+CHARGE, PAA-1, "HBA2":  0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  PAA01,  " CAA": 1.700,   2.000,   0.150
+RADIUS,  PAA01,  " CBA": 1.700,   2.000,   0.150
+RADIUS,  PAA01,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  PAA01,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  PAA01,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  PAA01,  "HAA1": 1.200,   1.000,   0.020
+RADIUS,  PAA01,  "HAA2": 1.200,   1.000,   0.020
+RADIUS,  PAA01,  "HBA1": 1.200,   1.000,   0.020
+RADIUS,  PAA01,  "HBA2": 1.200,   1.000,   0.020
+RADIUS,  PAA01,  " H1A": 1.200,   1.000,   0.020
+RADIUS,  PAA02,  " CAA": 1.700,   2.000,   0.150
+RADIUS,  PAA02,  " CBA": 1.700,   2.000,   0.150
+RADIUS,  PAA02,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  PAA02,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  PAA02,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  PAA02,  "HAA1": 1.200,   1.000,   0.020
+RADIUS,  PAA02,  "HAA2": 1.200,   1.000,   0.020
+RADIUS,  PAA02,  "HBA1": 1.200,   1.000,   0.020
+RADIUS,  PAA02,  "HBA2": 1.200,   1.000,   0.020
+RADIUS,  PAA02,  " H2A": 1.200,   1.000,   0.020
+RADIUS,  PAA-1,  " CAA": 1.700,   2.000,   0.150
+RADIUS,  PAA-1,  " CBA": 1.700,   2.000,   0.150
+RADIUS,  PAA-1,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  PAA-1,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  PAA-1,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  PAA-1,  "HAA1": 1.200,   1.000,   0.020
+RADIUS,  PAA-1,  "HAA2": 1.200,   1.000,   0.020
+RADIUS,  PAA-1,  "HBA1": 1.200,   1.000,   0.020
+RADIUS,  PAA-1,  "HBA2": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, PAA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, PAA02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, PAA-1: Em0=   0.0, pKa0=  4.90, ne= 0, nH=-1, rxn02= 0, rxn04= 0, rxn08= 0
+
