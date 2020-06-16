@@ -34,9 +34,8 @@ int init()
     if (load_all_param(env.param)) {printf("   FATAL: init(): \"failed.\"\n"); return USERERR;}
     else {printf("   Done\n\n"); fflush(stdout);}
 
-    printf("   Load linear free energy correction parameters from \"%s\"...", env.extra);fflush(stdout);
+    printf("   Load linear free energy correction parameters from \"%s\"...\n", env.extra);fflush(stdout);
     if ((fp=fopen(env.extra, "r"))) {
-        printf("%s\n", env.extra);
         fclose(fp);
         if (load_param(env.extra)) {
             printf("\n   FATAL: init(): Failed loading file \"%s\".\n", env.extra);

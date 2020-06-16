@@ -8,6 +8,7 @@ int assign_rad(PROT prot)
     FILE *debug_fp;
     int err=0;
     
+    prot_atom_element(prot);
     for (i=0; i<prot.n_res; i++) {
         for (j=0; j<prot.res[i].n_conf; j++) {
             for (k=0; k<prot.res[i].conf[j].n_atom; k++) {
@@ -50,7 +51,7 @@ int assign_vdw_param(PROT prot)
                        else if (prot.res[i].conf[j].atom[k].name[1] == 'O') { /* oxygen of a carbonyl group */
                            prot.res[i].conf[j].atom[k].vdw_rad = 1.6612;
                        }
-                       else if (prot.res[i].conf[j].atom[k].name[1] == 'H') { /* proton of a methyl group */
+                       else if (!strncmp(prot.res[i].conf[j].atom[k].element, " H", 2)) { /* proton of a methyl group */
                            prot.res[i].conf[j].atom[k].vdw_rad = 1.487;
                        }
                        else if (prot.res[i].conf[j].atom[k].name[1] == 'N') { /* amide */
@@ -79,7 +80,7 @@ int assign_vdw_param(PROT prot)
                        else if (prot.res[i].conf[j].atom[k].name[1] == 'O') {
                            prot.res[i].conf[j].atom[k].vdw_eps = 0.21;
                        }
-                       else if (prot.res[i].conf[j].atom[k].name[1] == 'H') {
+                       else if (!strncmp(prot.res[i].conf[j].atom[k].element, " H", 2)) {
                            prot.res[i].conf[j].atom[k].vdw_eps = 0.0157;
                        }
                        else if (prot.res[i].conf[j].atom[k].name[1] == 'N') {

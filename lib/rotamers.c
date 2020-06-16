@@ -207,6 +207,7 @@ int rotamers()
    printf("   Done.\n\n");
 
    /* Swap */
+
    if (env.rot_swap) {
        printf("   Swap atoms...\n"); fflush(stdout);
        rot_swap(prot);
@@ -262,6 +263,7 @@ int rotamers()
    /* delete duplicate conformers */
    nowA = time(NULL);
    printf("   Delete duplicate conformers ..."); fflush(stdout);
+   prot_atom_element(prot);
    int counter_total_deleted = 0;
    for (kr=0; kr<prot.n_res; kr++) {
        /* not using rm_dupconf_hv() function because it saves time to skip residues if it starts with only 1 conformer */
@@ -469,6 +471,7 @@ int rotamers()
       printf("   FATAL: Fatal error reported by ionization()\n");
       return USERERR;
    }
+   prot_atom_element(prot);
    printf("   Done\n\n"); fflush(stdout);
 
    c = 0;
@@ -484,12 +487,16 @@ int rotamers()
    fclose(fp);
 
    /* add h */
+   prot_atom_element(prot);
    printf("   Add H atoms...\n"); fflush(stdout);
-   while(place_missing(prot,1) > 0); rm_dupconf(prot, 0.001);
+   while(place_missing(prot,1) > 0);
+   printf("   clean up ...\n"); fflush(stdout);
    assign_rad(prot);
    assign_vdw_param(prot);
    assign_crg(prot); /* reassign parameters before rm_dupconf(), Yifan -02/07/07 */
+   rm_dupconf(prot, 0.001);
    printf("   Done\n\n"); fflush(stdout);
+   prot_atom_element(prot);
 
    c = prune_pv(prot, env.prune_rmsd, env.prune_ele, env.prune_vdw);
    if (c) printf("    %5d conformers deleted in this cycle at %8.3f %8.3f %8.3f\n", c, env.prune_rmsd, env.prune_ele, env.prune_vdw);
@@ -528,7 +535,7 @@ int rotamers()
 
                for (i_atom=0; i_atom<prot.res[i_res].conf[k_conf].n_atom; i_atom++) {
                    if (prot.res[i_res].conf[k_conf].atom[i_atom].on) {
-                       if (prot.res[i_res].conf[k_conf].atom[i_atom].name[1] == 'H') {
+                       if (!strncmp(prot.res[i_res].conf[k_conf].atom[i_atom].element, " H", 2)) {
                            prot.res[i_res].conf[k_conf].atom[i_atom].on = 0;
                        }
                    }
@@ -1590,7 +1597,7 @@ int rot_pack(PROT prot, int n)
             if (param_get("NATOM", confs.strings[i_conf], "", &n_atom)) {
                 continue;
             }
-            if (!n_atom) {
+            if (!n_atom) {                    // Why was (!n_atom) { ? jmao
                ins = ins_conf(&prot.res[i_res], prot.res[i_res].n_conf, n_atom);
                strcpy(prot.res[i_res].conf[ins].confName, confs.strings[i_conf]);
                strcpy(prot.res[i_res].conf[ins].history,  confs.strings[i_conf]+3);
@@ -1601,6 +1608,7 @@ int rot_pack(PROT prot, int n)
 
     /* preparing energy lookup table */
     while(place_missing(prot,1) > 0); rm_dupconf(prot, 0.001);
+    prot_atom_element(prot);
     del_non_common_h(prot);
     rm_dupconf(prot, 0.001);
     assign_vdw_param(prot);
@@ -2070,6 +2078,7 @@ int place_missing(PROT prot, int handle_addconf) {
 
     memset(dummy_atom,0,MAX_CONNECTED*sizeof(ATOM));
 
+    prot_atom_element(prot);
     for (i_res=0; i_res<prot.n_res; i_res++) {
         res_p = &prot.res[i_res];
         for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
@@ -2086,7 +2095,7 @@ int place_missing(PROT prot, int handle_addconf) {
                 while (strlen(name)<4) strcat(name, " ");
                 strncpy(atom_p->name, name, 4);
                 atom_p->name[4] = '\0';
-                if (atom_p->name[1] != 'H') { /* heavy atom */
+                if (strncmp(atom_p->element, " H", 2)) { /* heavy atom */
                     if(!param_get("CONNECT", conf_p->confName, atom_p->name, &connect) ) { /* find connectivity */
                         strip(orbital, connect.orbital);
                         if (strcmp(orbital,"ion")) { /* Not ion */
@@ -2116,6 +2125,7 @@ int place_missing(PROT prot, int handle_addconf) {
     get_connect12(prot);
 
     error = 0;
+    prot_atom_element(prot);
     for (i_res=0; i_res<prot.n_res; i_res++) {
         res_p = &prot.res[i_res];
         for (i_conf=0; i_conf<prot.res[i_res].n_conf; i_conf++) {
@@ -2217,8 +2227,8 @@ int place_missing(PROT prot, int handle_addconf) {
                         if (!i_conf) continue; /* do not add extra conf for backbone */
                         //printf("   Debugging! Case sp3, n_known = 2, i_conf!=0\n");
                         if (!handle_addconf) continue; /* do not add extra conf if the flag is 0 */
-                        if (to_complete_atoms[0]->name[1] == 'H') {
-                            if (to_complete_atoms[1]->name[1] == 'H') continue; /* do not add extra conf if added atoms are all protons */
+                        if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {
+                            if (!strncmp(to_complete_atoms[1]->element, " H", 2)) continue; /* do not add extra conf if added atoms are all protons */
                         }
                         //printf("   Debugging! Case sp3, n_known = 2, handle_addconf !=0\n");
 
@@ -2323,9 +2333,9 @@ int place_missing(PROT prot, int handle_addconf) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
 
-                                if (to_complete_atoms[0]->name[1] == 'H') {
-                                    if (to_complete_atoms[1]->name[1] == 'H') {
-                                        if (to_complete_atoms[2]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons (methyl) */
+                                if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {
+                                    if (!strncmp(to_complete_atoms[1]->element, " H", 2)) {
+                                        if (!strncmp(to_complete_atoms[2]->element, " H", 2)) break; /* do not add extra conf if added atoms are all protons (methyl) */
                                     }
                                 }
 
@@ -2558,8 +2568,8 @@ int place_missing(PROT prot, int handle_addconf) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
 
-                                if (to_complete_atoms[0]->name[1] == 'H') {
-                                    if (to_complete_atoms[1]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
+                                if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {
+                                    if (!strncmp(to_complete_atoms[1]->element, " H", 2)) break; /* do not add extra conf if added atoms are all protons */
                                 }
 
                                 ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
@@ -2685,7 +2695,7 @@ int place_missing(PROT prot, int handle_addconf) {
     }
 
     /* Check for if there are still missing atoms after protonation. the way of treating NTR and CTR here is not good and standard */
-    if (!n_added) {
+    if (n_added) {
         Missing = 0;
         for (kr=0; kr<prot.n_res; kr++) {
             for (kc=0; kc<prot.res[kr].n_conf; kc++) {
@@ -2700,8 +2710,8 @@ int place_missing(PROT prot, int handle_addconf) {
                         else {
                             if (!strcmp(prot.res[kr-1].resName, "NTR") || !strcmp(prot.res[kr-1].resName, "NTG")) {
                                 if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
-                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' '; // sbuff[0] = '1'
-                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' '; // sbuff[0] = '1'
+                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' ';
+                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' ';
                                 if (!param_get("IATOM","NTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTR01",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTGBK",sbuff,sbuff2)) continue;
@@ -2712,9 +2722,11 @@ int place_missing(PROT prot, int handle_addconf) {
                                 if (!param_get("IATOM","CTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","CTR01",sbuff,sbuff2)) continue;
                             }
-                            printf("   Missing atom %s at slot %4d of conf %s in \"%s %c %3d %02d\".\n",
-                            sbuff, ka, prot.res[kr].conf[kc].confName, prot.res[kr].resName, prot.res[kr].chainID, prot.res[kr].resSeq,kc);
-                            Missing++;
+                            if (strncmp(prot.res[kr].conf[kc].atom[ka].element, " H", 2)) {
+                                printf("   yyyMissing atom %s at slot %4d of conf %s in \"%s %c %3d %02d\".\n",
+                                sbuff, ka, prot.res[kr].conf[kc].confName, prot.res[kr].resName, prot.res[kr].chainID, prot.res[kr].resSeq,kc);
+                                Missing++;
+                            }
                         }
                     }
                 }
@@ -2767,7 +2779,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
             while (strlen(name)<4) strcat(name, " ");
             strncpy(atom_p->name, name, 4);
             atom_p->name[4] = '\0';
-            if (atom_p->name[1] != 'H') { /* heavy atom */
+            if (strncmp(atom_p->element, " H", 2)) {     // atom_p->name != 'H') { /* heavy atom */
                 if(!param_get("CONNECT", conf_p->confName, atom_p->name, &connect) ) { /* find connectivity */
                     strip(orbital, connect.orbital);
                     if (strcmp(orbital,"ion")) { /* Not ion */
@@ -2878,8 +2890,8 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         if (!i_conf) continue; /* do not add extra conf for backbone */
                         //printf("   Debugging! Case sp3, n_known = 2, i_conf!=0\n");
                         if (!handle_addconf) continue; /* do not add extra conf if the flag is 0 */
-                        if (to_complete_atoms[0]->name[1] == 'H') {
-                            if (to_complete_atoms[1]->name[1] == 'H') continue; /* do not add extra conf if added atoms are all protons */
+                        if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {             // (to_complete_atoms[0]->name[1] == 'H') {
+                            if (!strncmp(to_complete_atoms[1]->element, " H", 2)) continue;         //(to_complete_atoms[1]->name[1] == 'H') continue; /* do not add extra conf if added atoms are all protons */
                         }
                         //printf("   Debugging! Case sp3, n_known = 2, handle_addconf !=0\n");
 
@@ -2975,9 +2987,9 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
 
-                                if (to_complete_atoms[0]->name[1] == 'H') {
-                                    if (to_complete_atoms[1]->name[1] == 'H') {
-                                        if (to_complete_atoms[2]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
+                                if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {
+                                    if (!strncmp(to_complete_atoms[1]->element, " H", 2)) {
+                                        if (!strncmp(to_complete_atoms[2]->element, " H", 2)) break; /* do not add extra conf if added atoms are all protons */
                                     }
                                 }
 
@@ -3201,8 +3213,8 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                                 if (!i_conf) break; /* do not add extra conf for backbone */
                                 if (!handle_addconf) break; /* do not add extra conf if the flag is 0 */
 
-                                if (to_complete_atoms[0]->name[1] == 'H') {
-                                    if (to_complete_atoms[1]->name[1] == 'H') break; /* do not add extra conf if added atoms are all protons */
+                                if (!strncmp(to_complete_atoms[0]->element, " H", 2)) {
+                                    if (!strncmp(to_complete_atoms[1]->element, " H", 2)) break; /* do not add extra conf if added atoms are all protons */
                                 }
 
                                 ins = ins_conf(res_p, res_p->n_conf, conf_p->n_atom);
@@ -3327,7 +3339,7 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
         }
 
     /* Check for if there are still missing atoms after protonation. the way of treating NTR and CTR here is not good and standard */
-    if (!n_added) {
+    if (n_added) {
         Missing = 0;
             for (kc=0; kc<prot.res[i_res].n_conf; kc++) {
                 for (ka=0; ka<prot.res[i_res].conf[kc].n_atom; ka++) {
@@ -3955,7 +3967,7 @@ int ionization(PROT prot)
                strncpy(prot.res[kr].conf[ins].history, confs.strings[ic]+3, 2); /* update history */
 
                for (ka=0; ka<prot.res[kr].conf[kc].n_atom; ka++) {
-                   if (prot.res[kr].conf[kc].atom[ka].name[1] == 'H') {
+                   if (!strncmp(prot.res[kr].conf[kc].atom[ka].element, " H", 2)) {
                        char toggle[MAXCHAR_LINE];
                        if ( !param_get("DEL_HYDR", prot.res[kr].resName, "", toggle) ) { /* let mcce rebuilt H. (delete hydrogen is true) */
                            if (strchr(toggle,'t')) continue;
@@ -3977,6 +3989,7 @@ int ionization(PROT prot)
          }
       }
    }
+
 
    return 0;
 }
@@ -5142,7 +5155,7 @@ void del_non_common_h(PROT prot)
                 int common_h;
                 ATOM * atom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
                 if (!prot.res[i_res].conf[i_conf].atom[i_atom].on) continue;
-                if (prot.res[i_res].conf[i_conf].atom[i_atom].name[1] != 'H') continue;
+                if (strncmp(prot.res[i_res].conf[i_conf].atom[i_atom].element, " H", 2)) continue;
 
                 /* check if COMMON_H parameter has been saved */
                 if (param_get("COMMON_H", prot.res[i_res].resName, atom_p->name, &common_h)) {

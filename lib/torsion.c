@@ -118,7 +118,7 @@ int torsion_atoms(CONF *conf_p, int i_atom, ATOM **atom0_p, ATOM **atom1_p, ATOM
         for (i_connect=0; i_connect<MAX_CONNECTED; i_connect++) {
             if (!(*atom0_p)->connect12[i_connect]) break;
             if (!(*atom0_p)->connect12[i_connect]->on) continue;
-            if ( (*atom0_p)->connect12[i_connect]->name[1] == 'H') continue;
+            if (!strncmp( (*atom0_p)->connect12[i_connect]->element, " H", 2)) continue;
             (*atom1_p) = (*atom0_p)->connect12[i_connect];
             break;
         }
@@ -128,7 +128,7 @@ int torsion_atoms(CONF *conf_p, int i_atom, ATOM **atom0_p, ATOM **atom1_p, ATOM
             if (!(*atom1_p)->connect12[i_connect]) break;
             if (!(*atom1_p)->connect12[i_connect]->on) continue;
             if ((*atom1_p)->connect12[i_connect] == (*atom0_p)) continue;
-            if ( (*atom1_p)->connect12[i_connect]->name[1] == 'H') continue;
+            if (!strncmp( (*atom1_p)->connect12[i_connect]->element, " H", 2)) continue;
             (*atom2_p) = (*atom1_p)->connect12[i_connect];
             break;
         }
@@ -137,7 +137,7 @@ int torsion_atoms(CONF *conf_p, int i_atom, ATOM **atom0_p, ATOM **atom1_p, ATOM
         for (i_connect=0; i_connect<MAX_CONNECTED; i_connect++) {
             if (!(*atom2_p)->connect12[i_connect]) break;
             if (!(*atom2_p)->connect12[i_connect]->on) continue;
-            if ( (*atom2_p)->connect12[i_connect]->name[1] == 'H') continue;
+            if (!strncmp( (*atom2_p)->connect12[i_connect]->element, " H", 2)) continue;
             if ((*atom2_p)->connect12[i_connect] == (*atom0_p)) continue;
             if ((*atom2_p)->connect12[i_connect] == (*atom1_p)) continue;
             (*atom3_p) = (*atom2_p)->connect12[i_connect];
