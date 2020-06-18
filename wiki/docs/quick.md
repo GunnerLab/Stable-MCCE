@@ -49,6 +49,17 @@ void free_param() {
 }
 ```
 
+## Python requirement
+A significant part of the tools are written in Python3. You will need Python installed on your system. Example of installing Python and reuired modules:
+
+### Install Python package manager Miniconda
+Miniconda: https://docs.conda.io/en/latest/miniconda.html
+
+After installing Miniconda, install these modules:
+```
+conda install numpy scipy pandas
+```
+
 ## Run MCCE is simplest way
 
 ### Prepare a working directory:
