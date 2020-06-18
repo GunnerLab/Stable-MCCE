@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
    if (env.do_energies) {
       printf("Step 3. Compute energy lookup table\n"); fflush(stdout);
       if (energies()) { return USERERR;}
+
+
       else printf("Step 3 Done.\n\n");
    }
    else printf("Not doing \"Step 3. Compute energy lookup table\"\n\n");
