@@ -23,31 +23,30 @@ The hydrogen bond network in MCCE is obtained from microstates in Boltzmann Dist
 3. Coupling with microstates (Step 1) and hydrogen bond matrix (Step 2), hydrogen bonds selected in miscrostates in Monte Carlo sampling are calculated.
 
 ## Inputs for each steps
-1. Monte Carlo sampling microstates is obtained from energies and head3.lst.
-2. Hydrogen bond matrix is obtatined from step2_out.pdb and head3.lst.
-3. Selected hydrogen bond network is calculated based on hb.dat and microstate file, which is in ms_out folder.
+1. Monte Carlo sampling microstates is obtained from **energies** and **head3.lst**.
+2. Hydrogen bond matrix is obtatined from **step2_out.pdb** and **head3.lst**.
+3. Selected hydrogen bond network is calculated based on **hb.dat** and **microstate** file, which is in ms_out folder.
 
 ## Outputs for each steps 
-1. pH#eH#ms.txt under ms_out folder is generated for each pH and eH titration, where each file is named after titration point of pH and eH value following by 'ms'.
-2. Hydrogen bond matrix is saved in hb.dat and hah.txt, where hb.dat is a binary file and hah.txt is a readable txt file. hb.dat has 2D matrix with N * N, where N is the total conformer number in the protein. hah.txt stores the geometry infos for each hydrogen bond. resInHbNet.txt contains the all residues that can be involved in hydrogen bond network. reshbond.txt contains all possible bonds between residues. 
-3. pH#eH#hb.txt under hb_out folder is obtained for each pH and eH titration, where each file is named after titration point of pH and eH value foloowing by 'hb'.
+1. **pH#eH#ms.txt** under ms_out folder is generated for each pH and eH titration, where each file is named after titration point of pH and eH value following by 'ms'.
+2. Hydrogen bond matrix is saved in **hb.dat** and **hah.txt**, where hb.dat is a binary file and hah.txt is a readable txt file. hb.dat has 2D matrix with N * N, where N is the total conformer number in the protein. hah.txt stores the geometry infos for each hydrogen bond. **resInHbNet.txt** contains the all residues that can be involved in hydrogen bond network. **reshbond.txt** contains all possible bonds between residues. 
+3. **pH#eH#hb.txt** under hb_out folder is obtained for each pH and eH titration, where each file is named after titration point of pH and eH value foloowing by 'hb'.
 
 ## File format for each correspinding file
 1. **pH#eH#ms.txt**: 
-
 Comment line and blank line are dismissed.
 Each file starts with headers, consist of monte carlo sampling unchanged information.
 Then it stores the new conformer id for each microstate, and its relative energy and times it stay at this microstate. 
 
-- First line: Temperature, pH, eH values
-- Second line: Method to get microstate. Either MONTERUNS or ENUMERATE, representing from monte carlo sampling or analytical method
-- Third line: n_fixed, the number of fixed residues for sampling. Following are the occupied conformer ids for each fixed residue, splitted by space.
-- Fourth line: n_free, the number of free titrated residues that can get flipped during sampling. Follwing are all conformer ids, splitted by space for each free titrated residue, splitted by semicolon.
+- **First line**: Temperature, pH, eH values
+- **Second line**: Method to get microstate. Either MONTERUNS or ENUMERATE, representing from monte carlo sampling or analytical method
+- **Third line**: n_fixed, the number of fixed residues for sampling. Following are the occupied conformer ids for each fixed residue, splitted by space.
+- **Fourth line**: n_free, the number of free titrated residues that can get flipped during sampling. Follwing are all conformer ids, splitted by space for each free titrated residue, splitted by semicolon.
 
 - **For each Monte Carlo sampling**:
-- Fifth line: order of monte carlo sampling
-- Fifth line: n_free, following occupied conformer id for each free titrated residue. This is the starting state for the sampling. The starting state will be decided by its energy to be accpeted or not.
-- Sixth line: Energy of microstate, counter representing times the microstate stays, new conformer ids compared to last microstate. 
+- **Fifth line**: order of monte carlo sampling
+- **Fifth line**: n_free, following occupied conformer id for each free titrated residue. This is the starting state for the sampling. The starting state will be decided by its energy to be accpeted or not.
+- **Sixth line**: Energy of microstate, counter representing times the microstate stays, new conformer ids compared to last microstate. 
 
 ```
 T:298.15,pH:7.00,eH:0.00
@@ -79,7 +78,7 @@ MC:1
 - First integer(4 bite): n_conf, the total conformer number of the protein. 
 - The following is n_conf * n_conf matrix where 1 represents a hydrogen bond and 0 no hydrogen bond.
 3. **hah.txt**: 
-- Conformer_id of Donor   Conformer_id of Acceptor   Donor Atom ~ Hyrogen -- Acceptor Atom  Distance  Angle
+- Conformer_id of Donor, Conformer_id of Acceptor, Donor Atom, ~ Hyrogen-- Acceptor Atom, Distance, Angle
 ```
 GLN01A0002_001  HOH01A0109_001   NE2~2HE2-- O   3.02    160
 GLN01A0002_001  HOH01A0109_002   NE2~2HE2-- O   3.02    160
@@ -93,7 +92,7 @@ TYRA0003
 LYSA0004
 ```
 5. **reshbond.txt**: 
-- Residue_name of Donor     Residue_name of Acceptor 
+- Residue_name of Donor,     Residue_name of Acceptor 
 ```
 GLNA0002        HOHA0109
 TYRA0003        META0001
@@ -101,7 +100,7 @@ TYRA0003        HOHA0070
 TYRA0003        HOHA0132
 ```
 6. **pH#eH#hb.txt**: 
-- Donor Residue      Acceptro Residue       Occupancy of hydrogen bond in all microstates
+- Donor Residue,      Acceptro Residue,       Occupancy of hydrogen bond in all microstates
 ```
 LYSA0050        META0001        1.000
 LYSA0050        ASPA0047        1.000
@@ -159,7 +158,7 @@ Download and install [Cytoscape](https://cytoscape.org/).
 #### Input file preparation for Cytoscape:
 - hb.txt: hydrogen bond network with direct hydrogen bond between residues/waters, which is the direct output after MCCE.
 - out.dat: aggrageted hydrogen bond network coupling with water for multiple hydrogen bond networks, which needs post-analysis based on hb.txt.
-
+> **Steps to get out.dat:
 > **Inputs**: 
 > - Multiple hb.txt files: rename them as 1.dat, 2.dat, 3.dat etc.
 > - Residues_list.lst: residues list selected.
@@ -170,7 +169,7 @@ Download and install [Cytoscape](https://cytoscape.org/).
 > TYRA0122
 > ASNA0025
 > ```
-
+>
 > **Scripts**: /home/cai/source/jlu_net20170830
 > - jhead.h: water molecules cutoff represents the maximum water number allowing to bridging hydrogen bond between residues. Here 4 is  up to 4 water molecules are allowed to bridge between two residues. For example, if you want to see up to  two water bridging hydrogen bond connections between two residues, 
 then you can change 4 to 2.
@@ -215,7 +214,6 @@ then you can change 4 to 2.
 > 25      28      100
 > ```
 > - out.sif: residue residue hydrogen bond interaction, with the format that can be used to connect 3D structure with cytoscape using RINalyzer
-
 > - out_map.dat: residue's amnio acid type classification
 > ```
 > RESIDUE CLASS   FULL_NAME
@@ -228,22 +226,23 @@ then you can change 4 to 2.
 > ARGA0019#####################ASPA0028
 > GET:    ARGA0019, HOHS5631, ASPA0028,
 > ```
-Here, water HOHS5631 helps bridge ARGA0019 - ASPA0028 hydrogen bond. 
+> Here, water HOHS5631 helps bridge ARGA0019 - ASPA0028 hydrogen bond. 
 
 
-> **Visualization**: Open `out.dat` file using the Cytoscape and play with different layout.
+#### Visualization on Cytoscape: 
+Open `out.dat` file using the Cytoscape and play with different layout.
 
 ## Supplement
 ### Comparison between old and new hydrogen bond network
 * Comparison between old and new format microstate file
 
-        | old_version | new_version
---------| ----------- | ----------- 
-  time  |    58s      |     1s
-  size  |    246MB    |     27MB
+|          | old_version | new_version |
+| -------- | ----------- | ----------- |
+|   time   |    58s      |     1s      |
+|   size   |    246MB    |     27MB    |
 
 * Comparison between old and new step 6
 
-        | old_version | new_version
---------| ----------- | ----------- 
-  time  |    117s     |     87s
+|         | old_version | new_version |
+| --------| ----------- | ----------- |
+|   time  |    117s     |     87s     |
