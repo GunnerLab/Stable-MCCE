@@ -126,7 +126,7 @@ t        Output Microstate from standard monte carlo        (MS_OUT)
 - **"(HBOND_ANG_CUTOFF)"**: setting for (GET_HBOND_MATRIX). Hydrogen bond angle cutoff, only angle larger than the cutoff will be considered hydrogen bond.
 - **"(GET_HBOND_NETWORK)"**: obtain hydrogen bond network in Botlzmann distribution based on hb.dat and microstate file.
 
-- Hydrogen bond donor and acceptor attom parameters are setting in param04/hb.tpl.
+- Hydrogen bond donor and acceptor attom parameters are setting in **param04/hb.tpl**.
 ```
 HDONOR   ASP01       HD1
 HDONOR   ASP02       HD2
@@ -148,8 +148,8 @@ t        Obtain hydrogen bond network                       (GET_HBOND_NETWORK)
 ```
 
 2. Output file after step 6: hb.txt if final hydrogen bond network.
-- hb.dat, hah.txt, resInHbNet.txt, reshbonds.txt from (GET_HBOND_MATRIX).
-- hb.txt from (GET_HBOND_NETWORK).
+- hb.dat, hah.txt, resInHbNet.txt, reshbonds.txt from **(GET_HBOND_MATRIX)**.
+- hb.txt from **(GET_HBOND_NETWORK)**.
 
 ### Result Analysis:
 #### Cytoscape visualization:
@@ -165,73 +165,69 @@ Download and install [Cytoscape](https://cytoscape.org/).
 > - Residues_list.lst: residues list selected.
 > ```
 > ARGA0019
-ASPA0028
-LYSA0027
-TYRA0122
-ASNA0025
+> ASPA0028
+> LYSA0027
+> TYRA0122
+> ASNA0025
 > ```
 
 > **Scripts**: /home/cai/source/jlu_net20170830
-> - jhead.h: water molecules cutoff represents the maximum water number allowing to bridging hydrogen bond between residues.
-
-Here 4 is  up to 4 water molecules are allowed to bridge between two residues.
-For example: If you want to see up to  two water bridging hydrogen bond connections between two residues, 
+> - jhead.h: water molecules cutoff represents the maximum water number allowing to bridging hydrogen bond between residues. Here 4 is  up to 4 water molecules are allowed to bridge between two residues. For example, if you want to see up to  two water bridging hydrogen bond connections between two residues, 
 then you can change 4 to 2.
 > ```
-static int cutoff = 4;
+> static int cutoff = 4;
 > ```
 > - jlu_new-cai.cpp: flags if output relevent files.
 > ```
-const int flag_interest=0;            //flag to study interested residues: T100 and E286 
-const int flag_matrix=1;              //flag to output matrix of hb network
-const int flag_network=1;             //flag to output network with donor, acceptor, occ
-const int flag_network_opt=1;         //flag to output network with shorter name
-const int flag_map=1;                 //flag to output classification of amino acids in network
-const int flag_sif=1;                 //flag to output network with format of sif
-const int flag_cat_3s8f=0;            //flag to sync the cofactor name to protein 3s8f.pdb in sifformat
-const int flag_cat_1m56=1;            //flag to sync the cofactor name to protein 1m56.pdb in sifformat
+> const int flag_interest=0;            //flag to study interested residues: T100 and E286 
+> const int flag_matrix=1;              //flag to output matrix of hb network
+> const int flag_network=1;             //flag to output network with donor, acceptor, occ
+> const int flag_network_opt=1;         //flag to output network with shorter name
+> const int flag_map=1;                 //flag to output classification of amino acids in network
+> const int flag_sif=1;                 //flag to output network with format of sif
+> const int flag_cat_3s8f=0;            //flag to sync the cofactor name to protein 3s8f.pdb in sifformat
+> const int flag_cat_1m56=1;            //flag to sync the cofactor name to protein 1m56.pdb in sifformat
 > ```
 > - jhead-test2.cpp
-> - Makefile: `a-4w.out` in makefile, output name after compiling, can be changed:
-	Here for up to 4 water, we write  `a-4w.out`. Suppose for two water: change `a-4w.out` to `a-2w.out`
-```bash
-make
-```
+> - Makefile: `a-4w.out` in makefile, output name after compiling, can be changed. Here for up to 4 water, we write  `a-4w.out`. Suppose for two water: change `a-4w.out` to `a-2w.out`
+> ```bash
+> make
+> ```
 > - a-4w.out
 > **Run scripts**: 
-```bash
-./a-4w.out
-```
+> ```bash
+> ./a-4w.out
+> ```
 > **Outputs**:
 > - out.txt: residue-residue hydrogen bond interacton, in a N * N matrix format
 > - out.dat: residue-residue hydrogen bond interaction  
-```
-DONOR   ACCEPT  OCCUPANCY
-RA0019  DA0028  100
-KA0027  NA0025  100
-NA0025  DA0028  100
-```
+> ```
+> DONOR   ACCEPT  OCCUPANCY
+> RA0019  DA0028  100
+> KA0027  NA0025  100
+> NA0025  DA0028  100
+> ```
 > - out_opt.dat: residue-residue hydrogen bond interaction with opimal shorter residue name
-```
-DONOR   ACCEPT  OCCUPANCY
-19      28      100
-27      25      100
-25      28      100
-```
+> ```
+> DONOR   ACCEPT  OCCUPANCY
+> 19      28      100
+> 27      25      100
+> 25      28      100
+> ```
 > - out.sif: residue residue hydrogen bond interaction, with the format that can be used to connect 3D structure with cytoscape using RINalyzer
 
 > - out_map.dat: residue's amnio acid type classification
-```
-RESIDUE CLASS   FULL_NAME
-19      B       ARGA0019
-28      A       ASPA0028
-27      B       LYSA0027
-```
+> ```
+> RESIDUE CLASS   FULL_NAME
+> 19      B       ARGA0019
+> 28      A       ASPA0028
+> 27      B       LYSA0027
+> ```
 > - out_path.txt: water pathway that connect the two residues
-```
-ARGA0019#####################ASPA0028
-GET:    ARGA0019, HOHS5631, ASPA0028,
-```
+> ```
+> ARGA0019#####################ASPA0028
+> GET:    ARGA0019, HOHS5631, ASPA0028,
+> ```
 Here, water HOHS5631 helps bridge ARGA0019 - ASPA0028 hydrogen bond. 
 
 
