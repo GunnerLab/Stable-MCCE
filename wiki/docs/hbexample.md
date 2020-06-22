@@ -164,7 +164,7 @@ Download and install [Cytoscape](https://cytoscape.org/).
 > - Multiple hb.txt files: rename them as 1.dat, 2.dat, 3.dat etc.
 > - Residues_list.lst: residues list selected.
 > ```
-ARGA0019
+> ARGA0019
 ASPA0028
 LYSA0027
 TYRA0122
