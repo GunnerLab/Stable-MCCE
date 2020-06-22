@@ -5,34 +5,24 @@ Hydrogen bond network obtained from MCCE is the hydrogen bonds existing in prote
 
 ![hydrogen_bond_newtork_cco](img/CCO_FLOW_NETWORK.png)
 
-# Table of Contents
-
-1. [Principle](hbexample.md#Principle-of-MCCE-Hydrogen-bond-network-analysis)
-2. [Input](hbexample.md#Inputs-for-each-steps)
-3. [Output](hbexample.md#Outputs-for-each-steps)
-4. [File format](hbexample.md#File-format-for-each-correspinding-file)
-5. [Example](hbexample.md#Example-to-run-hydrogen-bond-network-analysis-in-MCCE)
-6. [Supplement](hbexample.md#Supplement)
-
-
-## Principle of MCCE Hydrogen bond network analysis
+## Principle
 The hydrogen bond network in MCCE is obtained from microstates in Boltzmann Distribution in Monte Carlo sampling, based on defined D-H...D distance and angle, where D is the donor atom with a lone pair.
 
 1. Save microstates with Boltzmann Distribution in Monte Carlo sampling.
 2. Calculate all possible hydrogen bonds exist between residue conformers. A hydrogen bond matrix is obtatined.
 3. Coupling with microstates (Step 1) and hydrogen bond matrix (Step 2), hydrogen bonds selected in miscrostates in Monte Carlo sampling are calculated.
 
-## Inputs for each steps
+## Input
 1. Monte Carlo sampling microstates is obtained from **energies** and **head3.lst**.
 2. Hydrogen bond matrix is obtatined from **step2_out.pdb** and **head3.lst**.
 3. Selected hydrogen bond network is calculated based on **hb.dat** and **microstate** file, which is in ms_out folder.
 
-## Outputs for each steps 
+## Output
 1. **pH#eH#ms.txt** under ms_out folder is generated for each pH and eH titration, where each file is named after titration point of pH and eH value following by 'ms'.
 2. Hydrogen bond matrix is saved in **hb.dat** and **hah.txt**, where hb.dat is a binary file and hah.txt is a readable txt file. hb.dat has 2D matrix with N * N, where N is the total conformer number in the protein. hah.txt stores the geometry infos for each hydrogen bond. **resInHbNet.txt** contains the all residues that can be involved in hydrogen bond network. **reshbond.txt** contains all possible bonds between residues. 
 3. **pH#eH#hb.txt** under hb_out folder is obtained for each pH and eH titration, where each file is named after titration point of pH and eH value foloowing by 'hb'.
 
-## File format for each correspinding file
+## File format
 1. **pH#eH#ms.txt**: 
 Comment line and blank line are dismissed.
 Each file starts with headers, consist of monte carlo sampling unchanged information.
@@ -108,7 +98,7 @@ GLNA0002        HOHA0109        0.750
 LYSA0004        GLUA0015        1.000
 ```
 
-## Example to run hydrogen bond network analysis in MCCE
+## Example
 Here is a tutorial to calculate the hydrogen bond network using MCCE 
 and to visualize hydrogen bond network using Cytoscape. 
 
@@ -233,6 +223,7 @@ then you can change 4 to 2.
 Open `out.dat` file using the Cytoscape and play with different layout.
 
 ## Supplement
+
 ### Comparison between old and new hydrogen bond network
 * Comparison between old and new format microstate file
 
