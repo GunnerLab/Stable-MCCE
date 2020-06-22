@@ -23,7 +23,7 @@ theme:
     name: material
     logo:
         icon: code
-    favicon: assets/favicon.ico
+    #favicon: assets/favicon.ico
     language: en
     palette:
         primary: teal
