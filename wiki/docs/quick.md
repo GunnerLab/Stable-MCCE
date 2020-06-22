@@ -11,6 +11,14 @@ Under a terminal window, run:
 ### Compile the code:
 This creates a directory Stable-MCCE, enter the directory and compile:
 
+You need C and Fortran to compile the code.
+
+!!! Note
+    For Mac users, gcc compiler comes with Xcode from app store. Once Xcode is installed, install command line tools. This provides gcc.
+
+    Gfortran is avalaible from https://github.com/fxcoudert/gfortran-for-macOS/releases, find your Mac OS X version and install appropriate gfortran package.
+
+
 ```
 cd Stable-MCCE
 make clean
@@ -22,32 +30,33 @@ Find the path of Stable-MCCE installation directory:
 (base) jmao@pc:~/projects/Stable-MCCE$ pwd
 /home/jmao/projects/Stable-MCCE
 ```
-In my case the {/path/to/mcce/} is /home/jmao/projects/Stable-MCCE
+
+**In my case the {/path/to/mcce/} is /home/jmao/projects/Stable-MCCE**
 
 Add the executable to your path:
 ```
 export PATH={/path/to/mcce/}bin:$PATH
 ```
 
-Also put this line at the end of .bashrc file under your home directory so that the environment is properly set everytime you open a terminal window.
+Also put this line at the end of .bashrc file under your home directory so that the environment is properly set every time you open a terminal window.
 
-**Troubleshooting:**
+!!! Warning
+    On Mac OS X, an explicit memory free for tree is not supported. You may have to change this subroutine in file lib/db.c
 
-On Mac OS X, an explicit memory free for tree is not supported. You may have to change this subroutine in file lib/db.c
-```C
-/* release database memory */
-void free_param() {
-   tdestroy(param_root, free);
-   return;
-}
-```
-to
-```C
-/* release database memory */
-void free_param() {
-   return;
-}
-```
+    ```C
+    /* release database memory */
+    void free_param() {
+       tdestroy(param_root, free);
+       return;
+    }
+    ```
+    to
+    ```C
+    /* release database memory */
+    void free_param() {
+       return;
+    }
+    ```
 
 ## Python requirement
 A significant part of the tools are written in Python3. You will need Python installed on your system. Example of installing Python and reuired modules:
