@@ -146,7 +146,7 @@ t        Obtain hydrogen bond matrix                        (GET_HBOND_MATRIX)
 t        Obtain hydrogen bond network                       (GET_HBOND_NETWORK)
 ```
 
-2. Output file after step 6: hb.txt if final hydrogen bond network.
+3. Output file after step 6: hb.txt if final hydrogen bond network.
 - hb.dat, hah.txt, resInHbNet.txt, reshbonds.txt from **(GET_HBOND_MATRIX)**.
 - hb.txt from **(GET_HBOND_NETWORK)**.
 
@@ -158,7 +158,7 @@ Download and install [Cytoscape](https://cytoscape.org/).
 #### Input file preparation for Cytoscape:
 - hb.txt: hydrogen bond network with direct hydrogen bond between residues/waters, which is the direct output after MCCE.
 - out.dat: aggrageted hydrogen bond network coupling with water for multiple hydrogen bond networks, which needs post-analysis based on hb.txt.
-> **Steps to get out.dat:
+> #### Steps to get out.dat:
 > **Inputs**: 
 > - Multiple hb.txt files: rename them as 1.dat, 2.dat, 3.dat etc.
 > - Residues_list.lst: residues list selected.
