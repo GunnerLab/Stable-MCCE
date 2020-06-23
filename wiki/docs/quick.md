@@ -66,7 +66,7 @@ Miniconda: https://docs.conda.io/en/latest/miniconda.html
 
 After installing Miniconda, install these modules:
 ```
-conda install numpy scipy pandas openyxl
+conda install numpy scipy pandas openpyxl
 ```
 
 ## Run MCCE is simplest way
