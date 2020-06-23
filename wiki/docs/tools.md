@@ -410,6 +410,80 @@ TYR-A0103_: charge  0.00 expected near -1.0 at pH=12.0
 ---
 
 ## Parameter file preparation
+---
+### pdb2ftpl.py
+*This tool converts a pdb file to a ftpl template.*
+
+**Syntax**
+```
+usage: pdb2ftpl.py [-h] [-d] [-c conformer type] pdbfile
+
+Create a ftpl template file from a cofactor PDB file. The atoms in the input
+files are considered as one molecule.
+
+positional arguments:
+  pdbfile
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -d                 Ignore CONNECT, use distance to determine bond
+  -c conformer type  Specify a 2-character conformer type ID, default 01
+```
+
+---
+
+### tpl-free2mcce.py
+*This command converts ftpl files to ./param, a directory hosts old mcce tple files. It is a compatibility tool, which makes
+new ftpl files readable by old mcce executable.*
+
+**Syntax**
+```
+tpl-free2mcce.py
+```
+
+Input file:
+
+* run.prm
+* param/ under mcce distribution directory
+
+Output  file
+
+* param under current directory
+
+-----------
+
+### tpl-mcce2free.py
+*Future versions of MCCE will use ftpl format, and this command converts mcce tple file to new ftpl file.*
+
+**Syntax**
+```
+tpl-mcce2ftpl.py tplfile
+```
+
+Input file:
+
+* tpl file
+
+Output  file
+
+* ftpl file content on screen.
+
+-----------
+
+### verify_ftpl.py
+*This program verifies a ftpl by reading a pdb file of that cofactor.*
+
+**Syntax**
+```
+verify_ftpl.py tplfile pdbfile
+```
+
+Input file:
+
+* ftpl file
+* pdb file that corresponds to that ftpl file
+
+-----------
 
 ## Connecting to other programs
 
