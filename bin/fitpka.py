@@ -105,7 +105,7 @@ if __name__ == "__main__":
     helpmsg = "Fit a titration of charged residue"
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("residue", metavar="residue", help="the residue name as in sum_crg.out", nargs=1)
-    parser.add_argument("--text", default=False, help="Output text only, default False")
+    parser.add_argument("--text", default=False, help="Output text only, default False", action="store_true")
     args = parser.parse_args()
 
     resname = args.residue[0]
