@@ -239,19 +239,21 @@ translate_step2.py step2_out.pdb.bak > step2_out.pdb
 
 **Syntax:**
 ```
-fitpka.py -h
-usage: fitpka.py [-h] [--text TEXT] residue
+$ fitpka.py -h 
+usage: fitpka.py [-h] RES [RES ...]
 
-Fit a titration of charged residue
+Fit a titration of charged residues
 
 positional arguments:
-  residue      the residue name as in sum_crg.out
+  RES         Charged residue names to plot, as in sum_crg.out
 
 optional arguments:
-  -h, --help   show this help message and exit
-  --text TEXT  Output text only, default False
-
+  -h, --help  show this help message and exit
 ```
+
+**Required input file**
+
+* sum_crg.out
 
 **Example:**
 ```
