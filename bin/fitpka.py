@@ -52,23 +52,22 @@ def plot_res(resname, charge, t_type, t_points):
         midpoint = popt[0]
         nslope = 0
         if t_type.upper() == "PH":
-            nslope = 0.4342 * popt[1] * a
+            nslope = 0.4342 * popt[1]
         elif t_type.upper() == "EM":
-            nslope = 0.4342 * popt[1] * a * 58.0
+            nslope = 0.4342 * popt[1] * 58.0
         elif t_type.upper() == "CH" or t_type.upper() == "EXTRA":
-            nslope = 0.4342 * popt[1] * a * PH2KCAL
+            nslope = 0.4342 * popt[1] * PH2KCAL
         else:
             print("Why am I here?")
 
         # plot the titration graph
-        plt.figure(figsize=(10, 5))
-        plt.plot(xdata, charge, 'kx', label='%s' % resname)
+        plt.plot(xdata, charge, 'kx')
         Npoints = 100
         xfit = [xdata[0] + i * (xdata[-1] - xdata[0]) / Npoints for i in range(Npoints + 1)]
         yfit = [a * sigmoid(x, popt[0], popt[1]) + b for x in xfit]
 
-        plt.plot(xfit, yfit, 'g--',
-                 label='fit: midpoint=%.3f,  nslope=%.3f,  chi^2*1000=%.3f' % (midpoint, nslope, chi_squared * 1000.0))
+        plt.plot(xfit, yfit,
+                 label='%s: pKa=%.2f,  n=%.2f,  chi^2*1000=%.2f' % (resname, midpoint, abs(nslope), chi_squared * 1000.0))
 
     return
 
@@ -81,6 +80,7 @@ def fitpka(resnames):
     t_points = [float(x) for x in fields[1:]]
 
     # get residue charge, this is y axis
+    plt.figure(figsize=(10, 5))
     for resname in resnames:
         found = False
         charge = []
