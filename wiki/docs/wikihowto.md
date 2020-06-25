@@ -100,3 +100,13 @@ mkdocs gh-deploy --force
 ```
 
 The published site is on: https://gunnerlab.github.io/Stable-MCCE/.
+
+## Markdown resources
+
+**Basic syntax:** https://www.markdownguide.org/cheat-sheet/
+
+**More on syntax:** https://alinex.gitlab.io/env/mkdocs/
+
+**Diagram:** http://blockdiag.com/en/blockdiag/
+
+**PyDown:** https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
