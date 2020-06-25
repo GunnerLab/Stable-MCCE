@@ -303,11 +303,6 @@ fitpka.py ASP-A0066_
 ```
 ![ASP_fitit.png](img/ASP_fitit.png)
 
-You can also out put the fitted curve parameters only:
-```
-$ fitpka.py --text ASP-A0066_
-ASP-A0066_: midpoint=2.119,  nslope=-1.737,  chi^2*1000=0.957
-```
 
 ---
 ### state.py
