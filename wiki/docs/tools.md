@@ -638,7 +638,7 @@ Output  file
 -----------
 
 ### tpl-mcce2free.py
-*Future versions of MCCE will use ftpl format, and this command converts mcce tple file to new ftpl file.*
+*Future versions of MCCE will use ftpl format, and this command converts mcce tpl file to new ftpl file.*
 
 **Syntax**
 ```
