@@ -46,6 +46,12 @@ def fix_format(fname):
     for line in pdblines:
         line = line.rstrip() + "\n"   # remove any special char and replace it by Linux end of line
         if line[:6] == "ATOM  " or line[:6] == "HETATM":
+            # Remove alternative location
+            if line[16] == "A":
+                line = line[:16]+" "+line[17:]
+            elif line[16] != " ":
+                continue
+
             resid = line[17:27]
             if resid != cur_resid:
                 new_pdblines += ntr_atoms
@@ -69,8 +75,8 @@ def fix_format(fname):
     new_pdblines += mid_atoms
     new_pdblines += ctr_atoms
 
-    open("step0_out.pdb", "w").writelines(new_pdblines)
-    return
+    return new_pdblines
+
 
 def write_runprm(args):
     runprm = {}
@@ -110,6 +116,7 @@ def write_runprm(args):
     record_runprm(runprm, "#STEP1")
     return
 
+
 if __name__ == "__main__":
 
     # Get the command arguments
@@ -128,7 +135,8 @@ if __name__ == "__main__":
 
     write_runprm(args)
     if not args.norun:
-        fix_format(args.prot[0])
+        new_pdblines = fix_format(args.prot[0])
+        open("step0_out.pdb", "w").writelines(new_pdblines)
 
         mcce = args.e
         process = subprocess.Popen(["mcce"], stdout=subprocess.PIPE)
