@@ -503,6 +503,120 @@ optional arguments:
 
 ---
 
+### mol2_charge.py
+*Apply mol2 charge to a conformer in ftpl template. The mol2 file doesn't need to have the matching atom names, as long as the element names are correct.*
+
+**Syntax**
+```
+$ mol2_charge.py -h
+usage: mol2_charge.py [-h] -m mol2 -c conf [--show] ftpl
+
+Apply mol2 charge to a conformer in ftpl template. The mol2 file doesn't need
+to have the matching atom names, as long as the element names are correct.
+
+positional arguments:
+  ftpl
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -m mol2     mol2 file with charge
+  -c conf     Conformer ID in conformer list to be matched.
+  --show      Show atom name matching, default false.
+```
+
+**Example:**
+
+If I have a ftpl file T4Y.tpl and a mol2 file 27c-p.mol2 with atom charge.
+```
+$ mol2_charge.py -m 27c-p.mol2 T4Y.ftpl -c T4Y01 --show
+=================
+ ftpl  ---  mol2
+=================
+" N1 " --- "N4"
+" C4 " --- "C14"
+" C5 " --- "C13"
+" C6 " --- "C12"
+" C7 " --- "C11"
+" C8 " --- "C7"
+" C10" --- "C5"
+" C13" --- "C2"
+" N  " --- "N8"
+" C  " --- "C18"
+" O  " --- "O3"
+" C1 " --- "C17"
+" C11" --- "C10"
+" C12" --- "C9"
+" C14" --- "C1"
+" C2 " --- "C16"
+" C3 " --- "C15"
+" C9 " --- "C6"
+" H5 " --- "H35"
+" H6 " --- "H34"
+" H8 " --- "H32"
+" H7 " --- "H33"
+" H9 " --- "H26"
+" H10" --- "H27"
+" H13" --- "H22"
+" H14" --- "H23"
+" H1 " --- "H38"
+" H  " --- "H39"
+" H2 " --- "H40"
+" H15" --- "H30"
+" H16" --- "H31"
+" H18" --- "H28"
+" H17" --- "H29"
+" H22" --- "H19"
+" H19" --- "H20"
+" H20" --- "H21"
+" H3 " --- "H37"
+" H4 " --- "H36"
+" H11" --- "H24"
+" H12" --- "H25"
+=================
+CHARGE, T4Y01, " N1 ":   -0.45
+CHARGE, T4Y01, " C4 ":   -0.14
+CHARGE, T4Y01, " C5 ":   -0.11
+CHARGE, T4Y01, " C6 ":   -0.09
+CHARGE, T4Y01, " C7 ":    0.22
+CHARGE, T4Y01, " C8 ":    0.17
+CHARGE, T4Y01, " C10":    0.09
+CHARGE, T4Y01, " C13":    0.66
+CHARGE, T4Y01, " N  ":   -0.75
+CHARGE, T4Y01, " C  ":   -0.05
+CHARGE, T4Y01, " O  ":   -0.61
+CHARGE, T4Y01, " C1 ":   -0.08
+CHARGE, T4Y01, " C11":    0.09
+CHARGE, T4Y01, " C12":    0.15
+CHARGE, T4Y01, " C14":   -0.17
+CHARGE, T4Y01, " C2 ":   -0.13
+CHARGE, T4Y01, " C3 ":   -0.13
+CHARGE, T4Y01, " C9 ":   -0.10
+CHARGE, T4Y01, " H5 ":    0.13
+CHARGE, T4Y01, " H6 ":    0.15
+CHARGE, T4Y01, " H8 ":    0.04
+CHARGE, T4Y01, " H7 ":    0.04
+CHARGE, T4Y01, " H9 ":    0.04
+CHARGE, T4Y01, " H10":    0.04
+CHARGE, T4Y01, " H13":    0.06
+CHARGE, T4Y01, " H14":    0.06
+CHARGE, T4Y01, " H1 ":    0.04
+CHARGE, T4Y01, " H  ":    0.04
+CHARGE, T4Y01, " H2 ":    0.04
+CHARGE, T4Y01, " H15":    0.05
+CHARGE, T4Y01, " H16":    0.05
+CHARGE, T4Y01, " H18":    0.03
+CHARGE, T4Y01, " H17":    0.03
+CHARGE, T4Y01, " H22":    0.06
+CHARGE, T4Y01, " H19":    0.06
+CHARGE, T4Y01, " H20":    0.06
+CHARGE, T4Y01, " H3 ":    0.13
+CHARGE, T4Y01, " H4 ":    0.13
+CHARGE, T4Y01, " H11":    0.06
+CHARGE, T4Y01, " H12":    0.06
+```
+---
+
+
 ### tpl-free2mcce.py
 *This command converts ftpl files to ./param, a directory hosts old mcce tple files. It is a compatibility tool, which makes
 new ftpl files readable by old mcce executable.*
