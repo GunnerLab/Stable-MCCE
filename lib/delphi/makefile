@@ -1,6 +1,6 @@
 VPATH=src
 #LINUX INTEL
-  FC=gfortran -O3 -static -fcray-pointer -ffixed-line-length-none
+  FC=gfortran -O3 -fcray-pointer -ffixed-line-length-none
   CC=gcc -O3
 #  FC=gfortran -g -static -fcray-pointer -ffixed-line-length-none
 #  CC=gcc -g
