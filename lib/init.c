@@ -748,6 +748,7 @@ int get_env()
             else env.delphi_clean = 0;
         }
         else if (strstr(sbuff, "(PBE_SOLVER)")) {
+             /* This block causes "Trap 6" error on Mac, jmao
              strcpy(sbuff, strtok(sbuff, " "));
              if (strstr(sbuff, "apbs") || strstr(sbuff, "APBS")) {
                 strcpy(env.pbe_solver, "apbs");
@@ -762,6 +763,8 @@ int get_env()
                  printf("\n   Not known PBE solver: \"%s\". Using delphi in step 3...\n", sbuff);
                  strcpy(env.pbe_solver, "delphi");
              }
+             */
+             strcpy(env.pbe_solver, "delphi");
          }
  		else if (strstr(sbuff, "(RXN_METHOD)")) {
              strcpy(sbuff, strtok(sbuff, " "));
