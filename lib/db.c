@@ -123,7 +123,6 @@ int param_exist(char *key1, char *key2, char *key3)
 
 /* release database memory */
 void free_param() {
-   tdestroy(param_root, free);
    return;
 }
 
