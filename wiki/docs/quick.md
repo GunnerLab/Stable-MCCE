@@ -31,12 +31,14 @@ Find the path of Stable-MCCE installation directory:
 /home/jmao/projects/Stable-MCCE
 ```
 
-**In my case the {/path/to/mcce/} is /home/jmao/projects/Stable-MCCE**
+**In my case the {/path/to/mcce/} is /home/jmao/projects/Stable-MCCE/**
 
 Add the executable to your path:
 ```
 export PATH={/path/to/mcce/}bin:$PATH
 ```
+
+Remember to replace {/path/to/mcce/} with your installation path.
 
 Also put this line at the end of .bashrc file under your home directory so that the environment is properly set every time you open a terminal window.
 
@@ -69,7 +71,7 @@ After installing Miniconda, install these modules:
 conda install numpy scipy matplotlib pandas openpyxl
 ```
 
-## Run MCCE is simplest way
+## Run MCCE in simplest way
 
 ### Prepare a working directory:
 ```
