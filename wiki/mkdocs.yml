@@ -21,9 +21,9 @@ nav:
 
 theme:
     name: material
-    logo:
-        icon: code
-    #favicon: assets/favicon.ico
+    icon:
+        logo: material/code-tags
+        favicon: material/seed
     language: en
     palette:
         primary: teal
