@@ -12,7 +12,8 @@ MCCE can calculate:
 * residue ionization changes in response to protein structural changes;
 * location and stoichiometry of proton transfers coupled to electron transfer
 
-## References (Cite these papers if you use MCCE for publications):
+## References
+Cite these papers if you use MCCE for publications:
 
 * Song Y., J. Mao, Gunner M.R. (2009). J. Comp. Chem epub Mar 2009
 * Georgescu R.E., Alexov E.G., Gunner M.R.(2002). Combining conformational flexibility and continuum electrostatics for calculating pKa's in proteins. Biophys J. 83, 1731-1748
