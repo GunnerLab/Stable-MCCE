@@ -2,8 +2,15 @@ site_name: MCCE Documentation
 
 remote_name: upstream
 
+site_url: https://gunnerlab.github.io/Stable-MCCE/
+copyright: Copyright © 2020 Gunner Lab
+google_analytics:
+  - 'UA-74771869-5'
+  - 'auto'
+
+
 nav:
-    - Overview: index.md
+    - What is MCCE?: index.md
     - Quick Start: quick.md
     - Tutorial and Examples:
       - pKa calculation: pkaexample.md
