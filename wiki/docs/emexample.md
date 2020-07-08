@@ -17,8 +17,8 @@ make a working directory and go to the working directory. MCCE will generate int
 the current directory, so it's best to prepare one directory for calculation on one structure.
 
 ```
-mkdir 1akk
-cd 1akk
+$ mkdir 1akk
+$ cd 1akk
 ```
 
 Then download pdb file 1AKK to the working directory:
@@ -36,13 +36,13 @@ This step proof reads the structure file and cut terminal residues and complex c
 
 The heme in cytochrome C has two ligands HIS18 and MET80. They behave differently than HIS and MET so we have to rename them. Copy name.txt from the MCCE directoy to working directory.
 ```
-cp /path/to/mcce/name.txt ./
+$ cp /path/to/mcce/name.txt ./
 ```
 
-Your /path/to/mcce/ can be found by running
+Your /path/to/mcce can be found by running
 
 ```
-var=`which mcce`; echo ${var%/*/*}
+$ var=`which mcce`; echo ${var%/*/*}
 ```
 
 Now that you have a name.txt in your working directory, add these two lines to ./name.txt:
@@ -53,7 +53,7 @@ Now that you have a name.txt in your working directory, add these two lines to .
 
 Then run step 1:
 ```
-step1.py -u RENAME_RULES=./name.txt 1AKK.pdb
+$ step1.py -u RENAME_RULES=./name.txt 1AKK.pdb
 ```
 
 The reason we specify the location is to force mcce to use our own renaming rules instead of the default one.
@@ -69,7 +69,7 @@ $ step1.py -h
 This step makes alternative side chain locations and ionization states.
 
 ```
-step2.py
+$ step2.py
 ```
 
 This command generates step2_out.pdb which is required of step 3.
@@ -83,7 +83,7 @@ $ step2.py -h
 This step calculates conformer self energy and pairwise interaction table.
 
 ```
-step3.py
+$ step3.py
 ```
 
 This command generates opp files under energies/ folder and file head3.lst which are required of step 4.
@@ -97,7 +97,7 @@ $ step3.py -h
 This setp simulates a titration and write out the conformation and ionization states of each side chain at various conditions.
 
 ```
-step4.py -i 0 -d 60 -t eh
+$ step4.py -i 0 -d 60 -t eh
 ```
 
 * The occupancy table is in file fort.38.
@@ -108,12 +108,12 @@ step4.py -i 0 -d 60 -t eh
 The pKa report is in file pK.out.
 
 ```
-cat pK.out
+$ cat pK.out
 ```
 
 Your will see the calculated Eh for heme is 247 mV
 
 To analyze the ionization energy of heme at the midpoint:
 ```
-mfe.py HEM+A0105_
+$ mfe.py HEM+A0105_
 ```
