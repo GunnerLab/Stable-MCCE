@@ -12,7 +12,7 @@ Crystal structure of hen egg white lysozyme - PDB ID 3WUM
 
 The residue GLU 35 and ASP 52 have been identified as two active sites. The pKas of these two residues play an important
  role in the enzyme's activity. In order for lysozyme to attack the glucose molecule of the substrate, 
- GLU has high pKa and ASP 52 has low pKa. This way GLU 35 acts a proton donor, cuts the glucose with protonation of the 
+ GLU has high pKa and ASP 52 has low pKa. This way GLU 35 acts as a proton donor, cuts the glucose with protonation of the 
  glycosidic oxygen and a deprotonated ASP 52 stabilizes the highly charged intermediate, making the reaction easier.
 
 [Jens Erik Nielsen and J. Andrew McCammon, Protein Sci. 2003 Sep; 12(9): 1894–1901](https://www.ncbi.nlm.nih
@@ -20,13 +20,13 @@ The residue GLU 35 and ASP 52 have been identified as two active sites. The pKas
 
 ## Prepare the calculation
 
-After the program is installed and execution path is configured (see [link](quick.md) for details), 
+After the program is installed and the environment variable PATH is configured (see [link](quick.md#configure-environment) for details), 
 make a working directory and go to the working directory. MCCE will generate intermediate files and result files in 
 the current directory, so it's best to prepare one directory for calculation on one structure.
  
 ```
-mkdir 4lzt
-cd 4lzt
+$ mkdir 4lzt
+$ cd 4lzt
 ```
  
 Then download pdb file 4LZT to the working directory:
@@ -42,7 +42,7 @@ Download completed.
 ### Step 1. Convert PDB file into MCCE PDB
 This step proof reads the structure file and cut terminal residues and complex cofactors into smaller ones if necessary.
 ```
-step1.py 4LZT.pdb
+$ step1.py 4LZT.pdb
 ```
 
 This command generates step1_out.pdb which is required of step 2.
@@ -56,7 +56,7 @@ $ step1.py -h
 This step makes alternative side chain locations and ionization states.
 
 ```
-step2.py
+$ step2.py
 ```
 
 This command generates step2_out.pdb which is required of step 3.
@@ -70,7 +70,7 @@ $ step2.py -h
 This step calculates conformer self energy and pairwise interaction table.
 
 ```
-step3.py
+$ step3.py
 ```
 
 This command generates opp files under energies/ folder and file head3.lst which are required of step 4.
@@ -81,10 +81,10 @@ $ step3.py -h
 ```
 
 ### Step 4. Simulate a titration with Monte Carlo sampling
-This setp simulates a titration and write out the conformation and ionization states of each side chain at various conditions.
+This step simulates a titration and writes out the conformation and ionization states of each side chain at various conditions.
 
 ```
-step4.py --xts
+$ step4.py --xts
 ```
 
 * The occupancy table is in file fort.38.
@@ -95,17 +95,17 @@ step4.py --xts
 The pKa report is in file pK.out.
 
 ```
-cat pK.out
+$ cat pK.out
 ```
 
 From the result, GLU 35 (pKa = 5.13) has a higher pKa than ASP 52 (pKa = 3.33).
 
 To analyze the ionization energy of an ionizable residue at the mid point pH=5.13 with pairwise cutoff 0.1:
 ```
-mfe.py ASP-A0052_ -c 0.1
+$ mfe.py ASP-A0052_ -c 0.1
 ```
 
 To analyze the ionization energy of this residue pH 7 with pairwise cutoff 0.1:
 ```
-mfe.py ASP-A0052_  -p 7 -c 0.1
+$ mfe.py ASP-A0052_  -p 7 -c 0.1
 ```
