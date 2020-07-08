@@ -23,14 +23,12 @@ The C and gfortran compilers usually come with your operating system. If not, us
 
 
 ### Python and modules
-We need Python3 and modules: numpy, scipy, matplotlib, pandas, and openpyxl
+We need Python3 and optionally these modules: numpy, scipy, matplotlib, pygraphviz, pandas, xlrd, and openpyxl
 
-
-
-* Install Miniconda: https://docs.conda.io/en/latest/miniconda.html
-* After installing Miniconda, install these modules:
+* Install Miniconda Python3: https://docs.conda.io/en/latest/miniconda.html
+* After installing Miniconda, install these optional modules for data analysis:
 ```
-conda install numpy scipy matplotlib pandas openpyxl
+conda install numpy scipy matplotlib pygraphviz pandas xlrd openpyxl
 ```
 
 
