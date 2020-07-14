@@ -2709,9 +2709,9 @@ int place_missing(PROT prot, int handle_addconf) {
                         }
                         else {
                             if (!strcmp(prot.res[kr-1].resName, "NTR") || !strcmp(prot.res[kr-1].resName, "NTG")) {
-                                if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
-                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' ';
-                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' ';
+                                //if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
+                                //if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' ';
+                                //if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' ';
                                 if (!param_get("IATOM","NTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTR01",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTGBK",sbuff,sbuff2)) continue;
@@ -3352,16 +3352,16 @@ int place_missing_res(PROT prot, int i_res, int handle_addconf) {
                         }
                         else {
                             if (!strcmp(prot.res[i_res-1].resName, "NTR") || !strcmp(prot.res[i_res-1].resName, "NTG")) {
-                                if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
-                                if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' '; //sbuff[0] = '1'
-                                if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' '; //sbuff[0] = '1'
+                                //if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
+                                //if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' '; //sbuff[0] = '1'
+                                //if (!strncmp(sbuff+1,"H\0",2)) sbuff[0] = ' '; //sbuff[0] = '1'
                                 if (!param_get("IATOM","NTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTR01",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTGBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","NTG01",sbuff,sbuff2)) continue;
                             }
                             if (!strcmp(prot.res[i_res+1].resName, "CTR")) {
-                                sbuff[0] = ' ';
+                                //sbuff[0] = ' ';
                                 if (!param_get("IATOM","CTRBK",sbuff,sbuff2)) continue;
                                 if (!param_get("IATOM","CTR01",sbuff,sbuff2)) continue;
                             }
