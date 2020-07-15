@@ -129,8 +129,14 @@ $ step4.py
 
 ## Notes
 
+### Command help "-h"
 * For more detailed command usages, use "-h" switch in each command above.
+
+### Run in background
 * Some steps take hours to finish, so it is recommended to run at the background. For example:
 ```
 step3.py > run.log &
 ```
+
+### Jupyter notebook
+Here is a Jupiter note book template: [mcce.ipynb](files/mcce.ipynb)
