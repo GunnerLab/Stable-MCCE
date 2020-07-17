@@ -2707,7 +2707,9 @@ int place_missing(PROT prot, int handle_addconf) {
                             ka, prot.res[kr].conf[kc].confName);
                             Missing++;
                         }
+                        /*
                         else {
+                            printf("kr=%d, atom=%s\n", kr, prot.res[kr].conf[kc].atom[ka].name);
                             if (!strcmp(prot.res[kr-1].resName, "NTR") || !strcmp(prot.res[kr-1].resName, "NTG")) {
                                 //if (!strncmp(sbuff+1,"HA",2)) sbuff[0] = ' ';
                                 //if (!strncmp(sbuff+1,"H ",2)) sbuff[0] = ' ';
@@ -2728,6 +2730,7 @@ int place_missing(PROT prot, int handle_addconf) {
                                 Missing++;
                             }
                         }
+                        */
                     }
                 }
             }
