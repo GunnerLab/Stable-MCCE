@@ -26,9 +26,89 @@ Usage examples:
     step1.py prot.pdb -u HOME_MCCE=/path/to/mcce_home,H2O_SASCUTOFF=0.05
 """
 
-import os, argparse, shutil
+import os, argparse, math
 import subprocess
 from mccesteps import *
+
+
+# ligands and renaming rules.
+Possible_ligands = {"HIS": "HIL",
+                    "MET": "MEL"}
+
+Possible_receptors = ["HEM", "HEC", "HEB"]
+
+# distance between heavy atoms smaller than this is considered bonded
+BOND_threshold = 2.7
+
+
+class Atom:
+    def __init__(self):
+        self.icount = 0
+        self.name = ""
+        self.element = ""  # two-letter code for element name
+        self.resname = ""
+        self.chainid = ""
+        self.seqnum = 0
+        self.icode = ""
+        self.xyz = ()
+        return
+
+    def loadline(self, line):
+        self.icount = int(line[6:11])
+        self.name = line[12:16]
+        if self.name[:2] == " D":
+            self.name = " H" + self.name[2:]
+        self.resname = line[17:20]
+        self.chainid = line[21]
+        self.seqnum = int(line[22:26])
+        self.icode = line[26]
+        self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        self.resid = (self.resname, self.chainid, self.seqnum, self.icode)
+
+        if len(self.name.strip()) < 4:
+            self.element = self.name[:2]
+        else:
+            self.element = " H"
+
+        return
+
+    def printme(self):
+        return("ATOM %6d %4s %3s %c%4d%c   %8.3f%8.3f%8.3f\n" % (self.icount,
+                                                                self.name,
+                                                                self.resname,
+                                                                self.chainid,
+                                                                self.seqnum,
+                                                                self.icode,
+                                                                self.xyz[0],
+                                                                self.xyz[1],
+                                                                self.xyz[2]))
+
+class Residue:
+    def __init__(self):
+        self.resid = ()
+        self.atoms = []
+
+
+def ddvv(v1, v2):
+    dx = v1[0] - v2[0]
+    dy = v1[1] - v2[1]
+    dz = v1[2] - v2[2]
+    return dx*dx + dy*dy + dz*dz
+
+
+def shortest_d(res1, res2):
+    ddmin = 1.0E10
+    for atom1 in res1.atoms:
+        if atom1.element == " H":
+            continue
+        for atom2 in res2.atoms:
+            if atom2.element == " H":
+                continue
+            dd = ddvv(atom1.xyz, atom2.xyz)
+            if ddmin > dd:
+                ddmin = dd
+    return math.sqrt(ddmin)
+
 
 def fix_format(fname):
     # make sure NT atoms appear before CTR atoms.
@@ -76,6 +156,66 @@ def fix_format(fname):
     new_pdblines += ctr_atoms
 
     return new_pdblines
+
+
+def group_residues(lines):
+    residues = []
+    atoms = []
+    for line in lines:
+        atom = Atom()
+        atom.loadline(line)
+        atoms.append(atom)
+
+    resids = []
+    for atom in atoms:
+        if atom.resid in resids:
+            ires = resids.index(atom.resid)
+            residues[ires].atoms.append(atom)
+        else:
+            residue = Residue()
+            residue.resid = atom.resid
+            residue.atoms.append(atom)
+            residues.append(residue)
+            resids.append(atom.resid)
+
+    return residues
+
+
+def rename_ligand(res):
+    for atom in res.atoms:
+        atom.resname = Possible_ligands[atom.resname]
+
+
+def identify_ligands(lines):
+    newlines = []
+
+    lines = [x.strip() for x in lines if x[:6] == "ATOM  " or x[:6]=="HETATM"]
+    residues = group_residues(lines)
+
+    receptors = []
+    for res in residues:
+        resname = res.resid[0]
+        if resname in Possible_receptors:
+            receptors.append(res)
+
+    ligands = []
+    for res in residues:
+        resname = res.resid[0]
+        if resname in Possible_ligands:
+            ligands.append(res)
+
+    for receptor in receptors:
+        for ligand in ligands:
+            if shortest_d(receptor, ligand) < BOND_threshold:
+                rename_ligand(ligand)
+
+
+    for res in residues:
+        for atom in res.atoms:
+            newlines.append(atom.printme())
+
+    return newlines
+
 
 
 def write_runprm(args):
@@ -136,6 +276,7 @@ if __name__ == "__main__":
     write_runprm(args)
     if not args.norun:
         new_pdblines = fix_format(args.prot[0])
+        new_pdblines = identify_ligands(new_pdblines)
         open("step0_out.pdb", "w").writelines(new_pdblines)
 
         mcce = args.e
