@@ -19,7 +19,8 @@ Kcal2kT = 1.688
 #              RES  : ground  excited
 Special_res = {"_CU": (["+1"], ["+2"]),
                "UbQ": (["01"], ["-1"]),
-               "HOH": (["01"], ["DM"])}
+               "HOH": (["01"], ["DM"]),
+	       "T4Y": (["01"], ["+1", "+2"])}
 
 class E_IONIZE:
     def __init__(self):
