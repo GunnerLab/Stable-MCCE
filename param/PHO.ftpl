@@ -1,0 +1,404 @@
+>>>START of original comments, this file was converted from old format
+#modified by MInghui, 10/14/2010
+#PDB ID for the cofactors structure: 3BZ2,
+#ESP Charge in Gaussian 6-31G*
+#1.Basic Conformer Information: name, pka, em, rxn
+#2.Structure Connectivity:
+#3.Atom Parameters: Partial Charges and Radii
+#1.Basic Conformer Information: name, pka, em, rxn
+#2.Structure Connectivity:
+#3.Atom Parameters: Partial Charges and Radii
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, PHO: PHOBK, PHO01, PHO-1
+
+# Atom definition
+CONNECT, " C1 ", PHOBK: sp2, " O2A", " C2 "
+CONNECT, " C2 ", PHOBK: sp2, " C1 ", " C3 "
+CONNECT, " C3 ", PHOBK: sp2, " C2 ", " C4 ", " C5 "
+CONNECT, " C4 ", PHOBK: s, " C3 "
+CONNECT, " C5 ", PHOBK: sp2, " C3 ", " C6 "
+CONNECT, " C6 ", PHOBK: sp2, " C5 ", " C7 "
+CONNECT, " C7 ", PHOBK: sp2, " C6 ", " C8 "
+CONNECT, " C8 ", PHOBK: sp2, " C7 ", " C10", " C9 "
+CONNECT, " C10", PHOBK: sp2, " C8 ", " C11"
+CONNECT, " C11", PHOBK: sp2, " C10", " C12"
+CONNECT, " C9 ", PHOBK: s, " C8 "
+CONNECT, " C13", PHOBK: sp2, " C14", " C15", " C12"
+CONNECT, " C14", PHOBK: s, " C13"
+CONNECT, " C15", PHOBK: sp2, " C13", " C16"
+CONNECT, " C16", PHOBK: sp2, " C15", " C17"
+CONNECT, " C17", PHOBK: sp2, " C16", " C18"
+CONNECT, " C18", PHOBK: sp2, " C17", " C19", " C20"
+CONNECT, " C19", PHOBK: s, " C18"
+CONNECT, " C20", PHOBK: s, " C18"
+CONNECT, " C12", PHOBK: sp2, " C11", " C13"
+CONNECT, " NC ", PHO01: sp2, " C1C", " C4C"
+CONNECT, " C1C", PHO01: sp2, " NC ", " C2C", " CHC"
+CONNECT, " C2C", PHO01: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C4C", PHO01: sp2, " NC ", " C3C", " CHD"
+CONNECT, " CHC", PHO01: sp2, " C1C", " C4B", " HC "
+CONNECT, " C3C", PHO01: sp2, " C2C", " C4C", " CAC"
+CONNECT, " CHD", PHO01: sp2, " C4C", " C1D", " HD "
+CONNECT, " C4B", PHO01: sp2, " CHC", " NB ", " C3B"
+CONNECT, " NB ", PHO01: sp2, " C4B", " C1B", "4H16"
+CONNECT, " C1B", PHO01: sp2, " NB ", " C2B", " CHB"
+CONNECT, " C3B", PHO01: sp2, " C4B", " C2B", " CAB"
+CONNECT, " C2B", PHO01: sp2, " C1B", " C3B", " CMB"
+CONNECT, " CHB", PHO01: sp2, " C1B", " C4A", " HB "
+CONNECT, " C4A", PHO01: sp2, " CHB", " NA ", " C3A"
+CONNECT, " NA ", PHO01: sp2, " C4A", " C1A"
+CONNECT, " C1A", PHO01: sp2, " NA ", " C2A", " CHA"
+CONNECT, " C3A", PHO01: sp2, " C4A", " C2A", " CMA"
+CONNECT, " C2A", PHO01: sp2, " C1A", " C3A", " CAA"
+CONNECT, " CHA", PHO01: sp2, " C1A", " C4D", " CBD"
+CONNECT, " C4D", PHO01: sp2, " CHA", " ND ", " C3D"
+CONNECT, " ND ", PHO01: sp2, " C4D", " C1D", "5H16"
+CONNECT, " C1D", PHO01: sp2, " CHD", " ND ", " C2D"
+CONNECT, " C3D", PHO01: sp2, " C4D", " C2D", " CAD"
+CONNECT, " C2D", PHO01: sp2, " C1D", " C3D", " CMD"
+CONNECT, " CBD", PHO01: sp3, " CHA", " CAD", " CGD", " HBD"
+CONNECT, " CAD", PHO01: sp2, " C3D", " CBD", " OBD"
+CONNECT, " HD ", PHO01: s, " CHD"
+CONNECT, " HB ", PHO01: s, " CHB"
+CONNECT, " HC ", PHO01: s, " CHC"
+CONNECT, " CMD", PHO01: s, " C2D"
+CONNECT, " CMB", PHO01: s, " C2B"
+CONNECT, " CMA", PHO01: s, " C3A"
+CONNECT, " CMC", PHO01: s, " C2C"
+CONNECT, " OBD", PHO01: s, " CAD"
+CONNECT, " CAB", PHO01: sp2, " C3B", " CBB", " HAB"
+CONNECT, " CBB", PHO01: sp2, " CAB", "1HBB", "2HBB"
+CONNECT, " CAC", PHO01: sp2, " C3C", " CBC"
+CONNECT, " CBC", PHO01: s, " CAC"
+CONNECT, " CGD", PHO01: sp2, " CBD", " O1D", " O2D"
+CONNECT, " O1D", PHO01: s, " CGD"
+CONNECT, " O2D", PHO01: sp2, " CGD", " CED"
+CONNECT, " CED", PHO01: s, " O2D"
+CONNECT, " CAA", PHO01: sp2, " C2A", " CBA"
+CONNECT, " CBA", PHO01: sp2, " CAA", " CGA"
+CONNECT, " CGA", PHO01: sp2, " CBA", " O2A", " O1A"
+CONNECT, " O2A", PHO01: sp2, " CGA", " C1 "
+CONNECT, " O1A", PHO01: s, " CGA"
+CONNECT, " HBD", PHO01: s, " CBD"
+CONNECT, "1HBB", PHO01: s, " CBB"
+CONNECT, "2HBB", PHO01: s, " CBB"
+CONNECT, " HAB", PHO01: s, " CAB"
+CONNECT, "4H16", PHO01: s, " NB "
+CONNECT, "5H16", PHO01: s, " ND "
+CONNECT, " NC ", PHO-1: sp2, " C1C", " C4C"
+CONNECT, " C1C", PHO-1: sp2, " NC ", " C2C", " CHC"
+CONNECT, " C2C", PHO-1: sp2, " C1C", " C3C", " CMC"
+CONNECT, " C4C", PHO-1: sp2, " NC ", " C3C", " CHD"
+CONNECT, " CHC", PHO-1: sp2, " C1C", " C4B", " HC "
+CONNECT, " C3C", PHO-1: sp2, " C2C", " C4C", " CAC"
+CONNECT, " CHD", PHO-1: sp2, " C4C", " C1D", " HD "
+CONNECT, " C4B", PHO-1: sp2, " CHC", " NB ", " C3B"
+CONNECT, " NB ", PHO-1: sp2, " C4B", " C1B", "4H16"
+CONNECT, " C1B", PHO-1: sp2, " NB ", " C2B", " CHB"
+CONNECT, " C3B", PHO-1: sp2, " C4B", " C2B", " CAB"
+CONNECT, " C2B", PHO-1: sp2, " C1B", " C3B", " CMB"
+CONNECT, " CHB", PHO-1: sp2, " C1B", " C4A", " HB "
+CONNECT, " C4A", PHO-1: sp2, " CHB", " NA ", " C3A"
+CONNECT, " NA ", PHO-1: sp2, " C4A", " C1A"
+CONNECT, " C1A", PHO-1: sp2, " NA ", " C2A", " CHA"
+CONNECT, " C3A", PHO-1: sp2, " C4A", " C2A", " CMA"
+CONNECT, " C2A", PHO-1: sp2, " C1A", " C3A", " CAA"
+CONNECT, " CHA", PHO-1: sp2, " C1A", " C4D", " CBD"
+CONNECT, " C4D", PHO-1: sp2, " CHA", " ND ", " C3D"
+CONNECT, " ND ", PHO-1: sp2, " C4D", " C1D", "5H16"
+CONNECT, " C1D", PHO-1: sp2, " CHD", " ND ", " C2D"
+CONNECT, " C3D", PHO-1: sp2, " C4D", " C2D", " CAD"
+CONNECT, " C2D", PHO-1: sp2, " C1D", " C3D", " CMD"
+CONNECT, " CBD", PHO-1: sp3, " CHA", " CAD", " CGD", " HBD"
+CONNECT, " CAD", PHO-1: sp2, " C3D", " CBD", " OBD"
+CONNECT, " HD ", PHO-1: s, " CHD"
+CONNECT, " HB ", PHO-1: s, " CHB"
+CONNECT, " HC ", PHO-1: s, " CHC"
+CONNECT, " CMD", PHO-1: s, " C2D"
+CONNECT, " CMB", PHO-1: s, " C2B"
+CONNECT, " CMA", PHO-1: s, " C3A"
+CONNECT, " CMC", PHO-1: s, " C2C"
+CONNECT, " OBD", PHO-1: s, " CAD"
+CONNECT, " CAB", PHO-1: sp2, " C3B", " CBB", " HAB"
+CONNECT, " CBB", PHO-1: sp2, " CAB", "1HBB", "2HBB"
+CONNECT, " CAC", PHO-1: sp2, " C3C", " CBC"
+CONNECT, " CBC", PHO-1: s, " CAC"
+CONNECT, " CGD", PHO-1: sp2, " CBD", " O1D", " O2D"
+CONNECT, " O1D", PHO-1: s, " CGD"
+CONNECT, " O2D", PHO-1: sp2, " CGD", " CED"
+CONNECT, " CED", PHO-1: s, " O2D"
+CONNECT, " CAA", PHO-1: sp2, " C2A", " CBA"
+CONNECT, " CBA", PHO-1: sp2, " CAA", " CGA"
+CONNECT, " CGA", PHO-1: sp2, " CBA", " O2A", " O1A"
+CONNECT, " O2A", PHO-1: sp2, " CGA", " C1 "
+CONNECT, " O1A", PHO-1: s, " CGA"
+CONNECT, " HBD", PHO-1: s, " CBD"
+CONNECT, "1HBB", PHO-1: s, " CBB"
+CONNECT, "2HBB", PHO-1: s, " CBB"
+CONNECT, " HAB", PHO-1: s, " CAB"
+CONNECT, "4H16", PHO-1: s, " NB "
+CONNECT, "5H16", PHO-1: s, " ND "
+
+# Atom charges
+CHARGE, PHOBK, " C1 ":  0.000
+CHARGE, PHOBK, " C2 ":  0.000
+CHARGE, PHOBK, " C3 ":  0.000
+CHARGE, PHOBK, " C4 ":  0.000
+CHARGE, PHOBK, " C5 ":  0.000
+CHARGE, PHOBK, " C6 ":  0.000
+CHARGE, PHOBK, " C7 ":  0.000
+CHARGE, PHOBK, " C8 ":  0.000
+CHARGE, PHOBK, " C10":  0.000
+CHARGE, PHOBK, " C11":  0.000
+CHARGE, PHOBK, " C9 ":  0.000
+CHARGE, PHOBK, " C13":  0.000
+CHARGE, PHOBK, " C14":  0.000
+CHARGE, PHOBK, " C15":  0.000
+CHARGE, PHOBK, " C16":  0.000
+CHARGE, PHOBK, " C17":  0.000
+CHARGE, PHOBK, " C18":  0.000
+CHARGE, PHOBK, " C19":  0.000
+CHARGE, PHOBK, " C20":  0.000
+CHARGE, PHOBK, " C12":  0.000
+CHARGE, PHO01, " NC ": -0.424
+CHARGE, PHO01, " C1C":  0.213
+CHARGE, PHO01, " C2C": -0.004
+CHARGE, PHO01, " C4C":  0.275
+CHARGE, PHO01, " CHC": -0.216
+CHARGE, PHO01, " C3C": -0.243
+CHARGE, PHO01, " CHD": -0.258
+CHARGE, PHO01, " C4B":  0.125
+CHARGE, PHO01, " NB ": -0.272
+CHARGE, PHO01, " C1B":  0.200
+CHARGE, PHO01, " C3B": -0.026
+CHARGE, PHO01, " C2B": -0.023
+CHARGE, PHO01, " CHB": -0.396
+CHARGE, PHO01, " C4A":  0.281
+CHARGE, PHO01, " NA ": -0.377
+CHARGE, PHO01, " C1A":  0.131
+CHARGE, PHO01, " C3A":  0.094
+CHARGE, PHO01, " C2A":  0.113
+CHARGE, PHO01, " CHA": -0.131
+CHARGE, PHO01, " C4D":  0.189
+CHARGE, PHO01, " ND ": -0.219
+CHARGE, PHO01, " C1D":  0.131
+CHARGE, PHO01, " C3D": -0.233
+CHARGE, PHO01, " C2D":  0.042
+CHARGE, PHO01, " CBD": -0.197
+CHARGE, PHO01, " CAD":  0.551
+CHARGE, PHO01, " HD ":  0.163
+CHARGE, PHO01, " HB ":  0.145
+CHARGE, PHO01, " HC ":  0.111
+CHARGE, PHO01, " CMD":  0.051
+CHARGE, PHO01, " CMB":  0.050
+CHARGE, PHO01, " CMA": -0.047
+CHARGE, PHO01, " CMC":  0.024
+CHARGE, PHO01, " OBD": -0.477
+CHARGE, PHO01, " CAB": -0.035
+CHARGE, PHO01, " CBB": -0.326
+CHARGE, PHO01, " CAC":  0.176
+CHARGE, PHO01, " CBC": -0.058
+CHARGE, PHO01, " CGD":  0.712
+CHARGE, PHO01, " O1D": -0.536
+CHARGE, PHO01, " O2D": -0.375
+CHARGE, PHO01, " CED":  0.226
+CHARGE, PHO01, " CAA":  0.050
+CHARGE, PHO01, " CBA": -0.112
+CHARGE, PHO01, " CGA":  0.693
+CHARGE, PHO01, " O2A": -0.158
+CHARGE, PHO01, " O1A": -0.473
+CHARGE, PHO01, " HBD":  0.069
+CHARGE, PHO01, "1HBB":  0.146
+CHARGE, PHO01, "2HBB":  0.131
+CHARGE, PHO01, " HAB":  0.091
+CHARGE, PHO01, "4H16":  0.258
+CHARGE, PHO01, "5H16":  0.175
+CHARGE, PHO-1, " NC ": -0.438
+CHARGE, PHO-1, " C1C":  0.192
+CHARGE, PHO-1, " C2C": -0.017
+CHARGE, PHO-1, " C4C":  0.292
+CHARGE, PHO-1, " CHC": -0.256
+CHARGE, PHO-1, " C3C": -0.246
+CHARGE, PHO-1, " CHD": -0.346
+CHARGE, PHO-1, " C4B":  0.057
+CHARGE, PHO-1, " NB ": -0.210
+CHARGE, PHO-1, " C1B":  0.162
+CHARGE, PHO-1, " C3B": -0.026
+CHARGE, PHO-1, " C2B": -0.131
+CHARGE, PHO-1, " CHB": -0.435
+CHARGE, PHO-1, " C4A":  0.228
+CHARGE, PHO-1, " NA ": -0.360
+CHARGE, PHO-1, " C1A":  0.018
+CHARGE, PHO-1, " C3A":  0.041
+CHARGE, PHO-1, " C2A":  0.178
+CHARGE, PHO-1, " CHA": -0.101
+CHARGE, PHO-1, " C4D":  0.147
+CHARGE, PHO-1, " ND ": -0.179
+CHARGE, PHO-1, " C1D":  0.135
+CHARGE, PHO-1, " C3D": -0.236
+CHARGE, PHO-1, " C2D": -0.040
+CHARGE, PHO-1, " CBD": -0.270
+CHARGE, PHO-1, " CAD":  0.511
+CHARGE, PHO-1, " HD ":  0.163
+CHARGE, PHO-1, " HB ":  0.157
+CHARGE, PHO-1, " HC ":  0.111
+CHARGE, PHO-1, " CMD":  0.022
+CHARGE, PHO-1, " CMB":  0.050
+CHARGE, PHO-1, " CMA": -0.063
+CHARGE, PHO-1, " CMC": -0.001
+CHARGE, PHO-1, " OBD": -0.527
+CHARGE, PHO-1, " CAB": -0.007
+CHARGE, PHO-1, " CBB": -0.409
+CHARGE, PHO-1, " CAC":  0.144
+CHARGE, PHO-1, " CBC": -0.072
+CHARGE, PHO-1, " CGD":  0.770
+CHARGE, PHO-1, " O1D": -0.572
+CHARGE, PHO-1, " O2D": -0.387
+CHARGE, PHO-1, " CED":  0.206
+CHARGE, PHO-1, " CAA":  0.080
+CHARGE, PHO-1, " CBA": -0.141
+CHARGE, PHO-1, " CGA":  0.627
+CHARGE, PHO-1, " O2A": -0.126
+CHARGE, PHO-1, " O1A": -0.492
+CHARGE, PHO-1, " HBD":  0.077
+CHARGE, PHO-1, "1HBB":  0.000
+CHARGE, PHO-1, "2HBB":  0.000
+CHARGE, PHO-1, " HAB":  0.071
+CHARGE, PHO-1, "4H16":  0.000
+CHARGE, PHO-1, "5H16":  0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  PHOBK,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C2 ": 1.700,   2.000,   0.150
+RADIUS,  PHOBK,  " C3 ": 1.700,   2.000,   0.150
+RADIUS,  PHOBK,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C5 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C10": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C11": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C9 ": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C13": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C14": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C15": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C16": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C17": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C18": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C19": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C20": 2.000,   2.000,   0.150
+RADIUS,  PHOBK,  " C12": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " NC ": 1.550,   1.750,   0.160
+RADIUS,  PHO01,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " NB ": 1.550,   1.750,   0.160
+RADIUS,  PHO01,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " NA ": 1.550,   1.750,   0.160
+RADIUS,  PHO01,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " ND ": 1.550,   1.750,   0.160
+RADIUS,  PHO01,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " HD ": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  " HB ": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  " HC ": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  PHO01,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CBB": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  PHO01,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  PHO01,  " CED": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  PHO01,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  PHO01,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  PHO01,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  PHO01,  " HBD": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  "1HBB": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  "2HBB": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  " HAB": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  "4H16": 1.200,   1.000,   0.020
+RADIUS,  PHO01,  "5H16": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  " NC ": 1.550,   1.750,   0.160
+RADIUS,  PHO-1,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " NB ": 1.550,   1.750,   0.160
+RADIUS,  PHO-1,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " NA ": 1.550,   1.750,   0.160
+RADIUS,  PHO-1,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " ND ": 1.550,   1.750,   0.160
+RADIUS,  PHO-1,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " HD ": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  " HB ": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  " HC ": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  PHO-1,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CBB": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  PHO-1,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  PHO-1,  " CED": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  PHO-1,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  PHO-1,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  PHO-1,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  PHO-1,  " HBD": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  "1HBB": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  "2HBB": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  " HAB": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  "4H16": 1.200,   1.000,   0.020
+RADIUS,  PHO-1,  "5H16": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, PHO01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn04= -4.111
+CONFORMER, PHO-1: Em0=-620.0, pKa0=  0.00, ne= 1, nH= 0, rxn04=-12.138
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

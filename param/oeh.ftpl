@@ -1,0 +1,32 @@
+>>>START of original comments, this file was converted from old format
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#-------|-----|----|--------------
+#ParaNam|Res |Atom|Param/toggle
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, OEH: OEHBK, OEH-1, OEH-2
+
+# Atom definition
+CONNECT, " O  ", OEH-1: sp3, " H  "
+CONNECT, " H  ", OEH-1: s, " O  "
+CONNECT, " O  ", OEH-2: ion, 
+
+# Atom charges
+CHARGE, OEH-1, " O  ": -1.700
+CHARGE, OEH-1, " H  ":  0.700
+CHARGE, OEH-2, " O  ": -2.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  OEH-1,  " O  ": 1.520,   1.600,   0.200
+RADIUS,  OEH-1,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  OEH-2,  " O  ": 1.520,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, OEH-1: Em0=   0.0, pKa0= 15.70, ne= 0, nH=-1, rxn04=-25.540
+CONFORMER, OEH-2: Em0=   0.0, pKa0= 21.90, ne= 0, nH=-2, rxn04=-103.500
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
