@@ -1,4 +1,4 @@
-CONFLIST, T4Y: T4YBK, T4Y01, T4Y+1, T4Y+2
+CONFLIST, T4Y: T4YBK, T4Y01, T4Y+1, T4Y+2, T4YDM
 # Conformer definition
 # see T4Y_conflist.ftpl
 
@@ -129,7 +129,7 @@ RADIUS, T4Y01, " H11":  1.000,  1.000,  0.020
 RADIUS, T4Y01, " H12":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T4Y01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -8.518, rxn04= -4.067, rxn08= -1.856
 # Conformer definition
 # see T4Y_conflist.ftpl
 
@@ -263,7 +263,7 @@ RADIUS, T4Y+1, " H12":  1.000,  1.000,  0.020
 RADIUS, T4Y+1, " H23":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T4Y+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -30.315, rxn04= -14.672, rxn08= -6.868
 # Conformer definition
 # see T4Y_conflist.ftpl
 
@@ -397,4 +397,4 @@ RADIUS, T4Y+2, " H12":  1.000,  1.000,  0.020
 RADIUS, T4Y+2, " H23":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y+2:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T4Y+2:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.923, rxn04= -14.485, rxn08= -6.783
