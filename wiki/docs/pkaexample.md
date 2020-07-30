@@ -12,21 +12,21 @@ Crystal structure of hen egg white lysozyme - PDB ID 3WUM
 
 The residue GLU 35 and ASP 52 have been identified as two active sites. The pKas of these two residues play an important
  role in the enzyme's activity. In order for lysozyme to attack the glucose molecule of the substrate, 
- GLU has high pKa and ASP 52 has low pKa. This way GLU 35 acts a proton donor, cuts the glucose with protonation of the 
- glycosidic oxygen and a deprotonated GLU 52 stabilizes the highly charged intermediate, making the reaction easier. 
+ GLU has high pKa and ASP 52 has low pKa. This way GLU 35 acts as a proton donor, cuts the glucose with protonation of the 
+ glycosidic oxygen and a deprotonated ASP 52 stabilizes the highly charged intermediate, making the reaction easier.
 
 [Jens Erik Nielsen and J. Andrew McCammon, Protein Sci. 2003 Sep; 12(9): 1894–1901](https://www.ncbi.nlm.nih
 .gov/pmc/articles/PMC2323987/)  
 
 ## Prepare the calculation
 
-After the program is installed and execution path is configured (see [link](quick.md) for details), 
+After the program is installed and the environment variable PATH is configured (see [link](quick.md#configure-environment) for details), 
 make a working directory and go to the working directory. MCCE will generate intermediate files and result files in 
 the current directory, so it's best to prepare one directory for calculation on one structure.
  
 ```
-mkdir 4lzt
-cd 4lzt
+$ mkdir 4lzt
+$ cd 4lzt
 ```
  
 Then download pdb file 4LZT to the working directory:
@@ -37,137 +37,75 @@ Saving as 4LZT.pdb ...
 Download completed. 
 ```
 
-## Configure run.prm for MCCE
+## Run 4 steps of MCCE
 
-MCCE requires a file run.prm to guide the run.
-
+### Step 1. Convert PDB file into MCCE PDB
+This step proof reads the structure file and cut terminal residues and complex cofactors into smaller ones if necessary.
 ```
-cp {/path/to/mcce/}run.prm.quick ./run.prm
-```
-
-```{/path/to/mcce/}``` is the path to the MCCE installation directory. The file run.prm defines how MCCE runs. If the 
-line ends up with a keyword enclosed in a pair of parenthesis, this line is a definition line, 
-with the key being the word in parenthesis and the value being the the first word of this line. 
-
-### The most modified entries
-
-```
-==============================================================================
-Most modified entries
-------------------------------------------------------------------------------
-Input and Output:
-prot.pdb                                                    (INPDB)
-
-Steps:
-f        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-f        step 2: make rotatmers                             (DO_ROTAMERS)
-f        step 3: do energy calculations                     (DO_ENERGY)
-f        step 4: monte carlo sampling                       (DO_MONTE)
-f        step 6: Hydrogen bond analysis                     (DO_ANALYSIS)
-==============================================================================
+$ step1.py 4LZT.pdb
 ```
 
-This line defines the input structure file:
-```
-prot.pdb                                                    (INPDB)
-```
+This command generates step1_out.pdb which is required of step 2.
 
-It's a good idea to keep the downloaded pdb file 3WUM.pdb, so we make a copy named prot.pdb:
+If you want to know the help information and other options of this command:
 ```
-cp 4LZT.pdb prot.pdb
+$ step1.py -h
 ```
 
-Since we are calculating pKas, we need to run from step 1 to 4. Mark these steps "t" for "true".
-```
-t        step 1: pre-run, pdb-> mcce pdb                    (DO_PREMCCE)
-t        step 2: make rotatmers                             (DO_ROTAMERS)
-t        step 3: do energy calculations                     (DO_ENERGY)
-t        step 4: monte carlo sampling                       (DO_MONTE)
-```
-
-### The less modified entries
-
-This section is usually modified only for the first run. It defines the location of the parameters and titration 
-conditions.
+### Step 2. Make side chain conformers
+This step makes alternative side chain locations and ionization states.
 
 ```
-8.0      Protein dielectric constant for DelPhi             (EPSILON_PROT)
-/home/jmao/projects/Stable-MCCE/extra.tpl                   (EXTRA)
-/home/jmao/projects/Stable-MCCE/name.txt MCCE renaming rule.(RENAME_RULES)
-
-ph       "ph" for pH titration, "eh" for eh titration       (TITR_TYPE)
-0.0      Initial pH                                         (TITR_PH0)
-1.0      pH interval                                        (TITR_PHD)
-0.0      Initial Eh                                         (TITR_EH0)
-30.0     Eh interval (in mV)                                (TITR_EHD)
-15       Number of titration points                         (TITR_STEPS)
-```
- ..
-In the above example, I set 
-
-* the dielectric constant 8.0, which is good for pKa calculation. 
-* The path to extra.tpl and name.txt is set to my mcce installation directory. 
-* the titration type is set to be "ph"
-* the titration range from 0 to 14 at step 1, 15 titration points in total
- 
-### The advanced entries
-Some entries here have to be customized for your installation and system.
-
-```
-/home/jmao/projects/Stable-MCCE                                        (MCCE_HOME)
+$ step2.py
 ```
 
-This should point to where your mcce is installed.
+This command generates step2_out.pdb which is required of step 3.
 
-
+If you want to know the help information and other options of this command:
 ```
-/home/jmao/projects/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
-```
-
-This points to The location of delphi executable.
-
-```
-/tmp     delphi temporary file folder, "/tmp" uses node     (PBE_FOLDER)
+$ step2.py -h
 ```
 
-For some systems, /tmp is preferred temporary directory.
+### Step 3. Make energy table
+This step calculates conformer self energy and pairwise interaction table.
 
-## Run mcce
-
-Make sure mcce is in your executable path. For me, I run 
 ```
-export PATH=/home/jmao/projects/Stable-MCCE/bin:$PATH
+$ step3.py
 ```
 
-To set the PATH variable.
+This command generates opp files under energies/ folder and file head3.lst which are required of step 4.
 
-To run mcce
+If you want to know the help information and other options of this command:
 ```
-mcce
-```
-
-Ths program takes 30 minutes to 1 hour to finish. So you can run 
-```
-mcce > run.log &
+$ step3.py -h
 ```
 
-to put the program in background.
+### Step 4. Simulate a titration with Monte Carlo sampling
+This step simulates a titration and writes out the conformation and ionization states of each side chain at various conditions.
+
+```
+$ step4.py --xts
+```
+
+* The occupancy table is in file fort.38.
+* The net charge is in file sum_crg.out
+* pKas are in file pK.out
 
 ## Results
 The pKa report is in file pK.out.
 
 ```
-cat pK.out
+$ cat pK.out
 ```
 
-From the result, GLU 35 has a higher pKa than ASP 52.
+From the result, GLU 35 (pKa = 5.13) has a higher pKa than ASP 52 (pKa = 3.33).
 
-To analyze the ionization energy of an ionizable residue at ph 5:
+To analyze the ionization energy of an ionizable residue at the mid point pH=5.13 with pairwise cutoff 0.1:
 ```
-mfe.py ASP-A0052_  5
+$ mfe.py ASP-A0052_ -c 0.1
 ```
 
-at ph 7:
+To analyze the ionization energy of this residue pH 7 with pairwise cutoff 0.1:
 ```
-mfe.py ASP-A0052_  7
+$ mfe.py ASP-A0052_  -p 7 -c 0.1
 ```

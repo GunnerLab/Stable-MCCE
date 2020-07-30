@@ -58,7 +58,7 @@ def write_runprm(args):
         runprm["TITR_EH0"] = args.i
 
     runprm["TITR_PHD"] = args.d
-    runprm["TITR.EHD"] = args.d
+    runprm["TITR_EHD"] = args.d
     runprm["TITR_STEPS"] = args.n
     runprm["BIG_PAIRWISE"] = "5.0"
     runprm["MONTE_SEED"] = "-1"

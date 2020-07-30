@@ -2,8 +2,15 @@ site_name: MCCE Documentation
 
 remote_name: upstream
 
+site_url: https://gunnerlab.github.io/Stable-MCCE/
+copyright: Copyright © 2020 Gunner Lab
+google_analytics:
+  - 'UA-74771869-8'
+  - 'auto'
+
+
 nav:
-    - Overview: index.md
+    - What is MCCE?: index.md
     - Quick Start: quick.md
     - Tutorial and Examples:
       - pKa calculation: pkaexample.md
@@ -16,14 +23,15 @@ nav:
       - Make a new topology file: newftpl.md
       - Analyze ionization energy: mfehowto.md
       - How to write documentation: wikihowto.md
+      - How to contribute code: develop.md
 
 #theme: readthedocs
 
 theme:
     name: material
-    logo:
-        icon: code
-    favicon: assets/favicon.ico
+    icon:
+        logo: material/code-tags
+        favicon: material/seed
     language: en
     palette:
         primary: teal

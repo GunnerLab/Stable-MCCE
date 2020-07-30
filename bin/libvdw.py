@@ -33,7 +33,7 @@ class VDWPARM:
                         Ctype = fields[1]
                         pair = fields[2]
                         if (Ctype, pair) in self.vdwparam:
-                            print "WARNING: %s of %s entry duplicates detected." % (Ctype, pair)
+                            print("WARNING: %s of %s entry duplicates detected." % (Ctype, pair))
                         self.vdwparam[(Ctype, pair)] = float(fields[3])
                     elif fields[0] == "SCALING":
                         Vtype = fields[1]
@@ -108,7 +108,7 @@ def vdw(atom1, atom2):
             mark = "*"
         else:
             mark = ""
-        print "Atom %s <-> %s: %.3f  (d = %.3f) %s" % (atom1.atomID, atom2.atomID, e, d, mark)
+        print("Atom %s <-> %s: %.3f  (d = %.3f) %s" % (atom1.atomID, atom2.atomID, e, d, mark))
 
     return e
 

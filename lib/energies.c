@@ -346,6 +346,12 @@ int energies()
    printf("      %-16s: conformer summary\n", FN_CONFLIST3);
    printf("\n"); fflush(stdout);
 
+   sprintf(sbuff, "%s/bin/hem-lig-pw.py", env.mcce_home);
+   if (system(sbuff) != 0) {
+       printf("   Fatal: Command %s not found, check if this command is in your $PATH\n");
+       exit(-1);
+   }
+
    del_prot(&prot);
    return 0;
 }

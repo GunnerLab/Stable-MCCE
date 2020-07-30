@@ -155,7 +155,7 @@ float vdw_conf_hv(int i_res, int i_conf, int j_res, int j_conf, PROT prot)
     for (iatom=0; iatom<prot.res[i_res].conf[i_conf].n_atom; iatom++) {
         iatom_p = &prot.res[i_res].conf[i_conf].atom[iatom];
         if (!iatom_p->on) continue;
-        if (iatom_p->name[1] == 'H') continue;
+        if (!strncmp(iatom_p->element, " H", 2)) continue;
 
         n_connect123 = 0;
         n_connect14 = 0;
@@ -191,7 +191,7 @@ float vdw_conf_hv(int i_res, int i_conf, int j_res, int j_conf, PROT prot)
         for (jatom=0; jatom<prot.res[j_res].conf[j_conf].n_atom; jatom++) {
             jatom_p = &prot.res[j_res].conf[j_conf].atom[jatom];
             if (!jatom_p->on) continue;
-            if (jatom_p->name[1] == 'H') continue;
+            if (!strncmp(jatom_p->element, " H", 2)) continue;
             if (iatom_p == jatom_p) continue;
 
             for (iconnect = 0; iconnect < n_connect123; iconnect++) {

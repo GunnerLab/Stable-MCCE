@@ -253,14 +253,14 @@ float vdw_conf_fast(int i_res, int i_conf, int j_res, int j_conf, PROT prot, int
         iatom_p = &prot.res[i_res].conf[i_conf].atom[i_atom];
         if (!iatom_p->on) continue;
         if (handle_hv) {
-            if (iatom_p->name[1] == 'H') continue;
+            if (!strncmp(iatom_p->element, " H", 2)) continue;
         }
         v1 = iatom_p->xyz;
         for (j_atom=0; j_atom<prot.res[j_res].conf[j_conf].n_atom; j_atom++) {
             jatom_p = &prot.res[j_res].conf[j_conf].atom[j_atom];
             if (!jatom_p->on) continue;
             if (handle_hv) {
-                if (jatom_p->name[1] == 'H') continue;
+                if (!strncmp(jatom_p->element, " H", 2)) continue;
             }
             v2 = jatom_p->xyz;
             

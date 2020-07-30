@@ -250,7 +250,7 @@ int get_connect12_conf(int i_res, int i_conf, PROT prot) {
                     k_lig_add = -1;
                     lig_dist = BOND_THR;
                     for (k_lig=0; k_lig<n_ligs; k_lig++) {
-                        if (ligs[k_lig]->name[1] == 'H') continue; /* If it's a proton, then not considered */
+                        if (!strncmp(ligs[k_lig]->element, " H", 2)) continue; /* If it's a proton, then not considered */
 
                         /* Check if ligand atom is already in the connectivity list, this is for the case one atom connect to over one atom with same name */
                         for (l_connect=j_connect; l_connect<connect.n; l_connect++) {

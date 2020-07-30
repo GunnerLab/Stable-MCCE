@@ -10,6 +10,7 @@ int relax_water(PROT prot) {
     int n_conf, add, counter;
     FILE *debug_fp;
 
+    prot_atom_element(prot);
     for (i_res=0; i_res<prot.n_res; i_res++) {
         RES *ires_p = &prot.res[i_res];
         if (strcmp(prot.res[i_res].resName, "HOH")) continue;
@@ -40,7 +41,7 @@ int relax_water(PROT prot) {
                     for (j_atom=0; j_atom<prot.res[j_res].conf[j_conf].n_atom; j_atom++) {
                         ATOM *jatom_p = &jconf_p->atom[j_atom];
 			if (!jatom_p->on) continue;
-                        if (jatom_p->name[1] == 'H') continue;
+                        if (!strncmp(jatom_p->element, " H", 2)) continue;
                         if (ddvv(iatom_p->xyz,jatom_p->xyz) > RELAX_THR2) continue;
                         add = 1;
 
@@ -75,7 +76,7 @@ int relax_water(PROT prot) {
                     for (j_atom=0; j_atom<prot.res[j_res].conf[j_conf].n_atom; j_atom++) {
                         ATOM *jatom_p = &jconf_p->atom[j_atom];
 			if (!jatom_p->on) continue;
-                        if (jatom_p->name[1] == 'H') continue;
+                        if (!strncmp(jatom_p->element, " H", 2)) continue;
                         if (ddvv(iatom_p->xyz,jatom_p->xyz) > RELAX_THR2) continue;
                         add = 0;
                     }
@@ -94,7 +95,7 @@ int relax_water(PROT prot) {
                         for (k_atom=0; k_atom<prot.res[k_res].conf[k_conf].n_atom; k_atom++) {
                             ATOM *katom_p = &prot.res[k_res].conf[k_conf].atom[k_atom];
                             if (!katom_p->on) continue;
-                            if (katom_p->name[1] == 'H') continue;
+                            if (!strncmp(katom_p->element, " H", 2)) continue;
                             if (ddvv(iatom_p->xyz,katom_p->xyz) > RELAX_THR2) continue;
                             add = 0;
                         }

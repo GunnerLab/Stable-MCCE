@@ -7,26 +7,26 @@ This documentation is written in mkdocs, which uses markdown language and publis
 
 You need pip, a python package manager, for installation. Generally, you are able to install pip through conda
 ```
-conda install pip
+$ conda install pip
 ```
 or system package manager
 ```
-sudo aptitude install python-pip
+$ sudo aptitude install python-pip
 ```
 
 If you don't know pip, please go to https://pip.pypa.io/en/stable/ for more information.
 
 In a terminal window, run these commands to install mkdocs, theme, and necessary plugins for documentation of this project.
 ```
-pip install --upgrade pip
-pip install bs4
-pip install unicode
-pip install mkdocs
-pip install mkdocs-material
-pip install pymdown-extensions
-pip install markdown-blockdiag
-pip install markdown-include
-pip install mkdocs-git-revision-date-plugin
+$ pip install --upgrade pip
+$ pip install bs4
+$ pip install unicode
+$ pip install mkdocs
+$ pip install mkdocs-material
+$ pip install pymdown-extensions
+$ pip install markdown-blockdiag
+$ pip install markdown-include
+$ pip install mkdocs-git-revision-date-plugin
 ```
 
 ##  Writing and editing
@@ -40,7 +40,7 @@ All documentation files reside under folder wiki/
 
 Under wiki/ directory, run
 ```
-mkdocs serve
+$ mkdocs serve
 ```
 
 will bring up a web service, and point browser to http://localhost:8000 to enable viewing and debugging the documentation.
@@ -49,7 +49,7 @@ will bring up a web service, and point browser to http://localhost:8000 to enabl
 
 ### Commit changes:
 ```
-git commit -a -m "updated by jmao"
+$ git commit -a -m "updated by jmao"
 ```
 
 This commit will update the time stamp on the page as well.
@@ -68,7 +68,7 @@ upstream	https://github.com/GunnerLab/Stable-MCCE.git (push)
 
 If you do not have upstream repo, push to the origin, then make a pull request:
 ```
-git push
+$ git push
 ```
 
 Then go to https://github.com/ under your forked repository. Make a pull request. Someone will publish the edit for you.
@@ -78,7 +78,7 @@ If you are a group member with publish permission, you can publish directly.
 
 Make sure the upstream is setup properly:
 ```
-git remote -v
+$ git remote -v
 ```
 If upstream is not pointing to https://github.com/GunnerLab/Stable-MCCE.git, run
 ```
@@ -96,7 +96,17 @@ INFO    -  Your documentation should shortly be available at: https://GunnerLab.
 
 If gh-deploy reports conflict in special branch gh-pages, use "--force" switch to overwrite:
 ```
-mkdocs gh-deploy --force
+$ mkdocs gh-deploy --force
 ```
 
 The published site is on: https://gunnerlab.github.io/Stable-MCCE/.
+
+## Markdown resources
+
+**Basic syntax:** https://www.markdownguide.org/cheat-sheet/
+
+**More on syntax:** https://alinex.gitlab.io/env/mkdocs/
+
+**Diagram:** http://blockdiag.com/en/blockdiag/
+
+**PyDown:** https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/

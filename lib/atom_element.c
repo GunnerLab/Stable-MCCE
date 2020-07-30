@@ -21,7 +21,7 @@ int prot_atom_element(PROT prot)
    for (i=0; i<prot.n_res; i++) {
       for (j=0; j<prot.res[i].n_conf; j++) {
          for (k=0; k<prot.res[i].conf[j].n_atom; k++) {
-            if (!(prot.res[i].conf[j].atom[k].on)) continue;
+            //if (!(prot.res[i].conf[j].atom[k].on)) continue;
             atom_element(&(prot.res[i].conf[j].atom[k]));
             //printf("element = %s\n", prot.res[i].conf[j].atom[k].name);
          }
