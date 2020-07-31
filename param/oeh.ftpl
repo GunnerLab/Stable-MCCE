@@ -26,7 +26,7 @@ RADIUS,  OEH-1,  " H  ": 1.000,   1.000,   0.020
 RADIUS,  OEH-2,  " O  ": 1.520,   1.600,   0.200
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, OEH-1: Em0=   0.0, pKa0= 15.70, ne= 0, nH=-1, rxn04=-25.540
-CONFORMER, OEH-2: Em0=   0.0, pKa0= 21.90, ne= 0, nH=-2, rxn04=-103.500
+CONFORMER, OEH-1: Em0=   0.0, pKa0= 15.70, ne= 0, nH=-1, rxn04=-25.540, rxn08=-12.8
+CONFORMER, OEH-2: Em0=   0.0, pKa0= 21.90, ne= 0, nH=-2, rxn04=-103.500, rxn08=-51.800
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
