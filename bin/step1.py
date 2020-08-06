@@ -33,7 +33,8 @@ from mccesteps import *
 
 # ligands and renaming rules.
 Possible_ligands = {"HIS": "HIL",
-                    "MET": "MEL"}
+                    "MET": "MEL",
+                    "CYS": "CYL"}
 
 Possible_receptors = ["HEM", "HEC", "HEB"]
 
