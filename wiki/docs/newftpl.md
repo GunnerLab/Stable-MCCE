@@ -225,7 +225,7 @@ If you have a pdb file, you can build a ftpl file template out of it.
 
 Syntax:
 ```
-pdb2ftpl.py [-d] [-c ID] pdbfile
+$ pdb2ftpl.py [-d] [-c ID] pdbfile
 ```
 
 The command will use CONECT record in pdb file to find bonds when available. If CONECT does not exist, the program will switch to distance calculated by atom coordinates to make bonds.
@@ -246,13 +246,13 @@ Once you assign the atomic charges to the atoms in the ftpl file template and na
 
 For example, you find the location of mcce executable:
 ```
-which mcce
+$ which mcce
 /home/jmao/projects/Stable-MCCE/bin/mcce
 ```
 
 Then the param directory is:
 ```
-ls /home/jmao/projects/Stable-MCCE/param
+$ ls /home/jmao/projects/Stable-MCCE/param
 00always_needed.tpl  asn.ftpl  _cl.ftpl  ena.ftpl  gly.ftpl  ile.ftpl  mel.ftpl  ntr.ftpl  ser.ftpl       tyr.ftpl
 7MQ.ftpl             asp.ftpl  ctr.ftpl  for.ftpl  hil.ftpl  leu.ftpl  mem.ftpl  pdbs      step1_out.pdb  val.ftpl
 ala.ftpl             bcl.ftpl  cyd.ftpl  gln.ftpl  his.ftpl  lys.ftpl  met.ftpl  phe.ftpl  thr.ftpl       _zn.ftpl
@@ -274,12 +274,12 @@ Ethanol: CH3CH2OH
  * Goto RSCB ligand expo http://ligand-expo.rcsb.org/
  * Search Ethanol as molecule name from http://ligand-expo.rcsb.org/.
  * Download the pdb file of ethanol EOH_ideal.pdb. or use this command to download directly
- ```wget http://ligand-expo.rcsb.org/reports/E/EOH/EOH_ideal.pdb```
+ ```$ wget http://ligand-expo.rcsb.org/reports/E/EOH/EOH_ideal.pdb```
 
 #### Step 2: Make a ftpl file
 ```
-pdb2ftpl.py EOH_ideal.pdb > eoh.ftpl
-cat eoh.ftpl 
+$ pdb2ftpl.py EOH_ideal.pdb > eoh.ftpl
+$ cat eoh.ftpl 
 # Conformer definition
 CONFLIST, EOH: EOHBK, EOH01
 
@@ -372,21 +372,21 @@ CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
 #### Step 4: Install ftpl file
  * Find the param/ location<br>
 ```
-which mcce
+$ which mcce
 /home/jmao/projects/Stable-MCCE/bin/mcce
 ```
  * Copy ftpl file to param/ <br>
 ```
-cp eoh.ftpl /home/jmao/projects/Stable-MCCE/param
+$ cp eoh.ftpl /home/jmao/projects/Stable-MCCE/param
 ```
 
 #### Step 5: Reaction field energy
 Starting with rxn02 = 0, rxn04 = 0, and rxn08 = 0, we are going to recalculate the proper reference values so that this molecule in solution gives 0 desolvation energy in self-energy file head3.lst.
 
 ```
-step1.py --noter EOH_ideal.pdb
-step2.py
-step3.py
+$ step1.py --noter EOH_ideal.pdb
+$ step2.py
+$ step3.py
 ```
 
 Then do ```cat head3.lst``` and find the number under dsolv, which is -4.076 in our case. The step 3 used default dielectric constant 4, so this value is for rxn04.
@@ -399,8 +399,8 @@ CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -4.076, rxn0
 
 If we run 3 steps again, we will get dsolv about 0 this time:
 ```
-step3.py
-cat head3.lst
+$ step3.py
+$ cat head3.lst
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   0.004   0.000 01O000M000 t
 ```
@@ -409,16 +409,16 @@ Next we need to do the same for rxn02 and rxn 08. Step3 will take epsilon as our
 
 Dielectric constant 2
 ```
-step3.py -d 2
-cat head3.lst
+$ step3.py -d 2
+$ cat head3.lst
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   -8.500  0.000 01O000M000 t
 ```
 
 Dielectric constant 8
 ```
-step3.py -d 8
-cat head3.lst
+$ step3.py -d 8
+$ cat head3.lst
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   -1.875  0.000 01O000M000 t
 ```
@@ -443,7 +443,7 @@ Acetic acid: CH3COOH
  * Click on Chemical details of ACY
  * Download pdb file or <br>
 ```
-wget http://ligand-expo.rcsb.org/reports/A/ACY/ACY_ideal.pdb
+$ wget http://ligand-expo.rcsb.org/reports/A/ACY/ACY_ideal.pdb
 ```
 
 This file is in protonated state:
@@ -483,11 +483,11 @@ We also deleted CONECT because we dont want to manually fix CONECT due to the mi
 
  * create ftpl template for protonated acetic acid <br>
 ```
-pdb2ftpl.py ACY_ideal.pdb > acy.ftpl
+$ pdb2ftpl.py ACY_ideal.pdb > acy.ftpl
 ```
  * create ftpl template for deprotonated acetic acid <br>
 ```
-pdb2ftpl.py -c -1 ACY_deprotonated.pdb > acy-1.ftpl
+$ pdb2ftpl.py -c -1 ACY_deprotonated.pdb > acy-1.ftpl
 ```
 
 Merge two files. While CONFLIST maintains a single line, other parameters still take individual lines.
@@ -625,32 +625,34 @@ CONFORMER, ACY-1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
 #### Install ftpl file
 Find the param/ location
 ```
-which mcce
+$ which mcce
 /home/jmao/projects/Stable-MCCE/bin/mcce
 ```
 Copy ftpl file to param/
 ```
-cp acy.ftpl /home/jmao/projects/Stable-MCCE/param
+$ cp acy.ftpl /home/jmao/projects/Stable-MCCE/param
 ```
 
 #### Reaction field energy
 Run step 1 to 3:
 ```
-step1.py --noter ACY_ideal.pdb
-step2.py
-step3.py -d 2
-cat head3.lst
+$ step1.py --noter ACY_ideal.pdb
+$ step2.py
+$ step3.py -d 2
+$ cat head3.lst
 
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000 -11.413   0.000 01O000M000 t
 00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -47.119   0.000 -1O000M000 t
 
-step3.py -d 4
+$ step3.py -d 4
+$ cat head3.lst
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000  -5.495   0.000 01O000M000 t
 00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -22.902   0.000 -1O000M000 t
 
-step3.py -d 8
+$ step3.py -d 8
+$ cat head3.lst
 iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
 00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000  -2.548   0.000 01O000M000 t
 00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -10.801   0.000 -1O000M000 t

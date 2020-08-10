@@ -1,0 +1,514 @@
+>>>START of original comments, this file was converted from old format
+# from hmb; for bis his hemes
+# check reaction field energy; 
+# hard charge for hemes (+2 or 3 or Fe =0.25 on heme N's); standard charges on His 
+# Em at -220
+#1.Basic Conformer Information: name, pka, em, rxn. 
+# THIS SECTION IS TO BE CALIBRATED !!!
+#23456789A123456789B123456789C
+#RXN      HMB01      -9.283 # from guass calculation
+#RXN      HMB+1      -15.667 # from guass calculation
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#first his
+#his
+#heme
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, HMB: HMBBK, HMB01, HMB+1
+
+# Atom definition
+CONNECT, "aCB ", HMB01: sp3, "aCG ", "1HB ", "2HB ", " CA "
+CONNECT, "1HB ", HMB01: s, "aCB "
+CONNECT, "2HB ", HMB01: s, "aCB "
+CONNECT, "aCG ", HMB01: sp2, "aCB ", "aND1", "aCD2"
+CONNECT, "aND1", HMB01: sp2, "aCG ", "aCE1", "aHD1"
+CONNECT, "aHD1", HMB01: s, "aND1"
+CONNECT, "aCE1", HMB01: sp2, "aND1", "aNE2", "aHE1"
+CONNECT, "aHE1", HMB01: s, "aCE1"
+CONNECT, "aNE2", HMB01: sp2, "aCE1", "aCD2", "FE  "
+CONNECT, "aCD2", HMB01: sp2, "aNE2", "aCG ", "aHD2"
+CONNECT, "aHD2", HMB01: s, "aCD2"
+CONNECT, "bCB ", HMB01: sp3, "bCG ", "3HB ", "4HB ", " CA "
+CONNECT, "3HB ", HMB01: s, "bCB "
+CONNECT, "4HB ", HMB01: s, "bCB "
+CONNECT, "bCG ", HMB01: sp2, "bCB ", "bND1", "bCD2"
+CONNECT, "bND1", HMB01: sp2, "bCG ", "bCE1", "bHD1"
+CONNECT, "bHD1", HMB01: s, "bND1"
+CONNECT, "bCE1", HMB01: sp2, "bND1", "bNE2", "bHE1"
+CONNECT, "bHE1", HMB01: s, "bCE1"
+CONNECT, "bNE2", HMB01: sp2, "bCE1", "bCD2", "FE  "
+CONNECT, "bCD2", HMB01: sp2, "bNE2", "bCG ", "bHD2"
+CONNECT, "bHD2", HMB01: s, "bCD2"
+CONNECT, "FE  ", HMB01: sp3d2, " N A", " N B", " N C", " N D", "aNE2", "bNE2"
+CONNECT, " CHA", HMB01: sp2, " C4D", " C1A", " HHA"
+CONNECT, " CHB", HMB01: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HMB01: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HMB01: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HMB01: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HMB01: sp2, " N A", " CHA", " C2A"
+CONNECT, " C2A", HMB01: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HMB01: sp2, " C2A", " CMA", " C4A"
+CONNECT, " C4A", HMB01: sp2, " C3A", " CHB", " N A"
+CONNECT, " CMA", HMB01: sp3, " C3A", "1HMA", "2HMA", "3HMA"
+CONNECT, " N B", HMB01: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HMB01: sp2, " N B", " CHB", " C2B"
+CONNECT, " C2B", HMB01: sp2, " C1B", " CMB", " C3B"
+CONNECT, " C3B", HMB01: sp2, " C2B", " CAB", " C4B"
+CONNECT, " CAB", HMB01: sp3, " C3B", " CBB", "1HAB", "2HAB"
+CONNECT, " CBB", HMB01: sp3, " CAB", "1HBB", "2HBB", "3HBB"
+CONNECT, " C4B", HMB01: sp2, " C3B", " CHC", " N B"
+CONNECT, " CMB", HMB01: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HMB01: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HMB01: sp2, " N C", " CHC", " C2C"
+CONNECT, " C2C", HMB01: sp2, " C1C", " CMC", " C3C"
+CONNECT, " C3C", HMB01: sp2, " C2C", " CAC", " C4C"
+CONNECT, " C4C", HMB01: sp2, " C3C", " CHD", " N C"
+CONNECT, " CMC", HMB01: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HMB01: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HMB01: sp3, " CAC", "1HBC", "2HBC", "3HBC"
+CONNECT, " N D", HMB01: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HMB01: sp2, " N D", " CHD", " C2D"
+CONNECT, " C2D", HMB01: sp2, " C1D", " CMD", " C3D"
+CONNECT, " C3D", HMB01: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HMB01: sp2, " C3D", " CHA", " N D"
+CONNECT, " CMD", HMB01: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HMB01: s, " CHA"
+CONNECT, " HHB", HMB01: s, " CHB"
+CONNECT, " HHC", HMB01: s, " CHC"
+CONNECT, " HHD", HMB01: s, " CHD"
+CONNECT, "1HMA", HMB01: s, " CMA"
+CONNECT, "2HMA", HMB01: s, " CMA"
+CONNECT, "3HMA", HMB01: s, " CMA"
+CONNECT, "1HMB", HMB01: s, " CMB"
+CONNECT, "2HMB", HMB01: s, " CMB"
+CONNECT, "3HMB", HMB01: s, " CMB"
+CONNECT, "1HAB", HMB01: s, " CAB"
+CONNECT, "2HAB", HMB01: s, " CAB"
+CONNECT, "1HBB", HMB01: s, " CBB"
+CONNECT, "2HBB", HMB01: s, " CBB"
+CONNECT, "3HBB", HMB01: s, " CBB"
+CONNECT, "1HMC", HMB01: s, " CMC"
+CONNECT, "2HMC", HMB01: s, " CMC"
+CONNECT, "3HMC", HMB01: s, " CMC"
+CONNECT, " HAC", HMB01: s, " CAC"
+CONNECT, "1HBC", HMB01: s, " CBC"
+CONNECT, "2HBC", HMB01: s, " CBC"
+CONNECT, "3HBC", HMB01: s, " CBC"
+CONNECT, "1HMD", HMB01: s, " CMD"
+CONNECT, "2HMD", HMB01: s, " CMD"
+CONNECT, "3HMD", HMB01: s, " CMD"
+CONNECT, "aCB ", HMB+1: sp3, "aCG ", "1HB ", "2HB ", " CA "
+CONNECT, "1HB ", HMB+1: s, "aCB "
+CONNECT, "2HB ", HMB+1: s, "aCB "
+CONNECT, "aCG ", HMB+1: sp2, "aCB ", "aND1", "aCD2"
+CONNECT, "aND1", HMB+1: sp2, "aCG ", "aCE1", "aHD1"
+CONNECT, "aHD1", HMB+1: s, "aND1"
+CONNECT, "aCE1", HMB+1: sp2, "aND1", "aNE2", "aHE1"
+CONNECT, "aHE1", HMB+1: s, "aCE1"
+CONNECT, "aNE2", HMB+1: sp2, "aCE1", "aCD2", "FE  "
+CONNECT, "aCD2", HMB+1: sp2, "aNE2", "aCG ", "aHD2"
+CONNECT, "aHD2", HMB+1: s, "aCD2"
+CONNECT, "bCB ", HMB+1: sp3, "bCG ", "3HB ", "4HB ", " CA "
+CONNECT, "3HB ", HMB+1: s, "bCB "
+CONNECT, "4HB ", HMB+1: s, "bCB "
+CONNECT, "bCG ", HMB+1: sp2, "bCB ", "bND1", "bCD2"
+CONNECT, "bND1", HMB+1: sp2, "bCG ", "bCE1", "bHD1"
+CONNECT, "bHD1", HMB+1: s, "bND1"
+CONNECT, "bCE1", HMB+1: sp2, "bND1", "bNE2", "bHE1"
+CONNECT, "bHE1", HMB+1: s, "bCE1"
+CONNECT, "bNE2", HMB+1: sp2, "bCE1", "bCD2", "FE  "
+CONNECT, "bCD2", HMB+1: sp2, "bNE2", "bCG ", "bHD2"
+CONNECT, "bHD2", HMB+1: s, "bCD2"
+CONNECT, "FE  ", HMB+1: sp3d2, " N A", " N B", " N C", " N D", "aNE2", "bNE2"
+CONNECT, " CHA", HMB+1: sp2, " C4D", " C1A", " HHA"
+CONNECT, " CHB", HMB+1: sp2, " C4A", " C1B", " HHB"
+CONNECT, " CHC", HMB+1: sp2, " C4B", " C1C", " HHC"
+CONNECT, " CHD", HMB+1: sp2, " C4C", " C1D", " HHD"
+CONNECT, " N A", HMB+1: sp2, "FE  ", " C1A", " C4A"
+CONNECT, " C1A", HMB+1: sp2, " N A", " CHA", " C2A"
+CONNECT, " C2A", HMB+1: sp2, " C1A", " C3A", " ?  "
+CONNECT, " C3A", HMB+1: sp2, " C2A", " CMA", " C4A"
+CONNECT, " C4A", HMB+1: sp2, " C3A", " CHB", " N A"
+CONNECT, " CMA", HMB+1: sp3, " C3A", "1HMA", "2HMA", "3HMA"
+CONNECT, " N B", HMB+1: sp2, "FE  ", " C1B", " C4B"
+CONNECT, " C1B", HMB+1: sp2, " N B", " CHB", " C2B"
+CONNECT, " C2B", HMB+1: sp2, " C1B", " CMB", " C3B"
+CONNECT, " C3B", HMB+1: sp2, " C2B", " C4B", " CAB"
+CONNECT, " CAB", HMB+1: sp3, " C3B", " CBB", "1HAB", "2HAB"
+CONNECT, " CBB", HMB+1: sp3, " CAB", "1HBB", "2HBB", "3HBB"
+CONNECT, " C4B", HMB+1: sp2, " C3B", " CHC", " N B"
+CONNECT, " CMB", HMB+1: sp3, " C2B", "1HMB", "2HMB", "3HMB"
+CONNECT, " N C", HMB+1: sp2, "FE  ", " C1C", " C4C"
+CONNECT, " C1C", HMB+1: sp2, " N C", " CHC", " C2C"
+CONNECT, " C2C", HMB+1: sp2, " C1C", " CMC", " C3C"
+CONNECT, " C3C", HMB+1: sp2, " C2C", " CAC", " C4C"
+CONNECT, " C4C", HMB+1: sp2, " C3C", " CHD", " N C"
+CONNECT, " CMC", HMB+1: sp3, " C2C", "1HMC", "2HMC", "3HMC"
+CONNECT, " CAC", HMB+1: sp2, " C3C", " CBC", " HAC"
+CONNECT, " CBC", HMB+1: sp3, " CAC", "1HBC", "2HBC", "3HBC"
+CONNECT, " N D", HMB+1: sp2, "FE  ", " C1D", " C4D"
+CONNECT, " C1D", HMB+1: sp2, " N D", " CHD", " C2D"
+CONNECT, " C2D", HMB+1: sp2, " C1D", " CMD", " C3D"
+CONNECT, " C3D", HMB+1: sp2, " C2D", " C4D", " ?  "
+CONNECT, " C4D", HMB+1: sp2, " C3D", " CHA", " N D"
+CONNECT, " CMD", HMB+1: sp3, " C2D", "1HMD", "2HMD", "3HMD"
+CONNECT, " HHA", HMB+1: s, " CHA"
+CONNECT, " HHB", HMB+1: s, " CHB"
+CONNECT, " HHC", HMB+1: s, " CHC"
+CONNECT, " HHD", HMB+1: s, " CHD"
+CONNECT, "1HMA", HMB+1: s, " CMA"
+CONNECT, "2HMA", HMB+1: s, " CMA"
+CONNECT, "3HMA", HMB+1: s, " CMA"
+CONNECT, "1HMB", HMB+1: s, " CMB"
+CONNECT, "2HMB", HMB+1: s, " CMB"
+CONNECT, "3HMB", HMB+1: s, " CMB"
+CONNECT, "1HAB", HMB+1: s, " CAB"
+CONNECT, "2HAB", HMB+1: s, " CAB"
+CONNECT, "1HBB", HMB+1: s, " CBB"
+CONNECT, "2HBB", HMB+1: s, " CBB"
+CONNECT, "3HBB", HMB+1: s, " CBB"
+CONNECT, "1HMC", HMB+1: s, " CMC"
+CONNECT, "2HMC", HMB+1: s, " CMC"
+CONNECT, "3HMC", HMB+1: s, " CMC"
+CONNECT, " HAC", HMB+1: s, " CAC"
+CONNECT, "1HBC", HMB+1: s, " CBC"
+CONNECT, "2HBC", HMB+1: s, " CBC"
+CONNECT, "3HBC", HMB+1: s, " CBC"
+CONNECT, "1HMD", HMB+1: s, " CMD"
+CONNECT, "2HMD", HMB+1: s, " CMD"
+CONNECT, "3HMD", HMB+1: s, " CMD"
+
+# Atom charges
+CHARGE, HMB01, "aCB ":  0.125
+CHARGE, HMB01, "1HB ":  0.000
+CHARGE, HMB01, "2HB ":  0.000
+CHARGE, HMB01, "aCG ":  0.155
+CHARGE, HMB01, "aND1": -0.400
+CHARGE, HMB01, "aHD1":  0.400
+CHARGE, HMB01, "aCE1":  0.155
+CHARGE, HMB01, "aHE1":  0.125
+CHARGE, HMB01, "aNE2": -0.560
+CHARGE, HMB01, "aCD2": -0.125
+CHARGE, HMB01, "aHD2":  0.125
+CHARGE, HMB01, "bCB ":  0.125
+CHARGE, HMB01, "3HB ":  0.000
+CHARGE, HMB01, "4HB ":  0.000
+CHARGE, HMB01, "bCG ":  0.155
+CHARGE, HMB01, "bND1": -0.400
+CHARGE, HMB01, "bHD1":  0.400
+CHARGE, HMB01, "bCE1":  0.155
+CHARGE, HMB01, "bHE1":  0.125
+CHARGE, HMB01, "bNE2": -0.560
+CHARGE, HMB01, "bCD2": -0.125
+CHARGE, HMB01, "bHD2":  0.125
+CHARGE, HMB01, "FE  ":  2.000
+CHARGE, HMB01, " CHA":  0.000
+CHARGE, HMB01, " CHB":  0.000
+CHARGE, HMB01, " CHC":  0.000
+CHARGE, HMB01, " CHD":  0.000
+CHARGE, HMB01, " N A": -0.500
+CHARGE, HMB01, " C1A":  0.000
+CHARGE, HMB01, " C2A":  0.000
+CHARGE, HMB01, " C3A":  0.000
+CHARGE, HMB01, " C4A":  0.000
+CHARGE, HMB01, " CMA":  0.000
+CHARGE, HMB01, " N B": -0.500
+CHARGE, HMB01, " C1B":  0.000
+CHARGE, HMB01, " C2B":  0.000
+CHARGE, HMB01, " C3B":  0.000
+CHARGE, HMB01, " CAB":  0.000
+CHARGE, HMB01, " CBB":  0.000
+CHARGE, HMB01, " C4B":  0.000
+CHARGE, HMB01, " CMB":  0.000
+CHARGE, HMB01, " N C": -0.500
+CHARGE, HMB01, " C1C":  0.000
+CHARGE, HMB01, " C2C":  0.000
+CHARGE, HMB01, " C3C":  0.000
+CHARGE, HMB01, " C4C":  0.000
+CHARGE, HMB01, " CMC":  0.000
+CHARGE, HMB01, " CAC":  0.000
+CHARGE, HMB01, " CBC":  0.000
+CHARGE, HMB01, " N D": -0.500
+CHARGE, HMB01, " C1D":  0.000
+CHARGE, HMB01, " C2D":  0.000
+CHARGE, HMB01, " C3D":  0.000
+CHARGE, HMB01, " C4D":  0.000
+CHARGE, HMB01, " CMD":  0.000
+CHARGE, HMB01, " HHA":  0.000
+CHARGE, HMB01, " HHB":  0.000
+CHARGE, HMB01, " HHC":  0.000
+CHARGE, HMB01, " HHD":  0.000
+CHARGE, HMB01, "1HMA":  0.000
+CHARGE, HMB01, "2HMA":  0.000
+CHARGE, HMB01, "3HMA":  0.000
+CHARGE, HMB01, "1HMB":  0.000
+CHARGE, HMB01, "2HMB":  0.000
+CHARGE, HMB01, "3HMB":  0.000
+CHARGE, HMB01, "1HAB":  0.000
+CHARGE, HMB01, "2HAB":  0.000
+CHARGE, HMB01, "1HBB":  0.000
+CHARGE, HMB01, "2HBB":  0.000
+CHARGE, HMB01, "3HBB":  0.000
+CHARGE, HMB01, "1HMC":  0.000
+CHARGE, HMB01, "2HMC":  0.000
+CHARGE, HMB01, "3HMC":  0.000
+CHARGE, HMB01, " HAC":  0.000
+CHARGE, HMB01, "1HBC":  0.000
+CHARGE, HMB01, "2HBC":  0.000
+CHARGE, HMB01, "3HBC":  0.000
+CHARGE, HMB01, "1HMD":  0.000
+CHARGE, HMB01, "2HMD":  0.000
+CHARGE, HMB01, "3HMD":  0.000
+CHARGE, HMB+1, "aCB ":  0.125
+CHARGE, HMB+1, "1HB ":  0.000
+CHARGE, HMB+1, "2HB ":  0.000
+CHARGE, HMB+1, "aCG ":  0.155
+CHARGE, HMB+1, "aND1": -0.400
+CHARGE, HMB+1, "aHD1":  0.400
+CHARGE, HMB+1, "aCE1":  0.155
+CHARGE, HMB+1, "aHE1":  0.125
+CHARGE, HMB+1, "aNE2": -0.560
+CHARGE, HMB+1, "aCD2": -0.125
+CHARGE, HMB+1, "aHD2":  0.125
+CHARGE, HMB+1, "bCB ":  0.125
+CHARGE, HMB+1, "3HB ":  0.000
+CHARGE, HMB+1, "4HB ":  0.000
+CHARGE, HMB+1, "bCG ":  0.155
+CHARGE, HMB+1, "bND1": -0.400
+CHARGE, HMB+1, "bHD1":  0.400
+CHARGE, HMB+1, "bCE1":  0.155
+CHARGE, HMB+1, "bHE1":  0.125
+CHARGE, HMB+1, "bNE2": -0.560
+CHARGE, HMB+1, "bCD2": -0.125
+CHARGE, HMB+1, "bHD2":  0.125
+CHARGE, HMB+1, "FE  ":  3.000
+CHARGE, HMB+1, " CHA":  0.000
+CHARGE, HMB+1, " CHB":  0.000
+CHARGE, HMB+1, " CHC":  0.000
+CHARGE, HMB+1, " CHD":  0.000
+CHARGE, HMB+1, " N A": -0.500
+CHARGE, HMB+1, " C1A":  0.000
+CHARGE, HMB+1, " C2A":  0.000
+CHARGE, HMB+1, " C3A":  0.000
+CHARGE, HMB+1, " C4A":  0.000
+CHARGE, HMB+1, " CMA":  0.000
+CHARGE, HMB+1, " N B": -0.500
+CHARGE, HMB+1, " C1B":  0.000
+CHARGE, HMB+1, " C2B":  0.000
+CHARGE, HMB+1, " C3B":  0.000
+CHARGE, HMB+1, " CAB":  0.000
+CHARGE, HMB+1, " CBB":  0.000
+CHARGE, HMB+1, " C4B":  0.000
+CHARGE, HMB+1, " CMB":  0.000
+CHARGE, HMB+1, " N C": -0.500
+CHARGE, HMB+1, " C1C":  0.000
+CHARGE, HMB+1, " C2C":  0.000
+CHARGE, HMB+1, " C3C":  0.000
+CHARGE, HMB+1, " C4C":  0.000
+CHARGE, HMB+1, " CMC":  0.000
+CHARGE, HMB+1, " CAC":  0.000
+CHARGE, HMB+1, " CBC":  0.000
+CHARGE, HMB+1, " N D": -0.500
+CHARGE, HMB+1, " C1D":  0.000
+CHARGE, HMB+1, " C2D":  0.000
+CHARGE, HMB+1, " C3D":  0.000
+CHARGE, HMB+1, " C4D":  0.000
+CHARGE, HMB+1, " CMD":  0.000
+CHARGE, HMB+1, " HHA":  0.000
+CHARGE, HMB+1, " HHB":  0.000
+CHARGE, HMB+1, " HHC":  0.000
+CHARGE, HMB+1, " HHD":  0.000
+CHARGE, HMB+1, "1HMA":  0.000
+CHARGE, HMB+1, "2HMA":  0.000
+CHARGE, HMB+1, "3HMA":  0.000
+CHARGE, HMB+1, "1HMB":  0.000
+CHARGE, HMB+1, "2HMB":  0.000
+CHARGE, HMB+1, "3HMB":  0.000
+CHARGE, HMB+1, "1HAB":  0.000
+CHARGE, HMB+1, "2HAB":  0.000
+CHARGE, HMB+1, "1HBB":  0.000
+CHARGE, HMB+1, "2HBB":  0.000
+CHARGE, HMB+1, "3HBB":  0.000
+CHARGE, HMB+1, "1HMC":  0.000
+CHARGE, HMB+1, "2HMC":  0.000
+CHARGE, HMB+1, "3HMC":  0.000
+CHARGE, HMB+1, " HAC":  0.000
+CHARGE, HMB+1, "1HBC":  0.000
+CHARGE, HMB+1, "2HBC":  0.000
+CHARGE, HMB+1, "3HBC":  0.000
+CHARGE, HMB+1, "1HMD":  0.000
+CHARGE, HMB+1, "2HMD":  0.000
+CHARGE, HMB+1, "3HMD":  0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  HMB01,  "aCB ": 2.000,   2.000,   0.150
+RADIUS,  HMB01,  "1HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "aCG ": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "aND1": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  "aHD1": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "aCE1": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "aHE1": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "aNE2": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  "aCD2": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "aHD2": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "bCB ": 2.000,   2.000,   0.150
+RADIUS,  HMB01,  "3HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "4HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "bCG ": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "bND1": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  "bHD1": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "bCE1": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "bHE1": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "bNE2": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  "bCD2": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  "bHD2": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "FE  ": 1.450,   2.000,   0.173
+RADIUS,  HMB01,  " CHA": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CHB": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CHC": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CHD": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " N A": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  " C1A": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C2A": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C3A": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C4A": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CMA": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " N B": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  " C1B": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C2B": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C3B": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CAB": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CBB": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C4B": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CMB": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " N C": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  " C1C": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C2C": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C3C": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C4C": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CMC": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HMB01,  " N D": 1.500,   1.750,   0.160
+RADIUS,  HMB01,  " C1D": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C2D": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C3D": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " C4D": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " CMD": 1.800,   2.000,   0.150
+RADIUS,  HMB01,  " HHA": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  " HHB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  " HHC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  " HHD": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HAB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HAB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  " HAC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "1HMD": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "2HMD": 1.000,   1.000,   0.020
+RADIUS,  HMB01,  "3HMD": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "aCB ": 2.000,   2.000,   0.150
+RADIUS,  HMB+1,  "1HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "aCG ": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "aND1": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  "aHD1": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "aCE1": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "aHE1": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "aNE2": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  "aCD2": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "aHD2": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "bCB ": 2.000,   2.000,   0.150
+RADIUS,  HMB+1,  "3HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "4HB ": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "bCG ": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "bND1": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  "bHD1": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "bCE1": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "bHE1": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "bNE2": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  "bCD2": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  "bHD2": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "FE  ": 1.450,   2.000,   0.173
+RADIUS,  HMB+1,  " CHA": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CHB": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CHC": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CHD": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " N A": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  " C1A": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C2A": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C3A": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C4A": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CMA": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " N B": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  " C1B": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C2B": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C3B": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CAB": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CBB": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C4B": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CMB": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " N C": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  " C1C": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C2C": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C3C": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C4C": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CMC": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CAC": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  " CBC": 1.700,   2.000,   0.150
+RADIUS,  HMB+1,  " N D": 1.500,   1.750,   0.160
+RADIUS,  HMB+1,  " C1D": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C2D": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C3D": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " C4D": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " CMD": 1.800,   2.000,   0.150
+RADIUS,  HMB+1,  " HHA": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  " HHB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  " HHC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  " HHD": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HMA": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HMB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HAB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HAB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HBB": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HMC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  " HAC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HBC": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "1HMD": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "2HMD": 1.000,   1.000,   0.020
+RADIUS,  HMB+1,  "3HMD": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, HMB01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn04= -0.500, rxn08= -0.250
+CONFORMER, HMB+1: Em0=-220.0, pKa0=  0.00, ne=-1, nH= 0, rxn04=-11.100, rxn088888888# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

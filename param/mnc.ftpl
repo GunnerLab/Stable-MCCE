@@ -1,0 +1,32 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# Radii(vdw) were collected from http://www.webelements.com/
+#-------|-----|----|--------------
+#ParaNam|Res |Atom|Param/toggle
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, MNC: MNCBK, MNC+3, MNC+4
+
+# Atom definition
+CONNECT, "MN  ", MNC+3: ion, 
+CONNECT, "MN  ", MNC+4: ion, 
+
+# Atom charges
+CHARGE, MNC+3, "MN  ":  3.000
+CHARGE, MNC+4, "MN  ":  4.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  MNC+3,  "MN  ": 2.000,   1.750,   0.160
+RADIUS,  MNC+4,  "MN  ": 2.000,   1.750,   0.160
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, MNC+3: Em0=1500.0, pKa0=  0.00, ne=-1, nH= 0, rxn04=-177.410, rxn08=-88.710
+CONFORMER, MNC+4: Em0=1700.0, pKa0=  0.00, ne=-2, nH= 0, rxn04=-314.740, rxn08=-157.410
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

@@ -19,7 +19,8 @@ Kcal2kT = 1.688
 #              RES  : ground  excited
 Special_res = {"_CU": (["+1"], ["+2"]),
                "UbQ": (["01"], ["-1"]),
-               "HOH": (["01"], ["DM"])}
+               "HOH": (["01"], ["DM"]),
+	       "T4Y": (["01"], ["+1", "+2"])}
 
 class E_IONIZE:
     def __init__(self):
@@ -168,8 +169,8 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
     ground_conformers = []
     exited_conformers = []
     if residue[:3] in Special_res:  # group by type name if defined
-        ground_typeid = Special_res[residue[:3][0]]
-        exited_typeid = Special_res[residue[:3][1]]
+        ground_typeid = Special_res[residue[:3]][0]
+        exited_typeid = Special_res[residue[:3]][1]
         for conf in mfe_conformers:
             if conf.name[3:5] in ground_typeid:
                 ground_conformers.append(conf)

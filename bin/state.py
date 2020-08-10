@@ -26,7 +26,6 @@ if __name__ == "__main__":
     eh = mc_parm["EH"]
 
 
-
     for line in lines:
         state = [int(x) for x in re.findall(r"[\w']+", line)]
         analyze_state_energy(state, ph=ph, eh=eh, cutoff=cutoff)
