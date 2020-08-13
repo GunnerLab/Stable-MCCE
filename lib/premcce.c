@@ -337,7 +337,7 @@ FILE *premcce_terminals(FILE *fp_in)
     char stemp[MAXCHAR_LINE];
     char NTR_atoms[] = "1H  2H  3H   N   CA  HA 1HA 2HA ";
     char CTR_atoms[] = " C   O   OXT";
-    char exclude_ntrs[] = "FME ACE";
+    char exclude_ntrs[] = "FME ACE NO3";
     char ntr_name[4];
     char ter;
     FILE *fp1, *fp2, *fp_out;
