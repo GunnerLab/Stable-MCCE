@@ -29,7 +29,7 @@ $(LDIR)/%.o: $(LDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 
-$(STEP6): lib/analysis.cpp $(DEPS)
+$(STEP6): lib/analysis_adv.cpp $(DEPS)
 	cd $(LDIR)
 	$(CC2) -c -o $@ $< $(CFLAGS)
 

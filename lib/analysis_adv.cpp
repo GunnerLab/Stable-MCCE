@@ -35,6 +35,7 @@ using namespace std;
 /* public variable  */
 const string PDBF = "step2_out.pdb";
 const string HBOUT = "hb.dat";
+char HB_DIR[30] = "hb_out";
 float DFAR;       // the distance used to determine a hydrogen bond
 float DNEAR;       // default: 1.2 < d < 3.2
 float ANGCUT;
@@ -440,8 +441,7 @@ int hbond_network()
 
 
 int hbond_network_new()
-{
-	time_t time_start = time(NULL);
+{	time_t time_start = time(NULL);
 
 	ifstream iHbfile("hb.dat", ios::in | ios::binary);
         if (!iHbfile.is_open()) {
@@ -497,6 +497,7 @@ int hbond_network_new()
 	conf_res_inter.resize(n_conf);
 
 	dir = opendir(HB_DIR);
+	printf("test\n");
 	if (dir) {
 		//printf("   Deleting folder %s ...\n", HB_DIR);
 		char tmp_folder[300];
