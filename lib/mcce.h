@@ -900,4 +900,4 @@ int energies();
 int energies2();
 int monte();
 int monte2();
-int analysis(); /* step 6 ---Cai */
+int analysis_adv(); /* step 6 ---Cai */
