@@ -1,0 +1,101 @@
+# Conformer definition
+CONFLIST, U0S: U0SBK, U0S
+
+# ATOM name and bonds
+CONNECT, " C10", U0S:  sp3, " C09"," O11","H102","H101"
+CONNECT, " C13", U0S:  sp3, " C08"," N05","H131","H132"
+CONNECT, " C01", U0S:  sp2, " C02"," N15","H011"
+CONNECT, " C02", U0S:  sp2, " C01"," N03","H021"
+CONNECT, " C04", U0S:  sp2, " C14"," N03"," N05"
+CONNECT, " C06", U0S:  sp3, " C07"," N05","H061","H062"
+CONNECT, " C07", U0S:  sp3, " C06"," C08","H072","H071"
+CONNECT, " C08", U0S:  sp3, " C13"," C07"," C09"," C12"
+CONNECT, " C09", U0S:  sp3, " C10"," C08","H091","H092"
+CONNECT, " C12", U0S:  sp3, " C08"," O11","H122","H121"
+CONNECT, " C14", U0S:  sp2, " C04"," N15","H141"
+CONNECT, " N03", U0S:  sp2, " C02"," C04"
+CONNECT, " N05", U0S:  sp3, " C13"," C04"," C06"
+CONNECT, " N15", U0S:  sp2, " C01"," C14"
+CONNECT, " O11", U0S:  sp3, " C10"," C12"
+CONNECT, "H102", U0S:    s, " C10"
+CONNECT, "H101", U0S:    s, " C10"
+CONNECT, "H131", U0S:    s, " C13"
+CONNECT, "H132", U0S:    s, " C13"
+CONNECT, "H011", U0S:    s, " C01"
+CONNECT, "H021", U0S:    s, " C02"
+CONNECT, "H061", U0S:    s, " C06"
+CONNECT, "H062", U0S:    s, " C06"
+CONNECT, "H072", U0S:    s, " C07"
+CONNECT, "H071", U0S:    s, " C07"
+CONNECT, "H091", U0S:    s, " C09"
+CONNECT, "H092", U0S:    s, " C09"
+CONNECT, "H122", U0S:    s, " C12"
+CONNECT, "H121", U0S:    s, " C12"
+CONNECT, "H141", U0S:    s, " C14"
+
+# ATOM charges
+CHARGE, U0S, " C10":    0.12
+CHARGE, U0S, " C13":     0.2
+CHARGE, U0S, " C01":    0.23
+CHARGE, U0S, " C02":    0.32
+CHARGE, U0S, " C04":    0.53
+CHARGE, U0S, " C06":    0.19
+CHARGE, U0S, " C07":   -0.09
+CHARGE, U0S, " C08":   -0.09
+CHARGE, U0S, " C09":    -0.1
+CHARGE, U0S, " C12":    0.13
+CHARGE, U0S, " C14":    0.23
+CHARGE, U0S, " N03":   -0.69
+CHARGE, U0S, " N05":   -0.74
+CHARGE, U0S, " N15":    -0.6
+CHARGE, U0S, " O11":   -0.42
+CHARGE, U0S, "H102": to_be_filled
+CHARGE, U0S, "H101": to_be_filled
+CHARGE, U0S, "H131": to_be_filled
+CHARGE, U0S, "H132": to_be_filled
+CHARGE, U0S, "H011": to_be_filled
+CHARGE, U0S, "H021": to_be_filled
+CHARGE, U0S, "H061": to_be_filled
+CHARGE, U0S, "H062": to_be_filled
+CHARGE, U0S, "H072": to_be_filled
+CHARGE, U0S, "H071": to_be_filled
+CHARGE, U0S, "H091": to_be_filled
+CHARGE, U0S, "H092": to_be_filled
+CHARGE, U0S, "H122": to_be_filled
+CHARGE, U0S, "H121": to_be_filled
+CHARGE, U0S, "H141": to_be_filled
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, U0S, " C10":  1.700,  2.000,  0.150
+RADIUS, U0S, " C13":  1.700,  2.000,  0.150
+RADIUS, U0S, " C01":  1.700,  2.000,  0.150
+RADIUS, U0S, " C02":  1.700,  2.000,  0.150
+RADIUS, U0S, " C04":  1.700,  2.000,  0.150
+RADIUS, U0S, " C06":  1.700,  2.000,  0.150
+RADIUS, U0S, " C07":  1.700,  2.000,  0.150
+RADIUS, U0S, " C08":  1.700,  2.000,  0.150
+RADIUS, U0S, " C09":  1.700,  2.000,  0.150
+RADIUS, U0S, " C12":  1.700,  2.000,  0.150
+RADIUS, U0S, " C14":  1.700,  2.000,  0.150
+RADIUS, U0S, " N03":  1.500,  1.750,  0.160
+RADIUS, U0S, " N05":  1.500,  1.750,  0.160
+RADIUS, U0S, " N15":  1.500,  1.750,  0.160
+RADIUS, U0S, " O11":  1.400,  1.600,  0.200
+RADIUS, U0S, "H102":  1.000,  1.000,  0.020
+RADIUS, U0S, "H101":  1.000,  1.000,  0.020
+RADIUS, U0S, "H131":  1.000,  1.000,  0.020
+RADIUS, U0S, "H132":  1.000,  1.000,  0.020
+RADIUS, U0S, "H011":  1.000,  1.000,  0.020
+RADIUS, U0S, "H021":  1.000,  1.000,  0.020
+RADIUS, U0S, "H061":  1.000,  1.000,  0.020
+RADIUS, U0S, "H062":  1.000,  1.000,  0.020
+RADIUS, U0S, "H072":  1.000,  1.000,  0.020
+RADIUS, U0S, "H071":  1.000,  1.000,  0.020
+RADIUS, U0S, "H091":  1.000,  1.000,  0.020
+RADIUS, U0S, "H092":  1.000,  1.000,  0.020
+RADIUS, U0S, "H122":  1.000,  1.000,  0.020
+RADIUS, U0S, "H121":  1.000,  1.000,  0.020
+RADIUS, U0S, "H141":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, U0S:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
