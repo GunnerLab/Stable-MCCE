@@ -26,7 +26,7 @@ RADIUS,  MNC+3,  "MN  ": 2.000,   1.750,   0.160
 RADIUS,  MNC+4,  "MN  ": 2.000,   1.750,   0.160
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, MNC+3: Em0=1500.0, pKa0=  0.00, ne=-1, nH= 0, rxn04=-177.410, rxn08=-88.710
-CONFORMER, MNC+4: Em0=1700.0, pKa0=  0.00, ne=-2, nH= 0, rxn04=-314.740, rxn08=-157.410
+CONFORMER, MNC+3: Em0=1500.0, pKa0=  0.00, ne=-1, nH= 0, rxn02=0, rxn04=-177.410, rxn08=-88.710
+CONFORMER, MNC+4: Em0=1700.0, pKa0=  0.00, ne=-2, nH= 0, rxn02=0, rxn04=-314.740, rxn08=-157.410
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.

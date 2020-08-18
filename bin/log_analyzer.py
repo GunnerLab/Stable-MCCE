@@ -35,10 +35,10 @@ def analyze(log):
             w = asNTR(line)
             if not warning:
                 warning = w
-        elif line.find("has non integer charge"):
-            w = non_int_crg(line)
-            if not warning:
-                warning = w
+#        elif line.find("has non integer charge"):
+#            w = non_int_crg(line)
+#            if not warning:
+#                warning = w
 
     return warning
 
