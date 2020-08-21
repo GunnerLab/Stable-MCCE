@@ -1,0 +1,113 @@
+# Conformer definition
+CONFLIST, T1M: T1MBK, T1M
+
+# ATOM name and bonds
+CONNECT, " C10", T1M:  sp2, " C15"," C09"," C11"
+CONNECT, " C13", T1M:  sp2, " C12"," C14","H131"
+CONNECT, " C15", T1M:  sp2, " C10"," C14","H151"
+CONNECT, " C01", T1M:  sp3, " C02","H011","H013","H012"
+CONNECT, " C02", T1M:  sp3, " C01"," C03"," N08","H021"
+CONNECT, " C03", T1M:  sp3, " C02"," C05"," O04","H031"
+CONNECT, " C05", T1M:  sp3, " C03"," C06","H051","H052"
+CONNECT, " C06", T1M:  sp3, " C05"," C07","H061","H062"
+CONNECT, " C07", T1M:  sp3, " C06"," N08","H071","H072"
+CONNECT, " C09", T1M:  sp3, " C10"," N08","H091","H092"
+CONNECT, " C11", T1M:  sp2, " C10"," C12","H111"
+CONNECT, " C12", T1M:  sp2, " C13"," C11","H121"
+CONNECT, " C14", T1M:  sp2, " C13"," C15","H141"
+CONNECT, " N08", T1M:  sp3, " C02"," C07"," C09"
+CONNECT, " O04", T1M:  sp3, " C03","H041"
+CONNECT, "H131", T1M:    s, " C13"
+CONNECT, "H151", T1M:    s, " C15"
+CONNECT, "H011", T1M:    s, " C01"
+CONNECT, "H013", T1M:    s, " C01"
+CONNECT, "H012", T1M:    s, " C01"
+CONNECT, "H021", T1M:    s, " C02"
+CONNECT, "H031", T1M:    s, " C03"
+CONNECT, "H051", T1M:    s, " C05"
+CONNECT, "H052", T1M:    s, " C05"
+CONNECT, "H061", T1M:    s, " C06"
+CONNECT, "H062", T1M:    s, " C06"
+CONNECT, "H071", T1M:    s, " C07"
+CONNECT, "H072", T1M:    s, " C07"
+CONNECT, "H091", T1M:    s, " C09"
+CONNECT, "H092", T1M:    s, " C09"
+CONNECT, "H111", T1M:    s, " C11"
+CONNECT, "H121", T1M:    s, " C12"
+CONNECT, "H141", T1M:    s, " C14"
+CONNECT, "H041", T1M:    s, " O04"
+
+# ATOM charges
+CHARGE, T1M, " C10":   -0.18
+CHARGE, T1M, " C13":   -0.08
+CHARGE, T1M, " C15":   -0.11
+CHARGE, T1M, " C01":   -0.13
+CHARGE, T1M, " C02":    0.13
+CHARGE, T1M, " C03":    0.14
+CHARGE, T1M, " C05":   -0.14
+CHARGE, T1M, " C06":    -0.1
+CHARGE, T1M, " C07":    0.11
+CHARGE, T1M, " C09":    0.18
+CHARGE, T1M, " C11":   -0.11
+CHARGE, T1M, " C12":   -0.12
+CHARGE, T1M, " C14":   -0.12
+CHARGE, T1M, " N08":   -0.69
+CHARGE, T1M, " O04":   -0.59
+CHARGE, T1M, "H131":    0.16
+CHARGE, T1M, "H151":    0.14
+CHARGE, T1M, "H011":    0.08
+CHARGE, T1M, "H013":    0.08
+CHARGE, T1M, "H012":    0.08
+CHARGE, T1M, "H021":    0.12
+CHARGE, T1M, "H031":    0.06
+CHARGE, T1M, "H051":    0.08
+CHARGE, T1M, "H052":    0.08
+CHARGE, T1M, "H061":    0.09
+CHARGE, T1M, "H062":    0.09
+CHARGE, T1M, "H071":     0.1
+CHARGE, T1M, "H072":     0.1
+CHARGE, T1M, "H091":    0.11
+CHARGE, T1M, "H092":    0.11
+CHARGE, T1M, "H111":    0.14
+CHARGE, T1M, "H121":    0.16
+CHARGE, T1M, "H141":    0.16
+CHARGE, T1M, "H041":    0.44
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T1M, " C10":  1.700,  2.000,  0.150
+RADIUS, T1M, " C13":  1.700,  2.000,  0.150
+RADIUS, T1M, " C15":  1.700,  2.000,  0.150
+RADIUS, T1M, " C01":  1.700,  2.000,  0.150
+RADIUS, T1M, " C02":  1.700,  2.000,  0.150
+RADIUS, T1M, " C03":  1.700,  2.000,  0.150
+RADIUS, T1M, " C05":  1.700,  2.000,  0.150
+RADIUS, T1M, " C06":  1.700,  2.000,  0.150
+RADIUS, T1M, " C07":  1.700,  2.000,  0.150
+RADIUS, T1M, " C09":  1.700,  2.000,  0.150
+RADIUS, T1M, " C11":  1.700,  2.000,  0.150
+RADIUS, T1M, " C12":  1.700,  2.000,  0.150
+RADIUS, T1M, " C14":  1.700,  2.000,  0.150
+RADIUS, T1M, " N08":  1.500,  1.750,  0.160
+RADIUS, T1M, " O04":  1.400,  1.600,  0.200
+RADIUS, T1M, "H131":  1.000,  1.000,  0.020
+RADIUS, T1M, "H151":  1.000,  1.000,  0.020
+RADIUS, T1M, "H011":  1.000,  1.000,  0.020
+RADIUS, T1M, "H013":  1.000,  1.000,  0.020
+RADIUS, T1M, "H012":  1.000,  1.000,  0.020
+RADIUS, T1M, "H021":  1.000,  1.000,  0.020
+RADIUS, T1M, "H031":  1.000,  1.000,  0.020
+RADIUS, T1M, "H051":  1.000,  1.000,  0.020
+RADIUS, T1M, "H052":  1.000,  1.000,  0.020
+RADIUS, T1M, "H061":  1.000,  1.000,  0.020
+RADIUS, T1M, "H062":  1.000,  1.000,  0.020
+RADIUS, T1M, "H071":  1.000,  1.000,  0.020
+RADIUS, T1M, "H072":  1.000,  1.000,  0.020
+RADIUS, T1M, "H091":  1.000,  1.000,  0.020
+RADIUS, T1M, "H092":  1.000,  1.000,  0.020
+RADIUS, T1M, "H111":  1.000,  1.000,  0.020
+RADIUS, T1M, "H121":  1.000,  1.000,  0.020
+RADIUS, T1M, "H141":  1.000,  1.000,  0.020
+RADIUS, T1M, "H041":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T1M:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0

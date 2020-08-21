@@ -1,0 +1,110 @@
+# Conformer definition
+CONFLIST, T2J: T2JBK, T2J
+
+# ATOM name and bonds
+CONNECT, " N1 ", T2J:  sp3, " C5 "," C6 "," C9 "
+CONNECT, " C4 ", T2J:  sp2, " C5 "," C3 "," H3 "
+CONNECT, " C5 ", T2J:  sp2, " N1 "," C4 "," C  "
+CONNECT, " C6 ", T2J:  sp3, " N1 "," C7 "," H5 "," H4 "
+CONNECT, " C7 ", T2J:  sp3, " C6 "," N2 "," H7 "," H6 "
+CONNECT, " C8 ", T2J:  sp3, " C9 "," N2 "," H9 "," H8 "
+CONNECT, " C10", T2J:  sp2, " C11"," N2 "," O2 "
+CONNECT, " N  ", T2J:  sp2, " C  "," O  "," O1 "
+CONNECT, " C  ", T2J:  sp2, " C5 "," N  "," C1 "
+CONNECT, " O  ", T2J:  sp3, " N  "
+CONNECT, " C1 ", T2J:  sp2, " C  "," C2 "," H  "
+CONNECT, " C11", T2J:  sp3, " C10"," H15"," H13"," H12"
+CONNECT, " C2 ", T2J:  sp2, " C1 "," C3 "," H1 "
+CONNECT, " C3 ", T2J:  sp2, " C4 "," C2 "," H2 "
+CONNECT, " C9 ", T2J:  sp3, " N1 "," C8 "," H11"," H10"
+CONNECT, " N2 ", T2J:  sp2, " C7 "," C8 "," C10"
+CONNECT, " O1 ", T2J:  sp3, " N  "
+CONNECT, " O2 ", T2J:  sp3, " C10"
+CONNECT, " H3 ", T2J:    s, " C4 "
+CONNECT, " H5 ", T2J:    s, " C6 "
+CONNECT, " H4 ", T2J:    s, " C6 "
+CONNECT, " H7 ", T2J:    s, " C7 "
+CONNECT, " H6 ", T2J:    s, " C7 "
+CONNECT, " H9 ", T2J:    s, " C8 "
+CONNECT, " H8 ", T2J:    s, " C8 "
+CONNECT, " H  ", T2J:    s, " C1 "
+CONNECT, " H15", T2J:    s, " C11"
+CONNECT, " H13", T2J:    s, " C11"
+CONNECT, " H12", T2J:    s, " C11"
+CONNECT, " H1 ", T2J:    s, " C2 "
+CONNECT, " H2 ", T2J:    s, " C3 "
+CONNECT, " H11", T2J:    s, " C9 "
+CONNECT, " H10", T2J:    s, " C9 "
+
+# ATOM charges
+CHARGE, T2J, " N1 ":   -0.64
+CHARGE, T2J, " C4 ":   -0.17
+CHARGE, T2J, " C5 ":    0.16
+CHARGE, T2J, " C6 ":    0.15
+CHARGE, T2J, " C7 ":    0.08
+CHARGE, T2J, " C8 ":    0.08
+CHARGE, T2J, " C10":    0.65
+CHARGE, T2J, " N  ":    0.32
+CHARGE, T2J, " C  ":   -0.15
+CHARGE, T2J, " O  ":    -0.2
+CHARGE, T2J, " C1 ":   -0.08
+CHARGE, T2J, " C11":   -0.17
+CHARGE, T2J, " C2 ":   -0.14
+CHARGE, T2J, " C3 ":   -0.09
+CHARGE, T2J, " C9 ":    0.15
+CHARGE, T2J, " N2 ":   -0.47
+CHARGE, T2J, " O1 ":    -0.2
+CHARGE, T2J, " O2 ":    -0.6
+CHARGE, T2J, " H3 ":    0.15
+CHARGE, T2J, " H5 ":    0.05
+CHARGE, T2J, " H4 ":    0.05
+CHARGE, T2J, " H7 ":    0.07
+CHARGE, T2J, " H6 ":    0.07
+CHARGE, T2J, " H9 ":    0.07
+CHARGE, T2J, " H8 ":    0.07
+CHARGE, T2J, " H  ":    0.16
+CHARGE, T2J, " H15":    0.07
+CHARGE, T2J, " H13":    0.07
+CHARGE, T2J, " H12":    0.07
+CHARGE, T2J, " H1 ":    0.15
+CHARGE, T2J, " H2 ":    0.14
+CHARGE, T2J, " H11":    0.05
+CHARGE, T2J, " H10":    0.05
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T2J, " N1 ":  1.500,  1.750,  0.160
+RADIUS, T2J, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C10":  1.700,  2.000,  0.150
+RADIUS, T2J, " N  ":  1.500,  1.750,  0.160
+RADIUS, T2J, " C  ":  1.700,  2.000,  0.150
+RADIUS, T2J, " O  ":  1.400,  1.600,  0.200
+RADIUS, T2J, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C11":  1.700,  2.000,  0.150
+RADIUS, T2J, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T2J, " N2 ":  1.500,  1.750,  0.160
+RADIUS, T2J, " O1 ":  1.400,  1.600,  0.200
+RADIUS, T2J, " O2 ":  1.400,  1.600,  0.200
+RADIUS, T2J, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H  ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H15":  1.000,  1.000,  0.020
+RADIUS, T2J, " H13":  1.000,  1.000,  0.020
+RADIUS, T2J, " H12":  1.000,  1.000,  0.020
+RADIUS, T2J, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T2J, " H11":  1.000,  1.000,  0.020
+RADIUS, T2J, " H10":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T2J:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0

@@ -1,0 +1,98 @@
+# Conformer definition
+CONFLIST, HWH: HWHBK, HWH01
+
+# ATOM name and bonds
+CONNECT, " N1 ", HWH01:  sp2, " C2 "," C3 "," H1 "
+CONNECT, " C4 ", HWH01:  sp3, " C5 "," C3 "," H2 "," H3 "
+CONNECT, " C5 ", HWH01:  sp2, " C4 "," C6 "," C8 "
+CONNECT, " C6 ", HWH01:  sp3, " C5 "," N2 "," H4 "
+CONNECT, " C7 ", HWH01:  sp2, " C8 "," C12"," N2 "
+CONNECT, " C8 ", HWH01:  sp3, " C5 "," C7 "," C9 "
+CONNECT, " C10", HWH01:  sp2, " C11"," C9 "," F1 "
+CONNECT, " C1 ", HWH01:  sp3, " C2 "," H5 "," H6 "," H7 "
+CONNECT, " C11", HWH01:  sp2, " C10"," C12"," H8 "
+CONNECT, " C12", HWH01:  sp2, " C7 "," C11"," H9 "
+CONNECT, " C2 ", HWH01:  sp2, " N1 "," C1 "," O1 "
+CONNECT, " C3 ", HWH01:  sp3, " N1 "," C4 "," H10"," H11"
+CONNECT, " C9 ", HWH01:  sp2, " C8 "," C10"," H12"
+CONNECT, " F1 ", HWH01:     , " C10"
+CONNECT, " N2 ", HWH01:  sp3, " C6 "," C7 "," H13"
+CONNECT, " O1 ", HWH01:  sp3, " C2 "
+CONNECT, " H1 ", HWH01:    s, " N1 "
+CONNECT, " H2 ", HWH01:    s, " C4 "
+CONNECT, " H3 ", HWH01:    s, " C4 "
+CONNECT, " H4 ", HWH01:    s, " C6 "
+CONNECT, " H5 ", HWH01:    s, " C1 "
+CONNECT, " H6 ", HWH01:    s, " C1 "
+CONNECT, " H7 ", HWH01:    s, " C1 "
+CONNECT, " H8 ", HWH01:    s, " C11"
+CONNECT, " H9 ", HWH01:    s, " C12"
+CONNECT, " H10", HWH01:    s, " C3 "
+CONNECT, " H11", HWH01:    s, " C3 "
+CONNECT, " H12", HWH01:    s, " C9 "
+CONNECT, " H13", HWH01:    s, " N2 "
+
+# ATOM charges
+CHARGE, HWH01, " N1 ":   -0.57
+CHARGE, HWH01, " C4 ":   -0.03
+CHARGE, HWH01, " C5 ":   -0.15
+CHARGE, HWH01, " C6 ":   -0.09
+CHARGE, HWH01, " C7 ":   -0.06
+CHARGE, HWH01, " C8 ":   -0.07
+CHARGE, HWH01, " C10":     0.1
+CHARGE, HWH01, " C1 ":   -0.18
+CHARGE, HWH01, " C11":   -0.15
+CHARGE, HWH01, " C12":   -0.12
+CHARGE, HWH01, " C2 ":    0.65
+CHARGE, HWH01, " C3 ":    0.09
+CHARGE, HWH01, " C9 ":   -0.12
+CHARGE, HWH01, " F1 ":   -0.15
+CHARGE, HWH01, " N2 ":   -0.19
+CHARGE, HWH01, " O1 ":   -0.61
+CHARGE, HWH01, " H1 ":     0.3
+CHARGE, HWH01, " H2 ":    0.05
+CHARGE, HWH01, " H3 ":    0.05
+CHARGE, HWH01, " H4 ":    0.17
+CHARGE, HWH01, " H5 ":    0.07
+CHARGE, HWH01, " H6 ":    0.07
+CHARGE, HWH01, " H7 ":    0.07
+CHARGE, HWH01, " H8 ":    0.15
+CHARGE, HWH01, " H9 ":    0.14
+CHARGE, HWH01, " H10":    0.06
+CHARGE, HWH01, " H11":    0.06
+CHARGE, HWH01, " H12":    0.15
+CHARGE, HWH01, " H13":     0.3
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, HWH01, " N1 ":  1.500,  1.750,  0.160
+RADIUS, HWH01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C10":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C11":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C12":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, HWH01, " F1 ":  1.850,  2.000,  0.173
+RADIUS, HWH01, " N2 ":  1.500,  1.750,  0.160
+RADIUS, HWH01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, HWH01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H10":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H11":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H12":  1.000,  1.000,  0.020
+RADIUS, HWH01, " H13":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, HWH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -5.737, rxn08= -2.604
