@@ -398,7 +398,7 @@ RADIUS,  PHO-1,  "4H16": 1.200,   1.000,   0.020
 RADIUS,  PHO-1,  "5H16": 1.200,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, PHO01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn04= -4.111, rxn08= -2.00
-CONFORMER, PHO-1: Em0=-620.0, pKa0=  0.00, ne= 1, nH= 0, rxn04=-12.138, rxn08=-6.0
+CONFORMER, PHO01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04= -4.111, rxn08= -2.00
+CONFORMER, PHO-1: Em0=-620.0, pKa0=  0.00, ne= 1, nH= 0, rxn02=0, rxn04=-12.138, rxn08=-6.0
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
