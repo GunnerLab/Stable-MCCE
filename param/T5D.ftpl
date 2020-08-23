@@ -1,0 +1,188 @@
+# Conformer definition
+CONFLIST, T5D: T5DBK, T5D01, T5D+1, T5DDM
+
+# ATOM name and bonds
+CONNECT, " C4 ", T5D01:  sp2, " C5 "," C3 "," H4 "
+CONNECT, " C5 ", T5D01:  sp2, " C4 "," C6 "," H5 "
+CONNECT, " C6 ", T5D01:  sp2, " C5 "," C2 "," H6 "
+CONNECT, " C7 ", T5D01:  sp3, " C8 "," C1 "," H7 "," H8 "
+CONNECT, " C8 ", T5D01:  sp3, " C7 "," C9 "," H9 "," H10"
+CONNECT, " C10", T5D01:  sp3, " C1 "," C9 "," H14"," H13"
+CONNECT, " N  ", T5D01:  sp2, " C2 "," C3 "
+CONNECT, " C  ", T5D01:  sp3, " O  "," C1 "," H2 "," H1 "
+CONNECT, " O  ", T5D01:  sp3, " C  "," H  "
+CONNECT, " C1 ", T5D01:  sp3, " C7 "," C10"," C  "," C2 "
+CONNECT, " C2 ", T5D01:  sp2, " C6 "," N  "," C1 "
+CONNECT, " C3 ", T5D01:  sp2, " C4 "," N  "," H3 "
+CONNECT, " C9 ", T5D01:  sp3, " C8 "," C10"," H11"," H12"
+CONNECT, " H4 ", T5D01:    s, " C4 "
+CONNECT, " H5 ", T5D01:    s, " C5 "
+CONNECT, " H6 ", T5D01:    s, " C6 "
+CONNECT, " H7 ", T5D01:    s, " C7 "
+CONNECT, " H8 ", T5D01:    s, " C7 "
+CONNECT, " H9 ", T5D01:    s, " C8 "
+CONNECT, " H10", T5D01:    s, " C8 "
+CONNECT, " H14", T5D01:    s, " C10"
+CONNECT, " H13", T5D01:    s, " C10"
+CONNECT, " H2 ", T5D01:    s, " C  "
+CONNECT, " H1 ", T5D01:    s, " C  "
+CONNECT, " H  ", T5D01:    s, " O  "
+CONNECT, " H3 ", T5D01:    s, " C3 "
+CONNECT, " H11", T5D01:    s, " C9 "
+CONNECT, " H12", T5D01:    s, " C9 "
+
+# ATOM name and bonds
+CONNECT, " C4 ", T5D+1:  sp2, " C5 "," C3 "," H4 "
+CONNECT, " C5 ", T5D+1:  sp2, " C4 "," C6 "," H5 "
+CONNECT, " C6 ", T5D+1:  sp2, " C5 "," C2 "," H6 "
+CONNECT, " C7 ", T5D+1:  sp3, " C8 "," C1 "," H7 "," H8 "
+CONNECT, " C8 ", T5D+1:  sp3, " C7 "," C9 "," H9 "," H10"
+CONNECT, " C10", T5D+1:  sp3, " C1 "," C9 "," H14"," H13"
+CONNECT, " N  ", T5D+1:  sp2, " C2 "," C3 "
+CONNECT, " C  ", T5D+1:  sp3, " O  "," C1 "," H2 "," H1 "
+CONNECT, " O  ", T5D+1:  sp3, " C  "," H  "
+CONNECT, " C1 ", T5D+1:  sp3, " C7 "," C10"," C  "," C2 "
+CONNECT, " C2 ", T5D+1:  sp2, " C6 "," N  "," C1 "
+CONNECT, " C3 ", T5D+1:  sp2, " C4 "," N  "," H3 "
+CONNECT, " C9 ", T5D+1:  sp3, " C8 "," C10"," H11"," H12"
+CONNECT, " H4 ", T5D+1:    s, " C4 "
+CONNECT, " H5 ", T5D+1:    s, " C5 "
+CONNECT, " H6 ", T5D+1:    s, " C6 "
+CONNECT, " H7 ", T5D+1:    s, " C7 "
+CONNECT, " H8 ", T5D+1:    s, " C7 "
+CONNECT, " H9 ", T5D+1:    s, " C8 "
+CONNECT, " H10", T5D+1:    s, " C8 "
+CONNECT, " H14", T5D+1:    s, " C10"
+CONNECT, " H13", T5D+1:    s, " C10"
+CONNECT, " H2 ", T5D+1:    s, " C  "
+CONNECT, " H1 ", T5D+1:    s, " C  "
+CONNECT, " H  ", T5D+1:    s, " O  "
+CONNECT, " H3 ", T5D+1:    s, " C3 "
+CONNECT, " H11", T5D+1:    s, " C9 "
+CONNECT, " H12", T5D+1:    s, " C9 "
+
+# ATOM charges
+CHARGE, T5D01, " C4 ":   -0.25
+CHARGE, T5D01, " C5 ":   -0.09
+CHARGE, T5D01, " C6 ":   -0.25
+CHARGE, T5D01, " C7 ":   -0.07
+CHARGE, T5D01, " C8 ":   -0.08
+CHARGE, T5D01, " C10":   -0.07
+CHARGE, T5D01, " N  ":   -0.65
+CHARGE, T5D01, " C  ":    0.14
+CHARGE, T5D01, " O  ":   -0.59
+CHARGE, T5D01, " C1 ":    -0.1
+CHARGE, T5D01, " C2 ":    0.43
+CHARGE, T5D01, " C3 ":     0.4
+CHARGE, T5D01, " C9 ":   -0.08
+CHARGE, T5D01, " H4 ":    0.14
+CHARGE, T5D01, " H5 ":    0.14
+CHARGE, T5D01, " H6 ":    0.14
+CHARGE, T5D01, " H7 ":    0.06
+CHARGE, T5D01, " H8 ":    0.06
+CHARGE, T5D01, " H9 ":    0.04
+CHARGE, T5D01, " H10":    0.04
+CHARGE, T5D01, " H14":    0.06
+CHARGE, T5D01, " H13":    0.06
+CHARGE, T5D01, " H2 ":    0.02
+CHARGE, T5D01, " H1 ":    0.02
+CHARGE, T5D01, " H  ":     0.4
+CHARGE, T5D01, " H3 ":    0.02
+CHARGE, T5D01, " H11":    0.04
+CHARGE, T5D01, " H12":    0.04
+
+# ATOM charges
+CHARGE, T5D+1, " C4 ":   -0.15
+CHARGE, T5D+1, " C5 ":   -0.01
+CHARGE, T5D+1, " C6 ":   -0.15
+CHARGE, T5D+1, " C7 ":   -0.08
+CHARGE, T5D+1, " C8 ":   -0.08
+CHARGE, T5D+1, " C10":   -0.08
+CHARGE, T5D+1, " N  ":   -0.08
+CHARGE, T5D+1, " C  ":    0.13
+CHARGE, T5D+1, " O  ":   -0.65
+CHARGE, T5D+1, " C1 ":   -0.05
+CHARGE, T5D+1, " C2 ":    0.07
+CHARGE, T5D+1, " C3 ":   -0.02
+CHARGE, T5D+1, " C9 ":   -0.08
+CHARGE, T5D+1, " H4 ":     0.2
+CHARGE, T5D+1, " H5 ":    0.19
+CHARGE, T5D+1, " H6 ":     0.2
+CHARGE, T5D+1, " H7 ":    0.06
+CHARGE, T5D+1, " H8 ":    0.06
+CHARGE, T5D+1, " H9 ":    0.07
+CHARGE, T5D+1, " H10":    0.07
+CHARGE, T5D+1, " H14":    0.06
+CHARGE, T5D+1, " H13":    0.06
+CHARGE, T5D+1, " H2 ":    0.06
+CHARGE, T5D+1, " H1 ":    0.06
+CHARGE, T5D+1, " H  ":    0.44
+CHARGE, T5D+1, " H3 ":    0.21
+CHARGE, T5D+1, " H11":    0.07
+CHARGE, T5D+1, " H12":    0.07
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T5D01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C10":  1.700,  2.000,  0.150
+RADIUS, T5D01, " N  ":  1.500,  1.750,  0.160
+RADIUS, T5D01, " C  ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " O  ":  1.400,  1.600,  0.200
+RADIUS, T5D01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T5D01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H10":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H14":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H13":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H  ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H11":  1.000,  1.000,  0.020
+RADIUS, T5D01, " H12":  1.000,  1.000,  0.020
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T5D+1, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C10":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " N  ":  1.500,  1.750,  0.160
+RADIUS, T5D+1, " C  ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " O  ":  1.400,  1.600,  0.200
+RADIUS, T5D+1, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T5D+1, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H10":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H14":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H13":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H  ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H11":  1.000,  1.000,  0.020
+RADIUS, T5D+1, " H12":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T5D01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -2.911, rxn08= -1.325
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T5D+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -7.750, rxn08= -3.615

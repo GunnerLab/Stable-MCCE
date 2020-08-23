@@ -1,0 +1,184 @@
+# Conformer definition
+CONFLIST, T0V: T0VBK, T0V01, T0V+1, T0VDM
+
+# ATOM name and bonds
+CONNECT, " C10", T0V01:  sp2, " C09"," C11"," O14"
+CONNECT, " C13", T0V01:  sp3, " C12"," O14","H131"
+CONNECT, " C15", T0V01:  sp2, " C02"," C06","H151"
+CONNECT, " C02", T0V01:  sp2, " C15"," C03"," F01"
+CONNECT, " C03", T0V01:  sp2, " C02"," C04","H031"
+CONNECT, " C04", T0V01:  sp2, " C03"," C05","H041"
+CONNECT, " C05", T0V01:  sp2, " C04"," C06","H051"
+CONNECT, " C06", T0V01:  sp2, " C15"," C05"," C07"
+CONNECT, " C07", T0V01:  sp3, " C06"," N08","H072","H071"
+CONNECT, " C09", T0V01:  sp3, " C10"," N08","H092","H091"
+CONNECT, " C11", T0V01:  sp3, " C10"," C12","H111"
+CONNECT, " C12", T0V01:  sp3, " C13"," C11","H121"
+CONNECT, " F01", T0V01:     , " C02"
+CONNECT, " N08", T0V01:  sp3, " C07"," C09"," H1 "
+CONNECT, " O14", T0V01:  sp3, " C10"," C13"
+CONNECT, "H131", T0V01:    s, " C13"
+CONNECT, "H151", T0V01:    s, " C15"
+CONNECT, "H031", T0V01:    s, " C03"
+CONNECT, "H041", T0V01:    s, " C04"
+CONNECT, "H051", T0V01:    s, " C05"
+CONNECT, "H072", T0V01:    s, " C07"
+CONNECT, "H071", T0V01:    s, " C07"
+CONNECT, "H092", T0V01:    s, " C09"
+CONNECT, "H091", T0V01:    s, " C09"
+CONNECT, "H111", T0V01:    s, " C11"
+CONNECT, "H121", T0V01:    s, " C12"
+CONNECT, " H1 ", T0V01:    s, " N08"
+
+# ATOM name and bonds
+CONNECT, " C10", T0V+1:  sp2, " C09"," C11"," O14"
+CONNECT, " C13", T0V+1:  sp3, " C12"," O14","H131"
+CONNECT, " C15", T0V+1:  sp2, " C02"," C06","H151"
+CONNECT, " C02", T0V+1:  sp2, " C15"," C03"," F01"
+CONNECT, " C03", T0V+1:  sp2, " C02"," C04","H031"
+CONNECT, " C04", T0V+1:  sp2, " C03"," C05","H041"
+CONNECT, " C05", T0V+1:  sp2, " C04"," C06","H051"
+CONNECT, " C06", T0V+1:  sp2, " C15"," C05"," C07"
+CONNECT, " C07", T0V+1:  sp3, " C06"," N08","H072","H071"
+CONNECT, " C09", T0V+1:  sp3, " C10"," N08","H092","H091"
+CONNECT, " C11", T0V+1:  sp3, " C10"," C12","H111"
+CONNECT, " C12", T0V+1:  sp3, " C13"," C11","H121"
+CONNECT, " F01", T0V+1:     , " C02"
+CONNECT, " N08", T0V+1:  sp3, " C07"," C09"," H1 "
+CONNECT, " O14", T0V+1:  sp3, " C10"," C13"
+CONNECT, "H131", T0V+1:    s, " C13"
+CONNECT, "H151", T0V+1:    s, " C15"
+CONNECT, "H031", T0V+1:    s, " C03"
+CONNECT, "H041", T0V+1:    s, " C04"
+CONNECT, "H051", T0V+1:    s, " C05"
+CONNECT, "H072", T0V+1:    s, " C07"
+CONNECT, "H071", T0V+1:    s, " C07"
+CONNECT, "H092", T0V+1:    s, " C09"
+CONNECT, "H091", T0V+1:    s, " C09"
+CONNECT, "H111", T0V+1:    s, " C11"
+CONNECT, "H121", T0V+1:    s, " C12"
+CONNECT, " H1 ", T0V+1:    s, " N08"
+
+# ATOM charges
+CHARGE, T0V01, " C10":    0.23
+CHARGE, T0V01, " C13":    0.24
+CHARGE, T0V01, " C15":   -0.16
+CHARGE, T0V01, " C02":    0.12
+CHARGE, T0V01, " C03":   -0.16
+CHARGE, T0V01, " C04":   -0.11
+CHARGE, T0V01, " C05":   -0.12
+CHARGE, T0V01, " C06":   -0.07
+CHARGE, T0V01, " C07":    0.21
+CHARGE, T0V01, " C09":    0.14
+CHARGE, T0V01, " C11":   -0.25
+CHARGE, T0V01, " C12":   -0.27
+CHARGE, T0V01, " F01":   -0.14
+CHARGE, T0V01, " N08":   -0.82
+CHARGE, T0V01, " O14":   -0.34
+CHARGE, T0V01, "H131":    0.05
+CHARGE, T0V01, "H151":    0.15
+CHARGE, T0V01, "H031":    0.15
+CHARGE, T0V01, "H041":    0.14
+CHARGE, T0V01, "H051":    0.15
+CHARGE, T0V01, "H072":    0.04
+CHARGE, T0V01, "H071":    0.04
+CHARGE, T0V01, "H092":    0.05
+CHARGE, T0V01, "H091":    0.05
+CHARGE, T0V01, "H111":    0.16
+CHARGE, T0V01, "H121":    0.16
+CHARGE, T0V01, " H1 ":    0.37
+
+# ATOM charges
+CHARGE, T0V+1, " C10":    0.09
+CHARGE, T0V+1, " C13":    0.31
+CHARGE, T0V+1, " C15":   -0.16
+CHARGE, T0V+1, " C02":    0.15
+CHARGE, T0V+1, " C03":   -0.12
+CHARGE, T0V+1, " C04":   -0.09
+CHARGE, T0V+1, " C05":   -0.11
+CHARGE, T0V+1, " C06":   -0.16
+CHARGE, T0V+1, " C07":    0.17
+CHARGE, T0V+1, " C09":    0.11
+CHARGE, T0V+1, " C11":   -0.14
+CHARGE, T0V+1, " C12":   -0.27
+CHARGE, T0V+1, " F01":   -0.11
+CHARGE, T0V+1, " N08":   -0.77
+CHARGE, T0V+1, " O14":   -0.38
+CHARGE, T0V+1, "H131":    0.08
+CHARGE, T0V+1, "H151":    0.15
+CHARGE, T0V+1, "H031":    0.18
+CHARGE, T0V+1, "H041":    0.17
+CHARGE, T0V+1, "H051":    0.15
+CHARGE, T0V+1, "H072":    0.11
+CHARGE, T0V+1, "H071":    0.11
+CHARGE, T0V+1, "H092":    0.12
+CHARGE, T0V+1, "H091":    0.12
+CHARGE, T0V+1, "H111":    0.18
+CHARGE, T0V+1, "H121":    0.19
+CHARGE, T0V+1, " H1 ":    0.46
+
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T0V01, " C10":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C13":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C15":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C02":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C03":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C04":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C05":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C06":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C07":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C09":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C11":  1.700,  2.000,  0.150
+RADIUS, T0V01, " C12":  1.700,  2.000,  0.150
+RADIUS, T0V01, " F01":  1.850,  2.000,  0.173
+RADIUS, T0V01, " N08":  1.500,  1.750,  0.160
+RADIUS, T0V01, " O14":  1.400,  1.600,  0.200
+RADIUS, T0V01, "H131":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H151":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H031":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H041":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H051":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H072":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H071":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H092":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H091":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H111":  1.000,  1.000,  0.020
+RADIUS, T0V01, "H121":  1.000,  1.000,  0.020
+RADIUS, T0V01, " H1 ":  1.000,  1.000,  0.020
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T0V+1, " C10":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C13":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C15":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C02":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C03":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C04":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C05":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C06":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C07":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C09":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C11":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " C12":  1.700,  2.000,  0.150
+RADIUS, T0V+1, " F01":  1.850,  2.000,  0.173
+RADIUS, T0V+1, " N08":  1.500,  1.750,  0.160
+RADIUS, T0V+1, " O14":  1.400,  1.600,  0.200
+RADIUS, T0V+1, "H131":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H151":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H031":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H041":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H051":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H072":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H071":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H092":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H091":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H111":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H121":  1.000,  1.000,  0.020
+RADIUS, T0V+1, " H1 ":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -2.927, rxn08= -1.324
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -5.179, rxn08= -3.762

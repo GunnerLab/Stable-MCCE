@@ -1,0 +1,80 @@
+# Conformer definition
+CONFLIST, U1V: U1VBK, U1V
+
+# ATOM name and bonds
+CONNECT, " C4 ", U1V:  sp2, " C5 "," C3 "," H4 "
+CONNECT, " C5 ", U1V:  sp2, " C4 "," C6 "," H5 "
+CONNECT, " C6 ", U1V:  sp2, " C5 "," C7 "," C1 "
+CONNECT, " C7 ", U1V:  sp3, " C6 "," S  "," H6 "," H7 "
+CONNECT, " N  ", U1V:  sp2, " S  "," H8 "," H9 "
+CONNECT, " C  ", U1V:  sp3, " C1 "," H2 "," H1 "," H  "
+CONNECT, " O  ", U1V:  sp3, " S  "
+CONNECT, " C1 ", U1V:  sp2, " C6 "," C  "," C2 "
+CONNECT, " C2 ", U1V:  sp2, " C1 "," C3 "," H3 "
+CONNECT, " C3 ", U1V:  sp2, " C4 "," C2 "," F  "
+CONNECT, " F  ", U1V:     , " C3 "
+CONNECT, " O1 ", U1V:  sp3, " S  "
+CONNECT, " S  ", U1V:  sp3, " C7 "," N  "," O  "," O1 "
+CONNECT, " H4 ", U1V:    s, " C4 "
+CONNECT, " H5 ", U1V:    s, " C5 "
+CONNECT, " H6 ", U1V:    s, " C7 "
+CONNECT, " H7 ", U1V:    s, " C7 "
+CONNECT, " H8 ", U1V:    s, " N  "
+CONNECT, " H9 ", U1V:    s, " N  "
+CONNECT, " H2 ", U1V:    s, " C  "
+CONNECT, " H1 ", U1V:    s, " C  "
+CONNECT, " H  ", U1V:    s, " C  "
+CONNECT, " H3 ", U1V:    s, " C2 "
+
+# ATOM charges
+CHARGE, U1V, " C4 ":   -0.17
+CHARGE, U1V, " C5 ":    -0.1
+CHARGE, U1V, " C6 ":   -0.09
+CHARGE, U1V, " C7 ":   -0.26
+CHARGE, U1V, " N  ":   -1.03
+CHARGE, U1V, " C  ":   -0.08
+CHARGE, U1V, " O  ":   -0.66
+CHARGE, U1V, " C1 ":   -0.03
+CHARGE, U1V, " C2 ":   -0.17
+CHARGE, U1V, " C3 ":    0.13
+CHARGE, U1V, " F  ":   -0.14
+CHARGE, U1V, " O1 ":   -0.66
+CHARGE, U1V, " S  ":    1.46
+CHARGE, U1V, " H4 ":    0.15
+CHARGE, U1V, " H5 ":    0.14
+CHARGE, U1V, " H6 ":    0.12
+CHARGE, U1V, " H7 ":    0.12
+CHARGE, U1V, " H8 ":    0.45
+CHARGE, U1V, " H9 ":    0.45
+CHARGE, U1V, " H2 ":    0.06
+CHARGE, U1V, " H1 ":    0.06
+CHARGE, U1V, " H  ":    0.06
+CHARGE, U1V, " H3 ":    0.15
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, U1V, " C4 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " C5 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " C6 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " C7 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " N  ":  1.500,  1.750,  0.160
+RADIUS, U1V, " C  ":  1.700,  2.000,  0.150
+RADIUS, U1V, " O  ":  1.400,  1.600,  0.200
+RADIUS, U1V, " C1 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " C2 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " C3 ":  1.700,  2.000,  0.150
+RADIUS, U1V, " F  ":  1.850,  2.000,  0.173
+RADIUS, U1V, " O1 ":  1.400,  1.600,  0.200
+RADIUS, U1V, " S  ":  1.850,  2.000,  0.200
+RADIUS, U1V, " H4 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H5 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H6 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H7 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H8 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H9 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H2 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H1 ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H  ":  1.000,  1.000,  0.020
+RADIUS, U1V, " H3 ":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, U1V:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
