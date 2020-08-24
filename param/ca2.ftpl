@@ -24,6 +24,6 @@ CHARGE, CA2+2, "CA2 ":  2.000
 RADIUS,  CA2+2,  "CA2 ": 2.230,   2.000,   0.173
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, CA2+2: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn04=-70.790, rxn08=-35.40
+CONFORMER, CA2+2: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=-70.790, rxn08=-35.40
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
