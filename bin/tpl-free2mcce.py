@@ -291,7 +291,7 @@ def convert(filename, epsilon):
     return nlines
 
 if __name__ == "__main__":
-        # get param path, epsilon
+    # get param path, epsilon
     lines = open("run.prm").readlines()
     epsilon = "4.0"
     mcce_home = ""
@@ -316,7 +316,7 @@ if __name__ == "__main__":
     # copy 00always_needed.tpl
     shutil.copyfile(ftpldir+"/00always_needed.tpl", targetdir+"/00always_needed.tpl")
 
-    # Load all ftpl files
+    # Load ftpl files in mcce param directory
     cwd = os.getcwd()
     os.chdir(ftpldir)
 
@@ -329,5 +329,21 @@ if __name__ == "__main__":
         tpllines += convert(fname, epsilon)
 
     os.chdir(cwd)
+
+
+    # Load ftpl files in custom param directory
+    user_param = "./user_param"
+    if os.path.isdir(user_param):
+        os.chdir("./user_param")
+
+        files = glob.glob("*.ftpl")
+        files.sort()
+        logging.info("   Loading ftpl files from %s" % ftpldir)
+
+        for fname in files:
+            tpllines += convert(fname, epsilon)
+
+        os.chdir(cwd)
+
 
     open(targetdir+"/mcce.tpl", "w").writelines(tpllines)
