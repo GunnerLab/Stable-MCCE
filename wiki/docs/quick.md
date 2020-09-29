@@ -109,6 +109,7 @@ This step proof reads the structure file and cuts terminal residues and complex 
 $ step1.py 1DPX.pdb
 ```
 
+If this step quits and complain about unrecognized residues, please refere to the section of [making new paramter files](newftpl.md). 
 ### Step 2 make side chain conformers
 This step makes alternative side chain locations and ionization states.
 ```

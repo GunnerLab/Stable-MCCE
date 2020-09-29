@@ -623,14 +623,13 @@ CONFORMER, ACY-1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
 ```
 
 #### Install ftpl file
-Find the param/ location
+User made ftpl files are called custom ftpl files. They should be placed under ./user_param of working directory. If this directory doesn't exist, create one.
+
+The ftpl files under ./user_param supercsede the system ftpl files so you can overwrite system ftpl files with your own. Within this directory, files are read in based on alphabetic order.
+    
+Copy ftpl file to ./user_param/
 ```
-$ which mcce
-/home/jmao/projects/Stable-MCCE/bin/mcce
-```
-Copy ftpl file to param/
-```
-$ cp acy.ftpl /home/jmao/projects/Stable-MCCE/param
+$ cp acy.ftpl ./user_param
 ```
 
 #### Reaction field energy
