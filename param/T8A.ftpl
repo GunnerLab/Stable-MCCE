@@ -236,7 +236,7 @@ RADIUS, T8A02, "H191":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T8A01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T8A01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -9.359, rxn04= -4.470, rxn08= -2.043
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn

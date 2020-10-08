@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, JGP: JGPBK, JGP01
+CONFLIST, JGP: JGPBK, JGP01, JGPDM
 
 # ATOM name and bonds
 CONNECT, " C10", JGP01:  sp3, " N09"," C11","H101","H102"
@@ -75,8 +75,6 @@ CHARGE, JGP01, "H122":    0.04
 CHARGE, JGP01, "H142":    0.05
 CHARGE, JGP01, "H141":    0.05
 
-
-
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, JGP01, " C10":  1.700,  2.000,  0.150
 RADIUS, JGP01, " C13":  1.700,  2.000,  0.150
@@ -115,4 +113,4 @@ RADIUS, JGP01, "H142":  1.000,  1.000,  0.020
 RADIUS, JGP01, "H141":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, JGP01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -4.302, rxn08= -1.958
+CONFORMER, JGP01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -9.036, rxn04= -4.302, rxn08= -1.958

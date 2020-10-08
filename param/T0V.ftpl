@@ -177,8 +177,8 @@ RADIUS, T0V+1, "H121":  1.000,  1.000,  0.020
 RADIUS, T0V+1, " H1 ":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -2.927, rxn08= -1.324
+CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -6.164, rxn04= -2.927, rxn08= -1.324
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -5.179, rxn08= -3.762
+CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -17.479, rxn04= -5.179, rxn08= -3.762
