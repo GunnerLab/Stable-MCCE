@@ -240,5 +240,3 @@ CONFORMER, T6701:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.514, rxn04= -7.336
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, T67+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.371, rxn04= -14.145, rxn08=-6.562
-
-
