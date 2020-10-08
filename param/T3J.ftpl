@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T3J: T3JBK, T3J01, T3J02
+CONFLIST, T3J: T3JBK, T3J01, T3J02, T3JDM
 
 # ATOM name and bonds
 CONNECT, " C10", T3J01:  sp2, " C09"," C11"," C16"
@@ -194,9 +194,7 @@ RADIUS, T3J02, "H121":  1.000,  1.000,  0.020
 RADIUS, T3J02, "H161":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T3J01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T3J01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -9.538, rxn04= -4.543, rxn08= -2.069
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T3J02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
-
-
+CONFORMER, T3J02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -9.538, rxn04= -4.543, rxn08= -2.069
