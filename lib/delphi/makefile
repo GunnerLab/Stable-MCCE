@@ -2,8 +2,9 @@ VPATH=src
 #LINUX INTEL
 #  FC=gfortran -O3 -fcray-pointer -ffixed-line-length-none
 #  CC=gcc -O3
-  FC=gfortran -g -static -fcray-pointer -ffixed-line-length-none
-  CC=gcc -g
+#  FC=gfortran -g -static -fcray-pointer -ffixed-line-length-none
+  FC=gfortran -fcray-pointer -ffixed-line-length-none
+  CC=gcc
 
 # Double precision performance
 #RECFLAGS = -O3 -I$(VPATH)/ -DLINUX -DIFC -DDP -fdefault-real-8
@@ -17,7 +18,7 @@ VPATH=src
 RECFLAGS = -g -I$(VPATH)/ -DLINUX -DIFC -DDP 
 FLAGS = -g -I$(VPATH)/   -DLINUX -DIFC  -DDP
 CFLAGS = -g  -DLINUX 
-LFLAGS = -g  -L/usr/lib/ 
+LFLAGS = -g 
 
 
 include $(VPATH)/genericLinux.mk
