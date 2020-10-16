@@ -15,7 +15,7 @@ CONNECT, " C09", T1M01:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M01:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M01:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M01:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M01:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M01:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M01:  sp3, " C03","H041"
 CONNECT, "H131", T1M01:    s, " C13"
 CONNECT, "H151", T1M01:    s, " C15"
@@ -36,6 +36,7 @@ CONNECT, "H111", T1M01:    s, " C11"
 CONNECT, "H121", T1M01:    s, " C12"
 CONNECT, "H141", T1M01:    s, " C14"
 CONNECT, "H041", T1M01:    s, " O04"
+CONNECT, "H081", T1M01:    s, " N08"
 
 # ATOM name and bonds
 CONNECT, " C10", T1M02:  sp2, " C15"," C09"," C11"
@@ -51,7 +52,7 @@ CONNECT, " C09", T1M02:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M02:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M02:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M02:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M02:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M02:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M02:  sp3, " C03","H041"
 CONNECT, "H131", T1M02:    s, " C13"
 CONNECT, "H151", T1M02:    s, " C15"
@@ -72,6 +73,9 @@ CONNECT, "H111", T1M02:    s, " C11"
 CONNECT, "H121", T1M02:    s, " C12"
 CONNECT, "H141", T1M02:    s, " C14"
 CONNECT, "H041", T1M02:    s, " O04"
+CONNECT, "H081", T1M02:    s, " N08"
+
+
 # ATOM name and bonds
 CONNECT, " C10", T1M03:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M03:  sp2, " C12"," C14","H131"
@@ -86,7 +90,7 @@ CONNECT, " C09", T1M03:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M03:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M03:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M03:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M03:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M03:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M03:  sp3, " C03","H041"
 CONNECT, "H131", T1M03:    s, " C13"
 CONNECT, "H151", T1M03:    s, " C15"
@@ -107,6 +111,8 @@ CONNECT, "H111", T1M03:    s, " C11"
 CONNECT, "H121", T1M03:    s, " C12"
 CONNECT, "H141", T1M03:    s, " C14"
 CONNECT, "H041", T1M03:    s, " O04"
+CONNECT, "H081", T1M03:    s, " N08"
+
 # ATOM name and bonds
 CONNECT, " C10", T1M04:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M04:  sp2, " C12"," C14","H131"
@@ -121,7 +127,7 @@ CONNECT, " C09", T1M04:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M04:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M04:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M04:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M04:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M04:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M04:  sp3, " C03","H041"
 CONNECT, "H131", T1M04:    s, " C13"
 CONNECT, "H151", T1M04:    s, " C15"
@@ -142,6 +148,8 @@ CONNECT, "H111", T1M04:    s, " C11"
 CONNECT, "H121", T1M04:    s, " C12"
 CONNECT, "H141", T1M04:    s, " C14"
 CONNECT, "H041", T1M04:    s, " O04"
+CONNECT, "H081", T1M04:    s, " N08"
+
 # ATOM name and bonds
 CONNECT, " C10", T1M05:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M05:  sp2, " C12"," C14","H131"
@@ -156,7 +164,7 @@ CONNECT, " C09", T1M05:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M05:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M05:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M05:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M05:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M05:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M05:  sp3, " C03","H041"
 CONNECT, "H131", T1M05:    s, " C13"
 CONNECT, "H151", T1M05:    s, " C15"
@@ -177,6 +185,7 @@ CONNECT, "H111", T1M05:    s, " C11"
 CONNECT, "H121", T1M05:    s, " C12"
 CONNECT, "H141", T1M05:    s, " C14"
 CONNECT, "H041", T1M05:    s, " O04"
+CONNECT, "H081", T1M05:    s, " N08"
 # ATOM name and bonds
 CONNECT, " C10", T1M06:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M06:  sp2, " C12"," C14","H131"
@@ -191,7 +200,7 @@ CONNECT, " C09", T1M06:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M06:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M06:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M06:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M06:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M06:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M06:  sp3, " C03","H041"
 CONNECT, "H131", T1M06:    s, " C13"
 CONNECT, "H151", T1M06:    s, " C15"
@@ -212,6 +221,8 @@ CONNECT, "H111", T1M06:    s, " C11"
 CONNECT, "H121", T1M06:    s, " C12"
 CONNECT, "H141", T1M06:    s, " C14"
 CONNECT, "H041", T1M06:    s, " O04"
+CONNECT, "H081", T1M06:    s, " N08"
+
 # ATOM name and bonds
 CONNECT, " C10", T1M07:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M07:  sp2, " C12"," C14","H131"
@@ -226,7 +237,7 @@ CONNECT, " C09", T1M07:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M07:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M07:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M07:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M07:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M07:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M07:  sp3, " C03","H041"
 CONNECT, "H131", T1M07:    s, " C13"
 CONNECT, "H151", T1M07:    s, " C15"
@@ -247,6 +258,7 @@ CONNECT, "H111", T1M07:    s, " C11"
 CONNECT, "H121", T1M07:    s, " C12"
 CONNECT, "H141", T1M07:    s, " C14"
 CONNECT, "H041", T1M07:    s, " O04"
+CONNECT, "H081", T1M07:    s, " N08"
 # ATOM name and bonds
 CONNECT, " C10", T1M08:  sp2, " C15"," C09"," C11"
 CONNECT, " C13", T1M08:  sp2, " C12"," C14","H131"
@@ -261,7 +273,7 @@ CONNECT, " C09", T1M08:  sp3, " C10"," N08","H091","H092"
 CONNECT, " C11", T1M08:  sp2, " C10"," C12","H111"
 CONNECT, " C12", T1M08:  sp2, " C13"," C11","H121"
 CONNECT, " C14", T1M08:  sp2, " C13"," C15","H141"
-CONNECT, " N08", T1M08:  sp3, " C02"," C07"," C09"
+CONNECT, " N08", T1M08:  sp3, " C02"," C07"," C09","H081"
 CONNECT, " O04", T1M08:  sp3, " C03","H041"
 CONNECT, "H131", T1M08:    s, " C13"
 CONNECT, "H151", T1M08:    s, " C15"
@@ -282,6 +294,7 @@ CONNECT, "H111", T1M08:    s, " C11"
 CONNECT, "H121", T1M08:    s, " C12"
 CONNECT, "H141", T1M08:    s, " C14"
 CONNECT, "H041", T1M08:    s, " O04"
+CONNECT, "H081", T1M08:    s, " N08"
 
 
 
@@ -322,7 +335,7 @@ CHARGE, T1M01, "H111":    0.14
 CHARGE, T1M01, "H121":    0.16
 CHARGE, T1M01, "H141":    0.16
 CHARGE, T1M01, "H041":    0.44
-
+CHARGE, T1M01, "H081":    0.44
 # ATOM charges
 CHARGE, T1M02, " C10":   -0.18
 CHARGE, T1M02, " C13":   -0.08
@@ -358,6 +371,7 @@ CHARGE, T1M02, "H111":    0.14
 CHARGE, T1M02, "H121":    0.16
 CHARGE, T1M02, "H141":    0.16
 CHARGE, T1M02, "H041":    0.42
+CHARGE, T1M02, "H081":    0.44
 # ATOM charges
 CHARGE, T1M03, " C10":   -0.18
 CHARGE, T1M03, " C13":   -0.08
@@ -393,6 +407,7 @@ CHARGE, T1M03, "H111":    0.14
 CHARGE, T1M03, "H121":    0.16
 CHARGE, T1M03, "H141":    0.16
 CHARGE, T1M03, "H041":    0.44
+CHARGE, T1M03, "H081":    0.46
 # ATOM charges
 CHARGE, T1M04, " C10":   -0.18
 CHARGE, T1M04, " C13":   -0.08
@@ -428,6 +443,7 @@ CHARGE, T1M04, "H111":    0.14
 CHARGE, T1M04, "H121":    0.16
 CHARGE, T1M04, "H141":    0.16
 CHARGE, T1M04, "H041":    0.44
+CHARGE, T1M04, "H081":    0.45
 # ATOM charges
 CHARGE, T1M05, " C10":   -0.18
 CHARGE, T1M05, " C13":   -0.08
@@ -463,6 +479,7 @@ CHARGE, T1M05, "H111":    0.14
 CHARGE, T1M05, "H121":    0.16
 CHARGE, T1M05, "H141":    0.16
 CHARGE, T1M05, "H041":    0.44
+CHARGE, T1M05, "H081":    0.45
 # ATOM charges
 CHARGE, T1M06, " C10":   -0.18
 CHARGE, T1M06, " C13":   -0.08
@@ -498,6 +515,7 @@ CHARGE, T1M06, "H111":    0.14
 CHARGE, T1M06, "H121":    0.16
 CHARGE, T1M06, "H141":    0.16
 CHARGE, T1M06, "H041":    0.44
+CHARGE, T1M06, "H081":    0.46
 # ATOM charges
 CHARGE, T1M07, " C10":   -0.18
 CHARGE, T1M07, " C13":   -0.08
@@ -533,6 +551,7 @@ CHARGE, T1M07, "H111":    0.14
 CHARGE, T1M07, "H121":    0.16
 CHARGE, T1M07, "H141":    0.16
 CHARGE, T1M07, "H041":    0.42
+CHARGE, T1M07, "H081":    0.44
 # ATOM charges
 CHARGE, T1M08, " C10":   -0.18
 CHARGE, T1M08, " C13":   -0.08
@@ -568,6 +587,7 @@ CHARGE, T1M08, "H111":    0.14
 CHARGE, T1M08, "H121":    0.16
 CHARGE, T1M08, "H141":    0.16
 CHARGE, T1M08, "H041":    0.44
+CHARGE, T1M08, "H081":    0.44
 
 
 
@@ -612,6 +632,7 @@ RADIUS, T1M01, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M01, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M01, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M01, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M01, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M02, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M02, " C13":  1.700,  2.000,  0.150
@@ -647,7 +668,7 @@ RADIUS, T1M02, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M02, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M02, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M02, "H041":  1.000,  1.000,  0.020
-
+RADIUS, T1M02, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M03, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M03, " C13":  1.700,  2.000,  0.150
@@ -683,6 +704,7 @@ RADIUS, T1M03, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M03, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M03, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M03, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M03, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M04, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M04, " C13":  1.700,  2.000,  0.150
@@ -718,6 +740,7 @@ RADIUS, T1M04, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M04, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M04, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M04, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M04, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M05, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M05, " C13":  1.700,  2.000,  0.150
@@ -753,6 +776,7 @@ RADIUS, T1M05, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M05, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M05, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M05, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M05, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M06, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M06, " C13":  1.700,  2.000,  0.150
@@ -788,6 +812,7 @@ RADIUS, T1M06, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M06, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M06, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M06, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M06, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M07, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M07, " C13":  1.700,  2.000,  0.150
@@ -823,6 +848,7 @@ RADIUS, T1M07, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M07, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M07, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M07, "H041":  1.000,  1.000,  0.020
+RADIUS, T1M07, "H081":  1.000,  1.000,  0.020
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M08, " C10":  1.700,  2.000,  0.150
 RADIUS, T1M08, " C13":  1.700,  2.000,  0.150
@@ -858,7 +884,7 @@ RADIUS, T1M08, "H111":  1.000,  1.000,  0.020
 RADIUS, T1M08, "H121":  1.000,  1.000,  0.020
 RADIUS, T1M08, "H141":  1.000,  1.000,  0.020
 RADIUS, T1M08, "H041":  1.000,  1.000,  0.020
-
+RADIUS, T1M08, "H081":  1.000,  1.000,  0.020
 
 
 
