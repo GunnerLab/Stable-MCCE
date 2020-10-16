@@ -1,7 +1,7 @@
 #CC      = gcc -g
-CC      = x86_64-linux-gnu-gcc -g
+CC      = x86_64-apple-darwin13.4.0-clang
 #CC2 = g++ -g
-CC2 = x86_64-linux-gnu-g++ -g
+CC2 = x86_64-apple-darwin13.4.0-clang++
 
 LDIR = lib
 DEPS    = $(LDIR)/mcce.h
