@@ -46,7 +46,7 @@ CONNECT, " C6 ", T8P02:  sp2, " C5 "," C1 "," H6 "
 CONNECT, " C7 ", T8P02:  sp3, " C8 "," N  "," H7 "," H8 "
 CONNECT, " C8 ", T8P02:  sp3, " N1 "," C7 "," H9 "," H10"
 CONNECT, " C10", T8P02:  sp3, " N  "," C9 "," H13"," H14"
-CONNECT, " N  ", T8P02:  sp3, " C4 "," C7 "," C10"
+CONNECT, " N  ", T8P02:  sp3, " C4 "," C7 "," C10"," H36"
 CONNECT, " C  ", T8P02:  sp3, " O  "," H2 "," H1 "," H  "
 CONNECT, " O  ", T8P02:  sp2, " C  "," C1 "
 CONNECT, " C1 ", T8P02:  sp2, " C6 "," O  "," C2 "
@@ -74,7 +74,7 @@ CONNECT, " H3 ", T8P02:    s, " C2 "
 CONNECT, " H4 ", T8P02:    s, " C3 "
 CONNECT, " H11", T8P02:    s, " C9 "
 CONNECT, " H12", T8P02:    s, " C9 "
-
+CONNECT, " H36", T8P02:    s, " N  "
 
 
 # ATOM charges
@@ -151,8 +151,8 @@ CHARGE, T8P02, " H3 ":    0.18
 CHARGE, T8P02, " H4 ":    0.15
 CHARGE, T8P02, " H11":    0.09
 CHARGE, T8P02, " H12":    0.09
-
-
+CHARGE, T8P02, " H12":    0.09
+CHARGE, T8P02, " H36":    0.42
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T8P01, " N1 ":  1.500,  1.750,  0.160
@@ -227,7 +227,7 @@ RADIUS, T8P02, " H3 ":  1.000,  1.000,  0.020
 RADIUS, T8P02, " H4 ":  1.000,  1.000,  0.020
 RADIUS, T8P02, " H11":  1.000,  1.000,  0.020
 RADIUS, T8P02, " H12":  1.000,  1.000,  0.020
-
+RADIUS, T8P02, " H36":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn

@@ -38,7 +38,7 @@ CONNECT, " C6 ", T5D+1:  sp2, " C5 "," C2 "," H6 "
 CONNECT, " C7 ", T5D+1:  sp3, " C8 "," C1 "," H7 "," H8 "
 CONNECT, " C8 ", T5D+1:  sp3, " C7 "," C9 "," H9 "," H10"
 CONNECT, " C10", T5D+1:  sp3, " C1 "," C9 "," H14"," H13"
-CONNECT, " N  ", T5D+1:  sp2, " C2 "," C3 "
+CONNECT, " N  ", T5D+1:  sp2, " C2 "," C3 "," H29"
 CONNECT, " C  ", T5D+1:  sp3, " O  "," C1 "," H2 "," H1 "
 CONNECT, " O  ", T5D+1:  sp3, " C  "," H  "
 CONNECT, " C1 ", T5D+1:  sp3, " C7 "," C10"," C  "," C2 "
@@ -60,7 +60,7 @@ CONNECT, " H  ", T5D+1:    s, " O  "
 CONNECT, " H3 ", T5D+1:    s, " C3 "
 CONNECT, " H11", T5D+1:    s, " C9 "
 CONNECT, " H12", T5D+1:    s, " C9 "
-
+CONNECT, " H29", T5D+1:    s, " N  "
 # ATOM charges
 CHARGE, T5D01, " C4 ":   -0.25
 CHARGE, T5D01, " C5 ":   -0.09
@@ -120,7 +120,7 @@ CHARGE, T5D+1, " H  ":    0.44
 CHARGE, T5D+1, " H3 ":    0.21
 CHARGE, T5D+1, " H11":    0.07
 CHARGE, T5D+1, " H12":    0.07
-
+CHARGE, T5D+1, " H29":    0.36
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T5D01, " C4 ":  1.700,  2.000,  0.150
 RADIUS, T5D01, " C5 ":  1.700,  2.000,  0.150
@@ -180,7 +180,7 @@ RADIUS, T5D+1, " H  ":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H3 ":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H11":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H12":  1.000,  1.000,  0.020
-
+RADIUS, T5D+1, " H29":  1.000,  1.000,  0.020
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, T5D01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -6.107, rxn04= -2.911, rxn08= -1.325
 
