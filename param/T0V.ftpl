@@ -116,6 +116,7 @@ CHARGE, T0V+1, "H091":    0.12
 CHARGE, T0V+1, "H111":    0.18
 CHARGE, T0V+1, "H121":    0.19
 CHARGE, T0V+1, " H1 ":    0.46
+CHARGE, T0V+1, "H082":    0.46
 
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
