@@ -153,6 +153,24 @@ class MSout:
         self.average_E = E_sum / self.N_ms
 
 
+def groupms_byenergy(microstates, bands):
+    """
+    This function takes in a list of microstates and a list of energy numbers (N values), then return a
+    list of N+1 bands of microstates using the energy number as boundaries. The microstate at the boundary
+    is assigned to the band on the left.
+    The list of energy will be sorted from small to large.
+    """
+    N = len(bands)
+    bands = bands.sort()
+    resulted_bands = [[] for i in range(N+1)]
+    for ms in microstates:
+        i = 0
+
+        ms.E
+
+
+
+
 if __name__ == "__main__":
     msout = MSout()
     msout.load_msout("ms_out/pH4eH0ms.txt")
