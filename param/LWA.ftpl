@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, LWA: LWABK, LWA01, LWA02, LWADM
+CONFLIST, LWA: LWABK, LWA01, LWA02
 
 # ATOM name and bonds
 CONNECT, " N1 ", LWA01:  sp2, " C7 "," C2 "," H1 "
@@ -201,7 +201,6 @@ RADIUS, LWA02, " H13":  1.000,  1.000,  0.020
 RADIUS, LWA02, " H14":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, LWA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -19.977, rxn04= -9.512, rxn08= -4.327
-
+CONFORMER, LWA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.941, rxn04= -7.605, rxn08= -3.465
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, LWA02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -20.560, rxn04= -9.795, rxn08= -4.459
+CONFORMER, LWA02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.385, rxn04= -7.82, rxn08= -3.566
