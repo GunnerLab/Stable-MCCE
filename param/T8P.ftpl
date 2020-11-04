@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T8P: T8PBK, T8P01, T8P02, T8PDM
+CONFLIST, T8P: T8PBK, T8P01, T8P02
 
 # ATOM name and bonds
 CONNECT, " N1 ", T8P01:  sp2, " C8 "," C11"," C9 "
@@ -231,7 +231,7 @@ RADIUS, T8P02, " H36":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T8P01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -12.307, rxn04= -5.854, rxn08= -2.657
+CONFORMER, T8P01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -11.582, rxn04= -5.521, rxn08= -2.508
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T8P02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -19.227, rxn04= -9.207, rxn08= -4.232
+CONFORMER, T8P02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -34.292, rxn04= -16.578, rxn08= -7.836

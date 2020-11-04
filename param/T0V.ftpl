@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T0V: T0VBK, T0V01, T0V+1, T0VDM
+CONFLIST, T0V: T0VBK, T0V01, T0V+1M
 
 # ATOM name and bonds
 CONNECT, " C10", T0V01:  sp2, " C09"," C11"," O14"
@@ -44,7 +44,7 @@ CONNECT, " C09", T0V+1:  sp3, " C10"," N08","H092","H091"
 CONNECT, " C11", T0V+1:  sp3, " C10"," C12","H111"
 CONNECT, " C12", T0V+1:  sp3, " C13"," C11","H121"
 CONNECT, " F01", T0V+1:     , " C02"
-CONNECT, " N08", T0V+1:  sp3, " C07"," C09"," H1 "
+CONNECT, " N08", T0V+1:  sp3, " C07"," C09"," H1 ","H082"
 CONNECT, " O14", T0V+1:  sp3, " C10"," C13"
 CONNECT, "H131", T0V+1:    s, " C13"
 CONNECT, "H151", T0V+1:    s, " C15"
@@ -58,7 +58,7 @@ CONNECT, "H091", T0V+1:    s, " C09"
 CONNECT, "H111", T0V+1:    s, " C11"
 CONNECT, "H121", T0V+1:    s, " C12"
 CONNECT, " H1 ", T0V+1:    s, " N08"
-
+CONNECT, "H082", T0V+1:    s, " N08"
 # ATOM charges
 CHARGE, T0V01, " C10":    0.23
 CHARGE, T0V01, " C13":    0.24
@@ -118,7 +118,6 @@ CHARGE, T0V+1, "H121":    0.19
 CHARGE, T0V+1, " H1 ":    0.46
 CHARGE, T0V+1, "H082":    0.46
 
-
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T0V01, " C10":  1.700,  2.000,  0.150
 RADIUS, T0V01, " C13":  1.700,  2.000,  0.150
@@ -176,10 +175,10 @@ RADIUS, T0V+1, "H091":  1.000,  1.000,  0.020
 RADIUS, T0V+1, "H111":  1.000,  1.000,  0.020
 RADIUS, T0V+1, "H121":  1.000,  1.000,  0.020
 RADIUS, T0V+1, " H1 ":  1.000,  1.000,  0.020
-
+RADIUS, T0V+1, "H082":  1.000,  1.000,  0.020
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -6.164, rxn04= -2.927, rxn08= -1.324
+CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -5.611, rxn04= -2.663, rxn08= -1.216
 
 
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -17.479, rxn04= -5.179, rxn08= -3.762
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn 
+CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -31.315, rxn04= -18.2757, rxn08= -7.0992
