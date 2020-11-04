@@ -2,9 +2,37 @@
 <small><i>Page last updated on: {{ git_revision_date }}</i></small>
 
 
-## Prerequisites
+## Get the code
 
-### Compilers: C, gfortran
+### Install with conda
+
+The mcce program comes with many small programs and tool scripts, so it is recommended to run mcce in a separate conda environment. Suppose we will run mcce under environment "mcce":
+
+One-time setup of the environment:
+```
+conda create -n mcce
+conda activate mcce
+``` 
+
+Install mcce:
+```
+conda install -c newbooks mcce
+```
+
+To exit conda mcce environment:
+```
+conda deactivate
+```
+
+
+
+### Install from source
+
+Of for some reason, installation of mcce from conda didn't work, you can install from the source.
+
+#### Prerequisites
+
+**Compilers:** C, gfortran
 
 The C and gfortran compilers usually come with your operating system. If not, use the package manager to install.
 
@@ -22,24 +50,24 @@ The C and gfortran compilers usually come with your operating system. If not, us
     Gfortran is avalaible from https://github.com/fxcoudert/gfortran-for-macOS/releases, find your Mac OS X version and install appropriate gfortran package.
 
 
-### Python and modules
+**Python and modules**
+
 We need Python3 and optionally these modules: numpy, scipy, matplotlib, pygraphviz, pandas, xlrd, and openpyxl
 
 * Install Miniconda Python3: https://docs.conda.io/en/latest/miniconda.html
 * After installing Miniconda, install these optional modules for data analysis:
+
 ```
 conda install numpy scipy matplotlib pygraphviz pandas xlrd openpyxl
 ```
 
-
-## Get the code
-
-### Download the latest code
+#### Download from github
 Under a terminal window, run:
 
     git clone https://github.com/GunnerLab/Stable-MCCE.git
 
-### Compile the code:
+#### Compile the code
+
 The above command creates a directory named Stable-MCCE, enter the directory and compile:
 
 ```
@@ -48,26 +76,8 @@ $ make clean
 $ make
 ```
 
-!!! warning "Compiling on Mac OS X:"
-    On Mac OS X, an explicit memory free for tree is not supported. You may have to change this subroutine in file lib/db.c
+**Configure environment:**
 
-    ```C
-    /* release database memory */
-    void free_param() {
-       tdestroy(param_root, free);
-       return;
-    }
-    ```
-    to
-    ```C
-    /* release database memory */
-    void free_param() {
-       return;
-    }
-    ```
-
-
-### Configure environment
 Find the path of Stable-MCCE installation directory:
 ```
 (base) jmao@pc:~/projects/Stable-MCCE$ pwd
