@@ -36,6 +36,7 @@ class MSout:
         self.pH = 7.0
         self.Eh = 0.0
         self.N_ms = 0
+        self.N_uniq = 0
         self.lowest_E = 0.0
         self.highest_E = 0.0
         self.average_E = 0.0
@@ -47,6 +48,7 @@ class MSout:
         self.iconf2ires = {}      # from conformer index to free residue index
         self.microstates = {}
         self.conformers = []
+
 
     def load_msout(self, fname):
         lines = open(fname).readlines()
@@ -143,7 +145,9 @@ class MSout:
         E_sum = 0.0
         self.lowest_E = next(iter(self.microstates.values())).E
         self.highest_E = next(iter(self.microstates.values())).E
-        for ms in self.microstates.values():
+        msvalues = self.microstates.values()
+        self.N_uniq = len(msvalues)
+        for ms in msvalues:
             self.N_ms += ms.count
             E_sum += ms.E * ms.count
             if self.lowest_E > ms.E:
@@ -153,29 +157,99 @@ class MSout:
         self.average_E = E_sum / self.N_ms
 
 
-def groupms_byenergy(microstates, bands):
+def groupms_byenergy(microstates, ticks):
     """
-    This function takes in a list of microstates and a list of energy numbers (N values), then return a
-    list of N+1 bands of microstates using the energy number as boundaries. The microstate at the boundary
-    is assigned to the band on the left.
+    This function takes in a list of microstates and a list of energy numbers (N values), divide the microstates into N+1 bands of using the energy number as boundaries. The microstate at the boundary is assigned to the band to the left.
     The list of energy will be sorted from small to large.
     """
-    N = len(bands)
-    bands = bands.sort()
+    N = len(ticks)
+    ticks.sort()
     resulted_bands = [[] for i in range(N+1)]
     for ms in microstates:
-        i = 0
+        itick = 0
+        for tick_value in ticks:
+            if ms.E <= tick_value:
+                break
+            else:
+                itick += 1
+        resulted_bands[itick].append(ms)
 
-        ms.E
+    print(len(microstates))
+    return resulted_bands
+
+
+def groupms_byiconf(microstates, iconfs):
+    """
+    This function takes in a list of microstates and a list of conformer indicies, divide microstates into two groups:
+    the first one is those contain one of the given conformers, the second one is those contain none of the listed conformers.
+    """
+    ingroup = []
+    outgroup = []
+    for ms in microstates:
+        contain = False
+        for ic in iconfs:
+            if ic in ms.state:
+                ingroup.append(ms)
+                contain = True
+                break
+        if not contain:
+            outgroup.append(ms)
+
+    return ingroup, outgroup
+
+
+def ms_energy_stat(microstates):
+    """
+    Given a list of microstates, find the lowest energy, average energy, and highest energy
+    """
+    ms = next(iter(microstates))
+    lowerst_E = highest_E = ms.E
+    N_ms = 0
+    total_E = 0.0
+    for ms in microstates:
+        if lowerst_E > ms.E:
+            lowerst_E = ms.E
+        elif highest_E < ms.E:
+            highest_E = ms.E
+        N_ms += ms.count
+        total_E += ms.E*ms.count
+
+    average_E = total_E/N_ms
+
+    return lowerst_E, average_E, highest_E
+
+
+def ms_convert2occ(microstates):
+    """
+    Given a list of microstates, convert to conformer occupancy of conformers appeared at least once in the microstates.
+    """
+    occurance = {}  # occurance of conformer, as a dictionary
+    N_ms = 0
+    for ms in microstates:
+        N_ms += ms.count
+        for ic in ms.state:
+            if ic in occurance:
+                occurance[ic] += ms.count
+            else:
+                occurance[ic] = ms.count
+
+
 
 
 
 
 if __name__ == "__main__":
     msout = MSout()
-    msout.load_msout("ms_out/pH4eH0ms.txt")
+    msout.load_msout("ms_out/pH6eH0ms.txt")
     print(msout.T)
     print(msout.highest_E)
     print(msout.lowest_E)
     print(msout.average_E)
     print(msout.N_ms)
+#    e_step = (msout.highest_E - msout.lowest_E)/20
+#    ticks = [msout.lowest_E + e_step*(i+1) for i in range(19)]
+#    ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
+#    print([len(band) for band in ms_in_bands])
+#     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
+#     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
+#     print(l_E, a_E, h_E)
