@@ -18,6 +18,7 @@ class Microstate:
 class Conformer:
     def __init__(self):
         self.iconf = 0
+        self.ires = 0
         self.confid = ""
         self.resid = ""
         self.occ = 0.0
@@ -234,7 +235,43 @@ def ms_convert2occ(microstates):
                 occurance[ic] = ms.count
 
 
+def ms_counts(microstates):
+    """
+    Calculate total counts of microstates
+    """
+    N_ms = 0
+    for ms in microstates:
+        N_ms += ms.count
 
+    return N_ms
+
+
+def ms_charge(ms):
+    "Compute microstate charge"
+    crg = 0.0
+    for ic in ms.state:
+        crg += conformers[ic].crg
+    return crg
+
+
+def read_conformers():
+    conformers = []
+    lines = open("head3.lst").readlines()
+    lines.pop(0)
+    for line in lines:
+        conf = Conformer()
+        conf.load_from_head3lst(line)
+        conformers.append(conf)
+
+    return conformers
+
+
+def e2occ(energies):
+    "Given a list of energy values in unit Kacl/mol, calculate the occupancy by Boltzmann Distribution."
+    np.exp(-)
+
+
+conformers = read_conformers()
 
 
 
@@ -253,3 +290,15 @@ if __name__ == "__main__":
 #     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
 #     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
 #     print(l_E, a_E, h_E)
+
+    # charge over energy bands
+    # e_step = (msout.highest_E - msout.lowest_E) / 20
+    # ticks = [msout.lowest_E + e_step*(i+1) for i in range(19)]
+    # ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
+    # for band in ms_in_bands:
+    #     band_total_crg = 0.0
+    #     for ms in band:
+    #         band_total_crg += ms_charge(ms)
+    #     print(band_total_crg/ms_counts(band))
+
+    # Compare recovered occ and statstical occ
