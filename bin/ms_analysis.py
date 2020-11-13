@@ -225,6 +225,7 @@ def ms_convert2occ(microstates):
     Given a list of microstates, convert to conformer occupancy of conformers appeared at least once in the microstates.
     """
     occurance = {}  # occurance of conformer, as a dictionary
+    occ = {}
     N_ms = 0
     for ms in microstates:
         N_ms += ms.count
@@ -234,6 +235,10 @@ def ms_convert2occ(microstates):
             else:
                 occurance[ic] = ms.count
 
+    for key in occurance.keys():
+        occ[key] = occurance[key]/N_ms
+
+    return occ
 
 def ms_counts(microstates):
     """
@@ -268,7 +273,78 @@ def read_conformers():
 
 def e2occ(energies):
     "Given a list of energy values in unit Kacl/mol, calculate the occupancy by Boltzmann Distribution."
-    np.exp(-)
+    e = np.array(energies)
+    e = e - min(e)
+    Pi_raw = np.exp(-Kcal2kT*e)
+    Pi_sum = sum(Pi_raw)
+    Pi_norm = Pi_raw/Pi_sum
+
+    return Pi_norm
+
+
+def bhata_distance(prob1, prob2):
+    d_max = 10000.0   # Max possible value set to this
+    p1 = np.array((prob1)) / sum(prob1)
+    p2 = np.array((prob2)) / sum(prob2)
+    if len(p1) != len(p2):
+        d = d_max
+    else:
+        bc = sum(np.sqrt(p1 * p2))
+        print(bc, np.exp(-d_max))
+        if bc <= np.exp(-d_max):
+            d = d_max
+        else:
+            d = -np.log(bc)
+
+    return d
+
+
+def whatchanged_conf(msgroup1, msgroup2):
+    "Given two group of microstates, calculate what changed at conformer level."
+    occ1 = ms_convert2occ(msgroup1)
+    occ2 = ms_convert2occ(msgroup2)
+
+    all_keys = set(occ1.keys())
+    all_keys |= set(occ2.keys())
+
+    all_keys = list(all_keys)
+    all_keys.sort()
+    diff_occ = {}
+    for key in all_keys:
+        if key in occ1:
+            p1 = occ1[key]
+        else:
+            p1 = 0.0
+        if key in occ2:
+            p2 = occ2[key]
+        else:
+            p2 = 0.0
+        diff_occ[key] = p2 - p1
+
+    return diff_occ
+
+
+def whatchanged_res(msgroup1, msgroup2, free_res):
+    "Return a list of Bhatachaya Distance of free residues."
+    occ1 = ms_convert2occ(msgroup1)
+    occ2 = ms_convert2occ(msgroup2)
+
+    bhd = []
+    for res in free_res:
+        p1 = []
+        p2 = []
+        for ic in res:
+            if ic in occ1:
+                p1.append(occ1[ic])
+            else:
+                p1.append(0.0)
+            if ic in occ2:
+                p2.append(occ2[ic])
+            else:
+                p2.append(0.0)
+        bhd.append(bhata_distance(p1, p2))
+
+    return bhd
 
 
 conformers = read_conformers()
@@ -277,7 +353,7 @@ conformers = read_conformers()
 
 if __name__ == "__main__":
     msout = MSout()
-    msout.load_msout("ms_out/pH6eH0ms.txt")
+    msout.load_msout("ms_out/pH4eH0ms.txt")
     print(msout.T)
     print(msout.highest_E)
     print(msout.lowest_E)
@@ -301,4 +377,11 @@ if __name__ == "__main__":
     #         band_total_crg += ms_charge(ms)
     #     print(band_total_crg/ms_counts(band))
 
-    # Compare recovered occ and statstical occ
+    netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
+    # diff_occ = whatchanged_conf(netural, charged)
+    # for key in diff_occ.keys():
+    #     print("%3d, %s: %6.3f" % (key, conformers[key].confid, diff_occ[key]))
+
+    diff_bhd = whatchanged_res(netural, charged, msout.free_residues)
+    for ir in range(len(msout.free_residues)):
+        print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, diff_bhd[ir]))
