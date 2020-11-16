@@ -1,4 +1,4 @@
-CONFLIST, T4Y: T4YBK, T4Y01, T4Y+1, T4Y+2, T4YDM
+CONFLIST, T4Y: T4YBK, T4Y01, T4Y+1, T4Y+2
 # Conformer definition
 # see T4Y_conflist.ftpl
 
@@ -44,95 +44,6 @@ CONNECT, " H4 ", T4Y01:    s, " C3 "
 CONNECT, " H11", T4Y01:    s, " C9 "
 CONNECT, " H12", T4Y01:    s, " C9 "
 
-# ATOM charges
-CHARGE, T4Y01, " N1 ":   -0.45
-CHARGE, T4Y01, " C4 ":   -0.14
-CHARGE, T4Y01, " C5 ":   -0.11
-CHARGE, T4Y01, " C6 ":   -0.09
-CHARGE, T4Y01, " C7 ":    0.22
-CHARGE, T4Y01, " C8 ":    0.17
-CHARGE, T4Y01, " C10":    0.09
-CHARGE, T4Y01, " C13":    0.66
-CHARGE, T4Y01, " N  ":   -0.75
-CHARGE, T4Y01, " C  ":   -0.05
-CHARGE, T4Y01, " O  ":   -0.61
-CHARGE, T4Y01, " C1 ":   -0.08
-CHARGE, T4Y01, " C11":    0.09
-CHARGE, T4Y01, " C12":    0.15
-CHARGE, T4Y01, " C14":   -0.17
-CHARGE, T4Y01, " C2 ":   -0.13
-CHARGE, T4Y01, " C3 ":   -0.13
-CHARGE, T4Y01, " C9 ":    -0.1
-CHARGE, T4Y01, " H5 ":    0.13
-CHARGE, T4Y01, " H6 ":    0.16
-CHARGE, T4Y01, " H8 ":    0.04
-CHARGE, T4Y01, " H7 ":    0.04
-CHARGE, T4Y01, " H9 ":    0.04
-CHARGE, T4Y01, " H10":    0.04
-CHARGE, T4Y01, " H13":    0.06
-CHARGE, T4Y01, " H14":    0.06
-CHARGE, T4Y01, " H1 ":    0.04
-CHARGE, T4Y01, " H  ":    0.04
-CHARGE, T4Y01, " H2 ":    0.04
-CHARGE, T4Y01, " H15":    0.05
-CHARGE, T4Y01, " H16":    0.05
-CHARGE, T4Y01, " H18":    0.03
-CHARGE, T4Y01, " H17":    0.03
-CHARGE, T4Y01, " H22":    0.06
-CHARGE, T4Y01, " H19":    0.06
-CHARGE, T4Y01, " H20":    0.06
-CHARGE, T4Y01, " H3 ":    0.14
-CHARGE, T4Y01, " H4 ":    0.14
-CHARGE, T4Y01, " H11":    0.06
-CHARGE, T4Y01, " H12":    0.06
-
-# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
-RADIUS, T4Y01, " N1 ":  1.500,  1.750,  0.160
-RADIUS, T4Y01, " C4 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C5 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C6 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C7 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C8 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C10":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C13":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " N  ":  1.500,  1.750,  0.160
-RADIUS, T4Y01, " C  ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " O  ":  1.400,  1.600,  0.200
-RADIUS, T4Y01, " C1 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C11":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C12":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C14":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C2 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C3 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " C9 ":  1.700,  2.000,  0.150
-RADIUS, T4Y01, " H5 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H6 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H8 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H7 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H9 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H10":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H13":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H14":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H1 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H  ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H2 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H15":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H16":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H18":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H17":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H22":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H19":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H20":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H3 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H4 ":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H11":  1.000,  1.000,  0.020
-RADIUS, T4Y01, " H12":  1.000,  1.000,  0.020
-
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -8.518, rxn04= -4.067, rxn08= -1.856
-# Conformer definition
-# see T4Y_conflist.ftpl
-
 # ATOM name and bonds
 CONNECT, " N1 ", T4Y+1:  sp2, " C10"," C13"," C11"
 CONNECT, " C4 ", T4Y+1:  sp2, " C5 "," C3 "," H5 "
@@ -175,97 +86,6 @@ CONNECT, " H4 ", T4Y+1:    s, " C3 "
 CONNECT, " H11", T4Y+1:    s, " C9 "
 CONNECT, " H12", T4Y+1:    s, " C9 "
 CONNECT, " H23", T4Y+1:    s, " N  "
-
-# ATOM charges
-CHARGE, T4Y+1, " N1 ":   -0.52
-CHARGE, T4Y+1, " C4 ":   -0.12
-CHARGE, T4Y+1, " C5 ":   -0.12
-CHARGE, T4Y+1, " C6 ":   -0.18
-CHARGE, T4Y+1, " C7 ":    0.18
-CHARGE, T4Y+1, " C8 ":    0.11
-CHARGE, T4Y+1, " C10":    0.07
-CHARGE, T4Y+1, " C13":    0.66
-CHARGE, T4Y+1, " N  ":   -0.68
-CHARGE, T4Y+1, " C  ":   -0.07
-CHARGE, T4Y+1, " O  ":   -0.55
-CHARGE, T4Y+1, " C1 ":   -0.04
-CHARGE, T4Y+1, " C11":    0.08
-CHARGE, T4Y+1, " C12":    0.08
-CHARGE, T4Y+1, " C14":   -0.17
-CHARGE, T4Y+1, " C2 ":   -0.12
-CHARGE, T4Y+1, " C3 ":   -0.08
-CHARGE, T4Y+1, " C9 ":   -0.11
-CHARGE, T4Y+1, " H5 ":    0.16
-CHARGE, T4Y+1, " H6 ":    0.13
-CHARGE, T4Y+1, " H8 ":     0.1
-CHARGE, T4Y+1, " H7 ":     0.1
-CHARGE, T4Y+1, " H9 ":     0.1
-CHARGE, T4Y+1, " H10":     0.1
-CHARGE, T4Y+1, " H13":    0.08
-CHARGE, T4Y+1, " H14":    0.08
-CHARGE, T4Y+1, " H1 ":    0.06
-CHARGE, T4Y+1, " H  ":    0.06
-CHARGE, T4Y+1, " H2 ":    0.06
-CHARGE, T4Y+1, " H15":    0.08
-CHARGE, T4Y+1, " H16":    0.08
-CHARGE, T4Y+1, " H18":     0.1
-CHARGE, T4Y+1, " H17":     0.1
-CHARGE, T4Y+1, " H22":    0.08
-CHARGE, T4Y+1, " H19":    0.08
-CHARGE, T4Y+1, " H20":    0.08
-CHARGE, T4Y+1, " H3 ":    0.16
-CHARGE, T4Y+1, " H4 ":    0.16
-CHARGE, T4Y+1, " H11":    0.09
-CHARGE, T4Y+1, " H12":    0.09
-CHARGE, T4Y+1, " H23":    0.45
-
-# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
-RADIUS, T4Y+1, " N1 ":  1.500,  1.750,  0.160
-RADIUS, T4Y+1, " C4 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C5 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C6 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C7 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C8 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C10":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C13":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " N  ":  1.500,  1.750,  0.160
-RADIUS, T4Y+1, " C  ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " O  ":  1.400,  1.600,  0.200
-RADIUS, T4Y+1, " C1 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C11":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C12":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C14":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C2 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C3 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " C9 ":  1.700,  2.000,  0.150
-RADIUS, T4Y+1, " H5 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H6 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H8 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H7 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H9 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H10":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H13":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H14":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H1 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H  ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H2 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H15":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H16":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H18":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H17":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H22":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H19":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H20":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H3 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H4 ":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H11":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H12":  1.000,  1.000,  0.020
-RADIUS, T4Y+1, " H23":  1.000,  1.000,  0.020
-
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -30.315, rxn04= -14.672, rxn08= -6.868
-# Conformer definition
-# see T4Y_conflist.ftpl
 
 # ATOM name and bonds
 CONNECT, " N1 ", T4Y+2:  sp2, " C10"," C13"," C11"
@@ -311,6 +131,93 @@ CONNECT, " H12", T4Y+2:    s, " C9 "
 CONNECT, " H23", T4Y+2:    s, " N  "
 
 # ATOM charges
+CHARGE, T4Y01, " N1 ":   -0.45
+CHARGE, T4Y01, " C4 ":   -0.14
+CHARGE, T4Y01, " C5 ":   -0.11
+CHARGE, T4Y01, " C6 ":   -0.09
+CHARGE, T4Y01, " C7 ":    0.22
+CHARGE, T4Y01, " C8 ":    0.17
+CHARGE, T4Y01, " C10":    0.09
+CHARGE, T4Y01, " C13":    0.66
+CHARGE, T4Y01, " N  ":   -0.75
+CHARGE, T4Y01, " C  ":   -0.05
+CHARGE, T4Y01, " O  ":   -0.61
+CHARGE, T4Y01, " C1 ":   -0.08
+CHARGE, T4Y01, " C11":    0.09
+CHARGE, T4Y01, " C12":    0.15
+CHARGE, T4Y01, " C14":   -0.17
+CHARGE, T4Y01, " C2 ":   -0.13
+CHARGE, T4Y01, " C3 ":   -0.13
+CHARGE, T4Y01, " C9 ":    -0.1
+CHARGE, T4Y01, " H5 ":    0.13
+CHARGE, T4Y01, " H6 ":    0.16
+CHARGE, T4Y01, " H8 ":    0.04
+CHARGE, T4Y01, " H7 ":    0.04
+CHARGE, T4Y01, " H9 ":    0.04
+CHARGE, T4Y01, " H10":    0.04
+CHARGE, T4Y01, " H13":    0.06
+CHARGE, T4Y01, " H14":    0.06
+CHARGE, T4Y01, " H1 ":    0.04
+CHARGE, T4Y01, " H  ":    0.04
+CHARGE, T4Y01, " H2 ":    0.04
+CHARGE, T4Y01, " H15":    0.05
+CHARGE, T4Y01, " H16":    0.05
+CHARGE, T4Y01, " H18":    0.03
+CHARGE, T4Y01, " H17":    0.03
+CHARGE, T4Y01, " H22":    0.06
+CHARGE, T4Y01, " H19":    0.06
+CHARGE, T4Y01, " H20":    0.06
+CHARGE, T4Y01, " H3 ":    0.14
+CHARGE, T4Y01, " H4 ":    0.14
+CHARGE, T4Y01, " H11":    0.06
+CHARGE, T4Y01, " H12":    0.06
+
+
+
+# ATOM charges
+CHARGE, T4Y+1, " N1 ":   -0.52
+CHARGE, T4Y+1, " C4 ":   -0.12
+CHARGE, T4Y+1, " C5 ":   -0.12
+CHARGE, T4Y+1, " C6 ":   -0.18
+CHARGE, T4Y+1, " C7 ":    0.18
+CHARGE, T4Y+1, " C8 ":    0.11
+CHARGE, T4Y+1, " C10":    0.07
+CHARGE, T4Y+1, " C13":    0.66
+CHARGE, T4Y+1, " N  ":   -0.68
+CHARGE, T4Y+1, " C  ":   -0.07
+CHARGE, T4Y+1, " O  ":   -0.55
+CHARGE, T4Y+1, " C1 ":   -0.04
+CHARGE, T4Y+1, " C11":    0.08
+CHARGE, T4Y+1, " C12":    0.08
+CHARGE, T4Y+1, " C14":   -0.17
+CHARGE, T4Y+1, " C2 ":   -0.12
+CHARGE, T4Y+1, " C3 ":   -0.08
+CHARGE, T4Y+1, " C9 ":   -0.11
+CHARGE, T4Y+1, " H5 ":    0.16
+CHARGE, T4Y+1, " H6 ":    0.13
+CHARGE, T4Y+1, " H8 ":     0.1
+CHARGE, T4Y+1, " H7 ":     0.1
+CHARGE, T4Y+1, " H9 ":     0.1
+CHARGE, T4Y+1, " H10":     0.1
+CHARGE, T4Y+1, " H13":    0.08
+CHARGE, T4Y+1, " H14":    0.08
+CHARGE, T4Y+1, " H1 ":    0.06
+CHARGE, T4Y+1, " H  ":    0.06
+CHARGE, T4Y+1, " H2 ":    0.06
+CHARGE, T4Y+1, " H15":    0.08
+CHARGE, T4Y+1, " H16":    0.08
+CHARGE, T4Y+1, " H18":     0.1
+CHARGE, T4Y+1, " H17":     0.1
+CHARGE, T4Y+1, " H22":    0.08
+CHARGE, T4Y+1, " H19":    0.08
+CHARGE, T4Y+1, " H20":    0.08
+CHARGE, T4Y+1, " H3 ":    0.16
+CHARGE, T4Y+1, " H4 ":    0.16
+CHARGE, T4Y+1, " H11":    0.09
+CHARGE, T4Y+1, " H12":    0.09
+CHARGE, T4Y+1, " H23":    0.45
+
+# ATOM charges
 CHARGE, T4Y+2, " N1 ":   -0.51
 CHARGE, T4Y+2, " C4 ":   -0.12
 CHARGE, T4Y+2, " C5 ":   -0.12
@@ -352,6 +259,91 @@ CHARGE, T4Y+2, " H4 ":    0.16
 CHARGE, T4Y+2, " H11":    0.08
 CHARGE, T4Y+2, " H12":    0.08
 CHARGE, T4Y+2, " H23":    0.43
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T4Y01, " N1 ":  1.500,  1.750,  0.160
+RADIUS, T4Y01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C10":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C13":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " N  ":  1.500,  1.750,  0.160
+RADIUS, T4Y01, " C  ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " O  ":  1.400,  1.600,  0.200
+RADIUS, T4Y01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C11":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C12":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C14":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T4Y01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H10":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H13":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H14":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H  ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H15":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H16":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H18":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H17":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H22":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H19":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H20":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H11":  1.000,  1.000,  0.020
+RADIUS, T4Y01, " H12":  1.000,  1.000,  0.020
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T4Y+1, " N1 ":  1.500,  1.750,  0.160
+RADIUS, T4Y+1, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C10":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C13":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " N  ":  1.500,  1.750,  0.160
+RADIUS, T4Y+1, " C  ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " O  ":  1.400,  1.600,  0.200
+RADIUS, T4Y+1, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C11":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C12":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C14":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T4Y+1, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H10":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H13":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H14":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H  ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H15":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H16":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H18":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H17":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H22":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H19":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H20":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H11":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H12":  1.000,  1.000,  0.020
+RADIUS, T4Y+1, " H23":  1.000,  1.000,  0.020
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T4Y+2, " N1 ":  1.500,  1.750,  0.160
@@ -396,5 +388,14 @@ RADIUS, T4Y+2, " H11":  1.000,  1.000,  0.020
 RADIUS, T4Y+2, " H12":  1.000,  1.000,  0.020
 RADIUS, T4Y+2, " H23":  1.000,  1.000,  0.020
 
+
+
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T4Y+2:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.923, rxn04= -14.485, rxn08= -6.783
+CONFORMER, T4Y01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -9.275, rxn04= -4.421, rxn08= -2.013
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T4Y+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -33.03, rxn04= -15.983, rxn08= -7.471
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T4Y+2:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -32.495, rxn04= -15.726, rxn08= -7.357

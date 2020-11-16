@@ -123,8 +123,7 @@ int param_exist(char *key1, char *key2, char *key3)
 
 /* release database memory */
 void free_param() {
-   /* Commented out by Junjun to allow conda build on bith Linux and Mac */
-   //tdestroy(param_root, free);
+   tdestroy(param_root, free);
    return;
 }
 
