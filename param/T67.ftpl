@@ -41,7 +41,7 @@ CONNECT, " H6 ", T6701:    s, " C3 "
 CONNECT, " H14", T6701:    s, " C9 "
 
 # ATOM name and bonds
-CONNECT, " N1 ", T67+1:  sp3, " C5 "," C1 "," C2 "
+CONNECT, " N1 ", T67+1:  sp3, " C5 "," C1 "," C2 "," H38"
 CONNECT, " N3 ", T67+1:  sp3, " C10"," C9 "," H15"
 CONNECT, " C4 ", T67+1:  sp3, " C5 "," N2 "," H9 "," H8 "
 CONNECT, " C5 ", T67+1:  sp3, " N1 "," C4 "," H11"," H10"
@@ -78,7 +78,7 @@ CONNECT, " H4 ", T67+1:    s, " C2 "
 CONNECT, " H7 ", T67+1:    s, " C3 "
 CONNECT, " H6 ", T67+1:    s, " C3 "
 CONNECT, " H14", T67+1:    s, " C9 "
-
+CONNECT, " H38", T67+1:    s, " N1 "
 # ATOM charges
 CHARGE, T6701, " N1 ":   -0.73
 CHARGE, T6701, " N3 ":   -0.29
@@ -119,7 +119,7 @@ CHARGE, T6701, " H6 ":    0.07
 CHARGE, T6701, " H14":     0.2
 
 # ATOM charges
-CHARGE, T67+1, " N1 ":    -0.5
+CHARGE, T67+1, " N1 ":   -0.68
 CHARGE, T67+1, " N3 ":   -0.27
 CHARGE, T67+1, " C4 ":    0.07
 CHARGE, T67+1, " C5 ":    0.08
@@ -156,7 +156,7 @@ CHARGE, T67+1, " H4 ":    0.11
 CHARGE, T67+1, " H7 ":     0.1
 CHARGE, T67+1, " H6 ":     0.1
 CHARGE, T67+1, " H14":    0.19
-
+CHARGE, T67+1, " H38":    0.45
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T6701, " N1 ":  1.500,  1.750,  0.160
 RADIUS, T6701, " N3 ":  1.500,  1.750,  0.160
@@ -234,11 +234,11 @@ RADIUS, T67+1, " H4 ":  1.000,  1.000,  0.020
 RADIUS, T67+1, " H7 ":  1.000,  1.000,  0.020
 RADIUS, T67+1, " H6 ":  1.000,  1.000,  0.020
 RADIUS, T67+1, " H14":  1.000,  1.000,  0.020
+RADIUS, T67+1, " H38":  1.000,  1.000,  0.020
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T6701:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.117, rxn04= -7.640, rxn08= -3.599
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T6701:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
-
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T67+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, T67+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -36.572, rxn04= -20.762, rxn08=-2.967
 
 

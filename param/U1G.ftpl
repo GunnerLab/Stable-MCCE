@@ -1,0 +1,101 @@
+# Conformer definition
+CONFLIST, U1G: U1GBK, U1G01, U1GDM
+
+# ATOM name and bonds
+CONNECT, " N1 ", U1G01:  sp2, " C4 "," C6 "," C3 "
+CONNECT, " C4 ", U1G01:  sp3, " N1 "," C5 "," H7 "," H8 "
+CONNECT, " C5 ", U1G01:  sp3, " C4 "," N  "," H9 "," H10"
+CONNECT, " C6 ", U1G01:  sp2, " N1 "," C7 "," O1 "
+CONNECT, " C7 ", U1G01:  sp2, " C6 "," C8 "," O2 "
+CONNECT, " C8 ", U1G01:  sp3, " C7 "," C9 "," H11"
+CONNECT, " C10", U1G01:  sp3, " C9 "," O2 "," H13"
+CONNECT, " N  ", U1G01:  sp2, " C5 "," C1 "," C2 "
+CONNECT, " C  ", U1G01:  sp3, " C1 "," H  "," H2 "," H1 "
+CONNECT, " O  ", U1G01:  sp3, " C1 "
+CONNECT, " C1 ", U1G01:  sp2, " N  "," C  "," O  "
+CONNECT, " C2 ", U1G01:  sp3, " N  "," C3 "," H3 "," H4 "
+CONNECT, " C3 ", U1G01:  sp3, " N1 "," C2 "," H5 "," H6 "
+CONNECT, " C9 ", U1G01:  sp3, " C8 "," C10"," H12"
+CONNECT, " O1 ", U1G01:  sp3, " C6 "
+CONNECT, " O2 ", U1G01:  sp3, " C7 "," C10"
+CONNECT, " H7 ", U1G01:    s, " C4 "
+CONNECT, " H8 ", U1G01:    s, " C4 "
+CONNECT, " H9 ", U1G01:    s, " C5 "
+CONNECT, " H10", U1G01:    s, " C5 "
+CONNECT, " H11", U1G01:    s, " C8 "
+CONNECT, " H13", U1G01:    s, " C10"
+CONNECT, " H  ", U1G01:    s, " C  "
+CONNECT, " H2 ", U1G01:    s, " C  "
+CONNECT, " H1 ", U1G01:    s, " C  "
+CONNECT, " H3 ", U1G01:    s, " C2 "
+CONNECT, " H4 ", U1G01:    s, " C2 "
+CONNECT, " H5 ", U1G01:    s, " C3 "
+CONNECT, " H6 ", U1G01:    s, " C3 "
+CONNECT, " H12", U1G01:    s, " C9 "
+
+# ATOM charges
+CHARGE, U1G01, " N1 ":   -0.46
+CHARGE, U1G01, " C4 ":    0.08
+CHARGE, U1G01, " C5 ":    0.08
+CHARGE, U1G01, " C6 ":     0.6
+CHARGE, U1G01, " C7 ":    0.18
+CHARGE, U1G01, " C8 ":   -0.17
+CHARGE, U1G01, " C10":    0.26
+CHARGE, U1G01, " N  ":   -0.48
+CHARGE, U1G01, " C  ":   -0.17
+CHARGE, U1G01, " O  ":   -0.61
+CHARGE, U1G01, " C1 ":    0.66
+CHARGE, U1G01, " C2 ":    0.08
+CHARGE, U1G01, " C3 ":    0.08
+CHARGE, U1G01, " C9 ":   -0.28
+CHARGE, U1G01, " O1 ":   -0.61
+CHARGE, U1G01, " O2 ":   -0.36
+CHARGE, U1G01, " H7 ":    0.07
+CHARGE, U1G01, " H8 ":    0.07
+CHARGE, U1G01, " H9 ":    0.06
+CHARGE, U1G01, " H10":    0.06
+CHARGE, U1G01, " H11":    0.18
+CHARGE, U1G01, " H13":    0.06
+CHARGE, U1G01, " H  ":    0.07
+CHARGE, U1G01, " H2 ":    0.07
+CHARGE, U1G01, " H1 ":    0.07
+CHARGE, U1G01, " H3 ":    0.06
+CHARGE, U1G01, " H4 ":    0.06
+CHARGE, U1G01, " H5 ":    0.07
+CHARGE, U1G01, " H6 ":    0.07
+CHARGE, U1G01, " H12":    0.17
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, U1G01, " N1 ":  1.500,  1.750,  0.160
+RADIUS, U1G01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C10":  1.700,  2.000,  0.150
+RADIUS, U1G01, " N  ":  1.500,  1.750,  0.160
+RADIUS, U1G01, " C  ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " O  ":  1.400,  1.600,  0.200
+RADIUS, U1G01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, U1G01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, U1G01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, U1G01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H10":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H11":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H13":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H  ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, U1G01, " H12":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, U1G01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -12.44, rxn04= -5.922, rxn08= -2.6955
