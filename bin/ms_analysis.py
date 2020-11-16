@@ -32,7 +32,7 @@ class Conformer:
         self.crg = float(fields[4])
 
 class MSout:
-    def __init__(self):
+    def __init__(self, fname):
         self.T = 273.15
         self.pH = 7.0
         self.Eh = 0.0
@@ -49,7 +49,7 @@ class MSout:
         self.iconf2ires = {}      # from conformer index to free residue index
         self.microstates = {}
         self.conformers = []
-
+        self.load_msout(fname)
 
     def load_msout(self, fname):
         lines = open(fname).readlines()
@@ -160,22 +160,23 @@ class MSout:
 
 def groupms_byenergy(microstates, ticks):
     """
-    This function takes in a list of microstates and a list of energy numbers (N values), divide the microstates into N+1 bands of using the energy number as boundaries. The microstate at the boundary is assigned to the band to the left.
-    The list of energy will be sorted from small to large.
+    This function takes in a list of microstates and a list of energy numbers (N values), divide the microstates into N
+    bands by using the energy number as lower boundaries. The list of energy will be sorted from small to large.
     """
     N = len(ticks)
     ticks.sort()
-    resulted_bands = [[] for i in range(N+1)]
-    for ms in microstates:
-        itick = 0
-        for tick_value in ticks:
-            if ms.E <= tick_value:
-                break
-            else:
-                itick += 1
-        resulted_bands[itick].append(ms)
+    ticks.append(1.0e100)    # add a big number as the rightest-most boundary
+    resulted_bands = [[] for i in range(N)]
 
-    print(len(microstates))
+    for ms in microstates:
+        it = -1
+        for itick in range(N):
+            if ticks[itick] <= ms.E < ticks[itick+1]:
+                it = itick
+                break
+        if it >= 0:
+            resulted_bands[it].append(ms)
+
     return resulted_bands
 
 
@@ -240,6 +241,8 @@ def ms_convert2occ(microstates):
 
     return occ
 
+
+
 def ms_counts(microstates):
     """
     Calculate total counts of microstates
@@ -257,6 +260,30 @@ def ms_charge(ms):
     for ic in ms.state:
         crg += conformers[ic].crg
     return crg
+
+
+def ms_convert2sumcrg(microstates, free_res):
+    """
+    Given a list of microstates, convert to net charge of each free residue.
+    """
+    iconf2ires = {}
+    for i_res in range(len(free_res)):
+        for iconf in free_res[i_res]:
+            iconf2ires[iconf] = i_res
+
+    charges_total = [0.0 for i in range(len(free_res))]
+    N_ms = 0
+    for ms in microstates:
+        N_ms += ms.count
+        for ic in ms.state:
+            ir = iconf2ires[ic]
+            charges_total[ir] += conformers[ic].crg * ms.count
+
+    charges = [x/N_ms for x in charges_total]
+
+    return charges
+
+
 
 
 def read_conformers():
@@ -290,7 +317,7 @@ def bhata_distance(prob1, prob2):
         d = d_max
     else:
         bc = sum(np.sqrt(p1 * p2))
-        print(bc, np.exp(-d_max))
+    #    print(bc, np.exp(-d_max))
         if bc <= np.exp(-d_max):
             d = d_max
         else:
@@ -346,23 +373,16 @@ def whatchanged_res(msgroup1, msgroup2, free_res):
 
     return bhd
 
-
 conformers = read_conformers()
 
 
 
 if __name__ == "__main__":
-    msout = MSout()
-    msout.load_msout("ms_out/pH4eH0ms.txt")
-    print(msout.T)
-    print(msout.highest_E)
-    print(msout.lowest_E)
-    print(msout.average_E)
-    print(msout.N_ms)
-#    e_step = (msout.highest_E - msout.lowest_E)/20
-#    ticks = [msout.lowest_E + e_step*(i+1) for i in range(19)]
-#    ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
-#    print([len(band) for band in ms_in_bands])
+    msout = MSout("ms_out/pH4eH0ms.txt")
+    e_step = (msout.highest_E - msout.lowest_E)/20
+    ticks = [msout.lowest_E + e_step*(i) for i in range(20)]
+    ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
+    print([len(band) for band in ms_in_bands])
 #     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
 #     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
 #     print(l_E, a_E, h_E)
@@ -377,11 +397,14 @@ if __name__ == "__main__":
     #         band_total_crg += ms_charge(ms)
     #     print(band_total_crg/ms_counts(band))
 
-    netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
+    # netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
     # diff_occ = whatchanged_conf(netural, charged)
     # for key in diff_occ.keys():
     #     print("%3d, %s: %6.3f" % (key, conformers[key].confid, diff_occ[key]))
 
-    diff_bhd = whatchanged_res(netural, charged, msout.free_residues)
+    # diff_bhd = whatchanged_res(netural, charged, msout.free_residues)
+    # for ir in range(len(msout.free_residues)):
+    #     print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, diff_bhd[ir]))
+    charges = ms_convert2sumcrg(msout.microstates.values(), msout.free_residues)
     for ir in range(len(msout.free_residues)):
-        print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, diff_bhd[ir]))
+        print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, charges[ir]))
