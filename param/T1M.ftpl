@@ -335,7 +335,9 @@ CHARGE, T1M01, "H111":    0.14
 CHARGE, T1M01, "H121":    0.16
 CHARGE, T1M01, "H141":    0.16
 CHARGE, T1M01, "H041":    0.44
-CHARGE, T1M01, "H081":    0.44
+CHARGE, T1M01, "H081":    0.43
+#H081 mol2 charge should be 0.44.
+
 # ATOM charges
 CHARGE, T1M02, " C10":   -0.18
 CHARGE, T1M02, " C13":   -0.08
@@ -443,7 +445,8 @@ CHARGE, T1M04, "H111":    0.14
 CHARGE, T1M04, "H121":    0.16
 CHARGE, T1M04, "H141":    0.16
 CHARGE, T1M04, "H041":    0.44
-CHARGE, T1M04, "H081":    0.45
+CHARGE, T1M04, "H081":    0.47
+#H081 mol2 charge should be 0.45.
 # ATOM charges
 CHARGE, T1M05, " C10":   -0.18
 CHARGE, T1M05, " C13":   -0.08
@@ -479,7 +482,8 @@ CHARGE, T1M05, "H111":    0.14
 CHARGE, T1M05, "H121":    0.16
 CHARGE, T1M05, "H141":    0.16
 CHARGE, T1M05, "H041":    0.44
-CHARGE, T1M05, "H081":    0.45
+CHARGE, T1M05, "H081":    0.47
+#H081 mol2 charge should be 0.45
 # ATOM charges
 CHARGE, T1M06, " C10":   -0.18
 CHARGE, T1M06, " C13":   -0.08
@@ -587,8 +591,8 @@ CHARGE, T1M08, "H111":    0.14
 CHARGE, T1M08, "H121":    0.16
 CHARGE, T1M08, "H141":    0.16
 CHARGE, T1M08, "H041":    0.44
-CHARGE, T1M08, "H081":    0.44
-
+CHARGE, T1M08, "H081":    0.43
+#H081 mol2 charge should be 0.44.
 
 
 
