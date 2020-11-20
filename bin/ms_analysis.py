@@ -200,6 +200,34 @@ def groupms_byiconf(microstates, iconfs):
     return ingroup, outgroup
 
 
+def groupms_byconfid(microstates, confids):
+    """
+    Group conformers by tge conformer IDs. IDs are in a list and ID is considered as a match as long as it is a
+    substring of the conformer name. The selected microstates must have all conformers and returned in the first group,
+    and the rest are in the second group.
+    """
+    ingroup = []
+    outgroup = []
+    for ms in microstates:
+        contain = True
+        names = [conformers[ic].confid for ic in ms.state]
+        for confid in confids:
+            innames = False
+            for name in names:
+                if confid in name:
+                    innames = True
+                    break
+            contain = contain and innames
+        if contain:
+            ingroup.append(ms)
+        else:
+            outgroup.append(ms)
+
+    return ingroup, outgroup
+
+
+
+
 def ms_energy_stat(microstates):
     """
     Given a list of microstates, find the lowest energy, average energy, and highest energy
@@ -282,7 +310,6 @@ def ms_convert2sumcrg(microstates, free_res):
     charges = [x/N_ms for x in charges_total]
 
     return charges
-
 
 
 
@@ -379,10 +406,10 @@ conformers = read_conformers()
 
 if __name__ == "__main__":
     msout = MSout("ms_out/pH4eH0ms.txt")
-    e_step = (msout.highest_E - msout.lowest_E)/20
-    ticks = [msout.lowest_E + e_step*(i) for i in range(20)]
-    ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
-    print([len(band) for band in ms_in_bands])
+    # e_step = (msout.highest_E - msout.lowest_E)/20
+    # ticks = [msout.lowest_E + e_step*(i) for i in range(20)]
+    # ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
+    # print([len(band) for band in ms_in_bands])
 #     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
 #     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
 #     print(l_E, a_E, h_E)
@@ -405,6 +432,10 @@ if __name__ == "__main__":
     # diff_bhd = whatchanged_res(netural, charged, msout.free_residues)
     # for ir in range(len(msout.free_residues)):
     #     print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, diff_bhd[ir]))
-    charges = ms_convert2sumcrg(msout.microstates.values(), msout.free_residues)
-    for ir in range(len(msout.free_residues)):
-        print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, charges[ir]))
+    # charges = ms_convert2sumcrg(msout.microstates.values(), msout.free_residues)
+    # for ir in range(len(msout.free_residues)):
+    #     print("%s: %6.4f" % (conformers[msout.free_residues[ir][0]].resid, charges[ir]))
+    microstates = list(msout.microstates.values())
+    glu35_charged, _ = groupms_byconfid(microstates, ["GLU-1A0035"])
+    print(len(microstates))
+    print(len(glu35_charged))
