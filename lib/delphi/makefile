@@ -3,8 +3,8 @@ VPATH=src
 #  FC=gfortran -O3 -fcray-pointer -ffixed-line-length-none
 #  CC=gcc -O3
 #  FC=gfortran -g -static -fcray-pointer -ffixed-line-length-none
-  FC=x86_64-linux-gnu-gfortran -fcray-pointer -ffixed-line-length-none
-  CC=x86_64-linux-gnu-gcc
+  FC=x86_64-apple-darwin13.4.0-gfortran -fcray-pointer -ffixed-line-length-none
+  CC=x86_64-apple-darwin13.4.0-clang
 
 # Double precision performance
 #RECFLAGS = -O3 -I$(VPATH)/ -DLINUX -DIFC -DDP -fdefault-real-8
