@@ -4,6 +4,8 @@
 
 ## Get the code
 
+MCCE runs on Linux and Mac OSX natively, on Windows in its Linux subsystem. Follow [How to install WSL](wsl.md) to install Linux Subsystem if you don't have one.
+
 ### Install with conda
 
 The mcce program comes with many small programs and tool scripts, so it is recommended to run mcce in a separate conda environment. Suppose we will run mcce under environment "mcce":
