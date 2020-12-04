@@ -1,5 +1,8 @@
-CC      = gcc -g
-CC2 = g++ -g
+#CC      = gcc -g
+CC      = x86_64-linux-gnu-gcc -g
+#CC2 = g++ -g
+CC2 = x86_64-linux-gnu-g++ -g
+
 LDIR = lib
 DEPS    = $(LDIR)/mcce.h
 LIB     = $(LDIR)/mcce.a
