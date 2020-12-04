@@ -22,8 +22,11 @@ nav:
       - Convert mcce tpl file: mcce2free.md
       - Make a new topology file: newftpl.md
       - Analyze ionization energy: mfehowto.md
-      - How to write documentation: wikihowto.md
-      - How to contribute code: develop.md
+      - Use MS Analysis Library: ms_analysis.md
+      - Write documentation: wikihowto.md
+      - Contribute code: develop.md
+      - Install WSL: wsl.ms
+
 
 #theme: readthedocs
 
