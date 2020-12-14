@@ -25,7 +25,7 @@ nav:
       - Use MS Analysis Library: ms_analysis.md
       - Write documentation: wikihowto.md
       - Contribute code: develop.md
-      - Install WSL: wsl.ms
+      - Install WSL: wsl.md
 
 
 #theme: readthedocs
