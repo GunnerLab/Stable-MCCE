@@ -38,7 +38,7 @@ def msubtract(m1, m2):
             if isinstance(m1[irow][icol], str):  # keep
                 row_result.append(m1[irow][icol])
             else:
-                row_result.append(m1[irow][icol] - m1[irow][icol])
+                row_result.append(m1[irow][icol] - m2[irow][icol])
         result.append(row_result)
 
     return result
@@ -50,7 +50,7 @@ def diff(files):
     data_diff = msubtract(data1, data2)
 
     for row_data in data_diff:
-        print("%14s %s" % (row_data[0], " ".join(["%-6s" % str(x) for x in row_data[1:]])))
+        print("%14s %s" % (row_data[0], " ".join(["%6.3f" % x for x in row_data[1:]])))
     return
 
 if __name__ == "__main__":
