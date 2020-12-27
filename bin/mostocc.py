@@ -42,8 +42,6 @@ for res in OccInRes.keys():
          maxocc = conf
    maxConfs.append(maxocc[0])
 
-#for x in maxConfs: print x
-
 # read in a file and keep only the most occupied confs
 pdb = open("step3_out.pdb").readlines()
 outpdb = []
@@ -56,4 +54,3 @@ for line in pdb:
       outpdb.append(line)
 
 sys.stdout.writelines(outpdb)
-   
