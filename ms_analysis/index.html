@@ -1,0 +1,1814 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/ms_analysis/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Use MS Analysis Library - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-use-microstate-analysis-library" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Use MS Analysis Library
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Use MS Analysis Library
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Use MS Analysis Library
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-microstate-analysis-library" class="md-nav__link">
+    What is Microstate Analysis Library?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-basic-monte-carlo-sampling-information" class="md-nav__link">
+    Get basic Monte Carlo sampling information
+  </a>
+  
+    <nav class="md-nav" aria-label="Get basic Monte Carlo sampling information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-basic-information-of-a-mc-titration" class="md-nav__link">
+    Show basic information of a MC titration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-conformer-and-residue-information" class="md-nav__link">
+    Access Conformer and Residue information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-microstates" class="md-nav__link">
+    Access microstates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-residue-charges-for-a-group-of-conformers" class="md-nav__link">
+    Calculate residue charges for a group of conformers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstates-by-energy" class="md-nav__link">
+    Group microstates by energy
+  </a>
+  
+    <nav class="md-nav" aria-label="Group microstates by energy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unique-microstate-couns-and-total-counts-over-bands" class="md-nav__link">
+    Unique microstate couns and total counts over bands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-over-energy-bands" class="md-nav__link">
+    Charge over energy bands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-charge-is-the-most-populated" class="md-nav__link">
+    Which charge is the most populated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstate-by-conformer-selection-and-show-what-changed" class="md-nav__link">
+    Group microstate by conformer selection and show what changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstate-by-conformer-names-and-chained-selection" class="md-nav__link">
+    Group microstate by conformer names, and chained selection
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-microstate-analysis-library" class="md-nav__link">
+    What is Microstate Analysis Library?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-basic-monte-carlo-sampling-information" class="md-nav__link">
+    Get basic Monte Carlo sampling information
+  </a>
+  
+    <nav class="md-nav" aria-label="Get basic Monte Carlo sampling information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-basic-information-of-a-mc-titration" class="md-nav__link">
+    Show basic information of a MC titration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-conformer-and-residue-information" class="md-nav__link">
+    Access Conformer and Residue information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-microstates" class="md-nav__link">
+    Access microstates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-residue-charges-for-a-group-of-conformers" class="md-nav__link">
+    Calculate residue charges for a group of conformers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstates-by-energy" class="md-nav__link">
+    Group microstates by energy
+  </a>
+  
+    <nav class="md-nav" aria-label="Group microstates by energy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unique-microstate-couns-and-total-counts-over-bands" class="md-nav__link">
+    Unique microstate couns and total counts over bands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charge-over-energy-bands" class="md-nav__link">
+    Charge over energy bands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-charge-is-the-most-populated" class="md-nav__link">
+    Which charge is the most populated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstate-by-conformer-selection-and-show-what-changed" class="md-nav__link">
+    Group microstate by conformer selection and show what changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-microstate-by-conformer-names-and-chained-selection" class="md-nav__link">
+    Group microstate by conformer names, and chained selection
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-use-microstate-analysis-library">How to use Microstate Analysis Library?<a class="headerlink" href="#how-to-use-microstate-analysis-library" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-11-19</i></small></p>
+<h2 id="what-is-microstate-analysis-library">What is Microstate Analysis Library?<a class="headerlink" href="#what-is-microstate-analysis-library" title="Permanent link">&para;</a></h2>
+<p>Monte Carlo sampling in MCCE evaluates protein residue side chains' choice of being at different positions and charge states. This process typically takes thousands of millions of steps and contains of a wealth of information such as:</p>
+<ul>
+<li>What microstates charge states are most likely at different energy level?</li>
+<li>What microstates are at the lowest energy of the sampling energy landscape?</li>
+<li>Do other residues respond to certain changes of a specific residue? </li>
+</ul>
+<p>Microstate Analysis Library is a tool set to replay Monte Carlo sampling and reveal the above information.</p>
+<p>If you installed MCCE with conda/miniconda, Microstate Analysis Library is already included in the site-package path and it can be imported directly.  </p>
+<p>If you installed MCCE from the source, Microstate Analysis Library is named as <code>ms_analysis.py</code> in bin directory. You need to copy this program to the same directory of your scripts or Jupyter Notebook to properly import it. </p>
+<h2 id="get-basic-monte-carlo-sampling-information">Get basic Monte Carlo sampling information<a class="headerlink" href="#get-basic-monte-carlo-sampling-information" title="Permanent link">&para;</a></h2>
+<p><strong>Prerequisite:</strong></p>
+<p>You need to enable microstate recording in MCCE step 4 to have microstates saved.
+<div class="highlight"><pre><span></span><code>step4.py --ms
+</code></pre></div></p>
+<p>You will have a <code>ms_out</code> directory and microstate files like <code>pH0eH0ms.txt  pH10eH0ms.txt  pH11eH0ms.txt  pH12eH0ms.txt ...</code> under this directory.</p>
+<p><strong>Import the library</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">ms_analysis</span> <span class="k">as</span> <span class="nn">msa</span>
+</code></pre></div>
+<h3 id="show-basic-information-of-a-mc-titration">Show basic information of a MC titration<a class="headerlink" href="#show-basic-information-of-a-mc-titration" title="Permanent link">&para;</a></h3>
+<p>Monte Carlo sapling steps are saved in files, one file at one totration condition. When we load the information back, one object is needed for one totration condition. </p>
+<div class="highlight"><pre><span></span><code><span class="n">mc</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">MSout</span><span class="p">(</span><span class="s2">&quot;ms_out/pH4eH0ms.txt&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monte Carlo T  = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monte Carlo pH = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">pH</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monte Carlo Eh = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">Eh</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of MC counts = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_ms</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of microstates = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_uniq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lowest E  = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">lowest_E</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The average E = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">average_E</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The hishest E = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mc</span><span class="o">.</span><span class="n">highest_E</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Monte Carlo T  = 298.150</span>
+<span class="err">Monte Carlo pH = 4.000</span>
+<span class="err">Monte Carlo Eh = 0.000</span>
+<span class="err">Number of MC counts = 1500000</span>
+<span class="err">Number of microstates = 266328</span>
+<span class="err">The lowest E  = -226.198</span>
+<span class="err">The average E = -221.267</span>
+<span class="err">The hishest E = -206.544</span>
+</code></pre></div>
+
+<h3 id="access-conformer-and-residue-information">Access Conformer and Residue information<a class="headerlink" href="#access-conformer-and-residue-information" title="Permanent link">&para;</a></h3>
+<p>Conformers are not tied to Monte Carlo sampling, so it is a separate object in Microstate Analysis Library. Conformers have index of conformers, conformer ID, index of residues (not initialized), residue ID,  occupancy (not initialized), and charge.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iconf ires         confid     resid   occ    crg&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">conf</span> <span class="ow">in</span> <span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5d</span><span class="s2"> </span><span class="si">%4d</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%5.3f</span><span class="s2"> </span><span class="si">%6.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">iconf</span><span class="p">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">ires</span><span class="p">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">confid</span><span class="p">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">occ</span><span class="p">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">crg</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">iconf ires         confid     resid   occ    crg</span>
+<span class="err">    0    0 NTR01A0001_001 NTRA0001_ 0.000  0.000</span>
+<span class="err">    1    0 NTR+1A0001_002 NTRA0001_ 0.000  1.000</span>
+<span class="err">    2    0 LYS01A0001_001 LYSA0001_ 0.000  0.000</span>
+<span class="err">    3    0 LYS+1A0001_002 LYSA0001_ 0.000  1.000</span>
+<span class="err">    4    0 VAL01A0002_001 VALA0002_ 0.000  0.000</span>
+<span class="err">    5    0 PHE01A0003_001 PHEA0003_ 0.000  0.000</span>
+<span class="err">    6    0 ARG01A0005_001 ARGA0005_ 0.000  0.000</span>
+<span class="err">    7    0 ARG02A0005_002 ARGA0005_ 0.000  0.000</span>
+<span class="err">    8    0 ARG02A0005_003 ARGA0005_ 0.000  0.000</span>
+<span class="err">    9    0 ARG03A0005_004 ARGA0005_ 0.000  0.000</span>
+<span class="err">   10    0 ARG+1A0005_005 ARGA0005_ 0.000  1.000</span>
+<span class="err">   11    0 CYD01A0006_001 CYDA0006_ 0.000  0.000</span>
+<span class="err">   12    0 GLU01A0007_001 GLUA0007_ 0.000  0.000</span>
+<span class="err">   13    0 GLU01A0007_002 GLUA0007_ 0.000  0.000</span>
+<span class="err">   14    0 GLU02A0007_003 GLUA0007_ 0.000  0.000</span>
+<span class="err">   15    0 GLU02A0007_004 GLUA0007_ 0.000  0.000</span>
+<span class="err">   16    0 GLU-1A0007_005 GLUA0007_ 0.000 -1.000</span>
+<span class="err">   17    0 LEU01A0008_001 LEUA0008_ 0.000  0.000</span>
+<span class="err">   18    0 ALA01A0009_001 ALAA0009_ 0.000  0.000</span>
+<span class="err">   19    0 ALA01A0010_001 ALAA0010_ 0.000  0.000</span>
+<span class="err">   20    0 ALA01A0011_001 ALAA0011_ 0.000  0.000</span>
+<span class="err">   21    0 MET01A0012_001 META0012_ 0.000  0.000</span>
+<span class="err">   22    0 LYS01A0013_001 LYSA0013_ 0.000  0.000</span>
+<span class="err">   23    0 LYS+1A0013_002 LYSA0013_ 0.000  1.000</span>
+<span class="err">   24    0 ARG01A0014_001 ARGA0014_ 0.000  0.000</span>
+<span class="err">   25    0 ARG02A0014_002 ARGA0014_ 0.000  0.000</span>
+<span class="err">   26    0 ARG03A0014_003 ARGA0014_ 0.000  0.000</span>
+<span class="err">   27    0 ARG+1A0014_004 ARGA0014_ 0.000  1.000</span>
+<span class="err">   28    0 HIS01A0015_001 HISA0015_ 0.000  0.000</span>
+<span class="err">   29    0 HIS01A0015_002 HISA0015_ 0.000  0.000</span>
+<span class="err">   30    0 HIS02A0015_003 HISA0015_ 0.000  0.000</span>
+<span class="err">   31    0 HIS02A0015_004 HISA0015_ 0.000  0.000</span>
+<span class="err">   32    0 HIS+1A0015_005 HISA0015_ 0.000  1.000</span>
+<span class="err">   33    0 HIS+1A0015_006 HISA0015_ 0.000  1.000</span>
+<span class="err">   34    0 LEU01A0017_001 LEUA0017_ 0.000  0.000</span>
+<span class="err">   35    0 ASP01A0018_001 ASPA0018_ 0.000  0.000</span>
+<span class="err">   36    0 ASP01A0018_002 ASPA0018_ 0.000  0.000</span>
+<span class="err">   37    0 ASP02A0018_003 ASPA0018_ 0.000  0.000</span>
+<span class="err">   38    0 ASP02A0018_004 ASPA0018_ 0.000  0.000</span>
+<span class="err">   39    0 ASP-1A0018_005 ASPA0018_ 0.000 -1.000</span>
+<span class="err">   40    0 ASN01A0019_001 ASNA0019_ 0.000  0.000</span>
+<span class="err">   41    0 TYR01A0020_001 TYRA0020_ 0.000  0.000</span>
+<span class="err">   42    0 TYR01A0020_002 TYRA0020_ 0.000  0.000</span>
+<span class="err">   43    0 TYR-1A0020_003 TYRA0020_ 0.000 -1.000</span>
+<span class="err">   44    0 ARG01A0021_001 ARGA0021_ 0.000  0.000</span>
+<span class="err">   45    0 ARG02A0021_002 ARGA0021_ 0.000  0.000</span>
+<span class="err">   46    0 ARG03A0021_003 ARGA0021_ 0.000  0.000</span>
+<span class="err">   47    0 ARG+1A0021_004 ARGA0021_ 0.000  1.000</span>
+<span class="err">   48    0 TYR01A0023_001 TYRA0023_ 0.000  0.000</span>
+<span class="err">   49    0 TYR-1A0023_002 TYRA0023_ 0.000 -1.000</span>
+<span class="err">   50    0 SER01A0024_001 SERA0024_ 0.000  0.000</span>
+<span class="err">   51    0 SER01A0024_002 SERA0024_ 0.000  0.000</span>
+<span class="err">   52    0 SER01A0024_003 SERA0024_ 0.000  0.000</span>
+<span class="err">   53    0 LEU01A0025_001 LEUA0025_ 0.000  0.000</span>
+<span class="err">   54    0 ASN01A0027_001 ASNA0027_ 0.000  0.000</span>
+<span class="err">   55    0 ASN01A0027_002 ASNA0027_ 0.000  0.000</span>
+<span class="err">   56    0 TRP01A0028_001 TRPA0028_ 0.000  0.000</span>
+<span class="err">   57    0 VAL01A0029_001 VALA0029_ 0.000  0.000</span>
+<span class="err">   58    0 CYD01A0030_001 CYDA0030_ 0.000  0.000</span>
+<span class="err">   59    0 ALA01A0031_001 ALAA0031_ 0.000  0.000</span>
+<span class="err">   60    0 ALA01A0032_001 ALAA0032_ 0.000  0.000</span>
+<span class="err">   61    0 LYS01A0033_001 LYSA0033_ 0.000  0.000</span>
+<span class="err">   62    0 LYS+1A0033_002 LYSA0033_ 0.000  1.000</span>
+<span class="err">   63    0 PHE01A0034_001 PHEA0034_ 0.000  0.000</span>
+<span class="err">   64    0 GLU01A0035_001 GLUA0035_ 0.000  0.000</span>
+<span class="err">   65    0 GLU01A0035_002 GLUA0035_ 0.000  0.000</span>
+<span class="err">   66    0 GLU02A0035_003 GLUA0035_ 0.000  0.000</span>
+<span class="err">   67    0 GLU02A0035_004 GLUA0035_ 0.000  0.000</span>
+<span class="err">   68    0 GLU-1A0035_005 GLUA0035_ 0.000 -1.000</span>
+<span class="err">   69    0 SER01A0036_001 SERA0036_ 0.000  0.000</span>
+<span class="err">   70    0 ASN01A0037_001 ASNA0037_ 0.000  0.000</span>
+<span class="err">   71    0 ASN01A0037_002 ASNA0037_ 0.000  0.000</span>
+<span class="err">   72    0 PHE01A0038_001 PHEA0038_ 0.000  0.000</span>
+<span class="err">   73    0 ASN01A0039_001 ASNA0039_ 0.000  0.000</span>
+<span class="err">   74    0 ASN01A0039_002 ASNA0039_ 0.000  0.000</span>
+<span class="err">   75    0 THR01A0040_001 THRA0040_ 0.000  0.000</span>
+<span class="err">   76    0 THR01A0040_002 THRA0040_ 0.000  0.000</span>
+<span class="err">   77    0 GLN01A0041_001 GLNA0041_ 0.000  0.000</span>
+<span class="err">   78    0 GLN01A0041_002 GLNA0041_ 0.000  0.000</span>
+<span class="err">   79    0 ALA01A0042_001 ALAA0042_ 0.000  0.000</span>
+<span class="err">   80    0 THR01A0043_001 THRA0043_ 0.000  0.000</span>
+<span class="err">   81    0 THR01A0043_002 THRA0043_ 0.000  0.000</span>
+<span class="err">   82    0 ASN01A0044_001 ASNA0044_ 0.000  0.000</span>
+<span class="err">   83    0 ASN01A0044_002 ASNA0044_ 0.000  0.000</span>
+<span class="err">   84    0 ARG01A0045_001 ARGA0045_ 0.000  0.000</span>
+<span class="err">   85    0 ARG02A0045_002 ARGA0045_ 0.000  0.000</span>
+<span class="err">   86    0 ARG03A0045_003 ARGA0045_ 0.000  0.000</span>
+<span class="err">   87    0 ARG+1A0045_004 ARGA0045_ 0.000  1.000</span>
+<span class="err">   88    0 ASN01A0046_001 ASNA0046_ 0.000  0.000</span>
+<span class="err">   89    0 ASN01A0046_002 ASNA0046_ 0.000  0.000</span>
+<span class="err">   90    0 ASN01A0046_003 ASNA0046_ 0.000  0.000</span>
+<span class="err">   91    0 ASN01A0046_004 ASNA0046_ 0.000  0.000</span>
+<span class="err">   92    0 THR01A0047_001 THRA0047_ 0.000  0.000</span>
+<span class="err">   93    0 ASP01A0048_001 ASPA0048_ 0.000  0.000</span>
+<span class="err">   94    0 ASP01A0048_002 ASPA0048_ 0.000  0.000</span>
+<span class="err">   95    0 ASP01A0048_003 ASPA0048_ 0.000  0.000</span>
+<span class="err">   96    0 ASP01A0048_004 ASPA0048_ 0.000  0.000</span>
+<span class="err">   97    0 ASP02A0048_005 ASPA0048_ 0.000  0.000</span>
+<span class="err">   98    0 ASP02A0048_006 ASPA0048_ 0.000  0.000</span>
+<span class="err">   99    0 ASP02A0048_007 ASPA0048_ 0.000  0.000</span>
+<span class="err">  100    0 ASP02A0048_008 ASPA0048_ 0.000  0.000</span>
+<span class="err">  101    0 ASP-1A0048_009 ASPA0048_ 0.000 -1.000</span>
+<span class="err">  102    0 ASP-1A0048_010 ASPA0048_ 0.000 -1.000</span>
+<span class="err">  103    0 SER01A0050_001 SERA0050_ 0.000  0.000</span>
+<span class="err">  104    0 SER01A0050_002 SERA0050_ 0.000  0.000</span>
+<span class="err">  105    0 SER01A0050_003 SERA0050_ 0.000  0.000</span>
+<span class="err">  106    0 THR01A0051_001 THRA0051_ 0.000  0.000</span>
+<span class="err">  107    0 THR01A0051_002 THRA0051_ 0.000  0.000</span>
+<span class="err">  108    0 ASP01A0052_001 ASPA0052_ 0.000  0.000</span>
+<span class="err">  109    0 ASP01A0052_002 ASPA0052_ 0.000  0.000</span>
+<span class="err">  110    0 ASP01A0052_003 ASPA0052_ 0.000  0.000</span>
+<span class="err">  111    0 ASP01A0052_004 ASPA0052_ 0.000  0.000</span>
+<span class="err">  112    0 ASP02A0052_005 ASPA0052_ 0.000  0.000</span>
+<span class="err">  113    0 ASP02A0052_006 ASPA0052_ 0.000  0.000</span>
+<span class="err">  114    0 ASP02A0052_007 ASPA0052_ 0.000  0.000</span>
+<span class="err">  115    0 ASP02A0052_008 ASPA0052_ 0.000  0.000</span>
+<span class="err">  116    0 ASP-1A0052_009 ASPA0052_ 0.000 -1.000</span>
+<span class="err">  117    0 ASP-1A0052_010 ASPA0052_ 0.000 -1.000</span>
+<span class="err">  118    0 TYR01A0053_001 TYRA0053_ 0.000  0.000</span>
+<span class="err">  119    0 TYR01A0053_002 TYRA0053_ 0.000  0.000</span>
+<span class="err">  120    0 TYR-1A0053_003 TYRA0053_ 0.000 -1.000</span>
+<span class="err">  121    0 ILE01A0055_001 ILEA0055_ 0.000  0.000</span>
+<span class="err">  122    0 LEU01A0056_001 LEUA0056_ 0.000  0.000</span>
+<span class="err">  123    0 GLN01A0057_001 GLNA0057_ 0.000  0.000</span>
+<span class="err">  124    0 GLN01A0057_002 GLNA0057_ 0.000  0.000</span>
+<span class="err">  125    0 ILE01A0058_001 ILEA0058_ 0.000  0.000</span>
+<span class="err">  126    0 ASN01A0059_001 ASNA0059_ 0.000  0.000</span>
+<span class="err">  127    0 ASN01A0059_002 ASNA0059_ 0.000  0.000</span>
+<span class="err">  128    0 ASN01A0059_003 ASNA0059_ 0.000  0.000</span>
+<span class="err">  129    0 ASN01A0059_004 ASNA0059_ 0.000  0.000</span>
+<span class="err">  130    0 SER01A0060_001 SERA0060_ 0.000  0.000</span>
+<span class="err">  131    0 SER01A0060_002 SERA0060_ 0.000  0.000</span>
+<span class="err">  132    0 SER01A0060_003 SERA0060_ 0.000  0.000</span>
+<span class="err">  133    0 SER01A0060_004 SERA0060_ 0.000  0.000</span>
+<span class="err">  134    0 SER01A0060_005 SERA0060_ 0.000  0.000</span>
+<span class="err">  135    0 ARG01A0061_001 ARGA0061_ 0.000  0.000</span>
+<span class="err">  136    0 ARG02A0061_002 ARGA0061_ 0.000  0.000</span>
+<span class="err">  137    0 ARG03A0061_003 ARGA0061_ 0.000  0.000</span>
+<span class="err">  138    0 ARG03A0061_004 ARGA0061_ 0.000  0.000</span>
+<span class="err">  139    0 ARG+1A0061_005 ARGA0061_ 0.000  1.000</span>
+<span class="err">  140    0 TRP01A0062_001 TRPA0062_ 0.000  0.000</span>
+<span class="err">  141    0 TRP01A0063_001 TRPA0063_ 0.000  0.000</span>
+<span class="err">  142    0 CYD01A0064_001 CYDA0064_ 0.000  0.000</span>
+<span class="err">  143    0 ASN01A0065_001 ASNA0065_ 0.000  0.000</span>
+<span class="err">  144    0 ASN01A0065_002 ASNA0065_ 0.000  0.000</span>
+<span class="err">  145    0 ASP01A0066_001 ASPA0066_ 0.000  0.000</span>
+<span class="err">  146    0 ASP01A0066_002 ASPA0066_ 0.000  0.000</span>
+<span class="err">  147    0 ASP01A0066_003 ASPA0066_ 0.000  0.000</span>
+<span class="err">  148    0 ASP01A0066_004 ASPA0066_ 0.000  0.000</span>
+<span class="err">  149    0 ASP02A0066_005 ASPA0066_ 0.000  0.000</span>
+<span class="err">  150    0 ASP02A0066_006 ASPA0066_ 0.000  0.000</span>
+<span class="err">  151    0 ASP02A0066_007 ASPA0066_ 0.000  0.000</span>
+<span class="err">  152    0 ASP02A0066_008 ASPA0066_ 0.000  0.000</span>
+<span class="err">  153    0 ASP-1A0066_009 ASPA0066_ 0.000 -1.000</span>
+<span class="err">  154    0 ASP-1A0066_010 ASPA0066_ 0.000 -1.000</span>
+<span class="err">  155    0 ARG01A0068_001 ARGA0068_ 0.000  0.000</span>
+<span class="err">  156    0 ARG02A0068_002 ARGA0068_ 0.000  0.000</span>
+<span class="err">  157    0 ARG03A0068_003 ARGA0068_ 0.000  0.000</span>
+<span class="err">  158    0 ARG+1A0068_004 ARGA0068_ 0.000  1.000</span>
+<span class="err">  159    0 THR01A0069_001 THRA0069_ 0.000  0.000</span>
+<span class="err">  160    0 THR01A0069_002 THRA0069_ 0.000  0.000</span>
+<span class="err">  161    0 THR01A0069_003 THRA0069_ 0.000  0.000</span>
+<span class="err">  162    0 PRO01A0070_001 PROA0070_ 0.000  0.000</span>
+<span class="err">  163    0 SER01A0072_001 SERA0072_ 0.000  0.000</span>
+<span class="err">  164    0 ARG01A0073_001 ARGA0073_ 0.000  0.000</span>
+<span class="err">  165    0 ARG02A0073_002 ARGA0073_ 0.000  0.000</span>
+<span class="err">  166    0 ARG03A0073_003 ARGA0073_ 0.000  0.000</span>
+<span class="err">  167    0 ARG+1A0073_004 ARGA0073_ 0.000  1.000</span>
+<span class="err">  168    0 ASN01A0074_001 ASNA0074_ 0.000  0.000</span>
+<span class="err">  169    0 ASN01A0074_002 ASNA0074_ 0.000  0.000</span>
+<span class="err">  170    0 LEU01A0075_001 LEUA0075_ 0.000  0.000</span>
+<span class="err">  171    0 CYD01A0076_001 CYDA0076_ 0.000  0.000</span>
+<span class="err">  172    0 ASN01A0077_001 ASNA0077_ 0.000  0.000</span>
+<span class="err">  173    0 ILE01A0078_001 ILEA0078_ 0.000  0.000</span>
+<span class="err">  174    0 PRO01A0079_001 PROA0079_ 0.000  0.000</span>
+<span class="err">  175    0 CYD01A0080_001 CYDA0080_ 0.000  0.000</span>
+<span class="err">  176    0 SER01A0081_001 SERA0081_ 0.000  0.000</span>
+<span class="err">  177    0 ALA01A0082_001 ALAA0082_ 0.000  0.000</span>
+<span class="err">  178    0 LEU01A0083_001 LEUA0083_ 0.000  0.000</span>
+<span class="err">  179    0 LEU01A0084_001 LEUA0084_ 0.000  0.000</span>
+<span class="err">  180    0 SER01A0085_001 SERA0085_ 0.000  0.000</span>
+<span class="err">  181    0 SER01A0085_002 SERA0085_ 0.000  0.000</span>
+<span class="err">  182    0 SER01A0086_001 SERA0086_ 0.000  0.000</span>
+<span class="err">  183    0 SER01A0086_002 SERA0086_ 0.000  0.000</span>
+<span class="err">  184    0 ASP01A0087_001 ASPA0087_ 0.000  0.000</span>
+<span class="err">  185    0 ASP01A0087_002 ASPA0087_ 0.000  0.000</span>
+<span class="err">  186    0 ASP02A0087_003 ASPA0087_ 0.000  0.000</span>
+<span class="err">  187    0 ASP02A0087_004 ASPA0087_ 0.000  0.000</span>
+<span class="err">  188    0 ASP-1A0087_005 ASPA0087_ 0.000 -1.000</span>
+<span class="err">  189    0 ILE01A0088_001 ILEA0088_ 0.000  0.000</span>
+<span class="err">  190    0 THR01A0089_001 THRA0089_ 0.000  0.000</span>
+<span class="err">  191    0 THR01A0089_002 THRA0089_ 0.000  0.000</span>
+<span class="err">  192    0 THR01A0089_003 THRA0089_ 0.000  0.000</span>
+<span class="err">  193    0 ALA01A0090_001 ALAA0090_ 0.000  0.000</span>
+<span class="err">  194    0 SER01A0091_001 SERA0091_ 0.000  0.000</span>
+<span class="err">  195    0 SER01A0091_002 SERA0091_ 0.000  0.000</span>
+<span class="err">  196    0 VAL01A0092_001 VALA0092_ 0.000  0.000</span>
+<span class="err">  197    0 ASN01A0093_001 ASNA0093_ 0.000  0.000</span>
+<span class="err">  198    0 ASN01A0093_002 ASNA0093_ 0.000  0.000</span>
+<span class="err">  199    0 CYD01A0094_001 CYDA0094_ 0.000  0.000</span>
+<span class="err">  200    0 ALA01A0095_001 ALAA0095_ 0.000  0.000</span>
+<span class="err">  201    0 LYS01A0096_001 LYSA0096_ 0.000  0.000</span>
+<span class="err">  202    0 LYS+1A0096_002 LYSA0096_ 0.000  1.000</span>
+<span class="err">  203    0 LYS01A0097_001 LYSA0097_ 0.000  0.000</span>
+<span class="err">  204    0 LYS+1A0097_002 LYSA0097_ 0.000  1.000</span>
+<span class="err">  205    0 ILE01A0098_001 ILEA0098_ 0.000  0.000</span>
+<span class="err">  206    0 VAL01A0099_001 VALA0099_ 0.000  0.000</span>
+<span class="err">  207    0 SER01A0100_001 SERA0100_ 0.000  0.000</span>
+<span class="err">  208    0 SER01A0100_002 SERA0100_ 0.000  0.000</span>
+<span class="err">  209    0 SER01A0100_003 SERA0100_ 0.000  0.000</span>
+<span class="err">  210    0 ASP01A0101_001 ASPA0101_ 0.000  0.000</span>
+<span class="err">  211    0 ASP01A0101_002 ASPA0101_ 0.000  0.000</span>
+<span class="err">  212    0 ASP02A0101_003 ASPA0101_ 0.000  0.000</span>
+<span class="err">  213    0 ASP02A0101_004 ASPA0101_ 0.000  0.000</span>
+<span class="err">  214    0 ASP-1A0101_005 ASPA0101_ 0.000 -1.000</span>
+<span class="err">  215    0 ASN01A0103_001 ASNA0103_ 0.000  0.000</span>
+<span class="err">  216    0 ASN01A0103_002 ASNA0103_ 0.000  0.000</span>
+<span class="err">  217    0 MET01A0105_001 META0105_ 0.000  0.000</span>
+<span class="err">  218    0 ASN01A0106_001 ASNA0106_ 0.000  0.000</span>
+<span class="err">  219    0 ASN01A0106_002 ASNA0106_ 0.000  0.000</span>
+<span class="err">  220    0 ALA01A0107_001 ALAA0107_ 0.000  0.000</span>
+<span class="err">  221    0 TRP01A0108_001 TRPA0108_ 0.000  0.000</span>
+<span class="err">  222    0 VAL01A0109_001 VALA0109_ 0.000  0.000</span>
+<span class="err">  223    0 ALA01A0110_001 ALAA0110_ 0.000  0.000</span>
+<span class="err">  224    0 TRP01A0111_001 TRPA0111_ 0.000  0.000</span>
+<span class="err">  225    0 ARG01A0112_001 ARGA0112_ 0.000  0.000</span>
+<span class="err">  226    0 ARG02A0112_002 ARGA0112_ 0.000  0.000</span>
+<span class="err">  227    0 ARG03A0112_003 ARGA0112_ 0.000  0.000</span>
+<span class="err">  228    0 ARG03A0112_004 ARGA0112_ 0.000  0.000</span>
+<span class="err">  229    0 ARG+1A0112_005 ARGA0112_ 0.000  1.000</span>
+<span class="err">  230    0 ASN01A0113_001 ASNA0113_ 0.000  0.000</span>
+<span class="err">  231    0 ASN01A0113_002 ASNA0113_ 0.000  0.000</span>
+<span class="err">  232    0 ARG01A0114_001 ARGA0114_ 0.000  0.000</span>
+<span class="err">  233    0 ARG02A0114_002 ARGA0114_ 0.000  0.000</span>
+<span class="err">  234    0 ARG03A0114_003 ARGA0114_ 0.000  0.000</span>
+<span class="err">  235    0 ARG+1A0114_004 ARGA0114_ 0.000  1.000</span>
+<span class="err">  236    0 CYD01A0115_001 CYDA0115_ 0.000  0.000</span>
+<span class="err">  237    0 LYS01A0116_001 LYSA0116_ 0.000  0.000</span>
+<span class="err">  238    0 LYS+1A0116_002 LYSA0116_ 0.000  1.000</span>
+<span class="err">  239    0 THR01A0118_001 THRA0118_ 0.000  0.000</span>
+<span class="err">  240    0 THR01A0118_002 THRA0118_ 0.000  0.000</span>
+<span class="err">  241    0 ASP01A0119_001 ASPA0119_ 0.000  0.000</span>
+<span class="err">  242    0 ASP01A0119_002 ASPA0119_ 0.000  0.000</span>
+<span class="err">  243    0 ASP02A0119_003 ASPA0119_ 0.000  0.000</span>
+<span class="err">  244    0 ASP02A0119_004 ASPA0119_ 0.000  0.000</span>
+<span class="err">  245    0 ASP-1A0119_005 ASPA0119_ 0.000 -1.000</span>
+<span class="err">  246    0 VAL01A0120_001 VALA0120_ 0.000  0.000</span>
+<span class="err">  247    0 GLN01A0121_001 GLNA0121_ 0.000  0.000</span>
+<span class="err">  248    0 GLN01A0121_002 GLNA0121_ 0.000  0.000</span>
+<span class="err">  249    0 ALA01A0122_001 ALAA0122_ 0.000  0.000</span>
+<span class="err">  250    0 TRP01A0123_001 TRPA0123_ 0.000  0.000</span>
+<span class="err">  251    0 ILE01A0124_001 ILEA0124_ 0.000  0.000</span>
+<span class="err">  252    0 ARG01A0125_001 ARGA0125_ 0.000  0.000</span>
+<span class="err">  253    0 ARG02A0125_002 ARGA0125_ 0.000  0.000</span>
+<span class="err">  254    0 ARG03A0125_003 ARGA0125_ 0.000  0.000</span>
+<span class="err">  255    0 ARG03A0125_004 ARGA0125_ 0.000  0.000</span>
+<span class="err">  256    0 ARG+1A0125_005 ARGA0125_ 0.000  1.000</span>
+<span class="err">  257    0 CYD01A0127_001 CYDA0127_ 0.000  0.000</span>
+<span class="err">  258    0 ARG01A0128_001 ARGA0128_ 0.000  0.000</span>
+<span class="err">  259    0 ARG02A0128_002 ARGA0128_ 0.000  0.000</span>
+<span class="err">  260    0 ARG03A0128_003 ARGA0128_ 0.000  0.000</span>
+<span class="err">  261    0 ARG+1A0128_004 ARGA0128_ 0.000  1.000</span>
+<span class="err">  262    0 LEU01A0129_001 LEUA0129_ 0.000  0.000</span>
+<span class="err">  263    0 CTR01A0129_001 CTRA0129_ 0.000  0.000</span>
+<span class="err">  264    0 CTR01A0129_002 CTRA0129_ 0.000  0.000</span>
+<span class="err">  265    0 CTR02A0129_003 CTRA0129_ 0.000  0.000</span>
+<span class="err">  266    0 CTR02A0129_004 CTRA0129_ 0.000  0.000</span>
+<span class="err">  267    0 CTR-1A0129_005 CTRA0129_ 0.000 -1.000</span>
+</code></pre></div>
+
+<p>Residue information is put in Monte Carlo sampling. The reason is Monte Carlo sampling sets fixed conformers/residues aside, and only samples free residues and free conformers. In the Monte Carlo sampling output we have what conformers are fixed and what the free residues are composed.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fixed conformer indecies</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">fixed_iconfs</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[3, 4, 5, 10, 11, 17, 18, 19, 20, 21, 23, 27, 34, 40, 47, 48, 53, 56, 57, 58, 59, 60, 62, 63, 69, 72, 73, 79, 87, 92, 103, 121, 122, 125, 139, 140, 141, 142, 158, 162, 163, 167, 168, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 189, 193, 196, 199, 200, 202, 204, 205, 206, 217, 220, 221, 222, 223, 224, 229, 235, 236, 238, 246, 249, 250, 251, 256, 257, 261, 262]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># free residues expressed as index of conformers. It is a list of residues, and each residue has a list of conformers it can choose from.</span>
+<span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">[0, 1]</span>
+<span class="k">[13, 14, 15, 16]</span>
+<span class="k">[29, 30, 32, 33]</span>
+<span class="k">[36, 37, 38, 39]</span>
+<span class="k">[41, 42]</span>
+<span class="k">[50, 51, 52]</span>
+<span class="k">[54, 55]</span>
+<span class="k">[64, 65, 67, 68]</span>
+<span class="k">[70, 71]</span>
+<span class="k">[75, 76]</span>
+<span class="k">[77, 78]</span>
+<span class="k">[80, 81]</span>
+<span class="k">[82, 83]</span>
+<span class="k">[88, 89, 90, 91]</span>
+<span class="k">[94, 97, 101, 102]</span>
+<span class="k">[106, 107]</span>
+<span class="k">[108, 109, 110, 111, 112, 113, 114, 115, 116, 117]</span>
+<span class="k">[118, 119]</span>
+<span class="k">[123, 124]</span>
+<span class="k">[126, 127, 128, 129]</span>
+<span class="k">[131, 132, 133, 134]</span>
+<span class="k">[143, 144]</span>
+<span class="k">[149, 153, 154]</span>
+<span class="k">[159, 160, 161]</span>
+<span class="k">[180, 181]</span>
+<span class="k">[182, 183]</span>
+<span class="k">[186, 188]</span>
+<span class="k">[190, 191, 192]</span>
+<span class="k">[194, 195]</span>
+<span class="k">[197, 198]</span>
+<span class="k">[207, 208, 209]</span>
+<span class="k">[210, 211, 212, 213, 214]</span>
+<span class="k">[215, 216]</span>
+<span class="k">[218, 219]</span>
+<span class="k">[230, 231]</span>
+<span class="k">[239, 240]</span>
+<span class="k">[241, 242, 243, 244, 245]</span>
+<span class="k">[247, 248]</span>
+<span class="k">[263, 264, 265, 266, 267]</span>
+</code></pre></div>
+
+<p>To get a residue ID for free residues,we need to use conformer information because residue ID is in conformer record. </p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>    <span class="c1"># use resid from the first conformer in that residue</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">NTRA0001_</span>
+<span class="err">GLUA0007_</span>
+<span class="err">HISA0015_</span>
+<span class="err">ASPA0018_</span>
+<span class="err">TYRA0020_</span>
+<span class="err">SERA0024_</span>
+<span class="err">ASNA0027_</span>
+<span class="err">GLUA0035_</span>
+<span class="err">ASNA0037_</span>
+<span class="err">THRA0040_</span>
+<span class="err">GLNA0041_</span>
+<span class="err">THRA0043_</span>
+<span class="err">ASNA0044_</span>
+<span class="err">ASNA0046_</span>
+<span class="err">ASPA0048_</span>
+<span class="err">THRA0051_</span>
+<span class="err">ASPA0052_</span>
+<span class="err">TYRA0053_</span>
+<span class="err">GLNA0057_</span>
+<span class="err">ASNA0059_</span>
+<span class="err">SERA0060_</span>
+<span class="err">ASNA0065_</span>
+<span class="err">ASPA0066_</span>
+<span class="err">THRA0069_</span>
+<span class="err">SERA0085_</span>
+<span class="err">SERA0086_</span>
+<span class="err">ASPA0087_</span>
+<span class="err">THRA0089_</span>
+<span class="err">SERA0091_</span>
+<span class="err">ASNA0093_</span>
+<span class="err">SERA0100_</span>
+<span class="err">ASPA0101_</span>
+<span class="err">ASNA0103_</span>
+<span class="err">ASNA0106_</span>
+<span class="err">ASNA0113_</span>
+<span class="err">THRA0118_</span>
+<span class="err">ASPA0119_</span>
+<span class="err">GLNA0121_</span>
+<span class="err">CTRA0129_</span>
+</code></pre></div>
+
+<h3 id="access-microstates">Access microstates<a class="headerlink" href="#access-microstates" title="Permanent link">&para;</a></h3>
+<p>Each microstate is stored as data structure:
+<div class="highlight"><pre><span></span><code>class Microstate:
+    def __init__(self, state, E, count):
+        self.state = state
+        self.E = E
+        self.count = count
+</code></pre></div>
+In which state is an array of conformer indecies. E is the state energy, count is the number of times this microstate is chosen.</p>
+<p>Microstates are stored as a dictionary with the string value of state as the key, and Microstate as the value. One can get the list of microstates by</p>
+<div class="highlight"><pre><span></span><code><span class="n">microstates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">microstates</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="c1"># print first 10 entries</span>
+<span class="k">for</span> <span class="n">ms</span> <span class="ow">in</span> <span class="n">microstates</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">ms</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">ms</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 106, 116, 119, 123, 126, 132, 143, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 247, 267] -220.605118 11</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 132, 143, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 247, 267] -220.287003 3</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 132, 143, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -220.543747 1</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 132, 144, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -219.397995 1</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 132, 144, 153, 160, 181, 182, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -217.926498 1</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 132, 143, 153, 160, 181, 182, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -219.07225 4</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 88, 101, 107, 116, 119, 123, 126, 134, 143, 153, 160, 181, 182, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -218.826874 4</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 91, 101, 107, 116, 119, 123, 126, 134, 143, 153, 160, 181, 182, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -218.07251 2</span>
+<span class="err">[1, 15, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 91, 101, 107, 116, 119, 123, 126, 134, 143, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -219.544006 7</span>
+<span class="err">[1, 16, 32, 39, 41, 51, 54, 65, 70, 76, 78, 80, 83, 91, 101, 107, 116, 119, 123, 126, 134, 143, 153, 160, 181, 183, 188, 192, 195, 197, 208, 210, 215, 219, 231, 239, 243, 248, 267] -221.183884 2</span>
+</code></pre></div>
+
+<h3 id="calculate-residue-charges-for-a-group-of-conformers">Calculate residue charges for a group of conformers<a class="headerlink" href="#calculate-residue-charges-for-a-group-of-conformers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">free_res_crg</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">ms_convert2sumcrg</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">)):</span>
+    <span class="n">resname</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">[</span><span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">resid</span>    <span class="c1"># use resid from the first conformer in that residue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%6.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">resname</span><span class="p">,</span> <span class="n">free_res_crg</span><span class="p">[</span><span class="n">ir</span><span class="p">]))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">NTRA0001_  0.992</span>
+<span class="err">GLUA0007_ -0.733</span>
+<span class="err">HISA0015_  0.995</span>
+<span class="err">ASPA0018_ -0.962</span>
+<span class="err">TYRA0020_  0.000</span>
+<span class="err">SERA0024_  0.000</span>
+<span class="err">ASNA0027_  0.000</span>
+<span class="err">GLUA0035_ -0.090</span>
+<span class="err">ASNA0037_  0.000</span>
+<span class="err">THRA0040_  0.000</span>
+<span class="err">GLNA0041_  0.000</span>
+<span class="err">THRA0043_  0.000</span>
+<span class="err">ASNA0044_  0.000</span>
+<span class="err">ASNA0046_  0.000</span>
+<span class="err">ASPA0048_ -0.991</span>
+<span class="err">THRA0051_  0.000</span>
+<span class="err">ASPA0052_ -0.698</span>
+<span class="err">TYRA0053_  0.000</span>
+<span class="err">GLNA0057_  0.000</span>
+<span class="err">ASNA0059_  0.000</span>
+<span class="err">SERA0060_  0.000</span>
+<span class="err">ASNA0065_  0.000</span>
+<span class="err">ASPA0066_ -0.987</span>
+<span class="err">THRA0069_  0.000</span>
+<span class="err">SERA0085_  0.000</span>
+<span class="err">SERA0086_  0.000</span>
+<span class="err">ASPA0087_ -0.977</span>
+<span class="err">THRA0089_  0.000</span>
+<span class="err">SERA0091_  0.000</span>
+<span class="err">ASNA0093_  0.000</span>
+<span class="err">SERA0100_  0.000</span>
+<span class="err">ASPA0101_ -0.219</span>
+<span class="err">ASNA0103_  0.000</span>
+<span class="err">ASNA0106_  0.000</span>
+<span class="err">ASNA0113_  0.000</span>
+<span class="err">THRA0118_  0.000</span>
+<span class="err">ASPA0119_ -0.670</span>
+<span class="err">GLNA0121_  0.000</span>
+<span class="err">CTRA0129_ -0.888</span>
+</code></pre></div>
+
+<h2 id="group-microstates-by-energy">Group microstates by energy<a class="headerlink" href="#group-microstates-by-energy" title="Permanent link">&para;</a></h2>
+<p>Here is an example to divide microstates into energy bands.</p>
+<h3 id="unique-microstate-couns-and-total-counts-over-bands">Unique microstate couns and total counts over bands<a class="headerlink" href="#unique-microstate-couns-and-total-counts-over-bands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># get the energy bin size from the range of MC energy</span>
+<span class="n">e_step</span> <span class="o">=</span> <span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">highest_E</span> <span class="o">-</span> <span class="n">mc</span><span class="o">.</span><span class="n">lowest_E</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="n">mc</span><span class="o">.</span><span class="n">lowest_E</span> <span class="o">+</span> <span class="n">e_step</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">ms_in_bands</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">groupms_byenergy</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">microstates</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">ticks</span><span class="p">)</span>
+<span class="n">uniqms_in_bands</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">band</span><span class="p">)</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">ms_in_bands</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uniqms_in_bands</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[234, 3387, 18352, 38339, 48204, 46960, 38989, 28568, 18870, 11624, 6654, 3420, 1617, 674, 243, 104, 55, 21, 11, 2]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Now compute the counts instead of unique microstates</span>
+<span class="n">counts_in_bands</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">([</span><span class="n">ms</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">ms</span> <span class="ow">in</span> <span class="n">band</span><span class="p">])</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">ms_in_bands</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts_in_bands</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[31231, 96883, 181201, 240564, 254871, 227699, 176626, 122414, 77258, 45436, 24604, 12170, 5324, 2336, 743, 388, 165, 60, 23, 4]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># plot them</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Unique microstates&#39;</span><span class="p">)</span>    <span class="c1"># charge over energy bands</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)],</span> <span class="n">uniqms_in_bands</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Total counts&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)],</span> <span class="n">counts_in_bands</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_20_0.png" /></p>
+<h3 id="charge-over-energy-bands">Charge over energy bands<a class="headerlink" href="#charge-over-energy-bands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">crg_in_bands</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">ms_in_bands</span><span class="p">:</span>
+    <span class="n">band_total_crg</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">ms</span> <span class="ow">in</span> <span class="n">band</span><span class="p">:</span>
+        <span class="n">band_total_crg</span> <span class="o">+=</span> <span class="n">msa</span><span class="o">.</span><span class="n">ms_charge</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span><span class="o">*</span><span class="n">ms</span><span class="o">.</span><span class="n">count</span>
+    <span class="n">crg_in_bands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">band_total_crg</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">ms_counts</span><span class="p">(</span><span class="n">band</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">crg_in_bands</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">[-6.129454708462745, -5.798344394785463, -5.6241852969906345, -5.446471625014549, -5.284802900290735, -5.118779616950448, -4.983683036472547, -4.845483359746434, -4.724416888865878, -4.590610969275464, -4.436067306129084, -4.405012325390304, -4.340721262208866, -4.333476027397261, -4.141318977119784, -4.461340206185567, -3.8424242424242423, -4.116666666666666, -3.8260869565217392, -3.0]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)],</span> <span class="n">crg_in_bands</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_23_0.png" /></p>
+<h3 id="which-charge-is-the-most-populated">Which charge is the most populated<a class="headerlink" href="#which-charge-is-the-most-populated" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">counts_vs_charge</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ms</span> <span class="ow">in</span> <span class="n">mc</span><span class="o">.</span><span class="n">microstates</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">charge</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msa</span><span class="o">.</span><span class="n">ms_charge</span><span class="p">(</span><span class="n">ms</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">charge</span> <span class="ow">in</span> <span class="n">counts_vs_charge</span><span class="p">:</span>
+        <span class="n">counts_vs_charge</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ms</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">counts_vs_charge</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span> <span class="o">=</span> <span class="n">ms</span><span class="o">.</span><span class="n">count</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">charges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts_vs_charge</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">charges</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">counts_population</span> <span class="o">=</span> <span class="p">[</span><span class="n">counts_vs_charge</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">charges</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">charges</span><span class="p">,</span> <span class="n">counts_population</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_26_0.png" /></p>
+<h2 id="group-microstate-by-conformer-selection-and-show-what-changed">Group microstate by conformer selection and show what changed<a class="headerlink" href="#group-microstate-by-conformer-selection-and-show-what-changed" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">grep</span> <span class="n">A0035</span> <span class="n">head3</span><span class="o">.</span><span class="n">lst</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">00065 GLU01A0035_001 f 0.00  0.000     0  0.00  0  0   2.062  -6.408   3.293  -0.967   1.795   0.000 01O000M000 t</span>
+<span class="err">00066 GLU01A0035_002 f 0.00  0.000     0  0.00  0  0   2.062  -6.408   0.573  -1.299   1.375   0.000 01O000M000 t</span>
+<span class="err">00067 GLU02A0035_003 f 0.00  0.000     0  0.00  0  0   1.629  -6.500   3.293   1.389   1.854   0.000 02O000M000 t</span>
+<span class="err">00068 GLU02A0035_004 f 0.00  0.000     0  0.00  0  0   1.629  -6.500   0.573  -0.131   1.245   0.000 02O000M000 t</span>
+<span class="err">00069 GLU-1A0035_005 f 0.00 -1.000     0  4.75  0 -1   1.573  -6.495   0.573  -2.810   4.319  -0.300 -1O000M000 t</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="err">!</span><span class="n">grep</span> <span class="n">A0035</span> <span class="n">fort</span><span class="o">.</span><span class="mi">38</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">GLU01A0035_001 0.058 0.058 0.061 0.060 0.053 0.036 0.012 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</span>
+<span class="err">GLU01A0035_002 0.811 0.808 0.801 0.779 0.749 0.543 0.158 0.022 0.002 0.000 0.000 0.000 0.000 0.000 0.000</span>
+<span class="err">GLU02A0035_003 0.000 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</span>
+<span class="err">GLU02A0035_004 0.132 0.133 0.135 0.138 0.107 0.080 0.024 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000</span>
+<span class="err">GLU-1A0035_005 0.000 0.000 0.004 0.023 0.090 0.341 0.807 0.978 0.998 1.000 1.000 1.000 1.000 1.000 1.000</span>
+</code></pre></div>
+
+<p>Group microstates by conformer index numbers. If any conformer in the list appears in the microstate, this microstate will be put in the first group, otherwise in the second group.</p>
+<div class="highlight"><pre><span></span><code><span class="n">netural</span><span class="p">,</span> <span class="n">charged</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">groupms_byiconf</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">microstates</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">])</span>
+</code></pre></div>
+<p>See what conformer has changed by calculating conformer occupancy difference.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># what conformers have changed</span>
+<span class="n">diff_occ</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">whatchanged_conf</span><span class="p">(</span><span class="n">netural</span><span class="p">,</span> <span class="n">charged</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">diff_occ</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2">, </span><span class="si">%s</span><span class="s2">: </span><span class="si">%6.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">confid</span><span class="p">,</span> <span class="n">diff_occ</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">  0, NTR01A0001_001:  0.000</span>
+<span class="err">  1, NTR+1A0001_002: -0.000</span>
+<span class="err"> 13, GLU01A0007_002:  0.001</span>
+<span class="err"> 14, GLU02A0007_003:  0.003</span>
+<span class="err"> 15, GLU02A0007_004: -0.003</span>
+<span class="err"> 16, GLU-1A0007_005: -0.001</span>
+<span class="err"> 29, HIS01A0015_002: -0.001</span>
+<span class="err"> 30, HIS02A0015_003: -0.000</span>
+<span class="err"> 32, HIS+1A0015_005: -0.003</span>
+<span class="err"> 33, HIS+1A0015_006:  0.004</span>
+<span class="err"> 36, ASP01A0018_002:  0.003</span>
+<span class="err"> 37, ASP02A0018_003: -0.001</span>
+<span class="err"> 38, ASP02A0018_004: -0.001</span>
+<span class="err"> 39, ASP-1A0018_005: -0.001</span>
+<span class="err"> 41, TYR01A0020_001: -0.006</span>
+<span class="err"> 42, TYR01A0020_002:  0.006</span>
+<span class="err"> 50, SER01A0024_001:  0.009</span>
+<span class="err"> 51, SER01A0024_002: -0.007</span>
+<span class="err"> 52, SER01A0024_003: -0.002</span>
+<span class="err"> 54, ASN01A0027_001: -0.019</span>
+<span class="err"> 55, ASN01A0027_002:  0.019</span>
+<span class="err"> 64, GLU01A0035_001: -0.058</span>
+<span class="err"> 65, GLU01A0035_002: -0.823</span>
+<span class="err"> 67, GLU02A0035_004: -0.118</span>
+<span class="err"> 68, GLU-1A0035_005:  1.000</span>
+<span class="err"> 70, ASN01A0037_001:  0.004</span>
+<span class="err"> 71, ASN01A0037_002: -0.004</span>
+<span class="err"> 75, THR01A0040_001:  0.001</span>
+<span class="err"> 76, THR01A0040_002: -0.001</span>
+<span class="err"> 77, GLN01A0041_001: -0.003</span>
+<span class="err"> 78, GLN01A0041_002:  0.003</span>
+<span class="err"> 80, THR01A0043_001:  0.005</span>
+<span class="err"> 81, THR01A0043_002: -0.005</span>
+<span class="err"> 82, ASN01A0044_001: -0.246</span>
+<span class="err"> 83, ASN01A0044_002:  0.246</span>
+<span class="err"> 88, ASN01A0046_001: -0.205</span>
+<span class="err"> 89, ASN01A0046_002:  0.147</span>
+<span class="err"> 90, ASN01A0046_003:  0.126</span>
+<span class="err"> 91, ASN01A0046_004: -0.068</span>
+<span class="err"> 94, ASP01A0048_002: -0.000</span>
+<span class="err"> 97, ASP02A0048_005:  0.001</span>
+<span class="err">101, ASP-1A0048_009: -0.009</span>
+<span class="err">102, ASP-1A0048_010:  0.008</span>
+<span class="err">106, THR01A0051_001: -0.005</span>
+<span class="err">107, THR01A0051_002:  0.005</span>
+<span class="err">108, ASP01A0052_001:  0.002</span>
+<span class="err">109, ASP01A0052_002: -0.000</span>
+<span class="err">110, ASP01A0052_003:  0.020</span>
+<span class="err">111, ASP01A0052_004:  0.004</span>
+<span class="err">112, ASP02A0052_005:  0.192</span>
+<span class="err">113, ASP02A0052_006:  0.016</span>
+<span class="err">114, ASP02A0052_007:  0.126</span>
+<span class="err">115, ASP02A0052_008:  0.008</span>
+<span class="err">116, ASP-1A0052_009: -0.349</span>
+<span class="err">117, ASP-1A0052_010: -0.020</span>
+<span class="err">118, TYR01A0053_001:  0.001</span>
+<span class="err">119, TYR01A0053_002: -0.001</span>
+<span class="err">123, GLN01A0057_001:  0.004</span>
+<span class="err">124, GLN01A0057_002: -0.004</span>
+<span class="err">126, ASN01A0059_001: -0.008</span>
+<span class="err">127, ASN01A0059_002:  0.001</span>
+<span class="err">128, ASN01A0059_003:  0.007</span>
+<span class="err">129, ASN01A0059_004: -0.000</span>
+<span class="err">131, SER01A0060_002:  0.002</span>
+<span class="err">132, SER01A0060_003: -0.028</span>
+<span class="err">133, SER01A0060_004: -0.002</span>
+<span class="err">134, SER01A0060_005:  0.028</span>
+<span class="err">143, ASN01A0065_001:  0.003</span>
+<span class="err">144, ASN01A0065_002: -0.003</span>
+<span class="err">149, ASP02A0066_005:  0.001</span>
+<span class="err">153, ASP-1A0066_009:  0.001</span>
+<span class="err">154, ASP-1A0066_010: -0.002</span>
+<span class="err">159, THR01A0069_001:  0.002</span>
+<span class="err">160, THR01A0069_002: -0.006</span>
+<span class="err">161, THR01A0069_003:  0.004</span>
+<span class="err">180, SER01A0085_001:  0.004</span>
+<span class="err">181, SER01A0085_002: -0.004</span>
+<span class="err">182, SER01A0086_001: -0.001</span>
+<span class="err">183, SER01A0086_002:  0.001</span>
+<span class="err">186, ASP02A0087_003: -0.005</span>
+<span class="err">188, ASP-1A0087_005:  0.005</span>
+<span class="err">190, THR01A0089_001: -0.000</span>
+<span class="err">191, THR01A0089_002:  0.009</span>
+<span class="err">192, THR01A0089_003: -0.009</span>
+<span class="err">194, SER01A0091_001:  0.008</span>
+<span class="err">195, SER01A0091_002: -0.008</span>
+<span class="err">197, ASN01A0093_001: -0.004</span>
+<span class="err">198, ASN01A0093_002:  0.004</span>
+<span class="err">207, SER01A0100_001: -0.012</span>
+<span class="err">208, SER01A0100_002:  0.003</span>
+<span class="err">209, SER01A0100_003:  0.009</span>
+<span class="err">210, ASP01A0101_001:  0.005</span>
+<span class="err">211, ASP01A0101_002:  0.001</span>
+<span class="err">212, ASP02A0101_003: -0.003</span>
+<span class="err">213, ASP02A0101_004:  0.013</span>
+<span class="err">214, ASP-1A0101_005: -0.017</span>
+<span class="err">215, ASN01A0103_001: -0.002</span>
+<span class="err">216, ASN01A0103_002:  0.002</span>
+<span class="err">218, ASN01A0106_001:  0.003</span>
+<span class="err">219, ASN01A0106_002: -0.003</span>
+<span class="err">230, ASN01A0113_001:  0.056</span>
+<span class="err">231, ASN01A0113_002: -0.056</span>
+<span class="err">239, THR01A0118_001: -0.000</span>
+<span class="err">240, THR01A0118_002:  0.000</span>
+<span class="err">241, ASP01A0119_001:  0.003</span>
+<span class="err">242, ASP01A0119_002:  0.000</span>
+<span class="err">243, ASP02A0119_003:  0.019</span>
+<span class="err">244, ASP02A0119_004:  0.000</span>
+<span class="err">245, ASP-1A0119_005: -0.023</span>
+<span class="err">247, GLN01A0121_001: -0.003</span>
+<span class="err">248, GLN01A0121_002:  0.003</span>
+<span class="err">263, CTR01A0129_001: -0.001</span>
+<span class="err">264, CTR01A0129_002: -0.003</span>
+<span class="err">265, CTR02A0129_003: -0.003</span>
+<span class="err">266, CTR02A0129_004: -0.003</span>
+<span class="err">267, CTR-1A0129_005:  0.010</span>
+</code></pre></div>
+
+<p>See what has changed in terms of residue's conformer population change. The residue difference is measured by Bhattachayya distance of residues' conformer populations.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># What residues have changed</span>
+<span class="n">diff_bhd</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">whatchanged_res</span><span class="p">(</span><span class="n">netural</span><span class="p">,</span> <span class="n">charged</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">)</span>
+<span class="n">resname</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">bhd</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">diff_bhd</span><span class="p">[</span><span class="n">ir</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">99.0</span><span class="p">:</span>
+        <span class="n">resname</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">[</span><span class="n">mc</span><span class="o">.</span><span class="n">free_residues</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+        <span class="n">bhd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff_bhd</span><span class="p">[</span><span class="n">ir</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Attach a text label above each bar in *rects*, displaying its height.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">height</span><span class="p">,</span>
+                    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+                    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>  <span class="c1"># 3 points vertical offset</span>
+                    <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span>
+                    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resname</span><span class="p">))</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">rects</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bhd</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Residue difference measured by Bhattachayya distance&quot;</span><span class="p">)</span>
+<span class="n">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">resname</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_37_0.png" /></p>
+<h2 id="group-microstate-by-conformer-names-and-chained-selection">Group microstate by conformer names, and chained selection<a class="headerlink" href="#group-microstate-by-conformer-names-and-chained-selection" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">confnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">conf</span><span class="o">.</span><span class="n">confid</span> <span class="k">for</span> <span class="n">conf</span> <span class="ow">in</span> <span class="n">msa</span><span class="o">.</span><span class="n">conformers</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">confname</span> <span class="ow">in</span> <span class="n">confnames</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">confname</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">NTR01A0001_001</span>
+<span class="err">NTR+1A0001_002</span>
+<span class="err">LYS01A0001_001</span>
+<span class="err">LYS+1A0001_002</span>
+<span class="err">VAL01A0002_001</span>
+<span class="err">PHE01A0003_001</span>
+<span class="err">ARG01A0005_001</span>
+<span class="err">ARG02A0005_002</span>
+<span class="err">ARG02A0005_003</span>
+<span class="err">ARG03A0005_004</span>
+<span class="err">ARG+1A0005_005</span>
+<span class="err">CYD01A0006_001</span>
+<span class="err">GLU01A0007_001</span>
+<span class="err">GLU01A0007_002</span>
+<span class="err">GLU02A0007_003</span>
+<span class="err">GLU02A0007_004</span>
+<span class="err">GLU-1A0007_005</span>
+<span class="err">LEU01A0008_001</span>
+<span class="err">ALA01A0009_001</span>
+<span class="err">ALA01A0010_001</span>
+<span class="err">ALA01A0011_001</span>
+<span class="err">MET01A0012_001</span>
+<span class="err">LYS01A0013_001</span>
+<span class="err">LYS+1A0013_002</span>
+<span class="err">ARG01A0014_001</span>
+<span class="err">ARG02A0014_002</span>
+<span class="err">ARG03A0014_003</span>
+<span class="err">ARG+1A0014_004</span>
+<span class="err">HIS01A0015_001</span>
+<span class="err">HIS01A0015_002</span>
+<span class="err">HIS02A0015_003</span>
+<span class="err">HIS02A0015_004</span>
+<span class="err">HIS+1A0015_005</span>
+<span class="err">HIS+1A0015_006</span>
+<span class="err">LEU01A0017_001</span>
+<span class="err">ASP01A0018_001</span>
+<span class="err">ASP01A0018_002</span>
+<span class="err">ASP02A0018_003</span>
+<span class="err">ASP02A0018_004</span>
+<span class="err">ASP-1A0018_005</span>
+<span class="err">ASN01A0019_001</span>
+<span class="err">TYR01A0020_001</span>
+<span class="err">TYR01A0020_002</span>
+<span class="err">TYR-1A0020_003</span>
+<span class="err">ARG01A0021_001</span>
+<span class="err">ARG02A0021_002</span>
+<span class="err">ARG03A0021_003</span>
+<span class="err">ARG+1A0021_004</span>
+<span class="err">TYR01A0023_001</span>
+<span class="err">TYR-1A0023_002</span>
+<span class="err">SER01A0024_001</span>
+<span class="err">SER01A0024_002</span>
+<span class="err">SER01A0024_003</span>
+<span class="err">LEU01A0025_001</span>
+<span class="err">ASN01A0027_001</span>
+<span class="err">ASN01A0027_002</span>
+<span class="err">TRP01A0028_001</span>
+<span class="err">VAL01A0029_001</span>
+<span class="err">CYD01A0030_001</span>
+<span class="err">ALA01A0031_001</span>
+<span class="err">ALA01A0032_001</span>
+<span class="err">LYS01A0033_001</span>
+<span class="err">LYS+1A0033_002</span>
+<span class="err">PHE01A0034_001</span>
+<span class="err">GLU01A0035_001</span>
+<span class="err">GLU01A0035_002</span>
+<span class="err">GLU02A0035_003</span>
+<span class="err">GLU02A0035_004</span>
+<span class="err">GLU-1A0035_005</span>
+<span class="err">SER01A0036_001</span>
+<span class="err">ASN01A0037_001</span>
+<span class="err">ASN01A0037_002</span>
+<span class="err">PHE01A0038_001</span>
+<span class="err">ASN01A0039_001</span>
+<span class="err">ASN01A0039_002</span>
+<span class="err">THR01A0040_001</span>
+<span class="err">THR01A0040_002</span>
+<span class="err">GLN01A0041_001</span>
+<span class="err">GLN01A0041_002</span>
+<span class="err">ALA01A0042_001</span>
+<span class="err">THR01A0043_001</span>
+<span class="err">THR01A0043_002</span>
+<span class="err">ASN01A0044_001</span>
+<span class="err">ASN01A0044_002</span>
+<span class="err">ARG01A0045_001</span>
+<span class="err">ARG02A0045_002</span>
+<span class="err">ARG03A0045_003</span>
+<span class="err">ARG+1A0045_004</span>
+<span class="err">ASN01A0046_001</span>
+<span class="err">ASN01A0046_002</span>
+<span class="err">ASN01A0046_003</span>
+<span class="err">ASN01A0046_004</span>
+<span class="err">THR01A0047_001</span>
+<span class="err">ASP01A0048_001</span>
+<span class="err">ASP01A0048_002</span>
+<span class="err">ASP01A0048_003</span>
+<span class="err">ASP01A0048_004</span>
+<span class="err">ASP02A0048_005</span>
+<span class="err">ASP02A0048_006</span>
+<span class="err">ASP02A0048_007</span>
+<span class="err">ASP02A0048_008</span>
+<span class="err">ASP-1A0048_009</span>
+<span class="err">ASP-1A0048_010</span>
+<span class="err">SER01A0050_001</span>
+<span class="err">SER01A0050_002</span>
+<span class="err">SER01A0050_003</span>
+<span class="err">THR01A0051_001</span>
+<span class="err">THR01A0051_002</span>
+<span class="err">ASP01A0052_001</span>
+<span class="err">ASP01A0052_002</span>
+<span class="err">ASP01A0052_003</span>
+<span class="err">ASP01A0052_004</span>
+<span class="err">ASP02A0052_005</span>
+<span class="err">ASP02A0052_006</span>
+<span class="err">ASP02A0052_007</span>
+<span class="err">ASP02A0052_008</span>
+<span class="err">ASP-1A0052_009</span>
+<span class="err">ASP-1A0052_010</span>
+<span class="err">TYR01A0053_001</span>
+<span class="err">TYR01A0053_002</span>
+<span class="err">TYR-1A0053_003</span>
+<span class="err">ILE01A0055_001</span>
+<span class="err">LEU01A0056_001</span>
+<span class="err">GLN01A0057_001</span>
+<span class="err">GLN01A0057_002</span>
+<span class="err">ILE01A0058_001</span>
+<span class="err">ASN01A0059_001</span>
+<span class="err">ASN01A0059_002</span>
+<span class="err">ASN01A0059_003</span>
+<span class="err">ASN01A0059_004</span>
+<span class="err">SER01A0060_001</span>
+<span class="err">SER01A0060_002</span>
+<span class="err">SER01A0060_003</span>
+<span class="err">SER01A0060_004</span>
+<span class="err">SER01A0060_005</span>
+<span class="err">ARG01A0061_001</span>
+<span class="err">ARG02A0061_002</span>
+<span class="err">ARG03A0061_003</span>
+<span class="err">ARG03A0061_004</span>
+<span class="err">ARG+1A0061_005</span>
+<span class="err">TRP01A0062_001</span>
+<span class="err">TRP01A0063_001</span>
+<span class="err">CYD01A0064_001</span>
+<span class="err">ASN01A0065_001</span>
+<span class="err">ASN01A0065_002</span>
+<span class="err">ASP01A0066_001</span>
+<span class="err">ASP01A0066_002</span>
+<span class="err">ASP01A0066_003</span>
+<span class="err">ASP01A0066_004</span>
+<span class="err">ASP02A0066_005</span>
+<span class="err">ASP02A0066_006</span>
+<span class="err">ASP02A0066_007</span>
+<span class="err">ASP02A0066_008</span>
+<span class="err">ASP-1A0066_009</span>
+<span class="err">ASP-1A0066_010</span>
+<span class="err">ARG01A0068_001</span>
+<span class="err">ARG02A0068_002</span>
+<span class="err">ARG03A0068_003</span>
+<span class="err">ARG+1A0068_004</span>
+<span class="err">THR01A0069_001</span>
+<span class="err">THR01A0069_002</span>
+<span class="err">THR01A0069_003</span>
+<span class="err">PRO01A0070_001</span>
+<span class="err">SER01A0072_001</span>
+<span class="err">ARG01A0073_001</span>
+<span class="err">ARG02A0073_002</span>
+<span class="err">ARG03A0073_003</span>
+<span class="err">ARG+1A0073_004</span>
+<span class="err">ASN01A0074_001</span>
+<span class="err">ASN01A0074_002</span>
+<span class="err">LEU01A0075_001</span>
+<span class="err">CYD01A0076_001</span>
+<span class="err">ASN01A0077_001</span>
+<span class="err">ILE01A0078_001</span>
+<span class="err">PRO01A0079_001</span>
+<span class="err">CYD01A0080_001</span>
+<span class="err">SER01A0081_001</span>
+<span class="err">ALA01A0082_001</span>
+<span class="err">LEU01A0083_001</span>
+<span class="err">LEU01A0084_001</span>
+<span class="err">SER01A0085_001</span>
+<span class="err">SER01A0085_002</span>
+<span class="err">SER01A0086_001</span>
+<span class="err">SER01A0086_002</span>
+<span class="err">ASP01A0087_001</span>
+<span class="err">ASP01A0087_002</span>
+<span class="err">ASP02A0087_003</span>
+<span class="err">ASP02A0087_004</span>
+<span class="err">ASP-1A0087_005</span>
+<span class="err">ILE01A0088_001</span>
+<span class="err">THR01A0089_001</span>
+<span class="err">THR01A0089_002</span>
+<span class="err">THR01A0089_003</span>
+<span class="err">ALA01A0090_001</span>
+<span class="err">SER01A0091_001</span>
+<span class="err">SER01A0091_002</span>
+<span class="err">VAL01A0092_001</span>
+<span class="err">ASN01A0093_001</span>
+<span class="err">ASN01A0093_002</span>
+<span class="err">CYD01A0094_001</span>
+<span class="err">ALA01A0095_001</span>
+<span class="err">LYS01A0096_001</span>
+<span class="err">LYS+1A0096_002</span>
+<span class="err">LYS01A0097_001</span>
+<span class="err">LYS+1A0097_002</span>
+<span class="err">ILE01A0098_001</span>
+<span class="err">VAL01A0099_001</span>
+<span class="err">SER01A0100_001</span>
+<span class="err">SER01A0100_002</span>
+<span class="err">SER01A0100_003</span>
+<span class="err">ASP01A0101_001</span>
+<span class="err">ASP01A0101_002</span>
+<span class="err">ASP02A0101_003</span>
+<span class="err">ASP02A0101_004</span>
+<span class="err">ASP-1A0101_005</span>
+<span class="err">ASN01A0103_001</span>
+<span class="err">ASN01A0103_002</span>
+<span class="err">MET01A0105_001</span>
+<span class="err">ASN01A0106_001</span>
+<span class="err">ASN01A0106_002</span>
+<span class="err">ALA01A0107_001</span>
+<span class="err">TRP01A0108_001</span>
+<span class="err">VAL01A0109_001</span>
+<span class="err">ALA01A0110_001</span>
+<span class="err">TRP01A0111_001</span>
+<span class="err">ARG01A0112_001</span>
+<span class="err">ARG02A0112_002</span>
+<span class="err">ARG03A0112_003</span>
+<span class="err">ARG03A0112_004</span>
+<span class="err">ARG+1A0112_005</span>
+<span class="err">ASN01A0113_001</span>
+<span class="err">ASN01A0113_002</span>
+<span class="err">ARG01A0114_001</span>
+<span class="err">ARG02A0114_002</span>
+<span class="err">ARG03A0114_003</span>
+<span class="err">ARG+1A0114_004</span>
+<span class="err">CYD01A0115_001</span>
+<span class="err">LYS01A0116_001</span>
+<span class="err">LYS+1A0116_002</span>
+<span class="err">THR01A0118_001</span>
+<span class="err">THR01A0118_002</span>
+<span class="err">ASP01A0119_001</span>
+<span class="err">ASP01A0119_002</span>
+<span class="err">ASP02A0119_003</span>
+<span class="err">ASP02A0119_004</span>
+<span class="err">ASP-1A0119_005</span>
+<span class="err">VAL01A0120_001</span>
+<span class="err">GLN01A0121_001</span>
+<span class="err">GLN01A0121_002</span>
+<span class="err">ALA01A0122_001</span>
+<span class="err">TRP01A0123_001</span>
+<span class="err">ILE01A0124_001</span>
+<span class="err">ARG01A0125_001</span>
+<span class="err">ARG02A0125_002</span>
+<span class="err">ARG03A0125_003</span>
+<span class="err">ARG03A0125_004</span>
+<span class="err">ARG+1A0125_005</span>
+<span class="err">CYD01A0127_001</span>
+<span class="err">ARG01A0128_001</span>
+<span class="err">ARG02A0128_002</span>
+<span class="err">ARG03A0128_003</span>
+<span class="err">ARG+1A0128_004</span>
+<span class="err">LEU01A0129_001</span>
+<span class="err">CTR01A0129_001</span>
+<span class="err">CTR01A0129_002</span>
+<span class="err">CTR02A0129_003</span>
+<span class="err">CTR02A0129_004</span>
+<span class="err">CTR-1A0129_005</span>
+</code></pre></div>
+
+<p>You can Group conformers by the conformer IDs. IDs are in a list, and each ID is considered as a match as long as it is a substring of the conformer name. The selected microstates that contain all conformers in the ID list will be returned in the first group, and the rest are in the second group.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Let&#39;s select charged GLU35</span>
+<span class="n">glu35_charged</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">groupms_byconfid</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;GLU-1A0035&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glu35_charged</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">28695</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># find charged ASP48 from the above selected conformers</span>
+<span class="n">glu35_asp48_charged</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">groupms_byconfid</span><span class="p">(</span><span class="n">glu35_charged</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ASP-1A0048&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glu35_asp48_charged</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">28379</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Or we can do it in one command</span>
+<span class="n">glu35_asp48_charged2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">groupms_byconfid</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;GLU-1A0035&quot;</span><span class="p">,</span> <span class="s2">&quot;ASP-1A0048&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glu35_asp48_charged2</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">28379</span>
+</code></pre></div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-11-19
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../mfehowto/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Analyze ionization energy
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../wikihowto/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Write documentation
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

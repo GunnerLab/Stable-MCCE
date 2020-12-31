@@ -1,0 +1,1061 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/hbexample/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Hydrogen-bond network - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#compute-hydrogen-bond-network" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Hydrogen-bond network
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Hydrogen-bond network
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Hydrogen-bond network
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#principle" class="md-nav__link">
+    Principle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    Input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-format" class="md-nav__link">
+    File format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-setting-in-runprm" class="md-nav__link">
+    Parameter setting in run.prm:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-analysis" class="md-nav__link">
+    Result Analysis:
+  </a>
+  
+    <nav class="md-nav" aria-label="Result Analysis:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cytoscape-visualization" class="md-nav__link">
+    Cytoscape visualization:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-file-preparation-for-cytoscape" class="md-nav__link">
+    Input file preparation for Cytoscape:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-get-outdat" class="md-nav__link">
+    Steps to get out.dat:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-on-cytoscape" class="md-nav__link">
+    Visualization on Cytoscape:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplement" class="md-nav__link">
+    Supplement
+  </a>
+  
+    <nav class="md-nav" aria-label="Supplement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-between-old-and-new-hydrogen-bond-network" class="md-nav__link">
+    Comparison between old and new hydrogen bond network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#principle" class="md-nav__link">
+    Principle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    Input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-format" class="md-nav__link">
+    File format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-setting-in-runprm" class="md-nav__link">
+    Parameter setting in run.prm:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-analysis" class="md-nav__link">
+    Result Analysis:
+  </a>
+  
+    <nav class="md-nav" aria-label="Result Analysis:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cytoscape-visualization" class="md-nav__link">
+    Cytoscape visualization:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-file-preparation-for-cytoscape" class="md-nav__link">
+    Input file preparation for Cytoscape:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-get-outdat" class="md-nav__link">
+    Steps to get out.dat:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-on-cytoscape" class="md-nav__link">
+    Visualization on Cytoscape:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplement" class="md-nav__link">
+    Supplement
+  </a>
+  
+    <nav class="md-nav" aria-label="Supplement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-between-old-and-new-hydrogen-bond-network" class="md-nav__link">
+    Comparison between old and new hydrogen bond network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="compute-hydrogen-bond-network">Compute hydrogen bond network<a class="headerlink" href="#compute-hydrogen-bond-network" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-06-22</i></small></p>
+<p>Hydrogen bond network obtained from MCCE is the hydrogen bonds existing in protein in Boltzmann distribution. The network helps reveal proton transclocation pathways, water pathways involving in the protein. The relative publication is on <a href="https://www.sciencedirect.com/science/article/pii/S0005272818301257">Cytochrome c Oxidase</a>.</p>
+<p><img alt="hydrogen_bond_newtork_cco" src="../img/CCO_FLOW_NETWORK.png" /></p>
+<h2 id="principle">Principle<a class="headerlink" href="#principle" title="Permanent link">&para;</a></h2>
+<p>The hydrogen bond network in MCCE is obtained from microstates in Boltzmann Distribution in Monte Carlo sampling, based on defined D-H...D distance and angle, where D is the donor atom with a lone pair.</p>
+<ol>
+<li>Save microstates with Boltzmann Distribution in Monte Carlo sampling.</li>
+<li>Calculate all possible hydrogen bonds exist between residue conformers. A hydrogen bond matrix is obtatined.</li>
+<li>Coupling with microstates (Step 1) and hydrogen bond matrix (Step 2), hydrogen bonds selected in miscrostates in Monte Carlo sampling are calculated.</li>
+</ol>
+<h2 id="input">Input<a class="headerlink" href="#input" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Monte Carlo sampling microstates is obtained from <strong>energies</strong> and <strong>head3.lst</strong>.</li>
+<li>Hydrogen bond matrix is obtatined from <strong>step2_out.pdb</strong> and <strong>head3.lst</strong>.</li>
+<li>Selected hydrogen bond network is calculated based on <strong>hb.dat</strong> and <strong>microstate</strong> file, which is in ms_out folder.</li>
+</ol>
+<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>pH#eH#ms.txt</strong> under ms_out folder is generated for each pH and eH titration, where each file is named after titration point of pH and eH value following by 'ms'.</li>
+<li>Hydrogen bond matrix is saved in <strong>hb.dat</strong> and <strong>hah.txt</strong>, where hb.dat is a binary file and hah.txt is a readable txt file. hb.dat has 2D matrix with N * N, where N is the total conformer number in the protein. hah.txt stores the geometry infos for each hydrogen bond. <strong>resInHbNet.txt</strong> contains the all residues that can be involved in hydrogen bond network. <strong>reshbond.txt</strong> contains all possible bonds between residues. </li>
+<li><strong>pH#eH#hb.txt</strong> under hb_out folder is obtained for each pH and eH titration, where each file is named after titration point of pH and eH value foloowing by 'hb'.</li>
+</ol>
+<h2 id="file-format">File format<a class="headerlink" href="#file-format" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>pH#eH#ms.txt</strong>: 
+Comment line and blank line are dismissed.
+Each file starts with headers, consist of monte carlo sampling unchanged information.
+Then it stores the new conformer id for each microstate, and its relative energy and times it stay at this microstate. </p>
+</li>
+<li>
+<p><strong>First line</strong>: Temperature, pH, eH values</p>
+</li>
+<li><strong>Second line</strong>: Method to get microstate. Either MONTERUNS or ENUMERATE, representing from monte carlo sampling or analytical method</li>
+<li><strong>Third line</strong>: n_fixed, the number of fixed residues for sampling. Following are the occupied conformer ids for each fixed residue, splitted by space.</li>
+<li>
+<p><strong>Fourth line</strong>: n_free, the number of free titrated residues that can get flipped during sampling. Follwing are all conformer ids, splitted by space for each free titrated residue, splitted by semicolon.</p>
+</li>
+<li>
+<p><strong>For each Monte Carlo sampling</strong>:</p>
+</li>
+<li><strong>Fifth line</strong>: order of monte carlo sampling</li>
+<li><strong>Fifth line</strong>: n_free, following occupied conformer id for each free titrated residue. This is the starting state for the sampling. The starting state will be decided by its energy to be accpeted or not.</li>
+<li><strong>Sixth line</strong>: Energy of microstate, counter representing times the microstate stays, new conformer ids compared to last microstate. </li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>T:298.15,pH:7.00,eH:0.00
+METHOD:MONTERUNS
+#N_FIXED:FIXED_CONF_ID
+33:4 5 16 17 18 19 20 35 39 93 94 103 104 105 111 119 128 129 138 145 157 158 176 199 216 217 226 232 239 708 762 854 919
+#N_FREE residues:CONF_IDs for each free residues
+43:0 1 2 3 ;6 7 10 11 ;27 28 ;29 30 31 32 33 34 ; ...
+#EVERY MONTERUN START FROM A NEW STATE
+#MC:ITER_MONTERUNS
+#N_FREE: FREE_CONF_ID,
+#ENERGY, COUNT,NEW_CONF
+
+MC:0
+43:1 7 28 31 48 53 56 61 92 106 121 137 140 147 156 167 175 178 183 222 227 234 241 256 269 327 351 383 417 449 472 502 542 552 583 728 769 804 882 945 1008 1059 1112
+-93.403641,9,
+-93.274643,3,782
+-93.646645,1,63
+...
+
+MC:1
+43:0 7 28 30 48 50 55 60 92 106 127 137 140 146 156 167 175 178 183 222 227 235 245 256 269 327 342 373 417 449 472 502 542 546 594 729 791 797 901 941 1008 1059 1112
+-92.401054,3,
+-91.990730,4,121 925
+-93.319809,9,572
+...
+</code></pre></div>
+2. <strong>hb.dat</strong>: 
+- First integer(4 bite): n_conf, the total conformer number of the protein. 
+- The following is n_conf * n_conf matrix where 1 represents a hydrogen bond and 0 no hydrogen bond.
+3. <strong>hah.txt</strong>: 
+- Conformer_id of Donor, Conformer_id of Acceptor, Donor Atom, ~ Hyrogen-- Acceptor Atom, Distance, Angle
+<div class="highlight"><pre><span></span><code>GLN01A0002_001  HOH01A0109_001   NE2~2HE2-- O   3.02    160
+GLN01A0002_001  HOH01A0109_002   NE2~2HE2-- O   3.02    160
+</code></pre></div>
+4. <strong>resInHbNet.txt</strong>: 
+- residue_name involving hydrogen bond network
+<div class="highlight"><pre><span></span><code>META0001
+GLNA0002
+TYRA0003
+LYSA0004
+</code></pre></div>
+5. <strong>reshbond.txt</strong>: 
+- Residue_name of Donor,     Residue_name of Acceptor 
+<div class="highlight"><pre><span></span><code>GLNA0002        HOHA0109
+TYRA0003        META0001
+TYRA0003        HOHA0070
+TYRA0003        HOHA0132
+</code></pre></div>
+6. <strong>pH#eH#hb.txt</strong>: 
+- Donor Residue,      Acceptro Residue,       Occupancy of hydrogen bond in all microstates
+<div class="highlight"><pre><span></span><code>LYSA0050        META0001        1.000
+LYSA0050        ASPA0047        1.000
+GLNA0002        HOHA0109        0.750
+LYSA0004        GLUA0015        1.000
+</code></pre></div></p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>Here is a tutorial to calculate the hydrogen bond network using MCCE 
+and to visualize hydrogen bond network using Cytoscape. </p>
+<h3 id="parameter-setting-in-runprm">Parameter setting in run.prm:<a class="headerlink" href="#parameter-setting-in-runprm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Output microstate in MCCE step 4.
+<div class="highlight"><pre><span></span><code>step 4:
+t        Output Microstate from standard monte carlo        (MS_OUT)
+</code></pre></div></li>
+<li>Run Step 6 to get hydrogen bond network. </li>
+<li><strong>"(GET_HBOND_MATRIX)"</strong>: obtain hydrogen bond matrix from step2_out.pdb and head3.lst.</li>
+<li><strong>"(HBOND_LOWER_LIMIT)"</strong>: setting for (GET_HBOND_MATRIX). Hydrogen bond distance lower limit.</li>
+<li><strong>"(HBOND_UPPER_LIMIT)"</strong>: setting for (GET_HBOND_MATRIX). Hydrogen bond distance upper limit.</li>
+<li><strong>"(HBOND_ANG_CUTOFF)"</strong>: setting for (GET_HBOND_MATRIX). Hydrogen bond angle cutoff, only angle larger than the cutoff will be considered hydrogen bond.</li>
+<li>
+<p><strong>"(GET_HBOND_NETWORK)"</strong>: obtain hydrogen bond network in Botlzmann distribution based on hb.dat and microstate file.</p>
+</li>
+<li>
+<p>Hydrogen bond donor and acceptor attom parameters are setting in <strong>param04/hb.tpl</strong>.
+<div class="highlight"><pre><span></span><code>HDONOR   ASP01       HD1
+HDONOR   ASP02       HD2
+
+HACCEPT  ASP01       OD1  OD2
+HACCEPT  ASP02       OD1  OD2
+HACCEPT  ASP-1       OD1  OD2
+</code></pre></div></p>
+</li>
+</ol>
+<p>Default hydrogen bond definition in run.prm is:</p>
+<div class="highlight"><pre><span></span><code>Step 6:
+t        Obtain hydrogen bond matrix                        (GET_HBOND_MATRIX)
+1.2      Lower limit of hydrogen bond H--B distance         (HBOND_LOWER_LIMIT)
+3.2      Upper limit of hydrogen bond H--B distance         (HBOND_UPPER_LIMIT)
+90.0     Angle cutoff of hydrogen bond                      (HBOND_ANG_CUTOFF)
+t        Obtain hydrogen bond network                       (GET_HBOND_NETWORK)
+</code></pre></div>
+<ol>
+<li>Output file after step 6: hb.txt if final hydrogen bond network.</li>
+<li>hb.dat, hah.txt, resInHbNet.txt, reshbonds.txt from <strong>(GET_HBOND_MATRIX)</strong>.</li>
+<li>hb.txt from <strong>(GET_HBOND_NETWORK)</strong>.</li>
+</ol>
+<h3 id="result-analysis">Result Analysis:<a class="headerlink" href="#result-analysis" title="Permanent link">&para;</a></h3>
+<h4 id="cytoscape-visualization">Cytoscape visualization:<a class="headerlink" href="#cytoscape-visualization" title="Permanent link">&para;</a></h4>
+<p>We are using Cytoscape for visualizing hydrogen bond networks. 
+Download and install <a href="https://cytoscape.org/">Cytoscape</a>.</p>
+<h4 id="input-file-preparation-for-cytoscape">Input file preparation for Cytoscape:<a class="headerlink" href="#input-file-preparation-for-cytoscape" title="Permanent link">&para;</a></h4>
+<ul>
+<li>hb.txt: hydrogen bond network with direct hydrogen bond between residues/waters, which is the direct output after MCCE.</li>
+<li>out.dat: aggrageted hydrogen bond network coupling with water for multiple hydrogen bond networks, which needs post-analysis based on hb.txt.<blockquote>
+<h4 id="steps-to-get-outdat">Steps to get out.dat:<a class="headerlink" href="#steps-to-get-outdat" title="Permanent link">&para;</a></h4>
+<p><strong>Inputs</strong>: 
+- Multiple hb.txt files: rename them as 1.dat, 2.dat, 3.dat etc.
+- Residues_list.lst: residues list selected.
+<div class="highlight"><pre><span></span><code>ARGA0019
+ASPA0028
+LYSA0027
+TYRA0122
+ASNA0025
+</code></pre></div></p>
+<p><strong>Scripts</strong>: /home/cai/source/jlu_net20170830
+- jhead.h: water molecules cutoff represents the maximum water number allowing to bridging hydrogen bond between residues. Here 4 is  up to 4 water molecules are allowed to bridge between two residues. For example, if you want to see up to  two water bridging hydrogen bond connections between two residues, 
+then you can change 4 to 2.
+<div class="highlight"><pre><span></span><code>static int cutoff = 4;
+</code></pre></div>
+- jlu_new-cai.cpp: flags if output relevent files.
+<div class="highlight"><pre><span></span><code>const int flag_interest=0;            //flag to study interested residues: T100 and E286 
+const int flag_matrix=1;              //flag to output matrix of hb network
+const int flag_network=1;             //flag to output network with donor, acceptor, occ
+const int flag_network_opt=1;         //flag to output network with shorter name
+const int flag_map=1;                 //flag to output classification of amino acids in network
+const int flag_sif=1;                 //flag to output network with format of sif
+const int flag_cat_3s8f=0;            //flag to sync the cofactor name to protein 3s8f.pdb in sifformat
+const int flag_cat_1m56=1;            //flag to sync the cofactor name to protein 1m56.pdb in sifformat
+</code></pre></div>
+- jhead-test2.cpp
+- Makefile: <code>a-4w.out</code> in makefile, output name after compiling, can be changed. Here for up to 4 water, we write  <code>a-4w.out</code>. Suppose for two water: change <code>a-4w.out</code> to <code>a-2w.out</code>
+<div class="highlight"><pre><span></span><code>make
+</code></pre></div>
+- a-4w.out
+<strong>Run scripts</strong>: 
+<div class="highlight"><pre><span></span><code>./a-4w.out
+</code></pre></div>
+<strong>Outputs</strong>:
+- out.txt: residue-residue hydrogen bond interacton, in a N * N matrix format
+- out.dat: residue-residue hydrogen bond interaction<br />
+<div class="highlight"><pre><span></span><code>DONOR   ACCEPT  OCCUPANCY
+RA0019  DA0028  100
+KA0027  NA0025  100
+NA0025  DA0028  100
+</code></pre></div>
+- out_opt.dat: residue-residue hydrogen bond interaction with opimal shorter residue name
+<div class="highlight"><pre><span></span><code>DONOR   ACCEPT  OCCUPANCY
+19      28      100
+27      25      100
+25      28      100
+</code></pre></div>
+- out.sif: residue residue hydrogen bond interaction, with the format that can be used to connect 3D structure with cytoscape using RINalyzer
+- out_map.dat: residue's amnio acid type classification
+<div class="highlight"><pre><span></span><code>RESIDUE CLASS   FULL_NAME
+19      B       ARGA0019
+28      A       ASPA0028
+27      B       LYSA0027
+</code></pre></div>
+- out_path.txt: water pathway that connect the two residues
+<div class="highlight"><pre><span></span><code>ARGA0019#####################ASPA0028
+GET:    ARGA0019, HOHS5631, ASPA0028,
+</code></pre></div>
+Here, water HOHS5631 helps bridge ARGA0019 - ASPA0028 hydrogen bond. </p>
+</blockquote>
+</li>
+</ul>
+<h4 id="visualization-on-cytoscape">Visualization on Cytoscape:<a class="headerlink" href="#visualization-on-cytoscape" title="Permanent link">&para;</a></h4>
+<p>Open <code>out.dat</code> file using the Cytoscape and play with different layout.</p>
+<h2 id="supplement">Supplement<a class="headerlink" href="#supplement" title="Permanent link">&para;</a></h2>
+<h3 id="comparison-between-old-and-new-hydrogen-bond-network">Comparison between old and new hydrogen bond network<a class="headerlink" href="#comparison-between-old-and-new-hydrogen-bond-network" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Comparison between old and new format microstate file</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>old_version</th>
+<th>new_version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>58s</td>
+<td>1s</td>
+</tr>
+<tr>
+<td>size</td>
+<td>246MB</td>
+<td>27MB</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Comparison between old and new step 6</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>old_version</th>
+<th>new_version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>117s</td>
+<td>87s</td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-06-22
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../emexample/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Em calculation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../tools/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Tools Program Reference
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

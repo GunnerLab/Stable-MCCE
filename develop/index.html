@@ -1,0 +1,1314 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/develop/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Contribute code - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-contribute-code-using-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Contribute code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Contribute code
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Contribute code
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-one-time-set-up" class="md-nav__link">
+    Part 1. One-time set up
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. One-time set up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    Identity:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-credential-for-6-hours" class="md-nav__link">
+    Save credential for 6 hours:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-credential-permanently" class="md-nav__link">
+    Save credential permanently:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-of-showing-git-history" class="md-nav__link">
+    Alias of showing git history:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-start-a-new-repository" class="md-nav__link">
+    Part 2. Start a new repository
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. Start a new repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-a-remote-repo" class="md-nav__link">
+    Clone a remote repo:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-local-directory" class="md-nav__link">
+    Convert a local directory:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-single-line-development" class="md-nav__link">
+    Part 3. Single line development:
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3. Single line development:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-all-files-to-track" class="md-nav__link">
+    Add all files to track:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-status" class="md-nav__link">
+    Check status:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-file-to-track" class="md-nav__link">
+    Add a file to track:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-history" class="md-nav__link">
+    Show history:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-go-to-past-commits" class="md-nav__link">
+    Part 4. Go to past commits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-multi-line-development" class="md-nav__link">
+    Part 5. Multi-line development
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5. Multi-line development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-branches" class="md-nav__link">
+    Show branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-between-branches" class="md-nav__link">
+    Switch between branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-switch-branch" class="md-nav__link">
+    Create and switch branch:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-branches" class="md-nav__link">
+    Merge branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-with-current-favored" class="md-nav__link">
+    Merge with current favored:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-branches" class="md-nav__link">
+    Delete branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-delete" class="md-nav__link">
+    Force delete:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-6-sync-remote-and-local" class="md-nav__link">
+    Part 6. Sync remote and local
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 6. Sync remote and local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-remote" class="md-nav__link">
+    Check remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-more-remotes" class="md-nav__link">
+    Add more remotes:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-from-remote-repo" class="md-nav__link">
+    Pull from remote repo:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-to-remote" class="md-nav__link">
+    Push to remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-new-local-branch-to-remote" class="md-nav__link">
+    Push new local branch to remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-remote-branch" class="md-nav__link">
+    Delete remote branch:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-remote-tracking-branch" class="md-nav__link">
+    Delete remote tracking branch:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-7-merge-branches" class="md-nav__link">
+    Part 7. Merge branches
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 7. Merge branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-scenario-of-merge" class="md-nav__link">
+    Common scenario of merge:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict-in-merge" class="md-nav__link">
+    Conflict in merge:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-one-time-set-up" class="md-nav__link">
+    Part 1. One-time set up
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. One-time set up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    Identity:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-credential-for-6-hours" class="md-nav__link">
+    Save credential for 6 hours:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-credential-permanently" class="md-nav__link">
+    Save credential permanently:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-of-showing-git-history" class="md-nav__link">
+    Alias of showing git history:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-start-a-new-repository" class="md-nav__link">
+    Part 2. Start a new repository
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. Start a new repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-a-remote-repo" class="md-nav__link">
+    Clone a remote repo:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-local-directory" class="md-nav__link">
+    Convert a local directory:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-single-line-development" class="md-nav__link">
+    Part 3. Single line development:
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3. Single line development:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-all-files-to-track" class="md-nav__link">
+    Add all files to track:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-status" class="md-nav__link">
+    Check status:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-file-to-track" class="md-nav__link">
+    Add a file to track:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-history" class="md-nav__link">
+    Show history:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-go-to-past-commits" class="md-nav__link">
+    Part 4. Go to past commits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-multi-line-development" class="md-nav__link">
+    Part 5. Multi-line development
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5. Multi-line development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-branches" class="md-nav__link">
+    Show branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-between-branches" class="md-nav__link">
+    Switch between branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-switch-branch" class="md-nav__link">
+    Create and switch branch:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-branches" class="md-nav__link">
+    Merge branches:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-with-current-favored" class="md-nav__link">
+    Merge with current favored:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-branches" class="md-nav__link">
+    Delete branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-delete" class="md-nav__link">
+    Force delete:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-6-sync-remote-and-local" class="md-nav__link">
+    Part 6. Sync remote and local
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 6. Sync remote and local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-remote" class="md-nav__link">
+    Check remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-more-remotes" class="md-nav__link">
+    Add more remotes:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-from-remote-repo" class="md-nav__link">
+    Pull from remote repo:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-to-remote" class="md-nav__link">
+    Push to remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-new-local-branch-to-remote" class="md-nav__link">
+    Push new local branch to remote:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-remote-branch" class="md-nav__link">
+    Delete remote branch:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-remote-tracking-branch" class="md-nav__link">
+    Delete remote tracking branch:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-7-merge-branches" class="md-nav__link">
+    Part 7. Merge branches
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 7. Merge branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-scenario-of-merge" class="md-nav__link">
+    Common scenario of merge:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict-in-merge" class="md-nav__link">
+    Conflict in merge:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-contribute-code-using-git">How to contribute code using git<a class="headerlink" href="#how-to-contribute-code-using-git" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-07-07</i></small></p>
+<h2 id="part-1-one-time-set-up">Part 1. One-time set up<a class="headerlink" href="#part-1-one-time-set-up" title="Permanent link">&para;</a></h2>
+<h3 id="identity">Identity:<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git config --global user.name &quot;&lt;Your Name&gt;&quot;  
+$ git config --global user.email &lt;your email&gt;
+</code></pre></div>
+<h3 id="save-credential-for-6-hours">Save credential for 6 hours:<a class="headerlink" href="#save-credential-for-6-hours" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git config --global credential.helper &#39;cache --timeout=21600&#39;
+</code></pre></div>
+<h3 id="save-credential-permanently">Save credential permanently:<a class="headerlink" href="#save-credential-permanently" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git config --global credential.helper store
+</code></pre></div>
+<h3 id="alias-of-showing-git-history">Alias of showing git history:<a class="headerlink" href="#alias-of-showing-git-history" title="Permanent link">&para;</a></h3>
+<p>Add this to ~/.gitconfig</p>
+<div class="highlight"><pre><span></span><code>[alias]
+lg = log --graph --abbrev-commit --decorate --format=format:&#39;%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)&#39; --all
+</code></pre></div>
+<h2 id="part-2-start-a-new-repository">Part 2. Start a new repository<a class="headerlink" href="#part-2-start-a-new-repository" title="Permanent link">&para;</a></h2>
+<p><img alt="git picture" src="../img/git.png" /></p>
+<h3 id="clone-a-remote-repo">Clone a remote repo:<a class="headerlink" href="#clone-a-remote-repo" title="Permanent link">&para;</a></h3>
+<p>Clone a remote repo to local computer:
+<div class="highlight"><pre><span></span><code>$ git clone &lt;url&gt;
+</code></pre></div></p>
+<h3 id="convert-a-local-directory">Convert a local directory:<a class="headerlink" href="#convert-a-local-directory" title="Permanent link">&para;</a></h3>
+<p>Convert an existing local directory to local git repository:
+<div class="highlight"><pre><span></span><code>$ git init
+</code></pre></div></p>
+<h2 id="part-3-single-line-development">Part 3. Single line development:<a class="headerlink" href="#part-3-single-line-development" title="Permanent link">&para;</a></h2>
+<p><img src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%3F%3E%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.0//EN%22%20%22http%3A//www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd%22%3E%0A%3Csvg%20viewBox%3D%220%200%20832%20120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Ainkspace%3D%22http%3A//www.inkscape.org/namespaces/inkscape%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%3Cdefs%20id%3D%22defs_block%22%3E%0A%20%20%20%20%3Cfilter%20height%3D%221.504%22%20id%3D%22filter_blur%22%20inkspace%3Acollect%3D%22always%22%20width%3D%221.1575%22%20x%3D%22-0.07875%22%20y%3D%22-0.252%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20id%3D%22feGaussianBlur3780%22%20inkspace%3Acollect%3D%22always%22%20stdDeviation%3D%224.2%22%20/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Ctitle%3Eblockdiag%3C/title%3E%0A%20%20%3Cdesc%20/%3E%0A%20%20%3Cellipse%20cx%3D%22131%22%20cy%3D%2266%22%20fill%3D%22rgb%280%2C0%2C0%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20/%3E%0A%20%20%3Cellipse%20cx%3D%22323%22%20cy%3D%2266%22%20fill%3D%22rgb%280%2C0%2C0%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20/%3E%0A%20%20%3Cellipse%20cx%3D%22515%22%20cy%3D%2266%22%20fill%3D%22rgb%280%2C0%2C0%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20/%3E%0A%20%20%3Cellipse%20cx%3D%22707%22%20cy%3D%2266%22%20fill%3D%22rgb%280%2C0%2C0%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20/%3E%0A%20%20%3Cellipse%20cx%3D%22128%22%20cy%3D%2260%22%20fill%3D%22rgb%28255%2C255%2C255%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2221%22%20x%3D%22128.5%22%20y%3D%2270%22%3EC1%3C/text%3E%0A%20%20%3Cellipse%20cx%3D%22320%22%20cy%3D%2260%22%20fill%3D%22rgb%28255%2C255%2C255%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2221%22%20x%3D%22320.5%22%20y%3D%2270%22%3EC2%3C/text%3E%0A%20%20%3Cellipse%20cx%3D%22512%22%20cy%3D%2260%22%20fill%3D%22rgb%28255%2C255%2C255%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2221%22%20x%3D%22512.5%22%20y%3D%2270%22%3EC3%3C/text%3E%0A%20%20%3Cellipse%20cx%3D%22704%22%20cy%3D%2260%22%20fill%3D%22rgb%28255%2C255%2C255%29%22%20rx%3D%2224.0%22%20ry%3D%2224.0%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2221%22%20x%3D%22704.5%22%20y%3D%2270%22%3EC4%3C/text%3E%0A%20%20%3Cpath%20d%3D%22M%20152%2060%20L%20288%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22295%2C60%20288%2C56%20288%2C64%20295%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20344%2060%20L%20480%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22487%2C60%20480%2C56%20480%2C64%20487%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20536%2060%20L%20672%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22679%2C60%20672%2C56%20672%2C64%20679%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%3C/svg%3E%0A" /></p>
+<h3 id="add-all-files-to-track">Add all files to track:<a class="headerlink" href="#add-all-files-to-track" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git add .
+</code></pre></div>
+<h3 id="check-status">Check status:<a class="headerlink" href="#check-status" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git status
+</code></pre></div>
+<h3 id="commit">Commit:<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git commit -a -m &quot;&lt;commit message&gt;&quot;
+</code></pre></div>
+<h3 id="add-a-file-to-track">Add a file to track:<a class="headerlink" href="#add-a-file-to-track" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git add &lt;file name&gt;
+</code></pre></div>
+<h3 id="show-history">Show history:<a class="headerlink" href="#show-history" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>$ git lg
+</code></pre></div>
+<em><a href="#alias-of-showing-git-history">It requires you set up the “lg” alias in ~/.gitconfig</a></em></p>
+<h2 id="part-4-go-to-past-commits">Part 4. Go to past commits<a class="headerlink" href="#part-4-go-to-past-commits" title="Permanent link">&para;</a></h2>
+<p><strong>Create a new branch and revert to a past commit:</strong>
+<div class="highlight"><pre><span></span><code>$ git checkout -b &lt;new branch&gt; &lt;commit hash&gt;
+</code></pre></div></p>
+<p><code>&lt;new branch&gt;</code> is a branch name you make.</p>
+<p><code>&lt;commit hash&gt;</code> is the string as reported by git log</p>
+<p>If you want to make this branch as the new master branch, do a swap as following:</p>
+<ol>
+<li>
+<p>make sure your are in the new branch
+<div class="highlight"><pre><span></span><code>$ git checkout &lt;new branch&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>force master to merge with current branch and use current branch as favored:
+<div class="highlight"><pre><span></span><code>$ git merge -s ours master
+</code></pre></div></p>
+</li>
+<li>
+<p>go to the master branch and reconcile again:
+<div class="highlight"><pre><span></span><code>$ git checkout master
+$ git merge &lt;new branch&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>after merge, delete the branch.
+<div class="highlight"><pre><span></span><code>$ git branch -d &lt;new branch&gt;
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="part-5-multi-line-development">Part 5. Multi-line development<a class="headerlink" href="#part-5-multi-line-development" title="Permanent link">&para;</a></h2>
+<h3 id="show-branches">Show branches:<a class="headerlink" href="#show-branches" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git branch
+</code></pre></div>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Show remote branches:
+<div class="highlight"><pre><span></span><code>$ git branch -r
+</code></pre></div></p>
+<h3 id="switch-between-branches">Switch between branches:<a class="headerlink" href="#switch-between-branches" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git checkout &lt;branch name&gt;
+</code></pre></div>
+<h3 id="create-and-switch-branch">Create and switch branch:<a class="headerlink" href="#create-and-switch-branch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git checkout -b &lt;branch name&gt;
+</code></pre></div>
+<h3 id="merge-branches">Merge branches:<a class="headerlink" href="#merge-branches" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git merge &lt;another branch&gt;
+</code></pre></div>
+<p>This will merge a branch to current branch:</p>
+<h3 id="merge-with-current-favored">Merge with current favored:<a class="headerlink" href="#merge-with-current-favored" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git merge -s ours &lt;another branch&gt;
+</code></pre></div>
+<h3 id="delete-branches">Delete branches<a class="headerlink" href="#delete-branches" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git branch -d &lt;branch name&gt;
+</code></pre></div>
+<h3 id="force-delete">Force delete:<a class="headerlink" href="#force-delete" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git branch -D &lt;branch name&gt;
+</code></pre></div>
+<h2 id="part-6-sync-remote-and-local">Part 6. Sync remote and local<a class="headerlink" href="#part-6-sync-remote-and-local" title="Permanent link">&para;</a></h2>
+<h3 id="check-remote">Check remote:<a class="headerlink" href="#check-remote" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>$ git remote -v
+</code></pre></div>
+“origin” is the default name of your first remote.</p>
+<h3 id="add-more-remotes">Add more remotes:<a class="headerlink" href="#add-more-remotes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git remote add &lt;remote&gt; &lt;url&gt;
+</code></pre></div>
+<h3 id="pull-from-remote-repo">Pull from remote repo:<a class="headerlink" href="#pull-from-remote-repo" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>$ git pull
+</code></pre></div>
+Or
+<div class="highlight"><pre><span></span><code>$ git pull &lt;remote&gt; &lt;branch&gt;
+</code></pre></div></p>
+<h3 id="push-to-remote">Push to remote:<a class="headerlink" href="#push-to-remote" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git push
+</code></pre></div>
+<h3 id="push-new-local-branch-to-remote">Push new local branch to remote:<a class="headerlink" href="#push-new-local-branch-to-remote" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git push -u &lt;remote&gt; &lt;branch&gt;
+</code></pre></div>
+<h3 id="delete-remote-branch">Delete remote branch:<a class="headerlink" href="#delete-remote-branch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git push &lt;remote&gt; --delete &lt;branch&gt;
+</code></pre></div>
+<h3 id="delete-remote-tracking-branch">Delete remote tracking branch:<a class="headerlink" href="#delete-remote-tracking-branch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ git remote prune &lt;remote&gt;
+</code></pre></div>
+<h2 id="part-7-merge-branches">Part 7. Merge branches<a class="headerlink" href="#part-7-merge-branches" title="Permanent link">&para;</a></h2>
+<h3 id="common-scenario-of-merge">Common scenario of merge:<a class="headerlink" href="#common-scenario-of-merge" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Start a new feature:
+<div class="highlight"><pre><span></span><code>$ git checkout -b new-feature
+</code></pre></div></p>
+</li>
+<li>
+<p>Edit some files, then commit the change:
+<div class="highlight"><pre><span></span><code>$ git commit -a -m &quot;Start a feature&quot;  
+</code></pre></div></p>
+</li>
+<li>
+<p>Edit some files, then commit more changes:
+<div class="highlight"><pre><span></span><code>$ git commit -a -m &quot;Finish a feature&quot;  
+</code></pre></div></p>
+</li>
+<li>
+<p>Merge in the new-feature branch:
+<div class="highlight"><pre><span></span><code>$ git checkout master 
+$ git merge new-feature 
+$ git branch -d new-feature
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="conflict-in-merge">Conflict in merge:<a class="headerlink" href="#conflict-in-merge" title="Permanent link">&para;</a></h3>
+<p>When conflicts occur, the conflicting files will have visual marks like:
+<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; master
+conflicting text in receiving branch
+=======
+conflicting text in merging branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch
+</code></pre></div></p>
+<p>You need to edit text and remove &lt;&lt;&lt;&lt;&lt;&lt;, ======, &gt;&gt;&gt;&gt;&gt;&gt; lines.</p>
+<p>Then run a commit:
+<div class="highlight"><pre><span></span><code>$ git commit -a -m &quot;&lt;commit message&gt;&quot;
+</code></pre></div></p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-07-07
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../wikihowto/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Write documentation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../wsl/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Install WSL
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

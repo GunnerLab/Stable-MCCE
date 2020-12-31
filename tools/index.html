@@ -1,0 +1,1652 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/tools/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Tools Program Reference - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mcce-tools-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Tools Program Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tools Program Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Tools Program Reference
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#improving-and-helping-runs" class="md-nav__link">
+    Improving and helping runs
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving and helping runs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-mcce-run-scripts" class="md-nav__link">
+    step by step mcce run scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="step by step mcce run scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-prepare-structure" class="md-nav__link">
+    Step 1: prepare structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-conformers" class="md-nav__link">
+    Step 2: make conformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-energy-calculation" class="md-nav__link">
+    Step 3: energy calculation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-monte-carlo-sampling" class="md-nav__link">
+    Step 4: Monte Carlo sampling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-titration-fitting" class="md-nav__link">
+    Step 5: titration fitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-hydrogen-bond" class="md-nav__link">
+    Step 6: hydrogen bond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-first-4-steps" class="md-nav__link">
+    Combine first 4 steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energiespy" class="md-nav__link">
+    energies.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpdb" class="md-nav__link">
+    getpdb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translate_step2py" class="md-nav__link">
+    translate_step2.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result-analysis" class="md-nav__link">
+    Result Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Result Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fitpkapy" class="md-nav__link">
+    fitpka.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statepy" class="md-nav__link">
+    state.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfepy" class="md-nav__link">
+    mfe.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfe_allpy" class="md-nav__link">
+    mfe_all.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mostoccpy" class="md-nav__link">
+    mostocc.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitypy" class="md-nav__link">
+    sanity.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-file-preparation" class="md-nav__link">
+    Parameter file preparation
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter file preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pdb2ftplpy" class="md-nav__link">
+    pdb2ftpl.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mol2_chargepy" class="md-nav__link">
+    mol2_charge.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tpl-free2mccepy" class="md-nav__link">
+    tpl-free2mcce.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tpl-mcce2freepy" class="md-nav__link">
+    tpl-mcce2free.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_ftplpy" class="md-nav__link">
+    verify_ftpl.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-other-programs" class="md-nav__link">
+    Connecting to other programs
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to other programs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#striph2opy" class="md-nav__link">
+    striph2o.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#improving-and-helping-runs" class="md-nav__link">
+    Improving and helping runs
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving and helping runs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-mcce-run-scripts" class="md-nav__link">
+    step by step mcce run scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="step by step mcce run scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-prepare-structure" class="md-nav__link">
+    Step 1: prepare structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-conformers" class="md-nav__link">
+    Step 2: make conformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-energy-calculation" class="md-nav__link">
+    Step 3: energy calculation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-monte-carlo-sampling" class="md-nav__link">
+    Step 4: Monte Carlo sampling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-titration-fitting" class="md-nav__link">
+    Step 5: titration fitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-hydrogen-bond" class="md-nav__link">
+    Step 6: hydrogen bond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-first-4-steps" class="md-nav__link">
+    Combine first 4 steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energiespy" class="md-nav__link">
+    energies.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpdb" class="md-nav__link">
+    getpdb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translate_step2py" class="md-nav__link">
+    translate_step2.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result-analysis" class="md-nav__link">
+    Result Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Result Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fitpkapy" class="md-nav__link">
+    fitpka.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statepy" class="md-nav__link">
+    state.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfepy" class="md-nav__link">
+    mfe.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfe_allpy" class="md-nav__link">
+    mfe_all.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mostoccpy" class="md-nav__link">
+    mostocc.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitypy" class="md-nav__link">
+    sanity.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-file-preparation" class="md-nav__link">
+    Parameter file preparation
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameter file preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pdb2ftplpy" class="md-nav__link">
+    pdb2ftpl.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mol2_chargepy" class="md-nav__link">
+    mol2_charge.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tpl-free2mccepy" class="md-nav__link">
+    tpl-free2mcce.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tpl-mcce2freepy" class="md-nav__link">
+    tpl-mcce2free.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_ftplpy" class="md-nav__link">
+    verify_ftpl.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-other-programs" class="md-nav__link">
+    Connecting to other programs
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to other programs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#striph2opy" class="md-nav__link">
+    striph2o.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="mcce-tools-reference">MCCE tools reference<a class="headerlink" href="#mcce-tools-reference" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-12-30</i></small></p>
+<h2 id="improving-and-helping-runs">Improving and helping runs<a class="headerlink" href="#improving-and-helping-runs" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="step-by-step-mcce-run-scripts">step by step mcce run scripts<a class="headerlink" href="#step-by-step-mcce-run-scripts" title="Permanent link">&para;</a></h3>
+<p>MCCE involves 4 main steps:</p>
+<ol>
+<li>Step 1: Convert raw PDB file to MCCE PDB file, reformat terminal residues, and strip off surface water and ions.</li>
+<li>Step 2: Make side chain conformers, including rotamers and ionization conformers.</li>
+<li>Step 3: Compute self-energy of conformers and pairwise energy lookup table.</li>
+<li>Step 4: Monte Carlo sampling to evaluate favorable side chain position and ionization at various conditions.</li>
+</ol>
+<p>While the control of these 4 steps is fully configured in run.prm and executed by mcce command, the 4 steps can be carried out by python wrapper scripts without configuring run.prm.</p>
+<h4 id="step-1-prepare-structure">Step 1: prepare structure<a class="headerlink" href="#step-1-prepare-structure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>usage: step1.py [-h] [--norun] [--noter] [-e /path/to/mcce] [-u Key=Value]
+                [-d epsilon] [--dry]
+                pdb
+
+Run mcce step 1, premcce to format PDB file to MCCE PDB format.
+
+positional arguments:
+  pdb
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 1
+  --noter           Do not label terminal residues (for making ftpl).
+  -e /path/to/mcce  mcce executable location, default to &quot;mcce&quot;
+  -u Key=Value      User customized variables
+  -d epsilon        protein dielectric constant for delphi, default to 4.0
+  --dry             Delete all water molecules.
+</code></pre></div>
+<h4 id="step-2-make-conformers">Step 2: make conformers<a class="headerlink" href="#step-2-make-conformers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>usage: step2.py [-h] [--norun] [-d epsilon] [-e /path/to/mcce] [-u Key=Value]
+                [-l level]
+
+Run mcce step 2, make side chain conformers from step1_out.pdb.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 2
+  -d epsilon        dielectric constant for optimizing conformers
+  -e /path/to/mcce  mcce executable location, default to &quot;mcce&quot;
+  -u Key=Value      User customized variables
+  -l level          conformer level 1: quick, 2: medium, 3: comprehensive
+</code></pre></div>
+<h4 id="step-3-energy-calculation">Step 3: energy calculation<a class="headerlink" href="#step-3-energy-calculation" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>usage: step3.py [-h] [-c start end] [-d epsilon] [-e /path/to/mcce]
+                [-f tmp folder] [-p processes] [-r] [-u Key=Value]
+                [-x /path/to/delphi] [--norun]
+
+Run mcce step 3, energy calculations, with multiple threads.
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -c start end        starting and ending conformer, default to 1 and 9999
+  -d epsilon          protein dielectric constant for delphi, default to 4.0
+  -e /path/to/mcce    mcce executable location, default to &quot;mcce&quot;
+  -f tmp folder       delphi temporary folder, default to /tmp
+  -p processes        run mcce with number of processes, default to 1
+  -r                  refresh opp files and head3.lst without running delphi
+  -u Key=Value        User customized variables
+  -x /path/to/delphi  delphi executable location, default to &quot;delphi&quot;
+  --norun             Create run.prm but do not run step 3
+</code></pre></div>
+<p>step3.py is able to run in multiple threads.</p>
+<h4 id="step-4-monte-carlo-sampling">Step 4: Monte Carlo sampling<a class="headerlink" href="#step-4-monte-carlo-sampling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>usage: step4.py [-h] [--norun] [-i initial ph/eh] [-d interval] [-n steps]
+                [--xts] [--ms] [-e /path/to/mcce] [-t ph or eh] [-u Key=Value]
+
+Run mcce step 4, Monte Carlo sampling to simulate a titration.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 4
+  -i initial ph/eh  Initial pH/Eh of titration
+  -d interval       titration interval in pJ or mV
+  -n steps          number of steps of titration
+  --xts             Enable entropy correction, default is false
+  --ms              Enable microstate output
+  -e /path/to/mcce  mcce executable location, default to &quot;mcce&quot;
+  -t ph or eh       titration type, pH or Eh
+  -u Key=Value      User customized variables
+</code></pre></div>
+<h4 id="step-5-titration-fitting">Step 5: titration fitting<a class="headerlink" href="#step-5-titration-fitting" title="Permanent link">&para;</a></h4>
+<p>Step 5 is optional. It writes net charge of each residue in sum_crg2.out and fits the titration curve in pK2.out.
+<div class="highlight"><pre><span></span><code>usage: step5.py [-h]
+
+Run mcce step 5, generate net charge, fit titration curve.
+
+optional arguments:
+  -h, --help  show this help message and exit
+</code></pre></div></p>
+<h4 id="step-6-hydrogen-bond">Step 6: hydrogen bond<a class="headerlink" href="#step-6-hydrogen-bond" title="Permanent link">&para;</a></h4>
+<p>Step 6 is for hydrogen bond network analysis. It requires step 4 to output microstates.</p>
+<div class="highlight"><pre><span></span><code>usage: step6.py [-h] [--norun] [-e /path/to/mcce] [-u Key=Value]
+
+Run step 6, hydrogen bond analysis, requires microstate output from step 4.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --norun           Create run.prm but do not run step 6
+  -e /path/to/mcce  mcce executable location, default to &quot;mcce&quot;
+  -u Key=Value      User customized variables
+</code></pre></div>
+<p>Example:
+<div class="highlight"><pre><span></span><code>step4.py --ms
+step6.py
+</code></pre></div></p>
+<h4 id="combine-first-4-steps">Combine first 4 steps<a class="headerlink" href="#combine-first-4-steps" title="Permanent link">&para;</a></h4>
+<p>The first 4 steps are essential steps.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+step1.py input.pdb
+step2.py
+step3.py
+step4.py
+</code></pre></div>
+<hr />
+<h3 id="energiespy">energies.py<a class="headerlink" href="#energiespy" title="Permanent link">&para;</a></h3>
+<p><em>Run step3 with multiple threads.</em></p>
+<p><strong>Syntax:</strong>
+<div class="highlight"><pre><span></span><code>energies.py [-h] [-p processes] [-r] [-c start end] [-e /path/to/mcce]
+</code></pre></div></p>
+<p><strong>Optional arguments:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-h, --help</td>
+<td>show this help message and exit</td>
+</tr>
+<tr>
+<td>-p processes</td>
+<td>run mcce with number of processes, default to 1</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>refresh opp files and head3.lst without running delphi</td>
+</tr>
+<tr>
+<td>-c start end</td>
+<td>starting and ending conformer, default to 1 and 9999</td>
+</tr>
+<tr>
+<td>-e /path/to/mcce</td>
+<td>mcce executable location, default to "mcce"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<p><div class="highlight"><pre><span></span><code>energies.py -p 6 
+</code></pre></div>
+This command runs step 3 in 6 threads.</p>
+<p><div class="highlight"><pre><span></span><code>energies.py -r 
+</code></pre></div>
+This command runs step 3 just to refresh head3.lst and vdw energy.</p>
+<p><div class="highlight"><pre><span></span><code>energies.py -c 1 100 -p 4 
+</code></pre></div>
+This command calculates conformer from 1 to 100 in 5 threads.</p>
+<p><strong>Note</strong></p>
+<p>After this command, the lines:
+<div class="highlight"><pre><span></span><code>1       delphi start conformer number, 0 based            (PBE_START)
+99999   delphi end conformer number, self included        (PBE_END)
+</code></pre></div>
+in run.prm file might be altered.</p>
+<hr />
+<h3 id="getpdb">getpdb<a class="headerlink" href="#getpdb" title="Permanent link">&para;</a></h3>
+<p><em>Download a pdb file by its PDB ID.</em></p>
+<p><strong>Syntax:</strong>
+<div class="highlight"><pre><span></span><code>getpbd pdbid [saved name]
+</code></pre></div></p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>getpdb 1akk
+Inquiring the remote file 1AKK.pdb ...
+Saving as 1AKK.pdb ...
+Download completed. 
+</code></pre></div></p>
+<p>Or 
+<div class="highlight"><pre><span></span><code>getpdb 1akk prot.pdb
+Inquiring the remote file 1AKK.pdb ...
+Saving as prot.pdb ...
+Download completed. 
+</code></pre></div></p>
+<p>to save as specified name.</p>
+<hr />
+<h3 id="translate_step2py">translate_step2.py<a class="headerlink" href="#translate_step2py" title="Permanent link">&para;</a></h3>
+<p><em>Translate old atom names in step2_out to new PDB v3 names.</em></p>
+<p><strong>Syntax:</strong>
+<div class="highlight"><pre><span></span><code>translate_step2.py step2_out.pdb
+</code></pre></div></p>
+<p>Hydrogen names in PDB v3 are significantly different from PDB v2. Due to the randomness in step 2, 
+it is sometimes desired to preserve step2_out.pdb. This tool translates the names so that step2_out.pdb so that it 
+can be used by new mcce.</p>
+<p>This program prints the translated content on screen. So the user is responsible to make backup of the step2_out.pdb 
+file and redirect the outcome to a new step2_out.pdb.  </p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>cp step2_out.pdb step2_out.pdb.bak
+translate_step2.py step2_out.pdb.bak &gt; step2_out.pdb
+</code></pre></div></p>
+<h2 id="result-analysis">Result Analysis<a class="headerlink" href="#result-analysis" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="fitpkapy">fitpka.py<a class="headerlink" href="#fitpkapy" title="Permanent link">&para;</a></h3>
+<p><em>Fit the titration curve of an ionizable residue.</em></p>
+<p><strong>Syntax:</strong>
+<div class="highlight"><pre><span></span><code>$ fitpka.py -h 
+usage: fitpka.py [-h] RES [RES ...]
+
+Fit a titration of charged residues
+
+positional arguments:
+  RES         Charged residue names to plot, as in sum_crg.out
+
+optional arguments:
+  -h, --help  show this help message and exit
+</code></pre></div></p>
+<p><strong>Required input file</strong></p>
+<ul>
+<li>sum_crg.out</li>
+</ul>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>$ cat sum_crg.out 
+  pH           0     1     2     3     4     5     6     7     8     9    10    11    12    13    14
+NTR+A0001_  1.00  1.00  1.00  0.99  0.92  0.55  0.12  0.01  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+LYS+A0001_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.97  0.79  0.28  0.05  0.00  0.00  0.00
+ARG+A0005_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.96  0.79  0.36  0.07
+GLU-A0007_ -0.00 -0.01 -0.08 -0.40 -0.85 -0.98 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+LYS+A0013_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.95  0.67  0.19  0.03  0.00
+ARG+A0014_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.94  0.67  0.20
+HIS+A0015_  1.00  1.00  1.00  1.00  1.00  0.98  0.86  0.40  0.06  0.01  0.00  0.00  0.00  0.00  0.00
+ASP-A0018_ -0.01 -0.10 -0.50 -0.88 -0.98 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+TYR-A0020_ -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.01 -0.04 -0.09 -0.31 -0.69
+ARG+A0021_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.91  0.60  0.21
+TYR-A0023_ -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.01 -0.07 -0.35 -0.79 -0.97 -0.99 -1.00
+LYS+A0033_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.97  0.78  0.28  0.04  0.01  0.00
+GLU-A0035_ -0.00 -0.00 -0.00 -0.03 -0.12 -0.42 -0.86 -0.98 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+ARG+A0045_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.98  0.86  0.44  0.15
+ASP-A0048_ -0.03 -0.24 -0.74 -0.95 -0.99 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+ASP-A0052_ -0.00 -0.00 -0.07 -0.34 -0.79 -0.96 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+TYR-A0053_ -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00 -0.00
+ARG+A0061_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.98  0.89  0.56
+ASP-A0066_ -0.00 -0.00 -0.38 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+ARG+A0068_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.94  0.74  0.34
+ARG+A0073_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.98  0.83  0.37  0.08
+ASP-A0087_ -0.01 -0.09 -0.46 -0.88 -0.99 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+LYS+A0096_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.97  0.76  0.33  0.08  0.02  0.01
+LYS+A0097_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.98  0.84  0.41  0.07  0.01  0.00
+ASP-A0101_ -0.00 -0.00 -0.01 -0.09 -0.51 -0.91 -0.99 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+ARG+A0112_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.88  0.47  0.11
+ARG+A0114_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.93  0.64  0.16
+LYS+A0116_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.97  0.76  0.28  0.05  0.01  0.00  0.00
+ASP-A0119_ -0.00 -0.00 -0.03 -0.20 -0.72 -0.96 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+ARG+A0125_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.99  0.90  0.54  0.13
+ARG+A0128_  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.96  0.78  0.29
+CTR-A0129_ -0.00 -0.04 -0.28 -0.75 -0.96 -0.99 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00 -1.00
+----------
+Net_Charge 18.95 18.51 16.44 13.45 11.02  9.32  8.13  7.43  6.98  6.40  4.52  1.80 -0.72 -4.73 -9.38
+Protons    18.95 18.51 16.44 13.45 11.02  9.32  8.13  7.43  6.98  6.40  4.52  1.80 -0.72 -4.73 -9.38
+Electrons   0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+</code></pre></div></p>
+<p>Find the residue ID in sum_carg.out, then fit the titration curve:
+<div class="highlight"><pre><span></span><code>fitpka.py ASP-A0066_
+</code></pre></div>
+<img alt="ASP_fitit.png" src="../img/ASP_fitit.png" /></p>
+<hr />
+<h3 id="statepy">state.py<a class="headerlink" href="#statepy" title="Permanent link">&para;</a></h3>
+<p><em>Analyze how a microstate energy is composed.</em></p>
+<p><strong>Syntax:</strong>
+<div class="highlight"><pre><span></span><code>state.py
+</code></pre></div></p>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>run.prm</li>
+<li>head3.lst</li>
+<li>extra.tpl for scaling factors that are not equal to 1.</li>
+<li>energies/*.opp for pairwise interactions </li>
+<li>microstate file named "states"</li>
+</ul>
+<p>The microstate file is in a fixed format. The first line is like:
+<div class="highlight"><pre><span></span><code>T=298.15, ph=7.0, eh=0.0
+</code></pre></div></p>
+<p>It specifies the the environment variables which affects the energy calculation. Variables are separated by ",
+". The variable names are <strong>not</strong> case sensitive. </p>
+<ul>
+<li>T: Temperature. Room temperature is 298.15 K</li>
+<li>ph: pH value.</li>
+<li>eh: Eh value, the electric potential for potential titration.</li>
+</ul>
+<p>The rest of the lines are microstates. One line per state. Each line consists the index number of conformers (0 
+based). Numbers can be separated by either comma or space.</p>
+<p><strong>Example:</strong></p>
+<p>Make a states file:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p>Run 
+<div class="highlight"><pre><span></span><code>state.py
+</code></pre></div></p>
+<hr />
+<h3 id="mfepy">mfe.py<a class="headerlink" href="#mfepy" title="Permanent link">&para;</a></h3>
+<p><em>Analyze ionization free energy of a residue. It tells you why a residue has that pKa and what factors played a role.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>mfe.py [-h] [-p pH/Eh] [-x TS_correction] [-c cutoff] residue
+</code></pre></div></p>
+<ul>
+<li>residue: residue ID as in pK.out</li>
+<li>pH/Eh: pH value at which ionization energy is calculated. Default is the pKa (midpoint) where dG = 0.</li>
+<li>cut_off: Report only pairwise interaction bigger than this value.</li>
+<li>TS_correction: "t" to include entropy in G, "f" not to include, "r" (default) will look for run.prm. If entropy correction was turned on in step 4, mfe should not include this term as entropy has been "removed".</li>
+</ul>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>run.prm</li>
+<li>head3.lst</li>
+<li>extra.tpl for scaling factors that are not equal to 1.</li>
+<li>energies/*.opp for pairwise interactions </li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Check titration result in pKa.out:
+<div class="highlight"><pre><span></span><code>cat pK.out
+... 
+ASP-A0044_        3.947
+...
+</code></pre></div></p>
+<p>ASP-A0052 is the residue_ID. Its calculated pKa is 2.275. At this point, the free energy of reaction from ASP neutral to ASP ionized should be close to 0.</p>
+<p>Run 
+<div class="highlight"><pre><span></span><code>$ mfe.py -c 0.01 ASP-A0044_ 
+Residue ASP-A0044_ pKa/Em=3.947
+=================================
+Terms          pH     meV    Kcal
+---------------------------------
+vdw0        -0.00   -0.27   -0.01
+vdw1        -0.01   -0.59   -0.01
+tors        -0.15   -8.63   -0.20
+ebkb        -0.67  -38.66   -0.91
+dsol         0.26   15.35    0.36
+offset      -0.62  -36.17   -0.85
+pH&amp;pK0       0.80   46.61    1.10
+Eh&amp;Em0       0.00    0.00    0.00
+-TS          0.58   33.46    0.79
+residues    -0.19  -11.14   -0.26
+*********************************
+TOTAL       -0.00   -0.05   -0.00  sum_crg
+*********************************
+NTRA0003_   -0.03   -1.66   -0.04    1.00
+ASPA0022_    0.02    0.95    0.02   -0.86
+ASNA0023_   -0.01   -0.68   -0.02    0.00
+LYSA0027_   -0.01   -0.77   -0.02    1.00
+LYSA0039_   -0.14   -8.23   -0.19    1.00
+ASNA0041_   -0.01   -0.62   -0.01    0.00
+LYSA0049_   -0.04   -2.10   -0.05    1.00
+ASPA0054_    0.01    0.69    0.02   -0.95
+GLUA0073_    0.01    0.79    0.02   -0.99
+ASPA0075_    0.05    2.85    0.07   -1.00
+TYRA0078_    0.02    1.05    0.02   -0.00
+SERA0080_    0.02    1.19    0.03    0.00
+ARGA0083_   -0.04   -2.51   -0.06    1.00
+ARGA0087_   -0.03   -1.49   -0.04    1.00
+HISA0102_   -0.02   -1.02   -0.02    1.00
+=================================
+</code></pre></div></p>
+<p>You can do mfe calculation at pH other than mid-point.</p>
+<hr />
+<h3 id="mfe_allpy">mfe_all.py<a class="headerlink" href="#mfe_allpy" title="Permanent link">&para;</a></h3>
+<p>Perform mfe analysis on all ionizable residues.</p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>mfe_all.py [-h] [-p pH/Eh] [-x TS_correction] [-f format] [-o filename]
+</code></pre></div></p>
+<ul>
+<li>pH/Eh: pH value at which ionization energy is calculated. Default is the pKa (midpoint) where dG = 0.</li>
+<li>TS_correction: "t" to include entropy in G, "f" not to include, "r" (default) will look for run.prm. If entropy correction was turned on in step 4, mfe should not include this term as entropy has been "removed".</li>
+<li>format: output file format, xlsx, csv, or html. The default is excel format xlsx.</li>
+<li>filename: output file name. The default is mfe_all.[ext]</li>
+</ul>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>run.prm</li>
+<li>head3.lst</li>
+<li>extra.tpl for scaling factors that are not equal to 1.</li>
+<li>energies/*.opp for pairwise interactions</li>
+</ul>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>mfe_all.py -f html
+MFE output saved in file mfe_all.html
+</code></pre></div></p>
+<hr />
+<h3 id="mostoccpy">mostocc.py<a class="headerlink" href="#mostoccpy" title="Permanent link">&para;</a></h3>
+<p><em>Extract most occupied conformer from fort.38 and make a pdb file.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>mostocc.py pH
+</code></pre></div></p>
+<ul>
+<li>pH is the exact pH in the first line of fort.38 file. It indicates which pH to use for occupancy, as occupancy is pH dependent.</li>
+</ul>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>fort.38</li>
+<li>step2_out.pdb</li>
+</ul>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>mostocc.py 7.0
+</code></pre></div></p>
+<hr />
+<h3 id="sanitypy">sanity.py<a class="headerlink" href="#sanitypy" title="Permanent link">&para;</a></h3>
+<p><em>Quick check on the charge state of ionizable residues abd report unusual charge.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>sanity.py
+</code></pre></div></p>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>run.prm</li>
+<li>sum_crg.out</li>
+</ul>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>$ sanity.py 
+TYR-A0013_: charge  0.00 expected near -1.0 at pH=12.0
+HIS+A0018_: charge  0.00 expected near  1.0 at pH= 0.0
+TYR-A0024_: charge  0.00 expected near -1.0 at pH=12.0
+LYS+A0062_: charge  0.55 expected near  0.0 at pH=13.0
+GLU-A0073_: charge -0.74 expected near  0.0 at pH= 2.0
+ASP-A0075_: charge -1.00 expected near  0.0 at pH= 0.0
+TYR-A0078_: charge  0.00 expected near -1.0 at pH=12.0
+TYR-A0090_: charge -0.09 expected near -1.0 at pH=12.0
+ASP-A0093_: charge -0.83 expected near  0.0 at pH= 1.0
+TYR-A0097_: charge -0.17 expected near -1.0 at pH=12.0
+TYR-A0103_: charge  0.00 expected near -1.0 at pH=12.0
+</code></pre></div></p>
+<hr />
+<h2 id="parameter-file-preparation">Parameter file preparation<a class="headerlink" href="#parameter-file-preparation" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="pdb2ftplpy">pdb2ftpl.py<a class="headerlink" href="#pdb2ftplpy" title="Permanent link">&para;</a></h3>
+<p><em>This tool converts a pdb file to a ftpl template.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>usage: pdb2ftpl.py [-h] [-d] [-c conformer type] pdbfile
+
+Create a ftpl template file from a cofactor PDB file. The atoms in the input
+files are considered as one molecule.
+
+positional arguments:
+  pdbfile
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -d                 Ignore CONNECT, use distance to determine bond
+  -c conformer type  Specify a 2-character conformer type ID, default 01
+</code></pre></div></p>
+<hr />
+<h3 id="mol2_chargepy">mol2_charge.py<a class="headerlink" href="#mol2_chargepy" title="Permanent link">&para;</a></h3>
+<p><em>Apply mol2 charge to a conformer in ftpl template. The mol2 file doesn't need to have the matching atom names, as long as the element names are correct.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>$ mol2_charge.py -h
+usage: mol2_charge.py [-h] -m mol2 -c conf [--show] ftpl
+
+Apply mol2 charge to a conformer in ftpl template. The mol2 file doesn&#39;t need
+to have the matching atom names, as long as the element names are correct.
+
+positional arguments:
+  ftpl
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -m mol2     mol2 file with charge
+  -c conf     Conformer ID in conformer list to be matched.
+  --show      Show atom name matching, default false.
+</code></pre></div></p>
+<p><strong>Example:</strong></p>
+<p>If I have a ftpl file T4Y.tpl and a mol2 file 27c-p.mol2 with atom charge.
+<div class="highlight"><pre><span></span><code>$ mol2_charge.py -m 27c-p.mol2 T4Y.ftpl -c T4Y01 --show
+=================
+ ftpl  ---  mol2
+=================
+&quot; N1 &quot; --- &quot;N4&quot;
+&quot; C4 &quot; --- &quot;C14&quot;
+&quot; C5 &quot; --- &quot;C13&quot;
+&quot; C6 &quot; --- &quot;C12&quot;
+&quot; C7 &quot; --- &quot;C11&quot;
+&quot; C8 &quot; --- &quot;C7&quot;
+&quot; C10&quot; --- &quot;C5&quot;
+&quot; C13&quot; --- &quot;C2&quot;
+&quot; N  &quot; --- &quot;N8&quot;
+&quot; C  &quot; --- &quot;C18&quot;
+&quot; O  &quot; --- &quot;O3&quot;
+&quot; C1 &quot; --- &quot;C17&quot;
+&quot; C11&quot; --- &quot;C10&quot;
+&quot; C12&quot; --- &quot;C9&quot;
+&quot; C14&quot; --- &quot;C1&quot;
+&quot; C2 &quot; --- &quot;C16&quot;
+&quot; C3 &quot; --- &quot;C15&quot;
+&quot; C9 &quot; --- &quot;C6&quot;
+&quot; H5 &quot; --- &quot;H35&quot;
+&quot; H6 &quot; --- &quot;H34&quot;
+&quot; H8 &quot; --- &quot;H32&quot;
+&quot; H7 &quot; --- &quot;H33&quot;
+&quot; H9 &quot; --- &quot;H26&quot;
+&quot; H10&quot; --- &quot;H27&quot;
+&quot; H13&quot; --- &quot;H22&quot;
+&quot; H14&quot; --- &quot;H23&quot;
+&quot; H1 &quot; --- &quot;H38&quot;
+&quot; H  &quot; --- &quot;H39&quot;
+&quot; H2 &quot; --- &quot;H40&quot;
+&quot; H15&quot; --- &quot;H30&quot;
+&quot; H16&quot; --- &quot;H31&quot;
+&quot; H18&quot; --- &quot;H28&quot;
+&quot; H17&quot; --- &quot;H29&quot;
+&quot; H22&quot; --- &quot;H19&quot;
+&quot; H19&quot; --- &quot;H20&quot;
+&quot; H20&quot; --- &quot;H21&quot;
+&quot; H3 &quot; --- &quot;H37&quot;
+&quot; H4 &quot; --- &quot;H36&quot;
+&quot; H11&quot; --- &quot;H24&quot;
+&quot; H12&quot; --- &quot;H25&quot;
+=================
+CHARGE, T4Y01, &quot; N1 &quot;:   -0.45
+CHARGE, T4Y01, &quot; C4 &quot;:   -0.14
+CHARGE, T4Y01, &quot; C5 &quot;:   -0.11
+CHARGE, T4Y01, &quot; C6 &quot;:   -0.09
+CHARGE, T4Y01, &quot; C7 &quot;:    0.22
+CHARGE, T4Y01, &quot; C8 &quot;:    0.17
+CHARGE, T4Y01, &quot; C10&quot;:    0.09
+CHARGE, T4Y01, &quot; C13&quot;:    0.66
+CHARGE, T4Y01, &quot; N  &quot;:   -0.75
+CHARGE, T4Y01, &quot; C  &quot;:   -0.05
+CHARGE, T4Y01, &quot; O  &quot;:   -0.61
+CHARGE, T4Y01, &quot; C1 &quot;:   -0.08
+CHARGE, T4Y01, &quot; C11&quot;:    0.09
+CHARGE, T4Y01, &quot; C12&quot;:    0.15
+CHARGE, T4Y01, &quot; C14&quot;:   -0.17
+CHARGE, T4Y01, &quot; C2 &quot;:   -0.13
+CHARGE, T4Y01, &quot; C3 &quot;:   -0.13
+CHARGE, T4Y01, &quot; C9 &quot;:   -0.10
+CHARGE, T4Y01, &quot; H5 &quot;:    0.13
+CHARGE, T4Y01, &quot; H6 &quot;:    0.15
+CHARGE, T4Y01, &quot; H8 &quot;:    0.04
+CHARGE, T4Y01, &quot; H7 &quot;:    0.04
+CHARGE, T4Y01, &quot; H9 &quot;:    0.04
+CHARGE, T4Y01, &quot; H10&quot;:    0.04
+CHARGE, T4Y01, &quot; H13&quot;:    0.06
+CHARGE, T4Y01, &quot; H14&quot;:    0.06
+CHARGE, T4Y01, &quot; H1 &quot;:    0.04
+CHARGE, T4Y01, &quot; H  &quot;:    0.04
+CHARGE, T4Y01, &quot; H2 &quot;:    0.04
+CHARGE, T4Y01, &quot; H15&quot;:    0.05
+CHARGE, T4Y01, &quot; H16&quot;:    0.05
+CHARGE, T4Y01, &quot; H18&quot;:    0.03
+CHARGE, T4Y01, &quot; H17&quot;:    0.03
+CHARGE, T4Y01, &quot; H22&quot;:    0.06
+CHARGE, T4Y01, &quot; H19&quot;:    0.06
+CHARGE, T4Y01, &quot; H20&quot;:    0.06
+CHARGE, T4Y01, &quot; H3 &quot;:    0.13
+CHARGE, T4Y01, &quot; H4 &quot;:    0.13
+CHARGE, T4Y01, &quot; H11&quot;:    0.06
+CHARGE, T4Y01, &quot; H12&quot;:    0.06
+</code></pre></div></p>
+<hr />
+<h3 id="tpl-free2mccepy">tpl-free2mcce.py<a class="headerlink" href="#tpl-free2mccepy" title="Permanent link">&para;</a></h3>
+<p><em>This command converts ftpl files to ./param, a directory hosts old mcce tple files. It is a compatibility tool, which makes
+new ftpl files readable by old mcce executable.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>tpl-free2mcce.py
+</code></pre></div></p>
+<p>Input file:</p>
+<ul>
+<li>run.prm</li>
+<li>param/ under mcce distribution directory</li>
+</ul>
+<p>Output  file</p>
+<ul>
+<li>param under current directory</li>
+</ul>
+<hr />
+<h3 id="tpl-mcce2freepy">tpl-mcce2free.py<a class="headerlink" href="#tpl-mcce2freepy" title="Permanent link">&para;</a></h3>
+<p><em>Future versions of MCCE will use ftpl format, and this command converts mcce tpl file to new ftpl file.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>tpl-mcce2ftpl.py tplfile
+</code></pre></div></p>
+<p>Input file:</p>
+<ul>
+<li>tpl file</li>
+</ul>
+<p>Output  file</p>
+<ul>
+<li>ftpl file content on screen.</li>
+</ul>
+<hr />
+<h3 id="verify_ftplpy">verify_ftpl.py<a class="headerlink" href="#verify_ftplpy" title="Permanent link">&para;</a></h3>
+<p><em>This program verifies a ftpl by reading a pdb file of that cofactor.</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>verify_ftpl.py tplfile pdbfile
+</code></pre></div></p>
+<p>Input file:</p>
+<ul>
+<li>ftpl file</li>
+<li>pdb file that corresponds to that ftpl file</li>
+</ul>
+<hr />
+<h2 id="connecting-to-other-programs">Connecting to other programs<a class="headerlink" href="#connecting-to-other-programs" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="striph2opy">striph2o.py<a class="headerlink" href="#striph2opy" title="Permanent link">&para;</a></h3>
+<p><em>This tool strips away specified surface molecules layer by layer until all left are buried</em></p>
+<p><strong>Syntax</strong>
+<div class="highlight"><pre><span></span><code>usage: striph2o.py [-h] [-c RES [RES ...]] [-s exposure] -f inputfile
+                   [-o outputfile]
+
+Strip off exposed cofactors like water and ions based on solvent accessible
+surface area.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -c RES [RES ...]  Specify cofactor names to strip off, default is HOH.
+  -s exposure       Fraction exposure threshold to be cut. Default is 0.05.
+  -f inputfile      Input file name.
+  -o outputfile     Output file name, default is inputfile name with extension
+                    .stripped.
+</code></pre></div></p>
+<p>This program does not only strip off water, it also strip off any molecule as named in the command line. So one can use it to delete ions and lipid bilayers in the input structure.</p>
+<p><strong>Required files:</strong></p>
+<ul>
+<li>input pdb file</li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul>
+<li>input_file-stripped.pdb for stripped pdb file unless otherwise named</li>
+<li>input_file.acc for residue solvent accessibility</li>
+</ul>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code>striph2o.py -f frame32_50.pdb -c HOH CLA SOD BGA POP DLP
+</code></pre></div></p>
+<hr />
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-12-30
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../hbexample/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Hydrogen-bond network
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../runprm/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Customize run.prm
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

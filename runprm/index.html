@@ -1,0 +1,1280 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/runprm/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Customize run.prm - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-customize-runprm-the-run-configuration-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Customize run.prm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Customize run.prm
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Customize run.prm
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#runprm-format" class="md-nav__link">
+    run.prm format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#most-commonly-edited-entries" class="md-nav__link">
+    Most commonly edited entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Most commonly edited entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output" class="md-nav__link">
+    Input and output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major-mcce-steps" class="md-nav__link">
+    Major mcce steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#less-edited-entries" class="md-nav__link">
+    Less edited entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Less edited entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-rotamer-making" class="md-nav__link">
+    Step 2, Rotamer making
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-monte-carlo-sampling" class="md-nav__link">
+    Step 4, Monte Carlo sampling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-specific-entries" class="md-nav__link">
+    System specific entries
+  </a>
+  
+    <nav class="md-nav" aria-label="System specific entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-and-installation-location" class="md-nav__link">
+    System and installation location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detail-levels-of-program-output" class="md-nav__link">
+    Detail levels of program output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-entries" class="md-nav__link">
+    Other entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Other entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    Step 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    step 3:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    step 4:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipece-parameters" class="md-nav__link">
+    IPECE parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#runprm-format" class="md-nav__link">
+    run.prm format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#most-commonly-edited-entries" class="md-nav__link">
+    Most commonly edited entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Most commonly edited entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output" class="md-nav__link">
+    Input and output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major-mcce-steps" class="md-nav__link">
+    Major mcce steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#less-edited-entries" class="md-nav__link">
+    Less edited entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Less edited entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-rotamer-making" class="md-nav__link">
+    Step 2, Rotamer making
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-monte-carlo-sampling" class="md-nav__link">
+    Step 4, Monte Carlo sampling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-specific-entries" class="md-nav__link">
+    System specific entries
+  </a>
+  
+    <nav class="md-nav" aria-label="System specific entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-and-installation-location" class="md-nav__link">
+    System and installation location
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detail-levels-of-program-output" class="md-nav__link">
+    Detail levels of program output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-entries" class="md-nav__link">
+    Other entries
+  </a>
+  
+    <nav class="md-nav" aria-label="Other entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    Step 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    step 3:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    step 4:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipece-parameters" class="md-nav__link">
+    IPECE parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-customize-runprm-the-run-configuration-file">How to customize run.prm, the run configuration file?<a class="headerlink" href="#how-to-customize-runprm-the-run-configuration-file" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-05-19</i></small></p>
+<p>The mcce program reads file run.prm from the working directory and runs according to its instructions.</p>
+<p>The two ways that run mcce are:</p>
+<ol>
+<li>customize run.prm and call mcce directly</li>
+<li>run step1.py, step2.py, step3.py, are step4.py as wrappers of mcce.</li>
+</ol>
+<h2 id="runprm-format">run.prm format<a class="headerlink" href="#runprm-format" title="Permanent link">&para;</a></h2>
+<p>The valid parameters are defined as a key-value pair, defined by a line.</p>
+<p>At the end of the line, the key string word is enclosed in a pair of parenthesis. The key string must be one word.</p>
+<p>If a key is detected from a line, the first word of the line is its value.</p>
+<p>For example:
+<div class="highlight"><pre><span></span><code>f        step 1: pre-run, pdb-&gt; mcce pdb                    (DO_PREMCCE)
+</code></pre></div>
+The key is "DO_MCCE" and the value is "f".</p>
+<p>Lines other than parameter lines are considered as comment lines, therefore ignored.</p>
+<h2 id="most-commonly-edited-entries">Most commonly edited entries<a class="headerlink" href="#most-commonly-edited-entries" title="Permanent link">&para;</a></h2>
+<h3 id="input-and-output">Input and output<a class="headerlink" href="#input-and-output" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>prot.pdb                                                    (INPDB)
+</code></pre></div>
+Th parameter "INPDB" specifies a pdb file as the initial input structure.</p>
+<hr />
+<h3 id="major-mcce-steps">Major mcce steps<a class="headerlink" href="#major-mcce-steps" title="Permanent link">&para;</a></h3>
+<p>MCCE can be divided into four steps.</p>
+<p><img src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%3F%3E%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.0//EN%22%20%22http%3A//www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd%22%3E%0A%3Csvg%20viewBox%3D%220%200%20832%20120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Ainkspace%3D%22http%3A//www.inkscape.org/namespaces/inkscape%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%3Cdefs%20id%3D%22defs_block%22%3E%0A%20%20%20%20%3Cfilter%20height%3D%221.504%22%20id%3D%22filter_blur%22%20inkspace%3Acollect%3D%22always%22%20width%3D%221.1575%22%20x%3D%22-0.07875%22%20y%3D%22-0.252%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20id%3D%22feGaussianBlur3780%22%20inkspace%3Acollect%3D%22always%22%20stdDeviation%3D%224.2%22%20/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Ctitle%3Eblockdiag%3C/title%3E%0A%20%20%3Cdesc%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%2267%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22259%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22451%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22643%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%2264%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2236%22%20x%3D%22128.0%22%20y%3D%2259%22%3EStep%201%3C/text%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%22120%22%20x%3D%22128.0%22%20y%3D%2272%22%3EProof%20read%20structure%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22256%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2236%22%20x%3D%22320.0%22%20y%3D%2259%22%3EStep%202%3C/text%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2290%22%20x%3D%22320.0%22%20y%3D%2272%22%3EMake%20conformers%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22448%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2236%22%20x%3D%22512.0%22%20y%3D%2259%22%3EStep%203%3C/text%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%22102%22%20x%3D%22512.0%22%20y%3D%2272%22%3EMake%20energy%20table%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22640%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%2236%22%20x%3D%22704.0%22%20y%3D%2259%22%3EStep%204%3C/text%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%22114%22%20x%3D%22704.0%22%20y%3D%2272%22%3ESimulated%20titration%3C/text%3E%0A%20%20%3Cpath%20d%3D%22M%20192%2060%20L%20248%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22255%2C60%20248%2C56%20248%2C64%20255%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20384%2060%20L%20440%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22447%2C60%20440%2C56%20440%2C64%20447%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20576%2060%20L%20632%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22639%2C60%20632%2C56%20632%2C64%20639%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%3C/svg%3E%0A" /></p>
+<p>The steps have keys:</p>
+<ul>
+<li>DO_PREMCCE</li>
+<li>DO_ROTAMERS</li>
+<li>DO_ENERGY</li>
+<li>DO_MONTE</li>
+</ul>
+<p>The value 't' is for true (do), and 'f' is for false (not do).
+<div class="highlight"><pre><span></span><code>Steps:
+f        step 1: pre-run, pdb-&gt; mcce pdb                    (DO_PREMCCE)
+f        step 2: make rotatmers                             (DO_ROTAMERS)
+f        step 3: do energy calculations                     (DO_ENERGY)
+f        step 4: monte carlo sampling                       (DO_MONTE)
+</code></pre></div></p>
+<p>The later step depends on the out put of previous step.</p>
+<h2 id="less-edited-entries">Less edited entries<a class="headerlink" href="#less-edited-entries" title="Permanent link">&para;</a></h2>
+<p>Step 2 and step 4 have more flexibility and are customized more often than others.</p>
+<h3 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>4.0      Protein dielectric constant for DelPhi             (EPSILON_PROT)
+</code></pre></div>
+Dielectric constant of protein. Usually epsilon 8 is used for small soluble protein (~100 residues), and 4 is used for big trans-membrane protein (&gt; 200 residues).
+This value is used by step 2 to optimize rotamers and step 3 to compute energy table.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>/home/mcce/Stable-MCCE/extra.tpl                              (EXTRA)
+</code></pre></div>
+This file contains entries that overwrite those defined in ftpl and tpl files in param/ directory, and extral controls over the program.
+The extra controls are in two categories:</p>
+<ol>
+<li>offset energy of ionizable residues. These energy corrects the residue solution pKa values based on previous benchmarks.</li>
+<li>The scaling factor of van der Walls energy term. The recommended values are the inverse of dielectric constant defined by EPSILON_PROT.</li>
+</ol>
+<hr />
+<p><div class="highlight"><pre><span></span><code>/home/mcce/Stable-MCCE/name.txt MCCE renaming rule.           (RENAME_RULES)
+</code></pre></div>
+The renaming rule can</p>
+<ul>
+<li>divide a big group into separate ionizable groups.</li>
+<li>put ligands and cofactor as one group.</li>
+</ul>
+<p>This is done by renaming the atom and residue.</p>
+<hr />
+<h3 id="step-2-rotamer-making">Step 2, Rotamer making<a class="headerlink" href="#step-2-rotamer-making" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Use control file &quot;head1.lst&quot; for rotamer making    (ROT_SPECIF)
+</code></pre></div>
+This file enables site specific rotamer making rules. When set as "t", it overwrites the rules defined by run.prm.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        Do swap (stereo isotope)                           (ROT_SWAP)
+</code></pre></div>
+Make stereo isotope conformers for residues like GLN and ASN.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        Do rotate?                                         (PACK)
+</code></pre></div>
+Rotate around rotatable bonds?</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>6        number of rotamers in a bond rotation              (ROTATIONS)
+</code></pre></div>
+Number of rotamers in a bond rotation.</p>
+<hr />
+<h3 id="step-4-monte-carlo-sampling">Step 4, Monte Carlo sampling<a class="headerlink" href="#step-4-monte-carlo-sampling" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>ph       &quot;ph&quot; for pH titration, &quot;eh&quot; for eh titration       (TITR_TYPE)
+</code></pre></div>
+The type of simulation, pH or Eh.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.0      Initial pH                                         (TITR_PH0)
+</code></pre></div>
+The starting pH, or the pH of Eh titration.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1.0      pH interval                                        (TITR_PHD)
+</code></pre></div>
+The interval of pH titration</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.0      Initial Eh                                         (TITR_EH0)
+</code></pre></div>
+The starting Eh, or the Eh of pH titration.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>30.0     Eh interval (in mV)                                (TITR_EHD)
+</code></pre></div>
+The interval of Eh titration.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>15       Number of titration points                         (TITR_STEPS)
+</code></pre></div>
+Number of titration points.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Output Microstate from standard monte carlo        (MS_OUT)
+f        Output readable micristate file from standard monte carlo (RE_MS_OUT)
+</code></pre></div>
+Write out microstates or not.</p>
+<hr />
+<h2 id="system-specific-entries">System specific entries<a class="headerlink" href="#system-specific-entries" title="Permanent link">&para;</a></h2>
+<p>These entries are tailored to the system and installation.</p>
+<h3 id="system-and-installation-location">System and installation location<a class="headerlink" href="#system-and-installation-location" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>/home/mcce/Stable-MCCE                                      (MCCE_HOME)
+</code></pre></div>
+The MCCE installation root. It is required by the program to find relevant parameters.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>/home/mcce/Stable-MCCE/bin/delphi DelPhi executable           (DELPHI_EXE)
+</code></pre></div>
+PB solver delphi location.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>/tmp     delphi temporary file folder, &quot;/tmp&quot; uses node     (PBE_FOLDER)
+</code></pre></div>
+Location of PB solver output. This should be a folder with write permission and large enough Sometimes to store GBs of files.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>new.tpl     local parameter file for unrecognized res       (NEWTPL)
+</code></pre></div>
+Program mcce creates a temporary tpl file whenever it couldn't solve a new cofactor. The presumed parameters are in this file.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>debug.log                                                   (DEBUG_LOG)
+</code></pre></div>
+Debug log file name.</p>
+<hr />
+<h3 id="detail-levels-of-program-output">Detail levels of program output<a class="headerlink" href="#detail-levels-of-program-output" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t       Minimize output files                               (MINIMIZE_SIZE)
+</code></pre></div>
+If this is "f", mcce will write more debug information.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t       Print trace file                                    (DO_TRACE)
+</code></pre></div>
+Creates a record with MCCE revision number, time and date of run, and all user options set in run.prm and appends it to (or creates) the run.trace file.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        clean up delphi focusing directory?                (DELPHI_CLEAN)
+</code></pre></div>
+Flag of cleaning delphi temporary folder. Set to 't' only for debugging purpose.</p>
+<hr />
+<h2 id="other-entries">Other entries<a class="headerlink" href="#other-entries" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        Label terminal residues?                           (TERMINALS)
+</code></pre></div>
+If this flag is on 't', mcce program will identify the C terminus and N terminus of the polypeteides based on the geometry. Terminal residues have extra ionizable sites than residues having peptide bonds. One needs to be careful if there are missing piece of peptide in the given structure.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.1      cut off water if % SAS exceeds this number         (H2O_SASCUTOFF)
+</code></pre></div>
+The water molecules are stripped of if the surface exposure is over this cutoff. This a recursive procedure which means after some waters are removed, the new surface exposure is recaculated and the process id repeated.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>2.0      distance limit of reporting clashes                (CLASH_DISTANCE)
+</code></pre></div>
+The threshold to report abnormal distance found between non-bonded atoms.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t       ignore hydrogens in input structure                 (IGNORE_INPUT_H)
+</code></pre></div>
+Delete and rebuild input H atoms in step 1 and step 2.</p>
+<hr />
+<h3 id="step-2">Step 2:<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        Rebuild sidechain based on torsion minima          (REBUILD_SC)
+</code></pre></div>
+Rebuild side chain.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Do swing?                                          (SWING)
+</code></pre></div>
+Swing conformers deviate from their parent conformer by a small degree.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10.0     phi in degrees of swing                            (PHI_SWING)
+</code></pre></div>
+Swing angle.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1.00     SAS cuttoff of making fewer rotamers               (SAS_CUTOFF)
+</code></pre></div>
+Surface residues get fewer rotamers. There is another mechanism to search the most exposed rotamer to compensate this.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10.0     Cutoff of self vdw in kcal/mol                     (VDW_CUTOFF)
+</code></pre></div>
+If a rotamer has self energy, comparing with the most favorable one, over this cutoff, it will not ne kept.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>5000     number of repacks                                  (REPACKS)
+</code></pre></div>
+The rotamer optimization starts from random initial state, then minimizes the energy on each side chain. The number of restarts of this process is rapacks.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.03     occupancy cutoff of repacks                        (REPACK_CUTOFF)
+</code></pre></div>
+The occupancy of side chain conformer lower than this value will not be kept.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        h-bond directed rotamer making                     (HDIRECTED)
+</code></pre></div>
+Do search on hydrogen bond.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1.0      threshold for two conformers being different       (HDIRDIFF)
+</code></pre></div>
+Only one of the similar conformers is kept. Similarity os measured by Root Mean Square Deviation.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>36       Limit number of the H bond conformers              (HDIRLIMT)
+</code></pre></div>
+The number limit on H bond directed conformers.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Do relaxation on water                             (RELAX_WAT)
+</code></pre></div>
+Move water molecules to relax the distance crash.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>3.2      if distance between water and heavy atom is smaller than this, move water away  (WATER_RELAX_THR)
+</code></pre></div>
+The threshold of moving water.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10       number of cycles to relax rotamer clash            (HV_RELAX_NCYCLE)
+</code></pre></div>
+Heavy atom rotamer relaxation by MD. Number of global restarts (cycles).</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10       time (in fs) for each relaxation iteration         (HV_RELAX_DT)
+</code></pre></div>
+Heavy atom rotamer relaxation time.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10       number of iterations                               (HV_RELAX_NITER)
+</code></pre></div>
+Number of local restarts.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>2.       relax rotamer if vdw interaction is bigger than this (HV_RELAX_VDW_THR)
+</code></pre></div>
+Lower end threshold of relaxing rotamers, Van der Waals energy value in kcal/mol.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>5.       not relax rotamer if heavy atom vdw is bigger than this (HV_RELAX_HV_VDW_THR)
+</code></pre></div>
+High end threshold of relaxing rotamers, Van der Waals energy value in kcal/mol.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>-1.0     relax if electrostatic interaction is more favorable than this, and the charged groups are close  (HV_RELAX_ELEC_THR)
+</code></pre></div>
+Relax heavy atoms when they show dominantly favorable electrostatic interaction.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.1      threshold used to define a charged atom, see hv_relax_elec_dist_thr (HV_RELAX_ELEC_CRG_THR)
+</code></pre></div>
+Atoms with charge over this value are considered charged atoms.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>3.0      only relax electrostatically favorable pairs that has charged atom distance shorter than this (HV_RELAX_ELEC_DIST_THR)
+</code></pre></div>
+Relax heavy atoms when they show close proximity.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>20.      scaling factor for torsion during relaxation       (HV_TORS_SCALE)
+</code></pre></div>
+Scaling factor for torsion energy when searching torsion minima.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>10000    maximun n steps of shake                           (HV_RELAX_N_SHAKE)
+</code></pre></div>
+MD shake parameter.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.001    maximun allowance for bond length to deviate       (HV_RELAX_SHAKE_TOL)
+</code></pre></div>
+MD bond length detaion parameter.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1.0      constraint distance                                (HV_RELAX_CONSTRAINT)
+</code></pre></div>
+MD atom constrain distance.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>20.      constraint force for atom stay in original position (HV_RELAX_CONSTRAINT_FRC)
+</code></pre></div>
+MD atom constraint force.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        include neighbors when doing relaxation (expensive) (HV_RELAX_INCLUDE_NGH)
+</code></pre></div>
+Include neighbor in MD relaxation.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>4.0      threshold for include as a neighbor during relaxation (HV_RELAX_NGH_THR)
+</code></pre></div>
+Define a neighboring side chain.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>t        Do relaxation on hydrogens                         (RELAX_H)
+</code></pre></div>
+Optimize hydrogen position.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>-5.0     Energy threshold for keeping the conformer         (RELAX_E_THR)
+200      Loop over N local microstates                      (RELAX_NSTATES)
+6        default number of hydroxyl positions               (RELAX_N_HYD)
+5.       do not relax hydrogen if vdw bwt two sidechain conformer bigger than this    (RELAX_CLASH_THR)
+1.0      phi for each step of relaxation                    (RELAX_PHI)
+300      Maximum number of steps of relaxation              (RELAX_NITER)
+0.5      Torque threshold for keep relaxing                 (RELAX_TORQ_THR)
+</code></pre></div>
+These parameters are for MD relaxation.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0.02     Last pruning threshold for conformers              (PRUNE_THR)
+0.5      Pruning cutoff of RMSD                             (PRUNE_RMSD)
+1.0      Pruning cutoff of eletrostatic pairwise            (PRUNE_ELE)
+8.0      Pruning cutoff of vdw pairwise                     (PRUNE_VDW)
+</code></pre></div>
+To reduce the number of final conformers, similar conformers are grouped into one. The similarity is defined by these parameters.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>0        maximum number of conformer per residue ( 0=unlimited ) (NCONF_LIMIT)
+</code></pre></div>
+Set a limit to final conformers of a residue.</p>
+<hr />
+<h3 id="step-3">step 3:<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Use SAS + Coulomb&#39;s law for ele interaction        (QUICK_ENERGIES)
+</code></pre></div>
+Use coulomb's law instead of solving PB equation.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>80.0     Solvent dielectric constant for DelPhi             (EPSILON_SOLV)
+65       Grids in each DelPhi                               (GRIDS_DELPHI)
+2.0      The target grids per angstrom for DelPhi           (GRIDS_PER_ANG)
+1.4      Radius of the probe                                (RADIUS_PROBE)
+2.0      Ion radius                                         (IONRAD)
+0.15     Salt                                               (SALT)
+</code></pre></div>
+PB solver parameters.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        skip delphi in step3 (DEBUG option)                (SKIP_ELE)
+</code></pre></div>
+This is a debug option.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Reassign charge and radii before delphi(if not true then use value in PDB file) (REASSIGN)
+</code></pre></div>
+Step 3 uses atom charges from step2_out.pdb. Use this to overwrite.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Recalculate torsions energy when write out head3.lst (RECALC_TORS)
+</code></pre></div>
+Recalculate torsion energy.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1.7      defalut van der Waals radius, for SAS              (DEFAULT_RADIUS)
+0.5      factor to 1-4 LJ potontial (1.0 is full)           (FACTOR_14LJ)
+6.0      dielectric constant for Coulomb&#39;s law              (EPSILON_COULOMB)
+</code></pre></div>
+More parameters used by the prigram in step 1, 2 and 3.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>1         delphi start conformer number, 0 based            (PBE_START)
+99999     delphi end conformer number, self included        (PBE_END)
+</code></pre></div>
+Start and end of PB solution on conformers.</p>
+<hr />
+<h3 id="step-4">step 4:<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f        Average the pairwise, &quot;f&quot; uses the smaller         (AVERAGE_PAIRWISE)
+</code></pre></div>
+When loading energy from step 3, average the pairwise interaction.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>20.      Warning Threshold of difference in pairwise       (WARN_PAIRWISE)
+</code></pre></div>
+Issue a warning message if asymmetric pairwise interaction is detected.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>5.0      Big pairwise threshold to make big list            (BIG_PAIRWISE)
+</code></pre></div>
+Residues with big interactions may get synchronized flips. This is the cut off value.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>-1       Random seed, -1 uses time as random seed           (MONTE_SEED)
+</code></pre></div>
+Random seed.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>298.15   Temperature                                        (MONTE_T)
+3        Number of flips                                    (MONTE_FLIPS)
+100      Annealing = n_start * confs                        (MONTE_NSTART)
+500      Equalibration = n_eq * confs                       (MONTE_NEQ)
+0.001    Cut-off occupancy of the reduction                 (MONTE_REDUCE)
+</code></pre></div>
+Monte Carlo simulation parameters.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>###  Only for Junjun&#39;s monte carlo
+2        Number of independent monte carlo sampling         (MONTE_RUNS)
+2000     Sampling = n_iter * confs                          (MONTE_NITER)
+20000    Trace energy each MONTE_TRACE steps, 0 no trace    (MONTE_TRACE)
+1000000  Maximum microstates for analytical solution        (NSTATE_MAX)
+f        Specify mfe point, f=pKa/Em                        (MFE_POINT)
+-1.0     MFE cutoff(Kcal), default 0.5                      (MFE_CUTOFF)
+</code></pre></div>
+More Monte Carlo simulation parameters.</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code>###  Only for Yifan&#39;s monte carlo
+t        Using Yifan&#39;s monte carlo                          (MONTE_ADV_OPT)
+f        Using format from old version                      (MONTE_OLD_INPUT)
+5000     Min Sampling = n_iter * confs                      (MONTE_NITER_MIN)
+-1       Max Sampling = n_iter * confs(-1 stop @ converge)  (MONTE_NITER_MAX)
+10000    Number of iterations each cycle                    (MONTE_NITER_CYCLE)
+1000     niter * n_conf check convergence                   (MONTE_NITER_CHK)
+-1       Number of the reduce steps(-1 stop @ converge)     (MONTE_N_REDUCE)
+0.01     Threshhold for convergence                         (MONTE_CONVERGE)
+f        Calculate free energy                              (MONTE_DO_ENERGY)
+
+298.15   Starting temperature for annealling                (ANNEAL_TEMP_START)
+0        Number of steps of annealling                      (ANNEAL_NSTEP)
+1000     Number of iterations for each annealling step      (ANNEAL_NITER_STEP)
+</code></pre></div>
+More Monte Carlo simulation parameters.</p>
+<hr />
+<h3 id="ipece-parameters">IPECE parameters<a class="headerlink" href="#ipece-parameters" title="Permanent link">&para;</a></h3>
+<hr />
+<p><div class="highlight"><pre><span></span><code>f add neutral atoms to simulate a membrane slab         (IPECE_ADD_ME)
+33. the thichness of the membrane to be add                 (IPECE_MEM_THICKNESS)
+M the chain ID of the add atoms                 (IPECE_MEM_CHAINID)
+</code></pre></div>
+This is for creating a simulated membrane.</p>
+<hr />
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-05-19
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../tools/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Tools Program Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../mcce2free/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Convert mcce tpl file
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

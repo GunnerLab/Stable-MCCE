@@ -1,0 +1,901 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/mfehowto/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Analyze ionization energy - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-break-down-the-energy-of-a-residue-ionization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Analyze ionization energy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../newftpl/" class="md-nav__link">
+      Make a new topology file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Analyze ionization energy
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Analyze ionization energy
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#continuum-electrostatic-interpretation-of-pka" class="md-nav__link">
+    Continuum Electrostatic interpretation of pKa
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuum Electrostatic interpretation of pKa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-energy-and-pka" class="md-nav__link">
+    Free energy and pKa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-acids-in-solution-and-in-protein" class="md-nav__link">
+    The acids in solution and in protein
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcces-way-to-compute-pka" class="md-nav__link">
+    MCCE's way to compute pKa
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-residue-pka-and-factors-that-affect-pka" class="md-nav__link">
+    Understanding the residue pKa and factors that affect pKa
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the residue pKa and factors that affect pKa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-field-approximation" class="md-nav__link">
+    Mean field approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfe-energy-terms" class="md-nav__link">
+    MFE energy terms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#continuum-electrostatic-interpretation-of-pka" class="md-nav__link">
+    Continuum Electrostatic interpretation of pKa
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuum Electrostatic interpretation of pKa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-energy-and-pka" class="md-nav__link">
+    Free energy and pKa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-acids-in-solution-and-in-protein" class="md-nav__link">
+    The acids in solution and in protein
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcces-way-to-compute-pka" class="md-nav__link">
+    MCCE's way to compute pKa
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-residue-pka-and-factors-that-affect-pka" class="md-nav__link">
+    Understanding the residue pKa and factors that affect pKa
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the residue pKa and factors that affect pKa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-field-approximation" class="md-nav__link">
+    Mean field approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mfe-energy-terms" class="md-nav__link">
+    MFE energy terms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-break-down-the-energy-of-a-residue-ionization">How to break down the energy of a residue ionization?<a class="headerlink" href="#how-to-break-down-the-energy-of-a-residue-ionization" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-06-19</i></small></p>
+<p>MCCE calculates theoretical pKas as well as explain why these residues have those pKas.</p>
+<h2 id="continuum-electrostatic-interpretation-of-pka">Continuum Electrostatic interpretation of pKa<a class="headerlink" href="#continuum-electrostatic-interpretation-of-pka" title="Permanent link">&para;</a></h2>
+<h3 id="free-energy-and-pka">Free energy and pKa<a class="headerlink" href="#free-energy-and-pka" title="Permanent link">&para;</a></h3>
+<p>An amino acid and conjugate base in equilibrium:
+$$
+AH &lt;=&gt; A^- + H^+
+$$</p>
+<p>The free energy of the reaction has relationship with the equilibrium of:
+$$ \Delta G = \Delta G_0 + 2.303RT\lg(\frac{[A^- ][H^+ ]}{[HA]}) $$</p>
+<p>At the equilibrium of midpoint where <span><span class="MathJax_Preview">[A^- ] = [HA]</span><script type="math/tex">[A^- ] = [HA]</script></span>, therefore residue pKa is linked to the reaction free energy:
+$$ 0 = \Delta G_0 + 2.303RT\lg([H^+ ]) $$</p>
+<div>
+<div class="MathJax_Preview"> pKa = -\lg([H^+ ]) = \frac{\Delta G_0}{2.303RT}  </div>
+<script type="math/tex; mode=display"> pKa = -\lg([H^+ ]) = \frac{\Delta G_0}{2.303RT}  </script>
+</div>
+<h3 id="the-acids-in-solution-and-in-protein">The acids in solution and in protein<a class="headerlink" href="#the-acids-in-solution-and-in-protein" title="Permanent link">&para;</a></h3>
+<p>We know the ionization energy in solution, which is represented by the solution pKa:</p>
+<div>
+<div class="MathJax_Preview">
+\begin{alignat*}{5}
+&amp;AH\quad                          &amp;&amp;\xrightarrow{\Delta G1}\quad   &amp;&amp;&amp;A^- + H^+ \quad\quad\quad &amp;&amp;&amp;&amp;in\thinspace solution\\
+&amp;\downarrow \small{\Delta G2}\quad &amp;&amp;\quad                         &amp;&amp;&amp;\downarrow \small{\Delta G3} \quad\quad\quad &amp;&amp;&amp;&amp;\\
+&amp;[Protein] | AH\quad              &amp;&amp;\xrightarrow{\Delta G4}\quad   &amp;&amp;&amp;[Protein'] | A^- + H^+ \quad\quad\quad &amp;&amp;&amp;&amp;in\thinspace protein
+\end{alignat*}
+</div>
+<script type="math/tex; mode=display">
+\begin{alignat*}{5}
+&AH\quad                          &&\xrightarrow{\Delta G1}\quad   &&&A^- + H^+ \quad\quad\quad &&&&in\thinspace solution\\
+&\downarrow \small{\Delta G2}\quad &&\quad                         &&&\downarrow \small{\Delta G3} \quad\quad\quad &&&&\\
+&[Protein] | AH\quad              &&\xrightarrow{\Delta G4}\quad   &&&[Protein'] | A^- + H^+ \quad\quad\quad &&&&in\thinspace protein
+\end{alignat*}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">{\Delta G1}</span><script type="math/tex">{\Delta G1}</script></span> is solution pKa, and <span><span class="MathJax_Preview">{\Delta G4}</span><script type="math/tex">{\Delta G4}</script></span> is acid pKa in protein, what we are looking for. <span><span class="MathJax_Preview">{\Delta G2}</span><script type="math/tex">{\Delta G2}</script></span> and <span><span class="MathJax_Preview">{\Delta G3}</span><script type="math/tex">{\Delta G3}</script></span> involve
+ the free energy of moving acid from solution to protein environment, interaction between the acid and the protein, and
+ the interaction within the protein at <span><span class="MathJax_Preview">AH</span><script type="math/tex">AH</script></span> and  <span><span class="MathJax_Preview">A^-</span><script type="math/tex">A^-</script></span> states.</p>
+<p>The desolvation energy, pairwise interactions are all calculated by continuum electrostatic methods.</p>
+<h2 id="mcces-way-to-compute-pka">MCCE's way to compute pKa<a class="headerlink" href="#mcces-way-to-compute-pka" title="Permanent link">&para;</a></h2>
+<p>MCCE makes residues as independently ionizable pieces. All residues are given freedom to change conformation and ionization if possible. Residue
+pairwise interactions are precalculated. The choice of a residue being at which position and ionization state is statistically counted by Monte Carlo
+sampling.</p>
+<p>A pKa calculation is a simulated titration that carried out at multiple pH points. The residue charges change with pH, and their pKas are their midpoints
+determined by fitting the titration curve.</p>
+<p>Therefore the calculated pKa of a residue is a statistical result that came from the simultaneous interactions of many factors. To understand the pKa, we need to decipher the factors with the help of mean field energy analysis.</p>
+<h2 id="understanding-the-residue-pka-and-factors-that-affect-pka">Understanding the residue pKa and factors that affect pKa<a class="headerlink" href="#understanding-the-residue-pka-and-factors-that-affect-pka" title="Permanent link">&para;</a></h2>
+<h3 id="mean-field-approximation">Mean field approximation<a class="headerlink" href="#mean-field-approximation" title="Permanent link">&para;</a></h3>
+<p>The accurate interaction calculation is only possible at microstate level. At the end, what we know is the probability of a residue being at certain conformation and ionization.<br />
+The interaction between residues calculated after Monte Carlo sampling os approximated by "mean field".</p>
+<p>For example, 4 possible interactions for a pair of acids could be:</p>
+<div>
+<div class="MathJax_Preview"> A_1H \leftrightarrow A_2H \tag{1} </div>
+<script type="math/tex; mode=display"> A_1H \leftrightarrow A_2H \tag{1} </script>
+</div>
+<div>
+<div class="MathJax_Preview"> A_1H \leftrightarrow A_2^- \tag{2} </div>
+<script type="math/tex; mode=display"> A_1H \leftrightarrow A_2^- \tag{2} </script>
+</div>
+<div>
+<div class="MathJax_Preview"> A_1^- \leftrightarrow A_2H \tag{3} </div>
+<script type="math/tex; mode=display"> A_1^- \leftrightarrow A_2H \tag{3} </script>
+</div>
+<div>
+<div class="MathJax_Preview"> A_1^- \leftrightarrow A_2^- \tag{4} </div>
+<script type="math/tex; mode=display"> A_1^- \leftrightarrow A_2^- \tag{4} </script>
+</div>
+<p>If MCCE sampled acids <span><span class="MathJax_Preview">A1</span><script type="math/tex">A1</script></span> and <span><span class="MathJax_Preview">A2</span><script type="math/tex">A2</script></span> are both at 50% ionization, after MOnte Carlo sampling, from the ionization rate alone, we could not know the
+interaction is 50% of (2) and 50% of (3), 50% of (1) and 50% of (4), or a mix.</p>
+<p>This is the limitation of mean fields energy analysis. Once we know the limitation, we can extract quite useful information of residue ionization.</p>
+<h3 id="mfe-energy-terms">MFE energy terms<a class="headerlink" href="#mfe-energy-terms" title="Permanent link">&para;</a></h3>
+<p>Once step 4 is done, one can run <a href="../tools/#mfepy">mfe.py</a> on a residue to break down the energy terms of a ionization free energy. The input residue has to be in file pK.out.</p>
+<p>For example, in <a href="pkaexamle">lysozyme pKa calculation</a>, we obtained pKa output file pK.out.
+<div class="highlight"><pre><span></span><code>$ cat pK.out 
+  pH             pKa/Em  n(slope) 1000*chi2      vdw0    vdw1    tors    ebkb    dsol   offset  pHpK0   EhEm0    -TS   residues   total
+NTR+A0001_        5.095     0.985     0.015     -0.00   -0.01   -0.26    0.52    4.01   -0.95   -2.90    0.00    0.00   -0.11      0.29
+LYS+A0001_        9.593     0.998     0.027     -0.00   -0.00    0.00    0.15    0.46    0.29   -0.81    0.00   -0.00   -0.09      0.00
+ARG+A0005_       12.695     0.858     0.051     -0.01   -0.00   -0.00   -0.73    0.89    0.00    0.20    0.00    0.14   -0.35      0.14
+GLU-A0007_        3.192     0.944     0.010     -0.01    0.00   -0.19   -1.27    1.17   -0.22    1.56    0.00    0.30   -1.02      0.31
+LYS+A0013_       11.322     0.954     0.019     -0.00   -0.00    0.00    0.19    0.61    0.29    0.92    0.00    0.00   -2.01      0.00
+ARG+A0014_       13.330     0.934     0.004     -0.01   -0.00    0.00    0.07   -0.28    0.00    0.83    0.00    0.43   -0.60      0.44
+HIS+A0015_        6.816     0.988     0.065     -0.01   -0.01    0.00    1.44    1.33   -0.73   -0.16    0.00    0.36   -0.42      1.80
+ASP-A0018_        2.013     0.929     0.127     -0.01   -0.00   -0.16   -2.03    0.95   -0.62    2.74    0.00    0.40   -0.86      0.40
+TYR-A0020_       13.498     0.687     0.401      0.00    0.00    0.00    0.24    3.29   -0.37   -3.30    0.00    0.18    0.04      0.09
+ARG+A0021_       13.239     0.796     0.092     -0.01   -0.00    0.00   -0.09    0.11    0.00    0.74    0.00    0.28   -0.74      0.29
+TYR-A0023_       10.312     0.863     0.020      0.00    0.00    0.00   -1.17    1.98   -0.37   -0.11    0.00    0.29   -0.33      0.29
+LYS+A0033_       10.581     0.974     0.026     -0.00   -0.00    0.00    0.06    0.61    0.29    0.18    0.00    0.00   -1.09      0.05
+GLU-A0035_        5.133     0.880     1.144     -0.04   -0.01   -0.01   -1.26    2.16   -0.22   -0.38    0.00    0.26   -0.23      0.26
+ARG+A0045_       12.919     0.796     1.608     -0.03   -0.00    0.00    0.19   -0.32    0.00    0.42    0.00    0.45   -0.24      0.46
+ASP-A0048_        1.528     0.963     0.058     -0.01    0.00   -0.24   -2.52    3.22   -0.62    3.22    0.00    0.14   -3.01      0.17
+ASP-A0052_        3.330     0.859     0.170     -0.01    0.00   -0.10   -1.32    1.99   -0.62    1.42    0.00    0.46   -1.20      0.61
+TYR-A0053_        &gt;14.0                          0.00    0.00    0.00   -1.70    4.45   -0.37   -3.80    0.00    0.00    8.03      6.61
+ARG+A0061_        &gt;14.0                         -0.01   -0.00    0.00    0.69    0.15    0.00    1.50    0.00    0.42   -2.43      0.31
+ASP-A0066_        2.066     3.239     0.002     -0.01    0.02   -0.04   -5.30    7.34   -0.62    2.68    0.00   -0.11   -4.50     -0.55
+ARG+A0068_       13.604     0.768     0.028      0.12    1.81    0.16    0.29   -0.80    0.00    1.10    0.00   -0.19   -0.05      2.46
+ARG+A0073_       12.750     0.935     0.132     -0.01   -0.00    0.00   -0.12    0.10    0.00    0.25    0.00    0.35   -0.22      0.35
+ASP-A0087_        2.073     0.960     0.014     -0.02    0.01   -0.21   -1.88    1.24   -0.62    2.68    0.00    0.31   -1.18      0.31
+LYS+A0096_       10.631     0.831     0.307     -0.00    0.00    0.00   -1.52    1.26    0.29    0.23    0.00    0.00   -0.25      0.01
+LYS+A0097_       10.813     0.918     0.072     -0.00   -0.00    0.00   -0.27    0.07    0.29    0.41    0.00    0.00   -0.51     -0.00
+ASP-A0101_        3.988     1.009     0.010     -0.00   -0.05   -0.10    0.04    1.15   -0.62    0.76    0.00    0.57   -1.17      0.58
+ARG+A0112_       12.956     0.923     0.080     -0.01   -0.00    0.00   -0.27    0.77    0.00    0.46    0.00    0.55   -0.90      0.59
+ARG+A0114_       13.257     0.968     0.050     -0.01   -0.00    0.00   -0.09   -0.29    0.00    0.76    0.00    0.34   -0.35      0.35
+LYS+A0116_        9.554     0.941     0.042     -0.00   -0.00    0.00    0.12    0.43    0.29   -0.85    0.00    0.00    0.02      0.01
+ASP-A0119_        3.596     1.005     0.031     -0.01    0.00   -0.24   -1.08    1.95   -0.62    1.15    0.00    0.09   -1.15      0.09
+ARG+A0125_       13.083     0.915     0.005     -0.01   -0.00   -0.00    0.36   -0.18    0.00    0.58    0.00    0.45   -0.75      0.45
+ARG+A0128_       13.586     0.939     0.008      0.00   -0.00    0.00    0.08   -0.81    0.00    1.09    0.00    0.45   -0.36      0.45
+CTR-A0129_        2.464     0.905     0.072     -0.01   -0.01   -0.12   -0.06    1.66    0.00    1.29    0.00    0.49   -2.75      0.49
+</code></pre></div></p>
+<p>Now we would like to know why ASP52 has a low pKa of 3.33
+<div class="highlight"><pre><span></span><code>$ mfe.py ASP-A0052_ -c 0.1
+Residue ASP-A0052_ pKa/Em=3.33
+=================================
+Terms          pH     meV    Kcal
+---------------------------------
+vdw0        -0.01   -0.85   -0.02
+vdw1         0.00    0.21    0.00
+tors        -0.10   -5.89   -0.14
+ebkb        -1.32  -76.87   -1.81
+dsol         1.99  115.58    2.72
+offset      -0.62  -36.17   -0.85
+pH&amp;pK0       1.42   82.42    1.94
+Eh&amp;Em0       0.00    0.00    0.00
+-TS          0.00    0.00    0.00
+residues    -1.20  -69.73   -1.64
+*********************************
+TOTAL        0.15    8.70    0.20  sum_crg
+*********************************
+ASNA0044_   -0.44  -25.31   -0.59    0.00
+ARGA0045_   -0.12   -6.74   -0.16    1.00
+ASNA0046_   -0.16   -9.25   -0.22    0.00
+ASPA0048_    0.51   29.65    0.70   -0.96
+SERA0050_    0.12    7.04    0.17    0.00
+GLNA0057_    0.22   12.63    0.30    0.00
+ASNA0059_   -0.99  -57.31   -1.35    0.00
+ARGA0061_   -0.27  -15.65   -0.37    1.00
+ASPA0066_    0.39   22.84    0.54   -1.00
+ARGA0112_   -0.19  -11.15   -0.26    1.00
+ARGA0114_   -0.10   -5.86   -0.14    1.00
+=================================
+</code></pre></div></p>
+<p>Program computes the ionization free energy, specifically, the free energy difference between the ionized ASP and the neutral ASP.</p>
+<p>If we don't specify pH, mfe.py uses the midpoint pH or Eh.</p>
+<p>Energy terms:</p>
+<ul>
+<li><strong>vdw0:</strong> Van der Waals interaction within the residue. Since the vdw interaction is similar to ionized and neutral ASP, the contribution to <span><span class="MathJax_Preview">\Delta G</span><script type="math/tex">\Delta G</script></span> of ionization is small.</li>
+<li><strong>vdw1:</strong> Van der Waals interaction to the protein backbone. Again the contribution to pKa is usually small.</li>
+<li><strong>tors:</strong> Side chain torsion energy. The contribution to pKa is usually small.</li>
+<li><strong>ebkb:</strong> The protein backbone electrostatic interaction. The protein secondary structure especially helices have a dipole that may affect the ionized residue more than neutral form of the residue, therefore it could be a factor of pKa.</li>
+<li><strong>dsolv:</strong> The desolvation energy. The ionized residue is less stabilized im protein than in solution. This makes the ionization inside protein harder and it links to a positive free energy to the reaction from neutral residue to ionized residue.</li>
+<li><strong>offset:</strong> The is a system correction of pKa calibrated by benchmark. It captures the terms not counted by MCCE.</li>
+<li><strong>pH&amp;pK0:</strong> Solution pH effect to the ionization. It is environment pressure to the residue ionization. To an acid, low solution pH makes the ionization (releasing proton) easy so it contributes as a favorable energy. To a base, low pH makes ionization harder. When pH equals residue's solution pKa, the environment pH is at the balance point, where the contribution is 0.</li>
+<li><strong>Eh&amp;Em0:</strong> Environment Eh effect to redox reaction. This works similarily as pH&amp;pK0.</li>
+<li><strong>-TS:</strong> Entropy term. The number of rotamers of neutral and ionized residues generated by MCCE may be different. The effect of number of rotamers on two ionization states act like entropy. Since this may not be a desired effect, one can enable entropy correction in step 4, Monte Carlo sampling. If entropy correction is enabled in MC, the entropy effect has been eliminated and entropy should be set to 0 in MFE analysis. Program mfe.py is able to know how MC is done and handle this accordingly, or one can turn on or off in MFE manually.</li>
+<li><strong>residues:</strong> Total pairwise interaction from other residues. Other residues may shift the ionization free energy depending on their dipole orentation and charge.</li>
+<li><strong>TOTAL:</strong> Total free enegy of ionization reaction. It the sum of all above terms.</li>
+<li><strong>Redisue breakdown:</strong> Individual residue contribution. This part is the breakdown of term <strong>residues</strong>.</li>
+</ul>
+<p>At the midpoint, <span><span class="MathJax_Preview">[AH] = [A^-]</span><script type="math/tex">[AH] = [A^-]</script></span>. This means conformers of <span><span class="MathJax_Preview">AH</span><script type="math/tex">AH</script></span> and conformers of <span><span class="MathJax_Preview">A^-</span><script type="math/tex">A^-</script></span> strike a balance, and the transition energy <span><span class="MathJax_Preview">\Delta G</span><script type="math/tex">\Delta G</script></span> between them is 0 under this condition. The value <span><span class="MathJax_Preview">\Delta G</span><script type="math/tex">\Delta G</script></span> in pH unit also means how far away the pKa is from the solution pH. At the midpoint,  <span><span class="MathJax_Preview">\Delta G = 0</span><script type="math/tex">\Delta G = 0</script></span> and residue pKa is the same as envrionment pH.</p>
+<p>In the above example, ASP52 has low pH because a pretty big stabilization from ASN59.</p>
+<p>We can also do mfe anaylysis off the midpoint, for example at physiological pH about 7. The command option "-p 7" sets the mfe point.
+<div class="highlight"><pre><span></span><code>$ mfe.py ASP-A0052_ -c 0.1 -p 7
+Residue ASP-A0052_ pKa/Em=3.33
+=================================
+Terms          pH     meV    Kcal
+---------------------------------
+vdw0        -0.02   -0.97   -0.02
+vdw1        -0.01   -0.52   -0.01
+tors        -0.11   -6.30   -0.15
+ebkb        -1.32  -76.59   -1.80
+dsol         1.97  114.53    2.69
+offset      -0.62  -36.17   -0.85
+pH&amp;pK0      -2.25 -130.60   -3.07
+Eh&amp;Em0       0.00    0.00    0.00
+-TS          0.00    0.00    0.00
+residues    -1.81 -105.25   -2.47
+*********************************
+TOTAL       -4.17 -241.87   -5.68  sum_crg
+*********************************
+GLUA0035_    0.85   49.08    1.15   -0.98
+ASNA0044_   -1.00  -57.84   -1.36    0.00
+ARGA0045_   -0.11   -6.28   -0.15    1.00
+ASNA0046_   -0.85  -49.43   -1.16    0.00
+ASPA0048_    0.52   30.08    0.71   -1.00
+SERA0050_    0.13    7.43    0.17    0.00
+GLNA0057_    0.18   10.47    0.25    0.00
+ASNA0059_   -1.20  -69.75   -1.64    0.00
+ARGA0061_   -0.28  -16.15   -0.38    1.00
+ASPA0066_    0.40   22.96    0.54   -1.00
+ARGA0112_   -0.20  -11.56   -0.27    1.00
+=================================
+</code></pre></div></p>
+<p>We see ASP52 is surrounded by these polar residues.gets extra stabilization from ASN44 and ASN46 besides ASN59. The stabilization is bigger at pH 7.
+Actually the back calculated pKa <span><span class="MathJax_Preview">7-4.17=2.83</span><script type="math/tex">7-4.17=2.83</script></span> is lower than titrated value <span><span class="MathJax_Preview">3.33</span><script type="math/tex">3.33</script></span>, indicating extra stabilization at pH 7.</p>
+<p>With MFE analysis, one can quickly determine what residues affect the pKa most therefore identify the influential sites.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-06-19
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../newftpl/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Make a new topology file
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../ms_analysis/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Use MS Analysis Library
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

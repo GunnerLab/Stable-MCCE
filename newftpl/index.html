@@ -1,0 +1,1547 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://gunnerlab.github.io/Stable-MCCE/newftpl/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>Make a new topology file - MCCE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-74771869-8","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="orange">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-make-a-new-topology-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-header-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            MCCE Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Make a new topology file
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://gunnerlab.github.io/Stable-MCCE/" title="MCCE Documentation" class="md-nav__button md-logo" aria-label="MCCE Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>
+
+    </a>
+    MCCE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      What is MCCE?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../quick/" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorial and Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial and Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorial and Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../pkaexample/" class="md-nav__link">
+      pKa calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../emexample/" class="md-nav__link">
+      Em calculation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../hbexample/" class="md-nav__link">
+      Hydrogen-bond network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" class="md-nav__link">
+      Tools Program Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      How-Tos
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        How-Tos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../runprm/" class="md-nav__link">
+      Customize run.prm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mcce2free/" class="md-nav__link">
+      Convert mcce tpl file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Make a new topology file
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Make a new topology file
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-format-of-ftpl-file" class="md-nav__link">
+    General format of ftpl file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-of-ftpl-records" class="md-nav__link">
+    Reference of ftpl records
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference of ftpl records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conformer-list" class="md-nav__link">
+    Conformer list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-and-bonds" class="md-nav__link">
+    Atom and bonds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-charges" class="md-nav__link">
+    Atom charges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-radius" class="md-nav__link">
+    Atom radius
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformer-parameters" class="md-nav__link">
+    Conformer parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotatable-bonds" class="md-nav__link">
+    Rotatable bonds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-make-a-new-ftpl-file" class="md-nav__link">
+    How to make a new ftpl file
+  </a>
+  
+    <nav class="md-nav" aria-label="How to make a new ftpl file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-ftpl-file-template" class="md-nav__link">
+    Make ftpl file template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtain-atom-charges" class="md-nav__link">
+    Obtain atom charges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-reference-reaction-field-energy" class="md-nav__link">
+    Calculate reference reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-making-ftpl-file" class="md-nav__link">
+    Examples of making ftpl file
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples of making ftpl file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-state" class="md-nav__link">
+    Single state
+  </a>
+  
+    <nav class="md-nav" aria-label="Single state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-get-pdb-file" class="md-nav__link">
+    Step 1: Get pdb file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-a-ftpl-file" class="md-nav__link">
+    Step 2: Make a ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-calculate-charge" class="md-nav__link">
+    Step 3: Calculate charge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-install-ftpl-file" class="md-nav__link">
+    Step 4: Install ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-reaction-field-energy" class="md-nav__link">
+    Step 5: Reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protonation-or-redox-states" class="md-nav__link">
+    Protonation or redox states
+  </a>
+  
+    <nav class="md-nav" aria-label="Protonation or redox states">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepare-pdb-files" class="md-nav__link">
+    Prepare pdb files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-ftpl-files" class="md-nav__link">
+    Make ftpl files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-charge" class="md-nav__link">
+    Calculate charge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ftpl-file" class="md-nav__link">
+    Install ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction-field-energy" class="md-nav__link">
+    Reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../mfehowto/" class="md-nav__link">
+      Analyze ionization energy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../ms_analysis/" class="md-nav__link">
+      Use MS Analysis Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wikihowto/" class="md-nav__link">
+      Write documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../develop/" class="md-nav__link">
+      Contribute code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../wsl/" class="md-nav__link">
+      Install WSL
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-format-of-ftpl-file" class="md-nav__link">
+    General format of ftpl file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-of-ftpl-records" class="md-nav__link">
+    Reference of ftpl records
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference of ftpl records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conformer-list" class="md-nav__link">
+    Conformer list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-and-bonds" class="md-nav__link">
+    Atom and bonds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-charges" class="md-nav__link">
+    Atom charges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atom-radius" class="md-nav__link">
+    Atom radius
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformer-parameters" class="md-nav__link">
+    Conformer parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotatable-bonds" class="md-nav__link">
+    Rotatable bonds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-make-a-new-ftpl-file" class="md-nav__link">
+    How to make a new ftpl file
+  </a>
+  
+    <nav class="md-nav" aria-label="How to make a new ftpl file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-ftpl-file-template" class="md-nav__link">
+    Make ftpl file template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtain-atom-charges" class="md-nav__link">
+    Obtain atom charges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-reference-reaction-field-energy" class="md-nav__link">
+    Calculate reference reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-making-ftpl-file" class="md-nav__link">
+    Examples of making ftpl file
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples of making ftpl file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-state" class="md-nav__link">
+    Single state
+  </a>
+  
+    <nav class="md-nav" aria-label="Single state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-get-pdb-file" class="md-nav__link">
+    Step 1: Get pdb file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-a-ftpl-file" class="md-nav__link">
+    Step 2: Make a ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-calculate-charge" class="md-nav__link">
+    Step 3: Calculate charge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-install-ftpl-file" class="md-nav__link">
+    Step 4: Install ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-reaction-field-energy" class="md-nav__link">
+    Step 5: Reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protonation-or-redox-states" class="md-nav__link">
+    Protonation or redox states
+  </a>
+  
+    <nav class="md-nav" aria-label="Protonation or redox states">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepare-pdb-files" class="md-nav__link">
+    Prepare pdb files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-ftpl-files" class="md-nav__link">
+    Make ftpl files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-charge" class="md-nav__link">
+    Calculate charge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ftpl-file" class="md-nav__link">
+    Install ftpl file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reaction-field-energy" class="md-nav__link">
+    Reaction field energy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-make-a-new-topology-file">How to make a new topology file?<a class="headerlink" href="#how-to-make-a-new-topology-file" title="Permanent link">&para;</a></h1>
+<p><small><i>Page last updated on: 2020-09-29</i></small></p>
+<p>Topology file defines a molecule, including the atom connectivity, atom charge and radius, how conformers are made etc.</p>
+<h2 id="general-format-of-ftpl-file">General format of ftpl file<a class="headerlink" href="#general-format-of-ftpl-file" title="Permanent link">&para;</a></h2>
+<p>The format of free format tpl file is simple. It is simply a key value pair separated by ":".</p>
+<p>The key can be up to three fields, separated by ",". The first key field is primary key, describing what kind of record it is, and the other two keys are supplementary, describing what molecule/conformer/atom it belongs to. The Value is a string, and will be processed by the mcce program in the context of key. If a space is a part of the key or value, it must be quoted inside double quotes.</p>
+<p>":", "," and "#" are reserved, and can not be used as part of key and value. The following is an example:</p>
+<ul>
+<li>Any text after "#" is considered comment.</li>
+<li>Any line that doesn't have ":" is considered as comment</li>
+</ul>
+<div class="highlight"><pre><span></span><code>CONNECT, &quot; N &quot;, GLUBK: sp2, &quot; ? &quot;, &quot; CA &quot;, &quot; H &quot;
+</code></pre></div>
+<p>MCCE reads in lines from ftpl files and save them in a single database. The content in multiple ftpl files are compiled into the database. Therefore one ftpl file can define multiple residues, and one residue parameter lines can be spread in multiple files.</p>
+<p>If the same key appears more than once, only the value of the last one is valid. This means the previous loaded value under this key will be overwritten.</p>
+<p>The order of reading ftpl files is alphabetic order of the file names.</p>
+<h2 id="reference-of-ftpl-records">Reference of ftpl records<a class="headerlink" href="#reference-of-ftpl-records" title="Permanent link">&para;</a></h2>
+<h3 id="conformer-list">Conformer list<a class="headerlink" href="#conformer-list" title="Permanent link">&para;</a></h3>
+<p>Example:
+<div class="highlight"><pre><span></span><code>CONFLIST, GLU: GLUBK, GLU01, GLU02, GLU-1
+</code></pre></div>
+<strong>This is a required parameter for a molecule</strong></p>
+<p>This parameter tells MCCE that residue GLU has 4 conformers.</p>
+<p>A conformer is named in as a 3-char residue name + 2-char conformer label.</p>
+<p>The conformer that ends with BK is a special backbone conformer. The atoms of the backbone conformerdo not change charge and protonation states. They and the atoms of one of the other side chain conformers make up the residue. In addition backbone conformers of all residues are grouped into one big chunck for energy calculation.</p>
+<p>Conformers other than backbone conformer are side chain conformers. They differ with each other by atom charge, bond connection, or proton number.</p>
+<p>Another special type conformer ends with "DM" as a convention name. The "DM" is not required. It has 0 atoms (no matching CONNECT parameters), and it represents the absence of this conformer, such as water leaving the site.</p>
+<h3 id="atom-and-bonds">Atom and bonds<a class="headerlink" href="#atom-and-bonds" title="Permanent link">&para;</a></h3>
+<p>Example:
+<div class="highlight"><pre><span></span><code>CONNECT, &quot; N  &quot;, GLUBK: sp2, &quot; ?  &quot;, &quot; CA &quot;, &quot; H  &quot;
+CONNECT, &quot; H  &quot;, GLUBK: s, &quot; N  &quot;
+CONNECT, &quot; CA &quot;, GLUBK: sp3, &quot; N  &quot;, &quot; C  &quot;, &quot; CB &quot;, &quot; HA &quot;
+CONNECT, &quot; HA &quot;, GLUBK: s, &quot; CA &quot;
+CONNECT, &quot; C  &quot;, GLUBK: sp2, &quot; CA &quot;, &quot; O  &quot;, &quot; ?  &quot;
+CONNECT, &quot; O  &quot;, GLUBK: sp2, &quot; C  &quot;
+CONNECT, &quot; CB &quot;, GLU01: sp3, &quot; CA &quot;, &quot; CG &quot;, &quot; HB2&quot;, &quot; HB3&quot;
+CONNECT, &quot; HB2&quot;, GLU01: s, &quot; CB &quot;
+CONNECT, &quot; HB3&quot;, GLU01: s, &quot; CB &quot;
+CONNECT, &quot; CG &quot;, GLU01: sp3, &quot; CB &quot;, &quot; CD &quot;, &quot; HG2&quot;, &quot; HG3&quot;
+CONNECT, &quot; HG2&quot;, GLU01: s, &quot; CG &quot;
+CONNECT, &quot; HG3&quot;, GLU01: s, &quot; CG &quot;
+CONNECT, &quot; CD &quot;, GLU01: sp2, &quot; CG &quot;, &quot; OE1&quot;, &quot; OE2&quot;
+CONNECT, &quot; OE1&quot;, GLU01: sp3, &quot; CD &quot;, &quot; HE1&quot;
+CONNECT, &quot; HE1&quot;, GLU01: s, &quot; OE1&quot;
+CONNECT, &quot; OE2&quot;, GLU01: s, &quot; CD &quot;
+CONNECT, &quot; CB &quot;, GLU02: sp3, &quot; CA &quot;, &quot; CG &quot;, &quot; HB2&quot;, &quot; HB3&quot;
+CONNECT, &quot; HB2&quot;, GLU02: s, &quot; CB &quot;
+CONNECT, &quot; HB3&quot;, GLU02: s, &quot; CB &quot;
+CONNECT, &quot; CG &quot;, GLU02: sp3, &quot; CB &quot;, &quot; CD &quot;, &quot; HG2&quot;, &quot; HG3&quot;
+CONNECT, &quot; HG2&quot;, GLU02: s, &quot; CG &quot;
+CONNECT, &quot; HG3&quot;, GLU02: s, &quot; CG &quot;
+CONNECT, &quot; CD &quot;, GLU02: sp2, &quot; CG &quot;, &quot; OE1&quot;, &quot; OE2&quot;
+CONNECT, &quot; OE1&quot;, GLU02: s, &quot; CD &quot;
+CONNECT, &quot; OE2&quot;, GLU02: sp3, &quot; CD &quot;, &quot; HE2&quot;
+CONNECT, &quot; HE2&quot;, GLU02: sp3, &quot; OE2&quot;
+CONNECT, &quot; CB &quot;, GLU-1: sp3, &quot; CA &quot;, &quot; CG &quot;, &quot; HB2&quot;, &quot; HB3&quot;
+CONNECT, &quot; HB2&quot;, GLU-1: s, &quot; CB &quot;
+CONNECT, &quot; HB3&quot;, GLU-1: s, &quot; CB &quot;
+CONNECT, &quot; CG &quot;, GLU-1: sp3, &quot; CB &quot;, &quot; CD &quot;, &quot; HG2&quot;, &quot; HG3&quot;
+CONNECT, &quot; HG2&quot;, GLU-1: s, &quot; CG &quot;
+CONNECT, &quot; HG3&quot;, GLU-1: s, &quot; CG &quot;
+CONNECT, &quot; CD &quot;, GLU-1: sp2, &quot; CG &quot;, &quot; OE1&quot;, &quot; OE2&quot;
+CONNECT, &quot; OE1&quot;, GLU-1: sp2, &quot; CD &quot;
+CONNECT, &quot; OE2&quot;, GLU-1: sp2, &quot; CD &quot;
+</code></pre></div></p>
+<p>CONNECT parameters define three things for a conformer: the atom names, bond geometry, and bonds. If none CONNECT parameters exist for a conformer, that conformer is a "dummy" conformer, representing the absence of the atoms/molecule.</p>
+<p>The keys are: parameter name, atom name, and conformer name, in this order.</p>
+<p>The value starts with atom orbital hybridization, which defines the bond angles and bond numbers, then the atoms that are bonded.</p>
+<p>For a single atom molecule, or an atom that are not connected to other atoms, use "ion" as the orbital type.</p>
+<p>The atom names need to be enclosed in quotations so the spaces will be counted.</p>
+<h3 id="atom-charges">Atom charges<a class="headerlink" href="#atom-charges" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>CHARGE, GLUBK, &quot; N  &quot;: -0.350
+CHARGE, GLUBK, &quot; H  &quot;:  0.250
+CHARGE, GLUBK, &quot; CA &quot;:  0.100
+CHARGE, GLUBK, &quot; HA &quot;:  0.000
+CHARGE, GLUBK, &quot; C  &quot;:  0.550
+CHARGE, GLUBK, &quot; O  &quot;: -0.550
+CHARGE, GLU01, &quot; CB &quot;:  0.000
+CHARGE, GLU01, &quot; HB2&quot;:  0.000
+CHARGE, GLU01, &quot; HB3&quot;:  0.000
+CHARGE, GLU01, &quot; CG &quot;:  0.000
+CHARGE, GLU01, &quot; HG2&quot;:  0.000
+CHARGE, GLU01, &quot; HG3&quot;:  0.000
+CHARGE, GLU01, &quot; CD &quot;:  0.550
+CHARGE, GLU01, &quot; OE1&quot;: -0.495
+CHARGE, GLU01, &quot; HE1&quot;:  0.435
+CHARGE, GLU01, &quot; OE2&quot;: -0.490
+CHARGE, GLU02, &quot; CB &quot;:  0.000
+CHARGE, GLU02, &quot; HB2&quot;:  0.000
+CHARGE, GLU02, &quot; HB3&quot;:  0.000
+CHARGE, GLU02, &quot; CG &quot;:  0.000
+CHARGE, GLU02, &quot; HG2&quot;:  0.000
+CHARGE, GLU02, &quot; HG3&quot;:  0.000
+CHARGE, GLU02, &quot; CD &quot;:  0.550
+CHARGE, GLU02, &quot; OE1&quot;: -0.490
+CHARGE, GLU02, &quot; OE2&quot;: -0.495
+CHARGE, GLU02, &quot; HE2&quot;:  0.435
+CHARGE, GLU-1, &quot; CB &quot;:  0.000
+CHARGE, GLU-1, &quot; HB2&quot;:  0.000
+CHARGE, GLU-1, &quot; HB3&quot;:  0.000
+CHARGE, GLU-1, &quot; CG &quot;:  0.000
+CHARGE, GLU-1, &quot; HG2&quot;:  0.000
+CHARGE, GLU-1, &quot; HG3&quot;:  0.000
+CHARGE, GLU-1, &quot; CD &quot;:  0.100
+CHARGE, GLU-1, &quot; OE1&quot;: -0.550
+CHARGE, GLU-1, &quot; OE2&quot;: -0.550
+</code></pre></div>
+This parameter defines the charge of an atom in a conformer. The same atom in a molecule may have different charge depending on its bond status, protonation states, and ionization states.</p>
+<p>The key is the parameter name, conformer name and atom name. and the value is the atomic charge. If a CHARGE parameter is missing for an atom, a 0 charge is assumed.</p>
+<h3 id="atom-radius">Atom radius<a class="headerlink" href="#atom-radius" title="Permanent link">&para;</a></h3>
+<p>Example:
+<div class="highlight"><pre><span></span><code>RADIUS,  GLUBK,  &quot; N  &quot;: 1.500,   1.750,   0.160
+RADIUS,  GLUBK,  &quot; H  &quot;: 1.000,   1.000,   0.020
+RADIUS,  GLUBK,  &quot; CA &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLUBK,  &quot; HA &quot;: 0.000,   1.000,   0.020
+RADIUS,  GLUBK,  &quot; C  &quot;: 1.700,   2.000,   0.150
+RADIUS,  GLUBK,  &quot; O  &quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU01,  &quot; CB &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU01,  &quot; HB2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU01,  &quot; HB3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU01,  &quot; CG &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU01,  &quot; HG2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU01,  &quot; HG3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU01,  &quot; CD &quot;: 1.700,   2.000,   0.150
+RADIUS,  GLU01,  &quot; OE1&quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU01,  &quot; HE1&quot;: 1.000,   1.000,   0.020
+RADIUS,  GLU01,  &quot; OE2&quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU02,  &quot; CB &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU02,  &quot; HB2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU02,  &quot; HB3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU02,  &quot; CG &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU02,  &quot; HG2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU02,  &quot; HG3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU02,  &quot; CD &quot;: 1.700,   2.000,   0.150
+RADIUS,  GLU02,  &quot; OE1&quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU02,  &quot; OE2&quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU02,  &quot; HE2&quot;: 1.000,   1.000,   0.020
+RADIUS,  GLU-1,  &quot; CB &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU-1,  &quot; HB2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  &quot; HB3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  &quot; CG &quot;: 2.000,   2.000,   0.150
+RADIUS,  GLU-1,  &quot; HG2&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  &quot; HG3&quot;: 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  &quot; CD &quot;: 1.700,   2.000,   0.150
+RADIUS,  GLU-1,  &quot; OE1&quot;: 1.400,   1.600,   0.200
+RADIUS,  GLU-1,  &quot; OE2&quot;: 1.400,   1.600,   0.200
+</code></pre></div></p>
+<p>The radius parameter includes both the dielelctric boundary radius, and VDW radius plus energy well depth.</p>
+<p>The key is the parameter name, conformer name and atom name.</p>
+<p>The value has three fields. They are radius for defining dielectric boundary, and the radius and energy well depth to caculate Van der Waals energy.</p>
+<h3 id="conformer-parameters">Conformer parameters<a class="headerlink" href="#conformer-parameters" title="Permanent link">&para;</a></h3>
+<p>Example:
+<div class="highlight"><pre><span></span><code>CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = -6.41, rxn04= -3.100, rxn08= -1.39
+CONFORMER, GLU02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = -6.44, rxn04= -3.100, rxn08= -1.39
+CONFORMER, GLU-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02 =-41.76, rxn04=-20.200, rxn08= -9.59
+</code></pre></div></p>
+<p>Each conformer defined in CONFLIST except backbone and dummy conformers should have a line in this section. It defines some necessary conformer properties.</p>
+<p>The key is parameter name and conformer.</p>
+<p>The value consists fields separated by commas. Each field is a key value pair.</p>
+<ul>
+<li>Em0: Redox titration midpoint potential of the molecule in solution.</li>
+<li>pKa0: pH titration mid point of the molecule in solution</li>
+<li>ne: relative number of electrons. For a redox reaction, the ground state has ne = 0, the excited state has a ne of none 0.</li>
+<li>nH:  relative number of protons. For a protonation reaction, the ground state has nH = 0, charged acid loses a proton so nH = -1 and charged base gains a proton so nH = 1.</li>
+<li>rxn02: reference reaction field energy at dielectric constant 2.</li>
+<li>rxn04: reference reaction field energy at dielectric constant 4.</li>
+<li>rxn08: reference reaction field energy at dielectric constant 8.</li>
+</ul>
+<h3 id="rotatable-bonds">Rotatable bonds<a class="headerlink" href="#rotatable-bonds" title="Permanent link">&para;</a></h3>
+<p>Example:
+<div class="highlight"><pre><span></span><code>ROTATE, GLU: &quot; CA &quot; - &quot; CB &quot;, &quot; CB &quot; - &quot; CG &quot;, &quot; CG &quot; - &quot; CD &quot;
+</code></pre></div></p>
+<p><strong>This is an optional parameter.</strong></p>
+<p>The key is parameter name and residue name. Different conformer types are not configured to have different bond rotations.</p>
+<p>The key is a series of rotatable bonds. Each rotatable bond is defined by two atoms, and these two atoms are directional. The direction means when a bond rotation is made, the first atom is stationary, and the second atom and all atoms connected to it in that direction will all rotate accordingly.</p>
+<h2 id="how-to-make-a-new-ftpl-file">How to make a new ftpl file<a class="headerlink" href="#how-to-make-a-new-ftpl-file" title="Permanent link">&para;</a></h2>
+<p>Although one can manually write all the parameter lines in ftpl file. There are tools to help making ftpl file much easier.</p>
+<h3 id="make-ftpl-file-template">Make ftpl file template<a class="headerlink" href="#make-ftpl-file-template" title="Permanent link">&para;</a></h3>
+<p>If you have a pdb file, you can build a ftpl file template out of it.</p>
+<p>Syntax:
+<div class="highlight"><pre><span></span><code>$ pdb2ftpl.py [-d] [-c ID] pdbfile
+</code></pre></div></p>
+<p>The command will use CONECT record in pdb file to find bonds when available. If CONECT does not exist, the program will switch to distance calculated by atom coordinates to make bonds.</p>
+<p>The switch "-d" forces the program to use distance to make bonds.</p>
+<p>The switch "-c ID" lets the program to use a different 2-character conformer ID. By default, the ID is 01.</p>
+<h3 id="obtain-atom-charges">Obtain atom charges<a class="headerlink" href="#obtain-atom-charges" title="Permanent link">&para;</a></h3>
+<p>One way to compute atomic charge is through Atomic Charge Calculator at <a href="https://webchem.ncbr.muni.cz/Platform/ChargeCalculator">https://webchem.ncbr.muni.cz/Platform/ChargeCalculator</a></p>
+<p>You can specify non-0 total charge of the molecule with this tool.</p>
+<h3 id="calculate-reference-reaction-field-energy">Calculate reference reaction field energy<a class="headerlink" href="#calculate-reference-reaction-field-energy" title="Permanent link">&para;</a></h3>
+<p>Once you assign the atomic charges to the atoms in the ftpl file template and name it with suffix .ftpl, copy this file to the mcce param directory under its installation folder. The installation directory is where the mcce program is.</p>
+<p>For example, you find the location of mcce executable:
+<div class="highlight"><pre><span></span><code>$ which mcce
+/home/jmao/projects/Stable-MCCE/bin/mcce
+</code></pre></div></p>
+<p>Then the param directory is:
+<div class="highlight"><pre><span></span><code>$ ls /home/jmao/projects/Stable-MCCE/param
+00always_needed.tpl  asn.ftpl  _cl.ftpl  ena.ftpl  gly.ftpl  ile.ftpl  mel.ftpl  ntr.ftpl  ser.ftpl       tyr.ftpl
+7MQ.ftpl             asp.ftpl  ctr.ftpl  for.ftpl  hil.ftpl  leu.ftpl  mem.ftpl  pdbs      step1_out.pdb  val.ftpl
+ala.ftpl             bcl.ftpl  cyd.ftpl  gln.ftpl  his.ftpl  lys.ftpl  met.ftpl  phe.ftpl  thr.ftpl       _zn.ftpl
+arg.ftpl             bcr.ftpl  cys.ftpl  glu.ftpl  hoh.ftpl  mcce.tpl  _na.ftpl  pro.ftpl  trp.ftpl
+</code></pre></div></p>
+<p>This is the directory ftpl files are stored.</p>
+<h2 id="examples-of-making-ftpl-file">Examples of making ftpl file<a class="headerlink" href="#examples-of-making-ftpl-file" title="Permanent link">&para;</a></h2>
+<p>Here are some examples of making new ftpl file for molecules:</p>
+<h3 id="single-state">Single state<a class="headerlink" href="#single-state" title="Permanent link">&para;</a></h3>
+<p>This example prepares a ftpl file for a molecule with one single state. That is, no inozation conformer, no dummy conformer.</p>
+<p>Ethanol: CH3CH2OH</p>
+<h4 id="step-1-get-pdb-file">Step 1: Get pdb file<a class="headerlink" href="#step-1-get-pdb-file" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Goto RSCB ligand expo <a href="http://ligand-expo.rcsb.org/">http://ligand-expo.rcsb.org/</a></li>
+<li>Search Ethanol as molecule name from <a href="http://ligand-expo.rcsb.org/">http://ligand-expo.rcsb.org/</a>.</li>
+<li>Download the pdb file of ethanol EOH_ideal.pdb. or use this command to download directly
+ <code>$ wget http://ligand-expo.rcsb.org/reports/E/EOH/EOH_ideal.pdb</code></li>
+</ul>
+<h4 id="step-2-make-a-ftpl-file">Step 2: Make a ftpl file<a class="headerlink" href="#step-2-make-a-ftpl-file" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ pdb2ftpl.py EOH_ideal.pdb &gt; eoh.ftpl
+$ cat eoh.ftpl 
+# Conformer definition
+CONFLIST, EOH: EOHBK, EOH01
+
+# ATOM name and bonds
+CONNECT, &quot; C1 &quot;, EOH01:  sp3, &quot; C2 &quot;,&quot; O  &quot;,&quot; H11&quot;,&quot; H12&quot;
+CONNECT, &quot; C2 &quot;, EOH01:  sp3, &quot; C1 &quot;,&quot; H21&quot;,&quot; H22&quot;,&quot; H23&quot;
+CONNECT, &quot; O  &quot;, EOH01:  sp3, &quot; C1 &quot;,&quot; HO &quot;
+CONNECT, &quot; H11&quot;, EOH01:    s, &quot; C1 &quot;
+CONNECT, &quot; H12&quot;, EOH01:    s, &quot; C1 &quot;
+CONNECT, &quot; H21&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; H22&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; H23&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; HO &quot;, EOH01:    s, &quot; O  &quot;
+
+# ATOM charges
+CHARGE, EOH01, &quot; C1 &quot;: to_be_filled
+CHARGE, EOH01, &quot; C2 &quot;: to_be_filled
+CHARGE, EOH01, &quot; O  &quot;: to_be_filled
+CHARGE, EOH01, &quot; H11&quot;: to_be_filled
+CHARGE, EOH01, &quot; H12&quot;: to_be_filled
+CHARGE, EOH01, &quot; H21&quot;: to_be_filled
+CHARGE, EOH01, &quot; H22&quot;: to_be_filled
+CHARGE, EOH01, &quot; H23&quot;: to_be_filled
+CHARGE, EOH01, &quot; HO &quot;: to_be_filled
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, EOH01, &quot; C1 &quot;:  1.700,  2.000,  0.150
+RADIUS, EOH01, &quot; C2 &quot;:  1.700,  2.000,  0.150
+RADIUS, EOH01, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, EOH01, &quot; H11&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H12&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H21&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H22&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H23&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; HO &quot;:  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= to_be_filled, rxn04= to_be_filled, rxn08= to_be_filled
+</code></pre></div>
+<h4 id="step-3-calculate-charge">Step 3: Calculate charge<a class="headerlink" href="#step-3-calculate-charge" title="Permanent link">&para;</a></h4>
+<p>Go to <a href="https://webchem.ncbr.muni.cz/Platform/ChargeCalculator">https://webchem.ncbr.muni.cz/Platform/ChargeCalculator</a></p>
+<p>Submit EOH_ideal.pdb, set total charge 0, and obtain the atomic charge results.</p>
+<p><img alt="charge" src="../img/EOH_charge.png" /></p>
+<p>Assign the charges to the previously made file eoh.ftpl
+<div class="highlight"><pre><span></span><code># Conformer definition
+CONFLIST, EOH: EOHBK, EOH01
+
+# ATOM name and bonds
+CONNECT, &quot; C1 &quot;, EOH01:  sp3, &quot; C2 &quot;,&quot; O  &quot;,&quot; H11&quot;,&quot; H12&quot;
+CONNECT, &quot; C2 &quot;, EOH01:  sp3, &quot; C1 &quot;,&quot; H21&quot;,&quot; H22&quot;,&quot; H23&quot;
+CONNECT, &quot; O  &quot;, EOH01:  sp3, &quot; C1 &quot;,&quot; HO &quot;
+CONNECT, &quot; H11&quot;, EOH01:    s, &quot; C1 &quot;
+CONNECT, &quot; H12&quot;, EOH01:    s, &quot; C1 &quot;
+CONNECT, &quot; H21&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; H22&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; H23&quot;, EOH01:    s, &quot; C2 &quot;
+CONNECT, &quot; HO &quot;, EOH01:    s, &quot; O  &quot;
+
+# ATOM charges
+CHARGE, EOH01, &quot; C1 &quot;: -0.085
+CHARGE, EOH01, &quot; C2 &quot;: -0.554
+CHARGE, EOH01, &quot; O  &quot;: -0.746
+CHARGE, EOH01, &quot; H11&quot;: 0.177
+CHARGE, EOH01, &quot; H12&quot;: 0.177
+CHARGE, EOH01, &quot; H21&quot;: 0.237
+CHARGE, EOH01, &quot; H22&quot;: 0.237
+CHARGE, EOH01, &quot; H23&quot;: 0.209
+CHARGE, EOH01, &quot; HO &quot;: 0.351
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, EOH01, &quot; C1 &quot;:  1.700,  2.000,  0.150
+RADIUS, EOH01, &quot; C2 &quot;:  1.700,  2.000,  0.150
+RADIUS, EOH01, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, EOH01, &quot; H11&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H12&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H21&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H22&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; H23&quot;:  1.000,  1.000,  0.020
+RADIUS, EOH01, &quot; HO &quot;:  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+</code></pre></div></p>
+<h4 id="step-4-install-ftpl-file">Step 4: Install ftpl file<a class="headerlink" href="#step-4-install-ftpl-file" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Find the param/ location<br>
+<div class="highlight"><pre><span></span><code>$ which mcce
+/home/jmao/projects/Stable-MCCE/bin/mcce
+</code></pre></div></li>
+<li>Copy ftpl file to param/ <br>
+<div class="highlight"><pre><span></span><code>$ cp eoh.ftpl /home/jmao/projects/Stable-MCCE/param
+</code></pre></div></li>
+</ul>
+<h4 id="step-5-reaction-field-energy">Step 5: Reaction field energy<a class="headerlink" href="#step-5-reaction-field-energy" title="Permanent link">&para;</a></h4>
+<p>Starting with rxn02 = 0, rxn04 = 0, and rxn08 = 0, we are going to recalculate the proper reference values so that this molecule in solution gives 0 desolvation energy in self-energy file head3.lst.</p>
+<div class="highlight"><pre><span></span><code>$ step1.py --noter EOH_ideal.pdb
+$ step2.py
+$ step3.py
+</code></pre></div>
+<p>Then do <code>cat head3.lst</code> and find the number under dsolv, which is -4.076 in our case. The step 3 used default dielectric constant 4, so this value is for rxn04.</p>
+<p>Put this number back to eoh.ftpl file under param/ so it reads like:
+<div class="highlight"><pre><span></span><code># Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -4.076, rxn08= 0
+</code></pre></div></p>
+<p>If we run 3 steps again, we will get dsolv about 0 this time:
+<div class="highlight"><pre><span></span><code>$ step3.py
+$ cat head3.lst
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   0.004   0.000 01O000M000 t
+</code></pre></div></p>
+<p>Next we need to do the same for rxn02 and rxn 08. Step3 will take epsilon as our command option this time.</p>
+<p>Dielectric constant 2
+<div class="highlight"><pre><span></span><code>$ step3.py -d 2
+$ cat head3.lst
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   -8.500  0.000 01O000M000 t
+</code></pre></div></p>
+<p>Dielectric constant 8
+<div class="highlight"><pre><span></span><code>$ step3.py -d 8
+$ cat head3.lst
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 EOH01A0001_001 f 0.00  0.003     0  0.00  0  0   0.677   0.000   0.000   0.000   -1.875  0.000 01O000M000 t
+</code></pre></div></p>
+<p>Put these numbers back to param/eoh.ftpl under installation folder, this line reads as:
+<div class="highlight"><pre><span></span><code>CONFORMER, EOH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -8.5, rxn04= -4.076, rxn08= -1.875
+</code></pre></div></p>
+<h3 id="protonation-or-redox-states">Protonation or redox states<a class="headerlink" href="#protonation-or-redox-states" title="Permanent link">&para;</a></h3>
+<p>What if a molecule has multiple ionization states? In short, we need to assign two conformer types and give atoms different charge sets.</p>
+<p>Example:</p>
+<p>Acetic acid: CH3COOH</p>
+<h4 id="prepare-pdb-files">Prepare pdb files<a class="headerlink" href="#prepare-pdb-files" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Goto RSCB ligand expo <a href="http://ligand-expo.rcsb.org/">http://ligand-expo.rcsb.org/</a></li>
+<li>Search "acetic acid"</li>
+<li>Click on Chemical details of ACY</li>
+<li>Download pdb file or <br>
+<div class="highlight"><pre><span></span><code>$ wget http://ligand-expo.rcsb.org/reports/A/ACY/ACY_ideal.pdb
+</code></pre></div></li>
+</ul>
+<p>This file is in protonated state:
+<div class="highlight"><pre><span></span><code>ATOM      1  C   ACY A   1       0.012  -0.056   0.002  1.00 10.00           C
+ATOM      2  O   ACY A   1       0.261  -1.238  -0.000  1.00 10.00           O
+ATOM      3  OXT ACY A   1       1.011   0.840  -0.000  1.00 10.00           O
+ATOM      4  CH3 ACY A   1      -1.421   0.412  -0.000  1.00 10.00           C
+ATOM      5  HXT ACY A   1       1.913   0.493  -0.003  1.00 10.00           H
+ATOM      6  H1  ACY A   1      -1.768   0.523   1.027  1.00 10.00           H
+ATOM      7  H2  ACY A   1      -1.489   1.372  -0.512  1.00 10.00           H
+ATOM      8  H3  ACY A   1      -2.042  -0.320  -0.517  1.00 10.00           H
+CONECT    1    2    3    4
+CONECT    2    1
+CONECT    3    1    5
+CONECT    4    1    6    7    8
+CONECT    5    3
+CONECT    6    4
+CONECT    7    4
+CONECT    8    4
+</code></pre></div></p>
+<p>We need to make a pdb file in name ACY_deprotonated.pdb for deprotonated state by deleting HXT:
+<div class="highlight"><pre><span></span><code>ATOM      1  C   ACY A   1       0.012  -0.056   0.002  1.00 10.00           C
+ATOM      2  O   ACY A   1       0.261  -1.238  -0.000  1.00 10.00           O
+ATOM      3  OXT ACY A   1       1.011   0.840  -0.000  1.00 10.00           O
+ATOM      4  CH3 ACY A   1      -1.421   0.412  -0.000  1.00 10.00           C
+ATOM      6  H1  ACY A   1      -1.768   0.523   1.027  1.00 10.00           H
+ATOM      7  H2  ACY A   1      -1.489   1.372  -0.512  1.00 10.00           H
+ATOM      8  H3  ACY A   1      -2.042  -0.320  -0.517  1.00 10.00           H
+</code></pre></div>
+We also deleted CONECT because we dont want to manually fix CONECT due to the missing HXT.</p>
+<h4 id="make-ftpl-files">Make ftpl files<a class="headerlink" href="#make-ftpl-files" title="Permanent link">&para;</a></h4>
+<ul>
+<li>create ftpl template for protonated acetic acid <br>
+<div class="highlight"><pre><span></span><code>$ pdb2ftpl.py ACY_ideal.pdb &gt; acy.ftpl
+</code></pre></div></li>
+<li>create ftpl template for deprotonated acetic acid <br>
+<div class="highlight"><pre><span></span><code>$ pdb2ftpl.py -c -1 ACY_deprotonated.pdb &gt; acy-1.ftpl
+</code></pre></div></li>
+</ul>
+<p>Merge two files. While CONFLIST maintains a single line, other parameters still take individual lines.
+<div class="highlight"><pre><span></span><code># Conformer definition
+CONFLIST, ACY: ACYBK, ACY01, ACY-1
+
+# ATOM name and bonds
+CONNECT, &quot; C  &quot;, ACY01:  sp2, &quot; O  &quot;,&quot; OXT&quot;,&quot; CH3&quot;
+CONNECT, &quot; O  &quot;, ACY01:  sp3, &quot; C  &quot;
+CONNECT, &quot; OXT&quot;, ACY01:  sp2, &quot; C  &quot;,&quot; HXT&quot;
+CONNECT, &quot; CH3&quot;, ACY01:  sp3, &quot; C  &quot;,&quot; H1 &quot;,&quot; H2 &quot;,&quot; H3 &quot;
+CONNECT, &quot; HXT&quot;, ACY01:    s, &quot; OXT&quot;
+CONNECT, &quot; H1 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; H2 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; H3 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; C  &quot;, ACY-1:  sp2, &quot; O  &quot;,&quot; OXT&quot;,&quot; CH3&quot;
+CONNECT, &quot; O  &quot;, ACY-1:  sp3, &quot; C  &quot;
+CONNECT, &quot; OXT&quot;, ACY-1:  sp3, &quot; C  &quot;
+CONNECT, &quot; CH3&quot;, ACY-1:  sp3, &quot; C  &quot;,&quot; H1 &quot;,&quot; H2 &quot;,&quot; H3 &quot;
+CONNECT, &quot; H1 &quot;, ACY-1:    s, &quot; CH3&quot;
+CONNECT, &quot; H2 &quot;, ACY-1:    s, &quot; CH3&quot;
+CONNECT, &quot; H3 &quot;, ACY-1:    s, &quot; CH3&quot;
+
+# ATOM charges
+CHARGE, ACY01, &quot; C  &quot;: to_be_filled
+CHARGE, ACY01, &quot; O  &quot;: to_be_filled
+CHARGE, ACY01, &quot; OXT&quot;: to_be_filled
+CHARGE, ACY01, &quot; CH3&quot;: to_be_filled
+CHARGE, ACY01, &quot; HXT&quot;: to_be_filled
+CHARGE, ACY01, &quot; H1 &quot;: to_be_filled
+CHARGE, ACY01, &quot; H2 &quot;: to_be_filled
+CHARGE, ACY01, &quot; H3 &quot;: to_be_filled
+CHARGE, ACY-1, &quot; C  &quot;: to_be_filled
+CHARGE, ACY-1, &quot; O  &quot;: to_be_filled
+CHARGE, ACY-1, &quot; OXT&quot;: to_be_filled
+CHARGE, ACY-1, &quot; CH3&quot;: to_be_filled
+CHARGE, ACY-1, &quot; H1 &quot;: to_be_filled
+CHARGE, ACY-1, &quot; H2 &quot;: to_be_filled
+CHARGE, ACY-1, &quot; H3 &quot;: to_be_filled
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, ACY01, &quot; C  &quot;:  1.700,  2.000,  0.150
+RADIUS, ACY01, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, ACY01, &quot; OXT&quot;:  1.400,  1.600,  0.200
+RADIUS, ACY01, &quot; CH3&quot;:  1.700,  2.000,  0.150
+RADIUS, ACY01, &quot; HXT&quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H1 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H2 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H3 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; C  &quot;:  1.700,  2.000,  0.150
+RADIUS, ACY-1, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, ACY-1, &quot; OXT&quot;:  1.400,  1.600,  0.200
+RADIUS, ACY-1, &quot; CH3&quot;:  1.700,  2.000,  0.150
+RADIUS, ACY-1, &quot; H1 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; H2 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; H3 &quot;:  1.000,  1.000,  0.020
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ACY01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, ACY-1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+</code></pre></div></p>
+<h4 id="calculate-charge">Calculate charge<a class="headerlink" href="#calculate-charge" title="Permanent link">&para;</a></h4>
+<p>Go to <a href="https://webchem.ncbr.muni.cz/Platform/ChargeCalculator">https://webchem.ncbr.muni.cz/Platform/ChargeCalculator</a></p>
+<p>Submit ACY_ideal.pdb, set total charge 0, and obtain the atomic charge results.</p>
+<p>Submit ACY_deprotonated.pdb, set total charge -1, and obtain the atomic charge results.</p>
+<p>Assign the charges to acy.ftpl file:
+ take individual lines.
+<div class="highlight"><pre><span></span><code># Conformer definition
+CONFLIST, ACY: ACYBK, ACY01, ACY-1
+
+# ATOM name and bonds
+CONNECT, &quot; C  &quot;, ACY01:  sp2, &quot; O  &quot;,&quot; OXT&quot;,&quot; CH3&quot;
+CONNECT, &quot; O  &quot;, ACY01:  sp3, &quot; C  &quot;
+CONNECT, &quot; OXT&quot;, ACY01:  sp2, &quot; C  &quot;,&quot; HXT&quot;
+CONNECT, &quot; CH3&quot;, ACY01:  sp3, &quot; C  &quot;,&quot; H1 &quot;,&quot; H2 &quot;,&quot; H3 &quot;
+CONNECT, &quot; HXT&quot;, ACY01:    s, &quot; OXT&quot;
+CONNECT, &quot; H1 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; H2 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; H3 &quot;, ACY01:    s, &quot; CH3&quot;
+CONNECT, &quot; C  &quot;, ACY-1:  sp2, &quot; O  &quot;,&quot; OXT&quot;,&quot; CH3&quot;
+CONNECT, &quot; O  &quot;, ACY-1:  sp3, &quot; C  &quot;
+CONNECT, &quot; OXT&quot;, ACY-1:  sp3, &quot; C  &quot;
+CONNECT, &quot; CH3&quot;, ACY-1:  sp3, &quot; C  &quot;,&quot; H1 &quot;,&quot; H2 &quot;,&quot; H3 &quot;
+CONNECT, &quot; H1 &quot;, ACY-1:    s, &quot; CH3&quot;
+CONNECT, &quot; H2 &quot;, ACY-1:    s, &quot; CH3&quot;
+CONNECT, &quot; H3 &quot;, ACY-1:    s, &quot; CH3&quot;
+
+# ATOM charges
+CHARGE, ACY01, &quot; C  &quot;: 0.680
+CHARGE, ACY01, &quot; O  &quot;: -0.590
+CHARGE, ACY01, &quot; OXT&quot;: -0.774
+CHARGE, ACY01, &quot; CH3&quot;: -0.606
+CHARGE, ACY01, &quot; HXT&quot;: 0.433
+CHARGE, ACY01, &quot; H1 &quot;: 0.283
+CHARGE, ACY01, &quot; H2 &quot;: 0.287
+CHARGE, ACY01, &quot; H3 &quot;: 0.287
+CHARGE, ACY-1, &quot; C  &quot;: 0.577
+CHARGE, ACY-1, &quot; O  &quot;: -0.768
+CHARGE, ACY-1, &quot; OXT&quot;: -0.699
+CHARGE, ACY-1, &quot; CH3&quot;: -0.714
+CHARGE, ACY-1, &quot; H1 &quot;: 0.198
+CHARGE, ACY-1, &quot; H2 &quot;: 0.202
+CHARGE, ACY-1, &quot; H3 &quot;: 0.204
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, ACY01, &quot; C  &quot;:  1.700,  2.000,  0.150
+RADIUS, ACY01, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, ACY01, &quot; OXT&quot;:  1.400,  1.600,  0.200
+RADIUS, ACY01, &quot; CH3&quot;:  1.700,  2.000,  0.150
+RADIUS, ACY01, &quot; HXT&quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H1 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H2 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY01, &quot; H3 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; C  &quot;:  1.700,  2.000,  0.150
+RADIUS, ACY-1, &quot; O  &quot;:  1.400,  1.600,  0.200
+RADIUS, ACY-1, &quot; OXT&quot;:  1.400,  1.600,  0.200
+RADIUS, ACY-1, &quot; CH3&quot;:  1.700,  2.000,  0.150
+RADIUS, ACY-1, &quot; H1 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; H2 &quot;:  1.000,  1.000,  0.020
+RADIUS, ACY-1, &quot; H3 &quot;:  1.000,  1.000,  0.020
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ACY01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, ACY-1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+</code></pre></div></p>
+<h4 id="install-ftpl-file">Install ftpl file<a class="headerlink" href="#install-ftpl-file" title="Permanent link">&para;</a></h4>
+<p>User made ftpl files are called custom ftpl files. They should be placed under ./user_param of working directory. If this directory doesn't exist, create one.</p>
+<p>The ftpl files under ./user_param supercsede the system ftpl files so you can overwrite system ftpl files with your own. Within this directory, files are read in based on alphabetic order.</p>
+<p>Copy ftpl file to ./user_param/
+<div class="highlight"><pre><span></span><code>$ cp acy.ftpl ./user_param
+</code></pre></div></p>
+<h4 id="reaction-field-energy">Reaction field energy<a class="headerlink" href="#reaction-field-energy" title="Permanent link">&para;</a></h4>
+<p>Run step 1 to 3:
+<div class="highlight"><pre><span></span><code>$ step1.py --noter ACY_ideal.pdb
+$ step2.py
+$ step3.py -d 2
+$ cat head3.lst
+
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000 -11.413   0.000 01O000M000 t
+00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -47.119   0.000 -1O000M000 t
+
+$ step3.py -d 4
+$ cat head3.lst
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000  -5.495   0.000 01O000M000 t
+00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -22.902   0.000 -1O000M000 t
+
+$ step3.py -d 8
+$ cat head3.lst
+iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history
+00001 ACY01A0001_001 f 0.00  0.000     0  0.00  0  0   0.497   0.000   0.000   0.000  -2.548   0.000 01O000M000 t
+00002 ACY-1A0001_002 f 0.00 -1.000     0  0.00  0  0   0.180   0.000   0.000   0.000 -10.801   0.000 -1O000M000 t
+</code></pre></div></p>
+<p>Put the values back in /path/to/param/acy.ftpl, set nH=-1 because this conformer loses a proton, and set pKa0 =4.75 as this is acetic acid pKa.
+<div class="highlight"><pre><span></span><code># Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ACY01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -11.413, rxn04= -5.495, rxn08= -2.548
+CONFORMER, ACY-1:  Em0=0.0, pKa0=4.75, ne=0, nH=-1, rxn02= -47.119, rxn04= -22.902, rxn08= -10.801
+</code></pre></div></p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-09-29
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../mcce2free/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Convert mcce tpl file
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../mfehowto/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Analyze ionization energy
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright © 2020 Gunner Lab
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
