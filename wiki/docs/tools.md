@@ -450,6 +450,27 @@ MFE output saved in file mfe_all.html
 ```
 
 ---
+### mostocc.py
+*Extract most occupied conformer from fort.38 and make a pdb file.*
+
+**Syntax**
+```
+mostocc.py pH
+```
+
+* pH is the exact pH in the first line of fort.38 file. It indicates which pH to use for occupancy, as occupancy is pH dependent.
+
+**Required files:**
+
+* fort.38
+* step2_out.pdb
+
+**Example:**
+```
+mostocc.py 7.0
+```
+
+---
 ### sanity.py
 *Quick check on the charge state of ionizable residues abd report unusual charge.*
 
