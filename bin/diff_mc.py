@@ -49,9 +49,12 @@ def diff(files):
     data2 = read_matrix(files[1])
     data_diff = msubtract(data1, data2)
 
-    for row_data in data_diff:
-        print("%14s %s" % (row_data[0], " ".join(["%6.3f" % x for x in row_data[1:]])))
+    if data_diff:
+        for row_data in data_diff:
+            print("%14s %s" % (row_data[0], " ".join(["%6.3f" % x for x in row_data[1:]])))
+
     return
+
 
 if __name__ == "__main__":
 
