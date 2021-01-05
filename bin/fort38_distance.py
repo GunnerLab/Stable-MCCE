@@ -62,6 +62,10 @@ def merge_lists(list1, list2):
                 ipos = xpos + 1
             list_merged.append(x)
 
+    # list2 might have extra items
+    if len(list2) > ipos:
+        list_merged += list2[ipos:]
+
     return list_merged
 
 
