@@ -6,7 +6,7 @@ CONFLIST, NTG: NTGBK, NTG01, NTG+1
 CONNECT, " CA ", NTG01: sp3, " N  ", " ?  ", " HA3", " HA2"
 CONNECT, " HA2", NTG01: s, " CA "
 CONNECT, " HA3", NTG01: s, " CA "
-CONNECT, " N  ", NTH01: sp2, " CA ", " H  ", " H2 "
+CONNECT, " N  ", NTG01: sp2, " CA ", " H  ", " H2 "
 CONNECT, " H  ", NTG01: s, " N  "
 CONNECT, " H2 ", NTG01: s, " N  "
 CONNECT, " CA ", NTG+1: sp3, " N  ", " ?  ", " ?  ", " HA "
