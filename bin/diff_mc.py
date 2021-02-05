@@ -71,7 +71,7 @@ def diff(f1, f2):
             elif key not in f1.values and key in f2.values:
                 values[key] = ">>>"
             else:  # must be in both
-                values[key] = "%6.2f" % (ffloat(f1.values[key]) - float(f2.values[key]))
+                values[key] = "%6.2f" % (float(f1.values[key]) - float(f2.values[key]))
 
     delta = MCfile()
     delta.type = f1.type
