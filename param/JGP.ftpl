@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, JGP: JGPBK, JGP01, JGPDM
+CONFLIST, JGP: JGPBK, JGP01
 
 # ATOM name and bonds
 CONNECT, " C10", JGP01:  sp3, " N09"," C11","H101","H102"

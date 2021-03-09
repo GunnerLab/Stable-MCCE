@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T1M: T1MBK, T1M01, T1M02, T1M03, T1M04, T1M05, T1M06, T1M07, T1M08, T1MDM
+CONFLIST, T1M: T1MBK, T1M01, T1M02, T1M03, T1M04, T1M05, T1M06, T1M07, T1M08
 
 # ATOM name and bonds
 CONNECT, " C10", T1M01:  sp2, " C15"," C09"," C11"
@@ -335,7 +335,8 @@ CHARGE, T1M01, "H111":    0.14
 CHARGE, T1M01, "H121":    0.16
 CHARGE, T1M01, "H141":    0.16
 CHARGE, T1M01, "H041":    0.44
-CHARGE, T1M01, "H081":    0.44
+CHARGE, T1M01, "H081":    0.43
+#0.44 to 0.43
 # ATOM charges
 CHARGE, T1M02, " C10":   -0.18
 CHARGE, T1M02, " C13":   -0.08
@@ -443,7 +444,9 @@ CHARGE, T1M04, "H111":    0.14
 CHARGE, T1M04, "H121":    0.16
 CHARGE, T1M04, "H141":    0.16
 CHARGE, T1M04, "H041":    0.44
-CHARGE, T1M04, "H081":    0.45
+CHARGE, T1M04, "H081":    0.47
+# 0.45 to 0.47
+
 # ATOM charges
 CHARGE, T1M05, " C10":   -0.18
 CHARGE, T1M05, " C13":   -0.08
@@ -479,7 +482,9 @@ CHARGE, T1M05, "H111":    0.14
 CHARGE, T1M05, "H121":    0.16
 CHARGE, T1M05, "H141":    0.16
 CHARGE, T1M05, "H041":    0.44
-CHARGE, T1M05, "H081":    0.45
+CHARGE, T1M05, "H081":    0.47
+#0.45 to 0.47
+
 # ATOM charges
 CHARGE, T1M06, " C10":   -0.18
 CHARGE, T1M06, " C13":   -0.08
@@ -587,9 +592,9 @@ CHARGE, T1M08, "H111":    0.14
 CHARGE, T1M08, "H121":    0.16
 CHARGE, T1M08, "H141":    0.16
 CHARGE, T1M08, "H041":    0.44
-CHARGE, T1M08, "H081":    0.44
+CHARGE, T1M08, "H081":    0.43
 
-
+#0.44 to 0.43
 
 
 
@@ -892,25 +897,25 @@ RADIUS, T1M08, "H081":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.568, rxn04= -7.945, rxn08= -3.659
+CONFORMER, T1M01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -30.773, rxn04= -14.892, rxn08= -6.970
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.683, rxn04= -7.524, rxn08= -3.467
+CONFORMER, T1M02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.872, rxn04= -14.457, rxn08= -6.768
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M03:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.279, rxn04= 7.7965, rxn08= -3.5825
+CONFORMER, T1M03:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -31.170, rxn04= -15.084, rxn08= -7.059
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M04:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.437, rxn04= -7.391, rxn08= -3.3945
+CONFORMER, T1M04:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.412, rxn04= -14.240, rxn08= -6.671
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M05:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.437, rxn04= -7.391, rxn08= -3.3945
+CONFORMER, T1M05:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.412, rxn04= -14.240, rxn08= -6.671
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M06:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.279, rxn04= -7.7965, rxn08= -3.5825
+CONFORMER, T1M06:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.784, rxn04= -14.420, rxn08= -6.755
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M07:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.683, rxn04= -7.524, rxn08= -3.467
+CONFORMER, T1M07:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.153, rxn04= -14.117, rxn08= -6.615
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T1M08:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.568, rxn04= -7.945, rxn08= -3.659
+CONFORMER, T1M08:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -29.271, rxn04= -14.175, rxn08= -6.643
