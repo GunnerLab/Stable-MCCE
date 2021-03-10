@@ -337,6 +337,8 @@ CHARGE, T1M01, "H141":    0.16
 CHARGE, T1M01, "H041":    0.44
 CHARGE, T1M01, "H081":    0.43
 #0.44 to 0.43
+#H081 mol2 charge should be 0.44.
+
 # ATOM charges
 CHARGE, T1M02, " C10":   -0.18
 CHARGE, T1M02, " C13":   -0.08
@@ -446,6 +448,7 @@ CHARGE, T1M04, "H141":    0.16
 CHARGE, T1M04, "H041":    0.44
 CHARGE, T1M04, "H081":    0.47
 # 0.45 to 0.47
+#H081 mol2 charge should be 0.45.
 
 # ATOM charges
 CHARGE, T1M05, " C10":   -0.18
@@ -484,6 +487,7 @@ CHARGE, T1M05, "H141":    0.16
 CHARGE, T1M05, "H041":    0.44
 CHARGE, T1M05, "H081":    0.47
 #0.45 to 0.47
+#H081 mol2 charge should be 0.45
 
 # ATOM charges
 CHARGE, T1M06, " C10":   -0.18
@@ -593,14 +597,8 @@ CHARGE, T1M08, "H121":    0.16
 CHARGE, T1M08, "H141":    0.16
 CHARGE, T1M08, "H041":    0.44
 CHARGE, T1M08, "H081":    0.43
-
+#H081 mol2 charge should be 0.44.
 #0.44 to 0.43
-
-
-
-
-
-
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T1M01, " C10":  1.700,  2.000,  0.150

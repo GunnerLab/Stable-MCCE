@@ -8,8 +8,8 @@ c (S. Sridharan		May 1994)
 	integer iab1(1),iab2(1),icume(1)
 	logical outcb(-2:2,-2:2,-2:2)
 	character*80 line
-c       1000 -> 5000 by jmao
-	integer nbra(5000)
+c       1000 -> 50000 by jmao
+	integer nbra(50000)
         pointer (i_egrid,egrid)
         integer egrid(1)
 c

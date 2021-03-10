@@ -201,7 +201,6 @@ RADIUS, LWA02, " H13":  1.000,  1.000,  0.020
 RADIUS, LWA02, " H14":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, LWA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.842, rxn04= -7.554, rxn08= -3.446
-
+CONFORMER, LWA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.941, rxn04= -7.605, rxn08= -3.465
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, LWA02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.201, rxn04= -7.727, rxn08= -3.526
+CONFORMER, LWA02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.385, rxn04= -7.82, rxn08= -3.566
