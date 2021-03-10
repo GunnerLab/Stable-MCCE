@@ -77,4 +77,4 @@ RADIUS, U1V01, " H  ":  1.000,  1.000,  0.020
 RADIUS, U1V01, " H3 ":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, U1V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -13.6800, rxn04= -6.5530, rxn08= -3.0110
+CONFORMER, U1V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -13.6800, rxn04= -6.605, rxn08= -3.0110

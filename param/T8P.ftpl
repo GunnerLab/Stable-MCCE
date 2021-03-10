@@ -231,7 +231,7 @@ RADIUS, T8P02, " H36":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T8P01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -11.582, rxn04= -5.521, rxn08= -2.508
+CONFORMER, T8P01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -11.582, rxn04= -5.660, rxn08= -2.508
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T8P02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -34.292, rxn04= -16.578, rxn08= -7.836
+CONFORMER, T8P02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -34.292, rxn04= -16.581, rxn08= -7.836

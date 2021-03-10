@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T0V: T0VBK, T0V01, T0V+1M
+CONFLIST, T0V: T0VBK, T0V01, T0V+1
 
 # ATOM name and bonds
 CONNECT, " C10", T0V01:  sp2, " C09"," C11"," O14"
@@ -175,10 +175,11 @@ RADIUS, T0V+1, "H091":  1.000,  1.000,  0.020
 RADIUS, T0V+1, "H111":  1.000,  1.000,  0.020
 RADIUS, T0V+1, "H121":  1.000,  1.000,  0.020
 RADIUS, T0V+1, " H1 ":  1.000,  1.000,  0.020
-RADIUS, T0V+1, "H082":  1.000,  1.000,  0.020
+RADIUS, T0V+1, "H081":  1.000,  1.000,  0.020
+
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -5.611, rxn04= -2.663, rxn08= -1.216
+CONFORMER, T0V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -5.611, rxn04= -2.660, rxn08= -1.216
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn 
-CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -31.315, rxn04= -18.2757, rxn08= -7.0992
+CONFORMER, T0V+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -31.315, rxn04= -15.154, rxn08= -7.0992
