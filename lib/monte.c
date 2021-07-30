@@ -1089,10 +1089,15 @@ float get_base()
 
     /* compute pH and Eh effect for each conformer */
     for (kc=0; kc<conflist.n_conf; kc++) {
+        /*
         conflist.conf[kc].E_ph =
         env.monte_temp/ROOMT * conflist.conf[kc].H * (ph-conflist.conf[kc].pKa) * PH2KCAL;
         conflist.conf[kc].E_eh =
         env.monte_temp/ROOMT * conflist.conf[kc].e * (eh-conflist.conf[kc].Em) * PH2KCAL/58.0;
+        */
+        conflist.conf[kc].E_ph = conflist.conf[kc].H * (ph-conflist.conf[kc].pKa) * PH2KCAL;
+        conflist.conf[kc].E_eh = conflist.conf[kc].e * (eh-conflist.conf[kc].Em) * PH2KCAL/58.0;
+
     }
 
     /* self without mfe */
