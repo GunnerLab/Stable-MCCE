@@ -169,10 +169,11 @@ int get_env()
     env.big_pairwise      = 5.0;
 
     env.monte_adv_opt     =    0;
-    env.anneal_temp_start = ROOMT;
-    env.anneal_nstep      =    1;
+    env.anneal_temp_start = 3000;
+    env.anneal_nstep      =   10;
+    env.monte_run_temp    = ROOMT;  /* default value */
     env.monte_tsx         =    0;
-    env.anneal_niter_step =   30;
+    env.anneal_niter_step =  200;
     env.monte_niter_max   =   -1;
     env.adding_conf       =    0;
     env.monte_old_input   =    0;
