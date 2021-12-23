@@ -658,6 +658,7 @@ typedef struct {
 
     int   monte_seed;
     float monte_temp;
+    float monte_run_temp;
     int   monte_flips;
     int   monte_nstart;
     int   monte_neq;

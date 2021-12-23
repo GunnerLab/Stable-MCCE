@@ -145,10 +145,11 @@ float get_totalTS();
 
 #define mev2Kcal 0.0235  // to keep consistent with mfe.py, use this constant instead of PH2KCAL/58, just for mfe part
 int monte()
-{  int i, j, k, counter, k_run;
+{  int i, j, k, counter, k_run, i_step;
     float *sigma, sigma_max, t;
     int N_smp;
     float S_max;
+    float temp;
     char sbuff[MAXCHAR_LINE];  //Store ms file name--Cai
     int i_fix, j_fix, i_free, j_free; // index for microstate write out.
 
@@ -346,10 +347,24 @@ int monte()
 
         counter = 0;
         for (j=0; j<n_free; j++) counter+=free_res[j].n;
-        N_smp = env.monte_nstart * counter;
+
         fprintf(fp, "Doing annealing... \n"); fflush(fp);
+
+        for (i_step=0;i_step<env.anneal_nstep;i_step++) {
+            N_smp = env.anneal_niter_step * counter;
+            temp = env.anneal_temp_start + ((float)(i_step+1)/(float) env.anneal_nstep) * (env.monte_temp - env.anneal_temp_start);
+            fprintf(fp, "Annealing temperature = %.2f\n", temp);
+            env.monte_run_temp = temp;
+            if (N_smp) MC(N_smp);
+        }
+
+        fprintf(fp, "Final annealing temperature = %.2f\n", temp);
+        env.monte_run_temp = env.monte_temp;
         if (N_smp) MC(N_smp);
+
         fprintf(fp, "Done\n\n");
+
+
 
         /* memcpy(state_check, state, sizeof(int)*n_free);  DEBUG */
 
@@ -483,10 +498,19 @@ int monte()
                     state[k] = free_res[k].conf[rand() / (RAND_MAX/free_res[k].n + 1)];
 
                 fprintf(fp, "Doing annealing of MC %2d ...\n", j+1); fflush(fp);
-                if (env.monte_nstart * counter) MC(env.monte_nstart * counter);
+                for (i_step=0;i_step<env.anneal_nstep;i_step++) {
+                    N_smp = env.anneal_niter_step * counter;
+                    temp = env.anneal_temp_start + ((float)(i_step+1)/(float) env.anneal_nstep) * (env.monte_temp - env.anneal_temp_start);
+                    fprintf(fp, "Annealing temperature = %.2f\n", temp);
+                    env.monte_run_temp = temp;
+                    if (N_smp) MC(N_smp);
+                }
+                fprintf(fp, "Final annealing temperature = %.2f\n", temp);
+                env.monte_run_temp = env.monte_temp;
+                if (N_smp) MC(N_smp);
 
-                fprintf(fp, "Doing MC %2d ... \n", j+1); fflush(fp);
-                //if (N_smp) MC(N_smp);
+                fprintf(fp, "\nDoing MC %2d ... \n", j+1); fflush(fp);
+                N_smp = env.monte_niter * counter;
                 if (N_smp) {            //Cai: microstate output or not
                     if (env.ms_out) {
                     if (new_ms_flag) fprintf(ms_fp2, "\nMC:%d\n", j);
@@ -1219,7 +1243,7 @@ void MC(int n)
     int old_conf, new_conf; /* old_conf and new_conf are from 0 to n_conf in conflist */
 
 
-    b = -KCAL2KT/(env.monte_temp/ROOMT);
+    b = -KCAL2KT/(env.monte_run_temp/ROOMT);
 
     mem =n_free * sizeof(int);
     old_state = (int *) malloc(mem);
@@ -2878,7 +2902,7 @@ void MC_smp(int n)
     int old_conf, new_conf; /* old_conf and new_conf are from 0 to n_conf in conflist */
 
 
-    b = -KCAL2KT/(env.monte_temp/ROOMT);
+    b = -KCAL2KT/(env.monte_run_temp/ROOMT);
 
     mem =n_free * sizeof(int);
     old_state = (int *) malloc(mem);

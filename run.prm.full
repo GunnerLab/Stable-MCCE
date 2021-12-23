@@ -212,9 +212,9 @@ f        Using format from old version                      (MONTE_OLD_INPUT)
 0.01     Threshhold for convergence                         (MONTE_CONVERGE)
 f        Calculate free energy                              (MONTE_DO_ENERGY)
 
-298.15   Starting temperature for annealling                (ANNEAL_TEMP_START)
-0        Number of steps of annealling                      (ANNEAL_NSTEP)
-1000     Number of iterations for each annealling step      (ANNEAL_NITER_STEP)
+3000     Starting temperature for annealling                (ANNEAL_TEMP_START)
+10       Number of steps of annealling                      (ANNEAL_NSTEP)
+500     Number of iterations/conformer in annealing step   (ANNEAL_NITER_STEP)
 
 # Advanced options:
 1         delphi start conformer number, 0 based            (PBE_START)
