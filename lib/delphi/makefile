@@ -1,10 +1,10 @@
 VPATH=src
 #LINUX INTEL
-#  FC=gfortran -O3 -fcray-pointer -ffixed-line-length-none
-#  CC=gcc -O3
+  FC=gfortran -O3 -fcray-pointer -ffixed-line-length-none
+  CC=gcc -O3
 #  FC=gfortran -g -static -fcray-pointer -ffixed-line-length-none
-  FC=x86_64-linux-gnu-gfortran -fcray-pointer -ffixed-line-length-none
-  CC=x86_64-linux-gnu-gcc
+#  FC=x86_64-linux-gnu-gfortran -fcray-pointer -ffixed-line-length-none
+#  CC=x86_64-linux-gnu-gcc
 
 # Double precision performance
 #RECFLAGS = -O3 -I$(VPATH)/ -DLINUX -DIFC -DDP -fdefault-real-8
