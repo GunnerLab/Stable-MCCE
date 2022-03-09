@@ -69,6 +69,27 @@ HBD**HEM******  *****PDD******
  C **ACN******   C_***********
 ***** ZN******  *****_ZN******
 ***** NA******  *****_NA******
+*NA  CLA******  *N1A CLA******      added by Gehan 
+*NB  CLA******  *N1B CLA******      added by Gehan
+*NC  CLA******  *N1C CLA******      added by Gehan
+*ND  CLA******  *N1D CLA******      added by Gehan
+*NA  CL7******  *N1A CL7******      added by Gehan
+*NB  CL7******  *N1B CL7******      added by Gehan
+*NC  CL7******  *N1C CL7******      added by Gehan
+*ND  CL7******  *N1D CL7******      added by Gehan
+*NA  F6C******  *N1A F6C******      added by Gehan
+*NB  F6C******  *N1B F6C******      added by Gehan
+*NC  F6C******  *N1C F6C******      added by Gehan
+*ND  F6C******  *N1D F6C******      added by Gehan
+*NA  CLZ******  *N1A CLZ******      added by Gehan
+*NB  CLZ******  *N1B CLZ******      added by Gehan
+*NC  CLZ******  *N1C CLZ******      added by Gehan
+*ND  CLZ******  *N1D CLZ******      added by Gehan
+*C **BCT******  *CT**BCT******      added by Gehan 
+CA    CA******   CA  CA ******      added by Gehan
+CL    CL******   CL  CL ******      added by Gehan
+MG    MG******   MG  MG ******      added by Gehan
+*C8  UNL******  *C8  UNL******      added by Gehan
 SE  *MSE******   SD *MET******
 *****MSE******  *****MET******
 *****HIE******  *****HIS******
