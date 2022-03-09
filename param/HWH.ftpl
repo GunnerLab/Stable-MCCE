@@ -95,4 +95,4 @@ RADIUS, HWH01, " H12":  1.000,  1.000,  0.020
 RADIUS, HWH01, " H13":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, HWH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -12.072, rxn04= -5.737, rxn08= -2.604
+CONFORMER, HWH01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -12.072, rxn04= -5.777, rxn08= -2.604

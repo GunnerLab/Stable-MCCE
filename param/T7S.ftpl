@@ -1,5 +1,5 @@
 # Conformer definition
-CONFLIST, T7S: T7SBK, T7S01, T7SDM
+CONFLIST, T7S: T7SBK, T7S01
 
 # ATOM name and bonds
 CONNECT, " N1 ", T7S01:  sp2, " C7 "," C8 "," C12"
@@ -125,4 +125,4 @@ RADIUS, T7S01, " H14":  1.000,  1.000,  0.020
 RADIUS, T7S01, " H13":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T7S01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -10.507, rxn04= -5.044, rxn08= -2.326
+CONFORMER, T7S01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -10.507, rxn04= -5.062, rxn08= -2.326

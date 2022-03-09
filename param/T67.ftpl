@@ -236,9 +236,9 @@ RADIUS, T67+1, " H6 ":  1.000,  1.000,  0.020
 RADIUS, T67+1, " H14":  1.000,  1.000,  0.020
 RADIUS, T67+1, " H38":  1.000,  1.000,  0.020
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T6701:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.117, rxn04= -7.640, rxn08= -3.599
+CONFORMER, T6701:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.117, rxn04= -7.936, rxn08= -3.599
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T67+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -36.572, rxn04= -20.762, rxn08=-2.967
+CONFORMER, T67+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -36.572, rxn04= -20.904, rxn08=-2.967
 
 

@@ -89,7 +89,7 @@ CHARGE, T5D01, " H1 ":    0.02
 CHARGE, T5D01, " H  ":     0.4
 CHARGE, T5D01, " H3 ":    0.02
 CHARGE, T5D01, " H11":    0.04
-CHARGE, T5D01, " H12":    0.04
+CHARGE, T5D01, " H12":    0.02
 
 # ATOM charges
 CHARGE, T5D+1, " C4 ":   -0.15
@@ -120,7 +120,7 @@ CHARGE, T5D+1, " H  ":    0.44
 CHARGE, T5D+1, " H3 ":    0.21
 CHARGE, T5D+1, " H11":    0.07
 CHARGE, T5D+1, " H12":    0.07
-CHARGE, T5D+1, " H29":    0.36
+CHARGE, T5D+1, " H29":    0.35
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, T5D01, " C4 ":  1.700,  2.000,  0.150
 RADIUS, T5D01, " C5 ":  1.700,  2.000,  0.150
@@ -181,8 +181,6 @@ RADIUS, T5D+1, " H3 ":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H11":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H12":  1.000,  1.000,  0.020
 RADIUS, T5D+1, " H29":  1.000,  1.000,  0.020
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, T5D01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -7.037, rxn04= -3.3545, rxn08= -1.529
 
-# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T5D01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -7.037, rxn04= -3.3545, rxn08= -1.529
 CONFORMER, T5D+1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -31.78, rxn04= -15.4015, rxn08= -7.222
