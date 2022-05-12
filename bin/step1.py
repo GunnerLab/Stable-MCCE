@@ -36,7 +36,7 @@ Possible_ligands = {"HIS": "HIL",
                     "MET": "MEL",
                     "CYS": "CYL"}
 
-Possible_receptors = ["HEM", "HEC", "HEB"]
+Possible_receptors = ["HEM", "HEC", "HEB", "CLA"]
 
 # distance between heavy atoms smaller than this is considered bonded
 BOND_threshold = 2.7
