@@ -184,7 +184,8 @@ def group_residues(lines):
 
 def rename_ligand(res):
     for atom in res.atoms:
-        atom.resname = Possible_ligands[atom.resname]
+        if atom.resname in Possible_ligands:
+            atom.resname = Possible_ligands[atom.resname]
 
 
 def identify_ligands(lines):
