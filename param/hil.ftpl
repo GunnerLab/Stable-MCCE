@@ -12,7 +12,7 @@
 <<<END of original comments
 
 # Values of the same key are appended and separated by ","
-CONFLIST, HIL: HILBK, HIL01, HIL02
+CONFLIST, HIL: HILBK, HIL01, HIL01
 
 # Atom definition
 CONNECT, " N  ", HILBK: sp2, " ?  ", " CA ", " H  "
@@ -25,24 +25,13 @@ CONNECT, " CB ", HIL01: sp3, " CA ", " CG ", " HB2", " HB3"
 CONNECT, " HB2", HIL01: s, " CB "
 CONNECT, " HB3", HIL01: s, " CB "
 CONNECT, " CG ", HIL01: sp2, " CB ", " ND1", " CD2"
-CONNECT, " ND1", HIL01: sp2, " CG ", " CE1"
+CONNECT, " ND1", HIL01: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HIL01: s, " ND1"
 CONNECT, " CE1", HIL01: sp2, " ND1", " NE2", " HE1"
 CONNECT, " HE1", HIL01: s, " CE1"
-CONNECT, " NE2", HIL01: sp2, " CE1", " CD2", " HE2"
-CONNECT, " HE2", HIL01: s, " NE2"
+CONNECT, " NE2", HIL01: sp2, " CE1", " CD2", " ?  "
 CONNECT, " CD2", HIL01: sp2, " NE2", " CG ", " HD2"
 CONNECT, " HD2", HIL01: s, " CD2"
-CONNECT, " CB ", HIL02: sp3, " CA ", " CG ", " HB2", " HB3"
-CONNECT, " HB2", HIL02: s, " CB "
-CONNECT, " HB3", HIL02: s, " CB "
-CONNECT, " CG ", HIL02: sp2, " CB ", " ND1", " CD2"
-CONNECT, " ND1", HIL02: sp2, " CG ", " CE1", " HD1"
-CONNECT, " HD1", HIL02: s, " ND1"
-CONNECT, " CE1", HIL02: sp2, " ND1", " NE2", " HE1"
-CONNECT, " HE1", HIL02: s, " CE1"
-CONNECT, " NE2", HIL02: sp2, " CE1", " CD2", " ?  "
-CONNECT, " CD2", HIL02: sp2, " NE2", " CG ", " HD2"
-CONNECT, " HD2", HIL02: s, " CD2"
 
 # Atom charges
 CHARGE, HILBK, " N  ": -0.350
@@ -51,28 +40,18 @@ CHARGE, HILBK, " CA ":  0.100
 CHARGE, HILBK, " HA ":  0.000
 CHARGE, HILBK, " C  ":  0.550
 CHARGE, HILBK, " O  ": -0.550
+
 CHARGE, HIL01, " CB ":  0.125
 CHARGE, HIL01, " HB2":  0.000
 CHARGE, HIL01, " HB3":  0.000
 CHARGE, HIL01, " CG ":  0.155
-CHARGE, HIL01, " ND1": -0.560
+CHARGE, HIL01, " ND1": -0.400
+CHARGE, HIL01, " HD1":  0.400
 CHARGE, HIL01, " CE1":  0.155
 CHARGE, HIL01, " HE1":  0.125
-CHARGE, HIL01, " NE2": -0.400
-CHARGE, HIL01, " HE2":  0.400
+CHARGE, HIL01, " NE2": -0.560
 CHARGE, HIL01, " CD2": -0.125
 CHARGE, HIL01, " HD2":  0.125
-CHARGE, HIL02, " CB ":  0.125
-CHARGE, HIL02, " HB2":  0.000
-CHARGE, HIL02, " HB3":  0.000
-CHARGE, HIL02, " CG ":  0.155
-CHARGE, HIL02, " ND1": -0.400
-CHARGE, HIL02, " HD1":  0.400
-CHARGE, HIL02, " CE1":  0.155
-CHARGE, HIL02, " HE1":  0.125
-CHARGE, HIL02, " NE2": -0.560
-CHARGE, HIL02, " CD2": -0.125
-CHARGE, HIL02, " HD2":  0.125
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS,  HILBK,  " N  ": 1.500,   1.750,   0.160
@@ -86,26 +65,15 @@ RADIUS,  HIL01,  " HB2": 0.000,   1.000,   0.020
 RADIUS,  HIL01,  " HB3": 0.000,   1.000,   0.020
 RADIUS,  HIL01,  " CG ": 1.700,   2.000,   0.150
 RADIUS,  HIL01,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HIL01,  " HD1": 1.000,   1.000,   0.020
 RADIUS,  HIL01,  " CE1": 1.700,   2.000,   0.150
 RADIUS,  HIL01,  " HE1": 1.000,   1.000,   0.020
 RADIUS,  HIL01,  " NE2": 1.500,   1.750,   0.160
-RADIUS,  HIL01,  " HE2": 1.000,   1.000,   0.020
 RADIUS,  HIL01,  " CD2": 1.700,   2.000,   0.150
 RADIUS,  HIL01,  " HD2": 1.000,   1.000,   0.020
-RADIUS,  HIL02,  " CB ": 2.000,   2.000,   0.150
-RADIUS,  HIL02,  " HB2": 0.000,   1.000,   0.020
-RADIUS,  HIL02,  " HB3": 0.000,   1.000,   0.020
-RADIUS,  HIL02,  " CG ": 1.700,   2.000,   0.150
-RADIUS,  HIL02,  " ND1": 1.500,   1.750,   0.160
-RADIUS,  HIL02,  " HD1": 1.000,   1.000,   0.020
-RADIUS,  HIL02,  " CE1": 1.700,   2.000,   0.150
-RADIUS,  HIL02,  " HE1": 1.000,   1.000,   0.020
-RADIUS,  HIL02,  " NE2": 1.500,   1.750,   0.160
-RADIUS,  HIL02,  " CD2": 1.700,   2.000,   0.150
-RADIUS,  HIL02,  " HD2": 1.000,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, HIL01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -3.900, rxn04= -3.900, rxn08= -3.900
-CONFORMER, HIL02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -4.400, rxn04= -3.900, rxn08= -3.900
+
 
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
