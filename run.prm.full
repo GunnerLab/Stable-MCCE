@@ -150,7 +150,7 @@ f        Do relaxation on water                             (RELAX_WAT)
 
 f        include neighbors when doing relaxation (expensive) (HV_RELAX_INCLUDE_NGH)
 4.0      threshold for include as a neighbor during relaxation (HV_RELAX_NGH_THR)
-
+20       the upper limit number of heavy atom rotamers 	    (N_HV_CONF_LIMIT)
 t        Do relaxation on hydrogens                         (RELAX_H)
 -5.0     Energy threshold for keeping the conformer         (RELAX_E_THR)
 200      Loop over N local microstates                      (RELAX_NSTATES)
