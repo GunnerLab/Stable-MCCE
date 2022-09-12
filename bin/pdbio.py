@@ -1,7 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """Sub routines to input and write out MCCE PDB files."""
 
 import math
+import os
+import glob
 
 # bond distance threshold
 BONDDISTANCE = 1.65
@@ -28,6 +30,7 @@ class Atom:
         self.confID = ""
         self.resID = ""
         self.xyz = (0.0, 0.0, 0.0)
+        self.connectivity_param = []
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
@@ -124,8 +127,8 @@ class Protein:
         # make connect table
         for res in self.residue:
             for conf in res.conf:
-                # with backbone
                 for atom in conf.atom:
+                    # with backbone
                     for atom2 in res.conf[0].atom:
                         if atom != atom2:
                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
@@ -137,15 +140,18 @@ class Protein:
                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                 if atom2 not in atom.connect12:
                                     atom.connect12.append(atom2)
+
+                    # with ligand
+                    # to be done
         return
 
     def print_connect12(self):
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect12:
-                        print "   -> %s" % atom2.atomID
+                        print("   -> %s" % atom2.atomID)
         return
 
     def make_connect13(self):
@@ -177,18 +183,18 @@ class Protein:
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect13:
-                        print "   -X-> %s" % atom2.atomID
+                        print("   -X-> %s" % atom2.atomID)
         return
 
     def print_connect14(self):
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect14:
-                        print "   -X-X-> %s" % atom2.atomID
+                        print("   -X-X-> %s" % atom2.atomID)
         return
 
     def exportpdb(self, fname):
@@ -202,12 +208,85 @@ class Protein:
 
     def print_atom_structure(self):
         for res in self.residue:
-            print "Residue %s" % res.resID
+            print("Residue %s" % res.resID)
             for conf in res.conf:
-                print "-->Conformer %s" % conf.confID
+                print("-->Conformer %s" % conf.confID)
                 for atom in conf.atom:
-                    print "---->Atom %s" % atom.atomID
+                    print("---->Atom %s" % atom.atomID)
         return
+
+class CONNECT_param:
+    def __init__(self, value_str):
+        fields = value_str.split(",")
+        self.orbital = fields[0].strip()
+        self.connected = [x.strip("\"") for x in fields[1:]]
+
+
+class ENV:
+    def __init__(self):
+        self.runprm = {}
+        self.param = {}
+        self.load_runprm()
+        self.load_ftpl()
+
+    def load_runprm(self):
+        filename = "run.prm"
+        lines = open(filename).readlines()
+        for line in lines:
+            entry_str = line.strip().split("#")[0]
+            fields = entry_str.split()
+            if len(fields) > 1:
+                key_str = fields[-1]
+                if key_str[0] == "(" and key_str[-1] == ")":
+                    key = key_str.strip("()").strip()
+                    value = fields[0]
+                self.runprm[key] = value
+
+    def print_runprm(self):
+        for key, value in self.runprm.items():
+            print("%s:%s" % (key, value))
+
+    def load_ftpl(self):
+        ftpldir = self.param["MCCE_HOME"]+"/param"
+        cwd = os.getcwd()
+        os.chdir(ftpldir)
+
+        files = glob.glob("*.ftpl")
+        files.sort()
+
+        for fname in files:
+            lines = open(fname).readlines()
+            for line in lines:
+                end = line.find("#")
+                line = line[:end]
+                fields = line.split(":")
+                if len(fields) != 2:
+                    continue
+
+                key_string = fields[0].strip()
+                keys = key_string.split(",")
+                key1 = keys[0].strip().strip("\"")
+                if len(keys) > 1:
+                    key2 = keys[1].strip().strip("\"")
+                else:
+                    key2 = ""
+                if len(keys) > 2:
+                    key3 = keys[2].strip().strip("\"")
+                else:
+                    key3 = ""
+
+                value_string = fields[1].strip()
+
+                # Connectivity records
+                if key1 == "CONNECT":
+                    self.param[(key1,key2,key3)] = CONNECT_param(value_string)
+                # VDW parameters
+
+        os.chdir(cwd)
+
+    def print_param(self):
+        for key, value in self.param.items():
+            print("%s:%s" % (key, value))
 
 if __name__ == "__main__":
     pdbfile = "step2_out.pdb"
@@ -217,6 +296,8 @@ if __name__ == "__main__":
     protein.make_connect13()
     protein.make_connect14()
 
+    env = ENV()
+    env.print_param()
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")
     #protein.print_atom_structure()
