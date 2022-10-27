@@ -227,6 +227,7 @@ class ENV:
         self.runprm = {}
         self.param = {}
         self.load_runprm()
+        #self.print_runprm()
         self.load_ftpl()
 
     def load_runprm(self):
@@ -247,7 +248,7 @@ class ENV:
             print("%s:%s" % (key, value))
 
     def load_ftpl(self):
-        ftpldir = self.param["MCCE_HOME"]+"/param"
+        ftpldir = self.runprm["MCCE_HOME"]+"/param"
         cwd = os.getcwd()
         os.chdir(ftpldir)
 
@@ -286,7 +287,7 @@ class ENV:
 
     def print_param(self):
         for key, value in self.param.items():
-            print("%s:%s" % (key, value))
+            print("%s:%s, %s" % (key, value.orbital, value.connected))
 
 if __name__ == "__main__":
     pdbfile = "step2_out.pdb"
