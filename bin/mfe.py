@@ -245,9 +245,10 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
                                    + conf.Eheffect[i] \
                                    + conf.self
 
+    # Ground state recovered occ
     # Reference energy: lowest E
     Eref = ground_conformers[0].E_total[0]  # reference E (lowest of this res)
-    for conf in mfe_conformers:
+    for conf in ground_conformers:
         for i in range(len(titration.range)):
             if Eref > conf.E_total[i]:
                 Eref = conf.E_total[i]
@@ -255,10 +256,10 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
     # Calculate mfe occupancy of each conformer
     SigmaE = [0.0 for i in range(len(titration.range))]
     for i in range(len(titration.range)):
-        Ei = [math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) for conformer in mfe_conformers]
+        Ei = [math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) for conformer in ground_conformers]
         SigmaE[i] = sum(Ei)
 
-    for conformer in mfe_conformers:
+    for conformer in ground_conformers:
         conformer.rocc = [0.0 for x in titration.range]
         for i in range(len(titration.range)):
             if conformer.fl.upper() == 'T':
@@ -274,26 +275,35 @@ def get_mfe(env, residue, mfe_ph, mfe_xts, mfe_pwcut, pKa):
             else:
                 conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]  # recovered occ
 
-    # Override the 0 occupance if all 0 in a group
-    all0 = True
-    for conformer in ground_conformers:
-        if conformer.hocc > 0.001:
-            all0 = False
-            break
-    if all0:
-        for conformer in ground_conformers:
-            for i in range(len(titration.range)):
-                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]
+    # Exited state recovered occ
+    # Reference energy: lowest E
+    Eref = exited_conformers[0].E_total[0]  # reference E (lowest of this res)
+    for conf in exited_conformers:
+        for i in range(len(titration.range)):
+            if Eref > conf.E_total[i]:
+                Eref = conf.E_total[i]
 
-    all0 = True
+    # Calculate mfe occupancy of each conformer
+    SigmaE = [0.0 for i in range(len(titration.range))]
+    for i in range(len(titration.range)):
+        Ei = [math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) for conformer in exited_conformers]
+        SigmaE[i] = sum(Ei)
+
     for conformer in exited_conformers:
-        if conformer.hocc > 0.001:
-            all0 = False
-            break
-    if all0:
-        for conformer in exited_conformers:
-            for i in range(len(titration.range)):
-                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]
+        conformer.rocc = [0.0 for x in titration.range]
+        for i in range(len(titration.range)):
+            if conformer.fl.upper() == 'T':
+                # print conformer.hocc
+                if conformer.hocc < 0.001:
+                    conformer.rocc[i] = 0.0
+                elif conformer.hocc > 0.999:
+                    conformer.rocc[i] = 1.00
+                else:
+                    print()
+                    "Error: partial occupancy was assigned in head3.lst"
+                    sys.exit()
+            else:
+                conformer.rocc[i] = math.exp(-(conformer.E_total[i] - Eref) * Kcal2kT) / SigmaE[i]  # recovered occ
 
     SigmaOcc = [0.0 for i in range(len(titration.range))]
     for conformer in ground_conformers:

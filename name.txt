@@ -37,6 +37,24 @@ HAD**HEM******  *****PDD******
 HBD**HEM******  *****PDD******
 *H1D*HEM******  *****PDD******
 *H2D*HEM******  *****PDD******
+*CAA*CYC******  *****PAA******      extract PAA from cyc
+*CBA*CYC******  *****PAA******
+*CGA*CYC******  *****PAA******
+*O1A*CYC******  *****PAA******
+*O2A*CYC******  *****PAA******
+HAA**CYC******  *****PAA******
+HBA**CYC******  *****PAA******
+*H1A*CYC******  *****PAA******
+*H2A*CYC******  *****PAA******
+*CAD*CYC******  *****PDD******      extract PDD from cyc
+*CBD*CYC******  *****PDD******
+*CGD*CYC******  *****PDD******
+*O1D*CYC******  *****PDD******
+*O2D*CYC******  *****PDD******
+HAD**CYC******  *****PDD******
+HBD**CYC******  *****PDD******
+*H1D*CYC******  *****PDD******
+*H2D*CYC******  *****PDD******
 *C11*HEM******  *****FAR******      extract FAR from heme
 *C12*HEM******  *****FAR******
 *C13*HEM******  *****FAR******
@@ -69,6 +87,27 @@ HBD**HEM******  *****PDD******
  C **ACN******   C_***********
 ***** ZN******  *****_ZN******
 ***** NA******  *****_NA******
+*NA  CLA******  *N1A CLA******      added by Gehan 
+*NB  CLA******  *N1B CLA******      added by Gehan
+*NC  CLA******  *N1C CLA******      added by Gehan
+*ND  CLA******  *N1D CLA******      added by Gehan
+*NA  CL7******  *N1A CL7******      added by Gehan
+*NB  CL7******  *N1B CL7******      added by Gehan
+*NC  CL7******  *N1C CL7******      added by Gehan
+*ND  CL7******  *N1D CL7******      added by Gehan
+*NA  F6C******  *N1A F6C******      added by Gehan
+*NB  F6C******  *N1B F6C******      added by Gehan
+*NC  F6C******  *N1C F6C******      added by Gehan
+*ND  F6C******  *N1D F6C******      added by Gehan
+*NA  CLZ******  *N1A CLZ******      added by Gehan
+*NB  CLZ******  *N1B CLZ******      added by Gehan
+*NC  CLZ******  *N1C CLZ******      added by Gehan
+*ND  CLZ******  *N1D CLZ******      added by Gehan
+*C **BCT******  *CT**BCT******      added by Gehan 
+CA    CA******   CA  CA ******      added by Gehan
+CL    CL******   CL  CL ******      added by Gehan
+MG    MG******   MG  MG ******      added by Gehan
+*C8  UNL******  *C8  UNL******      added by Gehan
 SE  *MSE******   SD *MET******
 *****MSE******  *****MET******
 *****HIE******  *****HIS******

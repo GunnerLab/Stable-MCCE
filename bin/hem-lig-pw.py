@@ -16,7 +16,7 @@ step2_out = "step2_out.pdb"
 BOND_threshold = 2.7
 
 ligands = ["HIL", "MEL"]
-receptors = ["HEB", "HEC", "HEM"]
+receptors = ["HEB", "HEC", "HEM", "CLA"]
 
 
 class Atom:

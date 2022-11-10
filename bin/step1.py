@@ -36,7 +36,7 @@ Possible_ligands = {"HIS": "HIL",
                     "MET": "MEL",
                     "CYS": "CYL"}
 
-Possible_receptors = ["HEM", "HEC", "HEB"]
+Possible_receptors = ["HEM", "HEC", "HEB", "CLA"]
 
 # distance between heavy atoms smaller than this is considered bonded
 BOND_threshold = 2.7
@@ -184,7 +184,8 @@ def group_residues(lines):
 
 def rename_ligand(res):
     for atom in res.atoms:
-        atom.resname = Possible_ligands[atom.resname]
+        if atom.resname in Possible_ligands:
+            atom.resname = Possible_ligands[atom.resname]
 
 
 def identify_ligands(lines):

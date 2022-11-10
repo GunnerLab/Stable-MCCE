@@ -150,7 +150,7 @@ f        Do relaxation on water                             (RELAX_WAT)
 
 f        include neighbors when doing relaxation (expensive) (HV_RELAX_INCLUDE_NGH)
 4.0      threshold for include as a neighbor during relaxation (HV_RELAX_NGH_THR)
-
+20       the upper limit number of heavy atom rotamers 	    (N_HV_CONF_LIMIT)
 t        Do relaxation on hydrogens                         (RELAX_H)
 -5.0     Energy threshold for keeping the conformer         (RELAX_E_THR)
 200      Loop over N local microstates                      (RELAX_NSTATES)
@@ -212,9 +212,9 @@ f        Using format from old version                      (MONTE_OLD_INPUT)
 0.01     Threshhold for convergence                         (MONTE_CONVERGE)
 f        Calculate free energy                              (MONTE_DO_ENERGY)
 
-298.15   Starting temperature for annealling                (ANNEAL_TEMP_START)
-0        Number of steps of annealling                      (ANNEAL_NSTEP)
-1000     Number of iterations for each annealling step      (ANNEAL_NITER_STEP)
+3000     Starting temperature for annealling                (ANNEAL_TEMP_START)
+10       Number of steps of annealling                      (ANNEAL_NSTEP)
+500     Number of iterations/conformer in annealing step   (ANNEAL_NITER_STEP)
 
 # Advanced options:
 1         delphi start conformer number, 0 based            (PBE_START)

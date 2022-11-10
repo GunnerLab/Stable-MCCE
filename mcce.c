@@ -84,7 +84,7 @@ void welcome()
    printf("<<< MCCE Multi-Conformation Continuum Electrostatics >>>   \n");
    printf(" Marilyn Gunner's Lab at City College of New York, 2005    \n");
    printf("-----------------------------------------------------------\n");
-   printf("Version:        2.8                                    \n");
+   printf("Version:        1.1.0                                     \n");
    printf("MCCE Home Page: https://sites.google.com/site/mccewiki \n");
    printf("Support:        mgunner@ccny.cuny.edu                   \n");
    printf("Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     \n");

@@ -297,7 +297,8 @@ if __name__ == "__main__":
     mcce_home = ""
 
     for line in lines:
-        fields = line.split()
+        line_content = line.split("#")[0]
+        fields = line_content.split()
         if len(fields) >= 2:
             key = fields[-1].strip()
             value = fields[0].strip()
