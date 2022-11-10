@@ -1,0 +1,114 @@
+# Rename rule file contains rules to format atom names and residue
+# names. The purpose is to unify residue names to 3-char mcce names
+# and break some big cofactors into small ones.
+#
+# Each line has two fields separated by at least one space. Each field
+# is 14 characters long, matching the atom, residue name, chainID and
+# sequence number field of a pdb line. The first string will be
+# replaced by the second string.
+#
+# Symbol "*" in the first string is a wildcard that matchs any character.
+# It means "do not replace" in the second string.
+#
+# The replace is accumulative in the order of appearing in this file.
+#
+####_###_#_###  ####_###_#_###
+***** ********  *****_********
+****** *******  ******_*******
+******* ******  *******_******
+ D***** ******   H*****_******
+*****HEA******  *****HEM******
+*****HEC******  *****HEM******
+*CAA*HEM******  *****PAA******      extract PAA from heme
+*CBA*HEM******  *****PAA******
+*CGA*HEM******  *****PAA******
+*O1A*HEM******  *****PAA******
+*O2A*HEM******  *****PAA******
+HAA**HEM******  *****PAA******
+HBA**HEM******  *****PAA******
+*H1A*HEM******  *****PAA******
+*H2A*HEM******  *****PAA******
+*CAD*HEM******  *****PDD******      extract PDD from heme
+*CBD*HEM******  *****PDD******
+*CGD*HEM******  *****PDD******
+*O1D*HEM******  *****PDD******
+*O2D*HEM******  *****PDD******
+HAD**HEM******  *****PDD******
+HBD**HEM******  *****PDD******
+*H1D*HEM******  *****PDD******
+*H2D*HEM******  *****PDD******
+*CAA*CYC******  *****PAA******      extract PAA from cyc
+*CBA*CYC******  *****PAA******
+*CGA*CYC******  *****PAA******
+*O1A*CYC******  *****PAA******
+*O2A*CYC******  *****PAA******
+HAA**CYC******  *****PAA******
+HBA**CYC******  *****PAA******
+*H1A*CYC******  *****PAA******
+*H2A*CYC******  *****PAA******
+*CAD*CYC******  *****PDD******      extract PDD from cyc
+*CBD*CYC******  *****PDD******
+*CGD*CYC******  *****PDD******
+*O1D*CYC******  *****PDD******
+*O2D*CYC******  *****PDD******
+HAD**CYC******  *****PDD******
+HBD**CYC******  *****PDD******
+*H1D*CYC******  *****PDD******
+*H2D*CYC******  *****PDD******
+*C11*HEM******  *****FAR******      extract FAR from heme
+*C12*HEM******  *****FAR******
+*C13*HEM******  *****FAR******
+*C14*HEM******  *****FAR******
+*C15*HEM******  *****FAR******
+*C16*HEM******  *****FAR******
+*C17*HEM******  *****FAR******
+*C18*HEM******  *****FAR******
+*C19*HEM******  *****FAR******
+*C20*HEM******  *****FAR******
+*C21*HEM******  *****FAR******
+*C22*HEM******  *****FAR******
+*C23*HEM******  *****FAR******
+*C24*HEM******  *****FAR******
+*C25*HEM******  *****FAR******
+*C26*HEM******  *****FAR******
+*C27*HEM******  *****FAR******
+*O11*HEM******  *****FAR******
+ O **ACT******   O_***********
+ C **ACT******   C_***********
+ O **CMO******   O_***********
+ C **CMO******   C_***********
+ O **CSS******   O_***********
+ C **CSS******   C_***********
+ N **CSS******   N_***********
+ O **PCA******   O_***********
+ C **PCA******   C_***********
+ N **PCA******   N_***********
+ O **ACN******   O_***********
+ C **ACN******   C_***********
+***** ZN******  *****_ZN******
+***** NA******  *****_NA******
+*NA  CLA******  *N1A CLA******      added by Gehan 
+*NB  CLA******  *N1B CLA******      added by Gehan
+*NC  CLA******  *N1C CLA******      added by Gehan
+*ND  CLA******  *N1D CLA******      added by Gehan
+*NA  CL7******  *N1A CL7******      added by Gehan
+*NB  CL7******  *N1B CL7******      added by Gehan
+*NC  CL7******  *N1C CL7******      added by Gehan
+*ND  CL7******  *N1D CL7******      added by Gehan
+*NA  F6C******  *N1A F6C******      added by Gehan
+*NB  F6C******  *N1B F6C******      added by Gehan
+*NC  F6C******  *N1C F6C******      added by Gehan
+*ND  F6C******  *N1D F6C******      added by Gehan
+*NA  CLZ******  *N1A CLZ******      added by Gehan
+*NB  CLZ******  *N1B CLZ******      added by Gehan
+*NC  CLZ******  *N1C CLZ******      added by Gehan
+*ND  CLZ******  *N1D CLZ******      added by Gehan
+*C **BCT******  *CT**BCT******      added by Gehan 
+CA    CA******   CA  CA ******      added by Gehan
+CL    CL******   CL  CL ******      added by Gehan
+MG    MG******   MG  MG ******      added by Gehan
+*C8  UNL******  *C8  UNL******      added by Gehan
+SE  *MSE******   SD *MET******
+*****MSE******  *****MET******
+*****HIE******  *****HIS******
+*****HID******  *****HIS******
