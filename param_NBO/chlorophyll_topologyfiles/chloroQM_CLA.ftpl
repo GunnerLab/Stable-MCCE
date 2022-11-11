@@ -1,0 +1,284 @@
+>>>START of original comments, this file was converted from old format
+# 1.Basic Conformer Information: name, pka, em, rxn
+# 2.Structure Connectivity:
+# 3.Atom Parameters: Partial Charges and Radii
+# File Created by Gehan Ranepura on 11/08/2021
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CLA: CLABK, CLA01
+
+# Atom definition
+CONNECT, " C1 ", CLABK: sp2, " C2 ", " O2A"
+CONNECT, " C2 ", CLABK: sp2, " C3 ", " C1 "
+CONNECT, " C3 ", CLABK: sp2, " C4 ", " C5 ", " C2 "
+CONNECT, " C4 ", CLABK: s, " C3 "
+CONNECT, " C5 ", CLABK: sp2, " C6 ", " C3 "
+CONNECT, " C6 ", CLABK: sp2, " C7 ", " C5 "
+CONNECT, " C7 ", CLABK: sp2, " C8 ", " C6 "
+CONNECT, " C8 ", CLABK: sp2, " C10", " C9 ", " C7 "
+CONNECT, " C10", CLABK: sp2, " C11", " C8 "
+CONNECT, " C11", CLABK: sp2, " C12", " C10"
+CONNECT, " C9 ", CLABK: s, " C8 "
+CONNECT, " C13", CLABK: sp2, " C14", " C15", " C12"
+CONNECT, " C14", CLABK: s, " C13"
+CONNECT, " C15", CLABK: sp2, " C16", " C13"
+CONNECT, " C16", CLABK: sp2, " C17", " C15"
+CONNECT, " C17", CLABK: sp2, " C18", " C16"
+CONNECT, " C18", CLABK: sp2, " C19", " C20", " C17"
+CONNECT, " C19", CLABK: s, " C18"
+CONNECT, " C20", CLABK: s, " C18"
+CONNECT, " C12", CLABK: sp2, " C13", " C11"
+
+CONNECT, " N1C", CLA01: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CLA01: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CLA01: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C4C", CLA01: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CHC", CLA01: sp2, " C4B", " C1C", " HHC"         ## 
+CONNECT, " C3C", CLA01: sp2, " CAC", " C4C", " C2C"
+CONNECT, " CHD", CLA01: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " C4B", CLA01: sp2, " C3B", " N1B", " CHC"
+CONNECT, " N1B", CLA01: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CLA01: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C3B", CLA01: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C2B", CLA01: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " CHB", CLA01: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " C4A", CLA01: sp2, " N1A", " C3A", " CHB"
+CONNECT, " N1A", CLA01: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CLA01: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C3A", CLA01: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C2A", CLA01: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " CHA", CLA01: sp2, " C4D", " CBD", " C1A"
+CONNECT, " C4D", CLA01: sp2, " C3D", " N1D", " CHA"
+CONNECT, " N1D", CLA01: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CLA01: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C3D", CLA01: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C2D", CLA01: sp2, " CMD", " C3D", " C1D"
+CONNECT, " MG ", CLA01: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CBD", CLA01: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CAD", CLA01: sp2, " OBD", " CBD", " C3D"
+CONNECT, " CMD", CLA01: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CMB", CLA01: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CMA", CLA01: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CMC", CLA01: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " OBD", CLA01: s, " CAD"
+CONNECT, " CAB", CLA01: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CLA01: sp3, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " CAC", CLA01: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CLA01: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, " CGD", CLA01: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CLA01: s, " CGD"
+CONNECT, " O2D", CLA01: sp2, " CED", " CGD"
+CONNECT, " CED", CLA01: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, " CAA", CLA01: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CLA01: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CLA01: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O2A", CLA01: sp2, " C1 ", " CGA"
+CONNECT, " O1A", CLA01: s, " CGA"
+CONNECT, " HBB", CLA01: s, " CAB" ##
+CONNECT, " HHB", CLA01: s, " CHB" ##
+CONNECT, " HHC", CLA01: s, " CHC" ##
+CONNECT, " HHD", CLA01: s, " CHD" ##
+CONNECT, " H2A", CLA01: s, " C2A" ##
+CONNECT, " H3A", CLA01: s, " C3A" ##
+CONNECT, "HMA1", CLA01: s, " CMA" ##
+CONNECT, "HMA2", CLA01: s, " CMA" ##
+CONNECT, "HMA3", CLA01: s, " CMA" ##
+CONNECT, "HAA1", CLA01: s, " CAA" ##
+CONNECT, "HAA2", CLA01: s, " CAA" ##
+CONNECT, "HBA1", CLA01: s, " CBA" ##
+CONNECT, "HBA2", CLA01: s, " CBA" ##
+CONNECT, "HMC1", CLA01: s, " CMC" ##
+CONNECT, "HMC2", CLA01: s, " CMC" ##
+CONNECT, "HMC3", CLA01: s, " CMC" ##
+CONNECT, "HAC1", CLA01: s, " CAC" ##
+CONNECT, "HAC2", CLA01: s, " CAC" ##
+CONNECT, "HBC1", CLA01: s, " CBC" ##
+CONNECT, "HBC2", CLA01: s, " CBC" ##
+CONNECT, "HBC3", CLA01: s, " CBC" ##
+CONNECT, "HMD1", CLA01: s, " CMD" ##
+CONNECT, "HMD2", CLA01: s, " CMD" ##
+CONNECT, "HMD3", CLA01: s, " CMD" ##
+CONNECT, " HBD", CLA01: s, " CBD" ##
+CONNECT, "HED1", CLA01: s, " CED" ##
+CONNECT, "HED2", CLA01: s, " CED" ##
+CONNECT, "HED3", CLA01: s, " CED" ##
+CONNECT, "HMB1", CLA01: s, " CMB" #####
+CONNECT, "HMB2", CLA01: s, " CMB" #####
+CONNECT, "HMB3", CLA01: s, " CMB" #####
+CONNECT, "HBB1", CLA01: s, " CBB" #####
+CONNECT, "HBB3", CLA01: s, " CBB" #####
+
+# Atom charges
+CHARGE, CLABK, " C1 ":  0.000  # 0.201
+CHARGE, CLABK, " C2 ":  0.000
+CHARGE, CLABK, " C3 ":  0.000
+CHARGE, CLABK, " C4 ":  0.000
+CHARGE, CLABK, " C5 ":  0.000
+CHARGE, CLABK, " C6 ":  0.000
+CHARGE, CLABK, " C7 ":  0.000
+CHARGE, CLABK, " C8 ":  0.000
+CHARGE, CLABK, " C10":  0.000
+CHARGE, CLABK, " C11":  0.000
+CHARGE, CLABK, " C9 ":  0.000
+CHARGE, CLABK, " C13":  0.000
+CHARGE, CLABK, " C14":  0.000
+CHARGE, CLABK, " C15":  0.000
+CHARGE, CLABK, " C16":  0.000
+CHARGE, CLABK, " C17":  0.000
+CHARGE, CLABK, " C18":  0.000
+CHARGE, CLABK, " C19":  0.000
+CHARGE, CLABK, " C20":  0.000
+CHARGE, CLABK, " C12":  0.000
+
+CHARGE, CLA01, " N1C": -0.571118 
+CHARGE, CLA01, " C1C":  0.182262
+CHARGE, CLA01, " C2C":  0.202989
+CHARGE, CLA01, " C4C":  0.402285
+CHARGE, CLA01, " CHC": -0.308511
+CHARGE, CLA01, " C3C": -0.344841
+CHARGE, CLA01, " CHD": -0.407685
+CHARGE, CLA01, " C4B":  0.317235
+CHARGE, CLA01, " N1B": -0.640783
+CHARGE, CLA01, " C1B":  0.330991
+CHARGE, CLA01, " C3B": -0.193866
+CHARGE, CLA01, " C2B":  0.201558
+CHARGE, CLA01, " CHB": -0.603801
+CHARGE, CLA01, " C4A":  0.525898
+CHARGE, CLA01, " N1A": -0.595345
+CHARGE, CLA01, " C1A":  0.058504
+CHARGE, CLA01, " C3A":  0.08048
+CHARGE, CLA01, " C2A":  0.051959
+CHARGE, CLA01, " CHA":  0.07242
+CHARGE, CLA01, " C4D":  0.32152
+CHARGE, CLA01, " N1D": -0.664861
+CHARGE, CLA01, " C1D":  0.27897
+CHARGE, CLA01, " C3D": -0.327691
+CHARGE, CLA01, " C2D":  0.103117
+CHARGE, CLA01, " MG ":  1.160666
+CHARGE, CLA01, " CBD": -0.868341
+CHARGE, CLA01, " CAD":  0.742742
+CHARGE, CLA01, " CMD": -0.341162
+CHARGE, CLA01, " CMB": -0.425413
+CHARGE, CLA01, " CMA": -0.445731
+CHARGE, CLA01, " CMC": -0.412698
+CHARGE, CLA01, " OBD": -0.502471
+CHARGE, CLA01, " CAB": -0.017735
+CHARGE, CLA01, " CBB": -0.369736  #####
+CHARGE, CLA01, " CAC":  0.19021
+CHARGE, CLA01, " CBC": -0.290956
+CHARGE, CLA01, " CGD":  0.941974
+CHARGE, CLA01, " O1D": -0.554178
+CHARGE, CLA01, " O2D": -0.361498
+CHARGE, CLA01, " CED": -0.090901
+CHARGE, CLA01, " CAA":  0.104616
+CHARGE, CLA01, " CBA": -0.39882
+CHARGE, CLA01, " CGA":  0.860226
+CHARGE, CLA01, " O2A": -0.295414  #### -0.396217 + 0.100803
+CHARGE, CLA01, " O1A": -0.445916  #### -0.547719 + 0.100803 + 0.001
+CHARGE, CLA01, " HBB":  0.110176  ##
+CHARGE, CLA01, " HHB":  0.171822  ##
+CHARGE, CLA01, " HHC":  0.135126  ##
+CHARGE, CLA01, " HHD":  0.20612   ##
+CHARGE, CLA01, " H2A":  0.040018  ##
+CHARGE, CLA01, " H3A":  0.038545  ##
+CHARGE, CLA01, "HMA1":  0.114282  ##
+CHARGE, CLA01, "HMA2":  0.11276   ##
+CHARGE, CLA01, "HMA3":  0.133933  ##
+CHARGE, CLA01, "HAA1": -0.006116  ##
+CHARGE, CLA01, "HAA2": -0.012276  ##
+CHARGE, CLA01, "HBA1":  0.104203  ##
+CHARGE, CLA01, "HBA2":  0.065863  ##
+CHARGE, CLA01, "HMC1":  0.107939  ##
+CHARGE, CLA01, "HMC2":  0.115713  ##
+CHARGE, CLA01, "HMC3":  0.13231   ##
+CHARGE, CLA01, "HAC1": -0.01195   ##
+CHARGE, CLA01, "HAC2":  0.011399  ##
+CHARGE, CLA01, "HBC1":  0.065085  ##
+CHARGE, CLA01, "HBC2":  0.086469  ##
+CHARGE, CLA01, "HBC3":  0.079053  ##
+CHARGE, CLA01, "HMD1":  0.111988  ##
+CHARGE, CLA01, "HMD2":  0.087288  ##
+CHARGE, CLA01, "HMD3":  0.123418  ##
+CHARGE, CLA01, " HBD":  0.257595  ##
+CHARGE, CLA01, "HED1":  0.111032  ##
+CHARGE, CLA01, "HED2":  0.076932  ##
+CHARGE, CLA01, "HED3":  0.09515   ##
+CHARGE, CLA01, "HMB1":  0.121326  #####
+CHARGE, CLA01, "HMB2":  0.125445  #####
+CHARGE, CLA01, "HMB3":  0.122957  #####
+CHARGE, CLA01, "HBB1":  0.168737  #####
+CHARGE, CLA01, "HBB3":  0.147503  #####
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CLABK,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C2 ": 1.700,   2.000,   0.150
+RADIUS,  CLABK,  " C3 ": 1.700,   2.000,   0.150
+RADIUS,  CLABK,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C5 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C10": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C11": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C9 ": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C13": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C14": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C15": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C16": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C17": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C18": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C19": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C20": 2.000,   2.000,   0.150
+RADIUS,  CLABK,  " C12": 2.000,   2.000,   0.150
+
+RADIUS,  CLA01,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CLA01,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CLA01,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CLA01,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CLA01,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CLA01,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CLA01,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " CBB": 1.700,   2.000,   0.150  #
+RADIUS,  CLA01,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CLA01,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CLA01,  " CED": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CLA01,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CLA01,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CLA01,  " O1A": 1.520,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CLA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

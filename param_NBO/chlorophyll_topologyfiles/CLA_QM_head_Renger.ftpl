@@ -1,0 +1,434 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated QM charges using TD-DFT/6-31G* with the B3LYP basis set provided by Thomas Renger - Bailey Raber 
+#    - https://pubs.acs.org/doi/10.1021/jp106323e - Table 4 Supporting Information
+# File Created by Gehan Ranepura on 07/27/2022
+
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CLA: CLABK, CLA00, CLA11
+# CLA00 is CLA neutral ground state    ( Chlorophyll A )
+# CLA11 is CLA neutral excited state   ( Chlorophyll A )
+
+# Atom definition
+CONNECT, " MG ", CLA00: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CLA00: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CLA00: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " CHC", CLA00: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " CHD", CLA00: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " HHB", CLA00: s, " CHB" ##
+CONNECT, " HHC", CLA00: s, " CHC" ##
+CONNECT, " HHD", CLA00: s, " CHD" ##
+CONNECT, " N1A", CLA00: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CLA00: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CLA00: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CLA00: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CLA00: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CLA00: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CLA00: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CLA00: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CLA00: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CLA00: sp, " CGA"
+CONNECT, " O2A", CLA00: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, "HMA1", CLA00: s, " CMA" ##
+CONNECT, "HMA2", CLA00: s, " CMA" ##
+CONNECT, "HMA3", CLA00: s, " CMA" ##
+CONNECT, " H2A", CLA00: s, " C2A" ##
+CONNECT, " H3A", CLA00: s, " C3A" ##
+CONNECT, "HAA1", CLA00: s, " CAA" ##
+CONNECT, "HAA2", CLA00: s, " CAA" ##
+CONNECT, "HBA1", CLA00: s, " CBA" ##
+CONNECT, "HBA2", CLA00: s, " CBA" ##
+CONNECT, " N1B", CLA00: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CLA00: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CLA00: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " C3B", CLA00: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CLA00: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CLA00: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CAB", CLA00: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CLA00: sp2, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", CLA00: s, " CAB" ##
+CONNECT, "HMB1", CLA00: s, " CMB" #####
+CONNECT, "HMB2", CLA00: s, " CMB" #####
+CONNECT, "HMB3", CLA00: s, " CMB" #####
+CONNECT, "HBB1", CLA00: s, " CBB" #####
+CONNECT, "HBB3", CLA00: s, " CBB" #####
+CONNECT, " N1C", CLA00: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CLA00: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CLA00: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CLA00: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CLA00: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CLA00: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", CLA00: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CLA00: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CLA00: s, " CMC" ##
+CONNECT, "HMC2", CLA00: s, " CMC" ##
+CONNECT, "HMC3", CLA00: s, " CMC" ##
+CONNECT, "HAC1", CLA00: s, " CAC" ##
+CONNECT, "HAC2", CLA00: s, " CAC" ##
+CONNECT, "HBC1", CLA00: s, " CBC" ##
+CONNECT, "HBC2", CLA00: s, " CBC" ##
+CONNECT, "HBC3", CLA00: s, " CBC" ##
+CONNECT, " N1D", CLA00: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CLA00: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CLA00: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CLA00: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CLA00: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CLA00: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CLA00: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CLA00: sp, " CAD"
+CONNECT, " CBD", CLA00: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CLA00: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CLA00: sp, " CGD"
+CONNECT, " O2D", CLA00: sp2, " CED", " CGD"
+CONNECT, " CED", CLA00: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CLA00: s, " CMD" ##
+CONNECT, "HMD2", CLA00: s, " CMD" ##
+CONNECT, "HMD3", CLA00: s, " CMD" ##
+CONNECT, " HBD", CLA00: s, " CBD" ##
+CONNECT, "HED1", CLA00: s, " CED" ##
+CONNECT, "HED2", CLA00: s, " CED" ##
+CONNECT, "HED3", CLA00: s, " CED" ##
+
+CONNECT, " MG ", CLA11: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CLA11: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CLA11: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " CHC", CLA11: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " CHD", CLA11: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " HHB", CLA11: s, " CHB" ##
+CONNECT, " HHC", CLA11: s, " CHC" ##
+CONNECT, " HHD", CLA11: s, " CHD" ##
+CONNECT, " N1A", CLA11: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CLA11: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CLA11: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CLA11: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CLA11: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CLA11: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CLA11: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CLA11: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CLA11: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CLA11: sp, " CGA"
+CONNECT, " O2A", CLA11: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, "HMA1", CLA11: s, " CMA" ##
+CONNECT, "HMA2", CLA11: s, " CMA" ##
+CONNECT, "HMA3", CLA11: s, " CMA" ##
+CONNECT, " H2A", CLA11: s, " C2A" ##
+CONNECT, " H3A", CLA11: s, " C3A" ##
+CONNECT, "HAA1", CLA11: s, " CAA" ##
+CONNECT, "HAA2", CLA11: s, " CAA" ##
+CONNECT, "HBA1", CLA11: s, " CBA" ##
+CONNECT, "HBA2", CLA11: s, " CBA" ##
+CONNECT, " N1B", CLA11: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CLA11: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CLA11: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " C3B", CLA11: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CLA11: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CLA11: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CAB", CLA11: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CLA11: sp2, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", CLA11: s, " CAB" ##
+CONNECT, "HMB1", CLA11: s, " CMB" #####
+CONNECT, "HMB2", CLA11: s, " CMB" #####
+CONNECT, "HMB3", CLA11: s, " CMB" #####
+CONNECT, "HBB1", CLA11: s, " CBB" #####
+CONNECT, "HBB3", CLA11: s, " CBB" #####
+CONNECT, " N1C", CLA11: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CLA11: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CLA11: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CLA11: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CLA11: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CLA11: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", CLA11: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CLA11: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CLA11: s, " CMC" ##
+CONNECT, "HMC2", CLA11: s, " CMC" ##
+CONNECT, "HMC3", CLA11: s, " CMC" ##
+CONNECT, "HAC1", CLA11: s, " CAC" ##
+CONNECT, "HAC2", CLA11: s, " CAC" ##
+CONNECT, "HBC1", CLA11: s, " CBC" ##
+CONNECT, "HBC2", CLA11: s, " CBC" ##
+CONNECT, "HBC3", CLA11: s, " CBC" ##
+CONNECT, " N1D", CLA11: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CLA11: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CLA11: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CLA11: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CLA11: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CLA11: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CLA11: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CLA11: sp, " CAD"
+CONNECT, " CBD", CLA11: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CLA11: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CLA11: sp, " CGD"
+CONNECT, " O2D", CLA11: sp2, " CED", " CGD"
+CONNECT, " CED", CLA11: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CLA11: s, " CMD" ##
+CONNECT, "HMD2", CLA11: s, " CMD" ##
+CONNECT, "HMD3", CLA11: s, " CMD" ##
+CONNECT, " HBD", CLA11: s, " CBD" ##
+CONNECT, "HED1", CLA11: s, " CED" ##
+CONNECT, "HED2", CLA11: s, " CED" ##
+CONNECT, "HED3", CLA11: s, " CED" ##
+
+# Atom charges
+CHARGE, CLA00, " MG ":  0.994
+CHARGE, CLA00, " CHA":  0.414
+CHARGE, CLA00, " CHB": -0.464
+CHARGE, CLA00, " CHC": -0.049
+CHARGE, CLA00, " CHD": -0.170 
+CHARGE, CLA00, " HHB":  0.143 ##
+CHARGE, CLA00, " HHC":  0.086 ##
+CHARGE, CLA00, " HHD":  0.155 ##
+CHARGE, CLA00, " N1A": -0.490 
+CHARGE, CLA00, " C1A": -0.089
+CHARGE, CLA00, " C2A": -0.301
+CHARGE, CLA00, " C3A":  0.414
+CHARGE, CLA00, " C4A":  0.351
+CHARGE, CLA00, " CMA": -0.635
+CHARGE, CLA00, " CAA":  0.224
+CHARGE, CLA00, " CBA": -0.381
+CHARGE, CLA00, " CGA":  0.803
+CHARGE, CLA00, " O1A": -0.573 ### 
+CHARGE, CLA00, " O2A": -0.174
+CHARGE, CLA00, "HMA1":  0.157 
+CHARGE, CLA00, "HMA2":  0.157 
+CHARGE, CLA00, "HMA3":  0.157 
+CHARGE, CLA00, " H2A":  0.126 
+CHARGE, CLA00, " H3A":  0.000 
+CHARGE, CLA00, "HAA1": -0.011 ### 
+CHARGE, CLA00, "HAA2": -0.011 ### 
+CHARGE, CLA00, "HBA1":  0.108 ### 
+CHARGE, CLA00, "HBA2":  0.108 ### 
+CHARGE, CLA00, " N1B": -0.439
+CHARGE, CLA00, " C1B":  0.190 
+CHARGE, CLA00, " C2B":  0.098
+CHARGE, CLA00, " C3B":  0.000    
+CHARGE, CLA00, " C4B":  0.086
+CHARGE, CLA00, " CMB": -0.393
+CHARGE, CLA00, " CAB": -0.153
+CHARGE, CLA00, " CBB": -0.371 ##
+CHARGE, CLA00, " HBB":  0.152 ##
+CHARGE, CLA00, "HMB1":  0.121 ##
+CHARGE, CLA00, "HMB2":  0.121 ##
+CHARGE, CLA00, "HMB3":  0.121 ##
+CHARGE, CLA00, "HBB1":  0.173 ##
+CHARGE, CLA00, "HBB3":  0.173 ##
+CHARGE, CLA00, " N1C": -0.347
+CHARGE, CLA00, " C1C": -0.123
+CHARGE, CLA00, " C2C":  0.345
+CHARGE, CLA00, " C3C": -0.254
+CHARGE, CLA00, " C4C":  0.122
+CHARGE, CLA00, " CMC": -0.629
+CHARGE, CLA00, " CAC":  0.143
+CHARGE, CLA00, " CBC": -0.233
+CHARGE, CLA00, "HMC1":  0.173 ##
+CHARGE, CLA00, "HMC2":  0.173 ##
+CHARGE, CLA00, "HMC3":  0.173 ##
+CHARGE, CLA00, "HAC1":  0.006 ##
+CHARGE, CLA00, "HAC2":  0.006 ##
+CHARGE, CLA00, "HBC1":  0.063 ##
+CHARGE, CLA00, "HBC2":  0.063 ##
+CHARGE, CLA00, "HBC3":  0.063 ##
+CHARGE, CLA00, " N1D": -0.409
+CHARGE, CLA00, " C1D":  0.058
+CHARGE, CLA00, " C2D":  0.238
+CHARGE, CLA00, " C3D": -0.241
+CHARGE, CLA00, " C4D": -0.071
+CHARGE, CLA00, " CMD": -0.520 
+CHARGE, CLA00, " CAD":  0.712
+CHARGE, CLA00, " OBD": -0.517
+CHARGE, CLA00, " CBD": -0.852
+CHARGE, CLA00, " CGD":  0.897
+CHARGE, CLA00, " O1D": -0.571
+CHARGE, CLA00, " O2D": -0.299
+CHARGE, CLA00, " CED": -0.288
+CHARGE, CLA00, "HMD1":  0.156 ##
+CHARGE, CLA00, "HMD2":  0.156 ##
+CHARGE, CLA00, "HMD3":  0.156 ##
+CHARGE, CLA00, " HBD":  0.270 ##
+CHARGE, CLA00, "HED1":  0.151 ##
+CHARGE, CLA00, "HED2":  0.151 ##
+CHARGE, CLA00, "HED3":  0.151 ##
+
+CHARGE, CLA11, " MG ":  0.992
+CHARGE, CLA11, " CHA":  0.429
+CHARGE, CLA11, " CHB": -0.420 
+CHARGE, CLA11, " CHC": -0.116
+CHARGE, CLA11, " CHD": -0.327
+CHARGE, CLA11, " HHB":  0.135 ##
+CHARGE, CLA11, " HHC":  0.091 ##
+CHARGE, CLA11, " HHD":  0.166 ##
+CHARGE, CLA11, " N1A": -0.498
+CHARGE, CLA11, " C1A": -0.084
+CHARGE, CLA11, " C2A": -0.297
+CHARGE, CLA11, " C3A":  0.415
+CHARGE, CLA11, " C4A":  0.347
+CHARGE, CLA11, " CMA": -0.632
+CHARGE, CLA11, " CAA":  0.222
+CHARGE, CLA11, " CBA": -0.384
+CHARGE, CLA11, " CGA":  0.805
+CHARGE, CLA11, " O1A": -0.573 ###
+CHARGE, CLA11, " O2A": -0.175
+CHARGE, CLA11, "HMA1":  0.156
+CHARGE, CLA11, "HMA2":  0.156
+CHARGE, CLA11, "HMA3":  0.156
+CHARGE, CLA11, " H2A":  0.127
+CHARGE, CLA11, " H3A": -0.001
+CHARGE, CLA11, "HAA1": -0.010 ###
+CHARGE, CLA11, "HAA2": -0.010 ###
+CHARGE, CLA11, "HBA1":  0.109 ###
+CHARGE, CLA11, "HBA2":  0.109 ###
+CHARGE, CLA11, " N1B": -0.423
+CHARGE, CLA11, " C1B":  0.137
+CHARGE, CLA11, " C2B":  0.077
+CHARGE, CLA11, " C3B": -0.040 
+CHARGE, CLA11, " C4B":  0.144
+CHARGE, CLA11, " CMB": -0.381
+CHARGE, CLA11, " CAB": -0.147
+CHARGE, CLA11, " CBB": -0.386 ##
+CHARGE, CLA11, " HBB":  0.152 ##
+CHARGE, CLA11, "HMB1":  0.119 ##
+CHARGE, CLA11, "HMB2":  0.119 ##
+CHARGE, CLA11, "HMB3":  0.119 ##
+CHARGE, CLA11, "HBB1":  0.175 ##
+CHARGE, CLA11, "HBB3":  0.175 ##
+CHARGE, CLA11, " N1C": -0.421
+CHARGE, CLA11, " C1C": -0.065
+CHARGE, CLA11, " C2C":  0.363
+CHARGE, CLA11, " C3C": -0.272
+CHARGE, CLA11, " C4C":  0.280 
+CHARGE, CLA11, " CMC": -0.631
+CHARGE, CLA11, " CAC":  0.145
+CHARGE, CLA11, " CBC": -0.233
+CHARGE, CLA11, "HMC1":  0.174 ##
+CHARGE, CLA11, "HMC2":  0.174 ##
+CHARGE, CLA11, "HMC3":  0.174 ##
+CHARGE, CLA11, "HAC1":  0.005 ##
+CHARGE, CLA11, "HAC2":  0.005 ##
+CHARGE, CLA11, "HBC1":  0.063 ##
+CHARGE, CLA11, "HBC2":  0.063 ##
+CHARGE, CLA11, "HBC3":  0.063 ##
+CHARGE, CLA11, " N1D": -0.437
+CHARGE, CLA11, " C1D":  0.187
+CHARGE, CLA11, " C2D":  0.187
+CHARGE, CLA11, " C3D": -0.238
+CHARGE, CLA11, " C4D": -0.042
+CHARGE, CLA11, " CMD": -0.512
+CHARGE, CLA11, " CAD":  0.702
+CHARGE, CLA11, " OBD": -0.519
+CHARGE, CLA11, " CBD": -0.873
+CHARGE, CLA11, " CGD":  0.904
+CHARGE, CLA11, " O1D": -0.573
+CHARGE, CLA11, " O2D": -0.299
+CHARGE, CLA11, " CED": -0.289
+CHARGE, CLA11, "HMD1":  0.153 ##
+CHARGE, CLA11, "HMD2":  0.153 ##
+CHARGE, CLA11, "HMD3":  0.153 ##
+CHARGE, CLA11, " HBD":  0.275 ##
+CHARGE, CLA11, "HED1":  0.151 ##
+CHARGE, CLA11, "HED2":  0.151 ##
+CHARGE, CLA11, "HED3":  0.151 ##
+
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CLA00,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CLA00,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CLA00,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CLA00,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CLA00,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CLA00,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CBB": 1.700,   2.000,   0.150 
+RADIUS,  CLA00,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CLA00,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CLA00,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CLA00,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CLA00,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CLA00,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CLA00,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CLA00,  " CED": 2.000,   2.000,   0.150
+
+RADIUS,  CLA11,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CLA11,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CLA11,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CLA11,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CLA11,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CLA11,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CBB": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CLA11,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CLA11,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CLA11,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CLA11,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CLA11,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CLA11,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CLA11,  " CED": 2.000,   2.000,   0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+# CONFORMER, CLA00: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980
+
+CONFORMER, CLA00: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -5.297, rxn08= 0 # Ideal Truncated  (Tested with LigandExpo CLA_ideal.pdb with no Hs and no C1)
+CONFORMER, CLA11: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -5.392, rxn08= 0 # Ideal Truncated  (Tested with LigandExpo CLA_ideal.pdb with no Hs and no C1)
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

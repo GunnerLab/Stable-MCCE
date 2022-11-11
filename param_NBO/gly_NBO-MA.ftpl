@@ -1,0 +1,44 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, GLY: GLYBK
+
+# Atom definition
+CONNECT, " N  ", GLYBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", GLYBK: s, " N  "
+CONNECT, " CA ", GLYBK: sp3, " N  ", " C  ", " HA2", " HA3"
+CONNECT, " HA2", GLYBK: s, " CA "
+CONNECT, " HA3", GLYBK: s, " CA "
+CONNECT, " O  ", GLYBK: sp2, " C  "
+CONNECT, " C  ", GLYBK: sp2, " CA ", " O  ", " ?  "
+
+# Atom charges
+CHARGE, GLYBK, " N  ": -0.589 # -0.350  # -0.589
+CHARGE, GLYBK, " H  ":  0.463 #  0.250  #  0.456
+CHARGE, GLYBK, " CA ": -0.124 #  0.100  # -0.124
+CHARGE, GLYBK, " HA2":  0.125 #  0.000  #  0.125
+CHARGE, GLYBK, " HA3":  0.125 #  0.000  #  0.125
+CHARGE, GLYBK, " O  ": -0.563 # -0.550  # -0.557
+CHARGE, GLYBK, " C  ":  0.563 #  0.550  #  0.563
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  GLYBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  GLYBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  GLYBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  GLYBK,  " HA2": 0.000,   1.000,   0.020
+RADIUS,  GLYBK,  " HA3": 0.000,   1.000,   0.020
+RADIUS,  GLYBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  GLYBK,  " C  ": 1.700,   2.000,   0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

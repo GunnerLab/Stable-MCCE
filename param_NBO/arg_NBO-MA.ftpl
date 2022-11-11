@@ -1,0 +1,266 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022 - Arginine
+# 1.Basic Conformer Information: name, pka, em, rxn.
+#RXN      ARG01      -7.059
+#RXN      ARG02      -5.925
+#RXN      ARG03      -5.485
+#RXN      ARG+1      -17.708
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# drom parseres.siz
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ARG: ARGBK, ARG01, ARG02, ARG03, ARG+1
+
+# Atom definition
+CONNECT, " N  ", ARGBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ARGBK: s, " N  "
+CONNECT, " CA ", ARGBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ARGBK: s, " CA "
+CONNECT, " C  ", ARGBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ARGBK: sp2, " C  "
+CONNECT, " CB ", ARG01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ARG01: s, " CB "
+CONNECT, " HB3", ARG01: s, " CB "
+CONNECT, " CG ", ARG01: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", ARG01: s, " CG "
+CONNECT, " HG3", ARG01: s, " CG "
+CONNECT, " CD ", ARG01: sp3, " CG ", " NE ", " HD2", " HD3"
+CONNECT, " HD2", ARG01: s, " CD "
+CONNECT, " HD3", ARG01: s, " CD "
+CONNECT, " NE ", ARG01: sp2, " CD ", " CZ "
+CONNECT, " CZ ", ARG01: sp2, " NE ", " NH1", " NH2"
+CONNECT, " NH1", ARG01: sp2, " CZ ", "HH11", "HH12"
+CONNECT, "HH11", ARG01: s, " NH1"
+CONNECT, "HH12", ARG01: s, " NH1"
+CONNECT, " NH2", ARG01: sp2, " CZ ", "HH21", "HH22"
+CONNECT, "HH21", ARG01: s, " NH2"
+CONNECT, "HH22", ARG01: s, " NH2"
+CONNECT, " CB ", ARG02: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ARG02: s, " CB "
+CONNECT, " HB3", ARG02: s, " CB "
+CONNECT, " CG ", ARG02: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", ARG02: s, " CG "
+CONNECT, " HG3", ARG02: s, " CG "
+CONNECT, " CD ", ARG02: sp3, " CG ", " NE ", " HD2", " HD3"
+CONNECT, " HD2", ARG02: s, " CD "
+CONNECT, " HD3", ARG02: s, " CD "
+CONNECT, " NE ", ARG02: sp2, " CD ", " CZ ", " HE "
+CONNECT, " HE ", ARG02: s, " NE "
+CONNECT, " CZ ", ARG02: sp2, " NE ", " NH1", " NH2"
+CONNECT, " NH1", ARG02: sp2, " CZ ", "HH11"
+CONNECT, "HH11", ARG02: s, " NH1"
+CONNECT, " NH2", ARG02: sp2, " CZ ", "HH21", "HH22"
+CONNECT, "HH21", ARG02: s, " NH2"
+CONNECT, "HH22", ARG02: s, " NH2"
+CONNECT, " CB ", ARG03: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ARG03: s, " CB "
+CONNECT, " HB3", ARG03: s, " CB "
+CONNECT, " CG ", ARG03: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", ARG03: s, " CG "
+CONNECT, " HG3", ARG03: s, " CG "
+CONNECT, " CD ", ARG03: sp3, " CG ", " NE ", " HD2", " HD3"
+CONNECT, " HD2", ARG03: s, " CD "
+CONNECT, " HD3", ARG03: s, " CD "
+CONNECT, " NE ", ARG03: sp2, " CD ", " CZ ", " HE "
+CONNECT, " HE ", ARG03: s, " NE "
+CONNECT, " CZ ", ARG03: sp2, " NE ", " NH1", " NH2"
+CONNECT, " NH1", ARG03: sp2, " CZ ", "HH11", "HH12"
+CONNECT, "HH11", ARG03: s, " NH1"
+CONNECT, "HH12", ARG03: s, " NH1"
+CONNECT, " NH2", ARG03: sp2, " CZ ", "HH21"
+CONNECT, "HH21", ARG03: s, " NH2"
+CONNECT, " CB ", ARG+1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ARG+1: s, " CB "
+CONNECT, " HB3", ARG+1: s, " CB "
+CONNECT, " CG ", ARG+1: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", ARG+1: s, " CG "
+CONNECT, " HG3", ARG+1: s, " CG "
+CONNECT, " CD ", ARG+1: sp3, " CG ", " NE ", " HD2", " HD3"
+CONNECT, " HD2", ARG+1: s, " CD "
+CONNECT, " HD3", ARG+1: s, " CD "
+CONNECT, " NE ", ARG+1: sp2, " CD ", " CZ ", " HE "
+CONNECT, " HE ", ARG+1: s, " NE "
+CONNECT, " CZ ", ARG+1: sp2, " NE ", " NH1", " NH2"
+CONNECT, " NH1", ARG+1: sp2, " CZ ", "HH11", "HH12"
+CONNECT, "HH11", ARG+1: s, " NH1"
+CONNECT, "HH12", ARG+1: s, " NH1"
+CONNECT, " NH2", ARG+1: sp2, " CZ ", "HH21", "HH22"
+CONNECT, "HH21", ARG+1: s, " NH2"
+CONNECT, "HH22", ARG+1: s, " NH2"
+
+# Atom charges
+CHARGE, ARGBK, " N  ": -0.533  # -0.350
+CHARGE, ARGBK, " H  ":  0.441  #  0.250  #  0.424
+CHARGE, ARGBK, " CA ": -0.180  #  0.100  
+CHARGE, ARGBK, " HA ":  0.272  #  0.000  #  0.255
+CHARGE, ARGBK, " C  ":  0.558  #  0.550
+CHARGE, ARGBK, " O  ": -0.558  # -0.550  # -0.525
+CHARGE, ARG01, " CB ": -0.448  #  0.000
+CHARGE, ARG01, " HB2":  0.239  #  0.000
+CHARGE, ARG01, " HB3":  0.238  #  0.000
+CHARGE, ARG01, " CG ": -0.490  #  0.000
+CHARGE, ARG01, " HG2":  0.243  #  0.000
+CHARGE, ARG01, " HG3":  0.244  #  0.000
+CHARGE, ARG01, " CD ": -0.286  #  0.280
+CHARGE, ARG01, " HD2":  0.230  #  0.000
+CHARGE, ARG01, " HD3":  0.230  #  0.000
+CHARGE, ARG01, " NE ": -0.689  # -0.560
+CHARGE, ARG01, " CZ ":  0.577  #  0.280
+CHARGE, ARG01, " NH1": -0.888  # -0.750
+CHARGE, ARG01, "HH11":  0.358  #  0.375
+CHARGE, ARG01, "HH12":  0.436  #  0.375
+CHARGE, ARG01, " NH2": -0.874  # -0.750
+CHARGE, ARG01, "HH21":  0.461  #  0.375
+CHARGE, ARG01, "HH22":  0.419  #  0.375
+CHARGE, ARG02, " CB ": -0.448  #  0.000
+CHARGE, ARG02, " HB2":  0.239  #  0.000
+CHARGE, ARG02, " HB3":  0.238  #  0.000
+CHARGE, ARG02, " CG ": -0.490  #  0.000
+CHARGE, ARG02, " HG2":  0.243  #  0.000
+CHARGE, ARG02, " HG3":  0.244  #  0.000
+CHARGE, ARG02, " CD ": -0.286  #  0.280
+CHARGE, ARG02, " HD2":  0.230  #  0.000
+CHARGE, ARG02, " HD3":  0.230  #  0.000
+CHARGE, ARG02, " NE ": -0.888  # -0.750
+CHARGE, ARG02, " HE ":  0.436  #  0.375
+CHARGE, ARG02, " CZ ":  0.577  #  0.280
+CHARGE, ARG02, " NH1": -0.689  # -0.560
+CHARGE, ARG02, "HH11":  0.358  #  0.375
+CHARGE, ARG02, " NH2": -0.874  # -0.750
+CHARGE, ARG02, "HH21":  0.461  #  0.375
+CHARGE, ARG02, "HH22":  0.419  #  0.375
+CHARGE, ARG03, " CB ": -0.448  #  0.000
+CHARGE, ARG03, " HB2":  0.239  #  0.000
+CHARGE, ARG03, " HB3":  0.238  #  0.000
+CHARGE, ARG03, " CG ": -0.490  #  0.000
+CHARGE, ARG03, " HG2":  0.243  #  0.000
+CHARGE, ARG03, " HG3":  0.244  #  0.000
+CHARGE, ARG03, " CD ": -0.286  #  0.280
+CHARGE, ARG03, " HD2":  0.230  #  0.000
+CHARGE, ARG03, " HD3":  0.230  #  0.000
+CHARGE, ARG03, " NE ": -0.888  # -0.750
+CHARGE, ARG03, " HE ":  0.436  #  0.375
+CHARGE, ARG03, " CZ ":  0.577  #  0.280
+CHARGE, ARG03, " NH1": -0.874  # -0.750
+CHARGE, ARG03, "HH11":  0.358  #  0.375
+CHARGE, ARG03, "HH12":  0.419  #  0.375
+CHARGE, ARG03, " NH2": -0.689  # -0.560
+CHARGE, ARG03, "HH21":  0.461  #  0.375
+CHARGE, ARG+1, " CB ": -0.479  #  0.000
+CHARGE, ARG+1, " HB2":  0.258  #  0.000
+CHARGE, ARG+1, " HB3":  0.262  #  0.000
+CHARGE, ARG+1, " CG ": -0.495  #  0.000
+CHARGE, ARG+1, " HG2":  0.251  #  0.000
+CHARGE, ARG+1, " HG3":  0.257  #  0.000
+CHARGE, ARG+1, " CD ": -0.295  #  0.350
+CHARGE, ARG+1, " HD2":  0.260  #  0.000
+CHARGE, ARG+1, " HD3":  0.261  #  0.000
+CHARGE, ARG+1, " NE ": -0.626  # -0.350
+CHARGE, ARG+1, " HE ":  0.453  #  0.450
+CHARGE, ARG+1, " CZ ":  0.672  #  0.350
+CHARGE, ARG+1, " NH1": -0.815  # -0.700
+CHARGE, ARG+1, "HH11":  0.460  #  0.400
+CHARGE, ARG+1, "HH12":  0.461  #  0.400
+CHARGE, ARG+1, " NH2": -0.819  # -0.700
+CHARGE, ARG+1, "HH21":  0.467  #  0.400
+CHARGE, ARG+1, "HH22":  0.467  #  0.400
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ARGBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ARGBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ARGBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ARGBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ARGBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ARGBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ARG01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ARG01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  ARG01,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  ARG01,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  ARG01,  " NE ": 1.500,   1.750,   0.160
+RADIUS,  ARG01,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  ARG01,  " NH1": 1.500,   1.750,   0.160
+RADIUS,  ARG01,  "HH11": 1.000,   1.000,   0.020
+RADIUS,  ARG01,  "HH12": 1.000,   1.000,   0.020
+RADIUS,  ARG01,  " NH2": 1.500,   1.750,   0.160
+RADIUS,  ARG01,  "HH21": 1.000,   1.000,   0.020
+RADIUS,  ARG01,  "HH22": 1.000,   1.000,   0.020
+RADIUS,  ARG02,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ARG02,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  ARG02,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  ARG02,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  ARG02,  " NE ": 1.500,   1.750,   0.160
+RADIUS,  ARG02,  " HE ": 1.200,   1.000,   0.020
+RADIUS,  ARG02,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  ARG02,  " NH1": 1.500,   1.750,   0.160
+RADIUS,  ARG02,  "HH11": 1.000,   1.000,   0.020
+RADIUS,  ARG02,  " NH2": 1.500,   1.750,   0.160
+RADIUS,  ARG02,  "HH21": 1.000,   1.000,   0.020
+RADIUS,  ARG02,  "HH22": 1.000,   1.000,   0.020
+RADIUS,  ARG03,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ARG03,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  ARG03,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  ARG03,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  ARG03,  " NE ": 1.500,   1.750,   0.160
+RADIUS,  ARG03,  " HE ": 1.200,   1.000,   0.020
+RADIUS,  ARG03,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  ARG03,  " NH1": 1.500,   1.750,   0.160
+RADIUS,  ARG03,  "HH11": 1.000,   1.000,   0.020
+RADIUS,  ARG03,  "HH12": 1.000,   1.000,   0.020
+RADIUS,  ARG03,  " NH2": 1.500,   1.750,   0.160
+RADIUS,  ARG03,  "HH21": 1.000,   1.000,   0.020
+RADIUS,  ARG+1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ARG+1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  ARG+1,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  ARG+1,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  ARG+1,  " NE ": 1.500,   1.750,   0.160
+RADIUS,  ARG+1,  " HE ": 1.200,   1.000,   0.020
+RADIUS,  ARG+1,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  ARG+1,  " NH1": 1.500,   1.750,   0.160
+RADIUS,  ARG+1,  "HH11": 1.000,   1.000,   0.020
+RADIUS,  ARG+1,  "HH12": 1.000,   1.000,   0.020
+RADIUS,  ARG+1,  " NH2": 1.500,   1.750,   0.160
+RADIUS,  ARG+1,  "HH21": 1.000,   1.000,   0.020
+RADIUS,  ARG+1,  "HH22": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ARG01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -7.071, rxn08= 0
+CONFORMER, ARG02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -5.939, rxn08= 0
+CONFORMER, ARG03: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -5.072, rxn08= 0
+CONFORMER, ARG+1: Em0=   0.0, pKa0= 12.50, ne= 0, nH= 1, rxn02= 0, rxn04= -17.718, rxn08= 0
+
+#CONFORMER, ARG01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -7.059, rxn08= 0
+#CONFORMER, ARG02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -5.925, rxn08= 0
+#CONFORMER, ARG03: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -5.485, rxn08= 0
+#CONFORMER, ARG+1: Em0=   0.0, pKa0= 12.50, ne= 0, nH= 1, rxn02= 0, rxn04= -17.708, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, ARG: " CA " - " CB ", " CB " - " CG ", " CG " - " CD ",  " CD " - " NE "

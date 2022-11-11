@@ -1,0 +1,43 @@
+>>>START of original comments, this file was converted from Ligand Expo LHG ideal pdb # pdb2ftpl.py SO4_ideal.pdb > SO4_GR.ftpl
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Charges Chosen by comparing to bct.ftpl file
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, SO4: SO4BK, SO401, SO4-2
+
+# ATOM name and bonds
+CONNECT, " S  ", SO4BK: ion, " O1 "," O2 "," O3 "," O4 "
+CONNECT, " O1 ", SO4BK: ion, " S  "
+CONNECT, " O2 ", SO4BK: ion, " S  "
+CONNECT, " O3 ", SO401: ion, " S  "
+CONNECT, " O4 ", SO401: ion, " S  "
+CONNECT, " O3 ", SO4-2: ion, " S  "
+CONNECT, " O4 ", SO4-2: ion, " S  "
+
+# ATOM charges
+CHARGE, SO4BK, " S  ":  0.000
+CHARGE, SO4BK, " O1 ":  0.000
+CHARGE, SO4BK, " O2 ":  0.000
+CHARGE, SO401, " O3 ":  0.000
+CHARGE, SO401, " O4 ":  0.000
+CHARGE, SO4-2, " O3 ": -1.000
+CHARGE, SO4-2, " O4 ": -1.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, SO4BK, " S  ":  0.000,  2.000,  0.200
+RADIUS, SO4BK, " O1 ":  0.000,  1.600,  0.200
+RADIUS, SO4BK, " O2 ":  0.000,  1.600,  0.200
+RADIUS, SO401, " O3 ":  0.000,  1.600,  0.200
+RADIUS, SO401, " O4 ":  0.000,  1.600,  0.200
+RADIUS, SO4-2, " O3 ":  0.000,  1.600,  0.200
+RADIUS, SO4-2, " O4 ":  0.000,  1.600,  0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, SO401:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+CONFORMER, SO4-2:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

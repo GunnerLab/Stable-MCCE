@@ -1,0 +1,430 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 05/11/2022
+
+# Guassian Calculation was done without the tail, such that O2A is connected to H instead of C1
+# Therefore the H charge was partioned evenly onto atoms HBA1, HBA2, HAA1 and HAA2
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CHL: CHLBK, CHL0A, CHL0B
+# CHL0A is CLA neutral    ( Chlorophyll A )
+# CHL0B is CLB neutral    ( Chlorophyll B )
+
+# Atom definition
+CONNECT, " MG ", CHL0A: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CHL0A: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CHL0A: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " CHC", CHL0A: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " CHD", CHL0A: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " HHB", CHL0A: s, " CHB" ##
+CONNECT, " HHC", CHL0A: s, " CHC" ##
+CONNECT, " HHD", CHL0A: s, " CHD" ##
+CONNECT, " N1A", CHL0A: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CHL0A: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CHL0A: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CHL0A: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CHL0A: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CHL0A: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CHL0A: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CHL0A: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CHL0A: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CHL0A: sp, " CGA"
+CONNECT, " O2A", CHL0A: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, "HMA1", CHL0A: s, " CMA" ##
+CONNECT, "HMA2", CHL0A: s, " CMA" ##
+CONNECT, "HMA3", CHL0A: s, " CMA" ##
+CONNECT, " H2A", CHL0A: s, " C2A" ##
+CONNECT, " H3A", CHL0A: s, " C3A" ##
+CONNECT, "HAA1", CHL0A: s, " CAA" ##
+CONNECT, "HAA2", CHL0A: s, " CAA" ##
+CONNECT, "HBA1", CHL0A: s, " CBA" ##
+CONNECT, "HBA2", CHL0A: s, " CBA" ##
+CONNECT, " N1B", CHL0A: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CHL0A: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CHL0A: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " C3B", CHL0A: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CHL0A: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CHL0A: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CAB", CHL0A: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CHL0A: sp2, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", CHL0A: s, " CAB" ##
+CONNECT, "HMB1", CHL0A: s, " CMB" #####
+CONNECT, "HMB2", CHL0A: s, " CMB" #####
+CONNECT, "HMB3", CHL0A: s, " CMB" #####
+CONNECT, "HBB1", CHL0A: s, " CBB" #####
+CONNECT, "HBB3", CHL0A: s, " CBB" #####
+CONNECT, " N1C", CHL0A: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CHL0A: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CHL0A: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CHL0A: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CHL0A: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CHL0A: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", CHL0A: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CHL0A: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CHL0A: s, " CMC" ##
+CONNECT, "HMC2", CHL0A: s, " CMC" ##
+CONNECT, "HMC3", CHL0A: s, " CMC" ##
+CONNECT, "HAC1", CHL0A: s, " CAC" ##
+CONNECT, "HAC2", CHL0A: s, " CAC" ##
+CONNECT, "HBC1", CHL0A: s, " CBC" ##
+CONNECT, "HBC2", CHL0A: s, " CBC" ##
+CONNECT, "HBC3", CHL0A: s, " CBC" ##
+CONNECT, " N1D", CHL0A: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CHL0A: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CHL0A: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CHL0A: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CHL0A: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CHL0A: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CHL0A: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CHL0A: sp, " CAD"
+CONNECT, " CBD", CHL0A: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CHL0A: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CHL0A: sp, " CGD"
+CONNECT, " O2D", CHL0A: sp2, " CED", " CGD"
+CONNECT, " CED", CHL0A: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CHL0A: s, " CMD" ##
+CONNECT, "HMD2", CHL0A: s, " CMD" ##
+CONNECT, "HMD3", CHL0A: s, " CMD" ##
+CONNECT, " HBD", CHL0A: s, " CBD" ##
+CONNECT, "HED1", CHL0A: s, " CED" ##
+CONNECT, "HED2", CHL0A: s, " CED" ##
+CONNECT, "HED3", CHL0A: s, " CED" ##
+
+CONNECT, " MG ", CHL0B: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CHL0B: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CHL0B: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " CHC", CHL0B: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " CHD", CHL0B: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " HHB", CHL0B: s, " CHB" ##
+CONNECT, " HHC", CHL0B: s, " CHC" ##
+CONNECT, " HHD", CHL0B: s, " CHD" ##
+CONNECT, " N1A", CHL0B: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CHL0B: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CHL0B: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CHL0B: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CHL0B: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CHL0B: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CHL0B: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CHL0B: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CHL0B: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CHL0B: sp, " CGA"
+CONNECT, " O2A", CHL0B: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, "HMA1", CHL0B: s, " CMA" ##
+CONNECT, "HMA2", CHL0B: s, " CMA" ##
+CONNECT, "HMA3", CHL0B: s, " CMA" ##
+CONNECT, " H2A", CHL0B: s, " C2A" ##
+CONNECT, " H3A", CHL0B: s, " C3A" ##
+CONNECT, "HAA1", CHL0B: s, " CAA" ##
+CONNECT, "HAA2", CHL0B: s, " CAA" ##
+CONNECT, "HBA1", CHL0B: s, " CBA" ##
+CONNECT, "HBA2", CHL0B: s, " CBA" ##
+CONNECT, " N1B", CHL0B: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CHL0B: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CHL0B: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " C3B", CHL0B: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CHL0B: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CHL0B: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CAB", CHL0B: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CHL0B: sp2, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", CHL0B: s, " CAB" ##
+CONNECT, "HMB1", CHL0B: s, " CMB" #####
+CONNECT, "HMB2", CHL0B: s, " CMB" #####
+CONNECT, "HMB3", CHL0B: s, " CMB" #####
+CONNECT, "HBB1", CHL0B: s, " CBB" #####
+CONNECT, "HBB3", CHL0B: s, " CBB" #####
+CONNECT, " N1C", CHL0B: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CHL0B: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CHL0B: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CHL0B: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CHL0B: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CHL0B: sp2, " C2C", "HMC1", " OMC"         ##    s-hybrid
+CONNECT, " OMC", CHL0B: sp,  " CMC"                         ##
+CONNECT, " CAC", CHL0B: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CHL0B: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CHL0B: s, " CMC" ##
+CONNECT, "HAC1", CHL0B: s, " CAC" ##
+CONNECT, "HAC2", CHL0B: s, " CAC" ##
+CONNECT, "HBC1", CHL0B: s, " CBC" ##
+CONNECT, "HBC2", CHL0B: s, " CBC" ##
+CONNECT, "HBC3", CHL0B: s, " CBC" ##
+CONNECT, " N1D", CHL0B: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CHL0B: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CHL0B: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CHL0B: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CHL0B: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CHL0B: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CHL0B: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CHL0B: sp, " CAD"
+CONNECT, " CBD", CHL0B: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CHL0B: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CHL0B: sp, " CGD"
+CONNECT, " O2D", CHL0B: sp2, " CED", " CGD"
+CONNECT, " CED", CHL0B: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CHL0B: s, " CMD" ##
+CONNECT, "HMD2", CHL0B: s, " CMD" ##
+CONNECT, "HMD3", CHL0B: s, " CMD" ##
+CONNECT, " HBD", CHL0B: s, " CBD" ##
+CONNECT, "HED1", CHL0B: s, " CED" ##
+CONNECT, "HED2", CHL0B: s, " CED" ##
+CONNECT, "HED3", CHL0B: s, " CED" ##
+
+# Atom charges
+CHARGE, CHL0A, " MG ":  1.44331 
+CHARGE, CHL0A, " CHA": -0.07032
+CHARGE, CHL0A, " CHB": -0.29239
+CHARGE, CHL0A, " CHC": -0.2067 
+CHARGE, CHL0A, " CHD": -0.1967 
+CHARGE, CHL0A, " HHB":  0.22596  ##
+CHARGE, CHL0A, " HHC":  0.23219  ##
+CHARGE, CHL0A, " HHD":  0.23178  ##
+CHARGE, CHL0A, " N1A": -0.59006
+CHARGE, CHL0A, " C1A":  0.26882 
+CHARGE, CHL0A, " C2A": -0.29372
+CHARGE, CHL0A, " C3A": -0.28198
+CHARGE, CHL0A, " C4A":  0.18112 
+CHARGE, CHL0A, " CMA": -0.64117
+CHARGE, CHL0A, " CAA": -0.44023
+CHARGE, CHL0A, " CBA": -0.57033
+CHARGE, CHL0A, " CGA":  0.81543 
+CHARGE, CHL0A, " O1A": -0.568    ### -0.567 - 0.001 =  -0.568 Step2 Excess Charge Compensation 
+CHARGE, CHL0A, " O2A": -0.71224 
+CHARGE, CHL0A, "HMA1":  0.23047  
+CHARGE, CHL0A, "HMA2":  0.22525  
+CHARGE, CHL0A, "HMA3":  0.22813  
+CHARGE, CHL0A, " H2A":  0.27142  
+CHARGE, CHL0A, " H3A":  0.24266  
+CHARGE, CHL0A, "HAA1":  0.38664  ### 0.26426 + 0.1223825 = 0.3866425 
+CHARGE, CHL0A, "HAA2":  0.36137  ### 0.23899 + 0.1223825 = 0.3613725
+CHARGE, CHL0A, "HBA1":  0.39071  ### 0.26833 + 0.1223825 = 0.3907125 
+CHARGE, CHL0A, "HBA2":  0.36651  ### 0.24413 + 0.1223825 = 0.3665125
+CHARGE, CHL0A, " N1B": -0.69097
+CHARGE, CHL0A, " C1B":  0.20367 
+CHARGE, CHL0A, " C2B": -0.0574 
+CHARGE, CHL0A, " C3B": -0.07245
+CHARGE, CHL0A, " C4B":  0.15685 
+CHARGE, CHL0A, " CMB": -0.68921
+CHARGE, CHL0A, " CAB": -0.22205
+CHARGE, CHL0A, " CBB": -0.38415  ##
+CHARGE, CHL0A, " HBB":  0.23148  ##
+CHARGE, CHL0A, "HMB1":  0.24218  ##
+CHARGE, CHL0A, "HMB2":  0.24359  ##
+CHARGE, CHL0A, "HMB3":  0.24195  ##
+CHARGE, CHL0A, "HBB1":  0.20913  ##
+CHARGE, CHL0A, "HBB3":  0.21783  ##
+CHARGE, CHL0A, " N1C": -0.65848
+CHARGE, CHL0A, " C1C": 0.16423 
+CHARGE, CHL0A, " C2C": -0.05051
+CHARGE, CHL0A, " C3C": -0.04134
+CHARGE, CHL0A, " C4C":  0.16465 
+CHARGE, CHL0A, " CMC": -0.69282
+CHARGE, CHL0A, " CAC": -0.46985
+CHARGE, CHL0A, " CBC": -0.65024
+CHARGE, CHL0A, "HMC1":  0.24518  ##
+CHARGE, CHL0A, "HMC2":  0.24493  ##
+CHARGE, CHL0A, "HMC3":  0.24187  ##
+CHARGE, CHL0A, "HAC1":  0.2367   ##
+CHARGE, CHL0A, "HAC2":  0.24177  ##
+CHARGE, CHL0A, "HBC1":  0.22218  ##
+CHARGE, CHL0A, "HBC2":  0.22992  ##
+CHARGE, CHL0A, "HBC3":  0.22499  ##
+CHARGE, CHL0A, " N1D": -0.7118 
+CHARGE, CHL0A, " C1D":  0.15795 
+CHARGE, CHL0A, " C2D":  0.03599 
+CHARGE, CHL0A, " C3D": -0.17455
+CHARGE, CHL0A, " C4D":  0.20948 
+CHARGE, CHL0A, " CMD": -0.69815
+CHARGE, CHL0A, " CAD":  0.56622 
+CHARGE, CHL0A, " OBD": -0.54674
+CHARGE, CHL0A, " CBD": -0.43659
+CHARGE, CHL0A, " CGD":  0.84034 
+CHARGE, CHL0A, " O1D": -0.57644
+CHARGE, CHL0A, " O2D": -0.58181
+CHARGE, CHL0A, " CED": -0.29934
+CHARGE, CHL0A, "HMD1":  0.24531  ##
+CHARGE, CHL0A, "HMD2":  0.24569  ##
+CHARGE, CHL0A, "HMD3":  0.2687   ##
+CHARGE, CHL0A, " HBD":  0.29404  ##
+CHARGE, CHL0A, "HED1":  0.21606  ##
+CHARGE, CHL0A, "HED2":  0.20436  ##
+CHARGE, CHL0A, "HED3":  0.2187   ##
+                                  # H-charge 0.48953 --> 0.48953/4 = 0.1223825
+
+CHARGE, CHL0B, " MG ":  1.33981
+CHARGE, CHL0B, " CHA": -0.1112
+CHARGE, CHL0B, " CHB": -0.32179
+CHARGE, CHL0B, " CHC": -0.25446
+CHARGE, CHL0B, " CHD": -0.22556
+CHARGE, CHL0B, " HHB":  0.24415   ##
+CHARGE, CHL0B, " HHC":  0.26719   ##
+CHARGE, CHL0B, " HHD":  0.23884   ##
+CHARGE, CHL0B, " N1A": -0.64838
+CHARGE, CHL0B, " C1A":  0.29305
+CHARGE, CHL0B, " C2A": -0.28232
+CHARGE, CHL0B, " C3A": -0.27643
+CHARGE, CHL0B, " C4A":  0.26786
+CHARGE, CHL0B, " CMA": -0.66202
+CHARGE, CHL0B, " CAA": -0.43968
+CHARGE, CHL0B, " CBA": -0.54473
+CHARGE, CHL0B, " CGA":  0.83282
+CHARGE, CHL0B, " O1A": -0.63697    ### -0.61597 - 0.021 =  -0.63697 Step2 Excess Charge Compensation
+CHARGE, CHL0B, " O2A": -0.5479
+CHARGE, CHL0B, "HMA1":  0.23447
+CHARGE, CHL0B, "HMA2":  0.23747
+CHARGE, CHL0B, "HMA3":  0.23833
+CHARGE, CHL0B, " H2A":  0.27204
+CHARGE, CHL0B, " H3A":  0.2417
+CHARGE, CHL0B, "HAA1":  0.346715   ### 0.26046 + 0.086255 = 0.346715
+CHARGE, CHL0B, "HAA2":  0.332525   ### 0.24627 + 0.086255 = 0.332525
+CHARGE, CHL0B, "HBA1":  0.337595   ### 0.25134 + 0.086255 = 0.337595
+CHARGE, CHL0B, "HBA2":  0.343365   ### 0.25711 + 0.086255 = 0.343365
+CHARGE, CHL0B, " N1B": -0.70581
+CHARGE, CHL0B, " C1B":  0.21854
+CHARGE, CHL0B, " C2B": -0.03233
+CHARGE, CHL0B, " C3B": -0.04397
+CHARGE, CHL0B, " C4B":  0.19898
+CHARGE, CHL0B, " CMB": -0.68443
+CHARGE, CHL0B, " CAB": -0.23976
+CHARGE, CHL0B, " CBB": -0.39121   ##
+CHARGE, CHL0B, " HBB":  0.23874   ##
+CHARGE, CHL0B, "HMB1":  0.24852   ##
+CHARGE, CHL0B, "HMB2":  0.24108   ##
+CHARGE, CHL0B, "HMB3":  0.23597   ##
+CHARGE, CHL0B, "HBB1":  0.21231   ##
+CHARGE, CHL0B, "HBB3":  0.21949   ##
+CHARGE, CHL0B, " N1C": -0.64786
+CHARGE, CHL0B, " C1C":  0.23742
+CHARGE, CHL0B, " C2C": -0.17204
+CHARGE, CHL0B, " C3C":  0.02313
+CHARGE, CHL0B, " C4C":  0.1591
+CHARGE, CHL0B, " CMC":  0.36381
+CHARGE, CHL0B, " OMC": -0.54858
+CHARGE, CHL0B, " CAC": -0.47607
+CHARGE, CHL0B, " CBC": -0.65778
+CHARGE, CHL0B, "HMC1":  0.14978   ##
+CHARGE, CHL0B, "HAC1":  0.24882   ##
+CHARGE, CHL0B, "HAC2":  0.24427   ##
+CHARGE, CHL0B, "HBC1":  0.22252   ##
+CHARGE, CHL0B, "HBC2":  0.23311   ##
+CHARGE, CHL0B, "HBC3":  0.23252   ##
+CHARGE, CHL0B, " N1D": -0.6858
+CHARGE, CHL0B, " C1D":  0.14929
+CHARGE, CHL0B, " C2D":  0.03788
+CHARGE, CHL0B, " C3D": -0.18139
+CHARGE, CHL0B, " C4D":  0.24596
+CHARGE, CHL0B, " CMD": -0.68836
+CHARGE, CHL0B, " CAD":  0.55274
+CHARGE, CHL0B, " OBD": -0.52851
+CHARGE, CHL0B, " CBD": -0.42114
+CHARGE, CHL0B, " CGD":  0.83607
+CHARGE, CHL0B, " O1D": -0.61421
+CHARGE, CHL0B, " O2D": -0.52848
+CHARGE, CHL0B, " CED": -0.31995
+CHARGE, CHL0B, "HMD1":  0.25262   ##
+CHARGE, CHL0B, "HMD2":  0.25217   ##
+CHARGE, CHL0B, "HMD3":  0.23135   ##
+CHARGE, CHL0B, " HBD":  0.29927   ##
+CHARGE, CHL0B, "HED1":  0.2163    ##
+CHARGE, CHL0B, "HED2":  0.22148   ##
+CHARGE, CHL0B, "HED3":  0.22695   ##
+                                  # H-charge 0.34502 --> 0.34502/4 = 0.086255
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CHL0A,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CHL0A,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CHL0A,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CHL0A,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CHL0A,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CHL0A,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CBB": 1.700,   2.000,   0.150  #
+RADIUS,  CHL0A,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CHL0A,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CHL0A,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CHL0A,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CHL0A,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CHL0A,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CHL0A,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CHL0A,  " CED": 2.000,   2.000,   0.150
+
+RADIUS,  CHL0B,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CHL0B,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CHL0B,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CHL0B,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CHL0B,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CHL0B,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CBB": 1.700,   2.000,   0.150  #
+RADIUS,  CHL0B,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CHL0B,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " OMC": 1.520,   1.600,   0.200
+RADIUS,  CHL0B,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CHL0B,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CHL0B,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CHL0B,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CHL0B,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CHL0B,  " O2D": 1.520,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CHL0A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -14.987, rxn08= 0 # Tested with LigandExpo Ideal PDB CLA with no Hs
+CONFORMER, CHL0B: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -12.284, rxn08= 0 # Tested with LigandExpo Ideal PDB CHL with no Hs

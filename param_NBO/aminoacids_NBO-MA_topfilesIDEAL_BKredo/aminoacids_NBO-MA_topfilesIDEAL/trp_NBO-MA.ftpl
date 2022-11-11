@@ -1,0 +1,103 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+# 4.Rotomer
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, TRP: TRPBK, TRP01
+
+# Atom definition
+CONNECT, " N  ", TRPBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", TRPBK: s, " N  "
+CONNECT, " CA ", TRPBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", TRPBK: s, " CA "
+CONNECT, " C  ", TRPBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", TRPBK: s, " C  "
+CONNECT, " CB ", TRP01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", TRP01: s, " CB "
+CONNECT, " HB3", TRP01: s, " CB "
+CONNECT, " CG ", TRP01: sp2, " CB ", " CD1", " CD2"
+CONNECT, " CD1", TRP01: sp2, " CG ", " NE1", " HD1"
+CONNECT, " HD1", TRP01: s, " CD1"
+CONNECT, " CD2", TRP01: sp2, " CG ", " CE2", " CE3"
+CONNECT, " NE1", TRP01: sp2, " CD1", " CE2", " HE1"
+CONNECT, " HE1", TRP01: s, " NE1"
+CONNECT, " CE2", TRP01: sp2, " CD2", " NE1", " CZ2"
+CONNECT, " CE3", TRP01: sp2, " CD2", " CZ3", " HE3"
+CONNECT, " HE3", TRP01: s, " CE3"
+CONNECT, " CZ2", TRP01: sp2, " CE2", " CH2", " HZ2"
+CONNECT, " HZ2", TRP01: s, " CZ2"
+CONNECT, " CZ3", TRP01: sp2, " CE3", " CH2", " HZ3"
+CONNECT, " HZ3", TRP01: s, " CZ3"
+CONNECT, " CH2", TRP01: sp2, " CZ2", " CZ3", " HH2"
+CONNECT, " HH2", TRP01: s, " CH2"
+
+# Atom charges
+CHARGE, TRPBK, " N  ": -0.556
+CHARGE, TRPBK, " H  ":  0.439
+CHARGE, TRPBK, " CA ": -0.176
+CHARGE, TRPBK, " HA ":  0.264
+CHARGE, TRPBK, " C  ":  0.580
+CHARGE, TRPBK, " O  ": -0.551
+CHARGE, TRP01, " CB ": -0.478
+CHARGE, TRP01, " HB2":  0.267
+CHARGE, TRP01, " HB3":  0.246
+CHARGE, TRP01, " CG ": -0.108
+CHARGE, TRP01, " CD1": -0.042
+CHARGE, TRP01, " HD1":  0.242
+CHARGE, TRP01, " CD2": -0.109
+CHARGE, TRP01, " NE1": -0.588
+CHARGE, TRP01, " HE1":  0.460
+CHARGE, TRP01, " CE2":  0.151
+CHARGE, TRP01, " CE3": -0.227
+CHARGE, TRP01, " HE3":  0.239
+CHARGE, TRP01, " CZ2": -0.258
+CHARGE, TRP01, " HZ2":  0.239
+CHARGE, TRP01, " CZ3": -0.261
+CHARGE, TRP01, " HZ3":  0.242
+CHARGE, TRP01, " CH2": -0.259
+CHARGE, TRP01, " HH2":  0.244
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  TRPBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  TRPBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  TRPBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  TRPBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  TRPBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  TRPBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  TRP01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  TRP01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  TRP01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  TRP01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " CD1": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  TRP01,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " NE1": 1.500,   1.750,   0.160
+RADIUS,  TRP01,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  TRP01,  " CE2": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " CE3": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " HE3": 1.000,   1.000,   0.020
+RADIUS,  TRP01,  " CZ2": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " HZ2": 1.000,   1.000,   0.020
+RADIUS,  TRP01,  " CZ3": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " HZ3": 1.000,   1.000,   0.020
+RADIUS,  TRP01,  " CH2": 1.700,   2.000,   0.150
+RADIUS,  TRP01,  " HH2": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, TRP01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04= -6.276, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, TRP: " CA " - " CB ", " CB " - " CG "
