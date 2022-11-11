@@ -1,0 +1,89 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, FME: FMEBK, FME01
+
+# Atom definition
+CONNECT, " N  ", FMEBK: sp2, " CN ", " CA ", " H  "
+CONNECT, " CN ", FMEBK: sp2, " N  ", " O1 ", " H  "
+CONNECT, " O1 ", FMEBK: sp2, " CN "
+CONNECT, " H  ", FMEBK: s, " N  "
+CONNECT, " CA ", FMEBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", FMEBK: s, " CA "
+CONNECT, " C  ", FMEBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", FMEBK: sp2, " C  "
+CONNECT, " CB ", FME01: sp3, " CA ", " CG ", "1HB ", "2HB "
+CONNECT, "1HB ", FME01: s, " CB "
+CONNECT, "2HB ", FME01: s, " CB "
+CONNECT, " CG ", FME01: sp3, " CB ", " SD ", "1HG ", "2HG "
+CONNECT, "1HG ", FME01: s, " CG "
+CONNECT, "2HG ", FME01: s, " CG "
+CONNECT, " SD ", FME01: sp3, " CG ", " CE "
+CONNECT, " CE ", FME01: sp3, " SD ", "1HE ", "2HE ", "3HE "
+CONNECT, "1HE ", FME01: s, " CE "
+CONNECT, "2HE ", FME01: s, " CE "
+CONNECT, "3HE ", FME01: s, " CE "
+
+# Atom charges
+CHARGE, FMEBK, " N  ": -0.350
+CHARGE, FMEBK, " CN ":  0.250
+CHARGE, FMEBK, " O1 ": -0.250
+CHARGE, FMEBK, " H  ":  0.250
+CHARGE, FMEBK, " CA ":  0.100
+CHARGE, FMEBK, " HA ":  0.000
+CHARGE, FMEBK, " C  ":  0.550
+CHARGE, FMEBK, " O  ": -0.550
+CHARGE, FME01, " CB ":  0.000
+CHARGE, FME01, "1HB ":  0.000
+CHARGE, FME01, "2HB ":  0.000
+CHARGE, FME01, " CG ":  0.060
+CHARGE, FME01, "1HG ":  0.000
+CHARGE, FME01, "2HG ":  0.000
+CHARGE, FME01, " SD ": -0.120
+CHARGE, FME01, " CE ":  0.060
+CHARGE, FME01, "1HE ":  0.000
+CHARGE, FME01, "2HE ":  0.000
+CHARGE, FME01, "3HE ":  0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  FMEBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  FMEBK,  " CN ": 1.700,   2.000,   0.150
+RADIUS,  FMEBK,  " O1 ": 1.400,   1.600,   0.200
+RADIUS,  FMEBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  FMEBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  FMEBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  FMEBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  FMEBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  FME01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  FME01,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  FME01,  "1HG ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  "2HG ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  " SD ": 1.850,   2.000,   0.200
+RADIUS,  FME01,  " CE ": 2.000,   2.000,   0.150
+RADIUS,  FME01,  "1HE ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  "2HE ": 0.000,   1.000,   0.020
+RADIUS,  FME01,  "3HE ": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, FME01: Em0=  0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -0.063, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, FME: " CA " - " CB ", " CB " - " CG ", " CG " - " SD "

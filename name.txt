@@ -37,24 +37,6 @@ HAD**HEM******  *****PDD******
 HBD**HEM******  *****PDD******
 *H1D*HEM******  *****PDD******
 *H2D*HEM******  *****PDD******
-*CAA*CYC******  *****PAA******      extract PAA from cyc
-*CBA*CYC******  *****PAA******
-*CGA*CYC******  *****PAA******
-*O1A*CYC******  *****PAA******
-*O2A*CYC******  *****PAA******
-HAA**CYC******  *****PAA******
-HBA**CYC******  *****PAA******
-*H1A*CYC******  *****PAA******
-*H2A*CYC******  *****PAA******
-*CAD*CYC******  *****PDD******      extract PDD from cyc
-*CBD*CYC******  *****PDD******
-*CGD*CYC******  *****PDD******
-*O1D*CYC******  *****PDD******
-*O2D*CYC******  *****PDD******
-HAD**CYC******  *****PDD******
-HBD**CYC******  *****PDD******
-*H1D*CYC******  *****PDD******
-*H2D*CYC******  *****PDD******
 *C11*HEM******  *****FAR******      extract FAR from heme
 *C12*HEM******  *****FAR******
 *C13*HEM******  *****FAR******
@@ -73,6 +55,26 @@ HBD**CYC******  *****PDD******
 *C26*HEM******  *****FAR******
 *C27*HEM******  *****FAR******
 *O11*HEM******  *****FAR******
+
+*CAA*CYC******  *****PAA******      extract PAA from cyc  added by Gehan (07/26/22)
+*CBA*CYC******  *****PAA******
+*CGA*CYC******  *****PAA******
+*O1A*CYC******  *****PAA******
+*O2A*CYC******  *****PAA******
+*H02*CYC******  HAA1*PAA******
+*H24*CYC******  HAA2*PAA******
+*H07*CYC******  HBA1*PAA******
+*H28*CYC******  HBA2*PAA******
+*CAD*CYC******  *****PDD******      extract PDD from cyc  added by Gehan (07/26/22)
+*CBD*CYC******  *****PDD******
+*CGD*CYC******  *****PDD******
+*O1D*CYC******  *****PDD******
+*O2D*CYC******  *****PDD******
+*H05*CYC******  HAD1*PDD******
+*H27*CYC******  HAD2*PDD******
+*H10*CYC******  HBD1*PDD******
+*H31*CYC******  HBD2*PDD******
+
  O **ACT******   O_***********
  C **ACT******   C_***********
  O **CMO******   O_***********
@@ -87,26 +89,213 @@ HBD**CYC******  *****PDD******
  C **ACN******   C_***********
 ***** ZN******  *****_ZN******
 ***** NA******  *****_NA******
-*NA  CLA******  *N1A CLA******      added by Gehan 
-*NB  CLA******  *N1B CLA******      added by Gehan
-*NC  CLA******  *N1C CLA******      added by Gehan
-*ND  CLA******  *N1D CLA******      added by Gehan
-*NA  CL7******  *N1A CL7******      added by Gehan
-*NB  CL7******  *N1B CL7******      added by Gehan
-*NC  CL7******  *N1C CL7******      added by Gehan
-*ND  CL7******  *N1D CL7******      added by Gehan
-*NA  F6C******  *N1A F6C******      added by Gehan
-*NB  F6C******  *N1B F6C******      added by Gehan
-*NC  F6C******  *N1C F6C******      added by Gehan
-*ND  F6C******  *N1D F6C******      added by Gehan
-*NA  CLZ******  *N1A CLZ******      added by Gehan
-*NB  CLZ******  *N1B CLZ******      added by Gehan
-*NC  CLZ******  *N1C CLZ******      added by Gehan
-*ND  CLZ******  *N1D CLZ******      added by Gehan
+
+*NA  CLA******  *N1A CLA******      rename Chl a/b/d/f atoms - added by Gehan 
+*NB  CLA******  *N1B CLA******      
+*NC  CLA******  *N1C CLA******      
+*ND  CLA******  *N1D CLA******      
+*NA  CLB******  *N1A CLB******      
+*NB  CLB******  *N1B CLB******      
+*NC  CLB******  *N1C CLB******      
+*ND  CLB******  *N1D CLB******      
+*NA  CL7******  *N1A CL7******      
+*NB  CL7******  *N1B CL7******      
+*NC  CL7******  *N1C CL7******      
+*ND  CL7******  *N1D CL7******      
+*NA  F6C******  *N1A F6C******      
+*NB  F6C******  *N1B F6C******      
+*NC  F6C******  *N1C F6C******      
+*ND  F6C******  *N1D F6C******      
+*NA  CHL******  *N1A CHL******      
+*NB  CHL******  *N1B CHL******      
+*NC  CHL******  *N1C CHL******      
+*ND  CHL******  *N1D CHL******      
+
+*C1  CHL******  *C1  CT1******      create CHL tail - added by Gehan
+*C2  CHL******  *C2  CT1******
+*C3  CHL******  *C3  CT1******
+*C4  CHL******  *C4  CT1******
+*C5  CHL******  *C5  CT1******
+*C6  CHL******  *C6  CT2******
+*C7  CHL******  *C7  CT2******
+*C8  CHL******  *C8  CT2******
+*C9  CHL******  *C9  CT2******
+*C10 CHL******  *C10 CT2******
+*C11 CHL******  *C11 CT3******
+*C12 CHL******  *C12 CT3******
+*C13 CHL******  *C13 CT3******
+*C14 CHL******  *C14 CT3******
+*C15 CHL******  *C15 CT3******
+*C16 CHL******  *C16 CT4******
+*C17 CHL******  *C17 CT4******
+*C18 CHL******  *C18 CT4******
+*C19 CHL******  *C19 CT4******
+*C20 CHL******  *C20 CT4******
+
+*C1  CL*******  *C1  CT1******      create Chl a/b/d tail - added by Gehan
+*C2  CL*******  *C2  CT1******
+*C3  CL*******  *C3  CT1******
+*C4  CL*******  *C4  CT1******
+*C5  CL*******  *C5  CT1******
+*C6  CL*******  *C6  CT2******
+*C7  CL*******  *C7  CT2******
+*C8  CL*******  *C8  CT2******
+*C9  CL*******  *C9  CT2******
+*C10 CL*******  *C10 CT2******
+*C11 CL*******  *C11 CT3******
+*C12 CL*******  *C12 CT3******
+*C13 CL*******  *C13 CT3******
+*C14 CL*******  *C14 CT3******
+*C15 CL*******  *C15 CT3******
+*C16 CL*******  *C16 CT4******
+*C17 CL*******  *C17 CT4******
+*C18 CL*******  *C18 CT4******
+*C19 CL*******  *C19 CT4******
+*C20 CL*******  *C20 CT4******
+
+*C1  F6C******  *C1  CT1******      create Chl f tail - added by Gehan
+*C2  F6C******  *C2  CT1******
+*C3  F6C******  *C3  CT1******
+*C4  F6C******  *C4  CT1******
+*C5  F6C******  *C5  CT1******
+*C6  F6C******  *C6  CT2******
+*C7  F6C******  *C7  CT2******
+*C8  F6C******  *C8  CT2******
+*C9  F6C******  *C9  CT2******
+*C10 F6C******  *C10 CT2******
+*C11 F6C******  *C11 CT3******
+*C12 F6C******  *C12 CT3******
+*C13 F6C******  *C13 CT3******
+*C14 F6C******  *C14 CT3******
+*C15 F6C******  *C15 CT3******
+*C16 F6C******  *C16 CT4******
+*C17 F6C******  *C17 CT4******
+*C18 F6C******  *C18 CT4******
+*C19 F6C******  *C19 CT4******
+*C20 F6C******  *C20 CT4******
+
+*C1  CHL******  *C1  CT1******      create CHL tail - added by Gehan
+*C2  CHL******  *C2  CT1******
+*C3  CHL******  *C3  CT1******
+*C4  CHL******  *C4  CT1******
+*C5  CHL******  *C5  CT1******
+*C6  CHL******  *C6  CT2******
+*C7  CHL******  *C7  CT2******
+*C8  CHL******  *C8  CT2******
+*C9  CHL******  *C9  CT2******
+*C10 CHL******  *C10 CT2******
+*C11 CHL******  *C11 CT3******
+*C12 CHL******  *C12 CT3******
+*C13 CHL******  *C13 CT3******
+*C14 CHL******  *C14 CT3******
+*C15 CHL******  *C15 CT3******
+*C16 CHL******  *C16 CT4******
+*C17 CHL******  *C17 CT4******
+*C18 CHL******  *C18 CT4******
+*C19 CHL******  *C19 CT4******
+*C20 CHL******  *C20 CT4******
+
+
+*C2A DGD******  *C2A dgd******      create DGD tail - added by Gehan (07/28/22)
+*C3A DGD******  *C3A dgd******
+*C4A DGD******  *C4A dgd******
+*C5A DGD******  *C5A dgd******
+*C6A DGD******  *C6A dgd******
+*C7A DGD******  *C7A dgd******
+*C8A DGD******  *C8A dgd******
+*C9A DGD******  *C9A dgd******
+*CAA DGD******  *CAA dgd******
+*CBA DGD******  *CBA dgd******
+*CCA DGD******  *CCA dgd******
+*CDA DGD******  *CDA dgd******
+*CEA DGD******  *CEA dgd******
+*CFA DGD******  *CFA dgd******
+*CGA DGD******  *CGA dgd******
+*CHA DGD******  *CHA dgd******
+*CIA DGD******  *CIA dgd******
+*C2B DGD******  *C2B dgd******
+*C3B DGD******  *C3B dgd******
+*C4B DGD******  *C4B dgd******
+*C5B DGD******  *C5B dgd******
+*C6B DGD******  *C6B dgd******
+*C7B DGD******  *C7B dgd******
+*C8B DGD******  *C8B dgd******
+*C9B DGD******  *C9B dgd******
+*CAB DGD******  *CAB dgd******
+*CBB DGD******  *CBB dgd******
+*CCB DGD******  *CCB dgd******
+*CDB DGD******  *CDB dgd******
+*CEB DGD******  *CEB dgd******
+*CFB DGD******  *CFB dgd******
+*CGB DGD******  *CGB dgd******
+*CHB DGD******  *CHB dgd******
+*CIB DGD******  *CIB dgd******      
+
+*C9  LHG******  *C9  lhg*******     create LHG tail - added by Gehan (08/02/22)
+*C10 LHG******  *C10 lhg*******
+*C11 LHG******  *C11 lhg*******
+*C12 LHG******  *C12 lhg*******
+*C13 LHG******  *C13 lhg*******
+*C14 LHG******  *C14 lhg*******
+*C15 LHG******  *C15 lhg*******
+*C16 LHG******  *C16 lhg*******
+*C17 LHG******  *C17 lhg*******
+*C18 LHG******  *C18 lhg*******
+*C19 LHG******  *C19 lhg*******
+*C20 LHG******  *C20 lhg*******
+*C21 LHG******  *C21 lhg*******
+*C22 LHG******  *C22 lhg*******
+*C25 LHG******  *C25 lhg*******
+*C26 LHG******  *C26 lhg*******
+*C27 LHG******  *C27 lhg*******
+*C28 LHG******  *C28 lhg*******
+*C29 LHG******  *C29 lhg*******
+*C30 LHG******  *C30 lhg*******
+*C31 LHG******  *C31 lhg*******
+*C32 LHG******  *C32 lhg*******
+*C33 LHG******  *C33 lhg*******
+*C34 LHG******  *C34 lhg*******
+*C35 LHG******  *C35 lhg*******
+*C36 LHG******  *C36 lhg*******
+*C37 LHG******  *C37 lhg*******
+*C38 LHG******  *C38 lhg*******
+
+
+*C9  SQD******  *C9  SQT*******     create SQD tail - added by Gehan (09/19/22)
+*C10 SQD******  *C10 SQT*******    
+*C11 SQD******  *C11 SQT*******    
+*C12 SQD******  *C12 SQT*******    
+*C13 SQD******  *C13 SQT*******    
+*C14 SQD******  *C14 SQT*******    
+*C15 SQD******  *C15 SQT*******    
+*C16 SQD******  *C16 SQT*******    
+*C17 SQD******  *C17 SQT*******    
+*C18 SQD******  *C18 SQT*******    
+*C19 SQD******  *C19 SQT*******    
+*C20 SQD******  *C20 SQT*******    
+*C21 SQD******  *C21 SQT*******    
+*C22 SQD******  *C22 SQT*******    
+*C25 SQD******  *C25 SQT*******
+*C26 SQD******  *C26 SQT*******
+*C27 SQD******  *C27 SQT*******
+*C28 SQD******  *C28 SQT*******
+*C29 SQD******  *C29 SQT*******
+*C30 SQD******  *C30 SQT*******
+*C31 SQD******  *C31 SQT*******
+*C32 SQD******  *C32 SQT*******
+*C33 SQD******  *C33 SQT*******
+*C34 SQD******  *C34 SQT*******
+*C35 SQD******  *C35 SQT*******
+*C36 SQD******  *C36 SQT*******
+*C37 SQD******  *C37 SQT*******
+*C38 SQD******  *C38 SQT*******
+
+
 *C **BCT******  *CT**BCT******      added by Gehan 
 CA    CA******   CA  CA ******      added by Gehan
 CL    CL******   CL  CL ******      added by Gehan
 MG    MG******   MG  MG ******      added by Gehan
+*****OEX******  *****OEC******
 *C8  UNL******  *C8  UNL******      added by Gehan
 SE  *MSE******   SD *MET******
 *****MSE******  *****MET******

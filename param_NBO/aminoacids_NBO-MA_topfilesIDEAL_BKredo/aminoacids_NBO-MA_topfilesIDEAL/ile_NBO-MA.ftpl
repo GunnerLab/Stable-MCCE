@@ -1,0 +1,86 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022 -  Isoleucine
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ILE: ILEBK, ILE01
+
+# Atom definition
+CONNECT, " N  ", ILEBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ILEBK: s, " N  "
+CONNECT, " CA ", ILEBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ILEBK: s, " CA "
+CONNECT, " C  ", ILEBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ILEBK: sp2, " C  "
+CONNECT, " CB ", ILE01: sp3, " CA ", " CG1", " CG2", " HB "
+CONNECT, " HB ", ILE01: s, " CB "
+CONNECT, " CG1", ILE01: sp3, " CB ", " CD1", "HG12", "HG13"
+CONNECT, "HG12", ILE01: s, " CG1"
+CONNECT, "HG13", ILE01: s, " CG1"
+CONNECT, " CG2", ILE01: sp3, " CB ", "HG21", "HG22", "HG23"
+CONNECT, "HG21", ILE01: s, " CG2"
+CONNECT, "HG22", ILE01: s, " CG2"
+CONNECT, "HG23", ILE01: s, " CG2"
+CONNECT, " CD1", ILE01: sp3, " CG1", "HD11", "HD12", "HD13"
+CONNECT, "HD11", ILE01: s, " CD1"
+CONNECT, "HD12", ILE01: s, " CD1"
+CONNECT, "HD13", ILE01: s, " CD1"
+
+# Atom charges
+CHARGE, ILEBK, " N  ": -0.575 # -0.350
+CHARGE, ILEBK, " H  ":  0.458 #  0.250
+CHARGE, ILEBK, " CA ": -0.169 #  0.100
+CHARGE, ILEBK, " HA ":  0.254 #  0.000
+CHARGE, ILEBK, " C  ":  0.583 #  0.550
+CHARGE, ILEBK, " O  ": -0.552 # -0.550
+CHARGE, ILE01, " CB ": -0.276 #  0.000 # -0.278 + 0.002 to balance out charge
+CHARGE, ILE01, " HB ":  0.251 #  0.000
+CHARGE, ILE01, " CG1": -0.475 #  0.000
+CHARGE, ILE01, "HG12":  0.235 #  0.000
+CHARGE, ILE01, "HG13":  0.236 #  0.000
+CHARGE, ILE01, " CG2": -0.707 #  0.000
+CHARGE, ILE01, "HG21":  0.248 #  0.000
+CHARGE, ILE01, "HG22":  0.235 #  0.000
+CHARGE, ILE01, "HG23":  0.236 #  0.000
+CHARGE, ILE01, " CD1": -0.701 #  0.000
+CHARGE, ILE01, "HD11":  0.246 #  0.000
+CHARGE, ILE01, "HD12":  0.239 #  0.000
+CHARGE, ILE01, "HD13":  0.233 #  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ILEBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ILEBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ILEBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ILEBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ILEBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ILEBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ILE01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ILE01,  " HB ": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  " CG1": 2.000,   2.000,   0.150
+RADIUS,  ILE01,  "HG12": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  "HG13": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  " CG2": 2.000,   2.000,   0.150
+RADIUS,  ILE01,  "HG21": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  "HG22": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  "HG23": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  " CD1": 2.000,   2.000,   0.150
+RADIUS,  ILE01,  "HD11": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  "HD12": 0.000,   1.000,   0.020
+RADIUS,  ILE01,  "HD13": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ILE01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04= -0.742, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, ILE: " CA " - " CB ", " CB " - " CG1"

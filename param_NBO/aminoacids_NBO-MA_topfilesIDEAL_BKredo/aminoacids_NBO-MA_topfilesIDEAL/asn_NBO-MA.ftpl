@@ -1,0 +1,72 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022 - Asparagine
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+#-------|---|----|-|---------|---------|---------|---------|---------|---------|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ASN: ASNBK, ASN01
+
+# Atom definition
+CONNECT, " N  ", ASNBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ASNBK: s, " N  "
+CONNECT, " CA ", ASNBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ASNBK: s, " CA "
+CONNECT, " C  ", ASNBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ASNBK: sp2, " C  "
+CONNECT, " CB ", ASN01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", ASN01: s, " CB "
+CONNECT, " HB3", ASN01: s, " CB "
+CONNECT, " CG ", ASN01: sp2, " CB ", " OD1", " ND2"
+CONNECT, " OD1", ASN01: sp2, " CG "
+CONNECT, " ND2", ASN01: sp2, " CG ", "HD21", "HD22"
+CONNECT, "HD21", ASN01: s, " ND2"
+CONNECT, "HD22", ASN01: s, " ND2"
+
+# Atom charges
+CHARGE, ASNBK, " N  ": -0.513 # -0.350
+CHARGE, ASNBK, " H  ":  0.404 #  0.250
+CHARGE, ASNBK, " CA ": -0.195 #  0.100
+CHARGE, ASNBK, " HA ":  0.282 #  0.000
+CHARGE, ASNBK, " C  ":  0.573 #  0.550
+CHARGE, ASNBK, " O  ": -0.552 # -0.550
+CHARGE, ASN01, " CB ": -0.558 #  0.000 # -0.560 + 0.002 to balance out charge
+CHARGE, ASN01, " HB2":  0.290 #  0.000
+CHARGE, ASN01, " HB3":  0.251 #  0.000
+CHARGE, ASN01, " CG ":  0.671 #  0.550
+CHARGE, ASN01, " OD1": -0.636 # -0.550
+CHARGE, ASN01, " ND2": -0.885 # -0.780
+CHARGE, ASN01, "HD21":  0.429 #  0.390
+CHARGE, ASN01, "HD22":  0.438 #  0.390
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ASNBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ASNBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ASNBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ASNBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ASNBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ASNBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ASN01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ASN01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ASN01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  ASN01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  ASN01,  " OD1": 1.400,   1.600,   0.200
+RADIUS,  ASN01,  " ND2": 1.500,   1.750,   0.160
+RADIUS,  ASN01,  "HD21": 1.000,   1.000,   0.020
+RADIUS,  ASN01,  "HD22": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ASN01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -5.740, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, ASN: " CA " - " CB ", " CB " - " CG "

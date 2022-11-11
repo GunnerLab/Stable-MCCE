@@ -1,0 +1,263 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii (Divya tpl file)
+# File Created by Gehan Ranepura on 12/14/2021
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, LMT: LMTBK, LMT01
+
+# Atom definition
+CONNECT, " C2B", LMT01: sp3, " C3B", " C1B", " O2B", " H73"
+CONNECT, " C4B", LMT01: sp3, " C3B", " O4'", " C5B", " H71"
+CONNECT, " C5B", LMT01: sp3, " C4B", " O5B", " C6B", " H80"
+CONNECT, " C6B", LMT01: sp3, " C5B", " O6B", " H81", " H82"
+CONNECT, " O2B", LMT01: sp2, " C2B", " H62"
+CONNECT, " O4'", LMT01: sp2, " C4B", " H64"
+CONNECT, " C1B", LMT01: sp3, " C2B", " O5B", " O1B", " H74"
+CONNECT, " C3B", LMT01: sp3, " C2B", " C4B", " O3B", " H72"
+CONNECT, " O1B", LMT01: sp2, " C1B", " C4'"
+CONNECT, " O3B", LMT01: sp2, " C3B", " H63"
+CONNECT, " O5B", LMT01: sp2, " C5B", " C1B"
+CONNECT, " O6B", LMT01: sp2, " C6B", " H65"
+CONNECT, " C1'", LMT01: sp3, " C2'", " O5'", " O1'", " H79"
+CONNECT, " C2'", LMT01: sp3, " C1'", " C3'", " O2'", " H78"
+CONNECT, " C3'", LMT01: sp3, " C2'", " C4'", " O3'", " H76"
+CONNECT, " C4'", LMT01: sp3, " O1B", " C3'", " C5'", " H75"
+CONNECT, " C5'", LMT01: sp3, " C4'", " C6'", " O5'", " H77"
+CONNECT, " C6'", LMT01: sp3, " C5'", " O6'", " H83", " H84"
+CONNECT, " O1'", LMT01: sp2, " C1'", " C1 "
+CONNECT, " O3'", LMT01: sp2, " C3'", " H66"
+CONNECT, " O5'", LMT01: sp2, " C1'", " C5'"
+CONNECT, " O6'", LMT01: sp2, " C6'", " H70"
+CONNECT, " O2'", LMT01: sp2, " C2'", " H67"
+CONNECT, " C1 ", LMT01: sp3, " O1'", " C2 ", " H37", " H38"
+CONNECT, " C2 ", LMT01: sp3, " C1 ", " C3 ", " H39", " H40"
+CONNECT, " C3 ", LMT01: sp3, " C2 ", " C4 ", " H41", " H42"
+CONNECT, " C4 ", LMT01: sp3, " C3 ", " C5 ", " H43", " H44"
+CONNECT, " C5 ", LMT01: sp3, " C4 ", " C6 ", " H45", " H46"
+CONNECT, " C6 ", LMT01: sp3, " C5 ", " C7 ", " H47", " H48"
+CONNECT, " C7 ", LMT01: sp3, " C6 ", " C8 ", " H49", " H50"
+CONNECT, " C8 ", LMT01: sp3, " C7 ", " C9 ", " H51", " H52"
+CONNECT, " C9 ", LMT01: sp3, " C8 ", " C10", " H53", " H54"
+CONNECT, " C10", LMT01: sp3, " C9 ", " C11", " H55", " H56"
+CONNECT, " C11", LMT01: sp3, " C10", " C12", " H57", " H58"
+CONNECT, " C12", LMT01: sp3, " C11", " H59", " H60", " H61"
+CONNECT, " H37", LMT01: s, " C1 "
+CONNECT, " H38", LMT01: s, " C1 "
+CONNECT, " H39", LMT01: s, " C2 "
+CONNECT, " H40", LMT01: s, " C2 "
+CONNECT, " H41", LMT01: s, " C3 "
+CONNECT, " H42", LMT01: s, " C3 "
+CONNECT, " H43", LMT01: s, " C4 "
+CONNECT, " H44", LMT01: s, " C4 "
+CONNECT, " H45", LMT01: s, " C5 "
+CONNECT, " H46", LMT01: s, " C5 "
+CONNECT, " H47", LMT01: s, " C6 "
+CONNECT, " H48", LMT01: s, " C6 "
+CONNECT, " H49", LMT01: s, " C7 "
+CONNECT, " H50", LMT01: s, " C7 "
+CONNECT, " H51", LMT01: s, " C8 "
+CONNECT, " H52", LMT01: s, " C8 "
+CONNECT, " H53", LMT01: s, " C9 "
+CONNECT, " H54", LMT01: s, " C9 "
+CONNECT, " H55", LMT01: s, " C10"
+CONNECT, " H56", LMT01: s, " C10"
+CONNECT, " H57", LMT01: s, " C11"
+CONNECT, " H58", LMT01: s, " C11"
+CONNECT, " H59", LMT01: s, " C12"
+CONNECT, " H60", LMT01: s, " C12"
+CONNECT, " H61", LMT01: s, " C12"
+CONNECT, " H62", LMT01: s, " O2B"
+CONNECT, " H63", LMT01: s, " O3B"
+CONNECT, " H64", LMT01: s, " O4'"
+CONNECT, " H65", LMT01: s, " O6B"
+CONNECT, " H66", LMT01: s, " O3'"
+CONNECT, " H67", LMT01: s, " O2'"
+CONNECT, " H70", LMT01: s, " O6'"
+CONNECT, " H71", LMT01: s, " C4B"
+CONNECT, " H72", LMT01: s, " C3B"
+CONNECT, " H73", LMT01: s, " C2B"
+CONNECT, " H74", LMT01: s, " C1B"
+CONNECT, " H75", LMT01: s, " C4'"
+CONNECT, " H76", LMT01: s, " C3'"
+CONNECT, " H77", LMT01: s, " C5'"
+CONNECT, " H78", LMT01: s, " C2'"
+CONNECT, " H79", LMT01: s, " C1'"
+CONNECT, " H80", LMT01: s, " C5B"
+CONNECT, " H81", LMT01: s, " C6B"
+CONNECT, " H82", LMT01: s, " C6B"
+CONNECT, " H83", LMT01: s, " C6'"
+CONNECT, " H84", LMT01: s, " C6'"
+
+# Atom charges
+CHARGE, LMT01, " C2B":  0.209
+CHARGE, LMT01, " C4B":  0.369
+CHARGE, LMT01, " C5B": -0.090
+CHARGE, LMT01, " C6B":  0.096
+CHARGE, LMT01, " O2B": -0.623
+CHARGE, LMT01, " O4'": -0.623
+CHARGE, LMT01, " C1B": -0.048
+CHARGE, LMT01, " C3B": -0.023
+CHARGE, LMT01, " O1B": -0.289
+CHARGE, LMT01, " O3B": -0.623
+CHARGE, LMT01, " O5B": -0.327
+CHARGE, LMT01, " O6B": -0.623
+CHARGE, LMT01, " C1'":  0.256
+CHARGE, LMT01, " C2'":  0.081
+CHARGE, LMT01, " C3'":  0.280
+CHARGE, LMT01, " C4'": -0.070
+CHARGE, LMT01, " C5'":  0.004
+CHARGE, LMT01, " C6'":  0.105
+CHARGE, LMT01, " O1'": -0.440
+CHARGE, LMT01, " O3'": -0.623
+CHARGE, LMT01, " O5'": -0.327
+CHARGE, LMT01, " O6'": -0.623
+CHARGE, LMT01, " O2'": -0.623
+CHARGE, LMT01, " C1 ":  0.164
+CHARGE, LMT01, " C2 ":  0.002
+CHARGE, LMT01, " C3 ": -0.055
+CHARGE, LMT01, " C4 ": -0.055
+CHARGE, LMT01, " C5 ": -0.055
+CHARGE, LMT01, " C6 ": -0.055
+CHARGE, LMT01, " C7 ": -0.055
+CHARGE, LMT01, " C8 ": -0.055
+CHARGE, LMT01, " C9 ": -0.055
+CHARGE, LMT01, " C10": -0.055
+CHARGE, LMT01, " C11": -0.055
+CHARGE, LMT01, " C12": -0.357
+CHARGE, LMT01, " H37":  0.024
+CHARGE, LMT01, " H38":  0.024
+CHARGE, LMT01, " H39":  0.027
+CHARGE, LMT01, " H40":  0.027
+CHARGE, LMT01, " H41":  0.028
+CHARGE, LMT01, " H42":  0.028
+CHARGE, LMT01, " H43":  0.028
+CHARGE, LMT01, " H44":  0.028
+CHARGE, LMT01, " H45":  0.028
+CHARGE, LMT01, " H46":  0.028
+CHARGE, LMT01, " H47":  0.028
+CHARGE, LMT01, " H48":  0.028
+CHARGE, LMT01, " H49":  0.028
+CHARGE, LMT01, " H50":  0.028
+CHARGE, LMT01, " H51":  0.028
+CHARGE, LMT01, " H52":  0.028
+CHARGE, LMT01, " H53":  0.028
+CHARGE, LMT01, " H54":  0.028
+CHARGE, LMT01, " H55":  0.028
+CHARGE, LMT01, " H56":  0.028
+CHARGE, LMT01, " H57":  0.028
+CHARGE, LMT01, " H58":  0.028
+CHARGE, LMT01, " H59":  0.119
+CHARGE, LMT01, " H60":  0.119
+CHARGE, LMT01, " H61":  0.119
+CHARGE, LMT01, " H62":  0.412
+CHARGE, LMT01, " H63":  0.417
+CHARGE, LMT01, " H64":  0.417
+CHARGE, LMT01, " H65":  0.417
+CHARGE, LMT01, " H66":  0.417
+CHARGE, LMT01, " H67":  0.417
+CHARGE, LMT01, " H70":  0.417
+CHARGE, LMT01, " H71":  0.049
+CHARGE, LMT01, " H72":  0.113
+CHARGE, LMT01, " H73":  0.121
+CHARGE, LMT01, " H74":  0.196
+CHARGE, LMT01, " H75":  0.146
+CHARGE, LMT01, " H76":  0.049
+CHARGE, LMT01, " H77":  0.121
+CHARGE, LMT01, " H78":  0.074
+CHARGE, LMT01, " H79":  0.078
+CHARGE, LMT01, " H80":  0.113
+CHARGE, LMT01, " H81":  0.081
+CHARGE, LMT01, " H82":  0.081
+CHARGE, LMT01, " H83":  0.081
+CHARGE, LMT01, " H84":  0.081
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  LMT01,  " C2B": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C4B": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C5B": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C6B": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " O2B": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O4'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  LMT01,  " C3B": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " O1B": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O3B": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O5B": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O6B": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " C1'": 1.700,   2.000,   0.150
+RADIUS,  LMT01,  " C2'": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C3'": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C4'": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C5'": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C6'": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " O1'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O3'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O5'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O6'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " O2'": 1.520,   1.600,   0.200
+RADIUS,  LMT01,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C2 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C3 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C5 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C9 ": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C10": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C11": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " C12": 2.000,   2.000,   0.150
+RADIUS,  LMT01,  " H37": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H38": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H39": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H40": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H41": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H42": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H43": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H44": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H45": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H46": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H47": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H48": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H49": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H50": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H51": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H52": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H53": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H54": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H55": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H56": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H57": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H58": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H59": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H60": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H61": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H62": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H63": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H64": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H65": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H66": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H67": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H70": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H71": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H72": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H73": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H74": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H75": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H76": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H77": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H78": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H79": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H80": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H81": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H82": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H83": 1.200,   1.000,   0.020
+RADIUS,  LMT01,  " H84": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LMT01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04=-10.681, rxn08= 0 # Calibrated From LigandExpo Ideal LMT
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

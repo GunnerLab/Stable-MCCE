@@ -1,0 +1,281 @@
+>>>START of original comments, this file was converted from old format
+# 1.Basic Conformer Information: name, pka, em, rxn
+# 2.Structure Connectivity:
+# 3.Atom Parameters: Partial Charges and Radii
+# File Created by Gehan Ranepura on 11/08/2021
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CL7: CL7BK, CL70D
+# CL70D is CL7 neutral    ( Cholorphyll D )
+
+# Atom definition
+CONNECT, " C1 ", CL7BK: sp2, " C2 ", " O2A"
+CONNECT, " C2 ", CL7BK: sp2, " C3 ", " C1 "
+CONNECT, " C3 ", CL7BK: sp2, " C4 ", " C5 ", " C2 "
+CONNECT, " C4 ", CL7BK: s, " C3 "
+CONNECT, " C5 ", CL7BK: sp2, " C6 ", " C3 "
+CONNECT, " C6 ", CL7BK: sp2, " C7 ", " C5 "
+CONNECT, " C7 ", CL7BK: sp2, " C8 ", " C6 "
+CONNECT, " C8 ", CL7BK: sp2, " C10", " C9 ", " C7 "
+CONNECT, " C10", CL7BK: sp2, " C11", " C8 "
+CONNECT, " C11", CL7BK: sp2, " C12", " C10"
+CONNECT, " C9 ", CL7BK: s, " C8 "
+CONNECT, " C13", CL7BK: sp2, " C14", " C15", " C12"
+CONNECT, " C14", CL7BK: s, " C13"
+CONNECT, " C15", CL7BK: sp2, " C16", " C13"
+CONNECT, " C16", CL7BK: sp2, " C17", " C15"
+CONNECT, " C17", CL7BK: sp2, " C18", " C16"
+CONNECT, " C18", CL7BK: sp2, " C19", " C20", " C17"
+CONNECT, " C19", CL7BK: s, " C18"
+CONNECT, " C20", CL7BK: s, " C18"
+CONNECT, " C12", CL7BK: sp2, " C13", " C11"
+
+CONNECT, " N1C", CL70D: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CL70D: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CL70D: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C4C", CL70D: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CHC", CL70D: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " C3C", CL70D: sp2, " CAC", " C4C", " C2C"
+CONNECT, " CHD", CL70D: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " C4B", CL70D: sp2, " C3B", " N1B", " CHC"
+CONNECT, " N1B", CL70D: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CL70D: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C3B", CL70D: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C2B", CL70D: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " CHB", CL70D: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " C4A", CL70D: sp2, " N1A", " C3A", " CHB"
+CONNECT, " N1A", CL70D: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CL70D: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C3A", CL70D: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C2A", CL70D: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " CHA", CL70D: sp2, " C4D", " CBD", " C1A"
+CONNECT, " C4D", CL70D: sp2, " C3D", " N1D", " CHA"
+CONNECT, " N1D", CL70D: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CL70D: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C3D", CL70D: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C2D", CL70D: sp2, " CMD", " C3D", " C1D"
+CONNECT, " MG ", CL70D: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CBD", CL70D: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CAD", CL70D: sp2, " OBD", " CBD", " C3D"
+CONNECT, " CMD", CL70D: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CMB", CL70D: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CMA", CL70D: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CMC", CL70D: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " OBD", CL70D: s, " CAD"
+CONNECT, " CAB", CL70D: sp2, " OBB", " C3B", " HBB"         ###
+CONNECT, " OBB", CL70D: s, " CAB"                           ##### s-hybrid
+CONNECT, " CAC", CL70D: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CL70D: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, " CGD", CL70D: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CL70D: s, " CGD"
+CONNECT, " O2D", CL70D: sp2, " CED", " CGD"
+CONNECT, " CED", CL70D: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, " CAA", CL70D: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CL70D: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CL70D: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O2A", CL70D: sp2, " C1 ", " CGA"
+CONNECT, " O1A", CL70D: s, " CGA"
+CONNECT, " HBB", CL70D: s, " CAB" ##
+CONNECT, " HHB", CL70D: s, " CHB" ##
+CONNECT, " HHC", CL70D: s, " CHC" ##
+CONNECT, " HHD", CL70D: s, " CHD" ##
+CONNECT, " H2A", CL70D: s, " C2A" ##
+CONNECT, " H3A", CL70D: s, " C3A" ##
+CONNECT, "HMA1", CL70D: s, " CMA" ##
+CONNECT, "HMA2", CL70D: s, " CMA" ##
+CONNECT, "HMA3", CL70D: s, " CMA" ##
+CONNECT, "HAA1", CL70D: s, " CAA" ##
+CONNECT, "HAA2", CL70D: s, " CAA" ##
+CONNECT, "HBA1", CL70D: s, " CBA" ##
+CONNECT, "HBA2", CL70D: s, " CBA" ##
+CONNECT, "HMC1", CL70D: s, " CMC" ##
+CONNECT, "HMC2", CL70D: s, " CMC" ##
+CONNECT, "HMC3", CL70D: s, " CMC" ##
+CONNECT, "HAC1", CL70D: s, " CAC" ##
+CONNECT, "HAC2", CL70D: s, " CAC" ##
+CONNECT, "HBC1", CL70D: s, " CBC" ##
+CONNECT, "HBC2", CL70D: s, " CBC" ##
+CONNECT, "HBC3", CL70D: s, " CBC" ##
+CONNECT, "HMD1", CL70D: s, " CMD" ##
+CONNECT, "HMD2", CL70D: s, " CMD" ##
+CONNECT, "HMD3", CL70D: s, " CMD" ##
+CONNECT, " HBD", CL70D: s, " CBD" ##
+CONNECT, "HED1", CL70D: s, " CED" ##
+CONNECT, "HED2", CL70D: s, " CED" ##
+CONNECT, "HED3", CL70D: s, " CED" ##
+CONNECT, "HMB1", CL70D: s, " CMB" #####
+CONNECT, "HMB2", CL70D: s, " CMB" #####
+CONNECT, "HMB3", CL70D: s, " CMB" #####
+
+# Atom charges
+CHARGE, CL7BK, " C1 ":  0.000  # 0.201
+CHARGE, CL7BK, " C2 ":  0.000
+CHARGE, CL7BK, " C3 ":  0.000
+CHARGE, CL7BK, " C4 ":  0.000
+CHARGE, CL7BK, " C5 ":  0.000
+CHARGE, CL7BK, " C6 ":  0.000
+CHARGE, CL7BK, " C7 ":  0.000
+CHARGE, CL7BK, " C8 ":  0.000
+CHARGE, CL7BK, " C10":  0.000
+CHARGE, CL7BK, " C11":  0.000
+CHARGE, CL7BK, " C9 ":  0.000
+CHARGE, CL7BK, " C13":  0.000
+CHARGE, CL7BK, " C14":  0.000
+CHARGE, CL7BK, " C15":  0.000
+CHARGE, CL7BK, " C16":  0.000
+CHARGE, CL7BK, " C17":  0.000
+CHARGE, CL7BK, " C18":  0.000
+CHARGE, CL7BK, " C19":  0.000
+CHARGE, CL7BK, " C20":  0.000
+CHARGE, CL7BK, " C12":  0.000
+
+CHARGE, CL70D, " N1C": -0.585029   
+CHARGE, CL70D, " C1C":  0.238599
+CHARGE, CL70D, " C2C":  0.179399
+CHARGE, CL70D, " C4C":  0.393471
+CHARGE, CL70D, " CHC": -0.427752
+CHARGE, CL70D, " C3C": -0.336121
+CHARGE, CL70D, " CHD": -0.378439
+CHARGE, CL70D, " C4B":  0.378851
+CHARGE, CL70D, " N1B": -0.590925
+CHARGE, CL70D, " C1B":  0.27394
+CHARGE, CL70D, " C3B": -0.430387
+CHARGE, CL70D, " C2B":  0.323599
+CHARGE, CL70D, " CHB": -0.58963
+CHARGE, CL70D, " C4A":  0.526293
+CHARGE, CL70D, " N1A": -0.597695
+CHARGE, CL70D, " C1A":  0.0664
+CHARGE, CL70D, " C3A":  0.085098
+CHARGE, CL70D, " C2A":  0.047697
+CHARGE, CL70D, " CHA":  0.067854
+CHARGE, CL70D, " C4D":  0.304238
+CHARGE, CL70D, " N1D": -0.637778
+CHARGE, CL70D, " C1D":  0.249149
+CHARGE, CL70D, " C3D": -0.317665
+CHARGE, CL70D, " C2D":  0.127967
+CHARGE, CL70D, " MG ":  1.149555
+CHARGE, CL70D, " CBD": -0.833411
+CHARGE, CL70D, " CAD":  0.726439
+CHARGE, CL70D, " CMD": -0.379833
+CHARGE, CL70D, " CMB": -0.444149
+CHARGE, CL70D, " CMA": -0.438001
+CHARGE, CL70D, " CMC": -0.385566
+CHARGE, CL70D, " OBD": -0.495217
+CHARGE, CL70D, " CAB":  0.577958  # -0.040
+CHARGE, CL70D, " OBB": -0.459812  #  0.005
+CHARGE, CL70D, " CAC":  0.183013
+CHARGE, CL70D, " CBC": -0.292442
+CHARGE, CL70D, " CGD":  0.937739
+CHARGE, CL70D, " O1D": -0.554059
+CHARGE, CL70D, " O2D": -0.35766
+CHARGE, CL70D, " CED": -0.124444
+CHARGE, CL70D, " CAA":  0.109207
+CHARGE, CL70D, " CBA": -0.396101
+CHARGE, CL70D, " CGA":  0.857191
+CHARGE, CL70D, " O2A": -0.292745  #### -0.394529 + 0.101784
+CHARGE, CL70D, " O1A": -0.442705  #### -0.545489 + 0.101784 + 0.001
+CHARGE, CL70D, " HBB": -0.059512  ##
+CHARGE, CL70D, " HHB":  0.173525  ##
+CHARGE, CL70D, " HHC":  0.194584  ##
+CHARGE, CL70D, " HHD":  0.196986  ##
+CHARGE, CL70D, " H2A":  0.040532  ##
+CHARGE, CL70D, " H3A":  0.037296  ##
+CHARGE, CL70D, "HMA1":  0.112687  ##
+CHARGE, CL70D, "HMA2":  0.112204  ##
+CHARGE, CL70D, "HMA3":  0.131965  ##
+CHARGE, CL70D, "HAA1": -0.005796  ##
+CHARGE, CL70D, "HAA2": -0.015634  ##
+CHARGE, CL70D, "HBA1":  0.101483  ##
+CHARGE, CL70D, "HBA2":  0.064686  ##
+CHARGE, CL70D, "HMC1":  0.10205   ##
+CHARGE, CL70D, "HMC2":  0.106692  ##
+CHARGE, CL70D, "HMC3":  0.129878  ##
+CHARGE, CL70D, "HAC1": -0.008557  ##
+CHARGE, CL70D, "HAC2":  0.014216  ##
+CHARGE, CL70D, "HBC1":  0.067613  ##
+CHARGE, CL70D, "HBC2":  0.087742  ##
+CHARGE, CL70D, "HBC3":  0.079076  ##
+CHARGE, CL70D, "HMD1":  0.120387  ##
+CHARGE, CL70D, "HMD2":  0.101575  ##
+CHARGE, CL70D, "HMD3":  0.132945  ##
+CHARGE, CL70D, " HBD":  0.250579  ##
+CHARGE, CL70D, "HED1":  0.121601  ##
+CHARGE, CL70D, "HED2":  0.087378  ##
+CHARGE, CL70D, "HED3":  0.104407  ##
+CHARGE, CL70D, "HMB1":  0.116938  #####
+CHARGE, CL70D, "HMB2":  0.163975  #####
+CHARGE, CL70D, "HMB3":  0.121408  #####
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CL7BK,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C2 ": 1.700,   2.000,   0.150
+RADIUS,  CL7BK,  " C3 ": 1.700,   2.000,   0.150
+RADIUS,  CL7BK,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C5 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C10": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C11": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C9 ": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C13": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C14": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C15": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C16": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C17": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C18": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C19": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C20": 2.000,   2.000,   0.150
+RADIUS,  CL7BK,  " C12": 2.000,   2.000,   0.150
+
+RADIUS,  CL70D,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CL70D,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CL70D,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CL70D,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CL70D,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CL70D,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CL70D,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " OBB": 1.520,   1.600,   0.200  # 1.700,  2.000,  0.150
+RADIUS,  CL70D,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CL70D,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CL70D,  " CED": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CL70D,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CL70D,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CL70D,  " O1A": 1.520,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CL70D: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -8.991, rxn08= -4.058
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

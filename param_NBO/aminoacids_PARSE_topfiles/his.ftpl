@@ -1,0 +1,161 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#Marilyn 6/11/03
+#23456789A123456789B123456789C
+#pka, rxn for HIS01 and HIS02, and charge changed 5/5/07 Gail Schneider
+#pka ref Tanokura BBA 742,(1983) 576-585
+#With zwitterion can reproduce data found in ref Reynolds JACS 95:2 1/24/73
+#RXN      HIS01      -1.77
+#RXN      HIS02      -1.77
+#RXN      HIS+1      -12.22
+#RXN      HIS+1      -15.3 # ajusted by jmao
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+#-------|---|----|-|---------|---------|---------|---------|---------|---------|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, HIS: HISBK, HIS01, HIS02, HIS+1
+
+# Atom definition
+CONNECT, " N  ", HISBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", HISBK: s, " N  "
+CONNECT, " CA ", HISBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", HISBK: s, " CA "
+CONNECT, " C  ", HISBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", HISBK: sp2, " C  "
+CONNECT, " CB ", HIS01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", HIS01: s, " CB "
+CONNECT, " HB3", HIS01: s, " CB "
+CONNECT, " CG ", HIS01: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HIS01: sp2, " CG ", " CE1"
+CONNECT, " CE1", HIS01: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HIS01: s, " CE1"
+CONNECT, " NE2", HIS01: sp2, " CE1", " CD2", " HE2"
+CONNECT, " HE2", HIS01: s, " NE2"
+CONNECT, " CD2", HIS01: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HIS01: s, " CD2"
+CONNECT, " CB ", HIS02: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", HIS02: s, " CB "
+CONNECT, " HB3", HIS02: s, " CB "
+CONNECT, " CG ", HIS02: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HIS02: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HIS02: s, " ND1"
+CONNECT, " CE1", HIS02: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HIS02: s, " CE1"
+CONNECT, " NE2", HIS02: sp2, " CE1", " CD2"
+CONNECT, " CD2", HIS02: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HIS02: s, " CD2"
+CONNECT, " CB ", HIS+1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", HIS+1: s, " CB "
+CONNECT, " HB3", HIS+1: s, " CB "
+CONNECT, " CG ", HIS+1: sp2, " CB ", " ND1", " CD2"
+CONNECT, " ND1", HIS+1: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", HIS+1: s, " ND1"
+CONNECT, " CE1", HIS+1: sp2, " ND1", " NE2", " HE1"
+CONNECT, " HE1", HIS+1: s, " CE1"
+CONNECT, " NE2", HIS+1: sp2, " CE1", " CD2", " HE2"
+CONNECT, " HE2", HIS+1: s, " NE2"
+CONNECT, " CD2", HIS+1: sp2, " NE2", " CG ", " HD2"
+CONNECT, " HD2", HIS+1: s, " CD2"
+
+# Atom charges
+CHARGE, HISBK, " N  ": -0.350
+CHARGE, HISBK, " H  ":  0.250
+CHARGE, HISBK, " CA ":  0.100
+CHARGE, HISBK, " HA ":  0.000
+CHARGE, HISBK, " C  ":  0.550
+CHARGE, HISBK, " O  ": -0.550
+CHARGE, HIS01, " CB ":  0.125
+CHARGE, HIS01, " HB2":  0.000
+CHARGE, HIS01, " HB3":  0.000
+CHARGE, HIS01, " CG ":  0.155
+CHARGE, HIS01, " ND1": -0.560
+CHARGE, HIS01, " CE1":  0.155
+CHARGE, HIS01, " HE1":  0.125
+CHARGE, HIS01, " NE2": -0.400
+CHARGE, HIS01, " HE2":  0.400
+CHARGE, HIS01, " CD2": -0.125
+CHARGE, HIS01, " HD2":  0.125
+CHARGE, HIS02, " CB ":  0.125
+CHARGE, HIS02, " HB2":  0.000
+CHARGE, HIS02, " HB3":  0.000
+CHARGE, HIS02, " CG ": -0.125
+CHARGE, HIS02, " ND1": -0.400
+CHARGE, HIS02, " HD1":  0.400
+CHARGE, HIS02, " CE1":  0.155
+CHARGE, HIS02, " HE1":  0.125
+CHARGE, HIS02, " NE2": -0.560
+CHARGE, HIS02, " CD2":  0.155
+CHARGE, HIS02, " HD2":  0.125
+CHARGE, HIS+1, " CB ":  0.125
+CHARGE, HIS+1, " HB2":  0.000
+CHARGE, HIS+1, " HB3":  0.000
+CHARGE, HIS+1, " CG ":  0.142
+CHARGE, HIS+1, " ND1": -0.350
+CHARGE, HIS+1, " HD1":  0.450
+CHARGE, HIS+1, " CE1":  0.141
+CHARGE, HIS+1, " HE1":  0.125
+CHARGE, HIS+1, " NE2": -0.350
+CHARGE, HIS+1, " HE2":  0.450
+CHARGE, HIS+1, " CD2":  0.142
+CHARGE, HIS+1, " HD2":  0.125
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  HISBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  HISBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  HISBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  HISBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  HISBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  HISBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  HIS01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HIS01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  HIS01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  HIS01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HIS01,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HIS01,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HIS01,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HIS01,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HIS01,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  HIS01,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HIS01,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HIS02,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HIS02,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  HIS02,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  HIS02,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HIS02,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HIS02,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HIS02,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HIS02,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HIS02,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HIS02,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HIS02,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  HIS+1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  HIS+1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  HIS+1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  HIS+1,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  HIS+1,  " ND1": 1.500,   1.750,   0.160
+RADIUS,  HIS+1,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  HIS+1,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  HIS+1,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  HIS+1,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  HIS+1,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  HIS+1,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  HIS+1,  " HD2": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, HIS01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -7.58, rxn04= -4.000, rxn08= -1.77
+CONFORMER, HIS02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -7.84, rxn04= -4.000, rxn08= -2.65
+CONFORMER, HIS+1: Em0=   0.0, pKa0=  6.98, ne= 0, nH= 1, rxn02= -33.76, rxn04= -16.100, rxn08= -7.72
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, HIS: " CB " - " CG ", " CA " - " CB "

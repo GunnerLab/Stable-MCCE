@@ -1,0 +1,87 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022 -  Leucine
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii parseres.siz
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+# 4.Rotomer
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, LEU: LEUBK, LEU01
+
+# Atom definition
+CONNECT, " N  ", LEUBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", LEUBK: s, " N  "
+CONNECT, " CA ", LEUBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", LEUBK: s, " CA "
+CONNECT, " C  ", LEUBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", LEUBK: sp2, " C  "
+CONNECT, " CB ", LEU01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", LEU01: s, " CB "
+CONNECT, " HB3", LEU01: s, " CB "
+CONNECT, " CG ", LEU01: sp3, " CB ", " CD1", " CD2", " HG "
+CONNECT, " HG ", LEU01: s, " CG "
+CONNECT, " CD1", LEU01: sp3, " CG ", "HD11", "HD12", "HD13"
+CONNECT, "HD11", LEU01: s, " CD1"
+CONNECT, "HD12", LEU01: s, " CD1"
+CONNECT, "HD13", LEU01: s, " CD1"
+CONNECT, " CD2", LEU01: sp3, " CG ", "HD21", "HD22", "HD23"
+CONNECT, "HD21", LEU01: s, " CD2"
+CONNECT, "HD22", LEU01: s, " CD2"
+CONNECT, "HD23", LEU01: s, " CD2"
+
+# Atom charges
+CHARGE, LEUBK, " N  ": -0.533 # -0.350
+CHARGE, LEUBK, " H  ":  0.438 #  0.250 #  0.433
+CHARGE, LEUBK, " CA ": -0.176 #  0.100
+CHARGE, LEUBK, " HA ":  0.271 #  0.000 #  0.267 
+CHARGE, LEUBK, " C  ":  0.556 #  0.550 #  0.565
+CHARGE, LEUBK, " O  ": -0.557 # -0.550
+CHARGE, LEU01, " CB ": -0.454 #  0.000 # -0.456 + 0.002 to balance out charge
+CHARGE, LEU01, " HB2":  0.242 #  0.000
+CHARGE, LEU01, " HB3":  0.236 #  0.000
+CHARGE, LEU01, " CG ": -0.301 #  0.000
+CHARGE, LEU01, " HG ":  0.252 #  0.000
+CHARGE, LEU01, " CD1": -0.693 #  0.000
+CHARGE, LEU01, "HD11":  0.237 #  0.000
+CHARGE, LEU01, "HD12":  0.245 #  0.000
+CHARGE, LEU01, "HD13":  0.229 #  0.000
+CHARGE, LEU01, " CD2": -0.708 #  0.000
+CHARGE, LEU01, "HD21":  0.242 #  0.000
+CHARGE, LEU01, "HD22":  0.245 #  0.000
+CHARGE, LEU01, "HD23":  0.228 #  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  LEUBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  LEUBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  LEUBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  LEUBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  LEUBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  LEUBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  LEU01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  LEU01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  LEU01,  " HG ": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  " CD1": 2.000,   2.000,   0.150
+RADIUS,  LEU01,  "HD11": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  "HD12": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  "HD13": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  " CD2": 2.000,   2.000,   0.150
+RADIUS,  LEU01,  "HD21": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  "HD22": 0.000,   1.000,   0.020
+RADIUS,  LEU01,  "HD23": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LEU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04= -0.716, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, LEU: " CA " - " CB ", " CB " - " CG "

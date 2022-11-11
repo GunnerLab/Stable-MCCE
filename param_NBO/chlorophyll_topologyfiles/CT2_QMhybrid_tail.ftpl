@@ -1,0 +1,58 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated ESP QM/MM charges provided by Krystle Reiss from Batista Lab at Yale
+# File Created by Gehan Ranepura on 11/18/2021
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CT2: CT2BK, CT201
+
+# Atom definition
+CONNECT, " C6 ", CT201: sp3, " ?  ", " C7 ", " H61", " H62"
+CONNECT, " C7 ", CT201: sp3, " C6 ", " C8 ", " H71", " H72"
+CONNECT, " C8 ", CT201: sp3, " C7 ", " C9 ", " C10", " H8 "
+CONNECT, " C10", CT201: sp3, " C8 ", " ?  ", "H101", "H102"
+CONNECT, " C9 ", CT201: sp3, " C8 ", " H91", " H92", " H93"
+CONNECT, " H61", CT201: s, " C6 "
+CONNECT, " H62", CT201: s, " C6 "
+CONNECT, " H71", CT201: s, " C7 "
+CONNECT, " H72", CT201: s, " C7 "
+CONNECT, " H8 ", CT201: s, " C8 "
+CONNECT, " H91", CT201: s, " C9 "
+CONNECT, " H92", CT201: s, " C9 "
+CONNECT, " H93", CT201: s, " C9 "
+CONNECT, "H101", CT201: s, " C10"
+CONNECT, "H102", CT201: s, " C10"
+
+
+# Atom charges
+CHARGE, CT201, " C6 ":  0.000
+CHARGE, CT201, " C7 ":  0.000
+CHARGE, CT201, " C8 ":  0.000
+CHARGE, CT201, " C10":  0.000
+CHARGE, CT201, " C9 ":  0.000
+CHARGE, CT201, " H61":  0.000
+CHARGE, CT201, " H62":  0.000
+CHARGE, CT201, " H71":  0.000
+CHARGE, CT201, " H72":  0.000
+CHARGE, CT201, " H8 ":  0.000
+CHARGE, CT201, " H91":  0.000
+CHARGE, CT201, " H92":  0.000
+CHARGE, CT201, " H93":  0.000
+CHARGE, CT201, "H101":  0.000
+CHARGE, CT201, "H102":  0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CT201,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  CT201,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  CT201,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  CT201,  " C10": 2.000,   2.000,   0.150
+RADIUS,  CT201,  " C9 ": 2.000,   2.000,   0.150
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CT201: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

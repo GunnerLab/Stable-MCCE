@@ -1,0 +1,146 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# RXN      LYS01      -1.09
+# RXN      LYS+1      -18.72
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Partial NBO Charges Provided by Muhamed Amin on 02/08/2022 
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, LYS: LYSBK, LYS01, LYS+1
+
+# Atom definition
+CONNECT, " N  ", LYSBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", LYSBK: s, " N  "
+CONNECT, " CA ", LYSBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", LYSBK: s, " CA "
+CONNECT, " C  ", LYSBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", LYSBK: sp2, " C  "
+CONNECT, " CB ", LYS01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", LYS01: s, " CB "
+CONNECT, " HB3", LYS01: s, " CB "
+CONNECT, " CG ", LYS01: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", LYS01: s, " CG "
+CONNECT, " HG3", LYS01: s, " CG "
+CONNECT, " CD ", LYS01: sp3, " CG ", " CE ", " HD2", " HD3"
+CONNECT, " HD2", LYS01: s, " CD "
+CONNECT, " HD3", LYS01: s, " CD "
+CONNECT, " CE ", LYS01: sp3, " CD ", " NZ ", " HE2", " HE3"
+CONNECT, " HE2", LYS01: s, " CE "
+CONNECT, " HE3", LYS01: s, " CE "
+CONNECT, " NZ ", LYS01: sp2, " CE ", " HZ1", " HZ2"
+CONNECT, " HZ1", LYS01: s, " NZ "
+CONNECT, " HZ2", LYS01: s, " NZ "
+CONNECT, " CB ", LYS+1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", LYS+1: s, " CB "
+CONNECT, " HB3", LYS+1: s, " CB "
+CONNECT, " CG ", LYS+1: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", LYS+1: s, " CG "
+CONNECT, " HG3", LYS+1: s, " CG "
+CONNECT, " CD ", LYS+1: sp3, " CG ", " CE ", " HD2", " HD3"
+CONNECT, " HD2", LYS+1: s, " CD "
+CONNECT, " HD3", LYS+1: s, " CD "
+CONNECT, " CE ", LYS+1: sp3, " CD ", " NZ ", " HE2", " HE3"
+CONNECT, " HE2", LYS+1: s, " CE "
+CONNECT, " HE3", LYS+1: s, " CE "
+CONNECT, " NZ ", LYS+1: sp3, " CE ", " HZ1", " HZ2", " HZ3"
+CONNECT, " HZ1", LYS+1: s, " NZ "
+CONNECT, " HZ2", LYS+1: s, " NZ "
+CONNECT, " HZ3", LYS+1: s, " NZ "
+
+# Atom charges
+CHARGE, LYSBK, " N  ": -0.488  
+CHARGE, LYSBK, " H  ":  0.412
+CHARGE, LYSBK, " CA ": -0.184
+CHARGE, LYSBK, " HA ":  0.242
+CHARGE, LYSBK, " C  ":  0.585
+CHARGE, LYSBK, " O  ": -0.567
+CHARGE, LYS01, " CB ": -0.461  ## -0.460 - 0.001 to balance extra charge
+CHARGE, LYS01, " HB2":  0.241
+CHARGE, LYS01, " HB3":  0.235
+CHARGE, LYS01, " CG ": -0.480
+CHARGE, LYS01, " HG2":  0.235
+CHARGE, LYS01, " HG3":  0.239
+CHARGE, LYS01, " CD ": -0.491
+CHARGE, LYS01, " HD2":  0.252
+CHARGE, LYS01, " HD3":  0.231
+CHARGE, LYS01, " CE ": -0.282
+CHARGE, LYS01, " HE2":  0.211
+CHARGE, LYS01, " HE3":  0.234
+CHARGE, LYS01, " NZ ": -0.941
+CHARGE, LYS01, " HZ1":  0.386
+CHARGE, LYS01, " HZ2":  0.391
+CHARGE, LYS+1, " CB ": -0.480 ## -0.481 + 0.001 to balance extra charge 
+CHARGE, LYS+1, " HB2":  0.261
+CHARGE, LYS+1, " HB3":  0.274
+CHARGE, LYS+1, " CG ": -0.487
+CHARGE, LYS+1, " HG2":  0.251
+CHARGE, LYS+1, " HG3":  0.278
+CHARGE, LYS+1, " CD ": -0.510
+CHARGE, LYS+1, " HD2":  0.262
+CHARGE, LYS+1, " HD3":  0.248
+CHARGE, LYS+1, " CE ": -0.300
+CHARGE, LYS+1, " HE2":  0.295
+CHARGE, LYS+1, " HE3":  0.270
+CHARGE, LYS+1, " NZ ": -0.793
+CHARGE, LYS+1, " HZ1":  0.475
+CHARGE, LYS+1, " HZ2":  0.474
+CHARGE, LYS+1, " HZ3":  0.482
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  LYSBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  LYSBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  LYSBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  LYSBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  LYSBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  LYSBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  LYS01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  LYS01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  LYS01,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  LYS01,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " CE ": 2.000,   2.000,   0.150
+RADIUS,  LYS01,  " HE2": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " HE3": 0.000,   1.000,   0.020
+RADIUS,  LYS01,  " NZ ": 1.500,   1.750,   0.160
+RADIUS,  LYS01,  " HZ1": 1.000,   1.000,   0.020
+RADIUS,  LYS01,  " HZ2": 1.000,   1.000,   0.020
+RADIUS,  LYS+1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  LYS+1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  LYS+1,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " CD ": 2.000,   2.000,   0.150
+RADIUS,  LYS+1,  " HD2": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HD3": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " CE ": 2.000,   2.000,   0.150
+RADIUS,  LYS+1,  " HE2": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HE3": 0.000,   1.000,   0.020
+RADIUS,  LYS+1,  " NZ ": 1.500,   1.750,   0.160
+RADIUS,  LYS+1,  " HZ1": 1.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HZ2": 1.000,   1.000,   0.020
+RADIUS,  LYS+1,  " HZ3": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LYS01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -2.188, rxn08= 0
+CONFORMER, LYS+1: Em0=   0.0, pKa0= 10.40, ne= 0, nH= 1, rxn02= 0, rxn04= -19.084, rxn08= 0
+
+#CONFORMER, LYS01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -2.182, rxn08= 0
+#CONFORMER, LYS+1: Em0=   0.0, pKa0= 10.40, ne= 0, nH= 1, rxn02= 0, rxn04= -19.080, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, LYS: " CA " - " CB ", " CB " - " CG ", " CG " - " CD ", " CD " - " CE "

@@ -1,0 +1,36 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#RXN      MN2+2      -71.755
+#RXN      MN2+2      -78.85
+#RXN      MN2+3      -161.448
+#RXN      MN2+3      -177.4
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii  THIS NEEDS TO BE CHECKED
+# Radii(vdw) were collected from http://www.webelements.com/
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, MN2: MN2BK, MN2+2, MN2+3
+
+# Atom definition
+CONNECT, "MN  ", MN2+2: ion, 
+CONNECT, "MN  ", MN2+3: ion, 
+
+# Atom charges
+CHARGE, MN2+2, "MN  ":  2.000
+CHARGE, MN2+3, "MN  ":  3.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  MN2+2,  "MN  ": 2.300,   1.750,   0.160
+RADIUS,  MN2+3,  "MN  ": 2.300,   1.750,   0.160
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, MN2+2: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=-68.635, rxn09=0
+CONFORMER, MN2+3: Em0=1500.0, pKa0=  0.00, ne=-1, nH= 0, rxn02=0, rxn04=-154.428, rxn08=0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

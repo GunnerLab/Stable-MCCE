@@ -1,0 +1,228 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 07/25/2022 
+# 1.Basic Conformer Information: name, pka, em, rxn.
+#RXN      CYC01      -7.059
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# drom parseres.siz
+# Partial NBO Charges prorvided by Muhamed Amin on 07/25/2022
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, CYC: CYCBK, CYC01
+
+# ATOM name and bonds
+CONNECT, " CAB", CYC01:  sp3, " CBB"," C3B"," H03"," H25"
+CONNECT, " CAC", CYC01:  sp3, " CBC"," C3C"," H04"," H26"
+CONNECT, " NA ", CYC01:  sp3, " C4A"
+CONNECT, " CBB", CYC01:  sp3, " CAB"," H08"," H29"," H39"
+CONNECT, " CBC", CYC01:  sp3, " CAC"," H09"," H30"," H40"
+CONNECT, " NB ", CYC01:  sp3, " H11"
+CONNECT, " OB ", CYC01:  sp3, " C4B"
+CONNECT, " ND ", CYC01:  sp3, " H12"
+CONNECT, " CHA", CYC01:  sp3, " C1A"," C4D"," H13"," H32"
+CONNECT, " CHB", CYC01:  sp3, " C1B"," C4A"," H14"," H33"
+CONNECT, " CHD", CYC01:  sp3, " C1D"," C4C"," H15"," H34"
+CONNECT, " CMA", CYC01:  sp3, " C3A"," H16"," H35"," H41"
+CONNECT, " CMB", CYC01:  sp3, " C2B"," H17"," H36"," H42"
+CONNECT, " CMC", CYC01:  sp3, " C2C"," H18"," H37"," H43"
+CONNECT, " CMD", CYC01:  sp3, " C2D"," H19"," H23"," H38"
+CONNECT, " C1A", CYC01:  sp3, " C2A"
+CONNECT, " C1B", CYC01:  sp3, " C2B"
+CONNECT, " C1C", CYC01:  sp3, " OC "
+CONNECT, " C1D", CYC01:  sp3, " C2D"
+CONNECT, " C2A", CYC01:  sp3, " C1A"," C3A"," ?  "  ## Connect to PAA
+CONNECT, " C2B", CYC01:  sp3, " C3B"
+CONNECT, " C2C", CYC01:  sp3, " CMC"," C1C"," C3C"," H20"
+CONNECT, " C2D", CYC01:  sp3, " C3D"
+CONNECT, " C3A", CYC01:  sp3, " C4A"
+CONNECT, " C3B", CYC01:  sp3, " C4B"
+CONNECT, " C3C", CYC01:  sp3, " CAC"," C2C"," C4C"," H21"
+CONNECT, " C3D", CYC01:  sp3, " C2D"," C4D"," ?  "  ## Connect to PDD 
+CONNECT, " C4A", CYC01:  sp3, " C3A"
+CONNECT, " C4B", CYC01:  sp3, " C3B"
+CONNECT, " C4C", CYC01:  sp3, " CHD"," C3C"," NC "," H22"
+CONNECT, " C4D", CYC01:  sp3, " C3D"
+CONNECT, " NC ", CYC01:  sp3, " C1C"," C4C"," H01"
+CONNECT, " OC ", CYC01:  sp3, " C1C"
+CONNECT, " H01", CYC01:    s, " NC "
+CONNECT, " H03", CYC01:    s, " CAB"
+CONNECT, " H04", CYC01:    s, " CAC"
+CONNECT, " H08", CYC01:    s, " CBB"
+CONNECT, " H09", CYC01:    s, " CBC"
+CONNECT, " H11", CYC01:    s, " NB "
+CONNECT, " H12", CYC01:    s, " ND "
+CONNECT, " H13", CYC01:    s, " CHA"
+CONNECT, " H14", CYC01:    s, " CHB"
+CONNECT, " H15", CYC01:    s, " CHD"
+CONNECT, " H16", CYC01:    s, " CMA"
+CONNECT, " H17", CYC01:    s, " CMB"
+CONNECT, " H18", CYC01:    s, " CMC"
+CONNECT, " H19", CYC01:    s, " CMD"
+CONNECT, " H20", CYC01:    s, " C2C"
+CONNECT, " H21", CYC01:    s, " C3C"
+CONNECT, " H22", CYC01:    s, " C4C"
+CONNECT, " H23", CYC01:    s, " CMD"
+CONNECT, " H25", CYC01:    s, " CAB"
+CONNECT, " H26", CYC01:    s, " CAC"
+CONNECT, " H29", CYC01:    s, " CBB"
+CONNECT, " H30", CYC01:    s, " CBC"
+CONNECT, " H32", CYC01:    s, " CHA"
+CONNECT, " H33", CYC01:    s, " CHB"
+CONNECT, " H34", CYC01:    s, " CHD"
+CONNECT, " H35", CYC01:    s, " CMA"
+CONNECT, " H36", CYC01:    s, " CMB"
+CONNECT, " H37", CYC01:    s, " CMC"
+CONNECT, " H38", CYC01:    s, " CMD"
+CONNECT, " H39", CYC01:    s, " CBB"
+CONNECT, " H40", CYC01:    s, " CBC"
+CONNECT, " H41", CYC01:    s, " CMA"
+CONNECT, " H42", CYC01:    s, " CMB"
+CONNECT, " H43", CYC01:    s, " CMC"
+
+# ATOM charges
+CHARGE, CYC01, " CAB":  -0.47995
+CHARGE, CYC01, " CAC":  -0.47973
+CHARGE, CYC01, " NA ":  -0.63454
+CHARGE, CYC01, " CBB":  -0.69035
+CHARGE, CYC01, " CBC":  -0.69147
+CHARGE, CYC01, " NB ":  -0.68769
+CHARGE, CYC01, " OB ":  -0.61066
+CHARGE, CYC01, " ND ":  -0.52377
+CHARGE, CYC01, " CHA":  -0.58031
+CHARGE, CYC01, " CHB":  -0.59959
+CHARGE, CYC01, " CHD":  -0.48723
+CHARGE, CYC01, " CMA":  -0.69804
+CHARGE, CYC01, " CMB":  -0.70779
+CHARGE, CYC01, " CMC":  -0.66941
+CHARGE, CYC01, " CMD":  -0.70028
+CHARGE, CYC01, " C1A":   0.26905
+CHARGE, CYC01, " C1B":   0.21122
+CHARGE, CYC01, " C1C":   0.70298
+CHARGE, CYC01, " C1D":   0.10602
+CHARGE, CYC01, " C2A":   0.01470
+CHARGE, CYC01, " C2B":  -0.06770
+CHARGE, CYC01, " C2C":  -0.36504
+CHARGE, CYC01, " C2D":  -0.12436
+CHARGE, CYC01, " C3A":  -0.09974
+CHARGE, CYC01, " C3B":  -0.16973
+CHARGE, CYC01, " C3C":  -0.24435
+CHARGE, CYC01, " C3D":  -0.08798
+CHARGE, CYC01, " C4A":   0.21514
+CHARGE, CYC01, " C4B":   0.65341
+CHARGE, CYC01, " C4C":  -0.07915
+CHARGE, CYC01, " C4D":   0.15789
+CHARGE, CYC01, " NC ":  -0.69062
+CHARGE, CYC01, " OC ":  -0.60565
+CHARGE, CYC01, " H01":   0.44893
+CHARGE, CYC01, " H03":   0.24352
+CHARGE, CYC01, " H04":   0.23261
+CHARGE, CYC01, " H08":   0.24603
+CHARGE, CYC01, " H09":   0.23476
+CHARGE, CYC01, " H11":   0.44501
+CHARGE, CYC01, " H12":   0.45773
+CHARGE, CYC01, " H13":   0.39107  # 0.30719 + 0.0838775 to account for excess charge
+CHARGE, CYC01, " H14":   0.40280  # 0.31892 + 0.0838775 to account for excess charge
+CHARGE, CYC01, " H15":   0.26130
+CHARGE, CYC01, " H16":   0.22971
+CHARGE, CYC01, " H17":   0.24868
+CHARGE, CYC01, " H18":   0.24035
+CHARGE, CYC01, " H19":   0.22540
+CHARGE, CYC01, " H20":   0.26458
+CHARGE, CYC01, " H21":   0.24421
+CHARGE, CYC01, " H22":   0.22953
+CHARGE, CYC01, " H23":   0.22907
+CHARGE, CYC01, " H25":   0.23095
+CHARGE, CYC01, " H26":   0.25231
+CHARGE, CYC01, " H29":   0.24191
+CHARGE, CYC01, " H30":   0.22218
+CHARGE, CYC01, " H32":   0.39012  # 0.30624 + 0.0838775 to account for excess charge
+CHARGE, CYC01, " H33":   0.43976  # 0.35588 + 0.0838775 to account for excess charge
+CHARGE, CYC01, " H34":   0.21038
+CHARGE, CYC01, " H35":   0.28320
+CHARGE, CYC01, " H36":   0.24791
+CHARGE, CYC01, " H37":   0.25032
+CHARGE, CYC01, " H38":   0.25834
+CHARGE, CYC01, " H39":   0.21867
+CHARGE, CYC01, " H40":   0.24121
+CHARGE, CYC01, " H41":   0.21203
+CHARGE, CYC01, " H42":   0.23872
+CHARGE, CYC01, " H43":   0.23143
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, CYC01, " CAB":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CAC":  1.700,  2.000,  0.150
+RADIUS, CYC01, " NA ":  1.500,  1.750,  0.160
+RADIUS, CYC01, " CBB":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CBC":  1.700,  2.000,  0.150
+RADIUS, CYC01, " NB ":  1.500,  1.750,  0.160
+RADIUS, CYC01, " OB ":  1.400,  1.600,  0.200
+RADIUS, CYC01, " ND ":  1.500,  1.750,  0.160
+RADIUS, CYC01, " CHA":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CHB":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CHD":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CMA":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CMB":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CMC":  1.700,  2.000,  0.150
+RADIUS, CYC01, " CMD":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C1A":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C1B":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C1C":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C1D":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C2A":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C2B":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C2C":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C2D":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C3A":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C3B":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C3C":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C3D":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C4A":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C4B":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C4C":  1.700,  2.000,  0.150
+RADIUS, CYC01, " C4D":  1.700,  2.000,  0.150
+RADIUS, CYC01, " NC ":  1.500,  1.750,  0.160
+RADIUS, CYC01, " OC ":  1.400,  1.600,  0.200
+RADIUS, CYC01, " H01":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H03":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H04":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H08":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H09":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H11":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H12":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H13":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H14":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H15":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H16":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H17":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H18":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H19":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H20":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H21":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H22":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H23":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H25":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H26":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H29":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H30":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H32":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H33":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H34":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H35":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H36":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H37":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H38":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H39":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H40":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H41":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H42":  1.000,  1.000,  0.020
+RADIUS, CYC01, " H43":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CYC01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
