@@ -1,0 +1,255 @@
+>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - Truncated NBO Guassian charges provided by Muhamed Amin
+#    hestia: /home/mamin/NBO/6-31gdp
+# File Created by Gehan Ranepura on 07/28/2022
+
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, LHG: LHGBK, LHG01, LHG02
+
+# ATOM name and bonds
+CONNECT, " O1 ", LHG01:  sp3, " C1 "," HO1"
+CONNECT, " C1 ", LHG01:  sp3, " O1 "," C2 ","HC11","HC12"
+CONNECT, " C2 ", LHG01:  sp3, " C1 "," O2 "," C3 "," HC2"
+CONNECT, " O2 ", LHG01:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", LHG01:  sp3, " C2 "," O3 ","HC31","HC32"
+CONNECT, " O3 ", LHG01:  sp3, " C3 "," P  "
+CONNECT, " P  ", LHG01:  sp3, " O3 "," O4 "," O5 "," O6 "
+CONNECT, " O4 ", LHG01:  sp3, " P  "," HO4"
+CONNECT, " O5 ", LHG01:  sp2, " P  "
+CONNECT, " O6 ", LHG01:  sp3, " P  "," C4 "
+CONNECT, " C4 ", LHG01:  sp3, " O6 "," C5 ","HC41","HC42"
+CONNECT, " C5 ", LHG01:  sp3, " C4 "," C6 "," O7 "," HC5"
+CONNECT, " C6 ", LHG01:  sp3, " C5 "," O8 ","HC61","HC62"
+CONNECT, " O7 ", LHG01:  sp3, " C5 "," C7 "
+CONNECT, " C7 ", LHG01:  sp2, " O7 "," O9 "," C8 "
+CONNECT, " O9 ", LHG01:  sp2, " C7 "
+CONNECT, " C8 ", LHG01:  sp3, " C7 ","HC81","HC82","  ? "
+CONNECT, " O8 ", LHG01:  sp3, " C6 "," C23"
+CONNECT, " C23", LHG01:  sp2, " O8 "," O10"," C24"
+CONNECT, " O10", LHG01:  sp2, " C23"
+CONNECT, " C24", LHG01:  sp3, " C23","H241","H242","  ? "
+CONNECT, " HO1", LHG01:    s, " O1 "
+CONNECT, "HC11", LHG01:    s, " C1 "
+CONNECT, "HC12", LHG01:    s, " C1 "
+CONNECT, " HC2", LHG01:    s, " C2 "
+CONNECT, " HO2", LHG01:    s, " O2 "
+CONNECT, "HC31", LHG01:    s, " C3 "
+CONNECT, "HC32", LHG01:    s, " C3 "
+CONNECT, " HO4", LHG01:    s, " O4 "
+CONNECT, "HC41", LHG01:    s, " C4 "
+CONNECT, "HC42", LHG01:    s, " C4 "
+CONNECT, " HC5", LHG01:    s, " C5 "
+CONNECT, "HC61", LHG01:    s, " C6 "
+CONNECT, "HC62", LHG01:    s, " C6 "
+CONNECT, "HC81", LHG01:    s, " C8 "
+CONNECT, "HC82", LHG01:    s, " C8 "
+CONNECT, "H241", LHG01:    s, " C24"
+CONNECT, "H242", LHG01:    s, " C24"
+
+CONNECT, " O1 ", LHG02:  sp3, " C1 "," HO1"
+CONNECT, " C1 ", LHG02:  sp3, " O1 "," C2 ","HC11","HC12"
+CONNECT, " C2 ", LHG02:  sp3, " C1 "," O2 "," C3 "," HC2"
+CONNECT, " O2 ", LHG02:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", LHG02:  sp3, " C2 "," O3 ","HC31","HC32"
+CONNECT, " O3 ", LHG02:  sp3, " C3 "," P  "
+CONNECT, " P  ", LHG02:  sp3, " O3 "," O4 "," O5 "," O6 "
+CONNECT, " O4 ", LHG02:  sp2, " P  "
+CONNECT, " O5 ", LHG02:  sp3, " P  "," HO5"
+CONNECT, " O6 ", LHG02:  sp3, " P  "," C4 "
+CONNECT, " C4 ", LHG02:  sp3, " O6 "," C5 ","HC41","HC42"
+CONNECT, " C5 ", LHG02:  sp3, " C4 "," C6 "," O7 "," HC5"
+CONNECT, " C6 ", LHG02:  sp3, " C5 "," O8 ","HC61","HC62"
+CONNECT, " O7 ", LHG02:  sp3, " C5 "," C7 "
+CONNECT, " C7 ", LHG02:  sp2, " O7 "," O9 "," C8 "
+CONNECT, " O9 ", LHG02:  sp2, " C7 "
+CONNECT, " C8 ", LHG02:  sp3, " C7 ","HC81","HC82","  ? "
+CONNECT, " O8 ", LHG02:  sp3, " C6 "," C23"
+CONNECT, " C23", LHG02:  sp2, " O8 "," O10"," C24"
+CONNECT, " O10", LHG02:  sp2, " C23"
+CONNECT, " C24", LHG02:  sp3, " C23","H241","H242","  ? "
+CONNECT, " HO1", LHG02:    s, " O1 "
+CONNECT, "HC11", LHG02:    s, " C1 "
+CONNECT, "HC12", LHG02:    s, " C1 "
+CONNECT, " HC2", LHG02:    s, " C2 "
+CONNECT, " HO2", LHG02:    s, " O2 "
+CONNECT, "HC31", LHG02:    s, " C3 "
+CONNECT, "HC32", LHG02:    s, " C3 "
+CONNECT, " HO5", LHG02:    s, " O5 "
+CONNECT, "HC41", LHG02:    s, " C4 "
+CONNECT, "HC42", LHG02:    s, " C4 "
+CONNECT, " HC5", LHG02:    s, " C5 "
+CONNECT, "HC61", LHG02:    s, " C6 "
+CONNECT, "HC62", LHG02:    s, " C6 "
+CONNECT, "HC81", LHG02:    s, " C8 "
+CONNECT, "HC82", LHG02:    s, " C8 "
+CONNECT, "H241", LHG02:    s, " C24"
+CONNECT, "H242", LHG02:    s, " C24"
+
+# ATOM charges
+CHARGE, LHG01, " O1 ": -0.77396  
+CHARGE, LHG01, " C1 ": -0.12448
+CHARGE, LHG01, " C2 ":  0.03242
+CHARGE, LHG01, " O2 ": -0.76949
+CHARGE, LHG01, " C3 ": -0.16422
+CHARGE, LHG01, " O3 ": -0.78986
+CHARGE, LHG01, " P  ":  2.34162
+CHARGE, LHG01, " O4 ": -1.03374
+CHARGE, LHG01, " O5 ": -0.96396
+CHARGE, LHG01, " O6 ": -0.77757
+CHARGE, LHG01, " C4 ": -0.15482
+CHARGE, LHG01, " C5 ":  0.02192
+CHARGE, LHG01, " C6 ": -0.15622
+CHARGE, LHG01, " O7 ": -0.56814
+CHARGE, LHG01, " C7 ":  0.82152
+CHARGE, LHG01, " O9 ": -0.58735
+CHARGE, LHG01, " C8 ": -0.56198
+CHARGE, LHG01, " O8 ": -0.57185
+CHARGE, LHG01, " C23":  0.82667
+CHARGE, LHG01, " O10": -0.59234
+CHARGE, LHG01, " C24": -0.57407
+CHARGE, LHG01, " HO1":  0.50237
+CHARGE, LHG01, "HC11":  0.21775
+CHARGE, LHG01, "HC12":  0.20368
+CHARGE, LHG01, " HC2":  0.22506
+CHARGE, LHG01, " HO2":  0.51348
+CHARGE, LHG01, "HC31":  0.22722
+CHARGE, LHG01, "HC32":  0.26208
+CHARGE, LHG01, " HO4":  0.56900
+CHARGE, LHG01, "HC41":  0.24316
+CHARGE, LHG01, "HC42":  0.21818
+CHARGE, LHG01, " HC5":  0.26404
+CHARGE, LHG01, "HC61":  0.25014
+CHARGE, LHG01, "HC62":  0.25735
+CHARGE, LHG01, "HC81":  0.28762 # 0.26515
+CHARGE, LHG01, "HC82":  0.29922 # 0.27675
+CHARGE, LHG01, "H241":  0.29711 # 0.27464
+CHARGE, LHG01, "H242":  0.28244 # 0.25997
+                                # Total Charge is -0.08988, so last 4Hs were added excess charge
+
+CHARGE, LHG02, " O1 ": -0.77396
+CHARGE, LHG02, " C1 ": -0.12448
+CHARGE, LHG02, " C2 ":  0.03242
+CHARGE, LHG02, " O2 ": -0.76949
+CHARGE, LHG02, " C3 ": -0.16422
+CHARGE, LHG02, " O3 ": -0.78986
+CHARGE, LHG02, " P  ":  2.34162
+CHARGE, LHG02, " O4 ": -0.96396 # switch 
+CHARGE, LHG02, " O5 ": -1.03374 # switch
+CHARGE, LHG02, " O6 ": -0.77757
+CHARGE, LHG02, " C4 ": -0.15482
+CHARGE, LHG02, " C5 ":  0.02192
+CHARGE, LHG02, " C6 ": -0.15622
+CHARGE, LHG02, " O7 ": -0.56814
+CHARGE, LHG02, " C7 ":  0.82152
+CHARGE, LHG02, " O9 ": -0.58735
+CHARGE, LHG02, " C8 ": -0.56198
+CHARGE, LHG02, " O8 ": -0.57185
+CHARGE, LHG02, " C23":  0.82667
+CHARGE, LHG02, " O10": -0.59234
+CHARGE, LHG02, " C24": -0.57407
+CHARGE, LHG02, " HO1":  0.50237
+CHARGE, LHG02, "HC11":  0.21775
+CHARGE, LHG02, "HC12":  0.20368
+CHARGE, LHG02, " HC2":  0.22506
+CHARGE, LHG02, " HO2":  0.51348
+CHARGE, LHG02, "HC31":  0.22722
+CHARGE, LHG02, "HC32":  0.26208
+CHARGE, LHG02, " HO5":  0.56900 # HO4 to HO5
+CHARGE, LHG02, "HC41":  0.24316
+CHARGE, LHG02, "HC42":  0.21818
+CHARGE, LHG02, " HC5":  0.26404
+CHARGE, LHG02, "HC61":  0.25014
+CHARGE, LHG02, "HC62":  0.25735
+CHARGE, LHG02, "HC81":  0.28762 # 0.26515
+CHARGE, LHG02, "HC82":  0.29922 # 0.27675
+CHARGE, LHG02, "H241":  0.29711 # 0.27464
+CHARGE, LHG02, "H242":  0.28244 # 0.25997
+                                # Total Charge is -0.08988, so last 4Hs were added excess charge
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, LHG01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O3 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " P  ":  1.850,  2.000,  0.200
+RADIUS, LHG01, " O4 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " O5 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " O6 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O7 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O9 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O8 ":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C23":  1.700,  2.000,  0.150
+RADIUS, LHG01, " O10":  1.400,  1.600,  0.200
+RADIUS, LHG01, " C24":  1.700,  2.000,  0.150
+RADIUS, LHG01, " HO1":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC11":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC12":  1.000,  1.000,  0.020
+RADIUS, LHG01, " HC2":  1.000,  1.000,  0.020
+RADIUS, LHG01, " HO2":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC31":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC32":  1.000,  1.000,  0.020
+RADIUS, LHG01, " HO4":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC41":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC42":  1.000,  1.000,  0.020
+RADIUS, LHG01, " HC5":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC61":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC62":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC81":  1.000,  1.000,  0.020
+RADIUS, LHG01, "HC82":  1.000,  1.000,  0.020
+RADIUS, LHG01, "H241":  1.000,  1.000,  0.020
+RADIUS, LHG01, "H242":  1.000,  1.000,  0.020
+
+RADIUS, LHG02, " O1 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " C2 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O2 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C3 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O3 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " P  ":  1.850,  2.000,  0.200
+RADIUS, LHG02, " O4 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " O5 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " O6 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C4 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " C5 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " C6 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O7 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C7 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O9 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C8 ":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O8 ":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C23":  1.700,  2.000,  0.150
+RADIUS, LHG02, " O10":  1.400,  1.600,  0.200
+RADIUS, LHG02, " C24":  1.700,  2.000,  0.150
+RADIUS, LHG02, " HO1":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC11":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC12":  1.000,  1.000,  0.020
+RADIUS, LHG02, " HC2":  1.000,  1.000,  0.020
+RADIUS, LHG02, " HO2":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC31":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC32":  1.000,  1.000,  0.020
+RADIUS, LHG02, " HO5":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC41":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC42":  1.000,  1.000,  0.020
+RADIUS, LHG02, " HC5":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC61":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC62":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC81":  1.000,  1.000,  0.020
+RADIUS, LHG02, "HC82":  1.000,  1.000,  0.020
+RADIUS, LHG02, "H241":  1.000,  1.000,  0.020
+RADIUS, LHG02, "H242":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LHG01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0 # Muhamed NBO  (Tested with LigandExpo Ideal LHG with no Hs)
+CONFORMER, LHG02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0 # Muhamed NBO  (Tested with LigandExpo Ideal LHG with no Hs)

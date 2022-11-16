@@ -1,0 +1,76 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 02/08/2022 - Cysteine
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial NBO Charges prorvided by Muhamed Amin on 02/08/2022
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CYS: CYSBK, CYS01, CYS-1
+
+# Atom definition
+CONNECT, " N  ", CYSBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", CYSBK: s, " N  "
+CONNECT, " CA ", CYSBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", CYSBK: s, " CA "
+CONNECT, " C  ", CYSBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", CYSBK: sp2, " C  "
+CONNECT, " CB ", CYS01: sp3, " CA ", " SG ", " HB2", " HB3"
+CONNECT, " HB2", CYS01: s, " CB "
+CONNECT, " HB3", CYS01: s, " CB "
+CONNECT, " SG ", CYS01: sp2, " CB ", " HG "
+CONNECT, " HG ", CYS01: s, " SG "
+CONNECT, " CB ", CYS-1: sp3, " CA ", " SG ", " HB2", " HB3"
+CONNECT, " HB2", CYS-1: s, " CB "
+CONNECT, " HB3", CYS-1: s, " CB "
+CONNECT, " SG ", CYS-1: sp2, " CB "
+
+# Atom charges
+CHARGE, CYSBK, " N  ": -0.549 # -0.350 
+CHARGE, CYSBK, " H  ":  0.455 #  0.250 #  0.435
+CHARGE, CYSBK, " CA ": -0.191 #  0.100
+CHARGE, CYSBK, " HA ":  0.285 #  0.000 #  0.266 
+CHARGE, CYSBK, " C  ":  0.548 #  0.550 #  0.548
+CHARGE, CYSBK, " O  ": -0.548 # -0.550
+CHARGE, CYS01, " CB ": -0.625 #  0.000 # -0.624 - 0.001 to balance out charge
+CHARGE, CYS01, " HB2":  0.269 #  0.000
+CHARGE, CYS01, " HB3":  0.272 #  0.000
+CHARGE, CYS01, " SG ": -0.061 # -0.290
+CHARGE, CYS01, " HG ":  0.145 #  0.290
+CHARGE, CYS-1, " CB ": -0.646 # -0.080
+CHARGE, CYS-1, " HB2":  0.205 #  0.000
+CHARGE, CYS-1, " HB3":  0.202 #  0.000
+CHARGE, CYS-1, " SG ": -0.761 # -0.920
+
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  CYSBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  CYSBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  CYSBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  CYSBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  CYSBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  CYSBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  CYS01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  CYS01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  CYS01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  CYS01,  " SG ": 1.850,   2.000,   0.200
+RADIUS,  CYS01,  " HG ": 1.000,   1.000,   0.020
+RADIUS,  CYS-1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  CYS-1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  CYS-1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  CYS-1,  " SG ": 1.850,   2.000,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CYS01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -0.805, rxn08= 0
+CONFORMER, CYS-1: Em0=   0.0, pKa0=  9.10, ne= 0, nH=-1, rxn02= 0, rxn04= -18.300, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, CYS: " CA " - " CB "

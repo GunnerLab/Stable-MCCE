@@ -1,0 +1,61 @@
+>>>START of original comments, this file was converted from Ligand Expo GOL ideal pdb # pdb2ftpl.py GOL_ideal.pdb > GOL_GR.ftpl
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Charges Provided by Atomic Charge Calculator - Full EMM, Ignore Waters = false, Precision = Double
+#    https://webchem.ncbr.muni.cz/Platform/ChargeCalculator
+# File Created by Gehan Ranepura on 01/19/2021
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, GOL: GOLBK
+
+# ATOM name and bonds
+CONNECT, " C1 ", GOLBK:  sp3, " O1 "," C2 "," H11"," H12"
+CONNECT, " O1 ", GOLBK:  sp3, " C1 "," HO1"
+CONNECT, " C2 ", GOLBK:  sp3, " C1 "," O2 "," C3 "," H2 "
+CONNECT, " O2 ", GOLBK:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", GOLBK:  sp3, " C2 "," O3 "," H31"," H32"
+CONNECT, " O3 ", GOLBK:  sp3, " C3 "," HO3"
+CONNECT, " H11", GOLBK:    s, " C1 "
+CONNECT, " H12", GOLBK:    s, " C1 "
+CONNECT, " HO1", GOLBK:    s, " O1 "
+CONNECT, " H2 ", GOLBK:    s, " C2 "
+CONNECT, " HO2", GOLBK:    s, " O2 "
+CONNECT, " H31", GOLBK:    s, " C3 "
+CONNECT, " H32", GOLBK:    s, " C3 "
+CONNECT, " HO3", GOLBK:    s, " O3 "
+
+# ATOM charges
+CHARGE, GOLBK, " C1 ":  -0.14818 
+CHARGE, GOLBK, " O1 ":  -0.67268 
+CHARGE, GOLBK, " C2 ":   0.11804 
+CHARGE, GOLBK, " O2 ":  -0.66281 
+CHARGE, GOLBK, " C3 ":  -0.14818 
+CHARGE, GOLBK, " O3 ":  -0.67268 
+CHARGE, GOLBK, " H11":   0.20957 
+CHARGE, GOLBK, " H12":   0.19907 
+CHARGE, GOLBK, " HO1":   0.37427 
+CHARGE, GOLBK, " H2 ":   0.23777 
+CHARGE, GOLBK, " HO2":   0.38288 
+CHARGE, GOLBK, " H31":   0.20957 
+CHARGE, GOLBK, " H32":   0.19907 
+CHARGE, GOLBK, " HO3":   0.37427 
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, GOLBK, " C1 ":  1.700,  2.000,  0.150
+RADIUS, GOLBK, " O1 ":  1.400,  1.600,  0.200
+RADIUS, GOLBK, " C2 ":  1.700,  2.000,  0.150
+RADIUS, GOLBK, " O2 ":  1.400,  1.600,  0.200
+RADIUS, GOLBK, " C3 ":  1.700,  2.000,  0.150
+RADIUS, GOLBK, " O3 ":  1.400,  1.600,  0.200
+RADIUS, GOLBK, " H11":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " H12":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " HO1":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " H2 ":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " HO2":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " H31":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " H32":  1.000,  1.000,  0.020
+RADIUS, GOLBK, " HO3":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+# CONFORMER, GOLBK:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0

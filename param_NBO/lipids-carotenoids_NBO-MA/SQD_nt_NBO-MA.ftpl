@@ -1,0 +1,608 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - Truncated NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 11/02/2022
+
+# Guassian Calculation was done without the tail
+# Additonal Hs were added to C8 (H01) and C24 (H02) prior to running DFT 
+# pKa of SQD-1 was set as the pKa of Methanesulfonic Acid from PubChem (https://pubchem.ncbi.nlm.nih.gov/compound/Methanesulfonic-acid)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, SQD: SQDBK, SQD01, SQD02, SQD03, SQD-1
+
+# ATOM name and bonds
+CONNECT, " H01", SQD01:   sp, " C8 "  # added 
+CONNECT, " H02", SQD01:   sp, " C24"  # added
+CONNECT, " O6 ", SQD01:  sp3, " C44"," C1 "
+CONNECT, " C44", SQD01:  sp3, " O6 "," C45","H441","H442"
+CONNECT, " C45", SQD01:  sp3, " C44"," C46"," O47"," H45"
+CONNECT, " C46", SQD01:  sp3, " C45"," O48","H461","H462"
+CONNECT, " O47", SQD01:  sp3, " C45"," C7 "
+CONNECT, " C7 ", SQD01:  sp2, " O47"," O49"," C8 "
+CONNECT, " O49", SQD01:  sp3, " C7 "
+CONNECT, " C8 ", SQD01:  sp3, " C7 "," H81"," H82"," H01"  # added H01, removed C9
+CONNECT, " O48", SQD01:  sp3, " C46"," C23"
+CONNECT, " C23", SQD01:  sp2, " O48"," O10"," C24"
+CONNECT, " O10", SQD01:  sp3, " C23"
+CONNECT, " C24", SQD01:  sp3, " C23","H241","H242", " H02" # added H02, removed C25
+CONNECT, " C1 ", SQD01:  sp3, " O6 "," C2 "," O5 "," H1 "
+CONNECT, " C2 ", SQD01:  sp3, " C1 "," O2 "," C3 "," H2 "
+CONNECT, " O2 ", SQD01:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", SQD01:  sp3, " C2 "," O3 "," C4 "," H3 "
+CONNECT, " O3 ", SQD01:  sp3, " C3 "," HO3"
+CONNECT, " C4 ", SQD01:  sp3, " C3 "," O4 "," C5 "," H4 "
+CONNECT, " O4 ", SQD01:  sp3, " C4 "," HO4"
+CONNECT, " C5 ", SQD01:  sp3, " C4 "," C6 "," O5 "," H5 "
+CONNECT, " C6 ", SQD01:  sp3, " C5 "," S  "," H61"," H62"
+CONNECT, " O5 ", SQD01:  sp3, " C1 "," C5 "
+CONNECT, " S  ", SQD01:  sp3, " C6 "," O7 "," O8 "," O9 "
+CONNECT, " O7 ", SQD01:  sp2, " S  "
+CONNECT, " O8 ", SQD01:  sp3, " S  "," HO8"
+CONNECT, " O9 ", SQD01:  sp2, " S  "
+CONNECT, "H441", SQD01:    s, " C44"
+CONNECT, "H442", SQD01:    s, " C44"
+CONNECT, " H45", SQD01:    s, " C45"
+CONNECT, "H461", SQD01:    s, " C46"
+CONNECT, "H462", SQD01:    s, " C46"
+CONNECT, " H81", SQD01:    s, " C8 "
+CONNECT, " H82", SQD01:    s, " C8 "
+CONNECT, "H241", SQD01:    s, " C24"
+CONNECT, "H242", SQD01:    s, " C24"
+CONNECT, " H1 ", SQD01:    s, " C1 "
+CONNECT, " H2 ", SQD01:    s, " C2 "
+CONNECT, " HO2", SQD01:    s, " O2 "
+CONNECT, " H3 ", SQD01:    s, " C3 "
+CONNECT, " HO3", SQD01:    s, " O3 "
+CONNECT, " H4 ", SQD01:    s, " C4 "
+CONNECT, " HO4", SQD01:    s, " O4 "
+CONNECT, " H5 ", SQD01:    s, " C5 "
+CONNECT, " H61", SQD01:    s, " C6 "
+CONNECT, " H62", SQD01:    s, " C6 "
+CONNECT, " HO8", SQD01:    s, " O8 "
+
+CONNECT, " H01", SQD02:   sp, " C8 "  # added
+CONNECT, " H02", SQD02:   sp, " C24"  # added
+CONNECT, " O6 ", SQD02:  sp3, " C44"," C1 "
+CONNECT, " C44", SQD02:  sp3, " O6 "," C45","H441","H442"
+CONNECT, " C45", SQD02:  sp3, " C44"," C46"," O47"," H45"
+CONNECT, " C46", SQD02:  sp3, " C45"," O48","H461","H462"
+CONNECT, " O47", SQD02:  sp3, " C45"," C7 "
+CONNECT, " C7 ", SQD02:  sp2, " O47"," O49"," C8 "
+CONNECT, " O49", SQD02:  sp3, " C7 "
+CONNECT, " C8 ", SQD02:  sp3, " C7 "," H81"," H82"," H01"  # added H01, removed C9
+CONNECT, " O48", SQD02:  sp3, " C46"," C23"
+CONNECT, " C23", SQD02:  sp2, " O48"," O10"," C24"
+CONNECT, " O10", SQD02:  sp3, " C23"
+CONNECT, " C24", SQD02:  sp3, " C23","H241","H242", " H02" # added H02, removed C25
+CONNECT, " C1 ", SQD02:  sp3, " O6 "," C2 "," O5 "," H1 "
+CONNECT, " C2 ", SQD02:  sp3, " C1 "," O2 "," C3 "," H2 "
+CONNECT, " O2 ", SQD02:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", SQD02:  sp3, " C2 "," O3 "," C4 "," H3 "
+CONNECT, " O3 ", SQD02:  sp3, " C3 "," HO3"
+CONNECT, " C4 ", SQD02:  sp3, " C3 "," O4 "," C5 "," H4 "
+CONNECT, " O4 ", SQD02:  sp3, " C4 "," HO4"
+CONNECT, " C5 ", SQD02:  sp3, " C4 "," C6 "," O5 "," H5 "
+CONNECT, " C6 ", SQD02:  sp3, " C5 "," S  "," H61"," H62"
+CONNECT, " O5 ", SQD02:  sp3, " C1 "," C5 "
+CONNECT, " S  ", SQD02:  sp3, " C6 "," O7 "," O8 "," O9 "
+CONNECT, " O7 ", SQD02:  sp3, " S  "," HO8"                # SQD02 has O7 w/ HO8 
+CONNECT, " O8 ", SQD02:  sp2, " S  "
+CONNECT, " O9 ", SQD02:  sp2, " S  "
+CONNECT, "H441", SQD02:    s, " C44"
+CONNECT, "H442", SQD02:    s, " C44"
+CONNECT, " H45", SQD02:    s, " C45"
+CONNECT, "H461", SQD02:    s, " C46"
+CONNECT, "H462", SQD02:    s, " C46"
+CONNECT, " H81", SQD02:    s, " C8 "
+CONNECT, " H82", SQD02:    s, " C8 "
+CONNECT, "H241", SQD02:    s, " C24"
+CONNECT, "H242", SQD02:    s, " C24"
+CONNECT, " H1 ", SQD02:    s, " C1 "
+CONNECT, " H2 ", SQD02:    s, " C2 "
+CONNECT, " HO2", SQD02:    s, " O2 "
+CONNECT, " H3 ", SQD02:    s, " C3 "
+CONNECT, " HO3", SQD02:    s, " O3 "
+CONNECT, " H4 ", SQD02:    s, " C4 "
+CONNECT, " HO4", SQD02:    s, " O4 "
+CONNECT, " H5 ", SQD02:    s, " C5 "
+CONNECT, " H61", SQD02:    s, " C6 "
+CONNECT, " H62", SQD02:    s, " C6 "
+CONNECT, " HO8", SQD02:    s, " O7 "                       # SQD02 has O7 w/ HO8
+
+CONNECT, " H01", SQD03:   sp, " C8 "  # added
+CONNECT, " H02", SQD03:   sp, " C24"  # added
+CONNECT, " O6 ", SQD03:  sp3, " C44"," C1 "
+CONNECT, " C44", SQD03:  sp3, " O6 "," C45","H441","H442"
+CONNECT, " C45", SQD03:  sp3, " C44"," C46"," O47"," H45"
+CONNECT, " C46", SQD03:  sp3, " C45"," O48","H461","H462"
+CONNECT, " O47", SQD03:  sp3, " C45"," C7 "
+CONNECT, " C7 ", SQD03:  sp2, " O47"," O49"," C8 "
+CONNECT, " O49", SQD03:  sp3, " C7 "
+CONNECT, " C8 ", SQD03:  sp3, " C7 "," H81"," H82"," H01"  # added H01, removed C9
+CONNECT, " O48", SQD03:  sp3, " C46"," C23"
+CONNECT, " C23", SQD03:  sp2, " O48"," O10"," C24"
+CONNECT, " O10", SQD03:  sp3, " C23"
+CONNECT, " C24", SQD03:  sp3, " C23","H241","H242", " H02" # added H02, removed C25
+CONNECT, " C1 ", SQD03:  sp3, " O6 "," C2 "," O5 "," H1 "
+CONNECT, " C2 ", SQD03:  sp3, " C1 "," O2 "," C3 "," H2 "
+CONNECT, " O2 ", SQD03:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", SQD03:  sp3, " C2 "," O3 "," C4 "," H3 "
+CONNECT, " O3 ", SQD03:  sp3, " C3 "," HO3"
+CONNECT, " C4 ", SQD03:  sp3, " C3 "," O4 "," C5 "," H4 "
+CONNECT, " O4 ", SQD03:  sp3, " C4 "," HO4"
+CONNECT, " C5 ", SQD03:  sp3, " C4 "," C6 "," O5 "," H5 "
+CONNECT, " C6 ", SQD03:  sp3, " C5 "," S  "," H61"," H62"
+CONNECT, " O5 ", SQD03:  sp3, " C1 "," C5 "
+CONNECT, " S  ", SQD03:  sp3, " C6 "," O7 "," O8 "," O9 "
+CONNECT, " O7 ", SQD03:  sp3, " S  "
+CONNECT, " O8 ", SQD03:  sp2, " S  "
+CONNECT, " O9 ", SQD03:  sp2, " S  "," HO8"                # SQD03 has O9 w/ HO8
+CONNECT, "H441", SQD03:    s, " C44"
+CONNECT, "H442", SQD03:    s, " C44"
+CONNECT, " H45", SQD03:    s, " C45"
+CONNECT, "H461", SQD03:    s, " C46"
+CONNECT, "H462", SQD03:    s, " C46"
+CONNECT, " H81", SQD03:    s, " C8 "
+CONNECT, " H82", SQD03:    s, " C8 "
+CONNECT, "H241", SQD03:    s, " C24"
+CONNECT, "H242", SQD03:    s, " C24"
+CONNECT, " H1 ", SQD03:    s, " C1 "
+CONNECT, " H2 ", SQD03:    s, " C2 "
+CONNECT, " HO2", SQD03:    s, " O2 "
+CONNECT, " H3 ", SQD03:    s, " C3 "
+CONNECT, " HO3", SQD03:    s, " O3 "
+CONNECT, " H4 ", SQD03:    s, " C4 "
+CONNECT, " HO4", SQD03:    s, " O4 "
+CONNECT, " H5 ", SQD03:    s, " C5 "
+CONNECT, " H61", SQD03:    s, " C6 "
+CONNECT, " H62", SQD03:    s, " C6 "
+CONNECT, " HO8", SQD03:    s, " O9 "                       # SQD03 has O9 w/ HO8
+
+CONNECT, " H01", SQD-1:   sp, " C8 "  # added
+CONNECT, " H02", SQD-1:   sp, " C24"  # added
+CONNECT, " O6 ", SQD-1:  sp3, " C44"," C1 "
+CONNECT, " C44", SQD-1:  sp3, " O6 "," C45","H441","H442"
+CONNECT, " C45", SQD-1:  sp3, " C44"," C46"," O47"," H45"
+CONNECT, " C46", SQD-1:  sp3, " C45"," O48","H461","H462"
+CONNECT, " O47", SQD-1:  sp3, " C45"," C7 "
+CONNECT, " C7 ", SQD-1:  sp2, " O47"," O49"," C8 "
+CONNECT, " O49", SQD-1:  sp3, " C7 "
+CONNECT, " C8 ", SQD-1:  sp3, " C7 "," H81"," H82"," H01"  # added H01, removed C9
+CONNECT, " O48", SQD-1:  sp2, " C46"," C23"
+CONNECT, " C23", SQD-1:  sp2, " O48"," O10"," C24"
+CONNECT, " O10", SQD-1:  sp3, " C23"
+CONNECT, " C24", SQD-1:  sp3, " C23","H241","H242", " H02" # added H02, removed C25
+CONNECT, " C1 ", SQD-1:  sp3, " O6 "," C2 "," O5 "," H1 "
+CONNECT, " C2 ", SQD-1:  sp3, " C1 "," O2 "," C3 "," H2 "
+CONNECT, " O2 ", SQD-1:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", SQD-1:  sp3, " C2 "," O3 "," C4 "," H3 "
+CONNECT, " O3 ", SQD-1:  sp3, " C3 "," HO3"
+CONNECT, " C4 ", SQD-1:  sp3, " C3 "," O4 "," C5 "," H4 "
+CONNECT, " O4 ", SQD-1:  sp3, " C4 "," HO4"
+CONNECT, " C5 ", SQD-1:  sp3, " C4 "," C6 "," O5 "," H5 "
+CONNECT, " C6 ", SQD-1:  sp3, " C5 "," S  "," H61"," H62"
+CONNECT, " O5 ", SQD-1:  sp3, " C1 "," C5 "
+CONNECT, " S  ", SQD-1:  sp3, " C6 "," O7 "," O8 "," O9 "
+CONNECT, " O7 ", SQD-1:  sp2, " S  "
+CONNECT, " O8 ", SQD-1:  sp3, " S  "                    
+CONNECT, " O9 ", SQD-1:  sp2, " S  "
+CONNECT, "H441", SQD-1:    s, " C44"
+CONNECT, "H442", SQD-1:    s, " C44"
+CONNECT, " H45", SQD-1:    s, " C45"
+CONNECT, "H461", SQD-1:    s, " C46"
+CONNECT, "H462", SQD-1:    s, " C46"
+CONNECT, " H81", SQD-1:    s, " C8 "
+CONNECT, " H82", SQD-1:    s, " C8 "
+CONNECT, "H241", SQD-1:    s, " C24"
+CONNECT, "H242", SQD-1:    s, " C24"
+CONNECT, " H1 ", SQD-1:    s, " C1 "
+CONNECT, " H2 ", SQD-1:    s, " C2 "
+CONNECT, " HO2", SQD-1:    s, " O2 "
+CONNECT, " H3 ", SQD-1:    s, " C3 "
+CONNECT, " HO3", SQD-1:    s, " O3 "
+CONNECT, " H4 ", SQD-1:    s, " C4 "
+CONNECT, " HO4", SQD-1:    s, " O4 "
+CONNECT, " H5 ", SQD-1:    s, " C5 "
+CONNECT, " H61", SQD-1:    s, " C6 "
+CONNECT, " H62", SQD-1:    s, " C6 "
+
+# ATOM charges
+CHARGE, SQD01, " H01":  0.27118
+CHARGE, SQD01, " H02":  0.26677
+CHARGE, SQD01, " O6 ": -0.57996
+CHARGE, SQD01, " C44": -0.15898
+CHARGE, SQD01, " C45":  0.02838
+CHARGE, SQD01, " C46": -0.14325
+CHARGE, SQD01, " O47": -0.55733
+CHARGE, SQD01, " C7 ":  0.80761
+CHARGE, SQD01, " O49": -0.59227
+CHARGE, SQD01, " C8 ": -0.78471
+CHARGE, SQD01, " O48": -0.56113
+CHARGE, SQD01, " C23":  0.81077
+CHARGE, SQD01, " O10": -0.60577
+CHARGE, SQD01, " C24": -0.78538
+CHARGE, SQD01, " C1 ":  0.38144
+CHARGE, SQD01, " C2 ":  0.01347
+CHARGE, SQD01, " O2 ": -0.74448
+CHARGE, SQD01, " C3 ":  0.03971
+CHARGE, SQD01, " O3 ": -0.76599
+CHARGE, SQD01, " C4 ":  0.02538
+CHARGE, SQD01, " O4 ": -0.76954
+CHARGE, SQD01, " C5 ":  0.0318
+CHARGE, SQD01, " C6 ": -0.73814
+CHARGE, SQD01, " O5 ": -0.59338
+CHARGE, SQD01, " S  ":  2.38444
+CHARGE, SQD01, " O7 ": -0.94548
+CHARGE, SQD01, " O8 ": -0.94853
+CHARGE, SQD01, " O9 ": -0.8797
+CHARGE, SQD01, "H441":  0.2048
+CHARGE, SQD01, "H442":  0.28403
+CHARGE, SQD01, " H45":  0.25708
+CHARGE, SQD01, "H461":  0.23872
+CHARGE, SQD01, "H462":  0.26424
+CHARGE, SQD01, " H81":  0.27077
+CHARGE, SQD01, " H82":  0.26146
+CHARGE, SQD01, "H241":  0.26806
+CHARGE, SQD01, "H242":  0.26737
+CHARGE, SQD01, " H1 ":  0.18767
+CHARGE, SQD01, " H2 ":  0.27245
+CHARGE, SQD01, " HO2":  0.48585
+CHARGE, SQD01, " H3 ":  0.2178
+CHARGE, SQD01, " HO3":  0.51127
+CHARGE, SQD01, " H4 ":  0.2549
+CHARGE, SQD01, " HO4":  0.49273
+CHARGE, SQD01, " H5 ":  0.23359
+CHARGE, SQD01, " H61":  0.30205
+CHARGE, SQD01, " H62":  0.27653
+CHARGE, SQD01, " HO8":  0.54069 # 0.54169 - 0.001  Compensate for excess positive charge
+
+CHARGE, SQD02, " H01":  0.27118
+CHARGE, SQD02, " H02":  0.26677
+CHARGE, SQD02, " O6 ": -0.57996
+CHARGE, SQD02, " C44": -0.15898
+CHARGE, SQD02, " C45":  0.02838
+CHARGE, SQD02, " C46": -0.14325
+CHARGE, SQD02, " O47": -0.55733
+CHARGE, SQD02, " C7 ":  0.80761
+CHARGE, SQD02, " O49": -0.59227
+CHARGE, SQD02, " C8 ": -0.78471
+CHARGE, SQD02, " O48": -0.56113
+CHARGE, SQD02, " C23":  0.81077
+CHARGE, SQD02, " O10": -0.60577
+CHARGE, SQD02, " C24": -0.78538
+CHARGE, SQD02, " C1 ":  0.38144
+CHARGE, SQD02, " C2 ":  0.01347
+CHARGE, SQD02, " O2 ": -0.74448
+CHARGE, SQD02, " C3 ":  0.03971
+CHARGE, SQD02, " O3 ": -0.76599
+CHARGE, SQD02, " C4 ":  0.02538
+CHARGE, SQD02, " O4 ": -0.76954
+CHARGE, SQD02, " C5 ":  0.0318
+CHARGE, SQD02, " C6 ": -0.73814
+CHARGE, SQD02, " O5 ": -0.59338
+CHARGE, SQD02, " S  ":  2.38444
+CHARGE, SQD02, " O7 ": -0.94853 # -0.94548  # Switched charges since SQD02 has O7 w/ HO8
+CHARGE, SQD02, " O8 ": -0.8797  # -0.94853  # Switched charges since SQD02 has O7 w/ HO8
+CHARGE, SQD02, " O9 ": -0.94548 # -0.8797   # Switched charges since SQD02 has O7 w/ HO8
+CHARGE, SQD02, "H441":  0.2048
+CHARGE, SQD02, "H442":  0.28403
+CHARGE, SQD02, " H45":  0.25708
+CHARGE, SQD02, "H461":  0.23872
+CHARGE, SQD02, "H462":  0.26424
+CHARGE, SQD02, " H81":  0.27077
+CHARGE, SQD02, " H82":  0.26146
+CHARGE, SQD02, "H241":  0.26806
+CHARGE, SQD02, "H242":  0.26737
+CHARGE, SQD02, " H1 ":  0.18767
+CHARGE, SQD02, " H2 ":  0.27245
+CHARGE, SQD02, " HO2":  0.48585
+CHARGE, SQD02, " H3 ":  0.2178
+CHARGE, SQD02, " HO3":  0.51127
+CHARGE, SQD02, " H4 ":  0.2549
+CHARGE, SQD02, " HO4":  0.49273
+CHARGE, SQD02, " H5 ":  0.23359
+CHARGE, SQD02, " H61":  0.30205
+CHARGE, SQD02, " H62":  0.27653
+CHARGE, SQD02, " HO8":  0.54069 # 0.54169 - 0.001  Compensate for excess positive charge
+
+CHARGE, SQD03, " H01":  0.27118
+CHARGE, SQD03, " H02":  0.26677
+CHARGE, SQD03, " O6 ": -0.57996
+CHARGE, SQD03, " C44": -0.15898
+CHARGE, SQD03, " C45":  0.02838
+CHARGE, SQD03, " C46": -0.14325
+CHARGE, SQD03, " O47": -0.55733
+CHARGE, SQD03, " C7 ":  0.80761
+CHARGE, SQD03, " O49": -0.59227
+CHARGE, SQD03, " C8 ": -0.78471
+CHARGE, SQD03, " O48": -0.56113
+CHARGE, SQD03, " C23":  0.81077
+CHARGE, SQD03, " O10": -0.60577
+CHARGE, SQD03, " C24": -0.78538
+CHARGE, SQD03, " C1 ":  0.38144
+CHARGE, SQD03, " C2 ":  0.01347
+CHARGE, SQD03, " O2 ": -0.74448
+CHARGE, SQD03, " C3 ":  0.03971
+CHARGE, SQD03, " O3 ": -0.76599
+CHARGE, SQD03, " C4 ":  0.02538
+CHARGE, SQD03, " O4 ": -0.76954
+CHARGE, SQD03, " C5 ":  0.0318
+CHARGE, SQD03, " C6 ": -0.73814
+CHARGE, SQD03, " O5 ": -0.59338
+CHARGE, SQD03, " S  ":  2.38444
+CHARGE, SQD03, " O7 ": -0.8797  # -0.94548  # Switched charges since SQD03 has O9 w/ HO8
+CHARGE, SQD03, " O8 ": -0.94548 # -0.94853  # Switched charges since SQD03 has O9 w/ HO8
+CHARGE, SQD03, " O9 ": -0.94853 # -0.8797   # Switched charges since SQD03 has O9 w/ HO8
+CHARGE, SQD03, "H441":  0.2048
+CHARGE, SQD03, "H442":  0.28403
+CHARGE, SQD03, " H45":  0.25708
+CHARGE, SQD03, "H461":  0.23872
+CHARGE, SQD03, "H462":  0.26424
+CHARGE, SQD03, " H81":  0.27077
+CHARGE, SQD03, " H82":  0.26146
+CHARGE, SQD03, "H241":  0.26806
+CHARGE, SQD03, "H242":  0.26737
+CHARGE, SQD03, " H1 ":  0.18767
+CHARGE, SQD03, " H2 ":  0.27245
+CHARGE, SQD03, " HO2":  0.48585
+CHARGE, SQD03, " H3 ":  0.2178
+CHARGE, SQD03, " HO3":  0.51127
+CHARGE, SQD03, " H4 ":  0.2549
+CHARGE, SQD03, " HO4":  0.49273
+CHARGE, SQD03, " H5 ":  0.23359
+CHARGE, SQD03, " H61":  0.30205
+CHARGE, SQD03, " H62":  0.27653
+CHARGE, SQD03, " HO8":  0.54069 # 0.54169 - 0.001  Compensate for excess positive charge
+
+CHARGE, SQD-1, " H01":  0.27629 
+CHARGE, SQD-1, " H02":  0.26052
+CHARGE, SQD-1, " O6 ": -0.59249
+CHARGE, SQD-1, " C44": -0.16523
+CHARGE, SQD-1, " C45":  0.03019
+CHARGE, SQD-1, " C46": -0.14176
+CHARGE, SQD-1, " O47": -0.56814
+CHARGE, SQD-1, " C7 ":  0.79731
+CHARGE, SQD-1, " O49": -0.56084
+CHARGE, SQD-1, " C8 ": -0.78261
+CHARGE, SQD-1, " O48": -0.55832
+CHARGE, SQD-1, " C23":  0.81005
+CHARGE, SQD-1, " O10": -0.61227
+CHARGE, SQD-1, " C24": -0.78491
+CHARGE, SQD-1, " C1 ":  0.38444
+CHARGE, SQD-1, " C2 ":  0.0158
+CHARGE, SQD-1, " O2 ": -0.75915
+CHARGE, SQD-1, " C3 ":  0.04191
+CHARGE, SQD-1, " O3 ": -0.77884
+CHARGE, SQD-1, " C4 ":  0.02896
+CHARGE, SQD-1, " O4 ": -0.78279
+CHARGE, SQD-1, " C5 ":  0.02675
+CHARGE, SQD-1, " C6 ": -0.74959
+CHARGE, SQD-1, " O5 ": -0.58411
+CHARGE, SQD-1, " S  ":  2.36699
+CHARGE, SQD-1, " O7 ": -1.0234
+CHARGE, SQD-1, " O8 ": -1.08004
+CHARGE, SQD-1, " O9 ": -0.99305
+CHARGE, SQD-1, "H441":  0.20219
+CHARGE, SQD-1, "H442":  0.30413
+CHARGE, SQD-1, " H45":  0.25261
+CHARGE, SQD-1, "H461":  0.23621
+CHARGE, SQD-1, "H462":  0.26302
+CHARGE, SQD-1, " H81":  0.25987
+CHARGE, SQD-1, " H82":  0.25312
+CHARGE, SQD-1, "H241":  0.26649
+CHARGE, SQD-1, "H242":  0.26543
+CHARGE, SQD-1, " H1 ":  0.18178
+CHARGE, SQD-1, " H2 ":  0.26457
+CHARGE, SQD-1, " HO2":  0.48349
+CHARGE, SQD-1, " H3 ":  0.2093
+CHARGE, SQD-1, " HO3":  0.50525
+CHARGE, SQD-1, " H4 ":  0.24649
+CHARGE, SQD-1, " HO4":  0.49919
+CHARGE, SQD-1, " H5 ":  0.2257
+CHARGE, SQD-1, " H61":  0.2809
+CHARGE, SQD-1, " H62":  0.27959 # 0.27859 + 0.001  Compensate for excess negative charge
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, SQD01, " H01":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H02":  1.000,  1.000,  0.020
+RADIUS, SQD01, " O6 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C44":  1.700,  2.000,  0.150
+RADIUS, SQD01, " C45":  1.700,  2.000,  0.150
+RADIUS, SQD01, " C46":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O47":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O49":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O48":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C23":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O10":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C24":  1.700,  2.000,  0.150
+RADIUS, SQD01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O3 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O4 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, SQD01, " O5 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " S  ":  1.850,  2.000,  0.200
+RADIUS, SQD01, " O7 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " O8 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, " O9 ":  1.400,  1.600,  0.200
+RADIUS, SQD01, "H441":  1.000,  1.000,  0.020
+RADIUS, SQD01, "H442":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H45":  1.000,  1.000,  0.020
+RADIUS, SQD01, "H461":  1.000,  1.000,  0.020
+RADIUS, SQD01, "H462":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H81":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H82":  1.000,  1.000,  0.020
+RADIUS, SQD01, "H241":  1.000,  1.000,  0.020
+RADIUS, SQD01, "H242":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, SQD01, " HO2":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, SQD01, " HO3":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, SQD01, " HO4":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H61":  1.000,  1.000,  0.020
+RADIUS, SQD01, " H62":  1.000,  1.000,  0.020
+RADIUS, SQD01, " HO8":  1.000,  1.000,  0.020
+
+RADIUS, SQD02, " H01":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H02":  1.000,  1.000,  0.020
+RADIUS, SQD02, " O6 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C44":  1.700,  2.000,  0.150
+RADIUS, SQD02, " C45":  1.700,  2.000,  0.150
+RADIUS, SQD02, " C46":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O47":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C7 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O49":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C8 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O48":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C23":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O10":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C24":  1.700,  2.000,  0.150
+RADIUS, SQD02, " C1 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " C2 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O2 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C3 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O3 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C4 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O4 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " C5 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " C6 ":  1.700,  2.000,  0.150
+RADIUS, SQD02, " O5 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " S  ":  1.850,  2.000,  0.200
+RADIUS, SQD02, " O7 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " O8 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, " O9 ":  1.400,  1.600,  0.200
+RADIUS, SQD02, "H441":  1.000,  1.000,  0.020
+RADIUS, SQD02, "H442":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H45":  1.000,  1.000,  0.020
+RADIUS, SQD02, "H461":  1.000,  1.000,  0.020
+RADIUS, SQD02, "H462":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H81":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H82":  1.000,  1.000,  0.020
+RADIUS, SQD02, "H241":  1.000,  1.000,  0.020
+RADIUS, SQD02, "H242":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H1 ":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H2 ":  1.000,  1.000,  0.020
+RADIUS, SQD02, " HO2":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H3 ":  1.000,  1.000,  0.020
+RADIUS, SQD02, " HO3":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H4 ":  1.000,  1.000,  0.020
+RADIUS, SQD02, " HO4":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H5 ":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H61":  1.000,  1.000,  0.020
+RADIUS, SQD02, " H62":  1.000,  1.000,  0.020
+RADIUS, SQD02, " HO8":  1.000,  1.000,  0.020
+
+RADIUS, SQD03, " H01":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H02":  1.000,  1.000,  0.020
+RADIUS, SQD03, " O6 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C44":  1.700,  2.000,  0.150
+RADIUS, SQD03, " C45":  1.700,  2.000,  0.150
+RADIUS, SQD03, " C46":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O47":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C7 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O49":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C8 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O48":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C23":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O10":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C24":  1.700,  2.000,  0.150
+RADIUS, SQD03, " C1 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " C2 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O2 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C3 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O3 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C4 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O4 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " C5 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " C6 ":  1.700,  2.000,  0.150
+RADIUS, SQD03, " O5 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " S  ":  1.850,  2.000,  0.200
+RADIUS, SQD03, " O7 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " O8 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, " O9 ":  1.400,  1.600,  0.200
+RADIUS, SQD03, "H441":  1.000,  1.000,  0.020
+RADIUS, SQD03, "H442":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H45":  1.000,  1.000,  0.020
+RADIUS, SQD03, "H461":  1.000,  1.000,  0.020
+RADIUS, SQD03, "H462":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H81":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H82":  1.000,  1.000,  0.020
+RADIUS, SQD03, "H241":  1.000,  1.000,  0.020
+RADIUS, SQD03, "H242":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H1 ":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H2 ":  1.000,  1.000,  0.020
+RADIUS, SQD03, " HO2":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H3 ":  1.000,  1.000,  0.020
+RADIUS, SQD03, " HO3":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H4 ":  1.000,  1.000,  0.020
+RADIUS, SQD03, " HO4":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H5 ":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H61":  1.000,  1.000,  0.020
+RADIUS, SQD03, " H62":  1.000,  1.000,  0.020
+RADIUS, SQD03, " HO8":  1.000,  1.000,  0.020
+
+RADIUS, SQD-1, " H01":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H02":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " O6 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C44":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " C45":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " C46":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O47":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C7 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O49":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C8 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O48":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C23":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O10":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C24":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " C1 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " C2 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O2 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C3 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O3 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C4 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O4 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " C5 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " C6 ":  1.700,  2.000,  0.150
+RADIUS, SQD-1, " O5 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " S  ":  1.850,  2.000,  0.200
+RADIUS, SQD-1, " O7 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " O8 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, " O9 ":  1.400,  1.600,  0.200
+RADIUS, SQD-1, "H441":  1.000,  1.000,  0.020
+RADIUS, SQD-1, "H442":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H45":  1.000,  1.000,  0.020
+RADIUS, SQD-1, "H461":  1.000,  1.000,  0.020
+RADIUS, SQD-1, "H462":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H81":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H82":  1.000,  1.000,  0.020
+RADIUS, SQD-1, "H241":  1.000,  1.000,  0.020
+RADIUS, SQD-1, "H242":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H1 ":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H2 ":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " HO2":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H3 ":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " HO3":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H4 ":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " HO4":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H5 ":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H61":  1.000,  1.000,  0.020
+RADIUS, SQD-1, " H62":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, SQD01:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -31.047, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
+CONFORMER, SQD02:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -32.713, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
+CONFORMER, SQD03:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -31.036, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
+CONFORMER, SQD-1:  Em0=0.0, pKa0=-1.86, ne=0, nH=-1, rxn02= 0, rxn04= -43.538, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs ) (pKa SulfonicAcid PubChem)

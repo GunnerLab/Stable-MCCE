@@ -3,6 +3,7 @@
 ********************************/
 
 #include <stdio.h>
+#include <string.h>
 
 /*--- Constants ---*/
 /* Constants for geometry transformation recorder */

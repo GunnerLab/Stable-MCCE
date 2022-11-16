@@ -1,0 +1,63 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#RXN      CTR01       -1.54
+#RXN      CTR02       -1.54
+#RXN      CTR-1       -17.72
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H1$
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CTR: CTRBK, CTR01, CTR02, CTR-1
+
+# Atom definition
+CONNECT, " C  ", CTR01: sp2, " ?  ", " O  ", " OXT"
+CONNECT, " O  ", CTR01: sp3, " C  ", " HO "
+CONNECT, " HO ", CTR01: s, " O  "
+CONNECT, " OXT", CTR01: sp2, " C  "
+CONNECT, " C  ", CTR02: sp2, " ?  ", " O  ", " OXT"
+CONNECT, " O  ", CTR02: sp2, " C  "
+CONNECT, " OXT", CTR02: sp3, " C  ", " HXT"
+CONNECT, " HXT", CTR02: s, " OXT"
+CONNECT, " C  ", CTR-1: sp2, " ?  ", " O  ", " OXT"
+CONNECT, " O  ", CTR-1: sp2, " C  "
+CONNECT, " OXT", CTR-1: sp2, " C  "
+
+# Atom charges
+CHARGE, CTR01, " C  ":  0.000
+CHARGE, CTR01, " O  ": -0.200
+CHARGE, CTR01, " HO ":  0.400
+CHARGE, CTR01, " OXT": -0.200
+CHARGE, CTR02, " C  ":  0.000
+CHARGE, CTR02, " O  ": -0.200
+CHARGE, CTR02, " OXT": -0.200
+CHARGE, CTR02, " HXT":  0.400
+CHARGE, CTR-1, " C  ":  0.140
+CHARGE, CTR-1, " O  ": -0.570
+CHARGE, CTR-1, " OXT": -0.570
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  CTR01,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  CTR01,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  CTR01,  " HO ": 1.000,   1.000,   0.020
+RADIUS,  CTR01,  " OXT": 1.400,   1.600,   0.200
+RADIUS,  CTR02,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  CTR02,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  CTR02,  " OXT": 1.400,   1.600,   0.200
+RADIUS,  CTR02,  " HXT": 1.000,   1.000,   0.020
+RADIUS,  CTR-1,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  CTR-1,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  CTR-1,  " OXT": 1.400,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, CTR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -1.300, rxn04= -1.300, rxn08= -1.110
+CONFORMER, CTR02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -1.300, rxn04= -1.300, rxn08= -1.110
+CONFORMER, CTR-1: Em0=   0.0, pKa0=  3.75, ne= 0, nH=-1, rxn02=-19.700, rxn04=-19.700, rxn08= -9.950
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

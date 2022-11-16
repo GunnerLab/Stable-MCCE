@@ -1,0 +1,202 @@
+CONNECT, " MG ", CHLdF: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CHLdF: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CHLdF: sp2, " C4A", " C1B", " HHB" ##
+CONNECT, " CHC", CHLdF: sp2, " C4B", " C1C", " HHC" ##
+CONNECT, " CHD", CHLdF: sp2, " C1D", " C4C", " HHD" ##
+CONNECT, " HHB", CHLdF: s, " CHB" ##
+CONNECT, " HHC", CHLdF: s, " CHC" ##
+CONNECT, " HHD", CHLdF: s, " CHD" ##
+CONNECT, " N1A", CHLdF: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", CHLdF: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CHLdF: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CHLdF: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CHLdF: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CHLdF: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CHLdF: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CHLdF: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CHLdF: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CHLdF: sp, " CGA"
+CONNECT, " O2A", CHLdF: sp2, " ?  ", " CGA" # ? = C1
+CONNECT, "HMA1", CHLdF: s, " CMA" ##
+CONNECT, "HMA2", CHLdF: s, " CMA" ##
+CONNECT, "HMA3", CHLdF: s, " CMA" ##
+CONNECT, " H2A", CHLdF: s, " C2A" ##
+CONNECT, " H3A", CHLdF: s, " C3A" ##
+CONNECT, "HAA1", CHLdF: s, " CAA" ##
+CONNECT, "HAA2", CHLdF: s, " CAA" ##
+CONNECT, "HBA1", CHLdF: s, " CBA" ##
+CONNECT, "HBA2", CHLdF: s, " CBA" ##
+CONNECT, " N1B", CHLdF: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", CHLdF: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CHLdF: sp2, " CMB", " C3B", " C1B" ###
+CONNECT, " C3B", CHLdF: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CHLdF: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CHLdF: sp2, " C2B", " OMB", " HMB",        ##### s-hybrid
+CONNECT, " CAB", CHLdF: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", CHLdF: sp3, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", CHLdF: s, " CAB" ##
+CONNECT, " OMB", CHLdF: sp, " CMB" #####
+CONNECT, " HMB", CHLdF: s, " CMB" #####
+CONNECT, "HBB1", CHLdF: s, " CBB" #####
+CONNECT, "HBB3", CHLdF: s, " CBB" #####
+CONNECT, " N1C", CHLdF: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", CHLdF: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CHLdF: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CHLdF: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CHLdF: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CHLdF: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", CHLdF: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CHLdF: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CHLdF: s, " CMC" ##
+CONNECT, "HMC2", CHLdF: s, " CMC" ##
+CONNECT, "HMC3", CHLdF: s, " CMC" ##
+CONNECT, "HAC1", CHLdF: s, " CAC" ##
+CONNECT, "HAC2", CHLdF: s, " CAC" ##
+CONNECT, "HBC1", CHLdF: s, " CBC" ##
+CONNECT, "HBC2", CHLdF: s, " CBC" ##
+CONNECT, "HBC3", CHLdF: s, " CBC" ##
+CONNECT, " N1D", CHLdF: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", CHLdF: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CHLdF: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CHLdF: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CHLdF: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CHLdF: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CHLdF: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CHLdF: sp, " CAD"
+CONNECT, " CBD", CHLdF: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CHLdF: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CHLdF: sp, " CGD"
+CONNECT, " O2D", CHLdF: sp2, " CED", " CGD"
+CONNECT, " CED", CHLdF: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CHLdF: s, " CMD" ##
+CONNECT, "HMD2", CHLdF: s, " CMD" ##
+CONNECT, "HMD3", CHLdF: s, " CMD" ##
+CONNECT, " HBD", CHLdF: s, " CBD" ##
+CONNECT, "HED1", CHLdF: s, " CED" ##
+CONNECT, "HED2", CHLdF: s, " CED" ##
+CONNECT, "HED3", CHLdF: s, " CED" ##
+
+CHARGE, CHLdF, " MG ":  1.170725
+CHARGE, CHLdF, " CHA":  0.015903
+CHARGE, CHLdF, " CHB": -0.646459
+CHARGE, CHLdF, " CHC": -0.337453
+CHARGE, CHLdF, " CHD": -0.37918
+CHARGE, CHLdF, " HHB":  0.211342  ##
+CHARGE, CHLdF, " HHC":  0.141535  ##
+CHARGE, CHLdF, " HHD":  0.188856  ##
+CHARGE, CHLdF, " N1A": -0.612489
+CHARGE, CHLdF, " C1A":  0.107346
+CHARGE, CHLdF, " C2A":  0.053598
+CHARGE, CHLdF, " C3A":  0.100377
+CHARGE, CHLdF, " C4A":  0.503545
+CHARGE, CHLdF, " CMA": -0.464866
+CHARGE, CHLdF, " CAA":  0.071912
+CHARGE, CHLdF, " CBA": -0.382913
+CHARGE, CHLdF, " CGA":  0.852771
+CHARGE, CHLdF, " O1A": -0.443862  #### -0.544578 + 0.1017155 - 0.001
+CHARGE, CHLdF, " O2A": -0.293591  #### -0.395307 + 0.1017155
+CHARGE, CHLdF, "HMA1":  0.116419  ##
+CHARGE, CHLdF, "HMA2":  0.127305  ##
+CHARGE, CHLdF, "HMA3":  0.134389  ##
+CHARGE, CHLdF, " H2A":  0.040954  ##
+CHARGE, CHLdF, " H3A":  0.041374  ##
+CHARGE, CHLdF, "HAA1":  0.003435  ##
+CHARGE, CHLdF, "HAA2": -0.008462  ##
+CHARGE, CHLdF, "HBA1":  0.099454  ##
+CHARGE, CHLdF, "HBA2":  0.069596  ##
+CHARGE, CHLdF, " N1B": -0.682106
+CHARGE, CHLdF, " C1B":  0.489015
+CHARGE, CHLdF, " C2B": -0.16927
+CHARGE, CHLdF, " C3B": -0.063462
+CHARGE, CHLdF, " C4B":  0.35571
+CHARGE, CHLdF, " CMB":  0.723099 # dipole 0.477755 + 0.245344
+CHARGE, CHLdF, " CAB": -0.092035
+CHARGE, CHLdF, " CBB": -0.304067
+CHARGE, CHLdF, " HBB":  0.127251  ##
+CHARGE, CHLdF, " OMB": -0.700000  ##### dipole -0.454656 - 0.245344
+CHARGE, CHLdF, " HMB": -0.027556  #####
+CHARGE, CHLdF, "HBB1":  0.15677   #####
+CHARGE, CHLdF, "HBB3":  0.142714  #####
+CHARGE, CHLdF, " N1C": -0.583049
+CHARGE, CHLdF, " C1C":  0.189126
+CHARGE, CHLdF, " C2C":  0.208244
+CHARGE, CHLdF, " C3C": -0.347242
+CHARGE, CHLdF, " C4C":  0.404656
+CHARGE, CHLdF, " CMC": -0.451175
+CHARGE, CHLdF, " CAC":  0.173566
+CHARGE, CHLdF, " CBC": -0.296974
+CHARGE, CHLdF, "HMC1":  0.118594  ##
+CHARGE, CHLdF, "HMC2":  0.127232  ##
+CHARGE, CHLdF, "HMC3":  0.14248   ##
+CHARGE, CHLdF, "HAC1": -0.003224  ##
+CHARGE, CHLdF, "HAC2":  0.01786   ##
+CHARGE, CHLdF, "HBC1":  0.067129  ##
+CHARGE, CHLdF, "HBC2":  0.089201  ##
+CHARGE, CHLdF, "HBC3":  0.083009  ##
+CHARGE, CHLdF, " N1D": -0.660025
+CHARGE, CHLdF, " C1D":  0.258347
+CHARGE, CHLdF, " C2D":  0.134101
+CHARGE, CHLdF, " C3D": -0.311231
+CHARGE, CHLdF, " C4D":  0.339297
+CHARGE, CHLdF, " CMD": -0.361041
+CHARGE, CHLdF, " CAD":  0.706412
+CHARGE, CHLdF, " OBD": -0.486972
+CHARGE, CHLdF, " CBD": -0.78793
+CHARGE, CHLdF, " CGD":  0.927139
+CHARGE, CHLdF, " O1D": -0.552863
+CHARGE, CHLdF, " O2D": -0.363204
+CHARGE, CHLdF, " CED": -0.116678
+CHARGE, CHLdF, "HMD1":  0.10913   ##
+CHARGE, CHLdF, "HMD2":  0.105599  ##
+CHARGE, CHLdF, "HMD3":  0.128072  ##
+CHARGE, CHLdF, " HBD":  0.243714  ##
+CHARGE, CHLdF, "HED1":  0.12009   ##
+CHARGE, CHLdF, "HED2":  0.087059  ##
+CHARGE, CHLdF, "HED3":  0.102928  ##
+
+RADIUS,  CHLdF,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CHLdF,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CHLdF,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CHLdF,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CHLdF,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CHLdF,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CBB": 1.700,   2.000,   0.150  #
+RADIUS,  CHLdF,  " OMB": 1.520,   1.600,   0.200  #
+RADIUS,  CHLdF,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CHLdF,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CHLdF,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CHLdF,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CHLdF,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CHLdF,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CHLdF,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CHLdF,  " CED": 2.000,   2.000,   0.150
