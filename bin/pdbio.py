@@ -28,6 +28,7 @@ class Atom:
         self.confNum = 0
         self.atomID = ""
         self.confID = ""
+        self.confType = ""
         self.resID = ""
         self.xyz = (0.0, 0.0, 0.0)
         self.connectivity_param = []
@@ -46,6 +47,7 @@ class Atom:
         self.iCode = line[26]
         self.confNum = int(line[27:30])
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        self.confType = "%3s%2s" % (self.resName, line[80:82])
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%3s%04d%c%03d" % (self.resName, self.resSeq, self.chainID, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
@@ -124,7 +126,7 @@ class Protein:
         return
 
     def make_connect12(self):
-        # make connect table
+        # make connect table, need to start from connect records
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
@@ -141,8 +143,12 @@ class Protein:
                                 if atom2 not in atom.connect12:
                                     atom.connect12.append(atom2)
 
-                    # with ligand
+                    # with ligand, this requires to look up atoms in other residues
                     # to be done
+                    connect_key = ("CONNECT", atom.name, atom.confType)
+                    connected_atoms = env.param[connect_key].connected
+                    print(connected_atoms)
+
         return
 
     def print_connect12(self):
@@ -219,8 +225,8 @@ class CONNECT_param:
     def __init__(self, value_str):
         fields = value_str.split(",")
         self.orbital = fields[0].strip()
-        self.connected = [x.strip("\"") for x in fields[1:]]
-
+        #self.connected = [x.strip("\"") for x in fields[1:]]
+        print(fields[1:])
 
 class ENV:
     def __init__(self):
@@ -289,16 +295,20 @@ class ENV:
         for key, value in self.param.items():
             print("%s:%s, %s" % (key, value.orbital, value.connected))
 
+
 if __name__ == "__main__":
+    env = ENV()
+    #env.print_param()
+
     pdbfile = "step2_out.pdb"
     protein = Protein()
     protein.loadpdb(pdbfile)
-    protein.make_connect12()
-    protein.make_connect13()
-    protein.make_connect14()
+    # protein.make_connect12()
+    # protein.make_connect13()
+    # protein.make_connect14()
 
-    env = ENV()
-    env.print_param()
+    #protein.print_connect12()
+
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")
     #protein.print_atom_structure()
