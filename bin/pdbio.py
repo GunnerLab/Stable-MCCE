@@ -122,17 +122,16 @@ class Protein:
                 conf.confID = "%s000" % res.resID
                 conf.resID = res.resID
                 res.conf.insert(0, conf)
-
         return
 
     def make_connect12(self):
         # make connect table, need to start from connect records
         for res in self.residue:
-            for conf in res.conf:
+            for conf in res.conf[1:]: # Only applies to side chain conformers
                 for atom in conf.atom:
                     # with backbone
                     for atom2 in res.conf[0].atom:
-                        if atom != atom2:
+                        if atom != atom2:  # ALSO CHECK IF ATOM2 IS IN CONNECT TABLE
                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                 if atom2 not in atom.connect12:
                                     atom.connect12.append(atom2)
@@ -144,16 +143,34 @@ class Protein:
                                     atom.connect12.append(atom2)
 
                     # with ligand, this requires to look up atoms in other residues
-                    # to be done
                     connect_key = ("CONNECT", atom.name, atom.confType)
                     connected_atoms = env.param[connect_key].connected
-                    print(connected_atoms)
-
+                    ligated = False
+                    for ligated_atom in connected_atoms:
+                        if "?" in ligated_atom:
+                            ligated = True
+                            break
+                    if ligated: # will look for all other "?" atoms in protein
+                        for res2 in self.residue:
+                            if res != res2:
+                                for conf2 in res2.conf[1:]:
+                                    for atom2 in conf2.atom:
+                                        connect_key2 = ("CONNECT", atom2.name, atom2.confType)
+                                        connected_atoms2 = env.param[connect_key2].connected
+                                        ligated2 = False
+                                        for ligated_atom2 in connected_atoms2:
+                                            if "?" in ligated_atom2:
+                                                ligated2 = True
+                                                break
+                                        if ligated2:
+                                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                                                if atom2 not in atom.connect12:
+                                                    atom.connect12.append(atom2)
         return
 
     def print_connect12(self):
         for res in self.residue:
-            for conf in res.conf:
+            for conf in res.conf[1:]:
                 for atom in conf.atom:
                     print(atom.atomID)
                     for atom2 in atom.connect12:
@@ -225,8 +242,7 @@ class CONNECT_param:
     def __init__(self, value_str):
         fields = value_str.split(",")
         self.orbital = fields[0].strip()
-        #self.connected = [x.strip("\"") for x in fields[1:]]
-        print(fields[1:])
+        self.connected = [x.strip().strip("\"") for x in fields[1:]]
 
 class ENV:
     def __init__(self):
@@ -303,11 +319,11 @@ if __name__ == "__main__":
     pdbfile = "step2_out.pdb"
     protein = Protein()
     protein.loadpdb(pdbfile)
-    # protein.make_connect12()
+    protein.make_connect12()
     # protein.make_connect13()
     # protein.make_connect14()
 
-    #protein.print_connect12()
+    protein.print_connect12()
 
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")
