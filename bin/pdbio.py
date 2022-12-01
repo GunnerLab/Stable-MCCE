@@ -244,6 +244,15 @@ class CONNECT_param:
         self.orbital = fields[0].strip()
         self.connected = [x.strip().strip("\"") for x in fields[1:]]
 
+
+class RADIUS_param:
+    def __init__(self, value_str):
+        fields = value_str.split(",")
+        self.r_bound = float(fields[0])
+        self.r_vdw = float(fields[1])
+        self.e_vdw = float(fields[2])
+
+
 class ENV:
     def __init__(self):
         self.runprm = {}
@@ -304,17 +313,23 @@ class ENV:
                 if key1 == "CONNECT":
                     self.param[(key1,key2,key3)] = CONNECT_param(value_string)
                 # VDW parameters
+                elif key1 == "RADIUS":
+                    self.param[(key1, key2, key3)] = RADIUS_param(value_string)
 
         os.chdir(cwd)
 
     def print_param(self):
         for key, value in self.param.items():
-            print("%s:%s, %s" % (key, value.orbital, value.connected))
+            key1, key2, key3 = key
+            if key1 == "CONNECT":
+                print("%s:%s, %s" % (key, value.orbital, value.connected))
+            elif key1 == "RADIUS":
+                print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
 
 
 if __name__ == "__main__":
     env = ENV()
-    #env.print_param()
+    env.print_param()
 
     pdbfile = "step2_out.pdb"
     protein = Protein()
@@ -323,7 +338,7 @@ if __name__ == "__main__":
     # protein.make_connect13()
     # protein.make_connect14()
 
-    protein.print_connect12()
+    #protein.print_connect12()
 
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")
