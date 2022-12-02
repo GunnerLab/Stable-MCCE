@@ -5,9 +5,9 @@ import math
 import os
 import glob
 
-# bond distance threshold
-BONDDISTANCE = 1.65
-CUTOFF2 = BONDDISTANCE*BONDDISTANCE
+# bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
+BONDDISTANCE_scaling = 0.9
+#CUTOFF2 = 1.65*1.65
 
 def ddvv(xyz1, xyz2):
     """Distance squared between two vectors."""
@@ -31,7 +31,10 @@ class Atom:
         self.confType = ""
         self.resID = ""
         self.xyz = (0.0, 0.0, 0.0)
-        self.connectivity_param = []
+        self.connectivity_param = ""
+        self.r_bound = 0.0
+        self.r_vdw = 0.0
+        self.e_vdw= 0.0
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
@@ -51,6 +54,15 @@ class Atom:
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%3s%04d%c%03d" % (self.resName, self.resSeq, self.chainID, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
+
+        # extended records
+        connect_key = ("CONNECT", self.name, self.confType)
+        self.connectivity_param = env.param[connect_key]
+        radius_key = ("RADIUS", self.confType, self.name)
+        radius_values = env.param[radius_key]
+        self.r_bound = radius_values.r_bound
+        self.r_vdw = radius_values.r_vdw
+        self.e_vdw = radius_values.e_vdw
         return
 
     def writeline(self):
@@ -129,22 +141,32 @@ class Protein:
         for res in self.residue:
             for conf in res.conf[1:]: # Only applies to side chain conformers
                 for atom in conf.atom:
+                    connect_key = ("CONNECT", atom.name, atom.confType)
+                    connected_atoms = env.param[connect_key].connected
                     # with backbone
                     for atom2 in res.conf[0].atom:
-                        if atom != atom2:  # ALSO CHECK IF ATOM2 IS IN CONNECT TABLE
+                        if atom != atom2:
+                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                            CUTOFF2 = r * r
                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                                if atom2 not in atom.connect12:
-                                    atom.connect12.append(atom2)
+                                if atom2.name in connected_atoms:
+                                    if atom2 not in atom.connect12:
+                                        atom.connect12.append(atom2)
+                                else:
+                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance but not in CONNECT table." % (atom.atomID, atom2.atomID))
                     # with self
                     for atom2 in conf.atom:
                         if atom != atom2:
+                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                            CUTOFF2 = r * r
                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                                if atom2 not in atom.connect12:
-                                    atom.connect12.append(atom2)
+                                if atom2.name in connected_atoms:
+                                    if atom2 not in atom.connect12:
+                                        atom.connect12.append(atom2)
+                                else:
+                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance but not in CONNECT table." % (atom.atomID, atom2.atomID))
 
                     # with ligand, this requires to look up atoms in other residues
-                    connect_key = ("CONNECT", atom.name, atom.confType)
-                    connected_atoms = env.param[connect_key].connected
                     ligated = False
                     for ligated_atom in connected_atoms:
                         if "?" in ligated_atom:
@@ -163,6 +185,8 @@ class Protein:
                                                 ligated2 = True
                                                 break
                                         if ligated2:
+                                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                                            CUTOFF2 = r * r
                                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                 if atom2 not in atom.connect12:
                                                     atom.connect12.append(atom2)
@@ -329,7 +353,7 @@ class ENV:
 
 if __name__ == "__main__":
     env = ENV()
-    env.print_param()
+    #env.print_param()
 
     pdbfile = "step2_out.pdb"
     protein = Protein()
