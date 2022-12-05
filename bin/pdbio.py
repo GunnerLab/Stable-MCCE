@@ -6,7 +6,7 @@ import os
 import glob
 
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
-BONDDISTANCE_scaling = 0.9
+BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 #CUTOFF2 = 1.65*1.65
 
 def ddvv(xyz1, xyz2):
@@ -148,23 +148,27 @@ class Protein:
                         if atom != atom2:
                             r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
                             CUTOFF2 = r * r
-                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                            d2 = ddvv(atom.xyz, atom2.xyz)
+                            if d2 < CUTOFF2:
                                 if atom2.name in connected_atoms:
                                     if atom2 not in atom.connect12:
                                         atom.connect12.append(atom2)
                                 else:
-                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance but not in CONNECT table." % (atom.atomID, atom2.atomID))
+                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance unexpectedly." % (atom.atomID, atom2.atomID))
+                                    print("D=%.3f, Cutoff=%.3f, r1=%.3f, r2=%.3f " % (math.sqrt(d2), math.sqrt(CUTOFF2), atom.r_vdw, atom2.r_vdw))
                     # with self
                     for atom2 in conf.atom:
                         if atom != atom2:
                             r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
                             CUTOFF2 = r * r
-                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                            d2 = ddvv(atom.xyz, atom2.xyz)
+                            if d2 < CUTOFF2:
                                 if atom2.name in connected_atoms:
                                     if atom2 not in atom.connect12:
                                         atom.connect12.append(atom2)
                                 else:
-                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance but not in CONNECT table." % (atom.atomID, atom2.atomID))
+                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance unexpectedly." % (atom.atomID, atom2.atomID))
+                                    print("D=%.3f, Cutoff=%.3f, r1=%.3f, r2=%.3f " % (math.sqrt(d2), math.sqrt(CUTOFF2), atom.r_vdw, atom2.r_vdw))
 
                     # with ligand, this requires to look up atoms in other residues
                     ligated = False
@@ -190,6 +194,13 @@ class Protein:
                                             if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                 if atom2 not in atom.connect12:
                                                     atom.connect12.append(atom2)
+
+                    # compare connected_atoms to atom.connect12
+                    atom_names = [x.name for x in atom.connect12]
+                    for c_atom in connected_atoms:
+                        if "?" not in c_atom and c_atom not in atom_names:
+                            print("Warning: atom \"%s\" is supposed to be connected to \"%s\" but was not detected within bond distance" % (c_atom, atom.atomID))
+                            print(atom_names)
         return
 
     def print_connect12(self):
