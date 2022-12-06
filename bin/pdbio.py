@@ -137,70 +137,78 @@ class Protein:
         return
 
     def make_connect12(self):
-        # make connect table, need to start from connect records
+        # make connect table, need to start from connect records!
         for res in self.residue:
-            for conf in res.conf[1:]: # Only applies to side chain conformers
+            for conf in res.conf:  # search all conformers including backbone
                 for atom in conf.atom:
                     connect_key = ("CONNECT", atom.name, atom.confType)
                     connected_atoms = env.param[connect_key].connected
-                    # with backbone
-                    for atom2 in res.conf[0].atom:
-                        if atom != atom2:
-                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
-                            CUTOFF2 = r * r
-                            d2 = ddvv(atom.xyz, atom2.xyz)
-                            if d2 < CUTOFF2:
-                                if atom2.name in connected_atoms:
-                                    if atom2 not in atom.connect12:
-                                        atom.connect12.append(atom2)
-                                else:
-                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance unexpectedly." % (atom.atomID, atom2.atomID))
-                                    print("D=%.3f, Cutoff=%.3f, r1=%.3f, r2=%.3f " % (math.sqrt(d2), math.sqrt(CUTOFF2), atom.r_vdw, atom2.r_vdw))
-                    # with self
-                    for atom2 in conf.atom:
-                        if atom != atom2:
-                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
-                            CUTOFF2 = r * r
-                            d2 = ddvv(atom.xyz, atom2.xyz)
-                            if d2 < CUTOFF2:
-                                if atom2.name in connected_atoms:
-                                    if atom2 not in atom.connect12:
-                                        atom.connect12.append(atom2)
-                                else:
-                                    print("WARNING: atom \"%s\" and \"%s\" are within bond distance unexpectedly." % (atom.atomID, atom2.atomID))
-                                    print("D=%.3f, Cutoff=%.3f, r1=%.3f, r2=%.3f " % (math.sqrt(d2), math.sqrt(CUTOFF2), atom.r_vdw, atom2.r_vdw))
-
-                    # with ligand, this requires to look up atoms in other residues
-                    ligated = False
-                    for ligated_atom in connected_atoms:
-                        if "?" in ligated_atom:
-                            ligated = True
-                            break
-                    if ligated: # will look for all other "?" atoms in protein
-                        for res2 in self.residue:
-                            if res != res2:
-                                for conf2 in res2.conf[1:]:
-                                    for atom2 in conf2.atom:
-                                        connect_key2 = ("CONNECT", atom2.name, atom2.confType)
-                                        connected_atoms2 = env.param[connect_key2].connected
-                                        ligated2 = False
-                                        for ligated_atom2 in connected_atoms2:
-                                            if "?" in ligated_atom2:
-                                                ligated2 = True
-                                                break
-                                        if ligated2:
-                                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
-                                            CUTOFF2 = r * r
-                                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                                                if atom2 not in atom.connect12:
-                                                    atom.connect12.append(atom2)
-
-                    # compare connected_atoms to atom.connect12
-                    atom_names = [x.name for x in atom.connect12]
+                    # search connected_atoms in backbone, same side chain, and other residues if ligated
                     for c_atom in connected_atoms:
-                        if "?" not in c_atom and c_atom not in atom_names:
-                            print("Warning: atom \"%s\" is supposed to be connected to \"%s\" but was not detected within bond distance" % (c_atom, atom.atomID))
-                            print(atom_names)
+                        found = False
+                        if "?" in c_atom: # ligated
+                            continue
+                        else:    # examine backbone and same conformer:
+                            for atom2 in res.conf[0].atom:
+                                if atom2.name == c_atom:
+                                    atom.connect12.append(atom2)
+                                    found = True
+                                    break
+                            if found or atom.confType[-2:] == "BK":  # backbone atoms don't check side chains
+                                continue
+                            for atom2 in conf.atom:
+                                if atom2.name == c_atom:
+                                    atom.connect12.append(atom2)
+                                    found = True
+                                    break
+                            if not found:
+                                print("Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+
+
+                    # for atom2 in conf.atom:
+                    #     if atom != atom2:
+                    #         r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                    #         CUTOFF2 = r * r
+                    #         d2 = ddvv(atom.xyz, atom2.xyz)
+                    #         if d2 < CUTOFF2:
+                    #             if atom2.name in connected_atoms:
+                    #                 if atom2 not in atom.connect12:
+                    #                     atom.connect12.append(atom2)
+                    #             else:
+                    #                 print("WARNING: atom \"%s\" and \"%s\" are within bond distance unexpectedly." % (atom.atomID, atom2.atomID))
+                    #                 print("D=%.3f, Cutoff=%.3f, r1=%.3f, r2=%.3f " % (math.sqrt(d2), math.sqrt(CUTOFF2), atom.r_vdw, atom2.r_vdw))
+                    #
+                    # # with ligand, this requires to look up atoms in other residues
+                    # ligated = False
+                    # for ligated_atom in connected_atoms:
+                    #     if "?" in ligated_atom:
+                    #         ligated = True
+                    #         break
+                    # if ligated: # will look for all other "?" atoms in protein
+                    #     for res2 in self.residue:
+                    #         if res != res2:
+                    #             for conf2 in res2.conf[1:]:
+                    #                 for atom2 in conf2.atom:
+                    #                     connect_key2 = ("CONNECT", atom2.name, atom2.confType)
+                    #                     connected_atoms2 = env.param[connect_key2].connected
+                    #                     ligated2 = False
+                    #                     for ligated_atom2 in connected_atoms2:
+                    #                         if "?" in ligated_atom2:
+                    #                             ligated2 = True
+                    #                             break
+                    #                     if ligated2:
+                    #                         r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                    #                         CUTOFF2 = r * r
+                    #                         if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                    #                             if atom2 not in atom.connect12:
+                    #                                 atom.connect12.append(atom2)
+                    #
+                    # # compare connected_atoms to atom.connect12
+                    # atom_names = [x.name for x in atom.connect12]
+                    # for c_atom in connected_atoms:
+                    #     if "?" not in c_atom and c_atom not in atom_names:
+                    #         print("Warning: atom \"%s\" is supposed to be connected to \"%s\" but was not detected within bond distance" % (c_atom, atom.atomID))
+                    #         print(atom_names)
         return
 
     def print_connect12(self):
