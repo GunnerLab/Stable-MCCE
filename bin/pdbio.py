@@ -166,6 +166,9 @@ class Protein:
                                                 if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                     if atom2 not in atom.connect12:
                                                         atom.connect12.append(atom2)
+                                                        found = True  # after ligand found, do not break
+                            if not found:
+                                print("Ligand atom bond to \"%s\" was not found" % atom.atomID)
                         else:    # examine backbone and same conformer:
                             for atom2 in res.conf[0].atom:
                                 if atom2.name == c_atom:
