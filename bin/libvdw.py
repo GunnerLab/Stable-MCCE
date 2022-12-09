@@ -47,6 +47,8 @@ def initdb():
     extra = ""
     factor_14lj = 0.5
     lines = open("run.prm").readlines()
+    epsilon_prot = 4.0
+
     for line in lines:
         fields = line.split()
         if len(fields) >= 2:
@@ -132,5 +134,5 @@ def vdw_conf(conf1, conf2):
 
 if __name__ == "__main__":
     initdb()
-    print vdwdb.vdwparam
+    print(vdwdb.vdwparam)
     #print vdwdb.scaling

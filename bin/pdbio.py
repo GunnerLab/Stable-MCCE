@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """Sub routines to input and write out MCCE PDB files."""
 
 import math
+import os
+import glob
 
-# bond distance threshold
-BONDDISTANCE = 1.65
-CUTOFF2 = BONDDISTANCE*BONDDISTANCE
+# bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
+BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
+#CUTOFF2 = 1.65*1.65
 
 def ddvv(xyz1, xyz2):
     """Distance squared between two vectors."""
@@ -26,8 +28,13 @@ class Atom:
         self.confNum = 0
         self.atomID = ""
         self.confID = ""
+        self.confType = ""
         self.resID = ""
         self.xyz = (0.0, 0.0, 0.0)
+        self.connectivity_param = ""
+        self.r_bound = 0.0
+        self.r_vdw = 0.0
+        self.e_vdw= 0.0
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
@@ -43,9 +50,19 @@ class Atom:
         self.iCode = line[26]
         self.confNum = int(line[27:30])
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        self.confType = "%3s%2s" % (self.resName, line[80:82])
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%3s%04d%c%03d" % (self.resName, self.resSeq, self.chainID, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
+
+        # extended records
+        connect_key = ("CONNECT", self.name, self.confType)
+        self.connectivity_param = env.param[connect_key]
+        radius_key = ("RADIUS", self.confType, self.name)
+        radius_values = env.param[radius_key]
+        self.r_bound = radius_values.r_bound
+        self.r_vdw = radius_values.r_vdw
+        self.e_vdw = radius_values.e_vdw
         return
 
     def writeline(self):
@@ -117,35 +134,95 @@ class Protein:
                 conf.confID = "%s000" % res.resID
                 conf.resID = res.resID
                 res.conf.insert(0, conf)
-
         return
 
     def make_connect12(self):
-        # make connect table
+        # make connect table, need to start from connect records!
+        # an optimized version should search connect12 for backbone and side chain separately.
+        # backbone only connects the residue before and after, while side chain may connect with all other side chains
         for res in self.residue:
-            for conf in res.conf:
-                # with backbone
+            for conf in res.conf:  # search all conformers including backbone
                 for atom in conf.atom:
-                    for atom2 in res.conf[0].atom:
-                        if atom != atom2:
-                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                                if atom2 not in atom.connect12:
+                    connect_key = ("CONNECT", atom.name, atom.confType)
+                    connected_atoms = env.param[connect_key].connected
+                    # search connected_atoms in backbone, same side chain, and other residues if ligated
+                    for c_atom in connected_atoms:
+                        found = False
+                        if "?" in c_atom:  # ligated
+                            for res2 in self.residue:
+                                if res != res2:
+                                    for conf2 in res2.conf:
+                                        for atom2 in conf2.atom:
+                                            connect_key2 = ("CONNECT", atom2.name, atom2.confType)
+                                            connected_atoms2 = env.param[connect_key2].connected
+                                            ligated2 = False
+                                            for ligated_atom2 in connected_atoms2:
+                                                if "?" in ligated_atom2:
+                                                    ligated2 = True
+                                                    break
+                                            if ligated2:
+                                                r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                                                CUTOFF2 = r * r
+                                                if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                                                    if atom2 not in atom.connect12:
+                                                        atom.connect12.append(atom2)
+                        else:    # examine backbone and same conformer:
+                            for atom2 in res.conf[0].atom:
+                                if atom2.name == c_atom:
                                     atom.connect12.append(atom2)
-                    # with self
-                    for atom2 in conf.atom:
-                        if atom != atom2:
-                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                                if atom2 not in atom.connect12:
+                                    found = True
+                                    break
+                            if found or atom.confType[-2:] == "BK":  # backbone atoms don't check side chains
+                                continue
+                            for atom2 in conf.atom:
+                                if atom2.name == c_atom:
                                     atom.connect12.append(atom2)
+                                    found = True
+                                    break
+                            if not found:
+                                print("Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+
+                    #
+                    # # with ligand, this requires to look up atoms in other residues
+                    # ligated = False
+                    # for ligated_atom in connected_atoms:
+                    #     if "?" in ligated_atom:
+                    #         ligated = True
+                    #         break
+                    # if ligated: # will look for all other "?" atoms in protein
+                    #     for res2 in self.residue:
+                    #         if res != res2:
+                    #             for conf2 in res2.conf[1:]:
+                    #                 for atom2 in conf2.atom:
+                    #                     connect_key2 = ("CONNECT", atom2.name, atom2.confType)
+                    #                     connected_atoms2 = env.param[connect_key2].connected
+                    #                     ligated2 = False
+                    #                     for ligated_atom2 in connected_atoms2:
+                    #                         if "?" in ligated_atom2:
+                    #                             ligated2 = True
+                    #                             break
+                    #                     if ligated2:
+                    #                         r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                    #                         CUTOFF2 = r * r
+                    #                         if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                    #                             if atom2 not in atom.connect12:
+                    #                                 atom.connect12.append(atom2)
+                    #
+                    # # compare connected_atoms to atom.connect12
+                    # atom_names = [x.name for x in atom.connect12]
+                    # for c_atom in connected_atoms:
+                    #     if "?" not in c_atom and c_atom not in atom_names:
+                    #         print("Warning: atom \"%s\" is supposed to be connected to \"%s\" but was not detected within bond distance" % (c_atom, atom.atomID))
+                    #         print(atom_names)
         return
 
     def print_connect12(self):
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect12:
-                        print "   -> %s" % atom2.atomID
+                        print("   -> %s" % atom2.atomID)
         return
 
     def make_connect13(self):
@@ -177,18 +254,18 @@ class Protein:
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect13:
-                        print "   -X-> %s" % atom2.atomID
+                        print("   -X-> %s" % atom2.atomID)
         return
 
     def print_connect14(self):
         for res in self.residue:
             for conf in res.conf:
                 for atom in conf.atom:
-                    print atom.atomID
+                    print(atom.atomID)
                     for atom2 in atom.connect14:
-                        print "   -X-X-> %s" % atom2.atomID
+                        print("   -X-X-> %s" % atom2.atomID)
         return
 
     def exportpdb(self, fname):
@@ -202,20 +279,114 @@ class Protein:
 
     def print_atom_structure(self):
         for res in self.residue:
-            print "Residue %s" % res.resID
+            print("Residue %s" % res.resID)
             for conf in res.conf:
-                print "-->Conformer %s" % conf.confID
+                print("-->Conformer %s" % conf.confID)
                 for atom in conf.atom:
-                    print "---->Atom %s" % atom.atomID
+                    print("---->Atom %s" % atom.atomID)
         return
 
+class CONNECT_param:
+    def __init__(self, value_str):
+        fields = value_str.split(",")
+        self.orbital = fields[0].strip()
+        self.connected = [x.strip().strip("\"") for x in fields[1:]]
+
+
+class RADIUS_param:
+    def __init__(self, value_str):
+        fields = value_str.split(",")
+        self.r_bound = float(fields[0])
+        self.r_vdw = float(fields[1])
+        self.e_vdw = float(fields[2])
+
+
+class ENV:
+    def __init__(self):
+        self.runprm = {}
+        self.param = {}
+        self.load_runprm()
+        #self.print_runprm()
+        self.load_ftpl()
+
+    def load_runprm(self):
+        filename = "run.prm"
+        lines = open(filename).readlines()
+        for line in lines:
+            entry_str = line.strip().split("#")[0]
+            fields = entry_str.split()
+            if len(fields) > 1:
+                key_str = fields[-1]
+                if key_str[0] == "(" and key_str[-1] == ")":
+                    key = key_str.strip("()").strip()
+                    value = fields[0]
+                self.runprm[key] = value
+
+    def print_runprm(self):
+        for key, value in self.runprm.items():
+            print("%s:%s" % (key, value))
+
+    def load_ftpl(self):
+        ftpldir = self.runprm["MCCE_HOME"]+"/param"
+        cwd = os.getcwd()
+        os.chdir(ftpldir)
+
+        files = glob.glob("*.ftpl")
+        files.sort()
+
+        for fname in files:
+            lines = open(fname).readlines()
+            for line in lines:
+                end = line.find("#")
+                line = line[:end]
+                fields = line.split(":")
+                if len(fields) != 2:
+                    continue
+
+                key_string = fields[0].strip()
+                keys = key_string.split(",")
+                key1 = keys[0].strip().strip("\"")
+                if len(keys) > 1:
+                    key2 = keys[1].strip().strip("\"")
+                else:
+                    key2 = ""
+                if len(keys) > 2:
+                    key3 = keys[2].strip().strip("\"")
+                else:
+                    key3 = ""
+
+                value_string = fields[1].strip()
+
+                # Connectivity records
+                if key1 == "CONNECT":
+                    self.param[(key1,key2,key3)] = CONNECT_param(value_string)
+                # VDW parameters
+                elif key1 == "RADIUS":
+                    self.param[(key1, key2, key3)] = RADIUS_param(value_string)
+
+        os.chdir(cwd)
+
+    def print_param(self):
+        for key, value in self.param.items():
+            key1, key2, key3 = key
+            if key1 == "CONNECT":
+                print("%s:%s, %s" % (key, value.orbital, value.connected))
+            elif key1 == "RADIUS":
+                print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
+
+
 if __name__ == "__main__":
+    env = ENV()
+    #env.print_param()
+
     pdbfile = "step2_out.pdb"
     protein = Protein()
     protein.loadpdb(pdbfile)
     protein.make_connect12()
-    protein.make_connect13()
-    protein.make_connect14()
+    # protein.make_connect13()
+    # protein.make_connect14()
+
+    protein.print_connect12()
 
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")
