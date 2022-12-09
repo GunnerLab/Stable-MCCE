@@ -138,6 +138,8 @@ class Protein:
 
     def make_connect12(self):
         # make connect table, need to start from connect records!
+        # an optimized version should search connect12 for backbone and side chain separately.
+        # backbone only connects the residue before and after, while side chain may connect with all other side chains
         for res in self.residue:
             for conf in res.conf:  # search all conformers including backbone
                 for atom in conf.atom:
