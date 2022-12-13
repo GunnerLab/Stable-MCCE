@@ -18,7 +18,6 @@
 ******* ******  *******_******
  D***** ******   H*****_******
 *****HEA******  *****HEM******
-*****HEC******  *****HEM******
 *CAA*HEM******  *****PAA******      extract PAA from heme
 *CBA*HEM******  *****PAA******
 *CGA*HEM******  *****PAA******
@@ -37,6 +36,27 @@ HAD**HEM******  *****PDD******
 HBD**HEM******  *****PDD******
 *H1D*HEM******  *****PDD******
 *H2D*HEM******  *****PDD******
+
+*CAA*HEC******  *****PAA******      extract PAA from HECe
+*CBA*HEC******  *****PAA******
+*CGA*HEC******  *****PAA******
+*O1A*HEC******  *****PAA******
+*O2A*HEC******  *****PAA******
+HAA**HEC******  *****PAA******
+HBA**HEC******  *****PAA******
+*H1A*HEC******  *****PAA******
+*H2A*HEC******  *****PAA******
+*CAD*HEC******  *****PDD******      extract PDD from HECe
+*CBD*HEC******  *****PDD******
+*CGD*HEC******  *****PDD******
+*O1D*HEC******  *****PDD******
+*O2D*HEC******  *****PDD******
+HAD**HEC******  *****PDD******
+HBD**HEC******  *****PDD******
+*H1D*HEC******  *****PDD******
+*H2D*HEC******  *****PDD******
+
+
 *C11*HEM******  *****FAR******      extract FAR from heme
 *C12*HEM******  *****FAR******
 *C13*HEM******  *****FAR******
