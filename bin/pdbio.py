@@ -163,12 +163,18 @@ class Protein:
                                             if ligated2:
                                                 r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
                                                 CUTOFF2 = r * r
+                                                # if "FE" in atom.atomID:
+                                                #     print("%s <-> %s: d=%.3f cut=%.3f" % (atom.atomID, atom2.atomID, math.sqrt(ddvv(atom.xyz, atom2.xyz)), math.sqrt(CUTOFF2)))
                                                 if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                     if atom2 not in atom.connect12:
                                                         atom.connect12.append(atom2)
-                                                        found = True  # after ligand found, do not break
+                                                        found = True  # after ligand found, do not break, continue to search other conformers
+                                    if found:   # one "?" for one ligand
+                                        break
+
                             if not found:
-                                print("Ligand atom bond to \"%s\" was not found" % atom.atomID)
+                                if not "CTR" in atom.atomID:  # ignore CTR due to CA not specified as ligand
+                                    print("Ligand atom bond to \"%s\" was not found" % atom.atomID)
                         else:    # examine backbone and same conformer:
                             for atom2 in res.conf[0].atom:
                                 if atom2.name == c_atom:
@@ -184,39 +190,6 @@ class Protein:
                                     break
                             if not found:
                                 print("Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
-
-                    #
-                    # # with ligand, this requires to look up atoms in other residues
-                    # ligated = False
-                    # for ligated_atom in connected_atoms:
-                    #     if "?" in ligated_atom:
-                    #         ligated = True
-                    #         break
-                    # if ligated: # will look for all other "?" atoms in protein
-                    #     for res2 in self.residue:
-                    #         if res != res2:
-                    #             for conf2 in res2.conf[1:]:
-                    #                 for atom2 in conf2.atom:
-                    #                     connect_key2 = ("CONNECT", atom2.name, atom2.confType)
-                    #                     connected_atoms2 = env.param[connect_key2].connected
-                    #                     ligated2 = False
-                    #                     for ligated_atom2 in connected_atoms2:
-                    #                         if "?" in ligated_atom2:
-                    #                             ligated2 = True
-                    #                             break
-                    #                     if ligated2:
-                    #                         r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
-                    #                         CUTOFF2 = r * r
-                    #                         if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
-                    #                             if atom2 not in atom.connect12:
-                    #                                 atom.connect12.append(atom2)
-                    #
-                    # # compare connected_atoms to atom.connect12
-                    # atom_names = [x.name for x in atom.connect12]
-                    # for c_atom in connected_atoms:
-                    #     if "?" not in c_atom and c_atom not in atom_names:
-                    #         print("Warning: atom \"%s\" is supposed to be connected to \"%s\" but was not detected within bond distance" % (c_atom, atom.atomID))
-                    #         print(atom_names)
         return
 
     def print_connect12(self):
@@ -233,10 +206,12 @@ class Protein:
             for conf in res.conf:
                 for atom in conf.atom:
                     for atom2 in atom.connect12:
-                        if atom2 == atom: continue
-                        for atom3 in atom2.connect12:
-                            if (atom3 != atom) and (atom3 not in atom.connect12) and (atom3 not in atom.connect13):
-                                atom.connect13.append(atom3)
+                        if atom2 != atom:
+                            for atom3 in atom2.connect12:
+                                if (atom3 != atom) and (atom3 not in atom.connect12) and (atom3 not in atom.connect13):
+                                    atom.connect13.append(atom3)
+                        else:
+                            print("Warning: Atom \"%s\" has itself in connect12." % atom.atomID)
         return
 
     def make_connect14(self):
@@ -389,7 +364,7 @@ if __name__ == "__main__":
     # protein.make_connect13()
     # protein.make_connect14()
 
-    protein.print_connect12()
+    # protein.print_connect12()
 
     #protein.print_connect14()
     #protein.exportpdb("a.pdb")

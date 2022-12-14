@@ -235,7 +235,7 @@ CHARGE, HEC+1, "HMD2":  0.000
 CHARGE, HEC+1, "HMD3":  0.000
 
 # Atom radius, dielectric boundary radius, VDW radius, and energy well depth
-RADIUS,  HEC01,  "FE  ": 1.450,   2.000,   0.173
+RADIUS,  HEC01,  "FE  ": 1.450,   2.500,   0.173
 RADIUS,  HEC01,  " CHA": 1.800,   2.000,   0.150
 RADIUS,  HEC01,  " CHB": 1.800,   2.000,   0.150
 RADIUS,  HEC01,  " CHC": 1.800,   2.000,   0.150
@@ -292,7 +292,7 @@ RADIUS,  HEC01,  "HBC3": 1.200,   1.000,   0.020
 RADIUS,  HEC01,  "HMD1": 1.200,   1.000,   0.020
 RADIUS,  HEC01,  "HMD2": 1.200,   1.000,   0.020
 RADIUS,  HEC01,  "HMD3": 1.200,   1.000,   0.020
-RADIUS,  HEC+1,  "FE  ": 1.450,   2.000,   0.173
+RADIUS,  HEC+1,  "FE  ": 1.450,   2.500,   0.173
 RADIUS,  HEC+1,  " CHA": 1.800,   2.000,   0.150
 RADIUS,  HEC+1,  " CHB": 1.800,   2.000,   0.150
 RADIUS,  HEC+1,  " CHC": 1.800,   2.000,   0.150
