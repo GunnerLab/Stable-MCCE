@@ -9,6 +9,13 @@ import glob
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 #CUTOFF2 = 1.65*1.65
 
+# scaling factor for vdw
+VDW_SCALE14 = 0.5
+
+# set any big conf vdw to 999
+VDW_UPLIMIT = 320.0
+
+
 def ddvv(xyz1, xyz2):
     """Distance squared between two vectors."""
     dx=xyz1[0]-xyz2[0]
@@ -264,6 +271,37 @@ class Protein:
                     print("---->Atom %s" % atom.atomID)
         return
 
+    def calc_vdw(self):
+        for i_res1 in range(len(self.residue)-1):
+            res1 = self.residue[i_res1]
+            for conf1 in res1.conf[1:]:
+                for i_res2 in range(i_res1+1, len(self.residue)):
+                    res2 = self.residue[i_res2]
+                    for conf2 in res2.conf[1:]:
+                        vdw = vdw_conf(conf1, conf2)
+
+    def connect_reciprocity_check(self):
+        # connectivity should be reciprocal except backbone atoms
+        for res in self.residue:
+            for conf in res.conf[1:]:
+                for atom in conf.atom:
+                    for atom2 in atom.connect12:
+                        if atom2.confType[-2:] == "BK":
+                            continue
+                        if atom not in atom2.connect12:
+                            print("Atom %s in connect12 of atom %s but the other way is not true" % (atom2.atomID, atom.atomID))
+                    for atom2 in atom.connect13:
+                        if atom2.confType[-2:] == "BK":
+                            continue
+                        if atom not in atom2.connect13:
+                            print("Atom %s in connect13 of atom %s but the other way is not true" % (atom2.atomID, atom.atomID))
+                    for atom2 in atom.connect14:
+                        if atom2.confType[-2:] == "BK":
+                            continue
+                        if atom not in atom2.connect14:
+                            print("Atom %s in connect14 of atom %s but the other way is not true" % (atom2.atomID, atom.atomID))
+
+
 class CONNECT_param:
     def __init__(self, value_str):
         fields = value_str.split(",")
@@ -352,6 +390,33 @@ class ENV:
             elif key1 == "RADIUS":
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
 
+def vdw_conf(conf1, conf2):
+    vdw = 0.0
+    for atom1 in conf1.atom:
+        for atom2 in conf2.atom:
+            if atom2 in atom1.connect12 or atom2 in atom1.connect13:
+                vdw += vdw_atom(atom1, atom2)
+    if vdw >= VDW_UPLIMIT:
+        vdw = 999.0
+    return vdw
+
+def vdw_atom(atom1, atom2):
+    if atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
+        r1 = atom1.r_vdw
+        e1 = atom1.e_vdw
+        r2 = atom2.r_vdw
+        e2 = atom2.e_vdw
+        if atom2 in atom1.connect14:
+            scale = VDW_SCALE14
+        else:
+            scale = 1.0
+        r = r1 + r2
+        e = math.sqrt(e1*e2)
+        p_lj = 0.0
+    else:
+        p_lj = 0.0
+    return p_lj
+
 
 if __name__ == "__main__":
     env = ENV()
@@ -361,11 +426,13 @@ if __name__ == "__main__":
     protein = Protein()
     protein.loadpdb(pdbfile)
     protein.make_connect12()
-    # protein.make_connect13()
-    # protein.make_connect14()
+    protein.make_connect13()
+    protein.make_connect14()
 
     # protein.print_connect12()
-
-    #protein.print_connect14()
-    #protein.exportpdb("a.pdb")
-    #protein.print_atom_structure()
+    # protein.print_connect13()
+    # protein.print_connect14()
+    # protein.exportpdb("a.pdb")
+    # protein.print_atom_structure()
+    protein.calc_vdw()
+    #protein.connect_reciprocity_check()
