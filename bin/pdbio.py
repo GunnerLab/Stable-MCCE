@@ -13,7 +13,9 @@ BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 VDW_SCALE14 = 0.5
 
 # set any big conf vdw to 999
-VDW_UPLIMIT = 320.0
+VDW_CUTOFF_FAR2 = 100     # set atom vdw to 0 if atoms are further than this value
+VDW_CUTOFF_NEAR2 = 1      # set atom vdw to 999 if atoms are closer than this value
+VDW_UPLIMIT = 320.0     # set conf vdw to 999 if bigger than this number
 
 
 def ddvv(xyz1, xyz2):
@@ -279,6 +281,8 @@ class Protein:
                     res2 = self.residue[i_res2]
                     for conf2 in res2.conf[1:]:
                         vdw = vdw_conf(conf1, conf2)
+                        if abs(vdw) > 0.001:
+                            print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
 
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms
@@ -394,13 +398,30 @@ def vdw_conf(conf1, conf2):
     vdw = 0.0
     for atom1 in conf1.atom:
         for atom2 in conf2.atom:
-            if atom2 in atom1.connect12 or atom2 in atom1.connect13:
-                vdw += vdw_atom(atom1, atom2)
+            vdw += vdw_atom(atom1, atom2)
     if vdw >= VDW_UPLIMIT:
         vdw = 999.0
     return vdw
 
 def vdw_atom(atom1, atom2):
+    # A good post: https://mattermodeling.stackexchange.com/questions/4845/how-to-create-a-lookup-table-of-%CF%B5-and-%CF%83-values-for-lennard-jones-potentials
+    # Parameter source: http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs
+    #   CHARM36-jul2022.ff/ffnonbonded.itp
+    #   σ and ε values are in nm and kJ/mol in this file
+    # Lorentz-Berthelot combining rules:
+    #   σij = 0.5*(σi + σj)
+    #   ϵij = sqrt(ϵi * ϵj)
+    # p_lj = ϵij[(σij/r)^12 - 2(σij/r)^6]
+    # σij is the distance where LJ potential reaches minimum: -ϵij
+    # r is the atom distance
+
+    # Using the equation in vdw.c. Need to work on new parameter set.
+    d2 = ddvv(atom1.xyz, atom2.xyz)
+    if d2 > VDW_CUTOFF_FAR2:
+        return 0.0
+    elif d2 < VDW_CUTOFF_NEAR2:
+        return 999.0
+
     if atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
         r1 = atom1.r_vdw
         e1 = atom1.e_vdw
@@ -410,11 +431,18 @@ def vdw_atom(atom1, atom2):
             scale = VDW_SCALE14
         else:
             scale = 1.0
-        r = r1 + r2
-        e = math.sqrt(e1*e2)
-        p_lj = 0.0
+
+        sig_min = r1 + r2
+        eps = math.sqrt(e1 * e2)
+
+        sig_d2 = sig_min * sig_min / d2
+        sig_d6 = sig_d2 * sig_d2 * sig_d2
+        sig_d12 = sig_d6 * sig_d6
+
+        p_lj = eps * sig_d12 - 2. * eps * sig_d6
     else:
         p_lj = 0.0
+
     return p_lj
 
 
