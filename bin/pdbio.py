@@ -274,11 +274,12 @@ class Protein:
         return
 
     def calc_vdw(self):
-        for i_res1 in range(len(self.residue)-1):
-            res1 = self.residue[i_res1]
+        # do it on two sides so the two-way interaction numbers can be checked
+        for res1 in self.residue:
             for conf1 in res1.conf[1:]:
-                for i_res2 in range(i_res1+1, len(self.residue)):
-                    res2 = self.residue[i_res2]
+                for res2 in self.residue:
+                    if res1 == res2:
+                        continue
                     for conf2 in res2.conf[1:]:
                         vdw = vdw_conf(conf1, conf2)
                         if abs(vdw) > 0.001:
