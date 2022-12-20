@@ -7,14 +7,11 @@
 
 import sys
 
-import libvdw
 from pdbio import *
 
 if __name__ == "__main__":
-    # find location of parameters
-    libvdw.initdb()
-    #print vdwdb.vdwparam
-    #print vdwdb.scaling
+    env = ENV()
+    #env.print_param()
 
     pdbfile = "step2_out.pdb"
     protein = Protein()
@@ -32,7 +29,9 @@ if __name__ == "__main__":
     resName = sys.argv[1][:3]
     confSeq = sys.argv[1][5:]
     if len(sys.argv) > 2:
-        libvdw.print_cutoff = float(sys.argv[2])
+        print_cutoff = float(sys.argv[2])
+    else:
+        print_cutoff = -0.0001
 
     chainID = confSeq[0]
     resSeq = int(confSeq[1:5])

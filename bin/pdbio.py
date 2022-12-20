@@ -61,7 +61,7 @@ class Atom:
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
         self.confType = "%3s%2s" % (self.resName, line[80:82])
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
-        self.confID = "%3s%04d%c%03d" % (self.resName, self.resSeq, self.chainID, self.confNum)
+        self.confID = "%5s%c%04d%c%03d" % (self.confType, self.chainID, self.resSeq, self.iCode, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
 
         # extended records
@@ -98,6 +98,7 @@ class Residue:
 class Protein:
     def __init__(self):
         self.residue = []
+        self.vdw_pw = {}
         return
 
     def loadpdb(self, fname):
@@ -138,9 +139,10 @@ class Protein:
 
         # Insert an empty conformer for cofactors that do not have backbone
         for res in self.residue:
-            if res.conf[0].confID[-3:] != "000":
+            first_confID = res.conf[0].confID
+            if first_confID[3:5] != "BK":
                 conf = Conformer()
-                conf.confID = "%s000" % res.resID
+                conf.confID = "%sBK%s000" % (first_confID[:3], first_confID[5:11])
                 conf.resID = res.resID
                 res.conf.insert(0, conf)
         return
@@ -183,7 +185,7 @@ class Protein:
 
                             if not found:
                                 if not "CTR" in atom.atomID:  # ignore CTR due to CA not specified as ligand
-                                    print("Ligand atom bond to \"%s\" was not found" % atom.atomID)
+                                    print("Warning: Ligand atom bond to \"%s\" was not found" % atom.atomID)
                         else:    # examine backbone and same conformer:
                             for atom2 in res.conf[0].atom:
                                 if atom2.name == c_atom:
@@ -198,7 +200,7 @@ class Protein:
                                     found = True
                                     break
                             if not found:
-                                print("Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+                                print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
         return
 
     def print_connect12(self):
@@ -276,14 +278,15 @@ class Protein:
     def calc_vdw(self):
         # do it on two sides so the two-way interaction numbers can be checked
         for res1 in self.residue:
-            for conf1 in res1.conf[1:]:
+            for conf1 in res1.conf:
                 for res2 in self.residue:
                     if res1 == res2:
                         continue
-                    for conf2 in res2.conf[1:]:
+                    for conf2 in res2.conf:
                         vdw = vdw_conf(conf1, conf2)
                         if abs(vdw) > 0.001:
-                            print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
+                            #print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
+                            self.vdw_pw[(conf1.confID, conf2.confID)] = vdw
 
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms
@@ -306,6 +309,18 @@ class Protein:
                         if atom not in atom2.connect14:
                             print("Atom %s in connect14 of atom %s but the other way is not true" % (atom2.atomID, atom.atomID))
 
+    def vdw_reciprocity_check(self):
+        for key, value in self.vdw_pw.items():
+            r_key = (key[1], key[0])
+            if r_key in self.vdw_pw:
+                r_value = self.vdw_pw[r_key]
+                if abs(value - r_value) > 0.001:
+                    print("vdw(%s<->%s = %.3f <-> %.3f" % (key[0], key[1], value, r_value))
+            else:
+                print("vdw(%s->%s = %.3f but other way not reported" % (key[0], key[1], value))
+
+        print("VDW two sides checked.")
+        return
 
 class CONNECT_param:
     def __init__(self, value_str):
@@ -395,11 +410,15 @@ class ENV:
             elif key1 == "RADIUS":
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
 
-def vdw_conf(conf1, conf2):
+
+def vdw_conf(conf1, conf2, verbose=False):
     vdw = 0.0
     for atom1 in conf1.atom:
         for atom2 in conf2.atom:
-            vdw += vdw_atom(atom1, atom2)
+            vdw_a2a = vdw_atom(atom1, atom2)
+            vdw += vdw_a2a
+            if verbose:
+                print("%s -> %s: %.3f" % (atom1.atomID, atom2.atomID, vdw_a2a))
     if vdw >= VDW_UPLIMIT:
         vdw = 999.0
     return vdw
@@ -447,6 +466,23 @@ def vdw_atom(atom1, atom2):
     return p_lj
 
 
+def vdw_by_conf_pair(protein, confID1, confID2, print_cutoff):
+    # detailed vdw between conf and conf
+    for res1 in protein.residue:
+        for conf1 in res1.conf:
+            if conf1.confID != confID1:
+                continue
+            for res2 in protein.residue:
+                if res1 == res2:
+                    continue
+                for conf2 in res2.conf:
+                    if conf2.confID != confID2:
+                        continue
+                    vdw = vdw_conf(conf1, conf2, verbose=True)
+                    print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
+
+    return
+
 if __name__ == "__main__":
     env = ENV()
     #env.print_param()
@@ -465,3 +501,9 @@ if __name__ == "__main__":
     # protein.print_atom_structure()
     protein.calc_vdw()
     #protein.connect_reciprocity_check()
+    protein.vdw_reciprocity_check()
+
+    print()
+    vdw_by_conf_pair(protein, "NTG01A0001_001", "ASPBKA0002_000", 0.001)
+    print()
+    vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
