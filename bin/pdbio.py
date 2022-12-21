@@ -192,15 +192,14 @@ class Protein:
                                     atom.connect12.append(atom2)
                                     found = True
                                     break
-                            if found or atom.confType[-2:] == "BK":  # backbone atoms don't check side chains
-                                continue
-                            for atom2 in conf.atom:
-                                if atom2.name == c_atom:
-                                    atom.connect12.append(atom2)
-                                    found = True
-                                    break
                             if not found:
-                                print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+                                for atom2 in conf.atom:
+                                    if atom2.name == c_atom:
+                                        atom.connect12.append(atom2)
+                                        found = True
+                                        break
+                                if not found:
+                                    print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
         return
 
     def print_connect12(self):
@@ -291,7 +290,7 @@ class Protein:
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms
         for res in self.residue:
-            for conf in res.conf[1:]:
+            for conf in res.conf:
                 for atom in conf.atom:
                     for atom2 in atom.connect12:
                         if atom2.confType[-2:] == "BK":
@@ -500,10 +499,10 @@ if __name__ == "__main__":
     # protein.exportpdb("a.pdb")
     # protein.print_atom_structure()
     protein.calc_vdw()
-    #protein.connect_reciprocity_check()
-    protein.vdw_reciprocity_check()
+    protein.connect_reciprocity_check()
+    #protein.vdw_reciprocity_check()
 
     print()
-    vdw_by_conf_pair(protein, "NTG01A0001_001", "ASPBKA0002_000", 0.001)
+    #vdw_by_conf_pair(protein, "NTG01A0001_001", "ASPBKA0002_000", 0.001)
     print()
-    vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
+    #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
