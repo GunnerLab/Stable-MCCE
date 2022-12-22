@@ -151,12 +151,17 @@ class Protein:
         # make connect table, need to start from connect records!
         # an optimized version should search connect12 for backbone and side chain separately.
         # backbone only connects the residue before and after, while side chain may connect with all other side chains
-        for res in self.residue:
+        # Special rules for backbone atoms:
+        #    if ligated, search only residue before and after
+        #    if connected atom is missing (CA), search residue before and after in case it is terminal residue
+        #    all side chain conformers
+
+        for i_res in range(len(self.residue)):
+            res = self.residue[i_res]
             for conf in res.conf:  # search all conformers including backbone
                 for atom in conf.atom:
                     connect_key = ("CONNECT", atom.name, atom.confType)
                     connected_atoms = env.param[connect_key].connected
-                    # search connected_atoms in backbone, same side chain, and other residues if ligated
                     for c_atom in connected_atoms:
                         found = False
                         if "?" in c_atom:  # ligated
@@ -186,20 +191,39 @@ class Protein:
                             if not found:
                                 if not "CTR" in atom.atomID:  # ignore CTR due to CA not specified as ligand
                                     print("Warning: Ligand atom bond to \"%s\" was not found" % atom.atomID)
-                        else:    # examine backbone and same conformer:
+                        else:  # a named atom
+                            # 1) backbone
                             for atom2 in res.conf[0].atom:
                                 if atom2.name == c_atom:
                                     atom.connect12.append(atom2)
                                     found = True
                                     break
+                            # 2) own conformer
                             if not found:
                                 for atom2 in conf.atom:
                                     if atom2.name == c_atom:
                                         atom.connect12.append(atom2)
                                         found = True
                                         break
-                                if not found:
-                                    print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+                            # 3) a backbone atom could connect to side chain conformer atoms
+                            if not found:
+                                if conf.confID[3:5] == "BK":
+                                    for conf2 in res.conf[1:]:
+                                        for atom2 in conf2.atom:
+                                            if atom2.name == c_atom:
+                                                atom.connect12.append(atom2)
+                                                found = True
+                            # 4) before and after
+                            if not found:
+                                if atom.name == " C  " and c_atom == " CA ":  # NTR separated from this res
+                                    for atom2 in self.residue[i_res-1].conf[1].atom:
+                                        if atom2.name == c_atom:
+                                            atom.connect12.append(atom2)
+                                            found = True
+                                            break
+                            if not found:
+                                print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
+
         return
 
     def print_connect12(self):
@@ -293,8 +317,6 @@ class Protein:
             for conf in res.conf:
                 for atom in conf.atom:
                     for atom2 in atom.connect12:
-                        if atom2.confType[-2:] == "BK":
-                            continue
                         if atom not in atom2.connect12:
                             print("Atom %s in connect12 of atom %s but the other way is not true" % (atom2.atomID, atom.atomID))
                     for atom2 in atom.connect13:
