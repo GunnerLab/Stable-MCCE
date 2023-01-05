@@ -10,21 +10,15 @@ import sys
 
 class ATOM():
     def load_pdb(self, line):
-        self.name = line[12:16]
-        self.resname = line[17:20]
-        self.chainid = line[21]
-        self.seq = int(line[22:26].strip())
+        self.before = line[:30]
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        self.after = line[54:].rstrip()
 
 
 def atoms2pdb(atoms):
-    atom_count = 1
     pdblines = []
     for atom in atoms:
-        pdblines.append("ATOM  %5d %4s %3s %s%4d    %8.3f%8.3f%8.3f\n" % (atom_count, atom.name, atom.resname, atom.chainid,
-                                                                atom.seq, atom.xyz[0], atom.xyz[1], atom.xyz[2]))
-        if atom_count < 99999:
-            atom_count += 1
+        pdblines.append("%s%8.3f%8.3f%8.3f%s\n" % (atom.before, atom.xyz[0], atom.xyz[1], atom.xyz[2], atom.after))
     return pdblines
 
 
