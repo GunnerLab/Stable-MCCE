@@ -20,7 +20,7 @@ CONNECT, " CA ", GLYBK: sp3, " N  ", " C  ", " HA2", " HA3"
 CONNECT, " HA2", GLYBK: s, " CA "
 CONNECT, " HA3", GLYBK: s, " CA "
 CONNECT, " O  ", GLYBK: sp2, " C  "
-CONNECT, " C  ", GLYBK: sp2, " ?  ", " O  ", " ?  "
+CONNECT, " C  ", GLYBK: sp2, " CA ", " O  ", " ?  "
 
 # Atom charges
 CHARGE, GLYBK, " N  ": -0.350

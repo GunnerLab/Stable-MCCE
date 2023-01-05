@@ -181,16 +181,18 @@ class Protein:
                                                 CUTOFF2 = r * r
                                                 # if "FE" in atom.atomID:
                                                 #     print("%s <-> %s: d=%.3f cut=%.3f" % (atom.atomID, atom2.atomID, math.sqrt(ddvv(atom.xyz, atom2.xyz)), math.sqrt(CUTOFF2)))
+                                                #print(atom.atomID, atom2.atomID)
                                                 if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                     if atom2 not in atom.connect12:
                                                         atom.connect12.append(atom2)
                                                         found = True  # after ligand found, do not break, continue to search other conformers within residue
                                     if found:   # one "?" for one ligand
+                                        print(conf.confID, atom.atomID, c_atom, res2.resID)
                                         break
 
-                            if not found:  # no actual CTR case
-                                if atom.name == " C  ":
-                                    found = True    # ignore
+                            # if not found:  # no actual CTR case
+                            #     if atom.name == " C  ":
+                            #         found = True    # ignore
 
                             if not found:
                                 if not "CTR" in atom.atomID:  # ignore CTR due to CA not specified as ligand
@@ -511,8 +513,6 @@ def vdw_by_conf_pair(protein, confID1, confID2, print_cutoff):
             if conf1.confID != confID1:
                 continue
             for res2 in protein.residue:
-                if res1 == res2:
-                    continue
                 for conf2 in res2.conf:
                     if conf2.confID != confID2:
                         continue
@@ -532,7 +532,7 @@ if __name__ == "__main__":
     protein.make_connect13()
     protein.make_connect14()
 
-    #protein.print_connect12()
+    protein.print_connect12()
     # protein.print_connect13()
     # protein.print_connect14()
     # protein.exportpdb("a.pdb")
@@ -542,6 +542,6 @@ if __name__ == "__main__":
     #protein.vdw_reciprocity_check()
 
     print()
-    #vdw_by_conf_pair(protein, "NTG01A0001_001", "ASPBKA0002_000", 0.001)
+    #vdw_by_conf_pair(protein, "GLYBKA0006_000", "GLYBKA0006_000", 0.001)
     print()
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
