@@ -179,24 +179,39 @@ class Protein:
                                             if ligated2:
                                                 r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
                                                 CUTOFF2 = r * r
-                                                # if "FE" in atom.atomID:
+                                                # if " C  " in atom.atomID:
                                                 #     print("%s <-> %s: d=%.3f cut=%.3f" % (atom.atomID, atom2.atomID, math.sqrt(ddvv(atom.xyz, atom2.xyz)), math.sqrt(CUTOFF2)))
-                                                #print(atom.atomID, atom2.atomID)
+                                                #     print(atom2.atomID, [x.atomID for x in atom.connect12])
+                                                #     print("Here", found)
                                                 if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                                     if atom2 not in atom.connect12:
                                                         atom.connect12.append(atom2)
                                                         found = True  # after ligand found, do not break, continue to search other conformers within residue
+
                                     if found:   # one "?" for one ligand
-                                        print(conf.confID, atom.atomID, c_atom, res2.resID)
+                                        # print(conf.confID, atom.atomID, c_atom, res2.resID)
                                         break
 
-                            # if not found:  # no actual CTR case
-                            #     if atom.name == " C  ":
-                            #         found = True    # ignore
+                            if not found and res.resID[:3] == "CTR" and atom.name == " C  ":   # CTR C connects to CA of previous atom
+                                res2 = self.residue[i_res-1]
+                                # find " CA "
+                                found = False
+                                for atom2 in res2.conf[0].atom:
+                                    if atom2.name == " CA ":
+                                        if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                                            if atom2 not in atom.connect12:
+                                                atom.connect12.append(atom2)
+                                                found = True
+
+                            if not found:  # no actual CTR case
+                                if atom.name == " C  ":
+                                    #print("No CTR after atom \"%s\"?" % atom.atomID)
+                                    found = True
 
                             if not found:
                                 if not "CTR" in atom.atomID:  # ignore CTR due to CA not specified as ligand
                                     print("Warning: Ligand atom bond to \"%s\" was not found" % atom.atomID)
+
                         else:  # a named atom
                             # 1) backbone
                             for atom2 in res.conf[0].atom:
@@ -222,11 +237,12 @@ class Protein:
                             # 4) NTR case, residue before
                             if not found:
                                 if atom.name == " C  " and c_atom == " CA ":  # NTR separated from this res
-                                    for atom2 in self.residue[i_res-1].conf[1].atom:
-                                        if atom2.name == c_atom:
-                                            atom.connect12.append(atom2)
-                                            found = True
-                                            break
+                                    for conf2 in self.residue[i_res-1].conf[1:]:
+                                        for atom2 in conf2.atom:
+                                            if atom2.name == c_atom:
+                                                atom.connect12.append(atom2)
+                                                found = True
+                                                break
 
                             # 5) CTR case, " C  " bond to " CA " not found
                             if not found:
@@ -234,11 +250,12 @@ class Protein:
                                     if i_res + 1 >= len(self.residue): # last residue
                                         found = True
                                     else:
-                                        for atom2 in self.residue[i_res+1].conf[1].atom:
-                                            if atom2.name == c_atom:
-                                                atom.connect12.append(atom2)
-                                                found = True
-                                                break
+                                        for conf2 in self.residue[i_res+1].conf[1:]:
+                                            for atom2 in conf2.atom:
+                                                if atom2.name == c_atom:
+                                                    atom.connect12.append(atom2)
+                                                    found = True
+                                                    break
 
                             if not found:
                                 print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
@@ -532,7 +549,7 @@ if __name__ == "__main__":
     protein.make_connect13()
     protein.make_connect14()
 
-    protein.print_connect12()
+    # protein.print_connect12()
     # protein.print_connect13()
     # protein.print_connect14()
     # protein.exportpdb("a.pdb")
