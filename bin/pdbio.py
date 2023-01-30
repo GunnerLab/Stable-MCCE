@@ -556,7 +556,7 @@ if __name__ == "__main__":
     # protein.print_atom_structure()
     protein.calc_vdw()
     protein.connect_reciprocity_check()
-    #protein.vdw_reciprocity_check()
+    protein.vdw_reciprocity_check()
 
     print()
     #vdw_by_conf_pair(protein, "GLYBKA0006_000", "GLYBKA0006_000", 0.001)
