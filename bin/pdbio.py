@@ -192,12 +192,28 @@ class Protein:
                                         # print(conf.confID, atom.atomID, c_atom, res2.resID)
                                         break
 
+                            if not found and res.resID[:3] == "NTR" and atom.name == " CA ":   # NTR CA connects to CB of next residue
+                                res2 = self.residue[i_res+1]
+                                # find " CB "
+                                found = False
+                                for conf2 in res2.conf[1:]:
+                                    for atom2 in conf2.atom:
+                                        if atom2.name == " CB ":
+                                            r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                                            CUTOFF2 = r * r
+                                            if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                                                if atom2 not in atom.connect12:
+                                                    atom.connect12.append(atom2)
+                                                    found = True
+
                             if not found and res.resID[:3] == "CTR" and atom.name == " C  ":   # CTR C connects to CA of previous atom
                                 res2 = self.residue[i_res-1]
                                 # find " CA "
                                 found = False
                                 for atom2 in res2.conf[0].atom:
                                     if atom2.name == " CA ":
+                                        r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                                        CUTOFF2 = r * r
                                         if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
                                             if atom2 not in atom.connect12:
                                                 atom.connect12.append(atom2)
@@ -256,6 +272,21 @@ class Protein:
                                                     atom.connect12.append(atom2)
                                                     found = True
                                                     break
+
+                            # 6) " CB " connects to " CA " of NTR case
+                            if not found:
+                                if atom.name == " CB " and c_atom == " CA ":
+                                    res2 = self.residue[i_res - 1]
+                                    for conf2 in res2.conf:
+                                        for atom2 in conf2.atom:
+                                            if atom2.name == " CA ":
+                                                r = (atom.r_vdw + atom2.r_vdw) * BONDDISTANCE_scaling
+                                                CUTOFF2 = r * r
+                                                if ddvv(atom.xyz, atom2.xyz) < CUTOFF2:
+                                                    if atom2 not in atom.connect12:
+                                                        atom.connect12.append(atom2)
+                                                        found = True
+                                                        break
 
                             if not found:
                                 print("Warning: Atom \"%s\" bond to \"%s\" was not found" % (c_atom, atom.atomID))
@@ -538,8 +569,10 @@ def vdw_by_conf_pair(protein, confID1, confID2, print_cutoff):
 
     return
 
+env = ENV()
+
+
 if __name__ == "__main__":
-    env = ENV()
     #env.print_param()
 
     pdbfile = "step2_out.pdb"
@@ -558,7 +591,5 @@ if __name__ == "__main__":
     protein.connect_reciprocity_check()
     protein.vdw_reciprocity_check()
 
-    print()
     #vdw_by_conf_pair(protein, "GLYBKA0006_000", "GLYBKA0006_000", 0.001)
-    print()
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)

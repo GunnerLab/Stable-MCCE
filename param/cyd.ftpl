@@ -24,7 +24,7 @@ CONNECT, " O  ", CYDBK: sp2, " C  "
 CONNECT, " CB ", CYD01: sp3, " CA ", " SG ", " HB2", " HB3"
 CONNECT, " HB2", CYD01: s, " CB "
 CONNECT, " HB3", CYD01: s, " CB "
-CONNECT, " SG ", CYD01: sp2, " CB ", " SG "
+CONNECT, " SG ", CYD01: sp2, " CB ", " ?  "
 
 # Atom charges
 CHARGE, CYDBK, " N  ": -0.350
