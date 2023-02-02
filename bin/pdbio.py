@@ -370,7 +370,7 @@ class Protein:
         for res1 in self.residue:
             for conf1 in res1.conf:
                 for res2 in self.residue:
-                    if res1 == res2:
+                    if res1 == res2: # we need to do self to self vdw - vdw0
                         continue
                     for conf2 in res2.conf:
                         vdw = vdw_conf(conf1, conf2)
@@ -593,3 +593,4 @@ if __name__ == "__main__":
 
     #vdw_by_conf_pair(protein, "GLYBKA0006_000", "GLYBKA0006_000", 0.001)
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
+
