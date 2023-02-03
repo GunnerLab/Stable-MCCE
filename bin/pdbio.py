@@ -87,6 +87,7 @@ class Conformer:
         self.confID = ""
         self.resID = ""
         self.atom = []
+        self.vdw1 = 0.0
         return
 
 class Residue:
@@ -371,12 +372,23 @@ class Protein:
             for conf1 in res1.conf:
                 for res2 in self.residue:
                     if res1 == res2: # we need to do self to self vdw - vdw0
+                        vdw = vdw_conf(conf1, conf1)
+                        if abs(vdw) > 0.001:
+                            self.vdw_pw[(conf1.confID, conf1.confID)] = vdw
                         continue
                     for conf2 in res2.conf:
                         vdw = vdw_conf(conf1, conf2)
                         if abs(vdw) > 0.001:
                             #print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
                             self.vdw_pw[(conf1.confID, conf2.confID)] = vdw
+
+                # compute vdw1, vdw to all backbone
+                vdw1 = 0.0
+                for res2 in self.residue:
+                    conf2 = res2.conf[0]
+                    vdw = vdw_conf(conf1, conf2)
+                    vdw1 += vdw
+                conf1.vdw1 = vdw1
 
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms

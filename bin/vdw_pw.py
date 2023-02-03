@@ -30,17 +30,32 @@ class ConfSelf:
 def update_opp(protein):
     # read head3.lst
     lines = open("head3.lst").readlines()
+    conflist = []
     for line in lines[1:]:
         conf_self = ConfSelf(line)
-
-
-
+        conflist.append(conf_self)
 
     for res in protein.residue:
         for conf in res.conf[1:]:
+            write_opp = False
             fname = "energies/" + conf.confID + ".opp"
+            opp_pw = {}
             if os.path.isfile(fname):
-                lines = open(fname).readlines()
+                opplines = open(fname).readlines()
+                for oppline in opplines:
+                    fields = oppline.split()
+                    id = fields[1]
+                    opp_pw[id] = fields
+                write_opp = True
+            else:  # check the biggest vdw and decide if a new opp file is needed
+                non_zero_vdw = False
+                for key in protein.vdw_pw.keys():
+                    if conf.confID in key:
+                        write_opp = True
+                        break
+            if write_opp:   # write new opp files
+                print("writing %s" % fname)
+
 
     return
 
