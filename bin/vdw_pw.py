@@ -10,7 +10,7 @@ class ConfSelf:
     def __init__(self, line):
         fields = line.split()
         self.iconf = int(fields[0])
-        self.conformer = fields[1]
+        self.confID = fields[1]
         self.fl = fields[2]
         self.occ = float(fields[3])
         self.crg = float(fields[4])
@@ -36,6 +36,7 @@ def update_opp(protein):
         conflist.append(conf_self)
 
     for res in protein.residue:
+        resID1 = res.resID
         for conf in res.conf[1:]:
             write_opp = False
             fname = "energies/" + conf.confID + ".opp"
@@ -44,18 +45,49 @@ def update_opp(protein):
                 opplines = open(fname).readlines()
                 for oppline in opplines:
                     fields = oppline.split()
+                    if len(fields) < 7:
+                        fields.append(" ")
                     id = fields[1]
                     opp_pw[id] = fields
                 write_opp = True
             else:  # check the biggest vdw and decide if a new opp file is needed
-                non_zero_vdw = False
                 for key in protein.vdw_pw.keys():
                     if conf.confID in key:
                         write_opp = True
                         break
             if write_opp:   # write new opp files
                 print("writing %s" % fname)
+                new_opplines = []
+                for conf2 in conflist:
+                    resID2 = "%3s%4s%c" % (conf2.confID[:3], conf2.confID[6:10], conf2.confID[5])
+                    if resID1 == resID2:
+                        continue
+                    pw_key = (conf.confID, conf2.confID)
+                    if pw_key in protein.vdw_pw:
+                        new_pw = protein.vdw_pw[pw_key]
+                    else:
+                        new_pw = 0.0
+                    newline = ""
+                    if conf2.confID in opp_pw and abs(float(opp_pw[conf2.confID][2])) > 0.001 and abs(float(opp_pw[conf2.confID][3])) > 0.001:
+                        newline = "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n" % (conf2.iconf,
+                                                                       conf2.confID,
+                                                                       float(opp_pw[conf2.confID][2]),
+                                                                       new_pw,
+                                                                       float(opp_pw[conf2.confID][4]),
+                                                                       float(opp_pw[conf2.confID][5]),
+                                                                       opp_pw[conf2.confID][6])
+                    elif abs(new_pw) > 0.001:
+                        newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
+                                                                       conf2.confID,
+                                                                       0.0,
+                                                                       new_pw,
+                                                                       0.0,
+                                                                       0.0)
 
+                    if newline:
+                        new_opplines.append(newline)
+
+                    open(fname, "w").writelines(new_opplines)
 
     return
 
