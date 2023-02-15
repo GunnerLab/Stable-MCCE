@@ -537,36 +537,37 @@ def vdw_atom(atom1, atom2):
 
     # Using the equation in vdw.c. Need to work on new parameter set.
     d2 = ddvv(atom1.xyz, atom2.xyz)
-    if d2 > VDW_CUTOFF_FAR2:
-        return 0.0
-    elif d2 < VDW_CUTOFF_NEAR2:
-        return 999.0
 
     if atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
-        r1 = atom1.r_vdw
-        e1 = atom1.e_vdw
-        r2 = atom2.r_vdw
-        e2 = atom2.e_vdw
-        if atom2 in atom1.connect14:
-            scale = VDW_SCALE14
+        if d2 > VDW_CUTOFF_FAR2:
+            p_lj = 0.0
+        elif d2 < VDW_CUTOFF_NEAR2:
+            p_lj = 999.0
         else:
-            scale = 1.0
+            r1 = atom1.r_vdw
+            e1 = atom1.e_vdw
+            r2 = atom2.r_vdw
+            e2 = atom2.e_vdw
+            if atom2 in atom1.connect14:
+                scale = VDW_SCALE14
+            else:
+                scale = 1.0
 
-        sig_min = r1 + r2
-        eps = math.sqrt(e1 * e2)
+            sig_min = r1 + r2
+            eps = math.sqrt(e1 * e2)
 
-        sig_d2 = sig_min * sig_min / d2
-        sig_d6 = sig_d2 * sig_d2 * sig_d2
-        sig_d12 = sig_d6 * sig_d6
+            sig_d2 = sig_min * sig_min / d2
+            sig_d6 = sig_d2 * sig_d2 * sig_d2
+            sig_d12 = sig_d6 * sig_d6
 
-        p_lj = eps * sig_d12 - 2. * eps * sig_d6
+            p_lj = eps * sig_d12 - 2. * eps * sig_d6
     else:
         p_lj = 0.0
 
     return p_lj
 
 
-def vdw_by_conf_pair(protein, confID1, confID2, print_cutoff):
+def vdw_by_conf_pair(protein, confID1, confID2):
     # detailed vdw between conf and conf
     for res1 in protein.residue:
         for conf1 in res1.conf:
