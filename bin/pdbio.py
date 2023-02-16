@@ -511,16 +511,31 @@ class ENV:
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
 
 
-def vdw_conf(conf1, conf2, verbose=False):
+def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False):
     vdw = 0.0
     for atom1 in conf1.atom:
         for atom2 in conf2.atom:
             vdw_a2a = vdw_atom(atom1, atom2)
             vdw += vdw_a2a
-            if verbose:
-                print("%s -> %s: %.3f" % (atom1.atomID, atom2.atomID, vdw_a2a))
+            if verbose and abs(vdw_a2a) >= cutoff:
+                d2 = ddvv(atom1.xyz, atom2.xyz)
+                if atom1 == atom2:
+                    connect = "self"
+                elif atom1 in atom2.connect12:
+                    connect = "1--2"
+                elif atom1 in atom2.connect13:
+                    connect = "1--3"
+                elif atom1 in atom2.connect14:
+                    connect = "1--4"
+                else:
+                    connect = "none"
+
+                print("%s -> %s: %8.3f %8.3f %6s" % (atom1.atomID, atom2.atomID, vdw_a2a, math.sqrt(d2), connect))
     if vdw >= VDW_UPLIMIT:
         vdw = 999.0
+
+    if conf1 == conf2:
+        vdw /= 2
     return vdw
 
 def vdw_atom(atom1, atom2):
@@ -538,7 +553,7 @@ def vdw_atom(atom1, atom2):
     # Using the equation in vdw.c. Need to work on new parameter set.
     d2 = ddvv(atom1.xyz, atom2.xyz)
 
-    if atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
+    if atom1 != atom2 and atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
         if d2 > VDW_CUTOFF_FAR2:
             p_lj = 0.0
         elif d2 < VDW_CUTOFF_NEAR2:
@@ -560,27 +575,12 @@ def vdw_atom(atom1, atom2):
             sig_d6 = sig_d2 * sig_d2 * sig_d2
             sig_d12 = sig_d6 * sig_d6
 
-            p_lj = eps * sig_d12 - 2. * eps * sig_d6
+            p_lj = scale*(eps * sig_d12 - 2. * eps * sig_d6)
     else:
         p_lj = 0.0
 
     return p_lj
 
-
-def vdw_by_conf_pair(protein, confID1, confID2):
-    # detailed vdw between conf and conf
-    for res1 in protein.residue:
-        for conf1 in res1.conf:
-            if conf1.confID != confID1:
-                continue
-            for res2 in protein.residue:
-                for conf2 in res2.conf:
-                    if conf2.confID != confID2:
-                        continue
-                    vdw = vdw_conf(conf1, conf2, verbose=True)
-                    print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
-
-    return
 
 env = ENV()
 
@@ -604,6 +604,6 @@ if __name__ == "__main__":
     protein.connect_reciprocity_check()
     protein.vdw_reciprocity_check()
 
-    #vdw_by_conf_pair(protein, "GLYBKA0006_000", "GLYBKA0006_000", 0.001)
+    vdw_by_conf_pair(protein, "LEU01A0006_001", "LEU01A0006_001", 0.001)
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
 
