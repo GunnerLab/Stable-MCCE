@@ -511,8 +511,20 @@ class ENV:
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
 
 
-def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False):
+def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False, display=False):
     vdw = 0.0
+    if display:
+        print("%12s %16s     %10s %8s %6s   %6s %6s %6s %6s %6s %6s" % ("ATOM1",
+                                                             "ATOM2",
+                                                             "vdw",
+                                                             "dist",
+                                                             "cnct",
+                                                             "r1",
+                                                             "e1",
+                                                             "r2",
+                                                             "e2",
+                                                                        "R_sum",
+                                                                        "E_par"))
     for atom1 in conf1.atom:
         for atom2 in conf2.atom:
             vdw_a2a = vdw_atom(atom1, atom2)
@@ -529,13 +541,28 @@ def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False):
                     connect = "1--4"
                 else:
                     connect = "none"
-
-                print("%s -> %s: %8.3f %8.3f %6s" % (atom1.atomID, atom2.atomID, vdw_a2a, math.sqrt(d2), connect))
+                if display:  # display details
+                    R_sum = atom1.r_vdw+atom2.r_vdw
+                    E_par = math.sqrt(atom1.e_vdw*atom2.e_vdw)
+                    print("%s -> %s: %8.3f %8.3f %6s   %6.4f %6.4f %6.4f %6.4f %6.4f %6.4f" % (atom1.atomID,
+                                                                                               atom2.atomID,
+                                                                                               vdw_a2a,
+                                                                                               math.sqrt(d2),
+                                                                                               connect,
+                                                                                               atom1.r_vdw,
+                                                                                               atom1.e_vdw,
+                                                                                               atom2.r_vdw,
+                                                                                               atom2.e_vdw,
+                                                                                               R_sum,
+                                                                                               E_par))
+                else:  # display essential information
+                    print(
+                        "%s -> %s: %8.3f %8.3f %6s" % (atom1.atomID, atom2.atomID, vdw_a2a, math.sqrt(d2), connect))
     if vdw >= VDW_UPLIMIT:
         vdw = 999.0
 
     if conf1 == conf2:
-        vdw /= 2
+        vdw = 0.5*vdw
     return vdw
 
 def vdw_atom(atom1, atom2):
@@ -575,7 +602,7 @@ def vdw_atom(atom1, atom2):
             sig_d6 = sig_d2 * sig_d2 * sig_d2
             sig_d12 = sig_d6 * sig_d6
 
-            p_lj = scale*(eps * sig_d12 - 2. * eps * sig_d6)
+            p_lj = scale * (eps * sig_d12 - 2. * eps * sig_d6)
     else:
         p_lj = 0.0
 
@@ -604,6 +631,5 @@ if __name__ == "__main__":
     protein.connect_reciprocity_check()
     protein.vdw_reciprocity_check()
 
-    vdw_by_conf_pair(protein, "LEU01A0006_001", "LEU01A0006_001", 0.001)
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
 

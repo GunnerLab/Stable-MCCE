@@ -8,7 +8,7 @@ import os
 from pdbio import *
 
 
-def vdw_by_conf_pair(protein, confID1, confID2, cutoff):
+def vdw_by_conf_pair(protein, confID1, confID2, cutoff, verbose):
     # detailed vdw between conf and conf
     found = False
     for res1 in protein.residue:
@@ -25,8 +25,9 @@ def vdw_by_conf_pair(protein, confID1, confID2, cutoff):
                 for conf2 in res2.conf:
                     if conf2.confID != confID2:
                         continue
-                    vdw = vdw_conf(conf1, conf2, verbose=True, cutoff=cutoff)
+                    vdw = vdw_conf(conf1, conf2, verbose=True, cutoff=cutoff, display=verbose)
                     print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
+
                     if confID1 == confID2:
                         print("! Self interaction, VDW between conformers is half of the atom vdw sum.")
                     found = True
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     helpmsg = "Compute detailed conformer to conformer vdw."
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("-c", metavar="cutoff", default="-0.001", help="Cutoff value of displaying atom atom vdw")
+    parser.add_argument("-v", default=False, help="Turn on verbose mode, displaying more details", action="store_true")
     parser.add_argument("confs", metavar="confID", nargs=2, help="Conformer ID as in head3.lst, two IDs required.")
     args = parser.parse_args()
 
@@ -52,6 +54,6 @@ if __name__ == "__main__":
     protein.make_connect13()
     protein.make_connect14()
 
-    vdw_by_conf_pair(protein, conformers[0], conformers[1], cutoff)
+    vdw_by_conf_pair(protein, conformers[0], conformers[1], cutoff, args.v)
 
 
