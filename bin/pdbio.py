@@ -496,9 +496,35 @@ class ENV:
                 # Connectivity records
                 if key1 == "CONNECT":
                     self.param[(key1,key2,key3)] = CONNECT_param(value_string)
-                # VDW parameters
+                # VDW parameters, for now use 00always_needed.tpl for vdw parameters
                 elif key1 == "RADIUS":
                     self.param[(key1, key2, key3)] = RADIUS_param(value_string)
+
+        # Update vdw with 00always_needed.tpl
+        fname = "00always_needed.tpl"
+        lines = open(fname).readlines()
+        for line in lines:
+            end = line.find("#")
+            line = line[:end].strip()
+            if len(line) < 20:
+                continue
+            key1 = line[:9].strip()
+            key2 = line[9:15].strip()
+            key3 = line[15:19]
+            if key1=="VDW_RAD" or key1=="VDW_EPS":
+                value = float(line[20:].strip())
+                # print("%s %s \"%s\" : %.4f" % (key1, key2, key3, value))
+                new_key = ("RADIUS", key2, key3)
+                if new_key in self.param:
+                    param_value = self.param[new_key]
+                else:
+                    print("Warning: %s %s \"%s\" not defined in RADIUS parameter" % (key1, key2, key3))
+                    param_value = RADIUS_param("2,0,0")
+                if key1 == "VDW_RAD":
+                    param_value.r_vdw = value
+                elif key1 == "VDW_EPS":
+                    param_value.e_vdw = value
+                self.param[new_key] = param_value
 
         os.chdir(cwd)
 

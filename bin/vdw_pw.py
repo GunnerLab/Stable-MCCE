@@ -104,7 +104,9 @@ def update_opp(protein):
         for res2 in protein.residue:
             if res2.conf:
                 key = (conf.confID, res2.conf[0].confID)
+                print(key)
                 if key in protein.vdw_pw:
+                    print("Found")
                     vdw1 += protein.vdw_pw[key]
 
         newline = "%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %10s %c\n" % (conf.iconf,
