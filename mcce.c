@@ -82,10 +82,10 @@ int main(int argc, char *argv[])
 void welcome()
 {  printf("===========================================================\n");
    printf("<<< MCCE Multi-Conformation Continuum Electrostatics >>>   \n");
-   printf(" Marilyn Gunner's Lab at City College of New York, 2005    \n");
+   printf(" Marilyn Gunner's Lab at City College of New York, 2023    \n");
    printf("-----------------------------------------------------------\n");
-   printf("Version:        1.1.0                                     \n");
-   printf("MCCE Home Page: https://sites.google.com/site/mccewiki \n");
+   printf("Version:        2.7.1                                      \n");
+   printf("MCCE Home Page: https://gunnerlab.github.io/Stable-MCCE/quick/\n");
    printf("Support:        mgunner@ccny.cuny.edu                   \n");
    printf("Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     \n");
    printf("Reference MCCE: If you publish data calculated with MCCE,  \n");
@@ -93,6 +93,7 @@ void welcome()
    printf("                Home Page.                                 \n");
    printf("===========================================================\n\n");
    printf("Last Updates:                                              \n");
+   printf("   02/26/2023: vdw calculated by vdw_pw.py after step3.\n");
    printf("   06/04/2018: Removed dependency on gdbm\n");
    printf("   06/04/2018: Clear text energy table in step 3 and 4 \n");
    printf("===========================================================\n\n");
