@@ -93,6 +93,13 @@ def update_opp(protein):
 
     # update head3.lst
     new_lines = ["iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history\n"]
+
+    # match conformer by confID
+    conf_dict = {}
+    for res in protein.residue:
+        for conf in res.conf:
+            conf_dict[conf.confID] = conf
+
     for conf in conflist:
         key = (conf.confID, conf.confID)
         if key in protein.vdw_pw:
@@ -100,6 +107,10 @@ def update_opp(protein):
         else:
             vdw0 = 0.0
 
+        if conf.confID in conf_dict:    # DM conformer vdw1 not in dict
+            vdw1 = conf_dict[conf.confID].vdw1
+        else:
+            vdw1 = conf.vdw1
         newline = "%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %10s %c\n" % (conf.iconf,
                                           conf.confID,
                                           conf.fl,
@@ -110,7 +121,7 @@ def update_opp(protein):
                                           conf.ne,
                                           conf.nh,
                                           vdw0,
-                                          conf.vdw1,
+                                          vdw1,
                                           conf.tors,
                                           conf.epol,
                                           conf.dsolv,

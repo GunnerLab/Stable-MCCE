@@ -40,6 +40,8 @@ import time
 import os
 import subprocess
 from mccesteps import *
+from vdw_pw import *
+import shutil
 
 def mcce_thread(mcce, name):
     logging.info("Thread %s: starting", name)
@@ -142,6 +144,21 @@ def process(args):
                 logging.info("Main: join thread %d" % i)
 
             logging.info("Main: Done")
+
+    # Recalculate vdw
+    if os.path.exists("energies_bak") and os.path.isdir("energies_bak"):
+        shutil.rmtree("energies_bak")
+    shutil.copytree("energies", "energies_bak")
+    shutil.copy("head3.lst", "head3.lst_bak")
+
+    pdbfile = "step2_out.pdb"
+    protein = Protein()
+    protein.loadpdb(pdbfile)
+    protein.make_connect12()
+    protein.make_connect13()
+    protein.make_connect14()
+    protein.calc_vdw()
+    update_opp(protein)
 
     return
 

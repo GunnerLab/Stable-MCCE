@@ -93,7 +93,7 @@ def read_headlst():
    lines.pop(0)   # remove the title line
 
    if len(conformers) > 0:
-      print "WARNING: adding to non empty conformer list."
+      print("WARNING: adding to non empty conformer list.")
 
    for line in lines:
       fields = line.split()

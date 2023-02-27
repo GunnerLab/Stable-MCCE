@@ -15,7 +15,7 @@ VDW_SCALE14 = 0.5
 # set any big conf vdw to 999
 VDW_CUTOFF_FAR2 = 100     # set atom vdw to 0 if atoms are further than this value
 VDW_CUTOFF_NEAR2 = 1      # set atom vdw to 999 if atoms are closer than this value
-VDW_UPLIMIT = 320.0     # set conf vdw to 999 if bigger than this number
+VDW_UPLIMIT = 999.0     # set conf vdw to 999 if bigger than this number
 
 
 def ddvv(xyz1, xyz2):

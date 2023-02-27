@@ -4,7 +4,6 @@ Compute vdw pairwise and write back to opp files
 """
 
 import argparse
-import os
 from pdbio import *
 
 
