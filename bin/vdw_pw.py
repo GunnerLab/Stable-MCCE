@@ -138,6 +138,8 @@ def update_opp(protein):
 
 if __name__ == "__main__":
     pdbfile = "step2_out.pdb"
+    env.load_runprm()
+    env.load_ftpl()
     protein = Protein()
     protein.loadpdb(pdbfile)
     protein.make_connect12()

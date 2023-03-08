@@ -441,9 +441,9 @@ class ENV:
     def __init__(self):
         self.runprm = {}
         self.param = {}
-        self.load_runprm()
+        #self.load_runprm()
         #self.print_runprm()
-        self.load_ftpl()
+        #self.load_ftpl()
 
     def load_runprm(self):
         filename = "run.prm"
@@ -641,6 +641,7 @@ env = ENV()
 if __name__ == "__main__":
     #env.print_param()
 
+    env.load_run.prm()
     pdbfile = "step2_out.pdb"
     protein = Protein()
     protein.loadpdb(pdbfile)

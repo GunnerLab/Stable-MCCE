@@ -38,7 +38,7 @@ if __name__ == "__main__":
     # Get the command arguments
     helpmsg = "Compute detailed conformer to conformer vdw."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("-c", metavar="cutoff", default="-0.001", help="Cutoff value of displaying atom atom vdw")
+    parser.add_argument("-c", metavar="cutoff", default="-0.001", help="Cutoff value of displaying atom to atom vdw")
     parser.add_argument("-v", default=False, help="Turn on verbose mode, displaying more details", action="store_true")
     parser.add_argument("confs", metavar="confID", nargs=2, help="Conformer ID as in head3.lst, two IDs required.")
     args = parser.parse_args()
@@ -47,6 +47,8 @@ if __name__ == "__main__":
     cutoff = float(args.c)
 
     pdbfile = "step2_out.pdb"
+    env.load_runprm()
+    env.load_ftpl()
     protein = Protein()
     protein.loadpdb(pdbfile)
     protein.make_connect12()
