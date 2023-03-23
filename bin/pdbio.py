@@ -7,7 +7,7 @@ import glob
 
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
-#CUTOFF2 = 1.65*1.65
+
 
 # scaling factor for vdw
 VDW_SCALE14 = 0.5
@@ -75,9 +75,9 @@ class Atom:
         return
 
     def writeline(self):
-        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f\n" % \
-               (self.serial, self.name, self.altLoc, self.resName, self.chainID, \
-                self.resSeq, self.iCode, self.xyz[0], self.xyz[1], \
+        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f\n" %\
+               (self.serial, self.name, self.altLoc, self.resName, self.chainID,\
+                self.resSeq, self.iCode, self.xyz[0], self.xyz[1],\
                 self.xyz[2])
         return line
 
@@ -462,6 +462,36 @@ class ENV:
         for key, value in self.runprm.items():
             print("%s:%s" % (key, value))
 
+    def read_ftpl_file(self, fname):
+        lines = open(fname).readlines()
+        for line in lines:
+            end = line.find("#")
+            line = line[:end]
+            fields = line.split(":")
+            if len(fields) != 2:
+                continue
+
+            key_string = fields[0].strip()
+            keys = key_string.split(",")
+            key1 = keys[0].strip().strip("\"")
+            if len(keys) > 1:
+                key2 = keys[1].strip().strip("\"")
+            else:
+                key2 = ""
+            if len(keys) > 2:
+                key3 = keys[2].strip().strip("\"")
+            else:
+                key3 = ""
+
+            value_string = fields[1].strip()
+
+            # Connectivity records
+            if key1 == "CONNECT":
+                self.param[(key1, key2, key3)] = CONNECT_param(value_string)
+            # VDW parameters, for now use 00always_needed.tpl for vdw parameters
+            elif key1 == "RADIUS":
+                self.param[(key1, key2, key3)] = RADIUS_param(value_string)
+
     def load_ftpl(self):
         ftpldir = self.runprm["MCCE_HOME"]+"/param"
         cwd = os.getcwd()
@@ -469,36 +499,9 @@ class ENV:
 
         files = glob.glob("*.ftpl")
         files.sort()
-
         for fname in files:
-            lines = open(fname).readlines()
-            for line in lines:
-                end = line.find("#")
-                line = line[:end]
-                fields = line.split(":")
-                if len(fields) != 2:
-                    continue
+            self.read_ftpl_file(fname)
 
-                key_string = fields[0].strip()
-                keys = key_string.split(",")
-                key1 = keys[0].strip().strip("\"")
-                if len(keys) > 1:
-                    key2 = keys[1].strip().strip("\"")
-                else:
-                    key2 = ""
-                if len(keys) > 2:
-                    key3 = keys[2].strip().strip("\"")
-                else:
-                    key3 = ""
-
-                value_string = fields[1].strip()
-
-                # Connectivity records
-                if key1 == "CONNECT":
-                    self.param[(key1,key2,key3)] = CONNECT_param(value_string)
-                # VDW parameters, for now use 00always_needed.tpl for vdw parameters
-                elif key1 == "RADIUS":
-                    self.param[(key1, key2, key3)] = RADIUS_param(value_string)
 
         # Update vdw with 00always_needed.tpl
         fname = "00always_needed.tpl"
@@ -525,6 +528,16 @@ class ENV:
                 elif key1 == "VDW_EPS":
                     param_value.e_vdw = value
                 self.param[new_key] = param_value
+
+        os.chdir(cwd)
+
+        
+        ftpldir = "user_param"
+        os.chdir(ftpldir)
+        files = glob.glob("*.ftpl")
+        files.sort()
+        for fname in files:
+            self.read_ftpl_file(fname)
 
         os.chdir(cwd)
 
