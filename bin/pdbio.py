@@ -531,15 +531,15 @@ class ENV:
 
         os.chdir(cwd)
 
-        
-        ftpldir = "user_param"
-        os.chdir(ftpldir)
-        files = glob.glob("*.ftpl")
-        files.sort()
-        for fname in files:
-            self.read_ftpl_file(fname)
 
-        os.chdir(cwd)
+        ftpldir = "user_param"
+        if os.path.isdir(ftpldir):
+            os.chdir(ftpldir)
+            files = glob.glob("*.ftpl")
+            files.sort()
+            for fname in files:
+                self.read_ftpl_file(fname)
+            os.chdir(cwd)
 
     def print_param(self):
         for key, value in self.param.items():
@@ -652,24 +652,28 @@ env = ENV()
 
 
 if __name__ == "__main__":
+
+    env.load_runprm()
+    env.load_ftpl()
+
     #env.print_param()
 
-    env.load_run.prm()
-    pdbfile = "step2_out.pdb"
-    protein = Protein()
-    protein.loadpdb(pdbfile)
-    protein.make_connect12()
-    protein.make_connect13()
-    protein.make_connect14()
+    # pdbfile = "step2_out.pdb"
+    # protein = Protein()
+    # protein.loadpdb(pdbfile)
+    # protein.make_connect12()
+    # protein.make_connect13()
+    # protein.make_connect14()
 
     # protein.print_connect12()
     # protein.print_connect13()
     # protein.print_connect14()
     # protein.exportpdb("a.pdb")
     # protein.print_atom_structure()
-    protein.calc_vdw()
-    protein.connect_reciprocity_check()
-    protein.vdw_reciprocity_check()
+
+    # protein.calc_vdw()
+    # protein.connect_reciprocity_check()
+    # protein.vdw_reciprocity_check()
 
     #vdw_by_conf_pair(protein, "ASPBKA0002_000", "NTG01A0001_001", 0.001)
 
