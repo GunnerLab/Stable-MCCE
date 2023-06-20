@@ -1,0 +1,106 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Gehan Ranepura
+# File Created by Gehan Ranepura on 11/17/2022
+
+# Guassian Calculation was done with Ligand Expo Ideal DGD
+# The head group DGD was split into two subgroups DGA and DGB
+# This ftpl contains only the head group DGB
+# Additonal Hs were added to C5D (HD63) after running DFT
+# Excess charges from the head group were distributed to Hs
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, DGB: DGBBK, DGB01
+
+# ATOM name and bonds
+CONNECT, " O5D", DGB01:  sp3, " C6D"," C1E"
+CONNECT, " C6D", DGB01:  sp3, "HD63"," O5D","HD61","HD62"   # " C5D" --> "HD63"
+CONNECT, " C1E", DGB01:  sp3, " O5D"," C2E"," O6E"," HE1"
+CONNECT, " C2E", DGB01:  sp3, " C1E"," O2E"," C3E"," HE2"
+CONNECT, " O2E", DGB01:  sp3, " C2E","HO2E"
+CONNECT, " C3E", DGB01:  sp3, " C2E"," O3E"," C4E"," HE3"
+CONNECT, " O3E", DGB01:  sp3, " C3E","HO3E"
+CONNECT, " C4E", DGB01:  sp3, " C3E"," O4E"," C5E"," HE4"
+CONNECT, " O4E", DGB01:  sp3, " C4E","HO4E"
+CONNECT, " C5E", DGB01:  sp3, " C4E"," O6E"," C6E"," HE5"
+CONNECT, " O6E", DGB01:  sp3, " C1E"," C5E"
+CONNECT, " C6E", DGB01:  sp3, " C5E"," O5E","HE61","HE62"
+CONNECT, " O5E", DGB01:  sp3, " C6E","HO5E"
+CONNECT, "HD61", DGB01:    s, " C6D"
+CONNECT, "HD62", DGB01:    s, " C6D"
+CONNECT, " HE1", DGB01:    s, " C1E"
+CONNECT, " HE2", DGB01:    s, " C2E"
+CONNECT, "HO2E", DGB01:    s, " O2E"
+CONNECT, " HE3", DGB01:    s, " C3E"
+CONNECT, "HO3E", DGB01:    s, " O3E"
+CONNECT, " HE4", DGB01:    s, " C4E"
+CONNECT, "HO4E", DGB01:    s, " O4E"
+CONNECT, " HE5", DGB01:    s, " C5E"
+CONNECT, "HE61", DGB01:    s, " C6E"
+CONNECT, "HE62", DGB01:    s, " C6E"
+CONNECT, "HO5E", DGB01:    s, " O5E"
+CONNECT, "HD63", DGB01:    s, " C6D"   # Added to finish head group
+
+# ATOM charges
+CHARGE, DGB01, " O5D": -0.59900  
+CHARGE, DGB01, " C6D": -0.14674
+CHARGE, DGB01, " C1E":  0.35851
+CHARGE, DGB01, " C2E":  0.01026
+CHARGE, DGB01, " O2E": -0.77888
+CHARGE, DGB01, " C3E":  0.03448
+CHARGE, DGB01, " O3E": -0.79555
+CHARGE, DGB01, " C4E":  0.04116
+CHARGE, DGB01, " O4E": -0.78467
+CHARGE, DGB01, " C5E":  0.01758
+CHARGE, DGB01, " O6E": -0.58167
+CHARGE, DGB01, " C6E": -0.12499
+CHARGE, DGB01, " O5E": -0.77531
+CHARGE, DGB01, "HD61":  0.19803
+CHARGE, DGB01, "HD62":  0.24844
+CHARGE, DGB01, " HE1":  0.19608
+CHARGE, DGB01, " HE2":  0.22994
+CHARGE, DGB01, "HO2E":  0.48159
+CHARGE, DGB01, " HE3":  0.22296
+CHARGE, DGB01, "HO3E":  0.49990
+CHARGE, DGB01, " HE4":  0.21042
+CHARGE, DGB01, "HO4E":  0.49668
+CHARGE, DGB01, " HE5":  0.23751
+CHARGE, DGB01, "HE61":  0.19040
+CHARGE, DGB01, "HE62":  0.20926
+CHARGE, DGB01, "HO5E":  0.48235    # 0.48035 + 0.002 to compenate for excess charge
+CHARGE, DGB01, "HD63":  0.22324    # Added to finish head group
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, DGB01, " O5D":  1.400,  1.600,  0.200
+RADIUS, DGB01, " C6D":  1.700,  2.000,  0.150
+RADIUS, DGB01, " C1E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " C2E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " O2E":  1.400,  1.600,  0.200
+RADIUS, DGB01, " C3E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " O3E":  1.400,  1.600,  0.200
+RADIUS, DGB01, " C4E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " O4E":  1.400,  1.600,  0.200
+RADIUS, DGB01, " C5E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " O6E":  1.400,  1.600,  0.200
+RADIUS, DGB01, " C6E":  1.700,  2.000,  0.150
+RADIUS, DGB01, " O5E":  1.400,  1.600,  0.200
+RADIUS, DGB01, "HD61":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HD62":  1.000,  1.000,  0.020
+RADIUS, DGB01, " HE1":  1.000,  1.000,  0.020
+RADIUS, DGB01, " HE2":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HO2E":  1.000,  1.000,  0.020
+RADIUS, DGB01, " HE3":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HO3E":  1.000,  1.000,  0.020
+RADIUS, DGB01, " HE4":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HO4E":  1.000,  1.000,  0.020
+RADIUS, DGB01, " HE5":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HE61":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HE62":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HO5E":  1.000,  1.000,  0.020
+RADIUS, DGB01, "HD63":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, DGB01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -19.148, rxn08= 0 # (Tested with LigandExpo Ideal DGB with no Hs)

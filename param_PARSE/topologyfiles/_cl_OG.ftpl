@@ -1,0 +1,17 @@
+# Values of the same key are appended and separated by ","
+CONFLIST, _CL: _CLBK, _CL-1, _CLDM
+
+# Atom definition
+CONNECT, "CL  ", _CL-1: ion, 
+
+# Atom charges
+CHARGE, _CL-1, "CL  ": -1.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  _CL-1,  "CL  ": 1.937,   2.000,   0.173
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, _CL-1: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=-40.6, rxn04=-20.323, rxn08=-10.1
+
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

@@ -1,0 +1,33 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii  THIS NEEDS TO BE CHECKED
+# Radii(vdw) were collected from http://www.webelements.com/
+#TRANS    FE2         t
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, FE2: FE2BK, FE2+2, FE2+3
+
+# Atom definition
+CONNECT, "FE  ", FE2+2: ion, 
+CONNECT, "FE  ", FE2+3: ion, 
+
+# Atom charges
+CHARGE, FE2+2, "FE  ":  2.000
+CHARGE, FE2+3, "FE  ":  3.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  FE2+2,  "FE  ": 2.000,   2.000,   0.173
+RADIUS,  FE2+3,  "FE  ": 2.000,   2.000,   0.173
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, FE2+2: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=-78.850, rxn08=-39.50
+CONFORMER, FE2+3: Em0= 770.0, pKa0=  0.00, ne=-1, nH= 0, rxn02=0, rxn04=-177.400, rxn08=-88.7
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

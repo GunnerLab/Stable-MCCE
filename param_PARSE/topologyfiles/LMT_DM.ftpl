@@ -1,0 +1,261 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn
+#2.Structure Connectivity:
+#3.Atom Parameters: Partial Charges and Radii
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, LMT: LMTBK
+
+# Atom definition
+CONNECT, " C2B", LMTBK: sp3, " C3B", " C1B", " O2B", " H73"
+CONNECT, " C4B", LMTBK: sp3, " C3B", " O4'", " C5B", " H71"
+CONNECT, " C5B", LMTBK: sp3, " C4B", " O5B", " C6B", " H80"
+CONNECT, " C6B", LMTBK: sp3, " C5B", " O6B", " H81", " H82"
+CONNECT, " O2B", LMTBK: sp2, " C2B", " H62"
+CONNECT, " O4'", LMTBK: sp2, " C4B", " H64"
+CONNECT, " C1B", LMTBK: sp3, " C2B", " O5B", " O1B", " H74"
+CONNECT, " C3B", LMTBK: sp3, " C2B", " C4B", " O3B", " H72"
+CONNECT, " O1B", LMTBK: sp2, " C1B", " C4'"
+CONNECT, " O3B", LMTBK: sp2, " C3B", " H63"
+CONNECT, " O5B", LMTBK: sp2, " C5B", " C1B"
+CONNECT, " O6B", LMTBK: sp2, " C6B", " H65"
+CONNECT, " C1'", LMTBK: sp3, " C2'", " O5'", " O1'", " H79"
+CONNECT, " C2'", LMTBK: sp3, " C1'", " C3'", " O2'", " H78"
+CONNECT, " C3'", LMTBK: sp3, " C2'", " C4'", " O3'", " H76"
+CONNECT, " C4'", LMTBK: sp3, " O1B", " C3'", " C5'", " H75"
+CONNECT, " C5'", LMTBK: sp3, " C4'", " C6'", " O5'", " H77"
+CONNECT, " C6'", LMTBK: sp3, " C5'", " O6'", " H83", " H84"
+CONNECT, " O1'", LMTBK: sp2, " C1'", " C1 "
+CONNECT, " O3'", LMTBK: sp2, " C3'", " H66"
+CONNECT, " O5'", LMTBK: sp2, " C1'", " C5'"
+CONNECT, " O6'", LMTBK: sp2, " C6'", " H70"
+CONNECT, " O2'", LMTBK: sp2, " C2'", " H67"
+CONNECT, " C1 ", LMTBK: sp3, " O1'", " C2 ", " H37", " H38"
+CONNECT, " C2 ", LMTBK: sp3, " C1 ", " C3 ", " H39", " H40"
+CONNECT, " C3 ", LMTBK: sp3, " C2 ", " C4 ", " H41", " H42"
+CONNECT, " C4 ", LMTBK: sp3, " C3 ", " C5 ", " H43", " H44"
+CONNECT, " C5 ", LMTBK: sp3, " C4 ", " C6 ", " H45", " H46"
+CONNECT, " C6 ", LMTBK: sp3, " C5 ", " C7 ", " H47", " H48"
+CONNECT, " C7 ", LMTBK: sp3, " C6 ", " C8 ", " H49", " H50"
+CONNECT, " C8 ", LMTBK: sp3, " C7 ", " C9 ", " H51", " H52"
+CONNECT, " C9 ", LMTBK: sp3, " C8 ", " C10", " H53", " H54"
+CONNECT, " C10", LMTBK: sp3, " C9 ", " C11", " H55", " H56"
+CONNECT, " C11", LMTBK: sp3, " C10", " C12", " H57", " H58"
+CONNECT, " C12", LMTBK: sp3, " C11", " H59", " H60", " H61"
+CONNECT, " H37", LMTBK: s, " C1 "
+CONNECT, " H38", LMTBK: s, " C1 "
+CONNECT, " H39", LMTBK: s, " C2 "
+CONNECT, " H40", LMTBK: s, " C2 "
+CONNECT, " H41", LMTBK: s, " C3 "
+CONNECT, " H42", LMTBK: s, " C3 "
+CONNECT, " H43", LMTBK: s, " C4 "
+CONNECT, " H44", LMTBK: s, " C4 "
+CONNECT, " H45", LMTBK: s, " C5 "
+CONNECT, " H46", LMTBK: s, " C5 "
+CONNECT, " H47", LMTBK: s, " C6 "
+CONNECT, " H48", LMTBK: s, " C6 "
+CONNECT, " H49", LMTBK: s, " C7 "
+CONNECT, " H50", LMTBK: s, " C7 "
+CONNECT, " H51", LMTBK: s, " C8 "
+CONNECT, " H52", LMTBK: s, " C8 "
+CONNECT, " H53", LMTBK: s, " C9 "
+CONNECT, " H54", LMTBK: s, " C9 "
+CONNECT, " H55", LMTBK: s, " C10"
+CONNECT, " H56", LMTBK: s, " C10"
+CONNECT, " H57", LMTBK: s, " C11"
+CONNECT, " H58", LMTBK: s, " C11"
+CONNECT, " H59", LMTBK: s, " C12"
+CONNECT, " H60", LMTBK: s, " C12"
+CONNECT, " H61", LMTBK: s, " C12"
+CONNECT, " H62", LMTBK: s, " O2B"
+CONNECT, " H63", LMTBK: s, " O3B"
+CONNECT, " H64", LMTBK: s, " O4'"
+CONNECT, " H65", LMTBK: s, " O6B"
+CONNECT, " H66", LMTBK: s, " O3'"
+CONNECT, " H67", LMTBK: s, " O2'"
+CONNECT, " H70", LMTBK: s, " O6'"
+CONNECT, " H71", LMTBK: s, " C4B"
+CONNECT, " H72", LMTBK: s, " C3B"
+CONNECT, " H73", LMTBK: s, " C2B"
+CONNECT, " H74", LMTBK: s, " C1B"
+CONNECT, " H75", LMTBK: s, " C4'"
+CONNECT, " H76", LMTBK: s, " C3'"
+CONNECT, " H77", LMTBK: s, " C5'"
+CONNECT, " H78", LMTBK: s, " C2'"
+CONNECT, " H79", LMTBK: s, " C1'"
+CONNECT, " H80", LMTBK: s, " C5B"
+CONNECT, " H81", LMTBK: s, " C6B"
+CONNECT, " H82", LMTBK: s, " C6B"
+CONNECT, " H83", LMTBK: s, " C6'"
+CONNECT, " H84", LMTBK: s, " C6'"
+
+# Atom charges
+CHARGE, LMTBK, " C2B":  0.209
+CHARGE, LMTBK, " C4B":  0.369
+CHARGE, LMTBK, " C5B": -0.090
+CHARGE, LMTBK, " C6B":  0.096
+CHARGE, LMTBK, " O2B": -0.623
+CHARGE, LMTBK, " O4'": -0.623
+CHARGE, LMTBK, " C1B": -0.048
+CHARGE, LMTBK, " C3B": -0.023
+CHARGE, LMTBK, " O1B": -0.289
+CHARGE, LMTBK, " O3B": -0.623
+CHARGE, LMTBK, " O5B": -0.327
+CHARGE, LMTBK, " O6B": -0.623
+CHARGE, LMTBK, " C1'":  0.256
+CHARGE, LMTBK, " C2'":  0.081
+CHARGE, LMTBK, " C3'":  0.280
+CHARGE, LMTBK, " C4'": -0.070
+CHARGE, LMTBK, " C5'":  0.004
+CHARGE, LMTBK, " C6'":  0.105
+CHARGE, LMTBK, " O1'": -0.440
+CHARGE, LMTBK, " O3'": -0.623
+CHARGE, LMTBK, " O5'": -0.327
+CHARGE, LMTBK, " O6'": -0.623
+CHARGE, LMTBK, " O2'": -0.623
+CHARGE, LMTBK, " C1 ":  0.164
+CHARGE, LMTBK, " C2 ":  0.002
+CHARGE, LMTBK, " C3 ": -0.055
+CHARGE, LMTBK, " C4 ": -0.055
+CHARGE, LMTBK, " C5 ": -0.055
+CHARGE, LMTBK, " C6 ": -0.055
+CHARGE, LMTBK, " C7 ": -0.055
+CHARGE, LMTBK, " C8 ": -0.055
+CHARGE, LMTBK, " C9 ": -0.055
+CHARGE, LMTBK, " C10": -0.055
+CHARGE, LMTBK, " C11": -0.055
+CHARGE, LMTBK, " C12": -0.357
+CHARGE, LMTBK, " H37":  0.024
+CHARGE, LMTBK, " H38":  0.024
+CHARGE, LMTBK, " H39":  0.027
+CHARGE, LMTBK, " H40":  0.027
+CHARGE, LMTBK, " H41":  0.028
+CHARGE, LMTBK, " H42":  0.028
+CHARGE, LMTBK, " H43":  0.028
+CHARGE, LMTBK, " H44":  0.028
+CHARGE, LMTBK, " H45":  0.028
+CHARGE, LMTBK, " H46":  0.028
+CHARGE, LMTBK, " H47":  0.028
+CHARGE, LMTBK, " H48":  0.028
+CHARGE, LMTBK, " H49":  0.028
+CHARGE, LMTBK, " H50":  0.028
+CHARGE, LMTBK, " H51":  0.028
+CHARGE, LMTBK, " H52":  0.028
+CHARGE, LMTBK, " H53":  0.028
+CHARGE, LMTBK, " H54":  0.028
+CHARGE, LMTBK, " H55":  0.028
+CHARGE, LMTBK, " H56":  0.028
+CHARGE, LMTBK, " H57":  0.028
+CHARGE, LMTBK, " H58":  0.028
+CHARGE, LMTBK, " H59":  0.119
+CHARGE, LMTBK, " H60":  0.119
+CHARGE, LMTBK, " H61":  0.119
+CHARGE, LMTBK, " H62":  0.412
+CHARGE, LMTBK, " H63":  0.417
+CHARGE, LMTBK, " H64":  0.417
+CHARGE, LMTBK, " H65":  0.417
+CHARGE, LMTBK, " H66":  0.417
+CHARGE, LMTBK, " H67":  0.417
+CHARGE, LMTBK, " H70":  0.417
+CHARGE, LMTBK, " H71":  0.049
+CHARGE, LMTBK, " H72":  0.113
+CHARGE, LMTBK, " H73":  0.121
+CHARGE, LMTBK, " H74":  0.196
+CHARGE, LMTBK, " H75":  0.146
+CHARGE, LMTBK, " H76":  0.049
+CHARGE, LMTBK, " H77":  0.121
+CHARGE, LMTBK, " H78":  0.074
+CHARGE, LMTBK, " H79":  0.078
+CHARGE, LMTBK, " H80":  0.113
+CHARGE, LMTBK, " H81":  0.081
+CHARGE, LMTBK, " H82":  0.081
+CHARGE, LMTBK, " H83":  0.081
+CHARGE, LMTBK, " H84":  0.081
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  LMTBK,  " C2B": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C4B": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C5B": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C6B": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " O2B": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O4'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  LMTBK,  " C3B": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " O1B": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O3B": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O5B": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O6B": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " C1'": 1.700,   2.000,   0.150
+RADIUS,  LMTBK,  " C2'": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C3'": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C4'": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C5'": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C6'": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " O1'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O3'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O5'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O6'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " O2'": 1.520,   1.600,   0.200
+RADIUS,  LMTBK,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C2 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C3 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C5 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C6 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C7 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C8 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C9 ": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C10": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C11": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " C12": 2.000,   2.000,   0.150
+RADIUS,  LMTBK,  " H37": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H38": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H39": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H40": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H41": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H42": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H43": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H44": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H45": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H46": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H47": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H48": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H49": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H50": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H51": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H52": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H53": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H54": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H55": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H56": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H57": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H58": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H59": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H60": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H61": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H62": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H63": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H64": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H65": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H66": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H67": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H70": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H71": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H72": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H73": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H74": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H75": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H76": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H77": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H78": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H79": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H80": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H81": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H82": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H83": 1.200,   1.000,   0.020
+RADIUS,  LMTBK,  " H84": 1.200,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

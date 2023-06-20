@@ -1,0 +1,88 @@
+>>>START of original comments, this file was converted from Ligand Expo FME ideal pdb # pdb2ftpl.py FME_ideal.pdb > LME_GR.ftpl
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Charges Provided by Atomic Charge Calculator - Full EMM, Ignore Waters = false, Precision = Double
+#    https://webchem.ncbr.muni.cz/Platform/ChargeCalculator
+# File Created by Gehan Ranepura on 12/14/2021
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, FME: FMEBK, FME01
+
+# Conformer definition
+CONFLIST, FME: FMEBK, FME01
+
+# ATOM name and bonds
+CONNECT, " N  ", FME01:  sp2, " CN "," CA "," H  "
+CONNECT, " CN ", FME01:  sp2, " N  "," O1 "," HCN"
+CONNECT, " O1 ", FME01:  sp3, " CN "
+CONNECT, " CA ", FME01:  sp3, " N  "," CB "," C  "," HA "
+CONNECT, " CB ", FME01:  sp3, " CA "," CG "," HB2"," HB3"
+CONNECT, " CG ", FME01:  sp3, " CB "," SD "," HG2"," HG3"
+CONNECT, " SD ", FME01:  sp3, " CG "," CE "
+CONNECT, " CE ", FME01:  sp3, " SD "," HE1"," HE2"," HE3"
+CONNECT, " C  ", FME01:  sp2, " CA "," O  "," OXT"
+CONNECT, " O  ", FME01:  sp3, " C  "
+CONNECT, " OXT", FME01:  sp2, " C  "," HXT"
+CONNECT, " H  ", FME01:    s, " N  "
+CONNECT, " HCN", FME01:    s, " CN "
+CONNECT, " HA ", FME01:    s, " CA "
+CONNECT, " HB2", FME01:    s, " CB "
+CONNECT, " HB3", FME01:    s, " CB "
+CONNECT, " HG2", FME01:    s, " CG "
+CONNECT, " HG3", FME01:    s, " CG "
+CONNECT, " HE1", FME01:    s, " CE "
+CONNECT, " HE2", FME01:    s, " CE "
+CONNECT, " HE3", FME01:    s, " CE "
+CONNECT, " HXT", FME01:    s, " OXT"
+
+# ATOM charges
+CHARGE, FME01, " N  ": -0.56492
+CHARGE, FME01, " CN ":  0.32115
+CHARGE, FME01, " O1 ": -0.5551
+CHARGE, FME01, " CA ": -0.04702
+CHARGE, FME01, " CB ": -0.30995
+CHARGE, FME01, " CG ": -0.41925
+CHARGE, FME01, " SD ":  0.27254
+CHARGE, FME01, " CE ": -0.66464
+CHARGE, FME01, " C  ":  0.60681
+CHARGE, FME01, " O  ": -0.61282
+CHARGE, FME01, " OXT": -0.77845
+CHARGE, FME01, " H  ":  0.31633
+CHARGE, FME01, " HCN":  0.16273
+CHARGE, FME01, " HA ":  0.24288
+CHARGE, FME01, " HB2":  0.22294
+CHARGE, FME01, " HB3":  0.22632
+CHARGE, FME01, " HG2":  0.2261
+CHARGE, FME01, " HG3":  0.22422
+CHARGE, FME01, " HE1":  0.23954
+CHARGE, FME01, " HE2":  0.23811 # 0.23911 - 0.001 To cancel out excess 0.001 charge
+CHARGE, FME01, " HE3":  0.23793 
+CHARGE, FME01, " HXT":  0.41357
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, FME01, " N  ":  1.500,  1.750,  0.160
+RADIUS, FME01, " CN ":  1.700,  2.000,  0.150
+RADIUS, FME01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, FME01, " CA ":  1.700,  2.000,  0.150
+RADIUS, FME01, " CB ":  1.700,  2.000,  0.150
+RADIUS, FME01, " CG ":  1.700,  2.000,  0.150
+RADIUS, FME01, " SD ":  1.850,  2.000,  0.200
+RADIUS, FME01, " CE ":  1.700,  2.000,  0.150
+RADIUS, FME01, " C  ":  1.700,  2.000,  0.150
+RADIUS, FME01, " O  ":  1.400,  1.600,  0.200
+RADIUS, FME01, " OXT":  1.400,  1.600,  0.200
+RADIUS, FME01, " H  ":  1.000,  1.000,  0.020
+RADIUS, FME01, " HCN":  1.000,  1.000,  0.020
+RADIUS, FME01, " HA ":  1.000,  1.000,  0.020
+RADIUS, FME01, " HB2":  1.000,  1.000,  0.020
+RADIUS, FME01, " HB3":  1.000,  1.000,  0.020
+RADIUS, FME01, " HG2":  1.000,  1.000,  0.020
+RADIUS, FME01, " HG3":  1.000,  1.000,  0.020
+RADIUS, FME01, " HE1":  1.000,  1.000,  0.020
+RADIUS, FME01, " HE2":  1.000,  1.000,  0.020
+RADIUS, FME01, " HE3":  1.000,  1.000,  0.020
+RADIUS, FME01, " HXT":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, FME01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -7.258, rxn08= 0 # Calibrated From LigandExpo Ideal FME

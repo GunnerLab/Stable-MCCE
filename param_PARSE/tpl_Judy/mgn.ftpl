@@ -1,0 +1,22 @@
+CONFLIST, MGN: MGNBK, MGN01, MGN-1
+
+# Atom definition
+
+CONNECT, "MG  ", MGN01: ion
+CONNECT, "MG  ", MGN-1: ion
+
+# Atom charges
+CHARGE, MGN01, "MG  ": 0.00
+CHARGE, MGN-1, "MG  ":-1.00 
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  MGN01,  "MG  ": 1.450,   2.000,   0.173
+RADIUS,  MGN-1,  "MG  ": 1.450,   2.000,   0.173
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, MGN01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0.00, rxn04= 0.00, rxn08=0.00
+CONFORMER, MGN-1: Em0=   0.0, pKa0=  0.00, ne= 1, nH= 0, rxn02= 0.00, rxn04= 0.00, rxn08=0.00
+
+
+
+

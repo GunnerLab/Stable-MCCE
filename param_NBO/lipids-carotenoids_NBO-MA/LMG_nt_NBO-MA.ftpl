@@ -1,0 +1,141 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Gehan Ranepura
+# File Created by Gehan Ranepura on 01/23/2023
+
+# Guassian Calculation was done with the LMG tail, but atoms of the tail were set to 0 in the LMG head group topology file (LMT_nt_NBO.ftpl)
+# Additonal Hs were added to C10 (H101) and C28 (H281) after running DFT
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, LMG: LMGBK, LMG01
+
+# ATOM name and bonds
+CONNECT, " C1 ", LMG01:  sp3, " O1 "," C2 "," O6 "," HC1"
+CONNECT, " O1 ", LMG01:  sp3, " C1 "," C7 "
+CONNECT, " C2 ", LMG01:  sp3, " C1 "," O2 "," C3 "," HC2"
+CONNECT, " O2 ", LMG01:  sp3, " C2 "," HO2"
+CONNECT, " C3 ", LMG01:  sp3, " C2 "," O3 "," C4 "," HC3"
+CONNECT, " O3 ", LMG01:  sp3, " C3 "," HO3"
+CONNECT, " C4 ", LMG01:  sp3, " C3 "," O4 "," C5 "," HC4"
+CONNECT, " O4 ", LMG01:  sp3, " C4 "," HO4"
+CONNECT, " C5 ", LMG01:  sp3, " C4 "," C6 "," O6 "," HC5"
+CONNECT, " O5 ", LMG01:  sp3, " C6 "," HO5"
+CONNECT, " C6 ", LMG01:  sp3, " C5 "," O5 ","HC61","HC62"
+CONNECT, " O6 ", LMG01:  sp3, " C1 "," C5 "
+CONNECT, " C7 ", LMG01:  sp3, " O1 "," C8 ","HC71","HC72"
+CONNECT, " C8 ", LMG01:  sp3, " C7 "," C9 "," O7 "," HC8"
+CONNECT, " C9 ", LMG01:  sp3, " C8 "," O8 ","HC91","HC92"
+CONNECT, " O7 ", LMG01:  sp2, " C8 "," C10"
+CONNECT, " C10", LMG01:  sp2, " O7 "," O9 "," C11", "H101"  # H101 added
+CONNECT, " O9 ", LMG01:  sp3, " C10"
+CONNECT, " O8 ", LMG01:  sp2, " C9 "," C28"
+CONNECT, " C28", LMG01:  sp2, " O8 "," O10"," C29", "H281"  # H281 added
+CONNECT, " O10", LMG01:  sp3, " C28"
+CONNECT, " HC1", LMG01:    s, " C1 "
+CONNECT, " HC2", LMG01:    s, " C2 "
+CONNECT, " HO2", LMG01:    s, " O2 "
+CONNECT, " HC3", LMG01:    s, " C3 "
+CONNECT, " HO3", LMG01:    s, " O3 "
+CONNECT, " HC4", LMG01:    s, " C4 "
+CONNECT, " HO4", LMG01:    s, " O4 "
+CONNECT, " HC5", LMG01:    s, " C5 "
+CONNECT, " HO5", LMG01:    s, " O5 "
+CONNECT, "HC61", LMG01:    s, " C6 "
+CONNECT, "HC62", LMG01:    s, " C6 "
+CONNECT, "HC71", LMG01:    s, " C7 "
+CONNECT, "HC72", LMG01:    s, " C7 "
+CONNECT, " HC8", LMG01:    s, " C8 "
+CONNECT, "HC91", LMG01:    s, " C9 "
+CONNECT, "HC92", LMG01:    s, " C9 "
+CONNECT, "H101", LMG01:    s, " C10"  # Added to C10
+CONNECT, "H281", LMG01:    s, " C28"  # Added to C28
+
+# ATOM charges
+CHARGE, LMG01, " C1 ":   0.36849
+CHARGE, LMG01, " O1 ":  -0.57934
+CHARGE, LMG01, " C2 ":   0.01174
+CHARGE, LMG01, " O2 ":  -0.79338
+CHARGE, LMG01, " C3 ":   0.03859
+CHARGE, LMG01, " O3 ":  -0.79265
+CHARGE, LMG01, " C4 ":   0.03761
+CHARGE, LMG01, " O4 ":  -0.78219
+CHARGE, LMG01, " C5 ":   0.03658
+CHARGE, LMG01, " O5 ":  -0.77916
+CHARGE, LMG01, " C6 ":  -0.12797
+CHARGE, LMG01, " O6 ":  -0.58729
+CHARGE, LMG01, " C7 ":  -0.14697
+CHARGE, LMG01, " C8 ":   0.02046
+CHARGE, LMG01, " C9 ":  -0.13529
+CHARGE, LMG01, " O7 ":  -0.55606
+CHARGE, LMG01, " C10":   0.82289
+CHARGE, LMG01, " O9 ":  -0.62736
+CHARGE, LMG01, " O8 ":  -0.54502
+CHARGE, LMG01, " C28":   0.82223
+CHARGE, LMG01, " O10":  -0.62732
+CHARGE, LMG01, " HC1":   0.19345
+CHARGE, LMG01, " HC2":   0.24723
+CHARGE, LMG01, " HO2":   0.52172
+CHARGE, LMG01, " HC3":   0.22849
+CHARGE, LMG01, " HO3":   0.52151
+CHARGE, LMG01, " HC4":   0.23119
+CHARGE, LMG01, " HO4":   0.51793
+CHARGE, LMG01, " HC5":   0.23365
+CHARGE, LMG01, " HO5":   0.5014
+CHARGE, LMG01, "HC61":   0.21005
+CHARGE, LMG01, "HC62":   0.2351
+CHARGE, LMG01, "HC71":   0.25152
+CHARGE, LMG01, "HC72":   0.22784
+CHARGE, LMG01, " HC8":   0.27502
+CHARGE, LMG01, "HC91":   0.24791   # 0.24991 - 0.002 to compensate for excess charge 0.002
+CHARGE, LMG01, "HC92":   0.24657
+CHARGE, LMG01, "H101":   0.014415
+CHARGE, LMG01, "H281":   0.014415
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, LMG01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O3 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O4 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O5 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O6 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O7 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C10":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O9 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " O8 ":  1.400,  1.600,  0.200
+RADIUS, LMG01, " C28":  1.700,  2.000,  0.150
+RADIUS, LMG01, " O10":  1.400,  1.600,  0.200
+RADIUS, LMG01, " HC1":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HC2":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HO2":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HC3":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HO3":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HC4":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HO4":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HC5":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HO5":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC61":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC62":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC71":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC72":  1.000,  1.000,  0.020
+RADIUS, LMG01, " HC8":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC91":  1.000,  1.000,  0.020
+RADIUS, LMG01, "HC92":  1.000,  1.000,  0.020
+RADIUS, LMG01, "H101":  1.000,  1.000,  0.020
+RADIUS, LMG01, "H281":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LMG01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -28.254, rxn08= 0 # Muhamed NBO  (Tested with LigandExpo Ideal LHG with no Hs)
+
+

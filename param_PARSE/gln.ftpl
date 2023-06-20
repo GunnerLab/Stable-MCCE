@@ -1,0 +1,84 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#123456789012345678901234567890
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+#-------|---|----|-|---------|---------|---------|---------|---------|---------|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, GLN: GLNBK, GLN01
+
+# Atom definition
+CONNECT, " N  ", GLNBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", GLNBK: s, " N  "
+CONNECT, " CA ", GLNBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", GLNBK: s, " CA "
+CONNECT, " C  ", GLNBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", GLNBK: sp2, " C  "
+CONNECT, " CB ", GLN01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLN01: s, " CB "
+CONNECT, " HB3", GLN01: s, " CB "
+CONNECT, " CG ", GLN01: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLN01: s, " CG "
+CONNECT, " HG3", GLN01: s, " CG "
+CONNECT, " CD ", GLN01: sp2, " CG ", " OE1", " NE2"
+CONNECT, " OE1", GLN01: sp2, " CD "
+CONNECT, " NE2", GLN01: sp2, " CD ", "HE21", "HE22"
+CONNECT, "HE21", GLN01: s, " NE2"
+CONNECT, "HE22", GLN01: s, " NE2"
+
+# Atom charges
+CHARGE, GLNBK, " N  ": -0.350
+CHARGE, GLNBK, " H  ":  0.250
+CHARGE, GLNBK, " CA ":  0.100
+CHARGE, GLNBK, " HA ":  0.000
+CHARGE, GLNBK, " C  ":  0.550
+CHARGE, GLNBK, " O  ": -0.550
+CHARGE, GLN01, " CB ":  0.000
+CHARGE, GLN01, " HB2":  0.000
+CHARGE, GLN01, " HB3":  0.000
+CHARGE, GLN01, " CG ":  0.000
+CHARGE, GLN01, " HG2":  0.000
+CHARGE, GLN01, " HG3":  0.000
+CHARGE, GLN01, " CD ":  0.550
+CHARGE, GLN01, " OE1": -0.550
+CHARGE, GLN01, " NE2": -0.780
+CHARGE, GLN01, "HE21":  0.390
+CHARGE, GLN01, "HE22":  0.390
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  GLNBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  GLNBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  GLNBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  GLNBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  GLNBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  GLNBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  GLN01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  GLN01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLN01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  GLN01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  GLN01,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLN01,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  GLN01,  " CD ": 1.700,   2.000,   0.150
+RADIUS,  GLN01,  " OE1": 1.400,   1.600,   0.200
+RADIUS,  GLN01,  " NE2": 1.500,   1.750,   0.160
+RADIUS,  GLN01,  "HE21": 1.000,   1.000,   0.020
+RADIUS,  GLN01,  "HE22": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, GLN01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -7.400, rxn04= -3.500, rxn08= -1.65
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, GLN: " CA " - " CB ", " CB " - " CG ", " CG " - " CD "

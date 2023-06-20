@@ -1,0 +1,44 @@
+#Group NA 
+#Group NB 
+#Group NC 
+#Group ND 
+#Group NA 
+#Group NB 
+#Group NC 
+#Group ND 
+#23456789A123456789B123456789CEN
+
+CONFLIST, BH1: BH1BK, BH101, BH1-1
+<<<END of original comments
+CONNECT, " NA ", BH101: sp2
+CONNECT, " NB ", BH101: sp2
+CONNECT, " NC ", BH101: sp2
+CONNECT, " ND ", BH101: sp2
+CONNECT, " NA ", BH1-1: sp2
+CONNECT, " NB ", BH1-1: sp2
+CONNECT, " NC ", BH1-1: sp2
+CONNECT, " ND ", BH1-1: sp2
+CHARGE, BH101, " NA ":  0.00 
+CHARGE, BH101, " NB ":  0.00 
+CHARGE, BH101, " NC ":  0.00 
+CHARGE, BH101, " ND ":  0.00 
+CHARGE, BH1-1, " NA ": -0.25 
+CHARGE, BH1-1, " NB ": -0.25 
+CHARGE, BH1-1, " NC ": -0.25 
+CHARGE, BH1-1, " ND ": -0.25 
+RADIUS,  BH101,  " NA ": 1.500,   1.750,   0.160
+RADIUS,  BH101,  " NB ": 1.500,   1.750,   0.160
+RADIUS,  BH101,  " NC ": 1.500,   1.750,   0.160
+RADIUS,  BH101,  " ND ": 1.500,   1.750,   0.160
+RADIUS,  BH1-1,  " NA ": 1.500,   1.750,   0.160
+RADIUS,  BH1-1,  " NB ": 1.500,   1.750,   0.160
+RADIUS,  BH1-1,  " NC ": 1.500,   1.750,   0.160
+RADIUS,  BH1-1,  " ND ": 1.500,   1.750,   0.160
+
+
+
+
+
+
+CONFORMER, BH101: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0.00, rxn04= 0.00, rxn08=0.00
+CONFORMER, BH1-1: Em0=   0.0, pKa0=  0.00, ne= 1, nH= 0, rxn02= -31.063, rxn04=-15.11, rxn08= -7.142

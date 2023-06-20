@@ -1,0 +1,148 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Gehan Ranepura
+# File Created by Gehan Ranepura on 11/17/2022
+
+# Guassian Calculation was done with Ligand Expo Ideal DGD
+# The head group DGD was split into two subgroups DGA and DGB
+# This ftpl contains only the head group DGA
+# Additonal Hs were added to C5D(HD52) and C2A (HA23) & C2B (HB23) after running DFT
+# Excess charges from the head group were distributed to Hs
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, DGA: DGABK, DGA01
+
+# ATOM name and bonds
+CONNECT, " C1A", DGA01:  sp2, " C2A"," O1A"," O1G"
+CONNECT, " C2A", DGA01:  sp3, " C1A","HA23","HA21","HA22"  # " C3A" --> "HA23"
+CONNECT, " O1A", DGA01:  sp3, " C1A"
+CONNECT, " C1B", DGA01:  sp2, " C2B"," O1B"," O2G"
+CONNECT, " C2B", DGA01:  sp3, " C1B","HB23","HB21","HB22"  # " C3B" --> "HB23"
+CONNECT, " O1B", DGA01:  sp3, " C1B"
+CONNECT, " O1G", DGA01:  sp2, " C1A"," C1G"
+CONNECT, " C1G", DGA01:  sp3, " O1G"," C2G","HG11","HG12"
+CONNECT, " C2G", DGA01:  sp3, " C1G"," O2G"," C3G"," HG2"
+CONNECT, " O2G", DGA01:  sp2, " C1B"," C2G"
+CONNECT, " C3G", DGA01:  sp3, " C2G"," O3G","HG31","HG32"
+CONNECT, " O3G", DGA01:  sp3, " C3G"," C1D"
+CONNECT, " C1D", DGA01:  sp3, " O3G"," C2D"," O6D"," HD1"
+CONNECT, " C2D", DGA01:  sp3, " C1D"," O2D"," C3D"," HD2"
+CONNECT, " O2D", DGA01:  sp3, " C2D","HO2D"
+CONNECT, " C3D", DGA01:  sp3, " C2D"," O3D"," C4D"," HD3"
+CONNECT, " O3D", DGA01:  sp3, " C3D","HO3D"
+CONNECT, " C4D", DGA01:  sp3, " C3D"," O4D"," C5D"," HD4"
+CONNECT, " O4D", DGA01:  sp3, " C4D","HO4D"
+CONNECT, " C5D", DGA01:  sp3, " C4D","HD52"," O6D"," HD5" # " C6D" --> "HD52"
+CONNECT, " O6D", DGA01:  sp3, " C5D"," C1D"
+CONNECT, "HA21", DGA01:    s, " C2A"
+CONNECT, "HA22", DGA01:    s, " C2A"
+CONNECT, "HB21", DGA01:    s, " C2B"
+CONNECT, "HB22", DGA01:    s, " C2B"
+CONNECT, "HG11", DGA01:    s, " C1G"
+CONNECT, "HG12", DGA01:    s, " C1G"
+CONNECT, " HG2", DGA01:    s, " C2G"
+CONNECT, "HG31", DGA01:    s, " C3G"
+CONNECT, "HG32", DGA01:    s, " C3G"
+CONNECT, " HD1", DGA01:    s, " C1D"
+CONNECT, " HD2", DGA01:    s, " C2D"
+CONNECT, "HO2D", DGA01:    s, " O2D"
+CONNECT, " HD3", DGA01:    s, " C3D"
+CONNECT, "HO3D", DGA01:    s, " O3D"
+CONNECT, " HD4", DGA01:    s, " C4D"
+CONNECT, "HO4D", DGA01:    s, " O4D"
+CONNECT, " HD5", DGA01:    s, " C5D"
+CONNECT, "HD52", DGA01:    s, " C5D"
+CONNECT, "HA23", DGA01:    s, " C2A"   # Added to finish head group
+CONNECT, "HB23", DGA01:    s, " C2B"   # Added to finish head group
+
+# ATOM charges
+CHARGE, DGA01, " C1A": -0.77396 
+CHARGE, DGA01, " C2A": -0.12448 
+CHARGE, DGA01, " O1A": -0.62854 
+CHARGE, DGA01, " C1B":  0.82303 
+CHARGE, DGA01, " C2B": -0.55232 
+CHARGE, DGA01, " O1B": -0.62734 
+CHARGE, DGA01, " O1G": -0.54459 
+CHARGE, DGA01, " C1G": -0.13481 
+CHARGE, DGA01, " C2G":  0.02043 
+CHARGE, DGA01, " O2G": -0.55564 
+CHARGE, DGA01, " C3G": -0.1441  
+CHARGE, DGA01, " O3G": -0.57874 
+CHARGE, DGA01, " C1D":  0.36897 
+CHARGE, DGA01, " C2D":  0.01130 
+CHARGE, DGA01, " O2D": -0.79253 
+CHARGE, DGA01, " C3D":  0.03884 
+CHARGE, DGA01, " O3D": -0.79177 
+CHARGE, DGA01, " C4D":  0.03779 
+CHARGE, DGA01, " O4D": -0.77454 
+CHARGE, DGA01, " C5D":  0.04290 
+CHARGE, DGA01, " O6D": -0.59144 
+CHARGE, DGA01, "HA21":  0.28800 
+CHARGE, DGA01, "HA22":  0.29005 
+CHARGE, DGA01, "HB21":  0.29139 
+CHARGE, DGA01, "HB22":  0.29173 
+CHARGE, DGA01, "HG11":  0.27289 
+CHARGE, DGA01, "HG12":  0.27383 
+CHARGE, DGA01, " HG2":  0.30084 
+CHARGE, DGA01, "HG31":  0.26930 
+CHARGE, DGA01, "HG32":  0.25518 
+CHARGE, DGA01, " HD1":  0.22032 
+CHARGE, DGA01, " HD2":  0.27464 
+CHARGE, DGA01, "HO2D":  0.54704 
+CHARGE, DGA01, " HD3":  0.25396 
+CHARGE, DGA01, "HO3D":  0.54703 
+CHARGE, DGA01, " HD4":  0.25756 
+CHARGE, DGA01, "HO4D":  0.54287 
+CHARGE, DGA01, " HD5":  0.25715 
+CHARGE, DGA01, "HD52":  0.25815     # 0.001 + 0.25715 to compensate for excess charge
+CHARGE, DGA01, "HA23":  0.28903     # Added to finish head group
+CHARGE, DGA01, "HB23":  0.29156     # Added to finish head group
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, DGA01, " C1A":  1.700,  2.000,  0.150
+RADIUS, DGA01, " C2A":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O1A":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C1B":  1.700,  2.000,  0.150
+RADIUS, DGA01, " C2B":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O1B":  1.400,  1.600,  0.200
+RADIUS, DGA01, " O1G":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C1G":  1.700,  2.000,  0.150
+RADIUS, DGA01, " C2G":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O2G":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C3G":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O3G":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C1D":  1.700,  2.000,  0.150
+RADIUS, DGA01, " C2D":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O2D":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C3D":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O3D":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C4D":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O4D":  1.400,  1.600,  0.200
+RADIUS, DGA01, " C5D":  1.700,  2.000,  0.150
+RADIUS, DGA01, " O6D":  1.400,  1.600,  0.200
+RADIUS, DGA01, "HA21":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HA22":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HB21":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HB22":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HG11":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HG12":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HG2":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HG31":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HG32":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HD1":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HD2":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HO2D":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HD3":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HO3D":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HD4":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HO4D":  1.000,  1.000,  0.020
+RADIUS, DGA01, " HD5":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HD52":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HA23":  1.000,  1.000,  0.020
+RADIUS, DGA01, "HB23":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, DGA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -56.212, rxn08= 0 # (Tested with LigandExpo Ideal DGA with no Hs)

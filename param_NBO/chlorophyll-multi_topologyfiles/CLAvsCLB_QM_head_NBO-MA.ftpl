@@ -32,8 +32,8 @@ CONNECT, " CMA", CHL0A: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
 CONNECT, " CAA", CHL0A: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
 CONNECT, " CBA", CHL0A: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
 CONNECT, " CGA", CHL0A: sp2, " O2A", " O1A", " CBA"
-CONNECT, " O1A", CHL0A: sp, " CGA"
-CONNECT, " O2A", CHL0A: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, " O1A", CHL0A: sp2, " CGA"
+CONNECT, " O2A", CHL0A: sp3, " ?  ", " CGA"  # ? = C1
 CONNECT, "HMA1", CHL0A: s, " CMA" ##
 CONNECT, "HMA2", CHL0A: s, " CMA" ##
 CONNECT, "HMA3", CHL0A: s, " CMA" ##
@@ -80,11 +80,11 @@ CONNECT, " C3D", CHL0A: sp2, " C2D", " CAD", " C4D"
 CONNECT, " C4D", CHL0A: sp2, " C3D", " N1D", " CHA"
 CONNECT, " CMD", CHL0A: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
 CONNECT, " CAD", CHL0A: sp2, " OBD", " CBD", " C3D"
-CONNECT, " OBD", CHL0A: sp, " CAD"
+CONNECT, " OBD", CHL0A: sp2, " CAD"
 CONNECT, " CBD", CHL0A: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
 CONNECT, " CGD", CHL0A: sp2, " O1D", " O2D", " CBD"
-CONNECT, " O1D", CHL0A: sp, " CGD"
-CONNECT, " O2D", CHL0A: sp2, " CED", " CGD"
+CONNECT, " O1D", CHL0A: sp2, " CGD"
+CONNECT, " O2D", CHL0A: sp3, " CED", " CGD"
 CONNECT, " CED", CHL0A: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
 CONNECT, "HMD1", CHL0A: s, " CMD" ##
 CONNECT, "HMD2", CHL0A: s, " CMD" ##
@@ -111,8 +111,8 @@ CONNECT, " CMA", CHL0B: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
 CONNECT, " CAA", CHL0B: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
 CONNECT, " CBA", CHL0B: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
 CONNECT, " CGA", CHL0B: sp2, " O2A", " O1A", " CBA"
-CONNECT, " O1A", CHL0B: sp, " CGA"
-CONNECT, " O2A", CHL0B: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, " O1A", CHL0B: sp2, " CGA"
+CONNECT, " O2A", CHL0B: sp3, " ?  ", " CGA"  # ? = C1
 CONNECT, "HMA1", CHL0B: s, " CMA" ##
 CONNECT, "HMA2", CHL0B: s, " CMA" ##
 CONNECT, "HMA3", CHL0B: s, " CMA" ##
@@ -142,7 +142,7 @@ CONNECT, " C2C", CHL0B: sp2, " CMC", " C3C", " C1C"
 CONNECT, " C3C", CHL0B: sp2, " CAC", " C4C", " C2C"
 CONNECT, " C4C", CHL0B: sp2, " C3C", " CHD", " N1C"
 CONNECT, " CMC", CHL0B: sp2, " C2C", "HMC1", " OMC"         ##    s-hybrid
-CONNECT, " OMC", CHL0B: sp,  " CMC"                         ##
+CONNECT, " OMC", CHL0B: sp2, " CMC"                         ##
 CONNECT, " CAC", CHL0B: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
 CONNECT, " CBC", CHL0B: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
 CONNECT, "HMC1", CHL0B: s, " CMC" ##
@@ -158,11 +158,11 @@ CONNECT, " C3D", CHL0B: sp2, " C2D", " CAD", " C4D"
 CONNECT, " C4D", CHL0B: sp2, " C3D", " N1D", " CHA"
 CONNECT, " CMD", CHL0B: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
 CONNECT, " CAD", CHL0B: sp2, " OBD", " CBD", " C3D"
-CONNECT, " OBD", CHL0B: sp, " CAD"
+CONNECT, " OBD", CHL0B: sp2, " CAD"
 CONNECT, " CBD", CHL0B: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
 CONNECT, " CGD", CHL0B: sp2, " O1D", " O2D", " CBD"
-CONNECT, " O1D", CHL0B: sp, " CGD"
-CONNECT, " O2D", CHL0B: sp2, " CED", " CGD"
+CONNECT, " O1D", CHL0B: sp2, " CGD"
+CONNECT, " O2D", CHL0B: sp3, " CED", " CGD"
 CONNECT, " CED", CHL0B: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
 CONNECT, "HMD1", CHL0B: s, " CMD" ##
 CONNECT, "HMD2", CHL0B: s, " CMD" ##
@@ -428,3 +428,8 @@ RADIUS,  CHL0B,  " O2D": 1.520,   1.600,   0.200
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, CHL0A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -14.987, rxn08= 0 # Tested with LigandExpo Ideal PDB CLA with no Hs
 CONFORMER, CHL0B: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -12.284, rxn08= 0 # Tested with LigandExpo Ideal PDB CHL with no Hs
+#CONFORMER, CHL0A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0 # Tested with LigandExpo Ideal PDB CLA with no Hs
+#CONFORMER, CHL0B: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0 # Tested with LigandExpo Ideal PDB CHL with no Hs
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, CHL0A: " C2C" - " CMC"

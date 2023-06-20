@@ -32,8 +32,8 @@ CONNECT, " CMA", CLA01: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
 CONNECT, " CAA", CLA01: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
 CONNECT, " CBA", CLA01: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
 CONNECT, " CGA", CLA01: sp2, " O2A", " O1A", " CBA"
-CONNECT, " O1A", CLA01: sp, " CGA"
-CONNECT, " O2A", CLA01: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, " O1A", CLA01: sp2, " CGA"
+CONNECT, " O2A", CLA01: sp3, " ?  ", " CGA"  # ? = C1
 CONNECT, "HMA1", CLA01: s, " CMA" ##
 CONNECT, "HMA2", CLA01: s, " CMA" ##
 CONNECT, "HMA3", CLA01: s, " CMA" ##
@@ -80,11 +80,11 @@ CONNECT, " C3D", CLA01: sp2, " C2D", " CAD", " C4D"
 CONNECT, " C4D", CLA01: sp2, " C3D", " N1D", " CHA"
 CONNECT, " CMD", CLA01: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
 CONNECT, " CAD", CLA01: sp2, " OBD", " CBD", " C3D"
-CONNECT, " OBD", CLA01: sp, " CAD"
+CONNECT, " OBD", CLA01: sp2, " CAD"
 CONNECT, " CBD", CLA01: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
 CONNECT, " CGD", CLA01: sp2, " O1D", " O2D", " CBD"
-CONNECT, " O1D", CLA01: sp, " CGD"
-CONNECT, " O2D", CLA01: sp2, " CED", " CGD"
+CONNECT, " O1D", CLA01: sp2, " CGD"
+CONNECT, " O2D", CLA01: sp3, " CED", " CGD"
 CONNECT, " CED", CLA01: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
 CONNECT, "HMD1", CLA01: s, " CMD" ##
 CONNECT, "HMD2", CLA01: s, " CMD" ##

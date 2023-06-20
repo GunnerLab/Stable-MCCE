@@ -32,8 +32,8 @@ CONNECT, " CMA", CLB01: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
 CONNECT, " CAA", CLB01: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
 CONNECT, " CBA", CLB01: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
 CONNECT, " CGA", CLB01: sp2, " O2A", " O1A", " CBA"
-CONNECT, " O1A", CLB01: sp, " CGA"
-CONNECT, " O2A", CLB01: sp2, " ?  ", " CGA"  # ? = C1
+CONNECT, " O1A", CLB01: sp2, " CGA"
+CONNECT, " O2A", CLB01: sp3, " ?  ", " CGA"  # ? = C1
 CONNECT, "HMA1", CLB01: s, " CMA" ##
 CONNECT, "HMA2", CLB01: s, " CMA" ##
 CONNECT, "HMA3", CLB01: s, " CMA" ##
@@ -63,7 +63,7 @@ CONNECT, " C2C", CLB01: sp2, " CMC", " C3C", " C1C"
 CONNECT, " C3C", CLB01: sp2, " CAC", " C4C", " C2C"
 CONNECT, " C4C", CLB01: sp2, " C3C", " CHD", " N1C"
 CONNECT, " CMC", CLB01: sp2, " C2C", "HMC1", " OMC"         ##    s-hybrid
-CONNECT, " OMC", CLB01: sp,  " CMC"                         ##
+CONNECT, " OMC", CLB01: sp2, " CMC"                         ##
 CONNECT, " CAC", CLB01: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
 CONNECT, " CBC", CLB01: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
 CONNECT, "HMC1", CLB01: s, " CMC" ##
@@ -79,11 +79,11 @@ CONNECT, " C3D", CLB01: sp2, " C2D", " CAD", " C4D"
 CONNECT, " C4D", CLB01: sp2, " C3D", " N1D", " CHA"
 CONNECT, " CMD", CLB01: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
 CONNECT, " CAD", CLB01: sp2, " OBD", " CBD", " C3D"
-CONNECT, " OBD", CLB01: sp, " CAD"
+CONNECT, " OBD", CLB01: sp2, " CAD"
 CONNECT, " CBD", CLB01: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
 CONNECT, " CGD", CLB01: sp2, " O1D", " O2D", " CBD"
-CONNECT, " O1D", CLB01: sp, " CGD"
-CONNECT, " O2D", CLB01: sp2, " CED", " CGD"
+CONNECT, " O1D", CLB01: sp2, " CGD"
+CONNECT, " O2D", CLB01: sp3, " CED", " CGD"
 CONNECT, " CED", CLB01: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
 CONNECT, "HMD1", CLB01: s, " CMD" ##
 CONNECT, "HMD2", CLB01: s, " CMD" ##
