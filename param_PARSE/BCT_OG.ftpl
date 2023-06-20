@@ -1,0 +1,38 @@
+>>>START of original comments, this file was converted from old format
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, BCT: BCTBK, BCT01, BCT-1
+
+# Atom definition
+CONNECT, " CT ", BCTBK: ion, " O1 ", " O2 ", " O3 "
+CONNECT, " O1 ", BCTBK: ion, " CT "
+CONNECT, " O2 ", BCT01: ion, " CT "
+CONNECT, " O3 ", BCT01: ion, " CT "
+CONNECT, " O2 ", BCT-1: ion, " CT "
+CONNECT, " O3 ", BCT-1: ion, " CT "
+
+# Atom charges
+CHARGE, BCTBK, " CT ":  0.000
+CHARGE, BCTBK, " O1 ":  0.000
+CHARGE, BCT01, " O2 ":  0.000
+CHARGE, BCT01, " O3 ":  0.000
+CHARGE, BCT-1, " O2 ": -0.500
+CHARGE, BCT-1, " O3 ": -0.500
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  BCTBK,  " CT ": 0.000,   2.000,   0.150
+RADIUS,  BCTBK,  " O1 ": 0.000,   1.600,   0.200
+RADIUS,  BCT01,  " O2 ": 0.000,   1.600,   0.200
+RADIUS,  BCT01,  " O3 ": 0.000,   1.600,   0.200
+RADIUS,  BCT-1,  " O2 ": 0.000,   1.600,   0.200
+RADIUS,  BCT-1,  " O3 ": 0.000,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, BCT01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=  0.000, rxn08=  0.000 
+CONFORMER, BCT-1: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0, rxn04=  0.000, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

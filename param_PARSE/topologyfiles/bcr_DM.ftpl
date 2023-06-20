@@ -1,0 +1,138 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn
+#2.Structure Connectivity:
+#3.Atom Parameters: Partial Charges and Radii
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, BCR: BCRBK
+
+# Atom definition
+CONNECT, " C7 ", BCRBK: ion, 
+CONNECT, " C8 ", BCRBK: ion, 
+CONNECT, " C9 ", BCRBK: ion, 
+CONNECT, " C10", BCRBK: ion, 
+CONNECT, " C11", BCRBK: ion, 
+CONNECT, " C12", BCRBK: ion, 
+CONNECT, " C13", BCRBK: ion, 
+CONNECT, " C14", BCRBK: ion, 
+CONNECT, " C15", BCRBK: ion, 
+CONNECT, " C16", BCRBK: ion, 
+CONNECT, " C17", BCRBK: ion, 
+CONNECT, " C18", BCRBK: ion, 
+CONNECT, " C19", BCRBK: ion, 
+CONNECT, " C20", BCRBK: ion, 
+CONNECT, " C21", BCRBK: ion, 
+CONNECT, " C22", BCRBK: ion, 
+CONNECT, " C23", BCRBK: ion, 
+CONNECT, " C24", BCRBK: ion, 
+CONNECT, " C34", BCRBK: ion, 
+CONNECT, " C35", BCRBK: ion, 
+CONNECT, " C36", BCRBK: ion, 
+CONNECT, " C37", BCRBK: ion, 
+CONNECT, " C25", BCRBK: ion, 
+CONNECT, " C26", BCRBK: ion, 
+CONNECT, " C38", BCRBK: ion, 
+CONNECT, " C27", BCRBK: ion, 
+CONNECT, " C28", BCRBK: ion, 
+CONNECT, " C29", BCRBK: ion, 
+CONNECT, " C30", BCRBK: ion, 
+CONNECT, " C40", BCRBK: ion, 
+CONNECT, " C39", BCRBK: ion, 
+CONNECT, " C6 ", BCRBK: ion, 
+CONNECT, " C5 ", BCRBK: ion, 
+CONNECT, " C4 ", BCRBK: ion, 
+CONNECT, " C3 ", BCRBK: ion, 
+CONNECT, " C2 ", BCRBK: ion, 
+CONNECT, " C1 ", BCRBK: ion, 
+CONNECT, " C31", BCRBK: ion, 
+CONNECT, " C32", BCRBK: ion, 
+CONNECT, " C33", BCRBK: ion, 
+
+# Atom charges
+CHARGE, BCRBK, " C7 ":  0.067
+CHARGE, BCRBK, " C8 ": -0.057
+CHARGE, BCRBK, " C9 ":  0.098
+CHARGE, BCRBK, " C10": -0.150
+CHARGE, BCRBK, " C11":  0.114
+CHARGE, BCRBK, " C12": -0.112
+CHARGE, BCRBK, " C13":  0.103
+CHARGE, BCRBK, " C14": -0.104
+CHARGE, BCRBK, " C15":  0.032
+CHARGE, BCRBK, " C16":  0.032
+CHARGE, BCRBK, " C17": -0.104
+CHARGE, BCRBK, " C18":  0.103
+CHARGE, BCRBK, " C19": -0.112
+CHARGE, BCRBK, " C20":  0.114
+CHARGE, BCRBK, " C21": -0.150
+CHARGE, BCRBK, " C22":  0.098
+CHARGE, BCRBK, " C23": -0.057
+CHARGE, BCRBK, " C24":  0.067
+CHARGE, BCRBK, " C34":  0.023
+CHARGE, BCRBK, " C35":  0.034
+CHARGE, BCRBK, " C36":  0.034
+CHARGE, BCRBK, " C37":  0.023
+CHARGE, BCRBK, " C25": -0.239
+CHARGE, BCRBK, " C26":  0.129
+CHARGE, BCRBK, " C38": -0.032
+CHARGE, BCRBK, " C27":  0.013
+CHARGE, BCRBK, " C28": -0.009
+CHARGE, BCRBK, " C29":  0.003
+CHARGE, BCRBK, " C30":  0.159
+CHARGE, BCRBK, " C40": -0.039
+CHARGE, BCRBK, " C39": -0.033
+CHARGE, BCRBK, " C6 ": -0.239
+CHARGE, BCRBK, " C5 ":  0.129
+CHARGE, BCRBK, " C4 ":  0.013
+CHARGE, BCRBK, " C3 ": -0.009
+CHARGE, BCRBK, " C2 ":  0.003
+CHARGE, BCRBK, " C1 ":  0.159
+CHARGE, BCRBK, " C31": -0.033
+CHARGE, BCRBK, " C32": -0.039
+CHARGE, BCRBK, " C33": -0.032
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  BCRBK,  " C7 ": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C8 ": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C9 ": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C10": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C11": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C12": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C13": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C14": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C15": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C16": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C17": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C18": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C19": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C20": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C21": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C22": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C23": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C24": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C34": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C35": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C36": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C37": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C25": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C26": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C38": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C27": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C28": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C29": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C30": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C40": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C39": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C6 ": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C5 ": 1.700,   2.000,   0.150
+RADIUS,  BCRBK,  " C4 ": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C3 ": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C2 ": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C1 ": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C31": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C32": 2.000,   2.000,   0.150
+RADIUS,  BCRBK,  " C33": 2.000,   2.000,   0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

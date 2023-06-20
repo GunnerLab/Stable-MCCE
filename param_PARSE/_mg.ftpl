@@ -1,0 +1,28 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+#23456789012345678901234567890123
+#-------|-----|----|--------------
+#ParaNam|Res |Atom|Param/toggle
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, _MG: _MGBK, _MG+2, _MGDM
+
+# Atom definition
+CONNECT, "MG  ", _MG+2: ion, 
+
+# Atom charges
+CHARGE, _MG+2, "MG  ": 2.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  _MG+2,  "MG  ": 1.937,   2.000,   0.173
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, _MG+2: Em0=   0.0, pKa0=  0.00, ne=0, nH= 0, rxn02=0, rxn04=-91.248, rxn08=0
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

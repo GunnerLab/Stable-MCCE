@@ -1,0 +1,14 @@
+
+# Values of the same key are appended and separated by ","
+CONFLIST, MGP: MGPBK, MGP01, MGP+1
+
+CONNECT, "MG  ", MGP01: ion
+CONNECT, "MG  ", MGP+1: ion
+CHARGE, MGP01, "MG  ": 0.00
+CHARGE, MGP+1, "MG  ": 1.00 
+RADIUS,  MGP01,  "MG  ": 1.450,   2.000,   0.173
+RADIUS,  MGP+1,  "MG  ": 1.450,   2.000,   0.173
+
+
+CONFORMER, MGP01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0.00, rxn04= 0.00, rxn08=0.00
+CONFORMER, MGP+1: Em0=   0.0, pKa0=  0.00, ne=-1, nH= 0, rxn02= -55.866, rxn04= -27.261, rxn08= -12.8920

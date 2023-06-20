@@ -2,9 +2,9 @@
 # 1. Basic Conformer Information: name, pka, em, rxn
 # 2. Structure Connectivity:
 # 3. Atom Parameters: Partial Charges and Radii
-#    - NBO Guassian charges provided by Muhamed Amin
-#    hestia: /home/mamin/NBO/6-31gdp
-# File Created by Gehan Ranepura on 11/03/2022
+#    - NBO Guassian charges provided by Gehan Ranepura
+#    - minerva: /home/granepura/NBO/6-31gdp
+# File Created by Gehan Ranepura on 11/16/2022
 
 <<<END of original comments
 
@@ -128,120 +128,120 @@ CONNECT, "H403", LUX01:    s, " C40"
 CONNECT, " HB ", LUX01:    s, " O23"
 
 # ATOM charges
-CHARGE, LUX01, " C1 ": to_be_filled
-CHARGE, LUX01, " C2 ": to_be_filled
-CHARGE, LUX01, " C3 ": to_be_filled
-CHARGE, LUX01, " C4 ": to_be_filled
-CHARGE, LUX01, " C5 ": to_be_filled
-CHARGE, LUX01, " C6 ": to_be_filled
-CHARGE, LUX01, " C7 ": to_be_filled
-CHARGE, LUX01, " C8 ": to_be_filled
-CHARGE, LUX01, " C9 ": to_be_filled
-CHARGE, LUX01, " C10": to_be_filled
-CHARGE, LUX01, " C11": to_be_filled
-CHARGE, LUX01, " C12": to_be_filled
-CHARGE, LUX01, " C13": to_be_filled
-CHARGE, LUX01, " C14": to_be_filled
-CHARGE, LUX01, " C15": to_be_filled
-CHARGE, LUX01, " C16": to_be_filled
-CHARGE, LUX01, " C17": to_be_filled
-CHARGE, LUX01, " C18": to_be_filled
-CHARGE, LUX01, " C19": to_be_filled
-CHARGE, LUX01, " C20": to_be_filled
-CHARGE, LUX01, " O3 ": to_be_filled
-CHARGE, LUX01, " C21": to_be_filled
-CHARGE, LUX01, " C22": to_be_filled
-CHARGE, LUX01, " C23": to_be_filled
-CHARGE, LUX01, " C24": to_be_filled
-CHARGE, LUX01, " C25": to_be_filled
-CHARGE, LUX01, " C26": to_be_filled
-CHARGE, LUX01, " C27": to_be_filled
-CHARGE, LUX01, " C28": to_be_filled
-CHARGE, LUX01, " C29": to_be_filled
-CHARGE, LUX01, " C30": to_be_filled
-CHARGE, LUX01, " C31": to_be_filled
-CHARGE, LUX01, " C32": to_be_filled
-CHARGE, LUX01, " C33": to_be_filled
-CHARGE, LUX01, " C34": to_be_filled
-CHARGE, LUX01, " C35": to_be_filled
-CHARGE, LUX01, " C36": to_be_filled
-CHARGE, LUX01, " C37": to_be_filled
-CHARGE, LUX01, " C38": to_be_filled
-CHARGE, LUX01, " C39": to_be_filled
-CHARGE, LUX01, " C40": to_be_filled
-CHARGE, LUX01, " O23": to_be_filled
-CHARGE, LUX01, "H2C1": to_be_filled
-CHARGE, LUX01, "H2C2": to_be_filled
-CHARGE, LUX01, " H3 ": to_be_filled
-CHARGE, LUX01, "H4C1": to_be_filled
-CHARGE, LUX01, "H4C2": to_be_filled
-CHARGE, LUX01, " H7 ": to_be_filled
-CHARGE, LUX01, " H8 ": to_be_filled
-CHARGE, LUX01, " H9 ": to_be_filled
-CHARGE, LUX01, "H101": to_be_filled
-CHARGE, LUX01, "H102": to_be_filled
-CHARGE, LUX01, "H111": to_be_filled
-CHARGE, LUX01, "H112": to_be_filled
-CHARGE, LUX01, "H121": to_be_filled
-CHARGE, LUX01, "H122": to_be_filled
-CHARGE, LUX01, " H13": to_be_filled
-CHARGE, LUX01, "H141": to_be_filled
-CHARGE, LUX01, "H142": to_be_filled
-CHARGE, LUX01, "H151": to_be_filled
-CHARGE, LUX01, "H152": to_be_filled
-CHARGE, LUX01, "H161": to_be_filled
-CHARGE, LUX01, "H162": to_be_filled
-CHARGE, LUX01, "H163": to_be_filled
-CHARGE, LUX01, "H171": to_be_filled
-CHARGE, LUX01, "H172": to_be_filled
-CHARGE, LUX01, "H173": to_be_filled
-CHARGE, LUX01, "H181": to_be_filled
-CHARGE, LUX01, "H182": to_be_filled
-CHARGE, LUX01, " H18": to_be_filled
-CHARGE, LUX01, "H191": to_be_filled
-CHARGE, LUX01, "H192": to_be_filled
-CHARGE, LUX01, "H193": to_be_filled
-CHARGE, LUX01, "H201": to_be_filled
-CHARGE, LUX01, "H202": to_be_filled
-CHARGE, LUX01, "H203": to_be_filled
-CHARGE, LUX01, " HA ": to_be_filled
-CHARGE, LUX01, "H221": to_be_filled
-CHARGE, LUX01, "H222": to_be_filled
-CHARGE, LUX01, " H23": to_be_filled
-CHARGE, LUX01, "H241": to_be_filled
-CHARGE, LUX01, " H26": to_be_filled
-CHARGE, LUX01, " H27": to_be_filled
-CHARGE, LUX01, "H271": to_be_filled
-CHARGE, LUX01, "H281": to_be_filled
-CHARGE, LUX01, "H282": to_be_filled
-CHARGE, LUX01, " H29": to_be_filled
-CHARGE, LUX01, "H301": to_be_filled
-CHARGE, LUX01, "H302": to_be_filled
-CHARGE, LUX01, "H311": to_be_filled
-CHARGE, LUX01, "H312": to_be_filled
-CHARGE, LUX01, "H321": to_be_filled
-CHARGE, LUX01, "H322": to_be_filled
-CHARGE, LUX01, " H33": to_be_filled
-CHARGE, LUX01, "H341": to_be_filled
-CHARGE, LUX01, "H342": to_be_filled
-CHARGE, LUX01, "H351": to_be_filled
-CHARGE, LUX01, "H352": to_be_filled
-CHARGE, LUX01, "H361": to_be_filled
-CHARGE, LUX01, "H362": to_be_filled
-CHARGE, LUX01, "H363": to_be_filled
-CHARGE, LUX01, "H371": to_be_filled
-CHARGE, LUX01, "H372": to_be_filled
-CHARGE, LUX01, "H373": to_be_filled
-CHARGE, LUX01, "H381": to_be_filled
-CHARGE, LUX01, "H382": to_be_filled
-CHARGE, LUX01, "H383": to_be_filled
-CHARGE, LUX01, "H391": to_be_filled
-CHARGE, LUX01, "H392": to_be_filled
-CHARGE, LUX01, "H393": to_be_filled
-CHARGE, LUX01, "H401": to_be_filled
-CHARGE, LUX01, "H402": to_be_filled
-CHARGE, LUX01, "H403": to_be_filled
-CHARGE, LUX01, " HB ": to_be_filled
+CHARGE, LUX01, " C1 ": -0.11266
+CHARGE, LUX01, " C2 ": -0.46413
+CHARGE, LUX01, " C3 ":  0.07092
+CHARGE, LUX01, " C4 ": -0.49377
+CHARGE, LUX01, " C5 ":  0.00452
+CHARGE, LUX01, " C6 ": -0.058  
+CHARGE, LUX01, " C7 ": -0.24195
+CHARGE, LUX01, " C8 ": -0.18428
+CHARGE, LUX01, " C9 ": -0.3045 
+CHARGE, LUX01, " C10": -0.44889
+CHARGE, LUX01, " C11": -0.47355
+CHARGE, LUX01, " C12": -0.45945
+CHARGE, LUX01, " C13": -0.27737
+CHARGE, LUX01, " C14": -0.46061
+CHARGE, LUX01, " C15": -0.46567
+CHARGE, LUX01, " C16": -0.67073
+CHARGE, LUX01, " C17": -0.67786
+CHARGE, LUX01, " C18": -0.70019
+CHARGE, LUX01, " C19": -0.67875
+CHARGE, LUX01, " C20": -0.68985
+CHARGE, LUX01, " O3 ": -0.79335
+CHARGE, LUX01, " C21": -0.10039
+CHARGE, LUX01, " C22": -0.47068
+CHARGE, LUX01, " C23":  0.04003
+CHARGE, LUX01, " C24": -0.27738
+CHARGE, LUX01, " C25":  0.00815
+CHARGE, LUX01, " C26": -0.26893
+CHARGE, LUX01, " C27": -0.4533 
+CHARGE, LUX01, " C28": -0.46679
+CHARGE, LUX01, " C29": -0.27216
+CHARGE, LUX01, " C30": -0.45812
+CHARGE, LUX01, " C31": -0.474  
+CHARGE, LUX01, " C32": -0.46138
+CHARGE, LUX01, " C33": -0.28252
+CHARGE, LUX01, " C34": -0.46047
+CHARGE, LUX01, " C35": -0.46835
+CHARGE, LUX01, " C36": -0.68081
+CHARGE, LUX01, " C37": -0.67826
+CHARGE, LUX01, " C38": -0.72113
+CHARGE, LUX01, " C39": -0.69485
+CHARGE, LUX01, " C40": -0.68665
+CHARGE, LUX01, " O23": -0.77161
+CHARGE, LUX01, "H2C1":  0.24863
+CHARGE, LUX01, "H2C2":  0.2441 
+CHARGE, LUX01, " H3 ":  0.21342
+CHARGE, LUX01, "H4C1":  0.2551 
+CHARGE, LUX01, "H4C2":  0.24837
+CHARGE, LUX01, " H7 ":  0.23074
+CHARGE, LUX01, " H8 ":  0.21742
+CHARGE, LUX01, " H9 ":  0.23697
+CHARGE, LUX01, "H101":  0.23079
+CHARGE, LUX01, "H102":  0.23477
+CHARGE, LUX01, "H111":  0.23894
+CHARGE, LUX01, "H112":  0.23055
+CHARGE, LUX01, "H121":  0.23518
+CHARGE, LUX01, "H122":  0.23839
+CHARGE, LUX01, " H13":  0.24107
+CHARGE, LUX01, "H141":  0.23995
+CHARGE, LUX01, "H142":  0.2328 
+CHARGE, LUX01, "H151":  0.23439
+CHARGE, LUX01, "H152":  0.23013
+CHARGE, LUX01, "H161":  0.23298
+CHARGE, LUX01, "H162":  0.24458
+CHARGE, LUX01, "H163":  0.23563
+CHARGE, LUX01, "H171":  0.26798
+CHARGE, LUX01, "H172":  0.22905
+CHARGE, LUX01, "H173":  0.22769
+CHARGE, LUX01, "H181":  0.23639
+CHARGE, LUX01, "H182":  0.25498
+CHARGE, LUX01, " H18":  0.23991
+CHARGE, LUX01, "H191":  0.24376
+CHARGE, LUX01, "H192":  0.23621
+CHARGE, LUX01, "H193":  0.23373
+CHARGE, LUX01, "H201":  0.23353
+CHARGE, LUX01, "H202":  0.24027
+CHARGE, LUX01, "H203":  0.23737
+CHARGE, LUX01, " HA ":  0.50676
+CHARGE, LUX01, "H221":  0.25403
+CHARGE, LUX01, "H222":  0.23781
+CHARGE, LUX01, " H23":  0.23836
+CHARGE, LUX01, "H241":  0.23979
+CHARGE, LUX01, " H26":  0.24742
+CHARGE, LUX01, " H27":  0.2408 
+CHARGE, LUX01, "H271":  0.23547
+CHARGE, LUX01, "H281":  0.24245
+CHARGE, LUX01, "H282":  0.22749
+CHARGE, LUX01, " H29":  0.24077
+CHARGE, LUX01, "H301":  0.23737
+CHARGE, LUX01, "H302":  0.23438
+CHARGE, LUX01, "H311":  0.23001
+CHARGE, LUX01, "H312":  0.24194
+CHARGE, LUX01, "H321":  0.24116
+CHARGE, LUX01, "H322":  0.23554
+CHARGE, LUX01, " H33":  0.24003
+CHARGE, LUX01, "H341":  0.23118
+CHARGE, LUX01, "H342":  0.23996
+CHARGE, LUX01, "H351":  0.23125
+CHARGE, LUX01, "H352":  0.23259
+CHARGE, LUX01, "H361":  0.2408 
+CHARGE, LUX01, "H362":  0.24058
+CHARGE, LUX01, "H363":  0.23791
+CHARGE, LUX01, "H371":  0.24328
+CHARGE, LUX01, "H372":  0.23947
+CHARGE, LUX01, "H373":  0.23464
+CHARGE, LUX01, "H381":  0.25292
+CHARGE, LUX01, "H382":  0.25003
+CHARGE, LUX01, "H383":  0.24376
+CHARGE, LUX01, "H391":  0.24053
+CHARGE, LUX01, "H392":  0.23946
+CHARGE, LUX01, "H393":  0.23256
+CHARGE, LUX01, "H401":  0.23892
+CHARGE, LUX01, "H402":  0.23093
+CHARGE, LUX01, "H403":  0.23909
+CHARGE, LUX01, " HB ":  0.4925 
 
 # Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
 RADIUS, LUX01, " C1 ":  1.700,  2.000,  0.150
@@ -360,4 +360,4 @@ RADIUS, LUX01, "H403":  1.000,  1.000,  0.020
 RADIUS, LUX01, " HB ":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
-CONFORMER, LUX01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0 # Muhamed NBO  (Tested with LigandExpo Ideal LUX with no Hs)
+CONFORMER, LUX01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -16.439, rxn08= 0 # (Tested with LigandExpo Ideal LUX with no Hs)

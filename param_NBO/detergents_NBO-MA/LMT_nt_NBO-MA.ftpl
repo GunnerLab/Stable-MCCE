@@ -1,0 +1,167 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Gehan Ranepura
+# File Created by Gehan Ranepura on 01/23/2023
+
+# Guassian Calculation was done with the LMT tail, but atoms of the tail were set to 0 in the LMT head group topology file (LMT_nt_NBO.ftpl)
+# Additonal Hs were added to C1 (H13) after running DFT
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, LMT: LMTBK, LMT01
+
+# ATOM name and bonds
+CONNECT, " C1B", LMT01:  sp3, " C2B"," O1B"," O5B"," H1B"
+CONNECT, " C2B", LMT01:  sp3, " C1B"," C3B"," O2B"," H2B"
+CONNECT, " C3B", LMT01:  sp3, " C2B"," C4B"," O3B"," H3B"
+CONNECT, " C4B", LMT01:  sp3, " C3B"," C5B"," O4'"," H4B"
+CONNECT, " C5B", LMT01:  sp3, " C4B"," C6B"," O5B"," H5B"
+CONNECT, " C6B", LMT01:  sp3, " C5B"," O6B","H6'2","H6'1"
+CONNECT, " O1B", LMT01:  sp3, " C1B"," C4'"
+CONNECT, " O2B", LMT01:  sp3, " C2B","H2O1"
+CONNECT, " O3B", LMT01:  sp3, " C3B","H3O1"
+CONNECT, " O4'", LMT01:  sp3, " C4B","H4O1"
+CONNECT, " O5B", LMT01:  sp3, " C1B"," C5B"
+CONNECT, " O6B", LMT01:  sp3, " C6B"," H6B"
+CONNECT, " C1'", LMT01:  sp3, " C2'"," O1'"," O5'"," H1'"
+CONNECT, " C2'", LMT01:  sp3, " C1'"," C3'"," O2'"," H2'"
+CONNECT, " C3'", LMT01:  sp3, " C2'"," C4'"," O3'"," H3'"
+CONNECT, " C4'", LMT01:  sp3, " O1B"," C3'"," C5'"," H4'"
+CONNECT, " C5'", LMT01:  sp3, " C4'"," C6'"," O5'"," H5'"
+CONNECT, " C6'", LMT01:  sp3, " C5'"," O6'"," H6D"," H6E"
+CONNECT, " O1'", LMT01:  sp3, " C1'"," C1 "
+CONNECT, " O2'", LMT01:  sp3, " C2'","H2O2"
+CONNECT, " O3'", LMT01:  sp3, " C3'","H3O2"
+CONNECT, " O5'", LMT01:  sp3, " C1'"," C5'"
+CONNECT, " O6'", LMT01:  sp3, " C6'"," H6'"
+CONNECT, " C1 ", LMT01:  sp3, " O1'"," H13"," H12"," H11"  # H13 connect to C1 instead of C2
+CONNECT, " H1B", LMT01:    s, " C1B"
+CONNECT, " H2B", LMT01:    s, " C2B"
+CONNECT, " H3B", LMT01:    s, " C3B"
+CONNECT, " H4B", LMT01:    s, " C4B"
+CONNECT, " H5B", LMT01:    s, " C5B"
+CONNECT, "H6'2", LMT01:    s, " C6B"
+CONNECT, "H6'1", LMT01:    s, " C6B"
+CONNECT, "H2O1", LMT01:    s, " O2B"
+CONNECT, "H3O1", LMT01:    s, " O3B"
+CONNECT, "H4O1", LMT01:    s, " O4'"
+CONNECT, " H6B", LMT01:    s, " O6B"
+CONNECT, " H1'", LMT01:    s, " C1'"
+CONNECT, " H2'", LMT01:    s, " C2'"
+CONNECT, " H3'", LMT01:    s, " C3'"
+CONNECT, " H4'", LMT01:    s, " C4'"
+CONNECT, " H5'", LMT01:    s, " C5'"
+CONNECT, " H6D", LMT01:    s, " C6'"
+CONNECT, " H6E", LMT01:    s, " C6'"
+CONNECT, "H2O2", LMT01:    s, " O2'"
+CONNECT, "H3O2", LMT01:    s, " O3'"
+CONNECT, " H6'", LMT01:    s, " O6'"
+CONNECT, " H12", LMT01:    s, " C1 "
+CONNECT, " H11", LMT01:    s, " C1 "
+CONNECT, " H13", LMT01:    s, " C1 "  # Added
+
+# ATOM charges
+CHARGE, LMT01, " C1B":   0.33395
+CHARGE, LMT01, " C2B":   0.01726
+CHARGE, LMT01, " C3B":   0.03222
+CHARGE, LMT01, " C4B":   0.0421
+CHARGE, LMT01, " C5B":   0.02836
+CHARGE, LMT01, " C6B":  -0.1248
+CHARGE, LMT01, " O1B":  -0.59833
+CHARGE, LMT01, " O2B":  -0.77994
+CHARGE, LMT01, " O3B":  -0.79442
+CHARGE, LMT01, " O4'":  -0.78499
+CHARGE, LMT01, " O5B":  -0.58419
+CHARGE, LMT01, " O6B":  -0.78266
+CHARGE, LMT01, " C1'":   0.36775
+CHARGE, LMT01, " C2'":   0.01442
+CHARGE, LMT01, " C3'":   0.04375
+CHARGE, LMT01, " C4'":   0.0259
+CHARGE, LMT01, " C5'":   0.04345
+CHARGE, LMT01, " C6'":  -0.13087
+CHARGE, LMT01, " O1'":  -0.59434
+CHARGE, LMT01, " O2'":  -0.79068
+CHARGE, LMT01, " O3'":  -0.7944
+CHARGE, LMT01, " O5'":  -0.58544
+CHARGE, LMT01, " O6'":  -0.77808
+CHARGE, LMT01, " C1 ":  -0.12652
+CHARGE, LMT01, " H1B":   0.26263
+CHARGE, LMT01, " H2B":   0.23613
+CHARGE, LMT01, " H3B":   0.24489
+CHARGE, LMT01, " H4B":   0.22649
+CHARGE, LMT01, " H5B":   0.23493
+CHARGE, LMT01, "H6'2":   0.23166
+CHARGE, LMT01, "H6'1":   0.20857
+CHARGE, LMT01, "H2O1":   0.50704
+CHARGE, LMT01, "H3O1":   0.51847
+CHARGE, LMT01, "H4O1":   0.51727
+CHARGE, LMT01, " H6B":   0.50165
+CHARGE, LMT01, " H1'":   0.19831
+CHARGE, LMT01, " H2'":   0.23844
+CHARGE, LMT01, " H3'":   0.23455
+CHARGE, LMT01, " H4'":   0.26063
+CHARGE, LMT01, " H5'":   0.23107
+CHARGE, LMT01, " H6D":   0.21302
+CHARGE, LMT01, " H6E":   0.2372
+CHARGE, LMT01, "H2O2":   0.52041
+CHARGE, LMT01, "H3O2":   0.52255
+CHARGE, LMT01, " H6'":   0.50108  
+CHARGE, LMT01, " H12":   0.15117
+CHARGE, LMT01, " H11":   0.15117
+CHARGE, LMT01, " H13":   0.15217  # 0.15117 + 0.001 to compensate for excess charge -0.001
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, LMT01, " C1B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C2B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C3B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C4B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C5B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C6B":  1.700,  2.000,  0.150
+RADIUS, LMT01, " O1B":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O2B":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O3B":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O4'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O5B":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O6B":  1.400,  1.600,  0.200
+RADIUS, LMT01, " C1'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C2'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C3'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C4'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C5'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " C6'":  1.700,  2.000,  0.150
+RADIUS, LMT01, " O1'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O2'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O3'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O5'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " O6'":  1.400,  1.600,  0.200
+RADIUS, LMT01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LMT01, " H1B":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H2B":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H3B":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H4B":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H5B":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H6'2":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H6'1":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H2O1":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H3O1":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H4O1":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H6B":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H1'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H2'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H3'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H4'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H5'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H6D":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H6E":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H2O2":  1.000,  1.000,  0.020
+RADIUS, LMT01, "H3O2":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H6'":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H12":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H11":  1.000,  1.000,  0.020
+RADIUS, LMT01, " H13":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LMT01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -33.063, rxn08= 0
+

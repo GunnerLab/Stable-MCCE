@@ -1,0 +1,61 @@
+>>>START of original comments, this file was converted from old format
+#1.Basic Conformer Information: name, pka, em, rxn.
+#23456789A123456789B123456789C
+#RXN      NTR01      -1.77
+#RXN      NTR+1      -23.4
+#2.Structure Connectivity
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H1$
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+#3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, NTR: NTRBK, NTR01, NTR+1
+
+# Atom definition
+CONNECT, " CA ", NTR01: sp3, " N  ", " ?  ", " ?  ", " HA "
+CONNECT, " HA ", NTR01: s, " CA "
+CONNECT, " N  ", NTR01: sp2, " CA ", " H  ", " H2 "
+CONNECT, " H  ", NTR01: s, " N  "
+CONNECT, " H2 ", NTR01: s, " N  "
+CONNECT, " CA ", NTR+1: sp3, " N  ", " ?  ", " ?  ", " HA "
+CONNECT, " HA ", NTR+1: s, " CA "
+CONNECT, " N  ", NTR+1: sp3, " CA ", " H  ", " H2 ", " H3 "
+CONNECT, " H  ", NTR+1: s, " N  "
+CONNECT, " H2 ", NTR+1: s, " N  "
+CONNECT, " H3 ", NTR+1: s, " N  "
+
+# Atom charges
+CHARGE, NTR01, " CA ":  0.001
+CHARGE, NTR01, " HA ":  0.000
+CHARGE, NTR01, " N  ": -0.003
+CHARGE, NTR01, " H  ":  0.001
+CHARGE, NTR01, " H2 ":  0.001
+CHARGE, NTR+1, " CA ":  0.050
+CHARGE, NTR+1, " HA ":  0.000
+CHARGE, NTR+1, " N  ": -0.100
+CHARGE, NTR+1, " H  ":  0.350
+CHARGE, NTR+1, " H2 ":  0.350
+CHARGE, NTR+1, " H3 ":  0.350
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  NTR01,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  NTR01,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  NTR01,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  NTR01,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  NTR01,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  NTR+1,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  NTR+1,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  NTR+1,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  NTR+1,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  NTR+1,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  NTR+1,  " H3 ": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, NTR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04=  0.000, rxn08=  0.000
+CONFORMER, NTR+1: Em0=   0.0, pKa0=  8.00, ne= 0, nH= 1, rxn02=-22.400, rxn04=  -22.4, rxn08=  -11.01
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

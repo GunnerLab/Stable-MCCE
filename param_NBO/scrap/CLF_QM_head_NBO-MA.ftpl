@@ -1,0 +1,228 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 05/11/2022
+
+# Guassian Calculation was done without the tail, such that O2A is connected to H instead of C1
+# Therefore the H charge was partioned evenly onto atoms HBA1, HBA2, HAA1 and HAA2
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, F6C: F6CBK, F6C01
+# F6C01 is F6C neutral    ( Chlorophyll F )
+
+# Atom definition
+CONNECT, " MG ", F6C01: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", F6C01: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", F6C01: sp2, " C4A", " C1B", " HHB" ##
+CONNECT, " CHC", F6C01: sp2, " C4B", " C1C", " HHC" ##
+CONNECT, " CHD", F6C01: sp2, " C1D", " C4C", " HHD" ##
+CONNECT, " HHB", F6C01: s, " CHB" ##
+CONNECT, " HHC", F6C01: s, " CHC" ##
+CONNECT, " HHD", F6C01: s, " CHD" ##
+CONNECT, " N1A", F6C01: sp2, " C1A", " MG ", " C4A"
+CONNECT, " C1A", F6C01: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", F6C01: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", F6C01: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", F6C01: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", F6C01: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", F6C01: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", F6C01: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", F6C01: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", F6C01: sp2, " CGA"
+CONNECT, " O2A", F6C01: sp3, " ?  ", " CGA" # ? = C1
+CONNECT, "HMA1", F6C01: s, " CMA" ##
+CONNECT, "HMA2", F6C01: s, " CMA" ##
+CONNECT, "HMA3", F6C01: s, " CMA" ##
+CONNECT, " H2A", F6C01: s, " C2A" ##
+CONNECT, " H3A", F6C01: s, " C3A" ##
+CONNECT, "HAA1", F6C01: s, " CAA" ##
+CONNECT, "HAA2", F6C01: s, " CAA" ##
+CONNECT, "HBA1", F6C01: s, " CBA" ##
+CONNECT, "HBA2", F6C01: s, " CBA" ##
+CONNECT, " N1B", F6C01: sp2, " C1B", " MG ", " C4B"
+CONNECT, " C1B", F6C01: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", F6C01: sp2, " CMB", " C3B", " C1B" ###
+CONNECT, " C3B", F6C01: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", F6C01: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", F6C01: sp2, " C2B", " OMB", " HMB",        ##### s-hybrid
+CONNECT, " CAB", F6C01: sp2, " CBB", " C3B", " HBB"         ###
+CONNECT, " CBB", F6C01: sp2, " CAB", "HBB1", "HBB3"         ##### s-hybrid
+CONNECT, " HBB", F6C01: s, " CAB" ##
+CONNECT, " OMB", F6C01: sp2, " CMB" #####
+CONNECT, " HMB", F6C01: s, " CMB" #####
+CONNECT, "HBB1", F6C01: s, " CBB" #####
+CONNECT, "HBB3", F6C01: s, " CBB" #####
+CONNECT, " N1C", F6C01: sp2, " C1C", " C4C", " MG "
+CONNECT, " C1C", F6C01: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", F6C01: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", F6C01: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", F6C01: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", F6C01: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", F6C01: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", F6C01: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", F6C01: s, " CMC" ##
+CONNECT, "HMC2", F6C01: s, " CMC" ##
+CONNECT, "HMC3", F6C01: s, " CMC" ##
+CONNECT, "HAC1", F6C01: s, " CAC" ##
+CONNECT, "HAC2", F6C01: s, " CAC" ##
+CONNECT, "HBC1", F6C01: s, " CBC" ##
+CONNECT, "HBC2", F6C01: s, " CBC" ##
+CONNECT, "HBC3", F6C01: s, " CBC" ##
+CONNECT, " N1D", F6C01: sp2, " C1D", " MG ", " C4D"
+CONNECT, " C1D", F6C01: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", F6C01: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", F6C01: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", F6C01: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", F6C01: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", F6C01: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", F6C01: sp2, " CAD"
+CONNECT, " CBD", F6C01: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", F6C01: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", F6C01: sp2, " CGD"
+CONNECT, " O2D", F6C01: sp3, " CED", " CGD"
+CONNECT, " CED", F6C01: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", F6C01: s, " CMD" ##
+CONNECT, "HMD2", F6C01: s, " CMD" ##
+CONNECT, "HMD3", F6C01: s, " CMD" ##
+CONNECT, " HBD", F6C01: s, " CBD" ##
+CONNECT, "HED1", F6C01: s, " CED" ##
+CONNECT, "HED2", F6C01: s, " CED" ##
+CONNECT, "HED3", F6C01: s, " CED" ##
+
+# Atom charges
+CHARGE, F6C01, " MG ":  1.44899
+CHARGE, F6C01, " CHA": -0.0657
+CHARGE, F6C01, " CHB": -0.2859
+CHARGE, F6C01, " CHC": -0.1937
+CHARGE, F6C01, " CHD": -0.1985
+CHARGE, F6C01, " HHB":  0.22515 ##
+CHARGE, F6C01, " HHC":  0.23787 ##
+CHARGE, F6C01, " HHD":  0.23342 ##
+CHARGE, F6C01, " N1A": -0.5882
+CHARGE, F6C01, " C1A":  0.27792
+CHARGE, F6C01, " C2A": -0.2944
+CHARGE, F6C01, " C3A": -0.2836
+CHARGE, F6C01, " C4A":  0.18978
+CHARGE, F6C01, " CMA": -0.6416
+CHARGE, F6C01, " CAA": -0.4401
+CHARGE, F6C01, " CBA": -0.5584
+CHARGE, F6C01, " CGA":  0.82725
+CHARGE, F6C01, " O1A": -0.6347  ### -0.6357 + 0.001 =  -0.6347 Step2 Excess Charge Compensation
+CHARGE, F6C01, " O2A": -0.6977  ##
+CHARGE, F6C01, "HMA1":  0.23216 ##
+CHARGE, F6C01, "HMA2":  0.22569 ##
+CHARGE, F6C01, "HMA3":  0.23006 ##
+CHARGE, F6C01, " H2A":  0.27288 ##
+CHARGE, F6C01, " H3A":  0.24711 ##
+CHARGE, F6C01, "HAA1":  0.39048 ### 0.26382 + 0.12666 = 0.39048
+CHARGE, F6C01, "HAA2":  0.36804 ### 0.24138 + 0.12666 = 0.36804
+CHARGE, F6C01, "HBA1":  0.39712 ### 0.27046 + 0.12666 = 0.39712
+CHARGE, F6C01, "HBA2":  0.38283 ### 0.25617 + 0.12666 = 0.38283
+CHARGE, F6C01, " N1B": -0.6779
+CHARGE, F6C01, " C1B":  0.23091
+CHARGE, F6C01, " C2B": -0.1921
+CHARGE, F6C01, " C3B":  0.01439
+CHARGE, F6C01, " C4B":  0.14511
+CHARGE, F6C01, " CMB":  0.29303
+CHARGE, F6C01, " CAB": -0.2644
+CHARGE, F6C01, " CBB": -0.3446
+CHARGE, F6C01, " HBB":  0.23607 ##
+CHARGE, F6C01, " OMB": -0.5457  ##
+CHARGE, F6C01, " HMB":  0.18702 ##
+CHARGE, F6C01, "HBB1":  0.21527 ##
+CHARGE, F6C01, "HBB3":  0.21997 ##
+CHARGE, F6C01, " N1C": -0.6592
+CHARGE, F6C01, " C1C":  0.16364
+CHARGE, F6C01, " C2C": -0.0427
+CHARGE, F6C01, " C3C": -0.0400
+CHARGE, F6C01, " C4C":  0.17199
+CHARGE, F6C01, " CMC": -0.6944
+CHARGE, F6C01, " CAC": -0.4706
+CHARGE, F6C01, " CBC": -0.6505
+CHARGE, F6C01, "HMC1":  0.2476  ##
+CHARGE, F6C01, "HMC2":  0.24812 ##
+CHARGE, F6C01, "HMC3":  0.24323 ##
+CHARGE, F6C01, "HAC1":  0.23677 ##
+CHARGE, F6C01, "HAC2":  0.24354 ##
+CHARGE, F6C01, "HBC1":  0.22318 ##
+CHARGE, F6C01, "HBC2":  0.22998 ##
+CHARGE, F6C01, "HBC3":  0.22665 ##
+CHARGE, F6C01, " N1D": -0.7124
+CHARGE, F6C01, " C1D":  0.16239
+CHARGE, F6C01, " C2D":  0.04152
+CHARGE, F6C01, " C3D": -0.1729
+CHARGE, F6C01, " C4D":  0.2113 
+CHARGE, F6C01, " CMD": -0.6990
+CHARGE, F6C01, " CAD":  0.56649
+CHARGE, F6C01, " OBD": -0.5418
+CHARGE, F6C01, " CBD": -0.4369
+CHARGE, F6C01, " CGD":  0.83952
+CHARGE, F6C01, " O1D": -0.5749
+CHARGE, F6C01, " O2D": -0.5807
+CHARGE, F6C01, " CED": -0.2996
+CHARGE, F6C01, "HMD1":  0.24646 ##
+CHARGE, F6C01, "HMD2":  0.24783 ##
+CHARGE, F6C01, "HMD3":  0.26979 ##
+CHARGE, F6C01, " HBD":  0.2952  ##
+CHARGE, F6C01, "HED1":  0.21683 ##
+CHARGE, F6C01, "HED2":  0.20496 ##
+CHARGE, F6C01, "HED3":  0.2199  ##
+                                 # H-charge 0.50664 --> 0.50664/4 = 0.12666 
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  F6C01,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  F6C01,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  F6C01,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  F6C01,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  F6C01,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  F6C01,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CBB": 1.700,   2.000,   0.150  #
+RADIUS,  F6C01,  " OMB": 1.520,   1.600,   0.200  #
+RADIUS,  F6C01,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  F6C01,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  F6C01,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  F6C01,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  F6C01,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  F6C01,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  F6C01,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  F6C01,  " CED": 2.000,   2.000,   0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+# CONFORMER, F6C01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -13.998, rxn04=-10.135, rxn08= -3.009
+
+CONFORMER, F6C01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0 # Muhamed Truncated NBO  (Tested with CHLF with no Hs and no C1)
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
