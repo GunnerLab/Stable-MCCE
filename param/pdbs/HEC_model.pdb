@@ -1,0 +1,155 @@
+ATOM      1 FE   HEC A   1      15.522  27.935  77.126  1.00 10.00          FE
+ATOM      2  CHA HEC A   1      15.607  30.470  74.811  1.00 10.00           C
+ATOM      3  CHB HEC A   1      18.890  27.534  76.792  1.00 10.00           C
+ATOM      4  CHC HEC A   1      15.474  25.549  79.610  1.00 10.00           C
+ATOM      5  CHD HEC A   1      12.137  28.061  77.181  1.00 10.00           C
+ATOM      6  NA  HEC A   1      16.951  28.824  76.033  1.00 10.00           N
+ATOM      7  C1A HEC A   1      16.807  29.877  75.150  1.00 10.00           C
+ATOM      8  C2A HEC A   1      18.105  30.253  74.630  1.00 10.00           C
+ATOM      9  C3A HEC A   1      19.010  29.435  75.177  1.00 10.00           C
+ATOM     10  C4A HEC A   1      18.303  28.522  76.041  1.00 10.00           C
+ATOM     11  CMA HEC A   1      20.541  29.397  74.959  1.00 10.00           C
+ATOM     12  CAA HEC A   1      18.314  31.394  73.613  1.00 10.00           C
+ATOM     13  CBA HEC A   1      18.118  30.944  72.150  1.00 10.00           C
+ATOM     14  CGA HEC A   1      17.936  32.093  71.184  1.00 10.00           C
+ATOM     15  O1A HEC A   1      17.984  31.796  69.960  1.00 10.00           O
+ATOM     16  O2A HEC A   1      17.746  33.219  71.713  1.00 10.00           O
+ATOM     17  NB  HEC A   1      16.893  26.771  78.005  1.00 10.00           N
+ATOM     18  C1B HEC A   1      18.247  26.743  77.714  1.00 10.00           C
+ATOM     19  C2B HEC A   1      18.887  25.778  78.560  1.00 10.00           C
+ATOM     20  C3B HEC A   1      17.936  25.254  79.345  1.00 10.00           C
+ATOM     21  C4B HEC A   1      16.682  25.864  79.016  1.00 10.00           C
+ATOM     22  CMB HEC A   1      20.402  25.470  78.518  1.00 10.00           C
+ATOM     23  CAB HEC A   1      18.176  24.150  80.430  1.00 10.00           C
+ATOM     24  CBB HEC A   1      18.918  24.683  81.499  1.00 10.00           C
+ATOM     25  NC  HEC A   1      14.094  27.011  78.184  1.00 10.00           N
+ATOM     26  C1C HEC A   1      14.271  26.063  79.176  1.00 10.00           C
+ATOM     27  C2C HEC A   1      12.975  25.602  79.660  1.00 10.00           C
+ATOM     28  C3C HEC A   1      12.061  26.311  78.989  1.00 10.00           C
+ATOM     29  C4C HEC A   1      12.718  27.173  78.056  1.00 10.00           C
+ATOM     30  CMC HEC A   1      12.779  24.528  80.747  1.00 10.00           C
+ATOM     31  CAC HEC A   1      10.494  26.156  79.124  1.00 10.00           C
+ATOM     32  CBC HEC A   1       9.970  26.773  80.223  1.00 10.00           C
+ATOM     33  ND  HEC A   1      14.147  29.048  76.172  1.00 10.00           N
+ATOM     34  C1D HEC A   1      12.776  28.935  76.326  1.00 10.00           C
+ATOM     35  C2D HEC A   1      12.141  29.896  75.454  1.00 10.00           C
+ATOM     36  C3D HEC A   1      13.089  30.565  74.804  1.00 10.00           C
+ATOM     37  C4D HEC A   1      14.375  30.053  75.264  1.00 10.00           C
+ATOM     38  CMD HEC A   1      10.600  30.042  75.374  1.00 10.00           C
+ATOM     39  CAD HEC A   1      12.956  31.685  73.755  1.00 10.00           C
+ATOM     40  CBD HEC A   1      13.630  33.026  74.020  1.00 10.00           C
+ATOM     41  CGD HEC A   1      12.812  33.988  74.834  1.00 10.00           C
+ATOM     42  O1D HEC A   1      12.179  33.453  75.789  1.00 10.00           O
+ATOM     43  O2D HEC A   1      12.826  35.208  74.518  1.00 10.00           O
+ATOM     44  HHA HEC A   1      15.634  31.337  74.130  1.00 10.00           H
+ATOM     45  HHB HEC A   1      19.969  27.361  76.642  1.00 10.00           H
+ATOM     46  HHC HEC A   1      15.469  24.856  80.468  1.00 10.00           H
+ATOM     47  HHD HEC A   1      11.034  28.073  77.162  1.00 10.00           H
+ATOM     48 HMA1 HEC A   1      21.295  28.714  75.415  1.00 10.00           H
+ATOM     49 HMA2 HEC A   1      20.681  29.301  73.857  1.00 10.00           H
+ATOM     50 HMA3 HEC A   1      20.898  30.428  75.184  1.00 10.00           H
+ATOM     51 HAA1 HEC A   1      17.659  32.264  73.852  1.00 10.00           H
+ATOM     52 HAA2 HEC A   1      19.311  31.872  73.751  1.00 10.00           H
+ATOM     53 HBA1 HEC A   1      18.955  30.284  71.824  1.00 10.00           H
+ATOM     54 HBA2 HEC A   1      17.271  30.222  72.069  1.00 10.00           H
+ATOM     55  H2A HEC A   1      17.631  33.940  71.106  1.00 10.00           H
+ATOM     56 HMB1 HEC A   1      20.899  24.719  79.175  1.00 10.00           H
+ATOM     57 HMB2 HEC A   1      20.654  25.203  77.465  1.00 10.00           H
+ATOM     58 HMB3 HEC A   1      20.938  26.437  78.658  1.00 10.00           H
+ATOM     59  HAB HEC A   1      17.852  23.095  80.440  1.00 10.00           H
+ATOM     60 HBB1 HEC A   1      19.088  23.897  82.271  1.00 10.00           H
+ATOM     61 HBB2 HEC A   1      19.872  25.147  81.156  1.00 10.00           H
+ATOM     62 HBB3 HEC A   1      18.439  25.594  81.927  1.00 10.00           H
+ATOM     63 HMC1 HEC A   1      11.788  24.175  81.117  1.00 10.00           H
+ATOM     64 HMC2 HEC A   1      13.340  23.624  80.413  1.00 10.00           H
+ATOM     65 HMC3 HEC A   1      13.357  24.861  81.639  1.00 10.00           H
+ATOM     66  HAC HEC A   1       9.782  25.629  78.466  1.00 10.00           H
+ATOM     67 HBC1 HEC A   1       8.864  26.663  80.318  1.00 10.00           H
+ATOM     68 HBC2 HEC A   1      10.480  26.422  81.150  1.00 10.00           H
+ATOM     69 HBC3 HEC A   1      10.260  27.849  80.244  1.00 10.00           H
+ATOM     70 HMD1 HEC A   1      10.109  30.783  74.701  1.00 10.00           H
+ATOM     71 HMD2 HEC A   1      10.175  29.038  75.139  1.00 10.00           H
+ATOM     72 HMD3 HEC A   1      10.221  30.219  76.407  1.00 10.00           H
+ATOM     73 HAD1 HEC A   1      13.302  31.297  72.768  1.00 10.00           H
+ATOM     74 HAD2 HEC A   1      11.873  31.860  73.551  1.00 10.00           H
+ATOM     75 HBD1 HEC A   1      14.628  32.871  74.491  1.00 10.00           H
+ATOM     76 HBD2 HEC A   1      13.942  33.499  73.059  1.00 10.00           H
+ATOM     77  H2D HEC A   1      12.308  35.816  75.032  1.00 10.00           H
+CONECT    1    6   17   25   33
+CONECT    2    7   37   44
+CONECT    3   10   18   45
+CONECT    4   21   26   46
+CONECT    5   29   34   47
+CONECT    6    1    7   10
+CONECT    7    2    6    8
+CONECT    8    7    9   12
+CONECT    9    8   10   11
+CONECT   10    3    6    9
+CONECT   11    9   48   49   50
+CONECT   12    8   13   51   52
+CONECT   13   12   14   53   54
+CONECT   14   13   15   16
+CONECT   15   14
+CONECT   16   14   55
+CONECT   17    1   18   21
+CONECT   18    3   17   19
+CONECT   19   18   20   22
+CONECT   20   19   21   23
+CONECT   21    4   17   20
+CONECT   22   19   56   57   58
+CONECT   23   20   24   59
+CONECT   24   23   60   61   62
+CONECT   25    1   26   29
+CONECT   26    4   25   27
+CONECT   27   26   28   30
+CONECT   28   27   29   31
+CONECT   29    5   25   28
+CONECT   30   27   63   64   65
+CONECT   31   28   32   66
+CONECT   32   31   67   68   69
+CONECT   33    1   34   37
+CONECT   34    5   33   35
+CONECT   35   34   36   38
+CONECT   36   35   37   39
+CONECT   37    2   33   36
+CONECT   38   35   70   71   72
+CONECT   39   36   40   73   74
+CONECT   40   39   41   75   76
+CONECT   41   40   42   43
+CONECT   42   41
+CONECT   43   41   77
+CONECT   44    2
+CONECT   45    3
+CONECT   46    4
+CONECT   47    5
+CONECT   48   11
+CONECT   49   11
+CONECT   50   11
+CONECT   51   12
+CONECT   52   12
+CONECT   53   13
+CONECT   54   13
+CONECT   55   16
+CONECT   56   22
+CONECT   57   22
+CONECT   58   22
+CONECT   59   23
+CONECT   60   24
+CONECT   61   24
+CONECT   62   24
+CONECT   63   30
+CONECT   64   30
+CONECT   65   30
+CONECT   66   31
+CONECT   67   32
+CONECT   68   32
+CONECT   69   32
+CONECT   70   38
+CONECT   71   38
+CONECT   72   38
+CONECT   73   39
+CONECT   74   39
+CONECT   75   40
+CONECT   76   40
+CONECT   77   43
+END   

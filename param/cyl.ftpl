@@ -11,7 +11,7 @@ CONNECT, " O  ", CYLBK: sp2, " C  "
 CONNECT, " CB ", CYL01: sp3, " CA ", " SG ", " HB2", " HB3"
 CONNECT, " HB2", CYL01: s, " CB "
 CONNECT, " HB3", CYL01: s, " CB "
-CONNECT, " SG ", CYL01: sp2, " CB ", " SG "
+CONNECT, " SG ", CYL01: sp2, " CB ", " ?  "
 
 # Atom charges
 CHARGE, CYLBK, " N  ": -0.350

@@ -10,7 +10,8 @@ radius = {" H": 0.25,
           " P": 1.00,
           " S": 1.00,
           "NA": 1.80,
-          "CL": 1.00
+          "CL": 1.00,
+          "FE": 1.26
           }
 
 elebd_radius = {" N": 1.5,
@@ -195,9 +196,8 @@ class Pdb2ftpl:
                     elif 150 < alpha < 180.1:
                         atom.orbital = "sp"
                     else:
-                        print("%s - %s - %s bond angle = %.3f, can not interpret" % (
+                        print("Warning: %s - %s - %s bond angle = %.3f, assumed ion" % (
                         atom.connect[0].name, atom.name, atom.connect[1].name, alpha))
-                        sys.exit()
                 elif len(atom.connect) == 1:
                     # doesn't matter in the sense of geometry, but O on CH3-(CO)-CH3 is sp2 instead of sp3.
                     atom.orbital = "sp3"
@@ -227,7 +227,7 @@ class Pdb2ftpl:
             print("CHARGE, %s%s, \"%s\": to_be_filled" % (self.resname[0], self.confid, atom.name))
 
     def print_radius(self):
-        print("# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth")
+        print("# Atom radius, dielectric boundary radius, VDW radius, and energy well depth")
         for atom in self.atoms:
             if atom.element in elebd_radius:
                 rbd = elebd_radius[atom.element]
