@@ -4,6 +4,9 @@
 import math
 import os
 import glob
+import time
+import numpy as np
+
 
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
@@ -68,10 +71,16 @@ class Atom:
         connect_key = ("CONNECT", self.name, self.confType)
         self.connectivity_param = env.param[connect_key]
         radius_key = ("RADIUS", self.confType, self.name)
-        radius_values = env.param[radius_key]
-        self.r_bound = radius_values.r_bound
-        self.r_vdw = radius_values.r_vdw
-        self.e_vdw = radius_values.e_vdw
+        if radius_key in env.param:
+            radius_values = env.param[radius_key]
+            self.r_bound = radius_values.r_bound
+            self.r_vdw = radius_values.r_vdw
+            self.e_vdw = radius_values.e_vdw
+        else: # Use default value as C
+            print("Warning, parameter %s not found, using default values as C" % str(radius_key))
+            self.r_bound = 1.7
+            self.r_vdw = 1.908
+            self.e_vdw = 0.086
         return
 
     def writeline(self):
@@ -86,8 +95,10 @@ class Conformer:
     def __init__(self):
         self.confID = ""
         self.resID = ""
+        self.i = 0    # index in vdw matrix
         self.atom = []
         self.vdw1 = 0.0
+
         return
 
 class Residue:
@@ -99,7 +110,7 @@ class Residue:
 class Protein:
     def __init__(self):
         self.residue = []
-        self.vdw_pw = {}
+        self.vdw_pw = []  # place holder, will be a 2D matrix
         return
 
     def loadpdb(self, fname):
@@ -146,6 +157,18 @@ class Protein:
                 conf.confID = "%sBK%s000" % (first_confID[:3], first_confID[5:11])
                 conf.resID = res.resID
                 res.conf.insert(0, conf)
+
+        # Assign an index number to each conformer
+        n_conf = 0
+        for res in self.residue:
+            if len(res.conf) <= 1:   # backbone only
+                continue
+            for conf in res.conf[1:]:
+                conf.i = n_conf
+                n_conf += 1
+
+        # Create a 2D VDW array tht will be referenced by indices
+        self.vdw_pw = np.zeros((n_conf, n_conf))
         return
 
     def make_connect12(self):
@@ -369,14 +392,19 @@ class Protein:
     def calc_vdw(self):
         # do it on two sides so the two-way interaction numbers can be checked
         for res1 in self.residue:
-            for conf1 in res1.conf:
+            if len(res1.conf) == 1:
+                continue    # only backbone
+            for conf1 in res1.conf[1:]:
+                saved_time = time.time()
                 for res2 in self.residue:
+                    if len(res2.conf) == 1:
+                        continue  # only backbone
                     if res1 == res2: # we need to do self to self vdw - vdw0
                         vdw = vdw_conf(conf1, conf1)
                         if abs(vdw) > 0.001:
                             self.vdw_pw[(conf1.confID, conf1.confID)] = vdw
                         continue
-                    for conf2 in res2.conf:
+                    for conf2 in res2.conf[1:]:
                         vdw = vdw_conf(conf1, conf2)
                         if abs(vdw) > 0.001:
                             #print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
@@ -389,6 +417,9 @@ class Protein:
                     vdw = vdw_conf(conf1, conf2)
                     vdw1 += vdw
                 conf1.vdw1 = vdw1
+                elapsed = time.time() - saved_time
+                #print("   %s ... %.3f seconds" % (conf1.confID, elapsed))
+
 
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms
@@ -499,6 +530,7 @@ class ENV:
 
         files = glob.glob("*.ftpl")
         files.sort()
+        print("Reading parameters from %s" % ftpldir)
         for fname in files:
             self.read_ftpl_file(fname)
 
@@ -506,6 +538,7 @@ class ENV:
         # Update vdw with 00always_needed.tpl
         fname = "00always_needed.tpl"
         lines = open(fname).readlines()
+        print("Updating vdw parameters from %s" % fname)
         for line in lines:
             end = line.find("#")
             line = line[:end].strip()
@@ -531,15 +564,47 @@ class ENV:
 
         os.chdir(cwd)
 
-
+        # read from user_param
         ftpldir = "user_param"
         if os.path.isdir(ftpldir):
+            print("Reading parameters from %s" % ftpldir)
             os.chdir(ftpldir)
             files = glob.glob("*.ftpl")
             files.sort()
             for fname in files:
                 self.read_ftpl_file(fname)
             os.chdir(cwd)
+
+        # read and convert from new.tpl
+        # Only CONNECT records are read and converted from new.tpl
+        newtpl = "new.tpl"
+        if os.path.exists(newtpl):
+            print("Reading CONNECT parameters from %s" % newtpl)
+            lines = open(newtpl).readlines()
+            for line in lines:
+                if len(line) > 10:
+                    key1 = line[:9].strip()
+                    if key1 == "CONNECT":
+                        key3 = line[9:14]
+                        key2 = line[15:19]
+                        orbital = line[20:29].strip()
+                        atoms_str = line[30:].rstrip()+"   "
+                        n_atoms = len(atoms_str)//10
+                        atoms = []
+                        for i in range(n_atoms):
+                            a = atoms_str[:10]
+                            ires = a[:5].strip()
+                            atom_name = a[5:9]
+                            if ires != "0":
+                                atom_name = " ?  "
+                            atoms.append(atom_name)
+                            atoms_str = atoms_str[10:]
+
+                        new_atoms_str = ",".join(["\"%s\"" % x for x in atoms])
+                        value_string = "%s, %s" % (orbital, new_atoms_str)
+                        self.param[(key1, key2, key3)] = CONNECT_param(value_string)
+                        #print("(%s, %s, %s): %s" % (key1, key2, key3, value_string))
+
 
     def print_param(self):
         for key, value in self.param.items():
@@ -656,7 +721,7 @@ if __name__ == "__main__":
     env.load_runprm()
     env.load_ftpl()
 
-    #env.print_param()
+    env.print_param()
 
     # pdbfile = "step2_out.pdb"
     # protein = Protein()

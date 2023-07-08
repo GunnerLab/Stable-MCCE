@@ -5,6 +5,7 @@ Compute vdw pairwise and write back to opp files
 
 import os
 from pdbio import *
+import time
 
 class ConfSelf:
     def __init__(self, line):
@@ -142,8 +143,24 @@ if __name__ == "__main__":
     env.load_ftpl()
     protein = Protein()
     protein.loadpdb(pdbfile)
+
+    print("Making atom connectivity ...")
+    current_time = time.time()
     protein.make_connect12()
     protein.make_connect13()
     protein.make_connect14()
+    elapsed = time.time() - current_time
+    print("Done, elapsed time %.3f seconds." % elapsed)
+
+
+    print("Calculating vdw ...")
+    current_time = time.time()
     protein.calc_vdw()
+    elapsed = time.time() - current_time
+    print("Done, elapsed time %.3f seconds." % elapsed)
+
+    print("Write out head3.lst and opps ...")
+    current_time = time.time()
     update_opp(protein)
+    elapsed = time.time() - current_time
+    print("Done, elapsed time %.3f seconds." % elapsed)
