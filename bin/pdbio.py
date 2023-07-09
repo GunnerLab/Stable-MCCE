@@ -4,6 +4,9 @@
 import math
 import os
 import glob
+import time
+import numpy as np
+from scipy.sparse import lil_matrix
 
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
@@ -13,7 +16,8 @@ BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 VDW_SCALE14 = 0.5
 
 # set any big conf vdw to 999
-VDW_CUTOFF_FAR2 = 100     # set atom vdw to 0 if atoms are further than this value
+VDW_CUTOFF_FAR = 10     # set atom vdw to 0 if atoms are further than this value
+VDW_CUTOFF_FAR2 = VDW_CUTOFF_FAR * VDW_CUTOFF_FAR     # set atom vdw to 0 if atoms are further than this value
 VDW_CUTOFF_NEAR2 = 1      # set atom vdw to 999 if atoms are closer than this value
 VDW_UPLIMIT = 999.0     # set conf vdw to 999 if bigger than this number
 
@@ -68,10 +72,16 @@ class Atom:
         connect_key = ("CONNECT", self.name, self.confType)
         self.connectivity_param = env.param[connect_key]
         radius_key = ("RADIUS", self.confType, self.name)
-        radius_values = env.param[radius_key]
-        self.r_bound = radius_values.r_bound
-        self.r_vdw = radius_values.r_vdw
-        self.e_vdw = radius_values.e_vdw
+        if radius_key in env.param:
+            radius_values = env.param[radius_key]
+            self.r_bound = radius_values.r_bound
+            self.r_vdw = radius_values.r_vdw
+            self.e_vdw = radius_values.e_vdw
+        else: # Use default value as C
+            print("Warning, parameter %s not found, using default values as C" % str(radius_key))
+            self.r_bound = 1.7
+            self.r_vdw = 1.908
+            self.e_vdw = 0.086
         return
 
     def writeline(self):
@@ -81,13 +91,47 @@ class Atom:
                 self.xyz[2])
         return line
 
+class Blob:
+    def __init__(self, conf):
+        self.center = (0.0, 0.0, 0.0)
+        self.radius = 0.0
+        x = 0.0
+        y = 0.0
+        z = 0.0
+        for atom in conf.atom:
+            x += atom.xyz[0]
+            y += atom.xyz[1]
+            z += atom.xyz[2]
+        n = len(conf.atom)
+
+        if n > 0:
+            self.center = (x/n, y/n, z/n)
+
+            r_max = max([x.r_vdw for x in conf.atom])
+
+            d_far2 = 0.0
+            atom_far = ""
+            for atom in conf.atom:
+                d2 = ddvv(self.center, atom.xyz)
+                if d2 > d_far2:
+                    d_far2 = d2
+                    atom_far = atom
+            d_far = math.sqrt(d_far2)
+
+            self.radius = d_far + r_max
+
+        return
+
 
 class Conformer:
     def __init__(self):
         self.confID = ""
         self.resID = ""
+        self.i = 0    # index in vdw matrix
         self.atom = []
+        self.vdw0 = 0.0
         self.vdw1 = 0.0
+
         return
 
 class Residue:
@@ -99,7 +143,7 @@ class Residue:
 class Protein:
     def __init__(self):
         self.residue = []
-        self.vdw_pw = {}
+        self.vdw_pw = []  # place holder, will be a 2D matrix
         return
 
     def loadpdb(self, fname):
@@ -146,6 +190,24 @@ class Protein:
                 conf.confID = "%sBK%s000" % (first_confID[:3], first_confID[5:11])
                 conf.resID = res.resID
                 res.conf.insert(0, conf)
+
+        # Assign an index number to each conformer
+        n_conf = 0
+        for res in self.residue:
+            if len(res.conf) <= 1:   # backbone only
+                continue
+            for conf in res.conf[1:]:
+                conf.i = n_conf
+                n_conf += 1
+
+        # Create a 2D VDW array tht will be referenced by indices
+        #self.vdw_pw = np.zeros((n_conf, n_conf))
+        self.vdw_pw = lil_matrix((n_conf, n_conf))
+
+        # Create a blob of conformer to screen vdw calculation
+        for res in self.residue:
+            for conf in res.conf:
+                conf.blob = Blob(conf)
         return
 
     def make_connect12(self):
@@ -366,21 +428,33 @@ class Protein:
                     print("---->Atom %s" % atom.atomID)
         return
 
-    def calc_vdw(self):
+    def calc_vdw(self, verbose=False):
         # do it on two sides so the two-way interaction numbers can be checked
         for res1 in self.residue:
-            for conf1 in res1.conf:
+            # compute vdw0
+            conf = res1.conf[0]
+            conf.vdw0 = vdw_conf(conf, conf)
+
+            if len(res1.conf) <= 1:
+                continue    # only backbone
+            for conf1 in res1.conf[1:]:
+                if verbose:
+                    print("   vdw - %s ..." % conf1.confID)
+                saved_time = time.time()
                 for res2 in self.residue:
+                    if len(res2.conf) == 1:
+                        continue  # only backbone
                     if res1 == res2: # we need to do self to self vdw - vdw0
                         vdw = vdw_conf(conf1, conf1)
                         if abs(vdw) > 0.001:
-                            self.vdw_pw[(conf1.confID, conf1.confID)] = vdw
+                            self.vdw_pw[conf1.i, conf1.i] = vdw
                         continue
-                    for conf2 in res2.conf:
+                    for conf2 in res2.conf[1:]:
                         vdw = vdw_conf(conf1, conf2)
                         if abs(vdw) > 0.001:
                             #print("%s - %s: %.3f" % (conf1.confID, conf2.confID, vdw))
-                            self.vdw_pw[(conf1.confID, conf2.confID)] = vdw
+                            self.vdw_pw[conf1.i, conf2.i] = vdw
+
 
                 # compute vdw1, vdw to all backbone
                 vdw1 = 0.0
@@ -389,6 +463,8 @@ class Protein:
                     vdw = vdw_conf(conf1, conf2)
                     vdw1 += vdw
                 conf1.vdw1 = vdw1
+                elapsed = time.time() - saved_time
+                #print("   %s ... %.3f seconds" % (conf1.confID, elapsed))
 
     def connect_reciprocity_check(self):
         # connectivity should be reciprocal except backbone atoms
@@ -421,6 +497,12 @@ class Protein:
 
         print("VDW two sides checked.")
         return
+
+    def print_confindex(self):
+        for res in self.residue:
+            if len(res.conf) > 1:
+                for conf in res.conf[1:]:
+                    print("%s -> %4d" % (conf.confID, conf.i))
 
 class CONNECT_param:
     def __init__(self, value_str):
@@ -499,6 +581,7 @@ class ENV:
 
         files = glob.glob("*.ftpl")
         files.sort()
+        print("Reading parameters from %s" % ftpldir)
         for fname in files:
             self.read_ftpl_file(fname)
 
@@ -506,6 +589,7 @@ class ENV:
         # Update vdw with 00always_needed.tpl
         fname = "00always_needed.tpl"
         lines = open(fname).readlines()
+        print("Updating vdw parameters from %s" % fname)
         for line in lines:
             end = line.find("#")
             line = line[:end].strip()
@@ -531,15 +615,47 @@ class ENV:
 
         os.chdir(cwd)
 
-
+        # read from user_param
         ftpldir = "user_param"
         if os.path.isdir(ftpldir):
+            print("Reading parameters from %s" % ftpldir)
             os.chdir(ftpldir)
             files = glob.glob("*.ftpl")
             files.sort()
             for fname in files:
                 self.read_ftpl_file(fname)
             os.chdir(cwd)
+
+        # read and convert from new.tpl
+        # Only CONNECT records are read and converted from new.tpl
+        newtpl = "new.tpl"
+        if os.path.exists(newtpl):
+            print("Reading CONNECT parameters from %s" % newtpl)
+            lines = open(newtpl).readlines()
+            for line in lines:
+                if len(line) > 10:
+                    key1 = line[:9].strip()
+                    if key1 == "CONNECT":
+                        key3 = line[9:14]
+                        key2 = line[15:19]
+                        orbital = line[20:29].strip()
+                        atoms_str = line[30:].rstrip()+"   "
+                        n_atoms = len(atoms_str)//10
+                        atoms = []
+                        for i in range(n_atoms):
+                            a = atoms_str[:10]
+                            ires = a[:5].strip()
+                            atom_name = a[5:9]
+                            if ires != "0":
+                                atom_name = " ?  "
+                            atoms.append(atom_name)
+                            atoms_str = atoms_str[10:]
+
+                        new_atoms_str = ",".join(["\"%s\"" % x for x in atoms])
+                        value_string = "%s, %s" % (orbital, new_atoms_str)
+                        self.param[(key1, key2, key3)] = CONNECT_param(value_string)
+                        #print("(%s, %s, %s): %s" % (key1, key2, key3, value_string))
+
 
     def print_param(self):
         for key, value in self.param.items():
@@ -552,56 +668,68 @@ class ENV:
 
 def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False, display=False):
     vdw = 0.0
-    if display:
-        print("%12s %16s     %10s %8s %6s   %6s %6s %6s %6s %6s %6s" % ("ATOM1",
-                                                             "ATOM2",
-                                                             "vdw",
-                                                             "dist",
-                                                             "cnct",
-                                                             "r1",
-                                                             "e1",
-                                                             "r2",
-                                                             "e2",
-                                                                        "R_sum",
-                                                                        "E_par"))
-    for atom1 in conf1.atom:
-        for atom2 in conf2.atom:
-            vdw_a2a = vdw_atom(atom1, atom2)
-            vdw += vdw_a2a
-            if verbose and abs(vdw_a2a) >= cutoff:
-                d2 = ddvv(atom1.xyz, atom2.xyz)
-                if atom1 == atom2:
-                    connect = "self"
-                elif atom1 in atom2.connect12:
-                    connect = "1--2"
-                elif atom1 in atom2.connect13:
-                    connect = "1--3"
-                elif atom1 in atom2.connect14:
-                    connect = "1--4"
-                else:
-                    connect = "none"
-                if display:  # display details
-                    R_sum = atom1.r_vdw+atom2.r_vdw
-                    E_par = math.sqrt(atom1.e_vdw*atom2.e_vdw)
-                    print("%s -> %s: %8.3f %8.3f %6s   %6.4f %6.4f %6.4f %6.4f %6.4f %6.4f" % (atom1.atomID,
-                                                                                               atom2.atomID,
-                                                                                               vdw_a2a,
-                                                                                               math.sqrt(d2),
-                                                                                               connect,
-                                                                                               atom1.r_vdw,
-                                                                                               atom1.e_vdw,
-                                                                                               atom2.r_vdw,
-                                                                                               atom2.e_vdw,
-                                                                                               R_sum,
-                                                                                               E_par))
-                else:  # display essential information
-                    print(
-                        "%s -> %s: %8.3f %8.3f %6s" % (atom1.atomID, atom2.atomID, vdw_a2a, math.sqrt(d2), connect))
-    if vdw >= VDW_UPLIMIT:
-        vdw = 999.0
 
-    if conf1 == conf2:
-        vdw = 0.5*vdw
+    d = math.sqrt(ddvv(conf1.blob.center, conf2.blob.center))
+    #print(d, conf1.blob.radius + 6 + conf2.blob.radius)
+    if d > conf1.blob.radius + 6 + conf2.blob.radius:
+        if display:
+            print("%s at (%.3f, %.3f, %.3f) <-> %s at (%.3f, %.3f, %.3f): d = %.3f" %
+                  (conf1.confID, conf1.blob.center[0], conf1.blob.center[1], conf1.blob.center[2],
+                   conf2.confID, conf2.blob.center[0], conf2.blob.center[1], conf2.blob.center[2],
+                   d))
+
+    else:
+        if display:
+            print("%12s %16s     %10s %8s %6s   %6s %6s %6s %6s %6s %6s" % ("ATOM1",
+                                                                 "ATOM2",
+                                                                 "vdw",
+                                                                 "dist",
+                                                                 "cnct",
+                                                                 "r1",
+                                                                 "e1",
+                                                                 "r2",
+                                                                 "e2",
+                                                                            "R_sum",
+                                                                            "E_par"))
+        for atom1 in conf1.atom:
+            for atom2 in conf2.atom:
+                vdw_a2a = vdw_atom(atom1, atom2)
+                vdw += vdw_a2a
+                if verbose and abs(vdw_a2a) >= cutoff:
+                    d2 = ddvv(atom1.xyz, atom2.xyz)
+                    if atom1 == atom2:
+                        connect = "self"
+                    elif atom1 in atom2.connect12:
+                        connect = "1--2"
+                    elif atom1 in atom2.connect13:
+                        connect = "1--3"
+                    elif atom1 in atom2.connect14:
+                        connect = "1--4"
+                    else:
+                        connect = "none"
+                    if display:  # display details
+                        R_sum = atom1.r_vdw+atom2.r_vdw
+                        E_par = math.sqrt(atom1.e_vdw*atom2.e_vdw)
+                        print("%s -> %s: %8.3f %8.3f %6s   %6.4f %6.4f %6.4f %6.4f %6.4f %6.4f" % (atom1.atomID,
+                                                                                                   atom2.atomID,
+                                                                                                   vdw_a2a,
+                                                                                                   math.sqrt(d2),
+                                                                                                   connect,
+                                                                                                   atom1.r_vdw,
+                                                                                                   atom1.e_vdw,
+                                                                                                   atom2.r_vdw,
+                                                                                                   atom2.e_vdw,
+                                                                                                   R_sum,
+                                                                                                   E_par))
+                    else:  # display essential information
+                        print(
+                            "%s -> %s: %8.3f %8.3f %6s" % (atom1.atomID, atom2.atomID, vdw_a2a, math.sqrt(d2), connect))
+        if vdw >= VDW_UPLIMIT:
+            vdw = 999.0
+
+        if conf1 == conf2:
+            vdw = 0.5*vdw
+
     return vdw
 
 def vdw_atom(atom1, atom2):
@@ -616,34 +744,41 @@ def vdw_atom(atom1, atom2):
     # σij is the distance where LJ potential reaches minimum: -ϵij
     # r is the atom distance
 
+    p_lj = 0.0
+
     # Using the equation in vdw.c. Need to work on new parameter set.
-    d2 = ddvv(atom1.xyz, atom2.xyz)
+    if atom1.xyz[0] - atom2.xyz[0] < VDW_CUTOFF_FAR and \
+       atom1.xyz[1] - atom2.xyz[1] < VDW_CUTOFF_FAR and \
+       atom1.xyz[2] - atom2.xyz[2] < VDW_CUTOFF_FAR:
+        d2 = ddvv(atom1.xyz, atom2.xyz)
 
-    if atom1 != atom2 and atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
-        if d2 > VDW_CUTOFF_FAR2:
-            p_lj = 0.0
-        elif d2 < VDW_CUTOFF_NEAR2:
-            p_lj = 999.0
-        else:
-            r1 = atom1.r_vdw
-            e1 = atom1.e_vdw
-            r2 = atom2.r_vdw
-            e2 = atom2.e_vdw
-            if atom2 in atom1.connect14:
-                scale = VDW_SCALE14
+        if atom1 != atom2 and atom2 not in atom1.connect12 and atom2 not in atom1.connect13:
+            if d2 > VDW_CUTOFF_FAR2:
+                p_lj = 0.0
+            elif d2 < VDW_CUTOFF_NEAR2:
+                p_lj = 999.0
             else:
-                scale = 1.0
+                r1 = atom1.r_vdw
+                e1 = atom1.e_vdw
+                r2 = atom2.r_vdw
+                e2 = atom2.e_vdw
+                if atom2 in atom1.connect14:
+                    scale = VDW_SCALE14
+                else:
+                    scale = 1.0
 
-            sig_min = r1 + r2
-            eps = math.sqrt(e1 * e2)
+                sig_min = r1 + r2
+                eps = math.sqrt(e1 * e2)
 
-            sig_d2 = sig_min * sig_min / d2
-            sig_d6 = sig_d2 * sig_d2 * sig_d2
-            sig_d12 = sig_d6 * sig_d6
+                sig_d2 = sig_min * sig_min / d2
+                sig_d6 = sig_d2 * sig_d2 * sig_d2
+                sig_d12 = sig_d6 * sig_d6
 
-            p_lj = scale * (eps * sig_d12 - 2. * eps * sig_d6)
-    else:
-        p_lj = 0.0
+                p_lj = scale * (eps * sig_d12 - 2. * eps * sig_d6)
+    #     else:
+    #         p_lj = 0.0
+    # else:
+    #     p_lj = 0.0
 
     return p_lj
 
@@ -656,11 +791,12 @@ if __name__ == "__main__":
     env.load_runprm()
     env.load_ftpl()
 
-    #env.print_param()
+    env.print_param()
 
-    # pdbfile = "step2_out.pdb"
-    # protein = Protein()
-    # protein.loadpdb(pdbfile)
+    #pdbfile = "step2_out.pdb"
+    #protein = Protein()
+    #protein.loadpdb(pdbfile)
+    #protein.print_confindex()
     # protein.make_connect12()
     # protein.make_connect13()
     # protein.make_connect14()
