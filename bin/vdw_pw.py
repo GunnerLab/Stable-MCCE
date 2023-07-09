@@ -6,6 +6,8 @@ Compute vdw pairwise and write back to opp files
 import os
 from pdbio import *
 import time
+import argparse
+
 
 class ConfSelf:
     def __init__(self, line):
@@ -28,13 +30,21 @@ class ConfSelf:
         self.history = fields[15]
         self.state = fields[16]
 
-def update_opp(protein):
+
+def update_opp(protein, verbose=False):
     # read head3.lst
     lines = open("head3.lst").readlines()
     conflist = []
+    iconf_dict = {}
     for line in lines[1:]:
         conf_self = ConfSelf(line)
         conflist.append(conf_self)
+        iconf_dict[conf_self.confID] = conf_self.iconf
+
+    # get the iconf to print in opp
+    for res in protein.residue:
+        for conf in res.conf[1:]:
+            conf.iconf = iconf_dict[conf.confID]
 
     for res in protein.residue:
         resID1 = res.resID
@@ -52,42 +62,53 @@ def update_opp(protein):
                     opp_pw[id] = fields
                 write_opp = True
             else:  # check the biggest vdw and decide if a new opp file is needed
-                for key in protein.vdw_pw.keys():
-                    if conf.confID in key:
-                        write_opp = True
-                        break
+                # positive_interaction = np.max(protein.vdw_pw[conf.i])
+                # negative_interaction = np.min(protein.vdw_pw[conf.i])
+                row = protein.vdw_pw[conf.i].data
+                positive_interaction = max(row[0])
+                negative_interaction = min(row[0])
+                if abs(positive_interaction) > 0.01 or abs(negative_interaction) > 0.01:
+                    write_opp = True
+
             if write_opp:   # write new opp files
+                if verbose:
+                    print("   opp - %s ..." % conf.confID)
+
                 #print("writing %s" % fname)
                 new_opplines = []
-                for conf2 in conflist:
-                    resID2 = "%3s%4s%c" % (conf2.confID[:3], conf2.confID[6:10], conf2.confID[5])
-                    if resID1 == resID2:
-                        continue
-                    pw_key = (conf.confID, conf2.confID)
-                    if pw_key in protein.vdw_pw:
-                        new_pw = protein.vdw_pw[pw_key]
-                    else:
-                        new_pw = 0.0
-                    newline = ""
-                    if conf2.confID in opp_pw:
-                        if abs(float(opp_pw[conf2.confID][2])) > 0.001 or abs(float(opp_pw[conf2.confID][3])) > 0.001:
-                            newline = "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n" % (conf2.iconf,
-                                                                           conf2.confID,
-                                                                           float(opp_pw[conf2.confID][2]),
-                                                                           new_pw,
-                                                                           float(opp_pw[conf2.confID][4]),
-                                                                           float(opp_pw[conf2.confID][5]),
-                                                                           opp_pw[conf2.confID][6])
-                        elif abs(new_pw) > 0.001:
-                            newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
-                                                                           conf2.confID,
-                                                                           0.0,
-                                                                           new_pw,
-                                                                           0.0,
-                                                                           0.0)
+                for res2 in protein.residue:
+                    for conf2 in res2.conf[1:]:
+                        resID2 = "%3s%4s%c" % (conf2.confID[:3], conf2.confID[6:10], conf2.confID[5])
+                        if resID1 == resID2:
+                            continue
 
-                    if newline:
-                        new_opplines.append(newline)
+                        # pw_key = (conf.confID, conf2.confID)
+                        # if pw_key in protein.vdw_pw:
+                        #     new_pw = protein.vdw_pw[pw_key]
+                        # else:
+                        #     new_pw = 0.0
+                        new_pw = protein.vdw_pw[conf.i, conf2.i]
+
+                        newline = ""
+                        if conf2.confID in opp_pw:
+                            if abs(float(opp_pw[conf2.confID][2])) > 0.001 or abs(float(opp_pw[conf2.confID][3])) > 0.001:
+                                newline = "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n" % (conf2.iconf,
+                                                                               conf2.confID,
+                                                                               float(opp_pw[conf2.confID][2]),
+                                                                               new_pw,
+                                                                               float(opp_pw[conf2.confID][4]),
+                                                                               float(opp_pw[conf2.confID][5]),
+                                                                               opp_pw[conf2.confID][6])
+                            elif abs(new_pw) > 0.001:
+                                newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
+                                                                               conf2.confID,
+                                                                               0.0,
+                                                                               new_pw,
+                                                                               0.0,
+                                                                               0.0)
+
+                        if newline:
+                            new_opplines.append(newline)
 
                     open(fname, "w").writelines(new_opplines)
 
@@ -102,11 +123,10 @@ def update_opp(protein):
             conf_dict[conf.confID] = conf
 
     for conf in conflist:
-        key = (conf.confID, conf.confID)
-        if key in protein.vdw_pw:
-            vdw0 = protein.vdw_pw[key]
+        if conf.confID in conf_dict:    # DM conformer vdw1 not in dict
+            vdw0 = conf_dict[conf.confID].vdw0
         else:
-            vdw0 = 0.0
+            vdw0 = conf.vdw0
 
         if conf.confID in conf_dict:    # DM conformer vdw1 not in dict
             vdw1 = conf_dict[conf.confID].vdw1
@@ -138,11 +158,24 @@ def update_opp(protein):
 
 
 if __name__ == "__main__":
+    # Get the command arguments
+    helpmsg = "Compute detailed conformer to conformer vdw."
+    parser = argparse.ArgumentParser(description=helpmsg)
+    parser.add_argument("-v", default=False, help="Turn on verbose mode to show progress", action="store_true")
+    args = parser.parse_args()
+
+    start_time = time.time()
+
+    print("Loading paramter and structure ...")
+    current_time = time.time()
     pdbfile = "step2_out.pdb"
     env.load_runprm()
     env.load_ftpl()
     protein = Protein()
     protein.loadpdb(pdbfile)
+    elapsed = time.time() - current_time
+    print("Done, elapsed time %.3f seconds." % elapsed)
+
 
     print("Making atom connectivity ...")
     current_time = time.time()
@@ -155,12 +188,14 @@ if __name__ == "__main__":
 
     print("Calculating vdw ...")
     current_time = time.time()
-    protein.calc_vdw()
+    protein.calc_vdw(verbose=args.v)
     elapsed = time.time() - current_time
     print("Done, elapsed time %.3f seconds." % elapsed)
 
     print("Write out head3.lst and opps ...")
     current_time = time.time()
-    update_opp(protein)
+    update_opp(protein, verbose=args.v)
     elapsed = time.time() - current_time
     print("Done, elapsed time %.3f seconds." % elapsed)
+    elapsed = time.time() - start_time
+    print("Total elapsed time %.3f seconds." % elapsed)
