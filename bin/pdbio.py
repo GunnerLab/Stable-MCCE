@@ -431,9 +431,6 @@ class Protein:
     def calc_vdw(self, verbose=False):
         # do it on two sides so the two-way interaction numbers can be checked
         for res1 in self.residue:
-            # compute vdw0
-            conf = res1.conf[0]
-            conf.vdw0 = vdw_conf(conf, conf)
 
             if len(res1.conf) <= 1:
                 continue    # only backbone
@@ -441,6 +438,10 @@ class Protein:
                 if verbose:
                     print("   vdw - %s ..." % conf1.confID)
                 saved_time = time.time()
+
+                # compute vdw0
+                conf1.vdw0 = vdw_conf(conf1, conf1)
+
                 for res2 in self.residue:
                     if len(res2.conf) == 1:
                         continue  # only backbone

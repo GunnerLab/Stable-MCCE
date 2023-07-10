@@ -55,9 +55,10 @@ def update_opp(protein, verbose=False):
             if os.path.isfile(fname):
                 opplines = open(fname).readlines()
                 for oppline in opplines:
-                    fields = oppline.split()
-                    if len(fields) < 7:
-                        fields.append(" ")
+                    oppline = oppline.strip()
+                    if len(oppline) < 54:
+                        oppline = oppline + "   "
+                    fields = [oppline[:5], oppline[6:20], oppline[20:29], oppline[29:37], oppline[37:45], oppline[45:53], oppline[53:]]
                     id = fields[1]
                     opp_pw[id] = fields
                 write_opp = True
