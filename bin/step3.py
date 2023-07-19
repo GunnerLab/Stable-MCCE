@@ -146,21 +146,21 @@ def process(args):
             logging.info("Main: Done")
 
         # Recalculate vdw
-        if os.path.exists("energies_bak") and os.path.isdir("energies_bak"):
-            shutil.rmtree("energies_bak")
-        shutil.copytree("energies", "energies_bak")
-        shutil.copy("head3.lst", "head3.lst_bak")
-
-        pdbfile = "step2_out.pdb"
-        env.load_runprm()
-        env.load_ftpl()
-        protein = Protein()
-        protein.loadpdb(pdbfile)
-        protein.make_connect12()
-        protein.make_connect13()
-        protein.make_connect14()
-        protein.calc_vdw()
-        update_opp(protein)
+        # if os.path.exists("energies_bak") and os.path.isdir("energies_bak"):
+        #     shutil.rmtree("energies_bak")
+        # shutil.copytree("energies", "energies_bak")
+        # shutil.copy("head3.lst", "head3.lst_bak")
+        #
+        # pdbfile = "step2_out.pdb"
+        # env.load_runprm()
+        # env.load_ftpl()
+        # protein = Protein()
+        # protein.loadpdb(pdbfile)
+        # protein.make_connect12()
+        # protein.make_connect13()
+        # protein.make_connect14()
+        # protein.calc_vdw()
+        # update_opp(protein)
 
     return
 
