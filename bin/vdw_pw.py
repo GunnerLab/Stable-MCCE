@@ -51,16 +51,16 @@ def update_opp(protein, verbose=False):
         for conf in res.conf[1:]:
             write_opp = False
             fname = "energies/" + conf.confID + ".opp"
-            opp_pw = {}
+            opp_pw = [[i, "", 0, 0, 0, 0, ""] for i in range(len(conflist)+1)]    # store retrieved pw in an array indexed by iconf instead of dict
             if os.path.isfile(fname):
                 opplines = open(fname).readlines()
                 for oppline in opplines:
                     oppline = oppline.strip()
                     if len(oppline) < 54:
                         oppline = oppline + "   "
-                    fields = [oppline[:5], oppline[6:20], oppline[20:29], oppline[29:37], oppline[37:45], oppline[45:53], oppline[53:]]
-                    id = fields[1]
-                    opp_pw[id] = fields
+                    fields = [int(oppline[:5]), oppline[6:20], float(oppline[20:29]), float(oppline[29:37]), float(oppline[37:45]), float(oppline[45:53]), oppline[53:]]
+                    iconf = fields[0]
+                    opp_pw[iconf] = fields
                 write_opp = True
             else:  # check the biggest vdw and decide if a new opp file is needed
                 # positive_interaction = np.max(protein.vdw_pw[conf.i])
