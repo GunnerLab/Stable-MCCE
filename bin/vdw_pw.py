@@ -149,7 +149,7 @@ def update_opp(protein, verbose=False):
                                           conf.dsolv,
                                           conf.extra,
                                           conf.history,
-                                          conf.state)
+                                          conf.state.strip())
 
         new_lines.append(newline)
 
