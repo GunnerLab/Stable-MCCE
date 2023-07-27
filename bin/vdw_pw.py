@@ -91,22 +91,22 @@ def update_opp(protein, verbose=False):
                         new_pw = protein.vdw_pw[conf.i, conf2.i]
 
                         newline = ""
-                        if conf2.confID in opp_pw:
-                            if abs(float(opp_pw[conf2.confID][2])) > 0.001 or abs(float(opp_pw[conf2.confID][3])) > 0.001:
-                                newline = "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n" % (conf2.iconf,
-                                                                               conf2.confID,
-                                                                               float(opp_pw[conf2.confID][2]),
-                                                                               new_pw,
-                                                                               float(opp_pw[conf2.confID][4]),
-                                                                               float(opp_pw[conf2.confID][5]),
-                                                                               opp_pw[conf2.confID][6])
-                            elif abs(new_pw) > 0.001:
-                                newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
-                                                                               conf2.confID,
-                                                                               0.0,
-                                                                               new_pw,
-                                                                               0.0,
-                                                                               0.0)
+                        iconf = iconf_dict[conf2.confID]
+                        if abs(opp_pw[iconf][2]) > 0.001 or abs(opp_pw[iconf][3]) > 0.001:
+                            newline = "%05d %s %8.3f%8.3f%8.3f%8.3f %s\n" % (conf2.iconf,
+                                                                           conf2.confID,
+                                                                           opp_pw[iconf][2],
+                                                                           new_pw,
+                                                                           opp_pw[iconf][4],
+                                                                           opp_pw[iconf][5],
+                                                                           opp_pw[iconf][6])
+                        elif abs(new_pw) > 0.001:
+                            newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
+                                                                           conf2.confID,
+                                                                           0.0,
+                                                                           new_pw,
+                                                                           0.0,
+                                                                           0.0)
 
                         if newline:
                             new_opplines.append(newline)
