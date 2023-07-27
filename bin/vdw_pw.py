@@ -99,7 +99,7 @@ def update_opp(protein, verbose=False):
                                                                            new_pw,
                                                                            opp_pw[iconf][4],
                                                                            opp_pw[iconf][5],
-                                                                           opp_pw[iconf][6])
+                                                                           opp_pw[iconf][6].strip())
                         elif abs(new_pw) > 0.001:
                             newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
                                                                            conf2.confID,
