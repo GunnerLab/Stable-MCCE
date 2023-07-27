@@ -99,7 +99,7 @@ def update_opp(protein, verbose=False):
                                                                                new_pw,
                                                                                float(opp_pw[conf2.confID][4]),
                                                                                float(opp_pw[conf2.confID][5]),
-                                                                               opp_pw[conf2.confID][6])
+                                                                               opp_pw[conf2.confID][6].strip())
                             elif abs(new_pw) > 0.001:
                                 newline = "%05d %s %8.3f%8.3f%8.3f%8.3f +\n" % (conf2.iconf,
                                                                                conf2.confID,
@@ -149,7 +149,7 @@ def update_opp(protein, verbose=False):
                                           conf.dsolv,
                                           conf.extra,
                                           conf.history,
-                                          conf.state)
+                                          conf.state.strip())
 
         new_lines.append(newline)
 
