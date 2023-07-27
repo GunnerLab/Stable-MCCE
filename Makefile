@@ -1,6 +1,6 @@
-CC      = gcc
+CC      = gcc -fcommon
 #CC      = x86_64-linux-gnu-gcc -g
-CC2 = g++ -std=c++11
+CC2 = g++ -std=c++11 -fcommon
 #CC2 = x86_64-linux-gnu-g++ -g
 
 LDIR = lib
