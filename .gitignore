@@ -53,6 +53,22 @@ dkms.conf
 .idea
 __pycache__/
 *.swp
+.DS_Store
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# vscode workspace:
+*.code-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
 
 delphi
 delphi/delphi
