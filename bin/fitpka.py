@@ -18,6 +18,20 @@ def sigmoid(x, x0, k):
 
 def plot_res(resname, charge, t_type, t_points):
 
+    # make sure x axis is in assending order
+    #print(t_points)
+    #print(charge)
+
+    x_reversed = False
+    if t_points[-1] < t_points[0]:
+        x_reversed = True
+        charge.reverse()
+        t_points.reverse()
+
+    #print(t_points)
+    #print(charge)
+
+
     # make parameters to convert y to sigmoid function range (0, -1)
     # charge[x] = a(exp(k(x-x0))/(1+exp(k(x-x0)) + b
     # for charge change range 1, a = 1 or -1, k is slope, x0 is midpoint, b is offset for oxidation like from +2 to +3
@@ -31,36 +45,43 @@ def plot_res(resname, charge, t_type, t_points):
     xdata = np.array(x)
     ydata = np.array(y)
 
+
     # fit the function to get x0 and k
     msg = ""
     try:
         (popt, pcov) = curve_fit(sigmoid, xdata, ydata, bounds=([x[0], -4], [x[-1], 4]))
-        # (popt, pcov) = curve_fit(sigmoid, xdata, ydata)
+        #(popt, pcov) = curve_fit(sigmoid, xdata, ydata)
     except RuntimeError:
         msg = "Titration out of range"
     except ValueError:
         msg = "Input value not valid"
+    except:
+        msg = "Other errors, titration step negative?"
 
-    if popt[0] < x[0] + 0.001 or popt[0] > x[-1] - 0.001:
-        msg = "Titration out of range"
 
     # convert back to the titration curve, midpoint, curve, and error
     if msg:
         print(msg)
+    elif popt[0] < x[0] + 0.001 or popt[0] > x[-1] - 0.001:
+        msg = "Titration out of range"
     else:
         chi_squared = np.sum([(sigmoid(xdata, *popt) - ydata) ** 2])
         midpoint = popt[0]
         nslope = 0
         if t_type.upper() == "PH":
             nslope = 0.4342 * popt[1]
-        elif t_type.upper() == "EM":
+        elif t_type.upper() == "EH":
             nslope = 0.4342 * popt[1] * 58.0
         elif t_type.upper() == "CH" or t_type.upper() == "EXTRA":
             nslope = 0.4342 * popt[1] * PH2KCAL
         else:
-            print("Why am I here?")
+            print("Why am I here? %s" % t_type.upper())
 
         # plot the titration graph
+        #if x_reversed:
+        #    xdata = np.flip(xdata)
+        #    ydata = np.flip(ydata)
+
         plt.plot(xdata, charge, 'kx')
         Npoints = 100
         xfit = [xdata[0] + i * (xdata[-1] - xdata[0]) / Npoints for i in range(Npoints + 1)]
