@@ -1,47 +1,30 @@
 #!/usr/bin/env python
 """
-This program set up and run MCCE step 3 in multiple threads.
+Step 3 computes energy look up table. 
+The input is step2_out.pdb.
+The output is energies/*.opp, energies/*.oppl and head3.lst
+
+Command line options:
+-d number: dielectric constant (default 4)
+-s PBSolver: PB solver name (default delphi)
+-p number: run with number of threads (default 1)
+-c start end: run conformer from start to end (default 0 to 99999)
+-t path: temporary folder path (default /tmp) 
+--vdw: run vdw calculation only
+--fly: on-the-fly rxn0 calculation
+--head3: recreate *.opp and head3.lst from step2_out.pdb and *.oppl files without doing calculation
+-l file: load above options from a file
 
 Usage examples:
 
 1. Run step 3 with 6 threads
-    step3.py -p 6 [-e mcce] [-d delphi]
+    step3.py -p 6
 
-2. Run step 3 to recreate head3.lst
-    step3.py -r [-e mcce] [-d delphi]
-
-3. Run partial conformers. conformer 1 to 100
-    step3.py -c 1, 100 [-e mcce] [-d delphi]
-
--p number: run with number of processes
--r: refresh opp files vdw and ele, and head3.lst
--c start, end: run conformer from start to end
--d: the optional path to delphi program
-
-Assuming the underlying c code will:
-1. Write only opp files that are calculated (so that multi-threads won't overwrite each other). Dummies and
-un-calculated conformers don't have an opp file.
-2. When writing opp file, no previous run is loaded.
-3. head3.lst is generated at the end of step 3.
-
-
-Mechanism:
- * mcce is modified to run part of the conformers, as controlled by run.prm.
- * if an opp file exists, a conformer is considered to be already computed and therefore loaded.
- * no matter how many conformers are calculated, the averaging and vdw terms are always recalculated.
- * by modifying run.prm, we can run partial step 3.
- * a dummy run after all partial runs will update the final head3.lst and vdw terms.
 """
 
-import sys, argparse, shutil
-import logging
-import threading
-import time
-import os
-import subprocess
+import sys, argparse, shutil, logging, time, os
 from mccesteps import *
 from vdw_pw import *
-import shutil
 
 def mcce_thread(mcce, name):
     logging.info("Thread %s: starting", name)
