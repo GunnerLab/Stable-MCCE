@@ -12,7 +12,7 @@ Command line options:
 -t path: temporary folder path (default /tmp) 
 --vdw: run vdw calculation only
 --fly: on-the-fly rxn0 calculation
---head3: recreate *.opp and head3.lst from step2_out.pdb and *.oppl files without doing calculation
+--refresh: recreate *.opp and head3.lst from step2_out.pdb and *.oppl files without doing calculation
 -l file: load above options from a file
 
 Usage examples:
@@ -25,26 +25,36 @@ Usage examples:
 import sys, argparse, shutil, logging, time, os
 from vdw_pw import *
 
+class RunOptions:
+    def __init__(self, args):
+        self.inputpdb = "step2_out.pdb"  # implicit input pdb file
+        self.start = args.c[0]
+        self.end = args.c[1]
 
 
 if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
-    helpmsg = "Run mcce step 3, energy calculations, with multiple threads."
+    logging.basicConfig(format=format, level=logging.INFO, datefmt="%D %H:%M:%S")
+    logging.info("Step 3 starts")
+
+    helpmsg = "Run mcce step 3, energy lookup table calculations."
 
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("-c", metavar=('start', 'end'), default=[1, 99999], nargs=2, help="starting and ending "
-                                                                                         "conformer, default to 1 and 9999", type=int)
-    parser.add_argument("-d", metavar="epsilon", default="4.0", help="protein dielectric constant for delphi, default to 4.0")
-    parser.add_argument("-e", metavar="/path/to/mcce", default="mcce", help="mcce executable location, default to \"mcce\"")
-    parser.add_argument("-f", metavar="tmp folder", default="/tmp", help="delphi temporary folder, default to /tmp")
-    parser.add_argument("-p", metavar="processes", default=1, help="run mcce with number of processes, default to 1", type=int)
-    parser.add_argument("-r", default=False, help="refresh opp files and head3.lst without running delphi", action="store_true")
-    parser.add_argument("-u", metavar="Key=Value", default="", help="User customized variables")
-    parser.add_argument("-x", metavar="/path/to/delphi", default="delphi", help="delphi executable location, default to \"delphi\"")
-    parser.add_argument("--norun", default=False, help="Create run.prm but do not run step 3", action="store_true")
+    parser.add_argument("-c", metavar=('start', 'end'), default=[0, 99999], nargs=2, help="starting and ending "
+                                                                                         "conformer, default to 0 and 9999", type=int)
+    parser.add_argument("-d", metavar="epsilon", default="4.0", help="protein dielectric constant, default to 4.0")
+    parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
+    parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
+    parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
+    parser.add_argument("--vdw", default=False, help="run vdw calculation only")
+    parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation")
+    parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
+    parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
 
     args = parser.parse_args()
+    print(args)
 
+    # Process run time options
+    run_options = RunOptions(args)
 
 
