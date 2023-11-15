@@ -30,6 +30,19 @@ class RunOptions:
         self.inputpdb = "step2_out.pdb"  # implicit input pdb file
         self.start = args.c[0]
         self.end = args.c[1]
+        self.d = float(args.d)
+        self.s = args.s
+        self.p = args.p
+        self.t = args.t
+        self.vdw = args.vdw
+        self.fly = args.fly
+        self.refresh = args.refresh
+        if args.l:  # load options from the specified file 
+            lines=open(args.l).readlines()
+            for line in lines:
+                line = line.split("#")[0]
+                
+
 
 
 if __name__ == "__main__":
@@ -46,8 +59,8 @@ if __name__ == "__main__":
     parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
     parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
     parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
-    parser.add_argument("--vdw", default=False, help="run vdw calculation only")
-    parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation")
+    parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
+    parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
     parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
     parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
 
