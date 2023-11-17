@@ -1,0 +1,7 @@
+--fly  # On the fly rxn
+-d 2
+
+-t /tmp
+# end of the parameters
+-p 6
+-c 1    100

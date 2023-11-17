@@ -40,7 +40,30 @@ class RunOptions:
         if args.l:  # load options from the specified file 
             lines=open(args.l).readlines()
             for line in lines:
-                line = line.split("#")[0]
+                line = line.split("#")[0].strip()
+                fields = [x.strip() for x in line.split()]  # Extract an option line and strip off the spaces
+                if len(fields) > 0:
+                    key = fields[0]
+                    if key == "-c":
+                        self.start = int(fields[1])
+                        self.end = int(fields[2])
+                    elif key == "-d":                        
+                        self.d = float(fields[1])
+                    elif key == "-s":
+                        self.s = fields[1]
+                    elif key == "-p":
+                        self.p = int(fields[1])
+                    elif key == "-t":
+                        self.t = fields[1]
+                    elif key == "--vdw":
+                        self.vdw = True
+                    elif key == "--fly":
+                        self.fly = True
+                    elif key == "--refresh":
+                        self.refresh = True
+
+    def writeme(self):
+        print(vars(self))
                 
 
 
@@ -69,5 +92,5 @@ if __name__ == "__main__":
 
     # Process run time options
     run_options = RunOptions(args)
-
+    run_options.writeme()
 
