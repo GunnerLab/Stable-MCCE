@@ -22,8 +22,9 @@ Usage examples:
 
 """
 
-import sys, argparse, shutil, logging, time, os
+import sys, argparse, shutil, logging, time, os, json
 from vdw_pw import *
+
 
 class RunOptions:
     def __init__(self, args):
@@ -34,6 +35,7 @@ class RunOptions:
         self.s = args.s
         self.p = args.p
         self.t = args.t
+        self.salt = args.salt
         self.vdw = args.vdw
         self.fly = args.fly
         self.refresh = args.refresh
@@ -62,8 +64,8 @@ class RunOptions:
                     elif key == "--refresh":
                         self.refresh = True
 
-    def writeme(self):
-        print(vars(self))
+#    def toJSON(self):
+#        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
                 
 
 
@@ -82,15 +84,24 @@ if __name__ == "__main__":
     parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
     parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
     parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
+    parser.add_argument("-salt", metavar="salt concentration", default=0.15, help="Salt concentration in moles/L. default to 0.15", type=float)
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
     parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
     parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
 
     args = parser.parse_args()
-    print(args)
 
     # Process run time options
     run_options = RunOptions(args)
-    run_options.writeme()
+    print(vars(run_options))
 
+    # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
+
+    # Set up parallel envrionment and run PB solver
+
+    # Post-process electrostatic potential
+
+    # Compute vdw
+
+    # Assemble output files
