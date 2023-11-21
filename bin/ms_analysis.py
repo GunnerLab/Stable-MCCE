@@ -4,6 +4,7 @@ import sys
 import math
 import numpy as np
 
+
 ph2Kcal = 1.364
 Kcal2kT = 1.688
 
@@ -30,6 +31,7 @@ class Conformer:
         self.confid = fields[1]
         self.resid = self.confid[:3]+self.confid[5:11]
         self.crg = float(fields[4])
+
 
 class MSout:
     def __init__(self, fname):
@@ -226,8 +228,6 @@ def groupms_byconfid(microstates, confids):
     return ingroup, outgroup
 
 
-
-
 def ms_energy_stat(microstates):
     """
     Given a list of microstates, find the lowest energy, average energy, and highest energy
@@ -268,7 +268,6 @@ def ms_convert2occ(microstates):
         occ[key] = occurance[key]/N_ms
 
     return occ
-
 
 
 def ms_counts(microstates):
@@ -312,10 +311,9 @@ def ms_convert2sumcrg(microstates, free_res):
     return charges
 
 
-
-def read_conformers():
+def read_conformers(head3_path):
     conformers = []
-    lines = open("head3.lst").readlines()
+    lines = open(head3_path).readlines()
     lines.pop(0)
     for line in lines:
         conf = Conformer()
@@ -323,6 +321,11 @@ def read_conformers():
         conformers.append(conf)
 
     return conformers
+
+try:
+    conformers = read_conformers("head3.lst")
+except FileNotFoundError:
+    conformers = []
 
 
 def e2occ(energies):
@@ -400,9 +403,6 @@ def whatchanged_res(msgroup1, msgroup2, free_res):
 
     return bhd
 
-conformers = read_conformers()
-
-
 
 if __name__ == "__main__":
     msout = MSout("ms_out/pH4eH0ms.txt")
@@ -410,9 +410,9 @@ if __name__ == "__main__":
     # ticks = [msout.lowest_E + e_step*(i) for i in range(20)]
     # ms_in_bands = groupms_byenergy(msout.microstates.values(), ticks)
     # print([len(band) for band in ms_in_bands])
-#     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
-#     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
-#     print(l_E, a_E, h_E)
+    #     netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
+    #     l_E, a_E, h_E = ms_energy_stat(msout.microstates.values())
+    #     print(l_E, a_E, h_E)
 
     # charge over energy bands
     # e_step = (msout.highest_E - msout.lowest_E) / 20
