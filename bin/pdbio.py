@@ -3,6 +3,7 @@
 
 import math
 import os
+import logging
 import glob
 import time
 import numpy as np
@@ -576,13 +577,16 @@ class ENV:
                 self.param[(key1, key2, key3)] = RADIUS_param(value_string)
 
     def load_ftpl(self):
-        ftpldir = self.runprm["MCCE_HOME"]+"/param"
+        if "FTPLDIR" in self.runprm:
+            ftpldir = self.runprm["FTPLDIR"]
+        else:
+            ftpldir = self.runprm["MCCE_HOME"]+"/param"
         cwd = os.getcwd()
         os.chdir(ftpldir)
 
         files = glob.glob("*.ftpl")
         files.sort()
-        print("Reading parameters from %s" % ftpldir)
+        logging.info("Reading parameters from %s" % ftpldir)
         for fname in files:
             self.read_ftpl_file(fname)
 
@@ -590,7 +594,7 @@ class ENV:
         # Update vdw with 00always_needed.tpl
         fname = "00always_needed.tpl"
         lines = open(fname).readlines()
-        print("Updating vdw parameters from %s" % fname)
+        logging.info("Updating vdw parameters from %s" % os.path.abspath(fname))
         for line in lines:
             end = line.find("#")
             line = line[:end].strip()

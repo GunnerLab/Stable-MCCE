@@ -35,6 +35,7 @@ class RunOptions:
         self.s = args.s
         self.p = args.p
         self.t = args.t
+        self.ftpl = ""
         self.salt = args.salt
         self.vdw = args.vdw
         self.fly = args.fly
@@ -63,26 +64,39 @@ class RunOptions:
                         self.fly = True
                     elif key == "--refresh":
                         self.refresh = True
+                    elif key == "--ftpl":
+                        self.ftpl = fields[1]
 
 #    def toJSON(self):
 #        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
                 
 
+class BoundaryRecord:
+    def __init__(self):
+        self.x = 0.0  
+        self.y = 0.0
+        self.z = 0.0
+        self.r = 0.0  # radius
+        self.c = 0.0  # charge
+        return
+
 class BoundaryConditions:
-    def __init__(self, run_options):
-        # load ftpl files
-
-        # read step2_out.pdb and convert to mcce structure
-
-        # assign conformer's boundary atoms
-
+    def __init__(self, run_options, protein):
+      
 
         # find common boundary
-
+        self.common_boundary = self.find_common_boundary(protein)
 
         # sites to receive potential and index to conformer atoms
-    
+        
+        
         return
+    
+    def find_common_boundary(self, protein):
+        boundary = []
+
+        return boundary
+    
     
 
 
@@ -100,6 +114,7 @@ if __name__ == "__main__":
     parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
     parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
     parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
+    parser.add_argument("--ftpl", metavar="ftpl folder", default="", help="ftpl folder, default to \"param/\" of mcce exeuctable location")
     parser.add_argument("-salt", metavar="salt concentration", default=0.15, help="Salt concentration in moles/L. default to 0.15", type=float)
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
@@ -108,22 +123,30 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # environment
-
 
     # Process run time options
     run_options = RunOptions(args)
     # print(vars(run_options))
 
-    # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
-    pdbfile = "step2_out.pdb"
-    env.load_runprm()
+    # environment and ftpl
+    if run_options.ftpl:
+        env.runprm["FTPLDIR"] = run_options.ftpl     
+    else:
+        path = str(os.path.dirname(os.path.abspath(__file__)))
+        base_path = os.path.dirname(path)
+        env.runprm["FTPLDIR"] = base_path + "/param"
     env.load_ftpl()
+
+
+    # read step2_out.pdb and convert to mcce structure
     protein = Protein()
-    protein.loadpdb(pdbfile)
+    protein.loadpdb(run_options.inputpdb)
 
 
-    #boundary_conditions = BoundaryConditions(run_options)
+    # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
+
+
+    boundary_conditions = BoundaryConditions(run_options, protein)
 
     # Set up parallel envrionment and run PB solver
 
