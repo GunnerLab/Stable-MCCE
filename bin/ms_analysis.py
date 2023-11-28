@@ -2,6 +2,10 @@
 
 import sys
 import math
+import operator
+from typing import Union
+from functools import partial
+from pathlib import Path
 import numpy as np
 
 
@@ -10,21 +14,55 @@ Kcal2kT = 1.688
 
 
 class Microstate:
-    def __init__(self, state, E, count):
+    """Sortable class for microstates."""
+
+    def __init__(self, state: list, E: float, count: int):
         self.state = state
         self.E = E
         self.count = count
 
+    def __str__(self):
+        return f"Microstate(\n\tcount={self.count:,},\n\tE={self.E:,},\n\tstate()={self.state()}\n)"
+
+    def _check_operand(self, other):
+        """Fails on missing attribute."""
+
+        if not (
+            hasattr(other, "state")
+            and hasattr(other, "E")
+            and hasattr(other, "count")
+        ):
+            return NotImplemented("Comparison with non Microstate object.")
+        return
+
+    def __eq__(self, other):
+        self._check_operand(other)
+        return (self.stateid, self.E, self.count) == (
+            other.stateid,
+            other.E,
+            other.count,
+        )
+
+    def __lt__(self, other):
+        self._check_operand(other)
+        return (self.stateid, self.E, self.count) < (
+            other.stateid,
+            other.E,
+            other.count,
+        )
+    
 
 class Conformer:
+    """Minimal Conformer class for use in microstate analysis.
+    Attributes: iconf, confid, ires, resid, crg.
+    """
     def __init__(self):
         self.iconf = 0
-        self.ires = 0
         self.confid = ""
+        self.ires = 0
         self.resid = ""
-        self.occ = 0.0
         self.crg = 0.0
-
+        
     def load_from_head3lst(self, line):
         fields = line.split()
         self.iconf = int(fields[0]) - 1
@@ -143,7 +181,7 @@ class MSout:
                     else:
                         self.microstates[key] = ms
 
-        # find N_ms, lowerst, highst, averge E
+        # find N_ms, lowest, highest, averge E
         self.N_ms = 0
         E_sum = 0.0
         self.lowest_E = next(iter(self.microstates.values())).E
@@ -158,6 +196,116 @@ class MSout:
             if self.highest_E < ms.E:
                 self.highest_E = ms.E
         self.average_E = E_sum / self.N_ms
+
+    def sort_microstates(self, by: str, reverse: bool = False) -> list:
+        """Return a sorted copy of MS.microstates."""
+
+        by = by.lower()
+        if by not in ["energy", "count"]:
+            raise ValueError(f"Values for `by` are 'energy' or 'count'; Given: {by}")
+        if by[0] == "e":
+            by = "E"
+
+        return sorted(self.microstates, key=operator.attrgetter(by), reverse=reverse)
+
+    def get_sampled_ms(
+        self,
+        size: int,
+        kind: str = "deterministic",
+        sort_by: Union[str, None] = "energy",
+        reverse: bool = False,
+        seed: Union[None, int] = None,
+    ) -> list:
+        """
+        Implement a sampling of MSout.microstates depending on `kind`.
+        Args:
+            size (int): sample size
+            kind (str, 'deterministic'): Sampling kind: one of ['deterministic', 'random'].
+                If 'deterministic', the microstates in ms_list are sorted then sampled at
+                regular intervals otherwise, the sampling is random. Case insensitive.
+            sort_by (str, "energy"): Only applies if kind is "deterministic".
+            reverse (bool, False): Only applies if kind is "deterministic".
+            seed (int, None): For testing purposes, fixes random sampling.
+        Returns:
+            A list of lists: [[selection index, selected microstate], ...]
+        """
+
+        if not len(self.microstates):
+            print("The microstates list is empty.")
+            return []
+        
+        kind = kind.lower()
+        if kind not in ["deterministic", "random"]:
+            raise ValueError(
+                f"Values for `kind` are 'deterministic' or 'random'; Given: {kind}"
+            )
+
+        if kind == "deterministic":
+            if not sort_by:
+                sort_by = "energy"
+
+            sort_by = sort_by.lower()
+            if sort_by not in ["energy", "count"]:
+                raise ValueError(
+                    f"Values for `sort_by` are 'energy' or 'count'; Given: {sort_by}"
+                )
+
+            # ms_list needed for cumsum:
+            ms_list = self.sort_microstates(by=sort_by, reverse=reverse)
+            counts = ms_counts(ms_list)
+            sampled_ms_indices = np.arange(
+                size, counts - size, counts / size, dtype=int
+            )
+        else:
+            ms_list = self.microstates
+            rng = np.random.default_rng(seed=seed)
+            sampled_ms_indices = rng.integers(
+                low=0, high=len(self.microstates), size=size, endpoint=True
+            )
+
+        sampled_cumsum = np.cumsum([mc.count for mc in ms_list])
+        ms_sampled = []
+        for i, c in enumerate(sampled_ms_indices):
+            ms_sel_index = np.where((sampled_cumsum - c) > 0)[0][0]
+            ms_sampled.append([ms_sel_index, ms_list[ms_sel_index]])
+
+        return ms_sampled
+    
+
+def read_conformers(head3_path):
+    conformers = []
+    lines = open(head3_path).readlines()
+    lines.pop(0)
+    for line in lines:
+        conf = Conformer()
+        conf.load_from_head3lst(line)
+        conformers.append(conf)
+
+    return conformers
+
+try:
+    conformers = read_conformers("head3.lst")
+except FileNotFoundError:
+    conformers = []
+
+
+def ms_counts(microstates):
+    """
+    Calculate total counts of microstates
+    """
+    N_ms = 0
+    for ms in microstates:
+        N_ms += ms.count
+
+    return N_ms
+
+
+def ms_charge(ms):
+    "Compute microstate charge"
+    crg = 0.0
+    for ic in ms.state:
+        crg += conformers[ic].crg
+    return crg
 
 
 def groupms_byenergy(microstates, ticks):
@@ -270,25 +418,6 @@ def ms_convert2occ(microstates):
     return occ
 
 
-def ms_counts(microstates):
-    """
-    Calculate total counts of microstates
-    """
-    N_ms = 0
-    for ms in microstates:
-        N_ms += ms.count
-
-    return N_ms
-
-
-def ms_charge(ms):
-    "Compute microstate charge"
-    crg = 0.0
-    for ic in ms.state:
-        crg += conformers[ic].crg
-    return crg
-
-
 def ms_convert2sumcrg(microstates, free_res):
     """
     Given a list of microstates, convert to net charge of each free residue.
@@ -309,23 +438,6 @@ def ms_convert2sumcrg(microstates, free_res):
     charges = [x/N_ms for x in charges_total]
 
     return charges
-
-
-def read_conformers(head3_path):
-    conformers = []
-    lines = open(head3_path).readlines()
-    lines.pop(0)
-    for line in lines:
-        conf = Conformer()
-        conf.load_from_head3lst(line)
-        conformers.append(conf)
-
-    return conformers
-
-try:
-    conformers = read_conformers("head3.lst")
-except FileNotFoundError:
-    conformers = []
 
 
 def e2occ(energies):
