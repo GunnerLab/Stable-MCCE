@@ -22,7 +22,7 @@ class Microstate:
         self.count = count
 
     def __str__(self):
-        return f"Microstate(\n\tcount={self.count:,},\n\tE={self.E:,},\n\tstate()={self.state()}\n)"
+        return f"Microstate(\n\tcount={self.count:,},\n\tE={self.E:,},\n\tstate={self.state}\n)"
 
     def _check_operand(self, other):
         """Fails on missing attribute."""
@@ -37,20 +37,20 @@ class Microstate:
 
     def __eq__(self, other):
         self._check_operand(other)
-        return (self.stateid, self.E, self.count) == (
-            other.stateid,
+        return (self.state, self.E, self.count) == (
+            other.state,
             other.E,
             other.count,
         )
 
     def __lt__(self, other):
         self._check_operand(other)
-        return (self.stateid, self.E, self.count) < (
-            other.stateid,
+        return (self.state, self.E, self.count) < (
+            other.state,
             other.E,
             other.count,
         )
-    
+
 
 class Conformer:
     """Minimal Conformer class for use in microstate analysis.
@@ -62,7 +62,7 @@ class Conformer:
         self.ires = 0
         self.resid = ""
         self.crg = 0.0
-        
+
     def load_from_head3lst(self, line):
         fields = line.split()
         self.iconf = int(fields[0]) - 1
@@ -87,7 +87,7 @@ class MSout:
         self.fixed_nh = 0.0
         self.free_residues = []   # free residues, referred by conformer indices
         self.iconf2ires = {}      # from conformer index to free residue index
-        self.microstates = {}
+        self.microstates = {}     # dict of Microstate objects
         self.conformers = []
         self.load_msout(fname)
 
@@ -197,8 +197,8 @@ class MSout:
                 self.highest_E = ms.E
         self.average_E = E_sum / self.N_ms
 
-    def sort_microstates(self, by: str, reverse: bool = False) -> list:
-        """Return a sorted copy of MS.microstates."""
+    def sort_microstates_values(self, by: str, reverse: bool = False) -> list:
+        """Return a sorted copy of MSout.microstates values."""
 
         by = by.lower()
         if by not in ["energy", "count"]:
@@ -206,7 +206,7 @@ class MSout:
         if by[0] == "e":
             by = "E"
 
-        return sorted(self.microstates, key=operator.attrgetter(by), reverse=reverse)
+        return sorted(self.microstates.values(), key=operator.attrgetter(by), reverse=reverse)
 
     def get_sampled_ms(
         self,
@@ -231,9 +231,9 @@ class MSout:
         """
 
         if not len(self.microstates):
-            print("The microstates list is empty.")
+            print("The microstates dict is empty.")
             return []
-        
+
         kind = kind.lower()
         if kind not in ["deterministic", "random"]:
             raise ValueError(
@@ -251,13 +251,13 @@ class MSout:
                 )
 
             # ms_list needed for cumsum:
-            ms_list = self.sort_microstates(by=sort_by, reverse=reverse)
+            ms_list = self.sort_microstates_values(by=sort_by, reverse=reverse)
             counts = ms_counts(ms_list)
             sampled_ms_indices = np.arange(
                 size, counts - size, counts / size, dtype=int
             )
         else:
-            ms_list = self.microstates
+            ms_list = list(self.microstates.values())
             rng = np.random.default_rng(seed=seed)
             sampled_ms_indices = rng.integers(
                 low=0, high=len(self.microstates), size=size, endpoint=True
@@ -270,7 +270,7 @@ class MSout:
             ms_sampled.append([ms_sel_index, ms_list[ms_sel_index]])
 
         return ms_sampled
-    
+
 
 def read_conformers(head3_path):
     conformers = []
@@ -283,6 +283,8 @@ def read_conformers(head3_path):
 
     return conformers
 
+# conformers will be an empty list if module is loaded outside
+# of a MCCE output folder (or head3.lst is missing).
 try:
     conformers = read_conformers("head3.lst")
 except FileNotFoundError:
@@ -290,18 +292,19 @@ except FileNotFoundError:
 
 
 def ms_counts(microstates):
-    """
-    Calculate total counts of microstates
-    """
-    N_ms = 0
-    for ms in microstates:
-        N_ms += ms.count
+    """Calculate total counts of microstates, which can be a list or a dict."""
 
-    return N_ms
+    if not isinstance(microstates, (dict, list)):
+        raise ValueError(f"`microstates` must be a list or a dict.")
+
+    if isinstance(microstates, dict):
+        return sum(ms.count for ms in microstates.values())
+    else:
+        return sum(ms.count for ms in microstates)
 
 
 def ms_charge(ms):
-    "Compute microstate charge"
+    """Compute microstate charge"""
     crg = 0.0
     for ic in ms.state:
         crg += conformers[ic].crg
