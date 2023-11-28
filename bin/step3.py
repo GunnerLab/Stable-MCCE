@@ -23,10 +23,8 @@ Usage examples:
 """
 
 import sys, argparse, shutil, logging, time, os, json
-from vdw_pw import *
 from pdbio import *
 
-env = ENV()
 
 class RunOptions:
     def __init__(self, args):
@@ -73,12 +71,8 @@ class RunOptions:
 class BoundaryConditions:
     def __init__(self, run_options):
         # load ftpl files
-        env.print_param()
-        print(env.param[('CONNECT', ' CA ', 'NTR01')])
 
         # read step2_out.pdb and convert to mcce structure
-        protein = Protein()
-        protein.loadpdb(run_options.inputpdb)
 
         # assign conformer's boundary atoms
 
@@ -115,8 +109,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # environment
-    env.load_runprm()
-    env.load_ftpl()
 
 
     # Process run time options
@@ -124,8 +116,14 @@ if __name__ == "__main__":
     # print(vars(run_options))
 
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
+    pdbfile = "step2_out.pdb"
+    env.load_runprm()
+    env.load_ftpl()
+    protein = Protein()
+    protein.loadpdb(pdbfile)
 
-    boundary_conditions = BoundaryConditions(run_options)
+
+    #boundary_conditions = BoundaryConditions(run_options)
 
     # Set up parallel envrionment and run PB solver
 
