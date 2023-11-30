@@ -64,6 +64,7 @@ class Atom:
         self.iCode = line[26]
         self.confNum = int(line[27:30])
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        
         self.confType = "%3s%2s" % (self.resName, line[80:82])
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%5s%c%04d%c%03d" % (self.confType, self.chainID, self.resSeq, self.iCode, self.confNum)

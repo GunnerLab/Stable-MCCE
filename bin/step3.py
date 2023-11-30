@@ -72,44 +72,28 @@ class RunOptions:
                 
 
 class ExchangeAtom:
-    def __init__(self):
-        self.x = 0.0  
-        self.y = 0.0
-        self.z = 0.0
+    def __init__(self, atom):
+        self.x = atom.x
+        self.y = atom.y
+        self.z = atom.z
         self.r = 0.0  # radius
         self.c = 0.0  # charge
         return
 
 class Exchange:
-    # raw data and functions to process exchange data with PB wrapper
-    def __init__(self, run_options, protein):
-        #
-        # Boundary set is composed by 3 atom collections
-        # 1. Backbone atoms: these never change in position and charge, and match one to one from boundary to step2_out.pdb
-        # 2. Side chain atoms: these may change depending on side chain selection.
-        #
-        # How to index atoms in the boundary list to conformer atom record and vice versa?
-        # In conformer's atom record, i_compressed_bnd is the atom index to the compressed boundary set.
-        # 
-        #
-        # Methods to operate on boundary sets
-        # * delete a side chain
-        # * add a side chain
-        # * compress a boundary set by combining shared atoms (same coordinates) and removing atoms r=0 in the set and update ibound in atom record
+    # functions to process exchange data with PB wrapper
 
-        self.backbone = []
-        self.all = []
-        self.single = []
-        self.compressed_bnd = []
-        return
+    def create_xyzrcp(self):
+        xyzrcp = []
+        return xyzrcp
 
-    def add_conformer(self, bnd, protein, ir, ic):
+    def add_conformer(self, xyzrcp, protein, ir, ic):
         for atom in protein.residue[ir].conf[ic].atom:
+            ex_atom = ExchangeAtom(atom)
 
 
 
 
-    # sites to receive potential and index to conformer atoms
         
 
         return
