@@ -35,7 +35,7 @@ class RunOptions:
         self.s = args.s
         self.p = args.p
         self.t = args.t
-        self.ftpl = ""
+        self.ftpl = args.ftpl
         self.salt = args.salt
         self.vdw = args.vdw
         self.fly = args.fly
@@ -64,14 +64,14 @@ class RunOptions:
                         self.fly = True
                     elif key == "--refresh":
                         self.refresh = True
-                    elif key == "--ftpl":
+                    elif key == "-ftpl":
                         self.ftpl = fields[1]
 
 #    def toJSON(self):
 #        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
                 
 
-class BoundaryRecord:
+class ExchangeAtom:
     def __init__(self):
         self.x = 0.0  
         self.y = 0.0
@@ -80,16 +80,38 @@ class BoundaryRecord:
         self.c = 0.0  # charge
         return
 
-class BoundaryConditions:
+class Exchange:
+    # raw data and functions to process exchange data with PB wrapper
     def __init__(self, run_options, protein):
-      
+        #
+        # Boundary set is composed by 3 atom collections
+        # 1. Backbone atoms: these never change in position and charge, and match one to one from boundary to step2_out.pdb
+        # 2. Side chain atoms: these may change depending on side chain selection.
+        #
+        # How to index atoms in the boundary list to conformer atom record and vice versa?
+        # In conformer's atom record, i_compressed_bnd is the atom index to the compressed boundary set.
+        # 
+        #
+        # Methods to operate on boundary sets
+        # * delete a side chain
+        # * add a side chain
+        # * compress a boundary set by combining shared atoms (same coordinates) and removing atoms r=0 in the set and update ibound in atom record
 
-        # find common boundary
-        self.common_boundary = self.find_common_boundary(protein)
+        self.backbone = []
+        self.all = []
+        self.single = []
+        self.compressed_bnd = []
+        return
 
-        # sites to receive potential and index to conformer atoms
+    def add_conformer(self, bnd, protein, ir, ic):
+        for atom in protein.residue[ir].conf[ic].atom:
+
+
+
+
+    # sites to receive potential and index to conformer atoms
         
-        
+
         return
     
     def find_common_boundary(self, protein):
@@ -114,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
     parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
     parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
-    parser.add_argument("--ftpl", metavar="ftpl folder", default="", help="ftpl folder, default to \"param/\" of mcce exeuctable location")
+    parser.add_argument("-ftpl", metavar="ftpl folder", default="", help="ftpl folder, default to \"param/\" of mcce exeuctable location")
     parser.add_argument("-salt", metavar="salt concentration", default=0.15, help="Salt concentration in moles/L. default to 0.15", type=float)
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
@@ -126,7 +148,7 @@ if __name__ == "__main__":
 
     # Process run time options
     run_options = RunOptions(args)
-    # print(vars(run_options))
+    print(vars(run_options))
 
     # environment and ftpl
     if run_options.ftpl:
