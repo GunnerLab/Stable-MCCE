@@ -47,6 +47,8 @@ class Atom:
         self.xyz = (0.0, 0.0, 0.0)
         self.connectivity_param = ""
         self.r_bound = 0.0
+        self.charge = 0.0
+        self.ibound = 0  # index in the boudary list
         self.r_vdw = 0.0
         self.e_vdw= 0.0
         self.connect12 = []
@@ -64,7 +66,8 @@ class Atom:
         self.iCode = line[26]
         self.confNum = int(line[27:30])
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
-        
+        self.r_bound = float(line[54:62])
+        self.charge = float(line[62:74])
         self.confType = "%3s%2s" % (self.resName, line[80:82])
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%5s%c%04d%c%03d" % (self.confType, self.chainID, self.resSeq, self.iCode, self.confNum)
@@ -76,21 +79,19 @@ class Atom:
         radius_key = ("RADIUS", self.confType, self.name)
         if radius_key in env.param:
             radius_values = env.param[radius_key]
-            self.r_bound = radius_values.r_bound
             self.r_vdw = radius_values.r_vdw
             self.e_vdw = radius_values.e_vdw
         else: # Use default value as C
             print("Warning, parameter %s not found, using default values as C" % str(radius_key))
-            self.r_bound = 1.7
             self.r_vdw = 1.908
             self.e_vdw = 0.086
         return
 
     def writeline(self):
-        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f\n" %\
+        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f%8.3f%12.3f\n" %\
                (self.serial, self.name, self.altLoc, self.resName, self.chainID,\
                 self.resSeq, self.iCode, self.xyz[0], self.xyz[1],\
-                self.xyz[2])
+                self.xyz[2], self.r_bound, self.charge)
         return line
 
 class Blob:

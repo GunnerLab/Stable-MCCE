@@ -73,35 +73,28 @@ class RunOptions:
 
 class ExchangeAtom:
     def __init__(self, atom):
-        self.x = atom.x
-        self.y = atom.y
-        self.z = atom.z
-        self.r = 0.0  # radius
-        self.c = 0.0  # charge
+        self.x = atom.xyz[0]
+        self.y = atom.xyz[1]
+        self.z = atom.xyz[2]
+        self.r = atom.r_bound  # radius
+        self.c = atom.charge   # charge
+        self.p = 0.0
         return
 
 class Exchange:
     # functions to process exchange data with PB wrapper
 
-    def create_xyzrcp(self):
-        xyzrcp = []
-        return xyzrcp
+    def __init__(self):
+        self.xyzrcp = []
+        return
 
-    def add_conformer(self, xyzrcp, protein, ir, ic):
-        for atom in protein.residue[ir].conf[ic].atom:
-            ex_atom = ExchangeAtom(atom)
-
-
-
-
-        
+    def add_conformer(self, conf):
+        for atom in conf.atom:
+            exchange_atom = ExchangeAtom(atom)
+            print(vars(exchange_atom))
 
         return
     
-    def find_common_boundary(self, protein):
-        boundary = []
-
-        return boundary
     
     
 
@@ -152,7 +145,11 @@ if __name__ == "__main__":
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
 
 
-    boundary_conditions = BoundaryConditions(run_options, protein)
+    boundary = Exchange()
+    for res in protein.residue:
+        for conf in res.conf:
+            boundary.add_conformer(conf)
+
 
     # Set up parallel envrionment and run PB solver
 
