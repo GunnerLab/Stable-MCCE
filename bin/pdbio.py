@@ -134,7 +134,14 @@ class Conformer:
         self.atom = []
         self.vdw0 = 0.0
         self.vdw1 = 0.0
+        self.crg = 0.0
 
+        return
+    
+    def update_crg(self):
+        self.crg = 0.0
+        for atom in self.atom:
+            self.crg += atom.charge
         return
 
 class Residue:
@@ -507,6 +514,14 @@ class Protein:
             if len(res.conf) > 1:
                 for conf in res.conf[1:]:
                     print("%s -> %4d" % (conf.confID, conf.i))
+
+        return
+    
+    def update_confcrg(self):
+        for res in self.residue:
+            for conf in res.conf:
+                conf.update_crg()
+        return
 
 class CONNECT_param:
     def __init__(self, value_str):

@@ -98,8 +98,8 @@ class Exchange:
     def add_backbone(self, protein):
         backbone = []
         for res in protein.residue:
-            if res.conformer:
-                for atom in res.conformer[0]:
+            if res.conf:
+                for atom in res.conf[0].atom:
                     xyzrcp = ExchangeAtom(atom)
                     backbone.append(xyzrcp)
                     atom.ibound = len(backbone) - 1
@@ -111,8 +111,35 @@ class Exchange:
             The atoms are added in addition to backbone.
             Atoms other than in residue[ir], conformer[ic] are then appended.
             Atoms in residue[ir], conformer[ic] are appended last
-            When appending an atom, this subroutine will check if the same atom (xyzrc identical) already exists. If yes, just update icound
         """
+        single_bnd = self.backbone.copy()
+        for ires in range(len(protein.residue)):
+            #print(protein.residue[ires].resID)
+            if ires == ir:  # this is the residue we want to put desired side chain conf
+                for atom in protein.residue[ires].conf[ic].atom:
+                    xyzrcp = ExchangeAtom(atom)
+                    single_bnd.append(xyzrcp)
+                    atom.ibound = len(single_bnd) - 1
+            else:  # find the first charged conformer if any, otherwise use the first
+                if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
+                    i_useconf = 1  # defaul the first conformer
+                    for iconf in range(1, len(protein.residue[ires].conf)):
+                        # print(protein.residue[ires].conf[iconf].confID, protein.residue[ires].conf[iconf].crg)
+                        if abs(protein.residue[ires].conf[iconf].crg) > 0.0001:
+                            i_useconf = iconf
+                            break
+
+                    #print(protein.residue[ires].conf[i_useconf].confID, protein.residue[ires].conf[i_useconf].crg)
+                    for atom in protein.residue[ires].conf[i_useconf].atom:
+                        xyzrcp = ExchangeAtom(atom)
+                        single_bnd.append(xyzrcp)
+                        atom.ibound = len(single_bnd) - 1
+
+            #print(len(self.backbone), len(single_bnd))
+
+        return single_bnd
+
+
 
         return
     
@@ -155,7 +182,7 @@ if __name__ == "__main__":
 
     # Process run time options
     run_options = RunOptions(args)
-    print(vars(run_options))
+    # print(vars(run_options))
 
     # environment and ftpl
     if run_options.ftpl:
@@ -170,16 +197,14 @@ if __name__ == "__main__":
     # read step2_out.pdb and convert to mcce structure
     protein = Protein()
     protein.loadpdb(run_options.inputpdb)
-
+    protein.update_confcrg()
 
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
 
 
-    boundary = Exchange()
-    for res in protein.residue:
-        for conf in res.conf:
-            boundary.add_conformer(conf)
+    boundary = Exchange(protein)
 
+    boundary.compose_single(protein, 5, 2)
 
     # Set up parallel envrionment and run PB solver
 
