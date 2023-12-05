@@ -112,7 +112,7 @@ class Exchange:
             Atoms other than in residue[ir], conformer[ic] are then appended.
             Atoms in residue[ir], conformer[ic] are appended last
         """
-        single_bnd = self.backbone.copy()
+        single_bnd = self.backbone.copy()   # this a shaow copy so what happens if ibound is modified while other copies are being used?
         for ires in range(len(protein.residue)):
             #print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
