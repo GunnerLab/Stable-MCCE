@@ -82,19 +82,49 @@ class ExchangeAtom:
         return
 
 class Exchange:
-    # functions to process exchange data with PB wrapper
+    # We have to abadon the mop on and off mechanism when modifying the dielectric boundary.
+    # In the parallel for loop, we don't want the boundary revising to be dependent on previous step.
+    # Each step in the loop should be an addition of deletion from a static starting point.
+    # Therefore, we will compose 
+    # * backbone atoms 
+    # * method to compose single side chain condition
+    # * method to compose multi side chain condition
+    # * method to compress boundary condition 
 
-    def __init__(self):
-        self.xyzrcp = []
+    def __init__(self, protein):
+        self.backbone = self.add_backbone(protein)
         return
 
-    def add_conformer(self, conf):
-        for atom in conf.atom:
-            exchange_atom = ExchangeAtom(atom)
-            print(vars(exchange_atom))
+    def add_backbone(self, protein):
+        backbone = []
+        for res in protein.residue:
+            if res.conformer:
+                for atom in res.conformer[0]:
+                    xyzrcp = ExchangeAtom(atom)
+                    backbone.append(xyzrcp)
+                    atom.ibound = len(backbone) - 1
+        return backbone
+
+
+    def compose_single(self, protein, ir, ic):
+        """ Compose a single side chain boundary condition.
+            The atoms are added in addition to backbone.
+            Atoms other than in residue[ir], conformer[ic] are then appended.
+            Atoms in residue[ir], conformer[ic] are appended last
+            When appending an atom, this subroutine will check if the same atom (xyzrc identical) already exists. If yes, just update icound
+        """
 
         return
     
+    def compose_multi(self, protein, ir, ic):
+        """ Compose a multi side chain boundary condition.
+            The atoms are added in addition to backbone.
+            Atoms other than in residue[ir], conformer[ic] are appended next.
+            Atoms in residue[ir], conformer[ic] are appended last.
+            When appending an atom, this subroutine will check if the same atom (xyzrc identical) already exists. If yes, just update icound
+        """
+
+        return
     
     
 
