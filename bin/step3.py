@@ -81,30 +81,32 @@ class ExchangeAtom:
         self.p = 0.0
         return
 
-class Exchange:
+class Exchange:  # This is the data passed to the PB wrapper, together with runoptions
     # We have to abadon the mop on and off mechanism when modifying the dielectric boundary.
     # In the parallel for loop, we don't want the boundary revising to be dependent on previous step.
     # Each step in the loop should be an addition of deletion from a static starting point.
     # Therefore, we will compose 
-    # * backbone atoms 
+    # * backbone atoms
+    # * index to match multiple atoms to boundary line number 
     # * method to compose single side chain condition
     # * method to compose multi side chain condition
-    # * method to compress boundary condition 
+    
 
     def __init__(self, protein):
-        self.backbone = self.add_backbone(protein)
-        return
+        self.ibound2atoms = []     # index in boundary to atoms mapping
 
-    def add_backbone(self, protein):
-        backbone = []
+        # initilaize backbone
+        self.backbone = []
         for res in protein.residue:
             if res.conf:
                 for atom in res.conf[0].atom:
                     xyzrcp = ExchangeAtom(atom)
-                    backbone.append(xyzrcp)
-                    atom.ibound = len(backbone) - 1
-        return backbone
+                    self.backbone.append(xyzrcp)
+                    self.ibound2atoms.append([atom])   # For consistency, we assume each line may matche multiple atoms
 
+        self.single_bnd = []
+        self.multi_bnd = []
+        return
 
     def compose_single(self, protein, ir, ic):
         """ Compose a single side chain boundary condition.
@@ -112,14 +114,15 @@ class Exchange:
             Atoms other than in residue[ir], conformer[ic] are then appended.
             Atoms in residue[ir], conformer[ic] are appended last
         """
-        single_bnd = self.backbone.copy()   # this a shaow copy so what happens if ibound is modified while other copies are being used?
+        self.single_bnd = self.backbone
         for ires in range(len(protein.residue)):
             #print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
-                    single_bnd.append(xyzrcp)
-                    atom.ibound = len(single_bnd) - 1
+                    self.single_bnd.append(xyzrcp)
+                    self.ibound2atoms.append([atom])
+                    
             else:  # find the first charged conformer if any, otherwise use the first
                 if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
                     i_useconf = 1  # defaul the first conformer
@@ -132,16 +135,14 @@ class Exchange:
                     #print(protein.residue[ires].conf[i_useconf].confID, protein.residue[ires].conf[i_useconf].crg)
                     for atom in protein.residue[ires].conf[i_useconf].atom:
                         xyzrcp = ExchangeAtom(atom)
-                        single_bnd.append(xyzrcp)
-                        atom.ibound = len(single_bnd) - 1
+                        self.single_bnd.append(xyzrcp)
+                        self.ibound2atoms.append([atom])
 
             #print(len(self.backbone), len(single_bnd))
 
-        return single_bnd
-
-
-
         return
+
+
     
     def compose_multi(self, protein, ir, ic):
         """ Compose a multi side chain boundary condition.

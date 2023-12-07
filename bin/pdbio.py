@@ -48,7 +48,6 @@ class Atom:
         self.connectivity_param = ""
         self.r_bound = 0.0
         self.charge = 0.0
-        self.ibound = 0  # index in the boudary list
         self.r_vdw = 0.0
         self.e_vdw= 0.0
         self.connect12 = []
