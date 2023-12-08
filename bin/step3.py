@@ -138,7 +138,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                         self.single_bnd.append(xyzrcp)
                         self.ibound2atoms.append([atom])
 
-            #print(len(self.backbone), len(single_bnd))
+        # Error checking
+        # for atom_list in self.ibound2atoms:
+        #     print(len(atom_list), atom_list[0].atomID)
+        #     if len(atom_list) != 1:
+        #         print("ERROR")
+        #         break
+            
 
         return
 
