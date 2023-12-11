@@ -89,10 +89,12 @@ class MSout:
         self.iconf2ires = {}      # from conformer index to free residue index
         self.microstates = {}     # dict of Microstate objects
         self.conformers = []
+
         self.load_msout(fname)
 
     def load_msout(self, fname):
         lines = open(fname).readlines()
+        #print(f"MSout.load_msout :: {len(lines) = :,}")
 
         # Get a valid line
         while True:
@@ -197,23 +199,10 @@ class MSout:
                 self.highest_E = ms.E
         self.average_E = E_sum / self.N_ms
 
-    def sort_microstates_values(self, by: str, reverse: bool = False) -> list:
-        """Return a sorted copy of MSout.microstates values."""
-
-        by = by.lower()
-        if by not in ["energy", "count"]:
-            raise ValueError(f"Values for `by` are 'energy' or 'count'; Given: {by}")
-        if by[0] == "e":
-            by = "E"
-
-        return sorted(self.microstates.values(), key=operator.attrgetter(by), reverse=reverse)
-
     def get_sampled_ms(
         self,
         size: int,
         kind: str = "deterministic",
-        sort_by: Union[str, None] = "energy",
-        reverse: bool = False,
         seed: Union[None, int] = None,
     ) -> list:
         """
@@ -223,8 +212,6 @@ class MSout:
             kind (str, 'deterministic'): Sampling kind: one of ['deterministic', 'random'].
                 If 'deterministic', the microstates in ms_list are sorted then sampled at
                 regular intervals otherwise, the sampling is random. Case insensitive.
-            sort_by (str, "energy"): Only applies if kind is "deterministic".
-            reverse (bool, False): Only applies if kind is "deterministic".
             seed (int, None): For testing purposes, fixes random sampling.
         Returns:
             A list of lists: [[selection index, selected microstate], ...]
@@ -240,24 +227,14 @@ class MSout:
                 f"Values for `kind` are 'deterministic' or 'random'; Given: {kind}"
             )
 
+        ms_list = list(self.microstates.values())
+
         if kind == "deterministic":
-            if not sort_by:
-                sort_by = "energy"
-
-            sort_by = sort_by.lower()
-            if sort_by not in ["energy", "count"]:
-                raise ValueError(
-                    f"Values for `sort_by` are 'energy' or 'count'; Given: {sort_by}"
-                )
-
-            # ms_list needed for cumsum:
-            ms_list = self.sort_microstates_values(by=sort_by, reverse=reverse)
-            counts = ms_counts(ms_list)
+            counts = ms_counts(ms_list)  # total number of ms
             sampled_ms_indices = np.arange(
                 size, counts - size, counts / size, dtype=int
             )
         else:
-            ms_list = list(self.microstates.values())
             rng = np.random.default_rng(seed=seed)
             sampled_ms_indices = rng.integers(
                 low=0, high=len(self.microstates), size=size, endpoint=True
