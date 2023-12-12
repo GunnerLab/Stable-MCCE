@@ -114,7 +114,9 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             Atoms other than in residue[ir], conformer[ic] are then appended.
             Atoms in residue[ir], conformer[ic] are appended last
         """
-        self.single_bnd = self.backbone
+        self.single_bnd = self.backbone.copy()
+        self.ibound2atoms = []
+
         for ires in range(len(protein.residue)):
             #print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
@@ -135,6 +137,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     #print(protein.residue[ires].conf[i_useconf].confID, protein.residue[ires].conf[i_useconf].crg)
                     for atom in protein.residue[ires].conf[i_useconf].atom:
                         xyzrcp = ExchangeAtom(atom)
+                        xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
                         self.single_bnd.append(xyzrcp)
                         self.ibound2atoms.append([atom])
 
@@ -144,7 +147,8 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         #     if len(atom_list) != 1:
         #         print("ERROR")
         #         break
-            
+
+        # print(len(self.backbone), len(self.single_bnd))    
 
         return
 
@@ -157,6 +161,34 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             Atoms in residue[ir], conformer[ic] are appended last.
             When appending an atom, this subroutine will check if the same atom (xyzrc identical) already exists. If yes, just update icound
         """
+        self.multi_bnd = self.backbone.copy()
+        self.ibound2atoms = []
+
+        for ires in range(len(protein.residue)):
+            #print(protein.residue[ires].resID)
+            if ires == ir:  # this is the residue we want to put desired side chain conf
+                for atom in protein.residue[ires].conf[ic].atom:
+                    xyzrcp = ExchangeAtom(atom)
+                    self.multi_bnd.append(xyzrcp)
+                    self.ibound2atoms.append([atom])
+                    
+            else:  # other residues will have all conformers with 0 charge
+                if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
+                    all_bnd = []  # this is the xyzrcp record for all side chain atoms
+                    ibound = []
+                    for iconf in range(1, len(protein.residue[ires].conf)):
+                        for atom in protein.residue[ires].conf[iconf].atom:
+                            xyzrcp = ExchangeAtom(atom)
+                            xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
+                            # test if this atom existed within this residue already
+                            for ib in range(len(all_bnd)):
+                                if  abs(all_bnd[ib].x - xyzrcp.x) < 0.001 and \
+                                    abs(all_bnd[ib].y - xyzrcp.y) < 0.001 and \
+                                    abs(all_bnd[ib].z - xyzrcp.z) < 0.001 and \
+                                    abs(all_bnd[ib].r - xyzrcp.r) < 0.001 and \
+
+                            self.multi_bnd.append(xyzrcp)
+                            self.ibound2atoms.append([atom])
 
         return
     
