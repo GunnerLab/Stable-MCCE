@@ -239,7 +239,7 @@ class MSout:
         else:
             rng = np.random.default_rng(seed=seed)
             sampled_ms_indices = rng.integers(
-                low=0, high=len(counts), size=size, endpoint=True
+                low=0, high=counts, size=size, endpoint=True
             )
 
         for i, c in enumerate(sampled_ms_indices):
