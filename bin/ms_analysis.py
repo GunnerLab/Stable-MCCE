@@ -227,21 +227,21 @@ class MSout:
                 f"Values for `kind` are 'deterministic' or 'random'; Given: {kind}"
             )
 
+        ms_sampled = []
         ms_list = list(self.microstates.values())
+        counts = ms_counts(ms_list)  # total number of ms
+        sampled_cumsum = np.cumsum([mc.count for mc in ms_list])
 
         if kind == "deterministic":
-            counts = ms_counts(ms_list)  # total number of ms
             sampled_ms_indices = np.arange(
                 size, counts - size, counts / size, dtype=int
             )
         else:
             rng = np.random.default_rng(seed=seed)
             sampled_ms_indices = rng.integers(
-                low=0, high=len(self.microstates), size=size, endpoint=True
+                low=0, high=len(counts), size=size, endpoint=True
             )
 
-        sampled_cumsum = np.cumsum([mc.count for mc in ms_list])
-        ms_sampled = []
         for i, c in enumerate(sampled_ms_indices):
             ms_sel_index = np.where((sampled_cumsum - c) > 0)[0][0]
             ms_sampled.append([ms_sel_index, ms_list[ms_sel_index]])
