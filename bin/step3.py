@@ -103,6 +103,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     self.backbone_xyzrcp.append(xyzrcp)
                     self.backbone_atom.append([atom])   # the atom is in an array because it is allowed to have multiple atoms to match the same line in xyzrcp line
 
+
         return
 
     def compose_single(self, protein, ir, ic):
@@ -111,16 +112,17 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             Atoms other than in residue[ir], conformer[ic] are then appended.
             Atoms in residue[ir], conformer[ic] are appended last
         """
-        self.single_bnd = self.backbone.copy()
-        self.ibound2atoms = []
+        self.single_bnd_xyzrcp = self.backbone_xyzrcp.copy()
+        self.single_bnd_atom = self.backbone_atom.copy()
+
 
         for ires in range(len(protein.residue)):
             #print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
-                    self.single_bnd.append(xyzrcp)
-                    self.ibound2atoms.append([atom])
+                    self.single_bnd_xyzrcp.append(xyzrcp)
+                    self.single_bnd_atom.append([atom])
                     
             else:  # find the first charged conformer if any, otherwise use the first
                 if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
@@ -135,8 +137,8 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     for atom in protein.residue[ires].conf[i_useconf].atom:
                         xyzrcp = ExchangeAtom(atom)
                         xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
-                        self.single_bnd.append(xyzrcp)
-                        self.ibound2atoms.append([atom])
+                        self.single_bnd_xyzrcp.append(xyzrcp)
+                        self.single_bnd_atom.append([atom])
 
         # Error checking
         # for atom_list in self.ibound2atoms:
@@ -145,7 +147,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         #         print("ERROR")
         #         break
 
-        # print(len(self.backbone), len(self.single_bnd))    
+        print(len(self.single_bnd_xyzrcp), len(self.single_bnd_atom))    
 
         return
 
@@ -253,6 +255,7 @@ if __name__ == "__main__":
 
     boundary = Exchange(protein)
 
+    boundary.compose_single(protein, 5, 2)
     boundary.compose_multi(protein, 5, 2)
 
     # Set up parallel envrionment and run PB solver
