@@ -140,7 +140,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                         self.single_bnd_xyzrcp.append(xyzrcp)
                         self.single_bnd_atom.append([atom])
 
-        # Error checking
+        # Error checking, basic
         # for atom_list in self.ibound2atoms:
         #     print(len(atom_list), atom_list[0].atomID)
         #     if len(atom_list) != 1:
@@ -160,7 +160,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             Atoms in residue[ir], conformer[ic] are appended last.
             When appending an atom, this subroutine will check if the same atom (xyzrc identical) already exists. If yes, just update icound
         """
-        self.multi_bnd_xyzrpc = self.backbone_xyzrcp.copy()
+        self.multi_bnd_xyzrcp = self.backbone_xyzrcp.copy()
         self.multi_bnd_atom = self.backbone_atom.copy()
 
         for ires in range(len(protein.residue)):
@@ -168,12 +168,12 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
-                    self.multi_bnd_xyzrpc.append(xyzrcp)
+                    self.multi_bnd_xyzrcp.append(xyzrcp)
                     self.multi_bnd_atom.append([atom])
                     
             else:  # other residues will have all conformers with 0 charge
                 if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
-                    residue_bnd_xyzrpc = []  # this is the xyzrcp record for all side chain atoms of this residue
+                    residue_bnd_xyzrcp = []  # this is the xyzrcp record for all side chain atoms of this residue
                     residue_bnd_atom = []   # this points to the atom records of each line in residue_bnd_xyzrpc
                     for iconf in range(1, len(protein.residue[ires].conf)):
                         for atom in protein.residue[ires].conf[iconf].atom:
@@ -181,30 +181,86 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                             xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
                             # test if this atom existed within this residue already
                             found = False
-                            for ib in range(len(residue_bnd_xyzrpc)):
-                                if  abs(residue_bnd_xyzrpc[ib].x - xyzrcp.x) < 0.001 and \
-                                    abs(residue_bnd_xyzrpc[ib].y - xyzrcp.y) < 0.001 and \
-                                    abs(residue_bnd_xyzrpc[ib].z - xyzrcp.z) < 0.001 and \
-                                    abs(residue_bnd_xyzrpc[ib].r - xyzrcp.r) < 0.001:  # identical atom 
+                            for ib in range(len(residue_bnd_xyzrcp)):
+                                if  abs(residue_bnd_xyzrcp[ib].x - xyzrcp.x) < 0.001 and \
+                                    abs(residue_bnd_xyzrcp[ib].y - xyzrcp.y) < 0.001 and \
+                                    abs(residue_bnd_xyzrcp[ib].z - xyzrcp.z) < 0.001 and \
+                                    abs(residue_bnd_xyzrcp[ib].r - xyzrcp.r) < 0.001:  # identical atom 
                                     residue_bnd_atom[ib].append(atom)
                                     found = True
                                     break
                             
                             if not found:
-                                residue_bnd_xyzrpc.append(xyzrcp)
+                                residue_bnd_xyzrcp.append(xyzrcp)
                                 residue_bnd_atom.append([atom])
 
             # merge this residue to the multi-bnd
-            self.multi_bnd_xyzrpc += residue_bnd_xyzrpc
+            self.multi_bnd_xyzrcp += residue_bnd_xyzrcp
             self.multi_bnd_atom += residue_bnd_atom
 
 
-        # Test section
-        print(len(self.multi_bnd_xyzrpc), len(self.multi_bnd_atom))
+        # Basic error checking
+        print(len(self.multi_bnd_xyzrcp), len(self.multi_bnd_atom))
 
         return
     
+    def write_single_bnd(self, fname):
+        "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
+        # write xyzrpc
+        lines = []
+        for xyzrpc in self.single_bnd_xyzrcp:
+            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrpc.x,
+                                                              xyzrpc.y,
+                                                              xyzrpc.z,
+                                                              xyzrpc.r,
+                                                              xyzrpc.c,
+                                                              xyzrpc.p)
+            lines.append(line)
+        open(fname+".xyzrcp", "w").writelines(lines)
+
+        # write index file
+        lines = []
+        for matched_atoms in self.single_bnd_atom:
+            atoms = " ".join([atom.atomID for atom in matched_atoms])
+            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0], 
+                                           matched_atoms[0].xyz[1], 
+                                           matched_atoms[0].xyz[2],
+                                           matched_atoms[0].r_bound,
+                                           matched_atoms[0].charge)
+
+            line = "%s %s\n" % (xyzrc, atoms)
+            lines.append(line)
+        open(fname+".atoms", "w").writelines(lines)
     
+    def write_multi_bnd(self, fname):
+        "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
+        # write xyzrpc
+        lines = []
+        for xyzrpc in self.multi_bnd_xyzrcp:
+            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrpc.x,
+                                                              xyzrpc.y,
+                                                              xyzrpc.z,
+                                                              xyzrpc.r,
+                                                              xyzrpc.c,
+                                                              xyzrpc.p)
+            lines.append(line)
+        open(fname+".xyzrcp", "w").writelines(lines)
+
+        # write index file
+        lines = []
+        for matched_atoms in self.multi_bnd_atom:
+            atoms = " ".join([atom.atomID for atom in matched_atoms])
+            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0], 
+                                           matched_atoms[0].xyz[1], 
+                                           matched_atoms[0].xyz[2],
+                                           matched_atoms[0].r_bound,
+                                           matched_atoms[0].charge)
+
+            line = "%s %s\n" % (xyzrc, atoms)
+            lines.append(line)
+        open(fname+".atoms", "w").writelines(lines)
+
+
 
 
 if __name__ == "__main__":
@@ -257,6 +313,8 @@ if __name__ == "__main__":
 
     boundary.compose_single(protein, 5, 2)
     boundary.compose_multi(protein, 5, 2)
+    boundary.write_single_bnd("single_bnd")
+    boundary.write_multi_bnd("multi_bnd")
 
     # Set up parallel envrionment and run PB solver
 
