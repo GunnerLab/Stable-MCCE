@@ -302,9 +302,11 @@ if __name__ == "__main__":
 
 
     # read step2_out.pdb and convert to mcce structure
+    logging.info("Read from step2_out.pdb")
     protein = Protein()
     protein.loadpdb(run_options.inputpdb)
     protein.update_confcrg()
+
 
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
 
