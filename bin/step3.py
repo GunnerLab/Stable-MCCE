@@ -26,6 +26,7 @@ import sys, argparse, shutil, logging, time, os, json
 from multiprocess import Pool
 from pdbio import *
 
+global protein, run_options
 
 class RunOptions:
     def __init__(self, args):
@@ -163,7 +164,6 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         """
         self.multi_bnd_xyzrcp = self.backbone_xyzrcp.copy()
         self.multi_bnd_atom = self.backbone_atom.copy()
-
         for ires in range(len(protein.residue)):
             #print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
@@ -195,9 +195,9 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                                 residue_bnd_xyzrcp.append(xyzrcp)
                                 residue_bnd_atom.append([atom])
 
-            # merge this residue to the multi-bnd
-            self.multi_bnd_xyzrcp += residue_bnd_xyzrcp
-            self.multi_bnd_atom += residue_bnd_atom
+                    # merge this residue to the multi-bnd
+                    self.multi_bnd_xyzrcp += residue_bnd_xyzrcp
+                    self.multi_bnd_atom += residue_bnd_atom
 
 
         # Basic error checking
@@ -262,10 +262,21 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         open(fname+".atoms", "w").writelines(lines)
 
 
+def def_boundary(ir, ic):
+    boundary = Exchange(protein)
+
+    boundary.compose_single(protein, ir, ic)
+    boundary.compose_multi(protein, ir, ic)
+    boundary.write_single_bnd("single_bnd")
+    boundary.write_multi_bnd("multi_bnd")
+    return boundary
+
+
 def pbe(iric):
     ir = iric[0]
     ic = iric[1]
-    #print(ir, ic)
+    def_boundary(ir, ic)
+
     return(ir, ic)
 
 
@@ -327,23 +338,14 @@ if __name__ == "__main__":
         if len(protein.residue[ir].conf) > 1:  # skip dummy or backbone only residue
             for ic in range(1, len(protein.residue[ir].conf)):
                 work_load.append((ir,ic))
-    logging.info(work_load)
-
-
-    boundary = Exchange(protein)
-
-    boundary.compose_single(protein, 5, 2)
-    boundary.compose_multi(protein, 5, 2)
-    boundary.write_single_bnd("single_bnd")
-    boundary.write_multi_bnd("multi_bnd")
+    logging.debug("work_load as (ir ic) list", str(work_load))
 
     # Set up parallel envrionment and run PB solver
     max_pool = run_options.p
 
-
     with Pool(max_pool) as process:
         work_out = process.imap(pbe, work_load)
-        print(list(work_out))
+        logging.debug("Done PDE solving on %s" % str(list(work_out)))
         
 
 
