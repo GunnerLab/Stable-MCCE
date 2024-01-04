@@ -23,6 +23,7 @@ Usage examples:
 """
 
 import sys, argparse, shutil, logging, time, os, json
+from multiprocess import Pool
 from pdbio import *
 
 
@@ -147,7 +148,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         #         print("ERROR")
         #         break
 
-        print(len(self.single_bnd_xyzrcp), len(self.single_bnd_atom))    
+        logging.debug("%s Single-sidechain boundary record length should be equal: %d, %d" % (protein.residue[ir].conf[ic].confID, len(self.single_bnd_xyzrcp), len(self.single_bnd_atom)))
 
         return
 
@@ -200,7 +201,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
 
 
         # Basic error checking
-        print(len(self.multi_bnd_xyzrcp), len(self.multi_bnd_atom))
+        logging.debug("%s Multi-sidechain boundary record length should be equal: %d, %d" % (protein.residue[ir].conf[ic].confID, len(self.multi_bnd_xyzrcp), len(self.multi_bnd_atom)))
 
         return
     
@@ -261,15 +262,16 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         open(fname+".atoms", "w").writelines(lines)
 
 
+def pbe(iric):
+    ir = iric[0]
+    ic = iric[1]
+    #print(ir, ic)
+    return(ir, ic)
+
 
 
 if __name__ == "__main__":
-    format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO, datefmt="%D %H:%M:%S")
-    logging.info("Step 3 starts")
-
     helpmsg = "Run mcce step 3, energy lookup table calculations."
-
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("-c", metavar=('start', 'end'), default=[0, 99999], nargs=2, help="starting and ending "
                                                                                          "conformer, default to 0 and 9999", type=int)
@@ -282,9 +284,18 @@ if __name__ == "__main__":
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
     parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
+    parser.add_argument("--debug", default=False, help="print debug information", action="store_true")
     parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
-
     args = parser.parse_args()
+
+    if args.debug:
+        log_level = logging.DEBUG
+    else:
+        log_level = logging.INFO
+
+    format = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format, level=log_level, datefmt="%D %H:%M:%S")
+    logging.info("Step 3 starts")
 
 
     # Process run time options
@@ -309,6 +320,14 @@ if __name__ == "__main__":
 
 
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
+    # make conformer list with their corresponding ir and ic. This list or (ir, ic) will be passed as an array 
+    # that multiprocess module will take in as work load.
+    work_load = []
+    for ir in range(len(protein.residue)):
+        if len(protein.residue[ir].conf) > 1:  # skip dummy or backbone only residue
+            for ic in range(1, len(protein.residue[ir].conf)):
+                work_load.append((ir,ic))
+    logging.info(work_load)
 
 
     boundary = Exchange(protein)
@@ -319,6 +338,14 @@ if __name__ == "__main__":
     boundary.write_multi_bnd("multi_bnd")
 
     # Set up parallel envrionment and run PB solver
+    max_pool = run_options.p
+
+
+    with Pool(max_pool) as process:
+        work_out = process.imap(pbe, work_load)
+        print(list(work_out))
+        
+
 
     # Post-process electrostatic potential
 
