@@ -25,6 +25,8 @@ Usage examples:
 import sys, argparse, shutil, logging, time, os, json
 from multiprocess import Pool
 from pdbio import *
+from pbs_interfaces import *
+
 
 global protein, run_options
 
@@ -69,8 +71,8 @@ class RunOptions:
                     elif key == "-ftpl":
                         self.ftpl = fields[1]
 
-#    def toJSON(self):
-#        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
                 
 
 class ExchangeAtom:
@@ -267,15 +269,27 @@ def def_boundary(ir, ic):
 
     boundary.compose_single(protein, ir, ic)
     boundary.compose_multi(protein, ir, ic)
+    
+    # Do not write out boundary condition except for debug purpose
     boundary.write_single_bnd("single_bnd")
     boundary.write_multi_bnd("multi_bnd")
+
     return boundary
 
 
 def pbe(iric):
     ir = iric[0]
     ic = iric[1]
-    def_boundary(ir, ic)
+    bound = def_boundary(ir, ic)
+
+    # print(run_options.toJSON())
+    # decide which pb solver, delphi = delphi legacy
+    if run_options.s.upper() == "DELPHI":
+        logging.info("Calling delphi to calulate conformer %s" % protein.residue[ir].conf[ic].confID)
+        rxn = pbs_delphi(bound)
+        
+    else:
+        print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
 
     return(ir, ic)
 
@@ -342,7 +356,7 @@ if __name__ == "__main__":
 
     # Set up parallel envrionment and run PB solver
     max_pool = run_options.p
-
+    logging.info("Running PBE solver in %d threads" % max_pool)
     with Pool(max_pool) as process:
         work_out = process.imap(pbe, work_load)
         logging.debug("Done PDE solving on %s" % str(list(work_out)))
