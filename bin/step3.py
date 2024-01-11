@@ -302,7 +302,9 @@ def pbe(iric):
     else:
         print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
 
-    
+
+
+
     # switch back to the current directory
     os.rmdir(tmp_pbe)
     os.chdir(cwd)
