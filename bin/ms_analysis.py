@@ -210,8 +210,8 @@ class MSout:
         Args:
             size (int): sample size
             kind (str, 'deterministic'): Sampling kind: one of ['deterministic', 'random'].
-                If 'deterministic', the microstates in ms_list are sorted then sampled at
-                regular intervals otherwise, the sampling is random. Case insensitive.
+                 If 'deterministic', the microstates in ms_list are sampled at regular intervals
+                 otherwise, the sampling is random. Case insensitive.
             seed (int, None): For testing purposes, fixes random sampling.
         Returns:
             A list of lists: [[selection index, selected microstate], ...]
