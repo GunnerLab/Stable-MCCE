@@ -26,6 +26,7 @@ import sys, argparse, shutil, logging, time, os, json
 from multiprocess import Pool
 from pdbio import *
 from pbs_interfaces import *
+import uuid
 
 
 global protein, run_options
@@ -282,14 +283,29 @@ def pbe(iric):
     ic = iric[1]
     bound = def_boundary(ir, ic)
 
+    # switch to temporary unique directory
+    cwd = os.getcwd()
+    tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
+    os.makedirs(tmp_pbe)
+    os.chdir(tmp_pbe)
+
+    
+    print(os.getcwd())
+
     # print(run_options.toJSON())
     # decide which pb solver, delphi = delphi legacy
     if run_options.s.upper() == "DELPHI":
         logging.info("Calling delphi to calulate conformer %s" % protein.residue[ir].conf[ic].confID)
         rxn = pbs_delphi(bound)
-        
+        # write raw files
+
     else:
         print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
+
+    
+    # switch back to the current directory
+    os.rmdir(tmp_pbe)
+    os.chdir(cwd)
 
     return(ir, ic)
 
@@ -354,6 +370,7 @@ if __name__ == "__main__":
                 work_load.append((ir,ic))
     logging.debug("work_load as (ir ic) list", str(work_load))
 
+
     # Set up parallel envrionment and run PB solver
     max_pool = run_options.p
     logging.info("Running PBE solver in %d threads" % max_pool)
@@ -361,7 +378,6 @@ if __name__ == "__main__":
         work_out = process.imap(pbe, work_load)
         logging.debug("Done PDE solving on %s" % str(list(work_out)))
         
-
 
     # Post-process electrostatic potential
 
