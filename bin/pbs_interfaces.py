@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import os
+
 def pbs_delphi(bound):
     """PBE solver interface for delphi. 
     It will generate site p in both boundary conditions 
@@ -7,6 +9,8 @@ def pbs_delphi(bound):
     """
     exe = "delphi"   # This has to be made available by the execution environment
 
+    cwd = os.getcwd()
+    print(cwd)
 
     # determine delphi focusing depth
 
