@@ -282,35 +282,55 @@ def def_boundary(ir, ic):
 def pbe(iric):
     ir = iric[0]
     ic = iric[1]
+    confid = protein.residue[ir].conf[ic].confID
     bound = def_boundary(ir, ic)
 
-    # switch to temporary unique directory
-    cwd = os.getcwd()
-    tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
-    os.makedirs(tmp_pbe)
-    os.chdir(tmp_pbe)
 
-    
-    # print(os.getcwd())
-
-    # print(run_options.toJSON())
-    # decide which pb solver, delphi = delphi legacy
-    if run_options.s.upper() == "DELPHI":
-        logging.info("Calling delphi to calulate conformer %s" % protein.residue[ir].conf[ic].confID)
-        rxn = pbs_delphi(bound)
-        # write raw files
-
+    # skip pbe if this atoms in this conformer are all 0 charged
+    all_0 = True
+    for atom in protein.residue[ir].conf[ic].atom:
+        if abs(atom.charge) > 0.001:
+            all_0 = False
+            break
+    if all_0:   # skip
+        logging.info("Skipping PBE solver for non-charge confortmer %s..." % confid)
 
 
     else:
-        print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
+        # switch to temporary unique directory
+        cwd = os.getcwd()
+        tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
+        os.makedirs(tmp_pbe)
+        os.chdir(tmp_pbe)
+
+        # decide which pb solver, delphi = delphi legacy
+        if run_options.s.upper() == "DELPHI":
+            logging.info("Calling delphi to calulate conformer %s" % confid)
+            rxn = pbs_delphi(bound)
+
+        else:
+            print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
 
 
+        # switch back to the current directory
+        os.rmdir(tmp_pbe)
+        os.chdir(cwd)
 
+    # write raw opp file
+    fname = confid + ".raw"
+    
+    if all_0:
+        # create an empty file as a marker to indicate this conformer has been calculated
+        pass
+    else:
+        # generate electrostatic inteaction raw file
+        # Part 1: Method = run_options.s
+        # Part 2: pw to other conformers, single and multi
+        # Part 3: rxn at single condition
+        # Part 4: backbone interaction total
+        # Part 5: backbone interaction breakdown
+        pass
 
-    # switch back to the current directory
-    os.rmdir(tmp_pbe)
-    os.chdir(cwd)
 
     return(ir, ic)
 
@@ -369,10 +389,13 @@ if __name__ == "__main__":
     # make conformer list with their corresponding ir and ic. This list or (ir, ic) will be passed as an array 
     # that multiprocess module will take in as work load.
     work_load = []
+    counter = 0
     for ir in range(len(protein.residue)):
         if len(protein.residue[ir].conf) > 1:  # skip dummy or backbone only residue
             for ic in range(1, len(protein.residue[ir].conf)):
-                work_load.append((ir,ic))
+                if run_options.end >= counter >= run_options.start:
+                    work_load.append((ir,ic))
+                counter += 1
     logging.debug("work_load as (ir ic) list", str(work_load))
 
 

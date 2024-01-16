@@ -9,8 +9,12 @@ def pbs_delphi(bound):
     """
     exe = "delphi"   # This has to be made available by the execution environment
 
-    cwd = os.getcwd()
-    print(cwd)
+    # snippets to check the input and environment
+    # Current working directory
+    # cwd = os.getcwd()
+    # print(cwd)
+    # What are in bound
+    #print(vars(bound))
 
     # determine delphi focusing depth
 
