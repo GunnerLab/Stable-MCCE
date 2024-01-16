@@ -412,10 +412,11 @@ def topN_charge_microstates(charge_microstates:list,
     msg = msg + "calls for sorting {}: sort_reverse must be {}."
 
     if sort_by == "count" and not sort_reverse:
-        print(msg.format(sort_by, "descendingly", "True")
+        print(msg.format(sort_by, "descendingly", "True"))
         return None
-    elif sort_by.endswith("E") and sort_reverse:
-        print(msg.format(sort_by, "ascendingly", "False")
+
+    if sort_by.endswith("E") and sort_reverse:
+        print(msg.format(sort_by, "ascendingly", "False"))
         return None
 
     sorted_charge_ms = sort_charge_microstates(charge_microstates, sort_by, sort_reverse)
