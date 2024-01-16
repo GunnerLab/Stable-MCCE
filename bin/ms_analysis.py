@@ -248,6 +248,24 @@ class MSout:
 
         return ms_sampled
 
+    def sort_microstates(self, sort_by:str = "E", sort_reverse:bool = False) -> Union[list,None]:
+        """Return the list of microstates sorted by one of these attributes: ["count", "E"],
+        and in reverse order (descending) if sort_reverse is True.
+        Args:
+        microstates (list): list of Microstate instances;
+        sort_by (str, "E"): Attribute as sort key;
+        sort_reverse (bool, False): Sort order: ascending if False (default), else descending.
+        Return None if 'sort_by' is not recognized.
+        """
+
+        if sort_by not in ["count", "E"]:
+            print("'sort_by' must be a valid microstate attribute; choices: ['count', 'E']")
+        return None
+
+        return sorted(list(self.microstates.values()),
+                      key=operator.attrgetter(sort_by),
+                      reverse=sort_reverse)
+
 
 def read_conformers(head3_path):
     conformers = []
