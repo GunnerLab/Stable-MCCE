@@ -109,7 +109,10 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     self.backbone_xyzrcp.append(xyzrcp)
                     self.backbone_atom.append([atom])   # the atom is in an array because it is allowed to have multiple atoms to match the same line in xyzrcp line
 
-
+        self.single_bnd_xyzrcp = []
+        self.single_bnd_atom = []
+        self.multi_bnd_xyzrcp = []
+        self.multi_bnd_atom = []
         return
 
     def compose_single(self, protein, ir, ic):

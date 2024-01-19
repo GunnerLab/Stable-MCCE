@@ -14,9 +14,11 @@ def pbs_delphi(bound):
     # cwd = os.getcwd()
     # print(cwd)
     # What are in bound
-    #print(vars(bound))
+    print(vars(bound))
 
     # determine delphi focusing depth
+    x_min = x_max = bound.single_bnd_xyzrcp[0].x
+
 
     # single side chain boundary condition
     
