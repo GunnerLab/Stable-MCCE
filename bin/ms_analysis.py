@@ -353,13 +353,13 @@ def ms_to_charge_ms(microstates:Union[dict, list], conformers:list) -> list:
         current_crg_state = [round(conformers[ic].crg) for ic in ms.state]
         crg_ms = Charge_Microstate(current_crg_state, ms.E * ms.count, ms.count)
         crg_id = crg_ms.crg_stateid  # compressed bytes
-        if crg_id in charge_ms_by_id.keys():
+        if crg_id in charge_ms_by_id:
             charge_ms_by_id[crg_id].count += crg_ms.count
             charge_ms_by_id[crg_id].total_E += crg_ms.total_E
         else:
             charge_ms_by_id[crg_id] = crg_ms
 
-    for k in charge_ms_by_id.keys():
+    for k in charge_ms_by_id:
         crg_ms = charge_ms_by_id[k]
         crg_ms.average_E = crg_ms.E = crg_ms.total_E / crg_ms.count
         charge_microstates.append(crg_ms)
@@ -451,7 +451,7 @@ def groupms_byenergy(microstates, ticks):
     """
     N = len(ticks)
     ticks.sort()
-    ticks.append(1.0e100)    # add a big number as the rightest-most boundary
+    ticks.append(1.0e100)    # add a big number as the last boundary
     resulted_bands = [[] for i in range(N)]
 
     for ms in microstates:
@@ -548,7 +548,7 @@ def ms_convert2occ(microstates):
             else:
                 occurance[ic] = ms.count
 
-    for key in occurance.keys():
+    for key in occurance:
         occ[key] = occurance[key]/N_ms
 
     return occ
@@ -609,10 +609,7 @@ def whatchanged_conf(msgroup1, msgroup2):
     occ1 = ms_convert2occ(msgroup1)
     occ2 = ms_convert2occ(msgroup2)
 
-    all_keys = set(occ1.keys())
-    all_keys |= set(occ2.keys())
-
-    all_keys = list(all_keys)
+    all_keys = list(set(occ1.keys()) | set(occ2.key()))
     all_keys.sort()
     diff_occ = {}
     for key in all_keys:
@@ -674,7 +671,7 @@ if __name__ == "__main__":
 
     # netural, charged = groupms_byiconf(msout.microstates.values(), [12, 13, 14, 15])
     # diff_occ = whatchanged_conf(netural, charged)
-    # for key in diff_occ.keys():
+    # for key in diff_occ:
     #     print("%3d, %s: %6.3f" % (key, conformers[key].confid, diff_occ[key]))
 
     # diff_bhd = whatchanged_res(netural, charged, msout.free_residues)
