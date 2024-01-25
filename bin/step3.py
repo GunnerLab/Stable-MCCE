@@ -45,6 +45,7 @@ class RunOptions:
         self.salt = args.salt
         self.vdw = args.vdw
         self.fly = args.fly
+        self.debug = args.debug
         self.refresh = args.refresh
         if args.l:  # load options from the specified file 
             lines=open(args.l).readlines()
@@ -70,6 +71,8 @@ class RunOptions:
                         self.fly = True
                     elif key == "--refresh":
                         self.refresh = True
+                    elif key == "--debug":
+                        self.debug = True
                     elif key == "-ftpl":
                         self.ftpl = fields[1]
 
@@ -309,14 +312,16 @@ def pbe(iric):
         # decide which pb solver, delphi = delphi legacy
         if run_options.s.upper() == "DELPHI":
             logging.info("Calling delphi to calulate conformer %s" % confid)
-            rxn = pbs_delphi(bound)
+            pbs_delphi = PBS_DELPHI()
+            rxn = pbs_delphi.run(bound)
 
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
 
 
         # switch back to the current directory
-        os.rmdir(tmp_pbe)
+        if not run_options.debug:
+            shutil.rmtree(tmp_pbe)
         os.chdir(cwd)
 
     # write raw opp file
@@ -353,7 +358,7 @@ if __name__ == "__main__":
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
     parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
-    parser.add_argument("--debug", default=False, help="print debug information", action="store_true")
+    parser.add_argument("--debug", default=False, help="print debug information and keep pb solver tmp", action="store_true")
     parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
     args = parser.parse_args()
 
@@ -399,7 +404,7 @@ if __name__ == "__main__":
                 if run_options.end >= counter >= run_options.start:
                     work_load.append((ir,ic))
                 counter += 1
-    logging.debug("work_load as (ir ic) list", str(work_load))
+    logging.debug("work_load as (ir ic) list [%s]" % ','.join(map(str, work_load)))
 
 
     # Set up parallel envrionment and run PB solver
@@ -411,7 +416,7 @@ if __name__ == "__main__":
 
     cwd = os.getcwd()
     pbe_folder = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".")
-    if os.path.exists(pbe_folder):
+    if not run_options.debug and os.path.exists(pbe_folder):
         shutil.rmtree(pbe_folder)
 
     # Post-process electrostatic potential
