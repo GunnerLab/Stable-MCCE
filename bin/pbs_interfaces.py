@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import logging
-import os
+import subprocess
 import math
 import struct
+
 
 class PBS_DELPHI:
     def __init__(self):
@@ -108,6 +109,12 @@ class PBS_DELPHI:
             fh.write("site(a,c,p)\n")
             fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
 
+        # 1st delphi
+        result = subprocess.run([self.exe], capture_output=True)
+        print("STDOUT ===========")
+        print(result.stdout)
+        print("STDERR ===========")
+        print(result.stderr)
 
         # multi side chain boundary condition
 
