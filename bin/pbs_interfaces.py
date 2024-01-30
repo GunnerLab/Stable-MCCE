@@ -9,7 +9,9 @@ class PBS_DELPHI:
         # consider loading these parameters from a file
         self.exe = "delphi"   # This has to be made available by the execution environment
         self.radius_probe = 1.4
-        self.grid_per_ang = 2.0
+        self.grids_per_ang = 2.0
+        self.epsilon_prot = 4.0  # default value, be overwritten by run_options
+        self.epsilon_solv = 80.0
         self.ionrad = 2.0
         self.salt = 0.15
         self.grids_delphi = 65
@@ -36,7 +38,7 @@ class PBS_DELPHI:
         dm = max(dx, dy, dz)
         dm += self.radius_probe * 2 + 3.4  # expand the largest dimension by the probe radius and safety
 
-        scale = self.grid_per_ang/(self.grids_delphi/(2*dm))  # scale is a multiplier on grid_per_ang required to reach the target resolution
+        scale = self.grids_per_ang/(self.grids_delphi/(2*dm))  # scale is a multiplier on grid_per_ang required to reach the target resolution
         if scale <= 1.0:
             depth = 1
         else:
@@ -45,7 +47,7 @@ class PBS_DELPHI:
         return depth
 
 
-    def run(self, bound):
+    def run(self, bound, run_options):
         """PBE solver interface for delphi. 
         It will generate site p in both boundary conditions 
         and return rxn in single boundary condition.
@@ -86,8 +88,25 @@ class PBS_DELPHI:
             center = [c/(weight+0.000001) for c in center]
         else:
             logging.error("PB solver shouldn't run a conformer has no charged atom.")
-        print(center)
+        with open("fort.27", "w") as fh:
+            fh.write("ATOM  %5d  C   CEN  %04d    %8.3f%8.3f%8.3f\n" % (1, 1, center[0], center[1], center[2]))
 
+        # fort.10
+        self.epsilon_prot = run_options.d
+        with open("fort.10", "w") as fh:
+            fh.write("gsize=%d\n" % self.grids_delphi)
+            fh.write("scale=%.2f\n" % self.grids_per_ang)
+            fh.write("in(unpdb,file=\"fort.13\")\n")
+            fh.write("indi=%.1f\n" % self.epsilon_prot)
+            fh.write("exdi=%.1f\n" % self.epsilon_solv)
+            fh.write("ionrad=%.1f\n" % self.ionrad)
+            fh.write("salt=%.2f\n" % self.salt)
+            fh.write("bndcon=2\n")
+            fh.write("center(777, 777, 0)\n")
+            fh.write("out(frc,file=\"run01.frc\")\n")
+            fh.write("out(phi,file=\"run01.phi\")\n")
+            fh.write("site(a,c,p)\n")
+            fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
 
 
         # multi side chain boundary condition

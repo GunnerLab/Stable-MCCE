@@ -26,8 +26,6 @@ import sys, argparse, shutil, logging, time, os, json
 from multiprocess import Pool
 from pdbio import *
 from pbs_interfaces import *
-import uuid
-import shutil
 
 
 global protein, run_options
@@ -306,15 +304,17 @@ def pbe(iric):
     else:
         # switch to temporary unique directory
         cwd = os.getcwd()
-        tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
-        os.makedirs(tmp_pbe)
+        #tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
+        tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + confid
+        if not os.path.exists(tmp_pbe):
+            os.makedirs(tmp_pbe)
         os.chdir(tmp_pbe)
 
         # decide which pb solver, delphi = delphi legacy
         if run_options.s.upper() == "DELPHI":
             logging.info("Calling delphi to calulate conformer %s" % confid)
             pbs_delphi = PBS_DELPHI()
-            rxn = pbs_delphi.run(bound)
+            rxn = pbs_delphi.run(bound, run_options)
 
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
