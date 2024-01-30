@@ -85,8 +85,8 @@ class ExchangeAtom:
         self.x = atom.xyz[0]
         self.y = atom.xyz[1]
         self.z = atom.xyz[2]
-        self.r = atom.r_bound  # radius
-        self.c = atom.charge   # charge
+        self.r = atom.r_bound   # radius
+        self.c = 0.0            # default to boundary defining atom, charge should be set as 0
         self.p = 0.0
         return
 
@@ -133,6 +133,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
+                    xyzrcp.c = atom.charge
                     self.single_bnd_xyzrcp.append(xyzrcp)
                     self.single_bnd_atom.append([atom])
                     
@@ -145,10 +146,9 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                             i_useconf = iconf
                             break
 
-                    #print(protein.residue[ires].conf[i_useconf].confID, protein.residue[ires].conf[i_useconf].crg)
+                    # just for boundary
                     for atom in protein.residue[ires].conf[i_useconf].atom:
                         xyzrcp = ExchangeAtom(atom)
-                        xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
                         self.single_bnd_xyzrcp.append(xyzrcp)
                         self.single_bnd_atom.append([atom])
 
@@ -179,6 +179,7 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
+                    xyzrcp.c = atom.charge
                     self.multi_bnd_xyzrcp.append(xyzrcp)
                     self.multi_bnd_atom.append([atom])
                     
@@ -189,14 +190,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     for iconf in range(1, len(protein.residue[ires].conf)):
                         for atom in protein.residue[ires].conf[iconf].atom:
                             xyzrcp = ExchangeAtom(atom)
-                            xyzrcp.c = 0.0   # boundary defining atom charge should be set as 0
                             # test if this atom existed within this residue already
                             found = False
                             for ib in range(len(residue_bnd_xyzrcp)):
-                                if  abs(residue_bnd_xyzrcp[ib].x - xyzrcp.x) < 0.001 and \
-                                    abs(residue_bnd_xyzrcp[ib].y - xyzrcp.y) < 0.001 and \
-                                    abs(residue_bnd_xyzrcp[ib].z - xyzrcp.z) < 0.001 and \
-                                    abs(residue_bnd_xyzrcp[ib].r - xyzrcp.r) < 0.001:  # identical atom 
+                                if abs(residue_bnd_xyzrcp[ib].x - xyzrcp.x) < 0.001 and \
+                                   abs(residue_bnd_xyzrcp[ib].y - xyzrcp.y) < 0.001 and \
+                                   abs(residue_bnd_xyzrcp[ib].z - xyzrcp.z) < 0.001 and \
+                                   abs(residue_bnd_xyzrcp[ib].r - xyzrcp.r) < 0.001:  # identical atom
                                     residue_bnd_atom[ib].append(atom)
                                     found = True
                                     break
@@ -279,8 +279,9 @@ def def_boundary(ir, ic):
     boundary.compose_multi(protein, ir, ic)
     
     # Do not write out boundary condition except for debug purpose
-    boundary.write_single_bnd("single_bnd")
-    boundary.write_multi_bnd("multi_bnd")
+    if run_options.debug:
+        boundary.write_single_bnd("single_bnd")
+        boundary.write_multi_bnd("multi_bnd")
 
     return boundary
 

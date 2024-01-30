@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import logging
 import os
 import math
 import struct
@@ -64,14 +64,29 @@ class PBS_DELPHI:
         # fort.13
         # The first run starts with fort.13 as dielectric boundary, the following runs will be focusing runs, using the phi
         # as input
-        
+        #
         struct_fmt = '=ifffffi'
         with open("fort.13", "wb") as fh:
             for p in bound.single_bnd_xyzrcp:
                 record_unf = struct.pack(struct_fmt, 20, p.x, p.y, p.z, p.r, p.c, 20)
                 fh.write(record_unf)
         
+        # fort.27
+        center = [0.0, 0.0, 0.0]
+        weight = 0.0
+        for p in bound.single_bnd_xyzrcp:
+            w = abs(p.c)
+            if w > 0.00001:
+                center[0] += p.x * w
+                center[1] += p.y * w
+                center[2] += p.z * w
+                weight += w
 
+        if weight > 0.000001:
+            center = [c/(weight+0.000001) for c in center]
+        else:
+            logging.error("PB solver shouldn't run a conformer has no charged atom.")
+        print(center)
 
 
 
