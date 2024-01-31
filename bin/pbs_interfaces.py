@@ -48,6 +48,22 @@ class PBS_DELPHI:
         return depth
 
 
+    def write_fort15(self, xyzrcp):
+        header = "ATOM      1  O   LYS A   1    "
+        with open("fort.15", "w") as fh:
+            for p in xyzrcp:
+                fh.write("%-30s%8.3f%8.3f%8.3f\n" % (header, p.x, p.y, p.z))
+        return
+
+    def write_fort13(self, xyzrcp):
+        struct_fmt = '=ifffffi'
+        with open("fort.13", "wb") as fh:
+            for p in xyzrcp:
+                record_unf = struct.pack(struct_fmt, 20, p.x, p.y, p.z, p.r, p.c, 20)
+                fh.write(record_unf)
+        return
+
+
     def run(self, bound, run_options):
         """PBE solver interface for delphi. 
         It will generate site p in both boundary conditions 
@@ -63,17 +79,16 @@ class PBS_DELPHI:
 
         depth = self.depth(bound)
 
+
         # single side chain boundary condition
         # fort.13
         # The first run starts with fort.13 as dielectric boundary, the following runs will be focusing runs, using the phi
         # as input
         #
-        struct_fmt = '=ifffffi'
-        with open("fort.13", "wb") as fh:
-            for p in bound.single_bnd_xyzrcp:
-                record_unf = struct.pack(struct_fmt, 20, p.x, p.y, p.z, p.r, p.c, 20)
-                fh.write(record_unf)
-        
+        self.write_fort13(bound.single_bnd_xyzrcp)
+        self.write_fort15(bound.single_bnd_xyzrcp)
+
+
         # fort.27
         center = [0.0, 0.0, 0.0]
         weight = 0.0
@@ -109,12 +124,49 @@ class PBS_DELPHI:
             fh.write("site(a,c,p)\n")
             fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
 
-        # 1st delphi
+        # 1st delphi run
         result = subprocess.run([self.exe], capture_output=True)
-        print("STDOUT ===========")
-        print(result.stdout)
-        print("STDERR ===========")
-        print(result.stderr)
+        # print("STDOUT ===========")
+        # print(result.stdout)
+        delphi_log = [result.stdout]   # delphi logs of all depths will be stored in this list
+
+        if result.stderr:
+            print("delphi encountered error ===========")
+            print(result.stderr)
+            print("====================================")
+
+        # subsequent delphi runs
+        for i in range(1, depth):
+            with open("fort.10", "w") as fh:
+                fh.write("gsize=%d\n" % self.grids_delphi)
+                fh.write("scale=%.2f\n" % self.grids_per_ang)
+                fh.write("in(unpdb,file=\"fort.13\")\n")
+                fh.write("in(phi,file=\"run%02d.phi\")\n" % i)
+                fh.write("indi=%.1f\n" % self.epsilon_prot)
+                fh.write("exdi=%.1f\n" % self.epsilon_solv)
+                fh.write("ionrad=%.1f\n" % self.ionrad)
+                fh.write("salt=%.2f\n" % self.salt)
+                fh.write("bndcon=3\n")
+                fh.write("center(777, 777, 0)\n")
+                fh.write("out(frc,file=\"run%02d.frc\")\n" % (i+1))
+                fh.write("out(phi,file=\"run%02d.phi\")\n" % (i+1))
+                fh.write("site(a,c,p)\n")
+                fh.write("energy(g,an,sol)\n")  # g for grid energy, sol for corrected rxn
+
+            result = subprocess.run([self.exe], capture_output=True)
+            delphi_log.append(result.stdout)
+
+
+        # collect results from the log
+        try:
+            lines = open("run01.frc", "r").readlines()
+        except OSError:
+            logging.error("Could not open Delphi output file run01.frc.")
+
+
+
+
+
 
         # multi side chain boundary condition
 
