@@ -3,6 +3,7 @@ import logging
 import subprocess
 import math
 import struct
+import sys
 
 
 class PBS_DELPHI:
@@ -16,7 +17,7 @@ class PBS_DELPHI:
         self.ionrad = 2.0
         self.salt = 0.15
         self.grids_delphi = 65
-
+        self.KCAL2KT = 1.688
         return
     
 
@@ -63,6 +64,48 @@ class PBS_DELPHI:
                 fh.write(record_unf)
         return
 
+    def collect_phi(self, depth, xyzrcp):
+        # collect results from the log
+        try:
+            lines = open("run01.frc", "r").readlines()
+        except OSError:
+            logging.error("Could not open Delphi output file run01.frc.")
+            sys.exit()
+
+        for counter in range(len(xyzrcp)):
+            phi = float(lines[12+counter][20:].split()[0])
+            xyzrcp[counter].p = phi
+
+        # If the potential is non 0 in focusing runs, update
+        for i in range(1, depth):
+            frc_name = "run%02d.frc" % (i+1)
+            try:
+                lines = open(frc_name, "r").readlines()
+            except OSError:
+                logging.error("Could not open Delphi output file %s." % frc_name)
+                sys.exit()
+
+            for counter in range(len(xyzrcp)):
+                phi = float(lines[12 + counter][20:].split()[0])
+                if abs(phi) > 0.0001:
+                    xyzrcp[counter].p = phi
+
+        return
+
+
+    def collect_rxn(self, log):
+        log_lines = log.split("\n")
+        found = False
+        for line in log_lines:
+            if "corrected reaction field energy:" in line:
+                rxn = float(line[34:].split()[0]) / self.KCAL2KT
+                found = True
+
+        if not found:
+            logging.error("Did not detect corrected reaction field energy line. Delphi failed!")
+
+        return rxn
+
 
     def run(self, bound, run_options):
         """PBE solver interface for delphi. 
@@ -78,7 +121,8 @@ class PBS_DELPHI:
         #print(vars(bound))
 
         depth = self.depth(bound)
-
+        logging.info("Delphi focusing depth: %d" % depth)
+        rxns = []
 
         # single side chain boundary condition
         # fort.13
@@ -125,10 +169,8 @@ class PBS_DELPHI:
             fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
 
         # 1st delphi run
-        result = subprocess.run([self.exe], capture_output=True)
-        # print("STDOUT ===========")
-        # print(result.stdout)
-        delphi_log = [result.stdout]   # delphi logs of all depths will be stored in this list
+        result = subprocess.run([self.exe], capture_output=True, text=True)
+        rxns.append(self.collect_rxn(result.stdout))
 
         if result.stderr:
             print("delphi encountered error ===========")
@@ -153,24 +195,18 @@ class PBS_DELPHI:
                 fh.write("site(a,c,p)\n")
                 fh.write("energy(g,an,sol)\n")  # g for grid energy, sol for corrected rxn
 
-            result = subprocess.run([self.exe], capture_output=True)
-            delphi_log.append(result.stdout)
+            result = subprocess.run([self.exe], capture_output=True, text=True)
+            rxns.append(self.collect_rxn(result.stdout))
 
+        # collect results from frc files
+        self.collect_phi(depth, bound.single_bnd_xyzrcp)
 
-        # collect results from the log
-        try:
-            lines = open("run01.frc", "r").readlines()
-        except OSError:
-            logging.error("Could not open Delphi output file run01.frc.")
-
-
-
-
-
+        # collect rxn from the run log
+        #print(str(result.stdout))
+        rxn = self.collect_rxn(result.stdout)
 
         # multi side chain boundary condition
 
-        rxn = 0
 
-
-        return rxn
+        print(rxns)
+        return rxns

@@ -217,13 +217,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
         # write xyzrpc
         lines = []
-        for xyzrpc in self.single_bnd_xyzrcp:
-            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrpc.x,
-                                                              xyzrpc.y,
-                                                              xyzrpc.z,
-                                                              xyzrpc.r,
-                                                              xyzrpc.c,
-                                                              xyzrpc.p)
+        for xyzrcp in self.single_bnd_xyzrcp:
+            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrcp.x,
+                                                              xyzrcp.y,
+                                                              xyzrcp.z,
+                                                              xyzrcp.r,
+                                                              xyzrcp.c,
+                                                              xyzrcp.p)
             lines.append(line)
         open(fname+".xyzrcp", "w").writelines(lines)
 
@@ -245,13 +245,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
         # write xyzrpc
         lines = []
-        for xyzrpc in self.multi_bnd_xyzrcp:
-            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrpc.x,
-                                                              xyzrpc.y,
-                                                              xyzrpc.z,
-                                                              xyzrpc.r,
-                                                              xyzrpc.c,
-                                                              xyzrpc.p)
+        for xyzrcp in self.multi_bnd_xyzrcp:
+            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrcp.x,
+                                                              xyzrcp.y,
+                                                              xyzrcp.z,
+                                                              xyzrcp.r,
+                                                              xyzrcp.c,
+                                                              xyzrcp.p)
             lines.append(line)
         open(fname+".xyzrcp", "w").writelines(lines)
 
@@ -314,7 +314,7 @@ def pbe(iric):
         if run_options.s.upper() == "DELPHI":
             logging.info("Calling delphi to calulate conformer %s" % confid)
             pbs_delphi = PBS_DELPHI()
-            rxn = pbs_delphi.run(bound, run_options)
+            rxns = pbs_delphi.run(bound, run_options)
 
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
@@ -324,6 +324,9 @@ def pbe(iric):
         if not run_options.debug:
             shutil.rmtree(tmp_pbe)
         os.chdir(cwd)
+
+
+
 
     # write raw opp file
     fname = confid + ".raw"
