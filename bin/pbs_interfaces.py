@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import logging
+import os
 import subprocess
 import math
 import struct
@@ -50,10 +51,12 @@ class PBS_DELPHI:
 
 
     def write_fort15(self, xyzrcp):
-        header = "ATOM      1  O   LYS A   1    "
+        i = 1
         with open("fort.15", "w") as fh:
             for p in xyzrcp:
+                header = "ATOM      0  O   LYS %5d    " % i
                 fh.write("%-30s%8.3f%8.3f%8.3f\n" % (header, p.x, p.y, p.z))
+                i += 1
         return
 
     def write_fort13(self, xyzrcp):
@@ -172,11 +175,6 @@ class PBS_DELPHI:
         result = subprocess.run([self.exe], capture_output=True, text=True)
         rxns.append(self.collect_rxn(result.stdout))
 
-        if result.stderr:
-            print("delphi encountered error ===========")
-            print(result.stderr)
-            print("====================================")
-
         # subsequent delphi runs
         for i in range(1, depth):
             with open("fort.10", "w") as fh:
@@ -201,12 +199,71 @@ class PBS_DELPHI:
         # collect results from frc files
         self.collect_phi(depth, bound.single_bnd_xyzrcp)
 
-        # collect rxn from the run log
-        #print(str(result.stdout))
-        rxn = self.collect_rxn(result.stdout)
 
         # multi side chain boundary condition
+        # fort.13 for first run
+        self.write_fort13(bound.multi_bnd_xyzrcp)
+        self.write_fort15(bound.multi_bnd_xyzrcp)
 
 
-        print(rxns)
+        # fort.27
+        center = [0.0, 0.0, 0.0]
+        weight = 0.0
+        for p in bound.multi_bnd_xyzrcp:
+            w = abs(p.c)
+            if w > 0.00001:
+                center[0] += p.x * w
+                center[1] += p.y * w
+                center[2] += p.z * w
+                weight += w
+
+        if weight > 0.000001:
+            center = [c/(weight+0.000001) for c in center]
+        else:
+            logging.error("PB solver shouldn't run a conformer has no charged atom.")
+        with open("fort.27", "w") as fh:
+            fh.write("ATOM  %5d  C   CEN  %04d    %8.3f%8.3f%8.3f\n" % (1, 1, center[0], center[1], center[2]))
+
+        # fort.10
+        self.epsilon_prot = run_options.d
+        with open("fort.10", "w") as fh:
+            fh.write("gsize=%d\n" % self.grids_delphi)
+            fh.write("scale=%.2f\n" % self.grids_per_ang)
+            fh.write("in(unpdb,file=\"fort.13\")\n")
+            fh.write("indi=%.1f\n" % self.epsilon_prot)
+            fh.write("exdi=%.1f\n" % self.epsilon_solv)
+            fh.write("ionrad=%.1f\n" % self.ionrad)
+            fh.write("salt=%.2f\n" % self.salt)
+            fh.write("bndcon=2\n")
+            fh.write("center(777, 777, 0)\n")
+            fh.write("out(frc,file=\"run01.frc\")\n")
+            fh.write("out(phi,file=\"run01.phi\")\n")
+            fh.write("site(a,c,p)\n")
+            fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
+
+        # 1st delphi run
+        result = subprocess.run([self.exe], capture_output=True, text=True)
+
+        # subsequent delphi runs
+        for i in range(1, depth):
+            with open("fort.10", "w") as fh:
+                fh.write("gsize=%d\n" % self.grids_delphi)
+                fh.write("scale=%.2f\n" % self.grids_per_ang)
+                fh.write("in(unpdb,file=\"fort.13\")\n")
+                fh.write("in(phi,file=\"run%02d.phi\")\n" % i)
+                fh.write("indi=%.1f\n" % self.epsilon_prot)
+                fh.write("exdi=%.1f\n" % self.epsilon_solv)
+                fh.write("ionrad=%.1f\n" % self.ionrad)
+                fh.write("salt=%.2f\n" % self.salt)
+                fh.write("bndcon=3\n")
+                fh.write("center(777, 777, 0)\n")
+                fh.write("out(frc,file=\"run%02d.frc\")\n" % (i+1))
+                fh.write("out(phi,file=\"run%02d.phi\")\n" % (i+1))
+                fh.write("site(a,c,p)\n")
+                fh.write("energy(g,an,sol)\n")  # g for grid energy, sol for corrected rxn
+            result = subprocess.run([self.exe], capture_output=True, text=True)
+
+        # collect results from frc files
+        self.collect_phi(depth, bound.multi_bnd_xyzrcp)
+
         return rxns
