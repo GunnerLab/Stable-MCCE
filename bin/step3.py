@@ -328,11 +328,16 @@ def pbe(iric):
 
 
     # write raw opp file
-    fname = confid + ".raw"
-    
+    energy_folder = "energies"
+    fname = "%s/%s.raw" % (energy_folder, confid)
+
+    if not os.path.exists(energy_folder):
+        os.mkdir(energy_folder)
+
     if all_0:
         # create an empty file as a marker to indicate this conformer has been calculated
-        pass
+        with open(fname, 'w') as fp:
+            pass
     else:
         # generate electrostatic inteaction raw file
         # Part 1: Method = run_options.s
@@ -340,6 +345,7 @@ def pbe(iric):
         # Part 3: rxn at single condition
         # Part 4: backbone interaction total
         # Part 5: backbone interaction breakdown
+        print(cwd)
         pass
 
 
