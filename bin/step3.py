@@ -289,7 +289,7 @@ def pbe(iric):
     ic = iric[1]
     confid = protein.residue[ir].conf[ic].confID
     bound = def_boundary(ir, ic)
-
+    rxn = 0.0
 
     # skip pbe if this atoms in this conformer are all 0 charged
     all_0 = True
@@ -314,7 +314,7 @@ def pbe(iric):
         if run_options.s.upper() == "DELPHI":
             logging.info("Calling delphi to calulate conformer %s" % confid)
             pbs_delphi = PBS_DELPHI()
-            rxns = pbs_delphi.run(bound, run_options)
+            rxn = pbs_delphi.run(bound, run_options)
 
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
@@ -340,13 +340,54 @@ def pbe(iric):
             pass
     else:
         # generate electrostatic inteaction raw file
+        raw_lines = []
+
         # Part 1: Method = run_options.s
+        line = "Method = %s\n" % run_options.s
+        raw_lines.append(line)
+
         # Part 2: pw to other conformers, single and multi
-        # Part 3: rxn at single condition
+        pw_single = {}
+        pw_multi = {}
+        for ia in range(len(bound.single_bnd_xyzrcp)):
+            # print(confid, bound.single_bnd_atom[ia][0].confID, bound.single_bnd_atom[ia][0].name)
+            pw_confname = bound.single_bnd_atom[ia][0].confID  # single conformer
+            p = bound.single_bnd_xyzrcp[ia].p * bound.single_bnd_atom[ia][0].charge
+            if abs(p) > 0.0001:
+                if pw_confname in pw_single:
+                    pw_single[pw_confname] += p
+                else:
+                    pw_single[pw_confname] = p
+
+        # convert to Kcal
+        pw_single.update((key, value/KCAL2KT) for key, value in pw_single.items())
+
+        # print(pw_single)
+        # print(len(pw_single))
+
+        pw_multi = {}
+        for ia in range(len(bound.multi_bnd_xyzrcp)):
+            for atom in bound.multi_bnd_atom[ia]:
+                pw_confname = atom.confID
+                if pw_confname[3:5] == "BK":
+                    continue
+                p = bound.multi_bnd_xyzrcp[ia].p * atom.charge
+                if abs(p) > 0.0001:
+                    if pw_confname in pw_multi:
+                        pw_multi[pw_confname] += p
+                    else:
+                        pw_multi[pw_confname] = p
+
+        # convert to Kcal
+        pw_multi.update((key, value/KCAL2KT) for key, value in pw_multi.items())
+        for key, value in pw_multi.items():
+            if abs(value) >= 0.001:
+                print("%s %8.3f" % (key, value))
+
+        # Part 3: rxn
+
         # Part 4: backbone interaction total
         # Part 5: backbone interaction breakdown
-        print(cwd)
-        pass
 
 
     return(ir, ic)

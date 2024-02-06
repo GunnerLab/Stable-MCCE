@@ -158,7 +158,7 @@ class PBS_DELPHI:
         self.epsilon_prot = run_options.d
         with open("fort.10", "w") as fh:
             fh.write("gsize=%d\n" % self.grids_delphi)
-            fh.write("scale=%.2f\n" % self.grids_per_ang)
+            fh.write("scale=%.2f\n" % (self.grids_per_ang/2**(depth-1)))
             fh.write("in(unpdb,file=\"fort.13\")\n")
             fh.write("indi=%.1f\n" % self.epsilon_prot)
             fh.write("exdi=%.1f\n" % self.epsilon_solv)
@@ -179,7 +179,7 @@ class PBS_DELPHI:
         for i in range(1, depth):
             with open("fort.10", "w") as fh:
                 fh.write("gsize=%d\n" % self.grids_delphi)
-                fh.write("scale=%.2f\n" % self.grids_per_ang)
+                fh.write("scale=%.2f\n" % (self.grids_per_ang/2**(depth-1-i)))
                 fh.write("in(unpdb,file=\"fort.13\")\n")
                 fh.write("in(phi,file=\"run%02d.phi\")\n" % i)
                 fh.write("indi=%.1f\n" % self.epsilon_prot)
@@ -228,7 +228,7 @@ class PBS_DELPHI:
         self.epsilon_prot = run_options.d
         with open("fort.10", "w") as fh:
             fh.write("gsize=%d\n" % self.grids_delphi)
-            fh.write("scale=%.2f\n" % self.grids_per_ang)
+            fh.write("scale=%.2f\n" % (self.grids_per_ang/2**(depth-1)))
             fh.write("in(unpdb,file=\"fort.13\")\n")
             fh.write("indi=%.1f\n" % self.epsilon_prot)
             fh.write("exdi=%.1f\n" % self.epsilon_solv)
@@ -248,7 +248,7 @@ class PBS_DELPHI:
         for i in range(1, depth):
             with open("fort.10", "w") as fh:
                 fh.write("gsize=%d\n" % self.grids_delphi)
-                fh.write("scale=%.2f\n" % self.grids_per_ang)
+                fh.write("scale=%.2f\n" % (self.grids_per_ang/2**(depth-1-i)))
                 fh.write("in(unpdb,file=\"fort.13\")\n")
                 fh.write("in(phi,file=\"run%02d.phi\")\n" % i)
                 fh.write("indi=%.1f\n" % self.epsilon_prot)
@@ -266,4 +266,4 @@ class PBS_DELPHI:
         # collect results from frc files
         self.collect_phi(depth, bound.multi_bnd_xyzrcp)
 
-        return rxns
+        return min(rxns)    # return the most negative value of the focusing runs

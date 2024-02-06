@@ -9,6 +9,8 @@ import time
 import numpy as np
 from scipy.sparse import lil_matrix
 
+
+KCAL2KT = 1.688
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 
@@ -209,7 +211,7 @@ class Protein:
                 conf.i = n_conf
                 n_conf += 1
 
-        # Create a 2D VDW array tht will be referenced by indices
+        # Create a 2D VDW array that will be referenced by indices
         #self.vdw_pw = np.zeros((n_conf, n_conf))
         self.vdw_pw = lil_matrix((n_conf, n_conf))
 
