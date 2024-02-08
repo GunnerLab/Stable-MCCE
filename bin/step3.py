@@ -23,7 +23,7 @@ Usage examples:
 """
 
 import sys, argparse, shutil, logging, time, os, json
-from multiprocess import Pool
+from multiprocess import Pool, current_process
 from pdbio import *
 from pbs_interfaces import *
 
@@ -287,7 +287,9 @@ def def_boundary(ir, ic):
 def pbe(iric):
     ir = iric[0]
     ic = iric[1]
+    pid = current_process()  # Identify this worker
     confid = protein.residue[ir].conf[ic].confID
+    resid = confid[:3] + confid[5:11]
     bound = def_boundary(ir, ic)
     rxn = 0.0
 
@@ -312,7 +314,7 @@ def pbe(iric):
 
         # decide which pb solver, delphi = delphi legacy
         if run_options.s.upper() == "DELPHI":
-            logging.info("Calling delphi to calulate conformer %s" % confid)
+            logging.info("%s: Calling delphi to calulate conformer %s" % (pid.name, confid))
             pbs_delphi = PBS_DELPHI()
             rxn = pbs_delphi.run(bound, run_options)
 
@@ -343,7 +345,7 @@ def pbe(iric):
         raw_lines = []
 
         # Part 1: Method = run_options.s
-        line = "Method = %s\n" % run_options.s
+        line = "[Method] %s\n" % run_options.s
         raw_lines.append(line)
 
         # Part 2: pw to other conformers, single and multi
@@ -359,7 +361,7 @@ def pbe(iric):
                 else:
                     pw_single[pw_confname] = p
 
-        # convert to Kcal
+        # convert to Kcal and remove interaction within residue including backbone piece
         pw_single.update((key, value/KCAL2KT) for key, value in pw_single.items())
 
         # print(pw_single)
@@ -380,15 +382,71 @@ def pbe(iric):
 
         # convert to Kcal
         pw_multi.update((key, value/KCAL2KT) for key, value in pw_multi.items())
-        for key, value in pw_multi.items():
-            if abs(value) >= 0.001:
-                print("%s %8.3f" % (key, value))
+        # for key, value in pw_multi.items():
+        #     if abs(value) >= 0.001:
+        #         print("%s %8.3f" % (key, value))
 
-        # Part 3: rxn
+        # get conformer list and backbone segment list
+        conf_list = []
+        bkb_list = []
+        for res in protein.residue:
+            for conf in res.conf:
+                if conf.confID[3:5] == "BK":
+                    bkb_list.append(conf.confID)
+                else:
+                    conf_list.append(conf.confID)
 
-        # Part 4: backbone interaction total
-        # Part 5: backbone interaction breakdown
+        # write pw section
+        line = "\n[PAIRWISE confID single multi flag, kcal/mol]\n"
+        raw_lines.append(line)
 
+        for pw_conf in conf_list:
+            if resid == pw_conf[:3] + pw_conf[5:11]:
+                continue    # skip conformer within residue
+            single = 0.0
+            multi = 0.0
+            non0 = False
+            reference = ""
+            if pw_conf in pw_single:
+                non0 = True
+                single = pw_single[pw_conf]
+                reference = "*"   # this is marked as a reference conformer for boundary correction
+            if pw_conf in pw_multi:
+                non0 = True
+                multi = pw_multi[pw_conf]
+            if non0 and (abs(single) >= 0.001 or abs(multi) >= 0.001):
+                line = "%s %8.3f %8.3f %s\n" % (pw_conf, single, multi, reference)
+                raw_lines.append(line)
+
+        # Part 3: backbone interaction total
+        raw_lines.append(line)
+        bkb_total = 0.0
+        bkb_breakdown_lines = ["\n[BACKBONE breakdown, , kcal/mol]\n"]
+        for pw_conf in bkb_list:
+            # if resid == pw_conf[:3] + pw_conf[5:11]:
+            #     continue    # skip conformer within residue
+            non0 = False
+            bkb_pw = 0.0
+            if pw_conf in pw_single:
+                non0 = True
+                bkb_pw = pw_single[pw_conf]
+                bkb_total += bkb_pw
+            if non0 and abs(bkb_pw) >= 0.001:
+                line = "%s %8.3f\n" % (pw_conf, bkb_pw)
+                bkb_breakdown_lines.append(line)
+
+        line = "\n[BACKBONE total, kcal/mol] %8.3f\n" % bkb_total
+        raw_lines.append(line)
+
+        # Part 4: backbone interaction breakdown
+        line = "\n[BACKBONE breakdown]\n"
+        raw_lines += bkb_breakdown_lines
+
+        # Part 5: rxn
+        line = "\n[RXN, kcal/mol] %8.3f" % rxn
+        raw_lines.append(line)
+
+        open(fname, "w").writelines(raw_lines)
 
     return(ir, ic)
 
