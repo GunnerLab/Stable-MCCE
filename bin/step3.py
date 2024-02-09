@@ -434,7 +434,7 @@ def pbe(iric):
                 line = "%s %8.3f\n" % (pw_conf, bkb_pw)
                 bkb_breakdown_lines.append(line)
 
-        line = "\n[BACKBONE total, kcal/mol] %8.3f\n" % bkb_total
+        line = "\n[BACKBONE total excluding self, kcal/mol] %8.3f\n" % bkb_total
         raw_lines.append(line)
 
         # Part 4: backbone interaction breakdown
