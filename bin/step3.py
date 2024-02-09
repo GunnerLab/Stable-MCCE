@@ -423,14 +423,13 @@ def pbe(iric):
         bkb_total = 0.0
         bkb_breakdown_lines = ["\n[BACKBONE breakdown, , kcal/mol]\n"]
         for pw_conf in bkb_list:
-            # if resid == pw_conf[:3] + pw_conf[5:11]:
-            #     continue    # skip conformer within residue
             non0 = False
             bkb_pw = 0.0
             if pw_conf in pw_single:
                 non0 = True
                 bkb_pw = pw_single[pw_conf]
-                bkb_total += bkb_pw
+                if resid != pw_conf[:3] + pw_conf[5:11]:    # exclude the backbone piece when calculating the total
+                    bkb_total += bkb_pw
             if non0 and abs(bkb_pw) >= 0.001:
                 line = "%s %8.3f\n" % (pw_conf, bkb_pw)
                 bkb_breakdown_lines.append(line)
