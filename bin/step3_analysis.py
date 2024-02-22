@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 new_folder = "energies"
-old_folder = "energies.bak"
+old_folder = "energies.old"
+write_cutoff = 0.01
 
 def read_confnames():
     confnames = []
@@ -54,6 +55,55 @@ def load_new_backbone(confnames):
 
     return backbone_ele
 
+def load_old_pw(confnames):
+    # Will collect those marked with "*" as they have both boundary conditions
+    pw = {}
+    for conf in confnames:
+        if conf[3:5] == "DM":
+            continue    # skip dummy
+        fname = "%s/%s.opp" % (old_folder, conf)
+        lines = open(fname).readlines()
+        for line in lines:
+            fields = line.strip().split()
+            if fields[-1] == "*":
+                single = float(fields[4])
+                multi = float(fields[5])
+                if abs(single) >= write_cutoff and abs(multi) >= write_cutoff:
+                    key = (conf, fields[1])
+                    pw[key] = (single, multi)
+
+    return pw
+
+
+def load_new_pw(confnames):
+    # Will collect those marked with "*" as they have both boundary conditions
+    pw = {}
+    for conf in confnames:
+        if conf[3:5] == "DM":
+            continue    # skip dummy
+        fname = "%s/%s.raw" % (new_folder, conf)
+        start = False
+        lines = open(fname).readlines()
+        for line in lines:
+            if line[:9] == "[PAIRWISE":
+                start = True
+                continue
+            elif line[:15] == "[BACKBONE total":
+                break
+            if start and len(line) > 30:
+                fields = line.strip().split()
+                
+                if fields[-1] == "*":
+                    single = float(fields[1])
+                    multi = float(fields[2])
+                    if abs(single) >= write_cutoff and abs(multi) >= write_cutoff:
+                        key = (conf, fields[0])
+                        pw[key] = (single, multi)
+
+    return pw
+
+
+
 if __name__ == "__main__":
     confnames = read_confnames()
     old_backbone_ele = load_old_backbone()
@@ -75,3 +125,29 @@ if __name__ == "__main__":
         lines.append(line)
     open("bkb_ele.csv", "w").writelines(lines)
 
+    old_pw = load_old_pw(confnames)
+    new_pw = load_new_pw(confnames)
+    
+    # print pairwise comparison
+    lines = ["Conformer1, Conformer2, old_pw_single, new_pw_single, old_pw_multi, new_pw_multi, ,old_pw_single_R, new_pw_single_R, old_pw_multi_R, new_pw_multi_R\n"]
+    
+    for conf1 in confnames:
+        if conf1[3:5] == "DM": continue
+        for conf2 in confnames:
+            if conf2[3:5] == "DM": continue
+            if conf1 == conf2: continue
+            key = (conf1, conf2)
+            old_pw_single = new_pw_single = old_pw_multi = new_pw_multi = 0.0
+            found = False
+            if key in old_pw:
+                old_pw_single, old_pw_multi = old_pw[key]
+                found = True
+            if key in new_pw:
+                new_pw_single, new_pw_multi = new_pw[key]
+                found = True
+
+            if found:
+                line = "%s, %s, %8.3f, %8.3f, %8.3f, %8.3f\n" % (conf1, conf2, old_pw_single, new_pw_single, old_pw_multi, new_pw_multi)
+                lines.append(line)
+    
+    open("pw_ele.csv", "w").writelines(lines)
