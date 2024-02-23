@@ -30,11 +30,10 @@ ARG+1A0128_004   -0.001   -0.001 *
 CTR01A0129_002    0.000    0.001 
 CTR02A0129_003    0.000   -0.001 
 CTR-1A0129_005    0.006    0.007 *
-CTR-1A0129_005    0.006    0.007 *
 
-[BACKBONE total, kcal/mol]   -0.063
+[BACKBONE total excluding self, kcal/mol]   -0.063
 
-[BACKBONE breakdown, , kcal/mol]
+[BACKBONE breakdown, kcal/mol]
 GLYBKA0004_000    0.001
 ARGBKA0005_000    0.003
 CYDBKA0006_000    0.002

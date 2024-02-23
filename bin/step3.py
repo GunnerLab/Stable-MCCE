@@ -293,7 +293,7 @@ def pbe(iric):
     bound = def_boundary(ir, ic)
     rxn = 0.0
 
-    # skip pbe if this atoms in this conformer are all 0 charged
+    # skip pbe if atoms in this conformer are all 0 charged
     all_0 = True
     for atom in protein.residue[ir].conf[ic].atom:
         if abs(atom.charge) > 0.001:
@@ -301,8 +301,6 @@ def pbe(iric):
             break
     if all_0:   # skip
         logging.info("Skipping PBE solver for non-charge confortmer %s..." % confid)
-
-
     else:
         # switch to temporary unique directory
         cwd = os.getcwd()
@@ -326,9 +324,6 @@ def pbe(iric):
             shutil.rmtree(tmp_pbe)
         os.chdir(cwd)
 
-
-
-
     # write raw opp file
     energy_folder = "energies"
     fname = "%s/%s.raw" % (energy_folder, confid)
@@ -341,7 +336,7 @@ def pbe(iric):
         with open(fname, 'w') as fp:
             pass
     else:
-        # generate electrostatic inteaction raw file
+        # generate electrostatic interaction raw file
         raw_lines = []
 
         # Part 1: Method = run_options.s
@@ -419,17 +414,19 @@ def pbe(iric):
                 raw_lines.append(line)
 
         # Part 3: backbone interaction total
-        raw_lines.append(line)
         bkb_total = 0.0
-        bkb_breakdown_lines = ["\n[BACKBONE breakdown, , kcal/mol]\n"]
+        bkb_breakdown_lines = ["\n[BACKBONE breakdown, kcal/mol]\n"]
         for pw_conf in bkb_list:
             non0 = False
             bkb_pw = 0.0
             if pw_conf in pw_single:
                 non0 = True
                 bkb_pw = pw_single[pw_conf]
-                if resid != pw_conf[:3] + pw_conf[5:11]:    # exclude the backbone piece when calculating the total
+                if resid != (pw_conf[:3] + pw_conf[5:11]):    # exclude the backbone piece when calculating the total
                     bkb_total += bkb_pw
+                else:
+                    print(resid)
+
             if non0 and abs(bkb_pw) >= 0.001:
                 line = "%s %8.3f\n" % (pw_conf, bkb_pw)
                 bkb_breakdown_lines.append(line)

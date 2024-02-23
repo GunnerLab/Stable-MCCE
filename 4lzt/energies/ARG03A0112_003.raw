@@ -55,11 +55,10 @@ LYS01A0116_001    0.000   -0.007
 LYS+1A0116_002    0.077    0.081 *
 THR01A0118_001    0.002    0.002 *
 ASP-1A0119_005   -0.002   -0.002 *
-ASP-1A0119_005   -0.002   -0.002 *
 
-[BACKBONE total, kcal/mol]   -0.940
+[BACKBONE total excluding self, kcal/mol]   -0.940
 
-[BACKBONE breakdown, , kcal/mol]
+[BACKBONE breakdown, kcal/mol]
 TYRBKA0020_000   -0.002
 SERBKA0024_000   -0.002
 LEUBKA0025_000   -0.001

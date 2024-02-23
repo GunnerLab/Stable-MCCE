@@ -36,11 +36,10 @@ ASN01A0106_002    0.000   -0.002
 ARG+1A0112_005   -0.003   -0.003 *
 LYS+1A0116_002   -0.008   -0.008 *
 ASP-1A0119_005    0.002    0.002 *
-ASP-1A0119_005    0.002    0.002 *
 
-[BACKBONE total, kcal/mol]    0.004
+[BACKBONE total excluding self, kcal/mol]    0.004
 
-[BACKBONE breakdown, , kcal/mol]
+[BACKBONE breakdown, kcal/mol]
 HISBKA0015_000   -0.001
 GLYBKA0016_000   -0.003
 ASPBKA0018_000   -0.002

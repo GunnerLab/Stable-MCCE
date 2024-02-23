@@ -75,11 +75,10 @@ THR01A0118_002    0.000   -0.002
 ASP-1A0119_005    0.001   -0.000 *
 HOH01A1001_003    0.000    0.001 
 HOH01A1004_002    0.000    0.001 
-HOH01A1004_002    0.000    0.001 
 
-[BACKBONE total, kcal/mol]    0.187
+[BACKBONE total excluding self, kcal/mol]    0.187
 
-[BACKBONE breakdown, , kcal/mol]
+[BACKBONE breakdown, kcal/mol]
 ARGBKA0005_000   -0.001
 ASNBKA0019_000    0.001
 ARGBKA0021_000    0.006

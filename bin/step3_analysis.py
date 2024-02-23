@@ -36,20 +36,21 @@ def load_new_backbone(confnames):
         lines = open(fpath).readlines()
         breakdown = False
         bkb_self = 0.0
-        bkb_name = "%sBK%s000" % (conf[:3], conf[5:11]) # find corresponding bkb conformer name
-        bkb_inclusive = 0.0
+        bkb_name = "%sBK%s000" % (conf[:3], conf[5:11])  # find corresponding bkb conformer name
+        bkb_exclusive = 0.0
         for line in lines:
             if line[:15] == "[BACKBONE total":
                 fields = line.split()
-                bkb_inclusive = float(fields[-1])
+                bkb_exclusive = float(fields[-1])
             if line[:19] == "[BACKBONE breakdown":
                 breakdown = True
+                continue
             if breakdown:
                 fields = line.split()
                 if len(fields) > 1 and fields[0] == bkb_name:
                     bkb_self = float(fields[-1])
-        
-        bkb_exclusive = bkb_inclusive - bkb_self
+
+        bkb_inclusive = bkb_exclusive + bkb_self
         backbone_ele[conf] = (bkb_inclusive, bkb_exclusive)
 
 
@@ -110,7 +111,7 @@ if __name__ == "__main__":
     new_backbone_ele = load_new_backbone(confnames)
 
     # print out bkb comparison
-    lines = []
+    lines = ["Conformer, Old, New_inc, New_exc\n"]
     for conf in confnames:
         if conf[3:5] == "DM" or conf[:3] == "NTR" or conf[:3] == "CTR":
             continue

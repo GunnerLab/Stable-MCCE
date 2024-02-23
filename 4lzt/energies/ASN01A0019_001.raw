@@ -44,11 +44,10 @@ GLN01A0121_001    0.001    0.001 *
 GLN01A0121_002    0.000   -0.002 
 ARG+1A0125_005   -0.005   -0.004 *
 CTR-1A0129_005   -0.006   -0.006 *
-CTR-1A0129_005   -0.006   -0.006 *
 
-[BACKBONE total, kcal/mol]   -0.273
+[BACKBONE total excluding self, kcal/mol]   -0.273
 
-[BACKBONE breakdown, , kcal/mol]
+[BACKBONE breakdown, kcal/mol]
 LEUBKA0008_000   -0.001
 ALABKA0009_000   -0.001
 ALABKA0010_000   -0.001
