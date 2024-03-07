@@ -27,8 +27,21 @@ from multiprocess import Pool, current_process
 from pdbio import *
 from pbs_interfaces import *
 
+energy_folder = "enegies"
 
 global protein, run_options
+
+
+class ElePW:
+    def __init__(self):
+        self.mark = ""
+        self.multi = 0.0
+        self.single = 0.0
+        self.scaled = 0.0
+        self.corrected = 0.0
+        self.averaged = 0.0
+        return
+
 
 class RunOptions:
     def __init__(self, args):
@@ -283,6 +296,16 @@ def def_boundary(ir, ic):
 
     return boundary
 
+def get_conflist(protein):
+    conf_list = []
+    bkb_list = []
+    for res in protein.residue:
+        for conf in res.conf:
+            if conf.confID[3:5] == "BK":
+                bkb_list.append(conf.confID)
+            else:
+                conf_list.append(conf.confID)
+    return conf_list, bkb_list
 
 def pbe(iric):
     ir = iric[0]
@@ -325,7 +348,6 @@ def pbe(iric):
         os.chdir(cwd)
 
     # write raw opp file
-    energy_folder = "energies"
     fname = "%s/%s.raw" % (energy_folder, confid)
 
     if not os.path.exists(energy_folder):
@@ -382,14 +404,7 @@ def pbe(iric):
         #         print("%s %8.3f" % (key, value))
 
         # get conformer list and backbone segment list
-        conf_list = []
-        bkb_list = []
-        for res in protein.residue:
-            for conf in res.conf:
-                if conf.confID[3:5] == "BK":
-                    bkb_list.append(conf.confID)
-                else:
-                    conf_list.append(conf.confID)
+        conf_list, bkb_list = get_conflist(protein)
 
         # write pw section
         line = "\n[PAIRWISE confID single multi flag, kcal/mol]\n"
@@ -422,16 +437,15 @@ def pbe(iric):
             if pw_conf in pw_single:
                 non0 = True
                 bkb_pw = pw_single[pw_conf]
-                if resid != (pw_conf[:3] + pw_conf[5:11]):    # exclude the backbone piece when calculating the total
-                    bkb_total += bkb_pw
-                else:
-                    print(resid)
+                # if resid != (pw_conf[:3] + pw_conf[5:11]):    # exclude the backbone piece when calculating the total
+                #     bkb_total += bkb_pw
+                bkb_total += bkb_pw  # do inclusive calculation for now
 
             if non0 and abs(bkb_pw) >= 0.001:
                 line = "%s %8.3f\n" % (pw_conf, bkb_pw)
                 bkb_breakdown_lines.append(line)
 
-        line = "\n[BACKBONE total excluding self, kcal/mol] %8.3f\n" % bkb_total
+        line = "\n[BACKBONE total including self, kcal/mol] %8.3f\n" % bkb_total
         raw_lines.append(line)
 
         # Part 4: backbone interaction breakdown
@@ -445,6 +459,116 @@ def pbe(iric):
         open(fname, "w").writelines(raw_lines)
 
     return(ir, ic)
+
+
+def postprocess_ele():
+    conf_list, _ = get_conflist(protein)
+    ele_matrix = {}
+    ele_k_s2m_byresid = {}
+
+    # load raw
+    for conf in conf_list:
+        fname = "%s/%s.raw" % (energy_folder, conf)
+        lines = open(fname).readlines()
+        pw_start = False
+        resid1 = conf[:3] + conf[5:11]
+
+        for line in lines:
+            if line[:9] == "[PAIRWISE":
+                pw_start = True
+                continue
+            elif line[:9] == "[BACKBONE":
+                break
+            if pw_start:
+                fields = line.split()
+                if len(fields) >= 3:
+                    conf2 = fields[0]
+                    single = float(fields[1])
+                    multi = float(fields[2])
+                    if len(fields) > 3:
+                        mark = fields[3]
+                    else:
+                        mark = ""
+                    ele_pw = ElePW()
+                    ele_pw.multi = multi
+                    ele_pw.single = single
+                    ele_pw.mark = mark
+                    ele_matrix[(conf, conf2)] = ele_pw
+
+                    if "*" in mark:
+                        resid2 = conf2[:3] + conf2[5:11]
+                        if abs(multi) > 0.1:
+                            k_single_multi = single / multi
+                        else:
+                            k_single_multi = 1.0
+                        if k_single_multi > 1.0:
+                            k_single_multi = 1.0
+                        ele_k_s2m_byresid[(resid1, resid2)] = k_single_multi
+
+    # scale multi by the k factor, or use single for reference point
+    for conf_pair, ele_pw in ele_matrix.items():
+        conf1, conf2 = conf_pair
+        resid1 = conf1[:3] + conf1[5:11]
+        resid2 = conf2[:3] + conf2[5:11]
+        key = (resid1, resid2)
+        if key in ele_k_s2m_byresid:
+            k = ele_k_s2m_byresid[(resid1, resid2)]
+        else:
+            k = 1.0
+        if "*" in ele_pw.mark:
+            ele_pw.scaled = ele_pw.single  # use the reference directly
+        else:
+            ele_pw.scaled = k * ele_pw.multi
+
+    # for conf_pair, ele_pw in ele_matrix.items():
+    #     print("%s: %8.3f %8.3f %8.3f %s" % (conf_pair, ele_pw.scaled, ele_pw.single, ele_pw.multi, ele_pw.mark))
+
+    # Find clashing dielectric boundary. This is because the single conformation boundary is composed by the selected
+    # conformer + the native conformer of other residues. This selected conformer may have geometry conflict with the
+    # native conformers. If a clash is identified, a question mark will be added to the ele_pw mark.
+    logging.debug("Detecting conformer to conformer clashes ...")
+    for res1 in protein.residue:
+        if len(res1.conf) > 1:  # skip dummy or backbone only residue
+            for conf1 in res1.conf[1:]:
+                conf1_id = conf1.confID
+                for res2 in protein.residue:
+                    if res2 == res1:
+                        continue
+                    # find the reference conformer to res2
+                    conf2_ref = None
+                    if len(res2.conf) > 1:  # skip dummy or backbone only residue
+                        for conf2 in res2.conf[1:]:
+                            conf2_id = conf2.confID
+                            key = (conf1_id, conf2_id)
+                            if key in ele_matrix:
+                                ele_pw = ele_matrix[key]
+                                if "*" in ele_pw.mark:
+                                    conf2_ref = conf2
+                                    break
+
+                    # detect the clash between conf1 and conf2_ref
+                    
+
+                    if len(res2.conf) > 1:  # skip dummy or backbone only residue
+                        for conf2 in res2.conf[1:]:
+                            conf2_id = conf2.confID
+                            if (conf1_id, conf2_id) in ele_matrix:
+                                continue
+
+
+    # ele correction,
+    # The correction starts with ele_pw.scaled, and follow the following rules to make correction
+    # C-C: Charged to charged, reduce by a factor of 1.5
+    # D-D: dipole to dipole, reduce by a factor of 2.0
+    # C-D: charged to dipole,
+
+
+    # average
+
+
+
+    return
+
 
 
 
@@ -524,6 +648,9 @@ if __name__ == "__main__":
         shutil.rmtree(pbe_folder)
 
     # Post-process electrostatic potential
+    logging.info("Processing ele pairwise interaction...")
+    postprocess_ele()
+    logging.info("Processing ele pairwise interaction...Done")
 
     # Compute vdw
 
