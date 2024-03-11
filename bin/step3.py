@@ -461,6 +461,35 @@ def pbe(iric):
     return(ir, ic)
 
 
+def is_conf_clash(conf1, conf2, use_r_bound=True):
+    """Quick detection of the conformer to conformer clash without considering connectivity.
+        If use_r_bound is True, then use the radius of dielectric boundary,
+        otherwise use r_vdw, Van der Waals radius
+    """
+    clash = False
+    for atom1 in conf1.atom:
+        if clash:
+            break
+        if use_r_bound:
+            r1 = atom1.r_bound * 0.5  # artificially allow less strict clash detection to match old mcce
+        else:
+            r1 = atom1.r_vdw
+        for atom2 in conf2.atom:
+            if use_r_bound:
+                r2 = atom2.r_bound * 0.5  # artificially allow less strict clash detection to match old mcce
+            else:
+                r2 = atom2.r_vdw
+            d2 = ddvv(atom1.xyz, atom2.xyz)
+            if d2 < (r1+r2)**2:
+                clash = True
+                #print(atom1.atomID, atom2.atomID, math.sqrt(d2))
+                break
+
+    return clash
+
+
+
+
 def postprocess_ele():
     conf_list, _ = get_conflist(protein)
     ele_matrix = {}
@@ -547,20 +576,38 @@ def postprocess_ele():
                                     break
 
                     # detect the clash between conf1 and conf2_ref
-                    
+                    clash = False
+                    if conf2_ref:
+                        clash = is_conf_clash(conf1, conf2_ref)
 
-                    if len(res2.conf) > 1:  # skip dummy or backbone only residue
+                    # mark res2 conformers with "?"
+                    if clash:
+                        # print(conf1.confID, conf2_ref.confID)
                         for conf2 in res2.conf[1:]:
                             conf2_id = conf2.confID
-                            if (conf1_id, conf2_id) in ele_matrix:
-                                continue
-
+                            key = (conf1_id, conf2_id)
+                            if key in ele_matrix:
+                                ele_pw = ele_matrix[key]
+                                ele_pw.mark = "?" + ele_pw.mark
 
     # ele correction,
     # The correction starts with ele_pw.scaled, and follow the following rules to make correction
     # C-C: Charged to charged, reduce by a factor of 1.5
     # D-D: dipole to dipole, reduce by a factor of 2.0
     # C-D: charged to dipole,
+    for conf_pair, ele_pw in ele_matrix.items():
+        if conf_pair[0][3] == "+" or conf_pair[0][3] == "-":
+            conf1_type = "C"
+        else:
+            conf1_type = "D"
+        if conf_pair[1][3] == "+" or conf_pair[1][3] == "-":
+            conf2_type = "C"
+        else:
+            conf2_type = "D"
+        if conf1_type == "C" and conf2_type == "C":
+
+
+
 
 
     # average

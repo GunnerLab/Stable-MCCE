@@ -51,7 +51,7 @@ class Atom:
         self.r_bound = 0.0
         self.charge = 0.0
         self.r_vdw = 0.0
-        self.e_vdw= 0.0
+        self.e_vdw = 0.0
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
