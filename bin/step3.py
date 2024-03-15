@@ -38,7 +38,6 @@ class ElePW:
         self.multi = 0.0
         self.single = 0.0
         self.scaled = 0.0
-        self.corrected = 0.0
         self.averaged = 0.0
         return
 
@@ -59,7 +58,7 @@ class RunOptions:
         self.debug = args.debug
         self.refresh = args.refresh
         if args.l:  # load options from the specified file 
-            lines=open(args.l).readlines()
+            lines = open(args.l).readlines()
             for line in lines:
                 line = line.split("#")[0].strip()
                 fields = [x.strip() for x in line.split()]  # Extract an option line and strip off the spaces
@@ -68,7 +67,7 @@ class RunOptions:
                     if key == "-c":
                         self.start = int(fields[1])
                         self.end = int(fields[2])
-                    elif key == "-d":                        
+                    elif key == "-d":
                         self.d = float(fields[1])
                     elif key == "-s":
                         self.s = fields[1]
@@ -89,17 +88,18 @@ class RunOptions:
 
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
-                
+
 
 class ExchangeAtom:
     def __init__(self, atom):
         self.x = atom.xyz[0]
         self.y = atom.xyz[1]
         self.z = atom.xyz[2]
-        self.r = atom.r_bound   # radius
-        self.c = 0.0            # default to boundary defining atom, charge should be set as 0
+        self.r = atom.r_bound  # radius
+        self.c = 0.0  # default to boundary defining atom, charge should be set as 0
         self.p = 0.0
         return
+
 
 class Exchange:  # This is the data passed to the PB wrapper, together with runoptions
     # We have to abadon the mop on and off mechanism when modifying the dielectric boundary.
@@ -110,7 +110,6 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
     # * index to match multiple atoms to boundary line number 
     # * method to compose single side chain condition
     # * method to compose multi side chain condition
-    
 
     def __init__(self, protein):
         # initilaize backbone
@@ -121,7 +120,8 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                 for atom in res.conf[0].atom:
                     xyzrcp = ExchangeAtom(atom)
                     self.backbone_xyzrcp.append(xyzrcp)
-                    self.backbone_atom.append([atom])   # the atom is in an array because it is allowed to have multiple atoms to match the same line in xyzrcp line
+                    self.backbone_atom.append([
+                                                  atom])  # the atom is in an array because it is allowed to have multiple atoms to match the same line in xyzrcp line
 
         self.single_bnd_xyzrcp = []
         self.single_bnd_atom = []
@@ -138,16 +138,15 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         self.single_bnd_xyzrcp = self.backbone_xyzrcp.copy()
         self.single_bnd_atom = self.backbone_atom.copy()
 
-
         for ires in range(len(protein.residue)):
-            #print(protein.residue[ires].resID)
+            # print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
                     xyzrcp.c = atom.charge
                     self.single_bnd_xyzrcp.append(xyzrcp)
                     self.single_bnd_atom.append([atom])
-                    
+
             else:  # find the first charged conformer if any, otherwise use the first
                 if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
                     i_useconf = 1  # defaul the first conformer
@@ -170,12 +169,11 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         #         print("ERROR")
         #         break
 
-        logging.debug("%s Single-sidechain boundary record length should be equal: %d, %d" % (protein.residue[ir].conf[ic].confID, len(self.single_bnd_xyzrcp), len(self.single_bnd_atom)))
+        logging.debug("%s Single-sidechain boundary record length should be equal: %d, %d" % (
+        protein.residue[ir].conf[ic].confID, len(self.single_bnd_xyzrcp), len(self.single_bnd_atom)))
 
         return
 
-
-    
     def compose_multi(self, protein, ir, ic):
         """ Compose a multi side chain boundary condition.
             The atoms are added in addition to backbone.
@@ -186,18 +184,18 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
         self.multi_bnd_xyzrcp = self.backbone_xyzrcp.copy()
         self.multi_bnd_atom = self.backbone_atom.copy()
         for ires in range(len(protein.residue)):
-            #print(protein.residue[ires].resID)
+            # print(protein.residue[ires].resID)
             if ires == ir:  # this is the residue we want to put desired side chain conf
                 for atom in protein.residue[ires].conf[ic].atom:
                     xyzrcp = ExchangeAtom(atom)
                     xyzrcp.c = atom.charge
                     self.multi_bnd_xyzrcp.append(xyzrcp)
                     self.multi_bnd_atom.append([atom])
-                    
+
             else:  # other residues will have all conformers with 0 charge
                 if len(protein.residue[ires].conf) > 1:  # skip dummy or backbone only residue
                     residue_bnd_xyzrcp = []  # this is the xyzrcp record for all side chain atoms of this residue
-                    residue_bnd_atom = []   # this points to the atom records of each line in residue_bnd_xyzrpc
+                    residue_bnd_atom = []  # this points to the atom records of each line in residue_bnd_xyzrpc
                     for iconf in range(1, len(protein.residue[ires].conf)):
                         for atom in protein.residue[ires].conf[iconf].atom:
                             xyzrcp = ExchangeAtom(atom)
@@ -205,13 +203,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                             found = False
                             for ib in range(len(residue_bnd_xyzrcp)):
                                 if abs(residue_bnd_xyzrcp[ib].x - xyzrcp.x) < 0.001 and \
-                                   abs(residue_bnd_xyzrcp[ib].y - xyzrcp.y) < 0.001 and \
-                                   abs(residue_bnd_xyzrcp[ib].z - xyzrcp.z) < 0.001 and \
-                                   abs(residue_bnd_xyzrcp[ib].r - xyzrcp.r) < 0.001:  # identical atom
+                                        abs(residue_bnd_xyzrcp[ib].y - xyzrcp.y) < 0.001 and \
+                                        abs(residue_bnd_xyzrcp[ib].z - xyzrcp.z) < 0.001 and \
+                                        abs(residue_bnd_xyzrcp[ib].r - xyzrcp.r) < 0.001:  # identical atom
                                     residue_bnd_atom[ib].append(atom)
                                     found = True
                                     break
-                            
+
                             if not found:
                                 residue_bnd_xyzrcp.append(xyzrcp)
                                 residue_bnd_atom.append([atom])
@@ -220,12 +218,12 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     self.multi_bnd_xyzrcp += residue_bnd_xyzrcp
                     self.multi_bnd_atom += residue_bnd_atom
 
-
         # Basic error checking
-        logging.debug("%s Multi-sidechain boundary record length should be equal: %d, %d" % (protein.residue[ir].conf[ic].confID, len(self.multi_bnd_xyzrcp), len(self.multi_bnd_atom)))
+        logging.debug("%s Multi-sidechain boundary record length should be equal: %d, %d" % (
+        protein.residue[ir].conf[ic].confID, len(self.multi_bnd_xyzrcp), len(self.multi_bnd_atom)))
 
         return
-    
+
     def write_single_bnd(self, fname):
         "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
         # write xyzrpc
@@ -238,22 +236,22 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                                                               xyzrcp.c,
                                                               xyzrcp.p)
             lines.append(line)
-        open(fname+".xyzrcp", "w").writelines(lines)
+        open(fname + ".xyzrcp", "w").writelines(lines)
 
         # write index file
         lines = []
         for matched_atoms in self.single_bnd_atom:
             atoms = " ".join([atom.atomID for atom in matched_atoms])
-            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0], 
-                                           matched_atoms[0].xyz[1], 
-                                           matched_atoms[0].xyz[2],
-                                           matched_atoms[0].r_bound,
-                                           matched_atoms[0].charge)
+            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0],
+                                                       matched_atoms[0].xyz[1],
+                                                       matched_atoms[0].xyz[2],
+                                                       matched_atoms[0].r_bound,
+                                                       matched_atoms[0].charge)
 
             line = "%s %s\n" % (xyzrc, atoms)
             lines.append(line)
-        open(fname+".atoms", "w").writelines(lines)
-    
+        open(fname + ".atoms", "w").writelines(lines)
+
     def write_multi_bnd(self, fname):
         "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
         # write xyzrpc
@@ -266,21 +264,21 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                                                               xyzrcp.c,
                                                               xyzrcp.p)
             lines.append(line)
-        open(fname+".xyzrcp", "w").writelines(lines)
+        open(fname + ".xyzrcp", "w").writelines(lines)
 
         # write index file
         lines = []
         for matched_atoms in self.multi_bnd_atom:
             atoms = " ".join([atom.atomID for atom in matched_atoms])
-            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0], 
-                                           matched_atoms[0].xyz[1], 
-                                           matched_atoms[0].xyz[2],
-                                           matched_atoms[0].r_bound,
-                                           matched_atoms[0].charge)
+            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0],
+                                                       matched_atoms[0].xyz[1],
+                                                       matched_atoms[0].xyz[2],
+                                                       matched_atoms[0].r_bound,
+                                                       matched_atoms[0].charge)
 
             line = "%s %s\n" % (xyzrc, atoms)
             lines.append(line)
-        open(fname+".atoms", "w").writelines(lines)
+        open(fname + ".atoms", "w").writelines(lines)
 
 
 def def_boundary(ir, ic):
@@ -288,13 +286,14 @@ def def_boundary(ir, ic):
 
     boundary.compose_single(protein, ir, ic)
     boundary.compose_multi(protein, ir, ic)
-    
+
     # Do not write out boundary condition except for debug purpose
     if run_options.debug:
         boundary.write_single_bnd("single_bnd")
         boundary.write_multi_bnd("multi_bnd")
 
     return boundary
+
 
 def get_conflist(protein):
     conf_list = []
@@ -306,6 +305,7 @@ def get_conflist(protein):
             else:
                 conf_list.append(conf.confID)
     return conf_list, bkb_list
+
 
 def pbe(iric):
     ir = iric[0]
@@ -322,12 +322,12 @@ def pbe(iric):
         if abs(atom.charge) > 0.001:
             all_0 = False
             break
-    if all_0:   # skip
+    if all_0:  # skip
         logging.info("Skipping PBE solver for non-charge confortmer %s..." % confid)
     else:
         # switch to temporary unique directory
         cwd = os.getcwd()
-        #tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
+        # tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + uuid.uuid4().hex[:6]
         tmp_pbe = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".") + "/" + confid
         if not os.path.exists(tmp_pbe):
             os.makedirs(tmp_pbe)
@@ -379,7 +379,7 @@ def pbe(iric):
                     pw_single[pw_confname] = p
 
         # convert to Kcal and remove interaction within residue including backbone piece
-        pw_single.update((key, value/KCAL2KT) for key, value in pw_single.items())
+        pw_single.update((key, value / KCAL2KT) for key, value in pw_single.items())
 
         # print(pw_single)
         # print(len(pw_single))
@@ -398,7 +398,7 @@ def pbe(iric):
                         pw_multi[pw_confname] = p
 
         # convert to Kcal
-        pw_multi.update((key, value/KCAL2KT) for key, value in pw_multi.items())
+        pw_multi.update((key, value / KCAL2KT) for key, value in pw_multi.items())
         # for key, value in pw_multi.items():
         #     if abs(value) >= 0.001:
         #         print("%s %8.3f" % (key, value))
@@ -412,7 +412,7 @@ def pbe(iric):
 
         for pw_conf in conf_list:
             if resid == pw_conf[:3] + pw_conf[5:11]:
-                continue    # skip conformer within residue
+                continue  # skip conformer within residue
             single = 0.0
             multi = 0.0
             non0 = False
@@ -420,7 +420,7 @@ def pbe(iric):
             if pw_conf in pw_single:
                 non0 = True
                 single = pw_single[pw_conf]
-                reference = "*"   # this is marked as a reference conformer for boundary correction
+                reference = "*"  # this is marked as a reference conformer for boundary correction
             if pw_conf in pw_multi:
                 non0 = True
                 multi = pw_multi[pw_conf]
@@ -458,7 +458,7 @@ def pbe(iric):
 
         open(fname, "w").writelines(raw_lines)
 
-    return(ir, ic)
+    return (ir, ic)
 
 
 def is_conf_clash(conf1, conf2, use_r_bound=True):
@@ -480,14 +480,12 @@ def is_conf_clash(conf1, conf2, use_r_bound=True):
             else:
                 r2 = atom2.r_vdw
             d2 = ddvv(atom1.xyz, atom2.xyz)
-            if d2 < (r1+r2)**2:
+            if d2 < (r1 + r2) ** 2:
                 clash = True
-                #print(atom1.atomID, atom2.atomID, math.sqrt(d2))
+                # print(atom1.atomID, atom2.atomID, math.sqrt(d2))
                 break
 
     return clash
-
-
 
 
 def postprocess_ele():
@@ -590,9 +588,10 @@ def postprocess_ele():
                                 ele_pw = ele_matrix[key]
                                 ele_pw.mark = "?" + ele_pw.mark
 
-    # ele correction,
+    # ele correction and average
     # The correction starts with ele_pw.scaled, and follow the following rules to make correction
-    # C-C: Charged to charged, reduce by a factor of 1.5
+    # C-C: Charged to charged abnormal case: reduce by a factor of 1.5 of the smaller pw at multi condition
+    # C-C: Charged to charged normal case: average scaled pws
     # D-D: dipole to dipole, reduce by a factor of 2.0
     # C-D: charged to dipole,
     for conf_pair, ele_pw in ele_matrix.items():
@@ -604,36 +603,81 @@ def postprocess_ele():
             conf2_type = "C"
         else:
             conf2_type = "D"
+        reversed_key = (conf_pair[1], conf_pair[0])
+        if reversed_key in ele_matrix:
+            reversed_ele_pw = ele_matrix[reversed_key]
+        else:
+            reversed_ele_pw = ElePW()
         if conf1_type == "C" and conf2_type == "C":
+            # abnormal case, opposite sign when scaled, or both directions have ? mark, scaled down by factor 1.5 from
+            # the smaller of the two multi
+            if ele_pw.scaled * ele_pw.multi < 0 or \
+                    reversed_ele_pw.scaled * reversed_ele_pw.multi < 0 or \
+                    ("?" in ele_pw.mark and "?" in reversed_ele_pw.mark):
+                if abs(ele_pw.multi) < abs(reversed_ele_pw.multi):
+                    ele_pw.averaged = ele_pw.multi / 1.5
+                    reversed_ele_pw.averaged = ele_pw.multi / 1.5
+                else:
+                    ele_pw.averaged = reversed_ele_pw.multi / 1.5
+                    reversed_ele_pw.averaged = reversed_ele_pw.multi / 1.5
+                # debug
+                # print("%s -> %s    |    %s -> %s" % (conf_pair[0], conf_pair[1], reversed_key[0], reversed_key[1]))
+                # print("Multi:        %8.3f              |          %8.3f" % (ele_matrix[conf_pair].multi, ele_matrix[reversed_key].multi))
+                # print("Single:       %8.3f              |          %8.3f" % (ele_matrix[conf_pair].single, ele_matrix[reversed_key].single))
+                # print("Scaled:       %8.3f              |          %8.3f" % (ele_matrix[conf_pair].scaled, ele_matrix[reversed_key].scaled))
+                # print("Averaged:     %8.3f              |          %8.3f" % (ele_matrix[conf_pair].averaged, ele_matrix[reversed_key].averaged))
+                # print(vars(ele_pw))
+                # print(vars(reversed_ele_pw))
+            elif "?" in ele_pw.mark and "?" not in reversed_ele_pw.mark:
+                ele_pw.averaged = reversed_ele_pw.scaled
+                reversed_ele_pw.averaged = reversed_ele_pw.scaled
+            elif "?" not in ele_pw.mark and "?" in reversed_ele_pw.mark:
+                ele_pw.averaged = ele_pw.scaled
+                reversed_ele_pw.averaged = ele_pw.scaled
+            else:
+                if abs(ele_pw.scaled) < abs(reversed_ele_pw.scaled):
+                    ele_pw.averaged = reversed_ele_pw.averaged = ele_pw.scaled
+                else:
+                    ele_pw.averaged = reversed_ele_pw.averaged = reversed_ele_pw.scaled
+        elif conf1_type == "D" and conf2_type == "D":
+            ele_pw.averaged = reversed_ele_pw.averaged = (ele_pw.scaled + reversed_ele_pw.scaled)/2.0  # Originally averaging multi
+        else:  # must be "D" to "C"
+            if ele_pw.scaled * ele_pw.multi < 0 or \
+                    reversed_ele_pw.scaled * reversed_ele_pw.multi < 0 or \
+                    ("?" in ele_pw.mark and "?" in reversed_ele_pw.mark):
+                ele_pw.averaged = reversed_ele_pw.averaged = (ele_pw.multi+reversed_ele_pw.multi)/2.0/1.5
+            elif "?" in ele_pw.mark and "?" not in reversed_ele_pw.mark:
+                ele_pw.averaged = reversed_ele_pw.averaged = reversed_ele_pw.scaled
+            elif "?" not in ele_pw.mark and "?" in reversed_ele_pw.mark:
+                ele_pw.averaged = reversed_ele_pw.averaged = ele_pw.scaled
+            else:
+                ele_pw.averaged = reversed_ele_pw.averaged = (ele_pw.scaled + reversed_ele_pw.scaled) / 2.0
 
-
-
-
-
-    # average
-
-
-
-    return
-
-
+    return ele_matrix
 
 
 if __name__ == "__main__":
     helpmsg = "Run mcce step 3, energy lookup table calculations."
     parser = argparse.ArgumentParser(description=helpmsg)
     parser.add_argument("-c", metavar=('start', 'end'), default=[0, 99999], nargs=2, help="starting and ending "
-                                                                                         "conformer, default to 0 and 9999", type=int)
+                                                                                          "conformer, default to 0 and 9999",
+                        type=int)
     parser.add_argument("-d", metavar="epsilon", default="4.0", help="protein dielectric constant, default to 4.0")
-    parser.add_argument("-s", metavar="pbs_name", default="delphi", help="PSE solver. Choices are delphi. default to \"delphi\"")
+    parser.add_argument("-s", metavar="pbs_name", default="delphi",
+                        help="PSE solver. Choices are delphi. default to \"delphi\"")
     parser.add_argument("-t", metavar="tmp folder", default="/tmp", help="PB solver temporary folder, default to /tmp")
-    parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1", type=int)
-    parser.add_argument("-ftpl", metavar="ftpl folder", default="", help="ftpl folder, default to \"param/\" of mcce exeuctable location")
-    parser.add_argument("-salt", metavar="salt concentration", default=0.15, help="Salt concentration in moles/L. default to 0.15", type=float)
+    parser.add_argument("-p", metavar="processes", default=1, help="run step 3 with number of processes, default to 1",
+                        type=int)
+    parser.add_argument("-ftpl", metavar="ftpl folder", default="",
+                        help="ftpl folder, default to \"param/\" of mcce exeuctable location")
+    parser.add_argument("-salt", metavar="salt concentration", default=0.15,
+                        help="Salt concentration in moles/L. default to 0.15", type=float)
     parser.add_argument("--vdw", default=False, help="run vdw calculation only", action="store_true")
     parser.add_argument("--fly", default=False, help="don-the-fly rxn0 calculation", action="store_true")
-    parser.add_argument("--refresh", default=False, help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
-    parser.add_argument("--debug", default=False, help="print debug information and keep pb solver tmp", action="store_true")
+    parser.add_argument("--refresh", default=False,
+                        help="recreate *.opp and head3.lst from step2_out.pdb and *.oppl files", action="store_true")
+    parser.add_argument("--debug", default=False, help="print debug information and keep pb solver tmp",
+                        action="store_true")
     parser.add_argument("-l", metavar="file", default="", help="load above options from a file")
     args = parser.parse_args()
 
@@ -646,27 +690,24 @@ if __name__ == "__main__":
     logging.basicConfig(format=format, level=log_level, datefmt="%D %H:%M:%S")
     logging.info("Step 3 starts")
 
-
     # Process run time options
     run_options = RunOptions(args)
     # print(vars(run_options))
 
     # environment and ftpl
     if run_options.ftpl:
-        env.runprm["FTPLDIR"] = run_options.ftpl     
+        env.runprm["FTPLDIR"] = run_options.ftpl
     else:
         path = str(os.path.dirname(os.path.abspath(__file__)))
         base_path = os.path.dirname(path)
         env.runprm["FTPLDIR"] = base_path + "/param"
     env.load_ftpl()
 
-
     # read step2_out.pdb and convert to mcce structure
     logging.info("Read from step2_out.pdb")
     protein = Protein()
     protein.loadpdb(run_options.inputpdb)
     protein.update_confcrg()
-
 
     # Prepare input for PB solver: common_boundary, sites to receive potential, and PB conditions
     # make conformer list with their corresponding ir and ic. This list or (ir, ic) will be passed as an array 
@@ -677,10 +718,9 @@ if __name__ == "__main__":
         if len(protein.residue[ir].conf) > 1:  # skip dummy or backbone only residue
             for ic in range(1, len(protein.residue[ir].conf)):
                 if run_options.end >= counter >= run_options.start:
-                    work_load.append((ir,ic))
+                    work_load.append((ir, ic))
                 counter += 1
     logging.debug("work_load as (ir ic) list [%s]" % ','.join(map(str, work_load)))
-
 
     # Set up parallel envrionment and run PB solver
     max_pool = run_options.p
@@ -696,8 +736,26 @@ if __name__ == "__main__":
 
     # Post-process electrostatic potential
     logging.info("Processing ele pairwise interaction...")
-    postprocess_ele()
+    ele_matrix = postprocess_ele()
     logging.info("Processing ele pairwise interaction...Done")
+
+    # Debug
+    # for conf_pair, ele_pw in ele_matrix.items():
+    #     reversed_key = (conf_pair[1], conf_pair[0])
+    #     ele_pw = ele_matrix[conf_pair]
+    #     if reversed_key in ele_matrix:
+    #         reversed_ele_pw = ele_matrix[reversed_key]
+    #     else:
+    #         reversed_ele_pw = ElePW()
+    #
+    #     if abs(ele_pw.multi) < 0.1:
+    #         continue
+    #     print("%s -> %s    |    %s -> %s" % (conf_pair[0], conf_pair[1], reversed_key[0], reversed_key[1]))
+    #     print("Multi:        %8.3f              |          %8.3f" % (ele_pw.multi, reversed_ele_pw.multi))
+    #     print("Single:       %8.3f              |          %8.3f" % (ele_pw.single, reversed_ele_pw.single))
+    #     print("Scaled:       %8.3f              |          %8.3f" % (ele_pw.scaled, reversed_ele_pw.scaled))
+    #     print("Averaged:     %8.3f              |          %8.3f" % (ele_pw.averaged, reversed_ele_pw.averaged))
+    #     print("Mark:         %8s              |          %8s" % (ele_pw.mark, reversed_ele_pw.mark))
 
     # Compute vdw
 
