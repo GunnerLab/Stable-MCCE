@@ -28,6 +28,9 @@ from pdbio import *
 from pbs_interfaces import *
 
 energy_folder = "enegies"
+PW_CUTOFF = 0.001   # cut off value for pairwise interaction to report
+
+
 
 global protein, run_options
 
@@ -424,7 +427,7 @@ def pbe(iric):
             if pw_conf in pw_multi:
                 non0 = True
                 multi = pw_multi[pw_conf]
-            if non0 and (abs(single) >= 0.001 or abs(multi) >= 0.001):
+            if non0 and (abs(single) >= PW_CUTOFF or abs(multi) >= PW_CUTOFF):
                 line = "%s %8.3f %8.3f %s\n" % (pw_conf, single, multi, reference)
                 raw_lines.append(line)
 
@@ -441,7 +444,7 @@ def pbe(iric):
                 #     bkb_total += bkb_pw
                 bkb_total += bkb_pw  # do inclusive calculation for now
 
-            if non0 and abs(bkb_pw) >= 0.001:
+            if non0 and abs(bkb_pw) >= PW_CUTOFF:
                 line = "%s %8.3f\n" % (pw_conf, bkb_pw)
                 bkb_breakdown_lines.append(line)
 
@@ -656,6 +659,41 @@ def postprocess_ele():
     return ele_matrix
 
 
+def find_calculated_confs():
+    epath = "energies"
+    confs = [x[:-4] for x in os.listdir(epath) if x.endswith(".raw")]
+    return confs
+
+def compose_opp(protein, ele_matrix):
+    calculated_confs = find_calculated_confs()
+    epath = "energies"
+    for res1 in protein.residue:
+        for conf1 in res1.conf[1:]:
+            fname = "%s/%s.opp" % (epath, conf1.confID)
+            lines = []
+            for res2 in protein.residue:
+                if res2 != res1:
+                    for conf2 in res2.conf[1:]:
+                        conf_pair = (conf1.confID, conf2.confID)
+                        i1 = conf1.i
+                        i2 = conf2.i
+                        found = False
+                        if conf_pair in ele_matrix:
+                            average = ele_matrix[conf_pair].averaged
+                            scaled = ele_matrix[conf_pair].scaled
+                            multi = ele_matrix[conf_pair].multi
+                            mark = ele_matrix[conf_pair].mark
+                            found = True
+                        else:
+                            average = scaled = multi = 0.0
+                            mark = ""
+                        if found or abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF:
+                            lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.i, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
+            open(fname, "w").writelines(lines)
+
+    return
+
+
 if __name__ == "__main__":
     helpmsg = "Run mcce step 3, energy lookup table calculations."
     parser = argparse.ArgumentParser(description=helpmsg)
@@ -757,6 +795,15 @@ if __name__ == "__main__":
     #     print("Averaged:     %8.3f              |          %8.3f" % (ele_pw.averaged, reversed_ele_pw.averaged))
     #     print("Mark:         %8s              |          %8s" % (ele_pw.mark, reversed_ele_pw.mark))
 
-    # Compute vdw
+    # Compute vdw, not doing parallelization at this moment
+    logging.info("Making atom connectivity ...")
+    protein.make_connect12()
+    protein.make_connect13()
+    protein.make_connect14()
+
+    logging.info("Calculating vdw ...")
+    protein.calc_vdw()
+    # For efficiency reason, the vdw pairwise table is a matrix protein.vdw_pw[conf1.i, conf2.i]
 
     # Assemble output files
+    compose_opp(protein, ele_matrix)

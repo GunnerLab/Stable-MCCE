@@ -816,13 +816,13 @@ if __name__ == "__main__":
 
     env.print_param()
 
-    #pdbfile = "step2_out.pdb"
-    #protein = Protein()
-    #protein.loadpdb(pdbfile)
+    # pdbfile = "step2_out.pdb"
+    # protein = Protein()
+    # protein.loadpdb(pdbfile)
     #protein.print_confindex()
-    # protein.make_connect12()
-    # protein.make_connect13()
-    # protein.make_connect14()
+    #protein.make_connect12()
+    #protein.make_connect13()
+    #protein.make_connect14()
 
     # protein.print_connect12()
     # protein.print_connect13()
@@ -830,7 +830,7 @@ if __name__ == "__main__":
     # protein.exportpdb("a.pdb")
     # protein.print_atom_structure()
 
-    # protein.calc_vdw()
+    #protein.calc_vdw()
     # protein.connect_reciprocity_check()
     # protein.vdw_reciprocity_check()
 
