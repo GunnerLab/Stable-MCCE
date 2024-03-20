@@ -588,7 +588,9 @@ class ENV:
             value_string = fields[1].strip()
 
             # Connectivity records
-            if key1 == "CONNECT":
+            if key1 == "CONFLIST":
+                self.param[(key1, key2)] = [x.strip() for x in value_string.strip().split(",")]
+            elif key1 == "CONNECT":
                 self.param[(key1, key2, key3)] = CONNECT_param(value_string)
             # VDW parameters, for now use 00always_needed.tpl for vdw parameters
             elif key1 == "RADIUS":

@@ -659,37 +659,55 @@ def postprocess_ele():
     return ele_matrix
 
 
-def find_calculated_confs():
-    epath = "energies"
-    confs = [x[:-4] for x in os.listdir(epath) if x.endswith(".raw")]
-    return confs
-
 def compose_opp(protein, ele_matrix):
-    calculated_confs = find_calculated_confs()
     epath = "energies"
     for res1 in protein.residue:
         for conf1 in res1.conf[1:]:
-            fname = "%s/%s.opp" % (epath, conf1.confID)
-            lines = []
-            for res2 in protein.residue:
-                if res2 != res1:
-                    for conf2 in res2.conf[1:]:
-                        conf_pair = (conf1.confID, conf2.confID)
-                        i1 = conf1.i
-                        i2 = conf2.i
-                        found = False
-                        if conf_pair in ele_matrix:
-                            average = ele_matrix[conf_pair].averaged
-                            scaled = ele_matrix[conf_pair].scaled
-                            multi = ele_matrix[conf_pair].multi
-                            mark = ele_matrix[conf_pair].mark
-                            found = True
-                        else:
-                            average = scaled = multi = 0.0
-                            mark = ""
-                        if found or abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF:
-                            lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.i, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
-            open(fname, "w").writelines(lines)
+            fname = "%s/%s.raw" % (epath, conf1.confID)
+            if os.path.isfile(fname):  # only create opp files when a raw file exists
+                fname = "%s/%s.opp" % (epath, conf1.confID)
+                lines = []
+                for res2 in protein.residue:
+                    if res2 != res1:
+                        for conf2 in res2.conf[1:]:
+                            conf_pair = (conf1.confID, conf2.confID)
+                            i1 = conf1.i
+                            i2 = conf2.i
+                            found = False
+                            if conf_pair in ele_matrix:
+                                average = ele_matrix[conf_pair].averaged
+                                scaled = ele_matrix[conf_pair].scaled
+                                multi = ele_matrix[conf_pair].multi
+                                mark = ele_matrix[conf_pair].mark
+                                found = True
+                            else:
+                                average = scaled = multi = 0.0
+                                mark = ""
+                            if found and (abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF or abs(average) > PW_CUTOFF):
+                                lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.i, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
+                open(fname, "w").writelines(lines)
+
+    return
+
+
+def compose_head3(protein, ele_matrix):
+    epath = "energies"
+    lines = []
+    for res in protein.res:
+        for conf in res.conf[1:]:
+            iconf = conf.i
+            confID = conf.confID
+            flag = "f"
+            occ = 0.0
+            crg = conf.crg
+
+
+            fname = "%s/%s.raw" % (epath, conf.confID)
+            if os.path.isfile(fname):  # only create opp files when a raw file exists
+                mark = "t"
+            else:
+                mark = "f"
+
 
     return
 
@@ -806,4 +824,8 @@ if __name__ == "__main__":
     # For efficiency reason, the vdw pairwise table is a matrix protein.vdw_pw[conf1.i, conf2.i]
 
     # Assemble output files
+    logging.info("Composing opp files ...")
     compose_opp(protein, ele_matrix)
+
+    logging.info("Composing head3.lst ...")
+    compose_head3(protein, ele_matrix)
