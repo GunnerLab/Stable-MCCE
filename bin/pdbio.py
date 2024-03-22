@@ -538,6 +538,16 @@ class RADIUS_param:
         self.r_vdw = float(fields[1])
         self.e_vdw = float(fields[2])
 
+class CONFORMER_param:
+    def __init__(self, value_str):
+        self.param = {}
+        fields = value_str.split(",")
+        for f in fields:
+            sf = f.split("=")
+            key = sf[0].strip().lower()
+            value = float(sf[1])
+            self.param[key] = value
+
 
 class ENV:
     def __init__(self):
@@ -595,6 +605,8 @@ class ENV:
             # VDW parameters, for now use 00always_needed.tpl for vdw parameters
             elif key1 == "RADIUS":
                 self.param[(key1, key2, key3)] = RADIUS_param(value_string)
+            elif key1 == "CONFORMER":
+                self.param[(key1, key2)] = CONFORMER_param(value_string)
 
     def load_ftpl(self):
         if "FTPLDIR" in self.runprm:
@@ -806,6 +818,18 @@ def vdw_atom(atom1, atom2):
     #     p_lj = 0.0
 
     return p_lj
+
+def torsion(conf):  # estimate torsion energy by 1-4 vdw
+    vdw = 0.0
+    calculated_pairs = []
+    for atom1 in conf.atom:
+        for atom2 in atom1.connect14:
+            if (atom2, atom1) not in calculated_pairs:
+                vdw += vdw_atom(atom1, atom2)
+                calculated_pairs.append((atom2, atom1))   # ensure only calculate a pair once
+
+    return vdw
+
 
 
 env = ENV()

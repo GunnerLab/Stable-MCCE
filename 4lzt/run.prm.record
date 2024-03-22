@@ -1,4 +1,4 @@
-#STEP1: 2023/1109, 12:17:17
+#STEP1: 2024/0322, 14:00:59
 step0_out.pdb           (INPDB)
 t                       (DO_PREMCCE)
 /home/jmao/projects/Stable-MCCE    (MCCE_HOME)

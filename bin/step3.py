@@ -693,20 +693,37 @@ def compose_opp(protein, ele_matrix):
 def compose_head3(protein, ele_matrix):
     epath = "energies"
     lines = []
-    for res in protein.res:
+    for res in protein.residue:
+        tors_confs = []
+        for conf in res.conf[1:]:
+            tors_confs.append(torsion(conf))
+        if tors_confs:
+            min_tors = min(tors_confs)
+            tors_confs = [x - min_tors for x in tors_confs]
+        count = 0
         for conf in res.conf[1:]:
             iconf = conf.i
             confID = conf.confID
             flag = "f"
             occ = 0.0
             crg = conf.crg
-
+            conftype = confID[:5]
+            em0 = env.param["CONFORMER", conftype].param["em0"]
+            pka0 = env.param["CONFORMER", conftype].param["pka0"]
+            ne = env.param["CONFORMER", conftype].param["ne"]
+            nh = env.param["CONFORMER", conftype].param["nh"]
+            vdw0 = conf.vdw0
+            vdw1 = conf.vdw1
+            tors = tors_confs[count]
+            count += 1
 
             fname = "%s/%s.raw" % (epath, conf.confID)
             if os.path.isfile(fname):  # only create opp files when a raw file exists
                 mark = "t"
             else:
                 mark = "f"
+
+            print("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %s" % (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, mark))
 
 
     return
@@ -715,8 +732,8 @@ def compose_head3(protein, ele_matrix):
 if __name__ == "__main__":
     helpmsg = "Run mcce step 3, energy lookup table calculations."
     parser = argparse.ArgumentParser(description=helpmsg)
-    parser.add_argument("-c", metavar=('start', 'end'), default=[0, 99999], nargs=2, help="starting and ending "
-                                                                                          "conformer, default to 0 and 9999",
+    parser.add_argument("-c", metavar=('start', 'end'), default=[1, 99999], nargs=2, help="starting and ending "
+                                                                                          "conformer, default to 1 and 9999",
                         type=int)
     parser.add_argument("-d", metavar="epsilon", default="4.0", help="protein dielectric constant, default to 4.0")
     parser.add_argument("-s", metavar="pbs_name", default="delphi",
@@ -769,7 +786,7 @@ if __name__ == "__main__":
     # make conformer list with their corresponding ir and ic. This list or (ir, ic) will be passed as an array 
     # that multiprocess module will take in as work load.
     work_load = []
-    counter = 0
+    counter = 1
     for ir in range(len(protein.residue)):
         if len(protein.residue[ir].conf) > 1:  # skip dummy or backbone only residue
             for ic in range(1, len(protein.residue[ir].conf)):
