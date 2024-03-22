@@ -282,6 +282,6 @@ if __name__ == "__main__":
         open("step0_out.pdb", "w").writelines(new_pdblines)
 
         mcce = args.e
-        process = subprocess.Popen(["mcce"], stdout=subprocess.PIPE)
+        process = subprocess.Popen([mcce], stdout=subprocess.PIPE)
         for line in process.stdout:
             print("%s" % line.decode(), end="")
