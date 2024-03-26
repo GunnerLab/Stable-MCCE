@@ -690,9 +690,21 @@ def compose_opp(protein, ele_matrix):
     return
 
 
-def compose_head3(protein, ele_matrix):
+def compose_head3(protein):
     epath = "energies"
-    lines = []
+
+    # read backbone ele interaction epol
+    epol_all = {}
+    for res in protein.residue:
+        for conf in res.conf[1:]:
+            fname = "%s/%s.raw" % (epath, conf.confID)
+            if os.path.isfile(fname):
+                lines = open(fname).readlines()
+                for line in lines:
+                    if line.startswith("[BACKBONE total"):
+                        fields = line.split("]")
+                        epol_all[conf.confID] = float(fields[-1])
+
     for res in protein.residue:
         tors_confs = []
         for conf in res.conf[1:]:
@@ -714,8 +726,15 @@ def compose_head3(protein, ele_matrix):
             nh = env.param["CONFORMER", conftype].param["nh"]
             vdw0 = conf.vdw0
             vdw1 = conf.vdw1
+
             tors = tors_confs[count]
             count += 1
+
+            if confID in epol_all:
+                epol = epol_all[conf.confID]
+            else:
+                epol = 0.0
+
 
             fname = "%s/%s.raw" % (epath, conf.confID)
             if os.path.isfile(fname):  # only create opp files when a raw file exists
@@ -723,7 +742,9 @@ def compose_head3(protein, ele_matrix):
             else:
                 mark = "f"
 
-            print("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %s" % (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, mark))
+
+
+            print("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %s" % (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, mark))
 
 
     return
@@ -845,4 +866,4 @@ if __name__ == "__main__":
     compose_opp(protein, ele_matrix)
 
     logging.info("Composing head3.lst ...")
-    compose_head3(protein, ele_matrix)
+    compose_head3(protein)

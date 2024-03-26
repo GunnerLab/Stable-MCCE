@@ -812,6 +812,13 @@ def vdw_atom(atom1, atom2):
                 sig_d12 = sig_d6 * sig_d6
 
                 p_lj = scale * (eps * sig_d12 - 2. * eps * sig_d6)
+                # #print("===%s===%s===" % (atom1.atomID, atom2.atomID))
+                # if (atom1.atomID == " HB2ASP0018A001" and atom2.atomID == " OD2ASP0018A001") or \
+                #    (atom1.atomID == " HB2ASP0018A003" and atom2.atomID == " OD2ASP0018A003"):
+                #     print("===%s -> %s: %8.3f===" % (atom1.atomID, atom2.atomID, p_lj))
+                #     print("%s: r_vdw=%8.3f, e_vdw=%8.3f" % (atom1.atomID, atom1.r_vdw, atom1.e_vdw))
+                #     print("%s: r_vdw=%8.3f, e_vdw=%8.3f" % (atom2.atomID, atom2.r_vdw, atom2.e_vdw))
+
     #     else:
     #         p_lj = 0.0
     # else:
@@ -824,7 +831,7 @@ def torsion(conf):  # estimate torsion energy by 1-4 vdw
     calculated_pairs = []
     for atom1 in conf.atom:
         for atom2 in atom1.connect14:
-            if (atom2, atom1) not in calculated_pairs:
+            if (atom2.confNum == atom1.confNum or atom2.confNum == 0) and ((atom2, atom1) not in calculated_pairs):
                 vdw += vdw_atom(atom1, atom2)
                 calculated_pairs.append((atom2, atom1))   # ensure only calculate a pair once
 
