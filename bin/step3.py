@@ -692,9 +692,10 @@ def compose_opp(protein, ele_matrix):
 
 def compose_head3(protein):
     epath = "energies"
-
+    head3lines = ["iConf CONFORMER     FL  occ    crg   Em0  pKa0 ne nH    vdw0    vdw1    tors    epol   dsolv   extra    history\n"]
     # read backbone ele interaction epol
     epol_all = {}
+    rxn_all = {}
     for res in protein.residue:
         for conf in res.conf[1:]:
             fname = "%s/%s.raw" % (epath, conf.confID)
@@ -704,6 +705,9 @@ def compose_head3(protein):
                     if line.startswith("[BACKBONE total"):
                         fields = line.split("]")
                         epol_all[conf.confID] = float(fields[-1])
+                    elif line.startswith("[RXN"):
+                        fields = line.split("]")
+                        rxn_all[conf.confID] = float(fields[-1])
 
     for res in protein.residue:
         tors_confs = []
@@ -735,6 +739,25 @@ def compose_head3(protein):
             else:
                 epol = 0.0
 
+            if confID in rxn_all:
+                rxn = rxn_all[conf.confID]
+            else:
+                rxn = 0.0
+            epsilon = run_options.d
+            key3 = "rxn%02d" % int(epsilon)
+            rxn0 = env.param["CONFORMER", conftype].param[key3]
+            dsolv = rxn - rxn0
+            history = conf.history
+
+            key = ("EXTRA", conftype)
+            if key in env.param:
+                extra = env.param["EXTRA", conftype]
+            else:
+                extra = 0.0
+
+            # add dummy conformers
+            print(env.param[("CONFLIST", conf.confID[:3])])
+
 
             fname = "%s/%s.raw" % (epath, conf.confID)
             if os.path.isfile(fname):  # only create opp files when a raw file exists
@@ -743,10 +766,10 @@ def compose_head3(protein):
                 mark = "f"
 
 
+            head3lines.append("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %s %10s\n" % \
+              (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, dsolv, extra, history, mark))
 
-            print("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %s" % (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, mark))
-
-
+    open("head3.lst", "w").writelines(head3lines)
     return
 
 
@@ -789,6 +812,7 @@ if __name__ == "__main__":
     # print(vars(run_options))
 
     # environment and ftpl
+    env.load_runprm()
     if run_options.ftpl:
         env.runprm["FTPLDIR"] = run_options.ftpl
     else:

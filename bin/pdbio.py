@@ -55,6 +55,7 @@ class Atom:
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
+        self.history = ""
         return
 
     def loadline(self, line):
@@ -70,6 +71,8 @@ class Atom:
         self.r_bound = float(line[54:62])
         self.charge = float(line[62:74])
         self.confType = "%3s%2s" % (self.resName, line[80:82])
+        self.history = line[80:].strip()
+
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%5s%c%04d%c%03d" % (self.confType, self.chainID, self.resSeq, self.iCode, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
@@ -136,7 +139,7 @@ class Conformer:
         self.vdw0 = 0.0
         self.vdw1 = 0.0
         self.crg = 0.0
-
+        self.history = ""
         return
     
     def update_crg(self):
@@ -179,6 +182,7 @@ class Protein:
                     conf = Conformer()
                     conf.confID = atom.confID
                     conf.resID = atom.resID
+                    conf.history = atom.history
                     conf.atom.append(atom)
                     self.residue[i_res].conf.append(conf)
                     found_res = True
@@ -187,6 +191,7 @@ class Protein:
                 conf = Conformer()
                 conf.confID = atom.confID
                 conf.resID = atom.resID
+                conf.history = atom.history
                 conf.atom.append(atom)
                 res = Residue()
                 res.resID = conf.resID
@@ -693,15 +698,34 @@ class ENV:
                         self.param[(key1, key2, key3)] = CONNECT_param(value_string)
                         #print("(%s, %s, %s): %s" % (key1, key2, key3, value_string))
 
+        # read from extra.tpl
+        # self.print_runprm()
+        if "EXTRA" in self.runprm:
+            extratpl = self.runprm["EXTRA"]
+        else:
+            extratpl = self.runprm["MCCE_HOME"]+"/extra.tpl"
+        lines = open(extratpl).readlines()
+        for line in lines:
+            if len(line) > 10:
+                key1 = line[:9].strip()
+                key2 = line[9:14].strip()
+                value = float(line[20:].strip())
+                self.param[(key1, key2)] = value
+
+        return
 
     def print_param(self):
         for key, value in self.param.items():
-            key1, key2, key3 = key
+            if len(key) == 3:
+                key1, key2, key3 = key
+            elif len(key) == 2:
+                key1, key2 = key
             if key1 == "CONNECT":
                 print("%s:%s, %s" % (key, value.orbital, value.connected))
             elif key1 == "RADIUS":
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
-
+            else:
+                print(key, value)
 
 def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False, display=False):
     vdw = 0.0
