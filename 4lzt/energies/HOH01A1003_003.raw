@@ -159,7 +159,7 @@ HOH01A1073_012    0.000    0.005
 HOH01A1073_014    0.000   -0.007 
 HOH01A1073_015    0.000   -0.006 
 
-[BACKBONE total excluding self, kcal/mol]   -2.568
+[BACKBONE total including self, kcal/mol]   -2.568
 
 [BACKBONE breakdown, kcal/mol]
 THRBKA0040_000   -0.001

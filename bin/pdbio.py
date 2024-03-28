@@ -140,6 +140,7 @@ class Conformer:
         self.vdw1 = 0.0
         self.crg = 0.0
         self.history = ""
+        self.mark = ""
         return
     
     def update_crg(self):

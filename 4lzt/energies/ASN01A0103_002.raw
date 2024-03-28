@@ -103,7 +103,7 @@ HOH01A1008_005    0.000   -0.002
 HOH01A1015_001   -0.001   -0.001 *
 HOH01A1015_004    0.000   -0.001 
 
-[BACKBONE total excluding self, kcal/mol]    0.554
+[BACKBONE total including self, kcal/mol]    0.637
 
 [BACKBONE breakdown, kcal/mol]
 LEUBKA0017_000    0.001

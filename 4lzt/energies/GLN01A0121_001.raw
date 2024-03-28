@@ -45,7 +45,7 @@ CTR02A0129_003    0.000    0.004
 CTR02A0129_004    0.000   -0.002 
 CTR-1A0129_005   -0.024   -0.024 *
 
-[BACKBONE total excluding self, kcal/mol]    0.119
+[BACKBONE total including self, kcal/mol]    0.069
 
 [BACKBONE breakdown, kcal/mol]
 GLYBKA0004_000   -0.002

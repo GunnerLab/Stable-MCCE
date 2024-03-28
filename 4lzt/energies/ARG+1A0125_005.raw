@@ -90,7 +90,7 @@ HOH01A1015_003    0.000   -0.001
 HOH01A1015_011    0.000   -0.001 
 HOH01A1015_013    0.000   -0.001 
 
-[BACKBONE total excluding self, kcal/mol]    0.166
+[BACKBONE total including self, kcal/mol]    0.385
 
 [BACKBONE breakdown, kcal/mol]
 VALBKA0002_000    0.001

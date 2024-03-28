@@ -172,7 +172,7 @@ HOH01A1073_013    0.000    0.031
 HOH01A1073_014    0.000    0.041 
 HOH01A1073_015    0.000    0.026 
 
-[BACKBONE total excluding self, kcal/mol]    0.126
+[BACKBONE total including self, kcal/mol]   -0.466
 
 [BACKBONE breakdown, kcal/mol]
 SERBKA0036_000   -0.003

@@ -38,7 +38,7 @@ ARG+1A0112_005   -0.006   -0.006 *
 LYS+1A0116_002   -0.007   -0.007 *
 CTR-1A0129_005   -0.002   -0.002 *
 
-[BACKBONE total excluding self, kcal/mol]    0.070
+[BACKBONE total including self, kcal/mol]    0.108
 
 [BACKBONE breakdown, kcal/mol]
 METBKA0012_000   -0.001

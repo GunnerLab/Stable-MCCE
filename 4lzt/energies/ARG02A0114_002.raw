@@ -46,7 +46,7 @@ ASP02A0119_003    0.000    0.001
 ASP-1A0119_005   -0.005   -0.005 *
 ARG+1A0125_005    0.003    0.003 *
 
-[BACKBONE total excluding self, kcal/mol]   -0.013
+[BACKBONE total including self, kcal/mol]   -0.008
 
 [BACKBONE breakdown, kcal/mol]
 GLYBKA0026_000    0.002

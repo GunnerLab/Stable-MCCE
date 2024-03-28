@@ -30,7 +30,7 @@ GLN01A0121_002    0.000   -0.039
 ARG+1A0128_004    0.001    0.001 *
 CTR-1A0129_005    0.003    0.003 *
 
-[BACKBONE total excluding self, kcal/mol]   -0.137
+[BACKBONE total including self, kcal/mol]   -0.193
 
 [BACKBONE breakdown, kcal/mol]
 GLYBKA0004_000    0.001

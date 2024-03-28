@@ -41,7 +41,7 @@ ARG02A0128_002    0.000   -0.003
 ARG03A0128_003    0.000   -0.002 
 ARG+1A0128_004   -0.019   -0.019 *
 
-[BACKBONE total excluding self, kcal/mol]   -0.029
+[BACKBONE total including self, kcal/mol]   -0.029
 
 [BACKBONE breakdown, kcal/mol]
 PHEBKA0003_000   -0.002

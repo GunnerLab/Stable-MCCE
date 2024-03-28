@@ -191,7 +191,7 @@ HOH01A1015_015    0.000   -0.002
 HOH01A1016_001    0.002    0.002 *
 HOH01A1016_003    0.000    0.001 
 
-[BACKBONE total excluding self, kcal/mol]    1.139
+[BACKBONE total including self, kcal/mol]    1.427
 
 [BACKBONE breakdown, kcal/mol]
 LYSBKA0001_000   -0.010

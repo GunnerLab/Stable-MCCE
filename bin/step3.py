@@ -27,7 +27,7 @@ from multiprocess import Pool, current_process
 from pdbio import *
 from pbs_interfaces import *
 
-energy_folder = "enegies"
+energy_folder = "energies"
 PW_CUTOFF = 0.001   # cut off value for pairwise interaction to report
 
 
@@ -499,41 +499,42 @@ def postprocess_ele():
     # load raw
     for conf in conf_list:
         fname = "%s/%s.raw" % (energy_folder, conf)
-        lines = open(fname).readlines()
-        pw_start = False
-        resid1 = conf[:3] + conf[5:11]
+        if os.path.isfile(fname):
+            lines = open(fname).readlines()
+            pw_start = False
+            resid1 = conf[:3] + conf[5:11]
 
-        for line in lines:
-            if line[:9] == "[PAIRWISE":
-                pw_start = True
-                continue
-            elif line[:9] == "[BACKBONE":
-                break
-            if pw_start:
-                fields = line.split()
-                if len(fields) >= 3:
-                    conf2 = fields[0]
-                    single = float(fields[1])
-                    multi = float(fields[2])
-                    if len(fields) > 3:
-                        mark = fields[3]
-                    else:
-                        mark = ""
-                    ele_pw = ElePW()
-                    ele_pw.multi = multi
-                    ele_pw.single = single
-                    ele_pw.mark = mark
-                    ele_matrix[(conf, conf2)] = ele_pw
-
-                    if "*" in mark:
-                        resid2 = conf2[:3] + conf2[5:11]
-                        if abs(multi) > 0.1:
-                            k_single_multi = single / multi
+            for line in lines:
+                if line[:9] == "[PAIRWISE":
+                    pw_start = True
+                    continue
+                elif line[:9] == "[BACKBONE":
+                    break
+                if pw_start:
+                    fields = line.split()
+                    if len(fields) >= 3:
+                        conf2 = fields[0]
+                        single = float(fields[1])
+                        multi = float(fields[2])
+                        if len(fields) > 3:
+                            mark = fields[3]
                         else:
-                            k_single_multi = 1.0
-                        if k_single_multi > 1.0:
-                            k_single_multi = 1.0
-                        ele_k_s2m_byresid[(resid1, resid2)] = k_single_multi
+                            mark = ""
+                        ele_pw = ElePW()
+                        ele_pw.multi = multi
+                        ele_pw.single = single
+                        ele_pw.mark = mark
+                        ele_matrix[(conf, conf2)] = ele_pw
+
+                        if "*" in mark:
+                            resid2 = conf2[:3] + conf2[5:11]
+                            if abs(multi) > 0.1:
+                                k_single_multi = single / multi
+                            else:
+                                k_single_multi = 1.0
+                            if k_single_multi > 1.0:
+                                k_single_multi = 1.0
+                            ele_k_s2m_byresid[(resid1, resid2)] = k_single_multi
 
     # scale multi by the k factor, or use single for reference point
     for conf_pair, ele_pw in ele_matrix.items():
@@ -709,7 +710,33 @@ def compose_head3(protein):
                         fields = line.split("]")
                         rxn_all[conf.confID] = float(fields[-1])
 
+    # natom dictonary to determine dummy conformers
+    natom_byconftype = {}
+    for key, value in env.param.items():
+        if key[0] == "CONFLIST":
+            for conftype in env.param[("CONFLIST", key[1])]:
+                natom_byconftype[conftype] = 0
+
+
+    for key, value in env.param.items():
+        if key[0] == "CONNECT":
+            conftype = key[2]
+            if conftype in natom_byconftype:  # there are cases CONNECT exists but conftype was commented out
+                natom_byconftype[conftype] += 1
+
     for res in protein.residue:
+
+        # add dummy conformers
+        for conftype in env.param[("CONFLIST", res.resID[:3])]:
+            natom = natom_byconftype[conftype]
+            if natom == 0 and conftype[-2:] != "BK":
+                newconf = Conformer()
+                n = len(res.conf)
+                newconf.confID = "%s%s%s%s_%03d" % (res.resID[:3], conftype[-2:], res.resID[7], res.resID[3:7], n)
+                newconf.history = "DM"
+                newconf.mark = "d"
+                res.conf.append(newconf)
+
         tors_confs = []
         for conf in res.conf[1:]:
             tors_confs.append(torsion(conf))
@@ -718,12 +745,15 @@ def compose_head3(protein):
             tors_confs = [x - min_tors for x in tors_confs]
         count = 0
         for conf in res.conf[1:]:
-            iconf = conf.i
+            if conf.mark == "d":
+                iconf = 0
+            else:
+                iconf = conf.i + 1
             confID = conf.confID
             flag = "f"
             occ = 0.0
             crg = conf.crg
-            conftype = confID[:5]
+            conftype = conf.confID[:5]
             em0 = env.param["CONFORMER", conftype].param["em0"]
             pka0 = env.param["CONFORMER", conftype].param["pka0"]
             ne = env.param["CONFORMER", conftype].param["ne"]
@@ -755,19 +785,16 @@ def compose_head3(protein):
             else:
                 extra = 0.0
 
-            # add dummy conformers
-            print(env.param[("CONFLIST", conf.confID[:3])])
-
-
             fname = "%s/%s.raw" % (epath, conf.confID)
             if os.path.isfile(fname):  # only create opp files when a raw file exists
                 mark = "t"
             else:
                 mark = "f"
+            if conf.mark == "d":
+                mark = conf.mark  # inherit dummy mark from conformer
 
-
-            head3lines.append("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %s %10s\n" % \
-              (iconf+1, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, dsolv, extra, history, mark))
+            head3lines.append("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %10s %s\n" % \
+              (iconf, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, dsolv, extra, history, mark))
 
     open("head3.lst", "w").writelines(head3lines)
     return

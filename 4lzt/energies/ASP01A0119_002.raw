@@ -25,7 +25,7 @@ ARG03A0125_004    0.000   -0.468
 ARG+1A0125_005   -0.258   -0.257 *
 CTR-1A0129_005   -0.003   -0.003 *
 
-[BACKBONE total excluding self, kcal/mol]    0.431
+[BACKBONE total including self, kcal/mol]    0.346
 
 [BACKBONE breakdown, kcal/mol]
 ARGBKA0005_000   -0.002

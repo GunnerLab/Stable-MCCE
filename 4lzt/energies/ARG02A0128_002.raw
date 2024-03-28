@@ -33,7 +33,7 @@ CTR02A0129_003    0.000   -0.011
 CTR02A0129_004    0.000   -0.003 
 CTR-1A0129_005   -0.021   -0.022 *
 
-[BACKBONE total excluding self, kcal/mol]    0.021
+[BACKBONE total including self, kcal/mol]    0.023
 
 [BACKBONE breakdown, kcal/mol]
 PHEBKA0003_000    0.001
