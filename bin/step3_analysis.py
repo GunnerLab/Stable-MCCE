@@ -37,11 +37,11 @@ def load_new_backbone(confnames):
         breakdown = False
         bkb_self = 0.0
         bkb_name = "%sBK%s000" % (conf[:3], conf[5:11])  # find corresponding bkb conformer name
-        bkb_exclusive = 0.0
+        bkb_inclusive = 0.0
         for line in lines:
             if line[:15] == "[BACKBONE total":
                 fields = line.split()
-                bkb_exclusive = float(fields[-1])
+                bkb_inclusive = float(fields[-1])
             if line[:19] == "[BACKBONE breakdown":
                 breakdown = True
                 continue
@@ -50,7 +50,7 @@ def load_new_backbone(confnames):
                 if len(fields) > 1 and fields[0] == bkb_name:
                     bkb_self = float(fields[-1])
 
-        bkb_inclusive = bkb_exclusive + bkb_self
+        bkb_exclusive = bkb_inclusive - bkb_self
         backbone_ele[conf] = (bkb_inclusive, bkb_exclusive)
 
 
@@ -66,7 +66,7 @@ def load_old_pw(confnames):
         lines = open(fname).readlines()
         for line in lines:
             fields = line.strip().split()
-            if fields[-1] == "*":
+            if "*" in fields[-1]:
                 single = float(fields[4])
                 multi = float(fields[5])
                 if abs(single) >= write_cutoff and abs(multi) >= write_cutoff:
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     new_pw = load_new_pw(confnames)
     
     # print pairwise comparison
-    lines = ["Conformer1, Conformer2, old_pw_single, new_pw_single, old_pw_multi, new_pw_multi, ,old_pw_single_R, new_pw_single_R, old_pw_multi_R, new_pw_multi_R\n"]
+    lines = ["Conformer1, Conformer2, old_pw_single, new_pw_single, old_pw_multi, new_pw_multi\n"]
     
     for conf1 in confnames:
         if conf1[3:5] == "DM": continue
