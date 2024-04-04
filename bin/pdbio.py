@@ -3,11 +3,14 @@
 
 import math
 import os
+import logging
 import glob
 import time
 import numpy as np
 from scipy.sparse import lil_matrix
 
+
+KCAL2KT = 1.688
 # bond distance scaling factor: cutoff = k*(r_vdw1 + r_vdw2)
 BONDDISTANCE_scaling = 0.54  # calibrated by 1akk
 
@@ -46,11 +49,13 @@ class Atom:
         self.xyz = (0.0, 0.0, 0.0)
         self.connectivity_param = ""
         self.r_bound = 0.0
+        self.charge = 0.0
         self.r_vdw = 0.0
-        self.e_vdw= 0.0
+        self.e_vdw = 0.0
         self.connect12 = []
         self.connect13 = []
         self.connect14 = []
+        self.history = ""
         return
 
     def loadline(self, line):
@@ -63,7 +68,11 @@ class Atom:
         self.iCode = line[26]
         self.confNum = int(line[27:30])
         self.xyz = (float(line[30:38]), float(line[38:46]), float(line[46:54]))
+        self.r_bound = float(line[54:62])
+        self.charge = float(line[62:74])
         self.confType = "%3s%2s" % (self.resName, line[80:82])
+        self.history = line[80:].strip()
+
         self.atomID = "%4s%3s%04d%c%03d" % (self.name, self.resName, self.resSeq, self.chainID, self.confNum)
         self.confID = "%5s%c%04d%c%03d" % (self.confType, self.chainID, self.resSeq, self.iCode, self.confNum)
         self.resID = "%3s%04d%c" % (self.resName, self.resSeq, self.chainID)
@@ -74,21 +83,19 @@ class Atom:
         radius_key = ("RADIUS", self.confType, self.name)
         if radius_key in env.param:
             radius_values = env.param[radius_key]
-            self.r_bound = radius_values.r_bound
             self.r_vdw = radius_values.r_vdw
             self.e_vdw = radius_values.e_vdw
         else: # Use default value as C
             print("Warning, parameter %s not found, using default values as C" % str(radius_key))
-            self.r_bound = 1.7
             self.r_vdw = 1.908
             self.e_vdw = 0.086
         return
 
     def writeline(self):
-        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f\n" %\
+        line = "ATOM  %5d %4s%c%3s %c%4d%c   %8.3f%8.3f%8.3f%8.3f%12.3f\n" %\
                (self.serial, self.name, self.altLoc, self.resName, self.chainID,\
                 self.resSeq, self.iCode, self.xyz[0], self.xyz[1],\
-                self.xyz[2])
+                self.xyz[2], self.r_bound, self.charge)
         return line
 
 class Blob:
@@ -131,7 +138,15 @@ class Conformer:
         self.atom = []
         self.vdw0 = 0.0
         self.vdw1 = 0.0
-
+        self.crg = 0.0
+        self.history = ""
+        self.mark = ""
+        return
+    
+    def update_crg(self):
+        self.crg = 0.0
+        for atom in self.atom:
+            self.crg += atom.charge
         return
 
 class Residue:
@@ -168,6 +183,7 @@ class Protein:
                     conf = Conformer()
                     conf.confID = atom.confID
                     conf.resID = atom.resID
+                    conf.history = atom.history
                     conf.atom.append(atom)
                     self.residue[i_res].conf.append(conf)
                     found_res = True
@@ -176,6 +192,7 @@ class Protein:
                 conf = Conformer()
                 conf.confID = atom.confID
                 conf.resID = atom.resID
+                conf.history = atom.history
                 conf.atom.append(atom)
                 res = Residue()
                 res.resID = conf.resID
@@ -200,7 +217,7 @@ class Protein:
                 conf.i = n_conf
                 n_conf += 1
 
-        # Create a 2D VDW array tht will be referenced by indices
+        # Create a 2D VDW array that will be referenced by indices
         #self.vdw_pw = np.zeros((n_conf, n_conf))
         self.vdw_pw = lil_matrix((n_conf, n_conf))
 
@@ -505,6 +522,14 @@ class Protein:
                 for conf in res.conf[1:]:
                     print("%s -> %4d" % (conf.confID, conf.i))
 
+        return
+    
+    def update_confcrg(self):
+        for res in self.residue:
+            for conf in res.conf:
+                conf.update_crg()
+        return
+
 class CONNECT_param:
     def __init__(self, value_str):
         fields = value_str.split(",")
@@ -518,6 +543,16 @@ class RADIUS_param:
         self.r_bound = float(fields[0])
         self.r_vdw = float(fields[1])
         self.e_vdw = float(fields[2])
+
+class CONFORMER_param:
+    def __init__(self, value_str):
+        self.param = {}
+        fields = value_str.split(",")
+        for f in fields:
+            sf = f.split("=")
+            key = sf[0].strip().lower()
+            value = float(sf[1])
+            self.param[key] = value
 
 
 class ENV:
@@ -569,20 +604,27 @@ class ENV:
             value_string = fields[1].strip()
 
             # Connectivity records
-            if key1 == "CONNECT":
+            if key1 == "CONFLIST":
+                self.param[(key1, key2)] = [x.strip() for x in value_string.strip().split(",")]
+            elif key1 == "CONNECT":
                 self.param[(key1, key2, key3)] = CONNECT_param(value_string)
             # VDW parameters, for now use 00always_needed.tpl for vdw parameters
             elif key1 == "RADIUS":
                 self.param[(key1, key2, key3)] = RADIUS_param(value_string)
+            elif key1 == "CONFORMER":
+                self.param[(key1, key2)] = CONFORMER_param(value_string)
 
     def load_ftpl(self):
-        ftpldir = self.runprm["MCCE_HOME"]+"/param"
+        if "FTPLDIR" in self.runprm:
+            ftpldir = self.runprm["FTPLDIR"]
+        else:
+            ftpldir = self.runprm["MCCE_HOME"]+"/param"
         cwd = os.getcwd()
         os.chdir(ftpldir)
 
         files = glob.glob("*.ftpl")
         files.sort()
-        print("Reading parameters from %s" % ftpldir)
+        logging.info("Reading parameters from %s" % ftpldir)
         for fname in files:
             self.read_ftpl_file(fname)
 
@@ -590,7 +632,7 @@ class ENV:
         # Update vdw with 00always_needed.tpl
         fname = "00always_needed.tpl"
         lines = open(fname).readlines()
-        print("Updating vdw parameters from %s" % fname)
+        logging.info("Updating vdw parameters from %s" % os.path.abspath(fname))
         for line in lines:
             end = line.find("#")
             line = line[:end].strip()
@@ -657,15 +699,34 @@ class ENV:
                         self.param[(key1, key2, key3)] = CONNECT_param(value_string)
                         #print("(%s, %s, %s): %s" % (key1, key2, key3, value_string))
 
+        # read from extra.tpl
+        # self.print_runprm()
+        if "EXTRA" in self.runprm:
+            extratpl = self.runprm["EXTRA"]
+        else:
+            extratpl = self.runprm["MCCE_HOME"]+"/extra.tpl"
+        lines = open(extratpl).readlines()
+        for line in lines:
+            if len(line) > 10:
+                key1 = line[:9].strip()
+                key2 = line[9:14].strip()
+                value = float(line[20:].strip())
+                self.param[(key1, key2)] = value
+
+        return
 
     def print_param(self):
         for key, value in self.param.items():
-            key1, key2, key3 = key
+            if len(key) == 3:
+                key1, key2, key3 = key
+            elif len(key) == 2:
+                key1, key2 = key
             if key1 == "CONNECT":
                 print("%s:%s, %s" % (key, value.orbital, value.connected))
             elif key1 == "RADIUS":
                 print("%s: %6.3f, %6.3f %6.3f" % (key, value.r_bound, value.r_vdw, value.e_vdw))
-
+            else:
+                print(key, value)
 
 def vdw_conf(conf1, conf2, cutoff=0.001, verbose=False, display=False):
     vdw = 0.0
@@ -776,12 +837,31 @@ def vdw_atom(atom1, atom2):
                 sig_d12 = sig_d6 * sig_d6
 
                 p_lj = scale * (eps * sig_d12 - 2. * eps * sig_d6)
+                # #print("===%s===%s===" % (atom1.atomID, atom2.atomID))
+                # if (atom1.atomID == " HB2ASP0018A001" and atom2.atomID == " OD2ASP0018A001") or \
+                #    (atom1.atomID == " HB2ASP0018A003" and atom2.atomID == " OD2ASP0018A003"):
+                #     print("===%s -> %s: %8.3f===" % (atom1.atomID, atom2.atomID, p_lj))
+                #     print("%s: r_vdw=%8.3f, e_vdw=%8.3f" % (atom1.atomID, atom1.r_vdw, atom1.e_vdw))
+                #     print("%s: r_vdw=%8.3f, e_vdw=%8.3f" % (atom2.atomID, atom2.r_vdw, atom2.e_vdw))
+
     #     else:
     #         p_lj = 0.0
     # else:
     #     p_lj = 0.0
 
     return p_lj
+
+def torsion(conf):  # estimate torsion energy by 1-4 vdw
+    vdw = 0.0
+    calculated_pairs = []
+    for atom1 in conf.atom:
+        for atom2 in atom1.connect14:
+            if (atom2.confNum == atom1.confNum or atom2.confNum == 0) and ((atom2, atom1) not in calculated_pairs):
+                vdw += vdw_atom(atom1, atom2)
+                calculated_pairs.append((atom2, atom1))   # ensure only calculate a pair once
+
+    return vdw
+
 
 
 env = ENV()
@@ -794,13 +874,13 @@ if __name__ == "__main__":
 
     env.print_param()
 
-    #pdbfile = "step2_out.pdb"
-    #protein = Protein()
-    #protein.loadpdb(pdbfile)
+    # pdbfile = "step2_out.pdb"
+    # protein = Protein()
+    # protein.loadpdb(pdbfile)
     #protein.print_confindex()
-    # protein.make_connect12()
-    # protein.make_connect13()
-    # protein.make_connect14()
+    #protein.make_connect12()
+    #protein.make_connect13()
+    #protein.make_connect14()
 
     # protein.print_connect12()
     # protein.print_connect13()
@@ -808,7 +888,7 @@ if __name__ == "__main__":
     # protein.exportpdb("a.pdb")
     # protein.print_atom_structure()
 
-    # protein.calc_vdw()
+    #protein.calc_vdw()
     # protein.connect_reciprocity_check()
     # protein.vdw_reciprocity_check()
 
