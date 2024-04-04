@@ -674,17 +674,15 @@ def compose_opp(protein, ele_matrix):
                             conf_pair = (conf1.confID, conf2.confID)
                             i1 = conf1.i
                             i2 = conf2.i
-                            found = False
                             if conf_pair in ele_matrix:
                                 average = ele_matrix[conf_pair].averaged
                                 scaled = ele_matrix[conf_pair].scaled
                                 multi = ele_matrix[conf_pair].multi
                                 mark = ele_matrix[conf_pair].mark
-                                found = True
                             else:
                                 average = scaled = multi = 0.0
                                 mark = ""
-                            if found and (abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF or abs(average) > PW_CUTOFF):
+                            if abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF or abs(average) > PW_CUTOFF:
                                 lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.i, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
                 open(fname, "w").writelines(lines)
 

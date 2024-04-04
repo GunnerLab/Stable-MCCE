@@ -104,6 +104,26 @@ def load_new_pw(confnames):
     return pw
 
 
+def load_opp(folder, confnames):
+    """ Load corrected ele and vdw """
+    # Will collect those marked with "*" as they have both boundary conditions
+    pw = {}
+    for conf in confnames:
+        if conf[3:5] == "DM":
+            continue    # skip dummy
+        fname = "%s/%s.opp" % (folder, conf)
+        lines = open(fname).readlines()
+        for line in lines:
+            fields = line.strip().split()
+            ele = float(fields[2])
+            vdw = float(fields[3])
+            if abs(ele) >= write_cutoff or abs(vdw) >= write_cutoff:
+                key = (conf, fields[1])
+                pw[key] = (ele, vdw)
+
+    return pw
+
+
 
 if __name__ == "__main__":
     confnames = read_confnames()
@@ -152,3 +172,32 @@ if __name__ == "__main__":
                 lines.append(line)
     
     open("pw_ele.csv", "w").writelines(lines)
+
+    # print pairwise comparison
+    lines = ["Conformer1, Conformer2, old_ele, new_ele, old_vdw, new_vdw\n"]
+
+    old_opp_pw = load_opp("../4lzt-old/energies", confnames)
+    new_opp_pw = load_opp("energies", confnames)
+    #key = ("LYS01A0001_001", "PHE01A0003_001")
+    #print(old_opp_pw[key], new_opp_pw[key])
+    for conf1 in confnames:
+        if conf1[3:5] == "DM": continue
+        for conf2 in confnames:
+            if conf2[3:5] == "DM": continue
+            if conf1 == conf2: continue
+            key = (conf1, conf2)
+            old_ele = new_ele = old_vdw = new_vdw = 0.0
+            found = False
+            if key in old_opp_pw:
+                old_ele, old_vdw = old_opp_pw[key]
+                found = True
+            if key in new_opp_pw:
+                new_ele, new_vdw = new_opp_pw[key]
+                found = True
+
+            if found:
+                line = "%s, %s, %8.3f, %8.3f, %8.3f, %8.3f\n" % (
+                conf1, conf2, old_ele, new_ele, old_vdw, new_vdw)
+                lines.append(line)
+
+    open("pw_opp.csv", "w").writelines(lines)
