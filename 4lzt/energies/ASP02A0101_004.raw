@@ -22,7 +22,7 @@ SER01A0100_003    0.000   -0.010
 ASN01A0103_001    0.045    0.045 *
 ASN01A0103_002    0.000   -0.045 
 
-[BACKBONE total including self, kcal/mol]    0.056
+[BACKBONE total including self, kcal/mol]    0.055
 
 [BACKBONE breakdown, kcal/mol]
 SERBKA0050_000   -0.001

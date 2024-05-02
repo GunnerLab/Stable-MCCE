@@ -123,6 +123,52 @@ class PBS_DELPHI:
         # What are in bound
         #print(vars(bound))
 
+
+        # Caclulate rxn0 using float boundary condition
+        rxn0 = 0.0
+        if run_options.fly:
+            self.write_fort13(bound.float_bnd_xyzrcp)
+            self.write_fort15(bound.float_bnd_xyzrcp)
+            center = [0.0, 0.0, 0.0]
+            weight = 0.0
+            depth = 1
+            for p in bound.float_bnd_xyzrcp:
+                w = abs(p.c)
+                if w > 0.00001:
+                    center[0] += p.x * w
+                    center[1] += p.y * w
+                    center[2] += p.z * w
+                    weight += w
+
+            if weight > 0.000001:
+                center = [c/(weight+0.000001) for c in center]
+            else:
+                logging.error("PB solver shouldn't run a conformer has no charged atom.")
+            with open("fort.27", "w") as fh:
+                fh.write("ATOM  %5d  C   CEN  %04d    %8.3f%8.3f%8.3f\n" % (1, 1, center[0], center[1], center[2]))
+
+            # fort.10
+            self.epsilon_prot = run_options.d
+            with open("fort.10", "w") as fh:
+                fh.write("gsize=%d\n" % self.grids_delphi)
+                fh.write("scale=%.2f\n" % (self.grids_per_ang/2**(depth-1)))
+                fh.write("in(unpdb,file=\"fort.13\")\n")
+                fh.write("indi=%.1f\n" % self.epsilon_prot)
+                fh.write("exdi=%.1f\n" % self.epsilon_solv)
+                fh.write("ionrad=%.1f\n" % self.ionrad)
+                fh.write("salt=%.2f\n" % self.salt)
+                fh.write("bndcon=2\n")
+                fh.write("center(777, 777, 0)\n")
+                #fh.write("out(frc,file=\"run01.frc\")\n")
+                #fh.write("out(phi,file=\"run01.phi\")\n")
+                fh.write("site(a,c,p)\n")
+                fh.write("energy(g,an,sol)\n")   # g for grid energy, sol for corrected rxn
+
+            # 1st and only delphi run
+            result = subprocess.run([self.exe], capture_output=True, text=True)
+            rxn0 = self.collect_rxn(result.stdout)
+
+
         depth = self.depth(bound)
         logging.info("Delphi focusing depth: %d" % depth)
         rxns = []

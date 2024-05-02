@@ -126,11 +126,29 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
                     self.backbone_atom.append([
                                                   atom])  # the atom is in an array because it is allowed to have multiple atoms to match the same line in xyzrcp line
 
+        self.float_bnd_xyzrcp = []
+        self.float_bnd_atom = []
         self.single_bnd_xyzrcp = []
         self.single_bnd_atom = []
         self.multi_bnd_xyzrcp = []
         self.multi_bnd_atom = []
         return
+
+    def compose_float(self, protein, ir, ic):
+        """ Compose a floating side chain boundary condition for rxn0 calculation.
+            Only atoms in residue[ir], conformer[ic] are in this list
+        """
+        self.float_bnd_xyzrcp = []
+        self.float_bnd_atom = []
+
+        for atom in protein.residue[ir].conf[ic].atom:
+            xyzrcp = ExchangeAtom(atom)
+            xyzrcp.c = atom.charge
+            self.float_bnd_xyzrcp.append(xyzrcp)
+            self.float_bnd_atom.append([atom])
+
+        return
+
 
     def compose_single(self, protein, ir, ic):
         """ Compose a single side chain boundary condition.
@@ -227,6 +245,35 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
 
         return
 
+    def write_float_bnd(self, fname):
+        "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
+        # write xyzrpc
+        lines = []
+        for xyzrcp in self.float_bnd_xyzrcp:
+            line = "%8.3f %8.3f %8.3f %8.3f %8.3f %8.3f\n" % (xyzrcp.x,
+                                                              xyzrcp.y,
+                                                              xyzrcp.z,
+                                                              xyzrcp.r,
+                                                              xyzrcp.c,
+                                                              xyzrcp.p)
+            lines.append(line)
+        open(fname + ".xyzrcp", "w").writelines(lines)
+
+        # write index file
+        lines = []
+        for matched_atoms in self.float_bnd_atom:
+            atoms = " ".join([atom.atomID for atom in matched_atoms])
+            xyzrc = "%8.3f %8.3f %8.3f %8.3f %8.3f" % (matched_atoms[0].xyz[0],
+                                                       matched_atoms[0].xyz[1],
+                                                       matched_atoms[0].xyz[2],
+                                                       matched_atoms[0].r_bound,
+                                                       matched_atoms[0].charge)
+
+            line = "%s %s\n" % (xyzrc, atoms)
+            lines.append(line)
+        open(fname + ".atoms", "w").writelines(lines)
+
+
     def write_single_bnd(self, fname):
         "This writes out both the xyzrcp and atom index files, for error checking and potentially as data exchange with PB wrapper."
         # write xyzrpc
@@ -287,11 +334,13 @@ class Exchange:  # This is the data passed to the PB wrapper, together with runo
 def def_boundary(ir, ic):
     boundary = Exchange(protein)
 
+    boundary.compose_float(protein, ir, ic)
     boundary.compose_single(protein, ir, ic)
     boundary.compose_multi(protein, ir, ic)
 
     # Do not write out boundary condition except for debug purpose
     if run_options.debug:
+        boundary.write_float_bnd("float_bnd")
         boundary.write_single_bnd("single_bnd")
         boundary.write_multi_bnd("multi_bnd")
 
@@ -311,6 +360,8 @@ def get_conflist(protein):
 
 
 def pbe(iric):
+    "Calculate electrostatic terms: pairwise and reaction filed energy, store results in energies/*.raw file"
+
     ir = iric[0]
     ic = iric[1]
     pid = current_process()  # Identify this worker
@@ -318,6 +369,7 @@ def pbe(iric):
     resid = confid[:3] + confid[5:11]
     bound = def_boundary(ir, ic)
     rxn = 0.0
+    
 
     # skip pbe if atoms in this conformer are all 0 charged
     all_0 = True
