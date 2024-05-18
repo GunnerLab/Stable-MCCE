@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
-import sys
-import math
-import operator
-from typing import Union
-from pathlib import Path
 import numpy as np
+import operator
+import pandas as pd
+import sys
+from typing import List, Tuple, Union
 import zlib
 
+# TODO: Fix functions so that they work via import;
 
 ph2Kcal = 1.364
 Kcal2kT = 1.688
 
 
 class Microstate:
-    """Sortable class for microstates."""
+    """Sortable class for mcce microstates."""
 
     def __init__(self, state: list, E: float, count: int):
         self.state = state
@@ -248,7 +248,7 @@ class MSout:
 
         return ms_sampled
 
-    def sort_microstates(self, sort_by:str = "E", sort_reverse:bool = False) -> Union[list,None]:
+    def sort_microstates(self, sort_by:str = "E", sort_reverse:bool = False) -> list:
         """Return the list of microstates sorted by one of these attributes: ["count", "E"],
         and in reverse order (descending) if sort_reverse is True.
         Args:
@@ -260,14 +260,15 @@ class MSout:
 
         if sort_by not in ["count", "E"]:
             print("'sort_by' must be a valid microstate attribute; choices: ['count', 'E']")
-        return None
+            return None
 
         return sorted(list(self.microstates.values()),
                       key=operator.attrgetter(sort_by),
                       reverse=sort_reverse)
 
 
-def read_conformers(head3_path):
+def read_conformers(head3_path: str):
+
     conformers = []
     lines = open(head3_path).readlines()
     lines.pop(0)
@@ -278,8 +279,9 @@ def read_conformers(head3_path):
 
     return conformers
 
-# conformers will be an empty list if module is loaded outside
-# of a MCCE output folder (or head3.lst is missing).
+# conformers will be an empty list if module is imported
+# or called outside of a MCCE output folder
+# or if head3.lst is missing.
 try:
     conformers = read_conformers("head3.lst")
 except FileNotFoundError:
@@ -288,15 +290,16 @@ except FileNotFoundError:
 
 class Charge_Microstate:
     """
-    For usage symmetry with Microstate class, Charge_Microstate.E = Charge_Microstate.average_E,
-    So querying for the energy can be done using Charge_Microstate.E, bearing in mind that
-    the energy is an average for a charge microstate.
-    Sortable class.
-    The Charge_Microstate.crg_stateid is implemented as compressed bytes as in the ms_analysis.py
-    Microstate class in Junjun Mao's demo.
+    Sortable class for charge microstates.
+    For usage symmetry with Microstate class, the energy accessor exists, but here:
+    Charge_Microstate.E == Charge_Microstate.average_E.
+    Thus, querying for the energy using Charge_Microstate.E, returns the average of
+    a charge microstate.
+    The Charge_Microstate.crg_stateid is implemented as compressed bytes as in the
+    ms_analysis.py Microstate class in Junjun Mao's demo.
     """
 
-    def __init__(self, crg_state:list, total_E:float, count:int):
+    def __init__(self, crg_state: list, total_E: float, count: int):
         self.crg_stateid = zlib.compress(" ".join([str(x) for x in crg_state]).encode())
         self.average_E = self.E = 0  # .E -> average E
         self.total_E = total_E
@@ -336,7 +339,7 @@ class Charge_Microstate:
         )
 
 
-def ms_to_charge_ms(microstates:Union[dict, list], conformers:list) -> list:
+def ms_to_charge_ms(microstates: Union[dict, list], conformers: list) -> list:
     """
     Refactored from jmao's MC class method: convert_to_charge_ms
     """
@@ -367,20 +370,21 @@ def ms_to_charge_ms(microstates:Union[dict, list], conformers:list) -> list:
     return charge_microstates
 
 
-def sort_charge_microstates(charge_microstates:list,
-                            sort_by:str = "count",
-                            sort_reverse:bool = True) -> Union[list, None]:
-    """Return the list of charge_microstates sorted by one of these attributes: ["count", "E", "total_E"],
-    and in reverse order (descending) if sort_reverse is True.
+def sort_charge_microstates(charge_microstates: list,
+                            sort_by: str = "count",
+                            sort_reverse: bool = True) -> Union[list, None]:
+    """Return the list of charge_microstates sorted by one of these attributes:
+    ["count", "E", "total_E"], and in reverse order (descending) if sort_reverse
+    is True.
     Args:
     charge_microstates (list): list of Charge_Microstate instances;
     sort_by (str, "count"): Attribute as sort key;
-    sort_reverse (bool, True): Sort order: descending if True (default), else ascending.
+    sort_reverse (bool, True): Sort order: descending if True (default).
     Return None if 'sort_by' is not recognized.
     """
 
     if sort_by not in ["count", "E", "total_E"]:
-        print("'sort_by' must be a valid charge_microstate attribute; choices: ['count', 'E', 'total_E']")
+        print("Invalid attribute in 'sort_by'. Choices: ['count', 'E', 'total_E']")
         return None
 
     return sorted(charge_microstates,
@@ -388,21 +392,25 @@ def sort_charge_microstates(charge_microstates:list,
                   reverse=sort_reverse)
 
 
-def topN_charge_microstates(charge_microstates:list,
-                            N:int = 1,
-                            sort_by:str = "count",
-                            sort_reverse:bool = True) -> Union[list, None]:
-    """Return the top N entries from the list of charge_microstates sorted by one of these attributes:
-       ["count", "E", "total_E"], and in reverse order (descending) if sort_reverse is True.
-       Note: The 'topN' in this context means the most frequent if sort_by is 'count', or the most
-       favorable (lowest) energy otherwise. Thus, the expected sort args are ('count', sort_reverse=
-       True), or (["E" | "total_E"], sort_reverse=False). A warning is displayed for any other combination
-       and None is returned.
+def topN_charge_microstates(charge_microstates: list,
+                            N: int = 1,
+                            sort_by: str = "count",
+                            sort_reverse: bool = True) -> Union[list, None]:
+    """Return the top N entries from the list of charge_microstates sorted by
+       one of ["count", "E", "total_E"], and in descending order if sort_reverse
+       is True.
+       Note:
+        The 'topN' in this context means:
+          - the most frequent if sort_by is 'count'
+          - the most favorable (lowest) energy otherwise.
+       Thus, the logical sort args are ('count', sort_reverse=True), or 
+       (["E" | "total_E"], sort_reverse=False).
+       A warning is displayed for any other combination and None is returned.
        Args:
        charge_microstates (list): list of Charge_Microstate instances;
        N (int, 1): Number of entries to return;
        sort_by (str, "count"): Attribute as sort key;
-       sort_reverse (bool, True): Sort order: descending if True (default), else ascending.
+       sort_reverse (bool, True): Sort order: descending if True (default).
        Return:
        A list of N Charge_Microstate instances.
     """
@@ -419,16 +427,15 @@ def topN_charge_microstates(charge_microstates:list,
         print(msg.format(sort_by, "ascendingly", "False"))
         return None
 
-    sorted_charge_ms = sort_charge_microstates(charge_microstates, sort_by, sort_reverse)
+    sorted_charge_ms = sort_charge_microstates(charge_microstates,
+                                               sort_by,
+                                               sort_reverse)
 
     return sorted_charge_ms[:N]
 
 
-def ms_counts(microstates):
+def ms_counts(microstates: Union[dict, list]):
     """Calculate total counts of microstates, which can be a list or a dict."""
-
-    if not isinstance(microstates, (dict, list)):
-        raise ValueError(f"`microstates` must be a list or a dict.")
 
     if isinstance(microstates, dict):
         return sum(ms.count for ms in microstates.values())
@@ -436,7 +443,7 @@ def ms_counts(microstates):
         return sum(ms.count for ms in microstates)
 
 
-def ms_charge(ms):
+def ms_charge(ms: Microstate):
     """Compute microstate charge"""
     crg = 0.0
     for ic in ms.state:
@@ -444,11 +451,26 @@ def ms_charge(ms):
     return crg
 
 
-def groupms_byenergy(microstates, ticks):
+def get_ms_crg(ms: Microstate, conformers: list):
+    """Compute microstate charge.
+    Alternate version of `ms_charge` for use when
+    conformers is not a global variable (case when
+    module is imported).
     """
-    This function takes in a list of microstates and a list of energy numbers (N values), divide the microstates into N
-    bands by using the energy number as lower boundaries. The list of energy will be sorted from small to large.
+    crg = 0.0
+    for ic in ms.state:
+        crg += conformers[ic].crg
+    return crg
+
+
+def groupms_byenergy(microstates: list, ticks: List[float]) -> list:
     """
+    Group the microstates' energies into bands provided in `ticks`.
+    Args:
+      microstates (list): List of microstates
+      ticks (list(float)): List of energies; will be sorted.
+    """
+
     N = len(ticks)
     ticks.sort()
     ticks.append(1.0e100)    # add a big number as the last boundary
@@ -466,11 +488,18 @@ def groupms_byenergy(microstates, ticks):
     return resulted_bands
 
 
-def groupms_byiconf(microstates, iconfs):
+def groupms_byiconf(microstates: list, iconfs: list) -> tuple:
     """
-    This function takes in a list of microstates and a list of conformer indicies, divide microstates into two groups:
-    the first one is those contain one of the given conformers, the second one is those contain none of the listed conformers.
+    Divide the microstates by the conformers indices provided in `iconfs`
+    into 2 groups: the first contains one of the given conformers, the
+    second one contains none of the listed conformers.
+    Args:
+      microstates (list): List of microstates
+      iconfs (list): List of conformer indices.
+    Return:
+      A 2-tuple: Microstates with any of `iconfs`, microstates with none
     """
+
     ingroup = []
     outgroup = []
     for ms in microstates:
@@ -486,12 +515,19 @@ def groupms_byiconf(microstates, iconfs):
     return ingroup, outgroup
 
 
-def groupms_byconfid(microstates, confids):
+def groupms_byconfid(microstates: list, confids: list) -> tuple:
     """
-    Group conformers by tge conformer IDs. IDs are in a list and ID is considered as a match as long as it is a
-    substring of the conformer name. The selected microstates must have all conformers and returned in the first group,
-    and the rest are in the second group.
+    Divide the microstates by the conformers ids provided in `confids`
+    into 2 groups: the first contains ALL of the given conformers, the
+    second one contains does not.
+    Note: An ID is a match if it is a substring of the conformer name. 
+    Args:
+      microstates (list): List of microstates
+      confids (list): List of conformer ids.
+    Return:
+      A 2-tuple: Microstates with all of `confids`, microstates with some or none.
     """
+
     ingroup = []
     outgroup = []
     for ms in microstates:
@@ -512,17 +548,19 @@ def groupms_byconfid(microstates, confids):
     return ingroup, outgroup
 
 
-def ms_energy_stat(microstates):
+def ms_energy_stat(microstates: list) -> tuple:
     """
-    Given a list of microstates, find the lowest energy, average energy, and highest energy
+    Return the lowest, average, and highest energies of the listed
+    microstates.
     """
+
     ms = next(iter(microstates))
-    lowerst_E = highest_E = ms.E
+    lowest_E = highest_E = ms.E
     N_ms = 0
     total_E = 0.0
     for ms in microstates:
-        if lowerst_E > ms.E:
-            lowerst_E = ms.E
+        if lowest_E > ms.E:
+            lowest_E = ms.E
         elif highest_E < ms.E:
             highest_E = ms.E
         N_ms += ms.count
@@ -530,14 +568,19 @@ def ms_energy_stat(microstates):
 
     average_E = total_E/N_ms
 
-    return lowerst_E, average_E, highest_E
+    return lowest_E, average_E, highest_E
 
 
-def ms_convert2occ(microstates):
+def ms_convert2occ(microstates: list) -> dict:
     """
-    Given a list of microstates, convert to conformer occupancy of conformers appeared at least once in the microstates.
+    Given a list of microstates, convert to conformer occupancy
+    for conformers that appear at least once in the microstates.
+    Return:
+      A dict: {ms.state: occ}
     """
-    occurance = {}  # occurance of conformer, as a dictionary
+    # TODO: use Counter
+
+    occurance = {}  # dict of conformer occurance
     occ = {}
     N_ms = 0
     for ms in microstates:
@@ -554,10 +597,12 @@ def ms_convert2occ(microstates):
     return occ
 
 
-def ms_convert2sumcrg(microstates, free_res):
+def ms_convert2sumcrg(microstates: list, free_res: list) -> list:
     """
     Given a list of microstates, convert to net charge of each free residue.
     """
+    # FIX: dependence on global conformers variable
+
     iconf2ires = {}
     for i_res in range(len(free_res)):
         for iconf in free_res[i_res]:
@@ -576,8 +621,11 @@ def ms_convert2sumcrg(microstates, free_res):
     return charges
 
 
-def e2occ(energies):
-    "Given a list of energy values in unit Kacl/mol, calculate the occupancy by Boltzmann Distribution."
+def e2occ(energies: list) -> float:
+    """Given a list of energy values in unit Kacl/mol,
+    calculate the occupancy by Boltzmann Distribution.
+    """
+
     e = np.array(energies)
     e = e - min(e)
     Pi_raw = np.exp(-Kcal2kT*e)
@@ -587,15 +635,16 @@ def e2occ(energies):
     return Pi_norm
 
 
-def bhata_distance(prob1, prob2):
-    d_max = 10000.0   # Max possible value set to this
-    p1 = np.array((prob1)) / sum(prob1)
-    p2 = np.array((prob2)) / sum(prob2)
+def bhata_distance(prob1: list, prob2: list) -> float:
+    """Bhattacharyya distance between 2 probability distributions."""
+
+    d_max = 10000.0   # Max possible value
+    p1 = np.array(prob1) / sum(prob1)
+    p2 = np.array(prob2) / sum(prob2)
     if len(p1) != len(p2):
         d = d_max
     else:
         bc = sum(np.sqrt(p1 * p2))
-    #    print(bc, np.exp(-d_max))
         if bc <= np.exp(-d_max):
             d = d_max
         else:
@@ -604,8 +653,40 @@ def bhata_distance(prob1, prob2):
     return d
 
 
-def whatchanged_conf(msgroup1, msgroup2):
+def free_residues_df(free_res:list,
+                     conformers:list,
+                     colname: str="FreeRes") -> pd.DataFrame:
+    """Return the free residues' ids in a pandas DataFrame."""
+
+    free_residues = [conformers[res[0]].resid for res in free_res]
+
+    return pd.DataFrame(free_residues, columns=[colname])
+
+
+def fixed_residues_charge(conformers:list, fixed_iconfs:list) -> Tuple[float, dict]:
+    """
+    Return:
+      A 2-tuple:
+      The net charge contributed by the fixed residues in `fixed_iconfs`;
+      A dictionary: key=conf.resid, value=conf.crg.
+    """
+
+    fixed_res_crg_dict = {}
+    for conf in conformers:
+        if conf.iconf in fixed_iconfs:
+            if conf.resid not in fixed_res_crg_dict:
+                fixed_res_crg_dict[conf.resid] = conf.crg
+            else:
+                print(f"ERROR: duplicated fixed residue: {conf.resid!r}")
+
+    net_charge = sum(fixed_res_crg_dict.values())
+
+    return net_charge, fixed_res_crg_dict
+
+
+def whatchanged_conf(msgroup1: list, msgroup2: list) -> dict:
     "Given two group of microstates, calculate what changed at conformer level."
+
     occ1 = ms_convert2occ(msgroup1)
     occ2 = ms_convert2occ(msgroup2)
 
@@ -626,8 +707,9 @@ def whatchanged_conf(msgroup1, msgroup2):
     return diff_occ
 
 
-def whatchanged_res(msgroup1, msgroup2, free_res):
-    "Return a list of Bhatachaya Distance of free residues."
+def whatchanged_res(msgroup1: list, msgroup2: list, free_res: list) -> list:
+    "Return a list of Bhattacharyya distance of free residues."
+
     occ1 = ms_convert2occ(msgroup1)
     occ2 = ms_convert2occ(msgroup2)
 
@@ -650,6 +732,7 @@ def whatchanged_res(msgroup1, msgroup2, free_res):
 
 
 if __name__ == "__main__":
+
     msout = MSout("ms_out/pH4eH0ms.txt")
     # e_step = (msout.highest_E - msout.lowest_E)/20
     # ticks = [msout.lowest_E + e_step*(i) for i in range(20)]
