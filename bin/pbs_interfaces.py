@@ -113,7 +113,7 @@ class PBS_DELPHI:
     def run(self, bound, run_options):
         """PBE solver interface for delphi. 
         It will generate site p in both boundary conditions 
-        and return rxn in single boundary condition.
+        and return reference rxn0, and rxn in single boundary condition.
         """
 
         # snippets to check the input and environment
@@ -312,4 +312,4 @@ class PBS_DELPHI:
         # collect results from frc files
         self.collect_phi(depth, bound.multi_bnd_xyzrcp)
 
-        return min(rxns)    # return the most negative value of the focusing runs
+        return (rxn0, min(rxns))    # return two values, rxn0 and rxn as the most negative value of the focusing runs

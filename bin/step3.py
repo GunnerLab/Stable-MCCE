@@ -392,7 +392,7 @@ def pbe(iric):
         if run_options.s.upper() == "DELPHI":
             logging.info("%s: Calling delphi to calulate conformer %s" % (pid.name, confid))
             pbs_delphi = PBS_DELPHI()
-            rxn = pbs_delphi.run(bound, run_options)
+            rxn0, rxn = pbs_delphi.run(bound, run_options)
 
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
@@ -508,6 +508,10 @@ def pbe(iric):
         raw_lines += bkb_breakdown_lines
 
         # Part 5: rxn
+        if run_options.fly:
+            line = "\n[RXN0, kcal/mol] %8.3f" % rxn0
+            raw_lines.append(line)
+
         line = "\n[RXN, kcal/mol] %8.3f" % rxn
         raw_lines.append(line)
 
@@ -747,6 +751,7 @@ def compose_head3(protein):
     # read backbone ele interaction epol
     epol_all = {}
     rxn_all = {}
+    rxn0_all = {}
     for res in protein.residue:
         for conf in res.conf[1:]:
             fname = "%s/%s.raw" % (epath, conf.confID)
@@ -756,7 +761,10 @@ def compose_head3(protein):
                     if line.startswith("[BACKBONE total"):
                         fields = line.split("]")
                         epol_all[conf.confID] = float(fields[-1])
-                    elif line.startswith("[RXN"):
+                    elif line.startswith("[RXN0,"):
+                        fields = line.split("]")
+                        rxn0_all[conf.confID] = float(fields[-1])
+                    elif line.startswith("[RXN,"):
                         fields = line.split("]")
                         rxn_all[conf.confID] = float(fields[-1])
 
@@ -823,9 +831,16 @@ def compose_head3(protein):
                 rxn = rxn_all[conf.confID]
             else:
                 rxn = 0.0
-            epsilon = run_options.d
-            key3 = "rxn%02d" % int(epsilon)
-            rxn0 = env.param["CONFORMER", conftype].param[key3]
+            
+            if run_options.fly:
+                if conf.confID in rxn0_all:
+                    rxn0 = rxn0_all[conf.confID]
+                else:
+                    rxn0 = 0.0
+            else:
+                epsilon = run_options.d
+                key3 = "rxn%02d" % int(epsilon)
+                rxn0 = env.param["CONFORMER", conftype].param[key3]
             dsolv = rxn - rxn0
             history = conf.history
 
