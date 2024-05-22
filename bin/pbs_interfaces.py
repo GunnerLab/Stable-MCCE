@@ -11,13 +11,123 @@ import struct
 import sys
 
 
+class PBS_TEMPLATE:
+    """
+    Template interface. This serves as a template for writing your own interface.
+    """
+
+    def __init__(self):
+        """Initialize default values and allow to be overwritten from run_options."""
+        self.exe = "pbs_template.py"   # PBE solver executable, should be made available by the execution environment
+        self.epsilon_prot = 4.0         # default dielectric constant for protein
+        self.epsilon_solv = 80.0        # default dielectric constant for solvent
+        return
+
+    def write_pqr(self, bound):
+        """
+        This is a help function. It writes 3 pqr files in PBE solver working directory
+            * floating side chain: float.pqr
+            * single conformation boundary: single.pqr
+            * multi conformation boundary: multi.pqr
+        """
+        lines = self.xyzrcp2prq(bound.float_bnd_xyzrcp)
+        open("float.pqr", "w").writelines(lines)
+
+        lines = self.xyzrcp2prq(bound.single_bnd_xyzrcp)
+        open("single.pqr", "w").writelines(lines)
+
+        lines = self.xyzrcp2prq(bound.multi_bnd_xyzrcp)
+        open("multi.pqr", "w").writelines(lines)
+
+    def xyzrcp2prq(self, xyzrcp_records):
+        """
+        Convert xyzrcp records to pqr lines
+        """
+        lines = []
+        serial = 1
+        for record in xyzrcp_records:
+            line = "ATOM  %5d ATOM RES %5d    %8.3f%8.3f%8.3f%8.3f%12.3f\n" % (serial, serial, record.x, record.y,
+                                                                             record.z, record.r, record.c)
+            serial += 1
+            lines.append(line)
+        return lines
+
+    def write_run_options(self, run_options):
+        """
+        Write command options passed to this object into file run_options.txt.
+        """
+        lines = []
+        for key, value in vars(run_options).items():
+            line = "%s: %s %s\n" % (key, str(value), str(type(value)))
+            lines.append(line)
+        open("run_options.txt", "w").writelines(lines)
+
+    def run(self, bound, run_options):
+        """
+        This is the PBE solver's main program. The solver will
+        Input
+            * bound - 3 boundary in xyzrcp format
+            * run_options - dictionary of run options
+        Output
+            * update xyzrcp records p value
+            * return (rxn0, rxn)
+        """
+        # Convert xyzrcp records in bound to pqr files
+        self.write_pqr(bound)
+        # Show what run options are passed in
+        self.write_run_options(run_options)
+
+        # Calculate reference reaction field energy, using float boundary condition
+        # There is no need to update site potential
+        rxn0 = 0.0
+        if run_options.fly:
+            # Set up PBE solver at float bnd condition
+            # Use bound.float_bnd_xyzrcp
+            # ...
+
+            # Run PBE solver and save the log to result
+            result = subprocess.run([self.exe], capture_output=True, text=True)
+
+            # Obtain rxn0 from the log file as an example of extracting information from stdout
+            lines = result.stdout.split("\n")
+            for line in lines:
+                if "RXN =" in line:  # find unique pattern to extract the value
+                    fields = line.split("=")
+                    rxn0 = float(fields[1])
+                    break
+
+
+
+        # Calculate site potential at single bnd condition
+        # Need to calculate rxn and update site potential
+        rxn = 0.0
+        # Set up PBE solver at single bnd condition
+        # Use bound.single_bnd_xyzrcp
+        # ...
+
+        # Run PBE solver and save the log to result
+        result = subprocess.run([self.exe], capture_output=True, text=True)
+        # update p in bound.single_bnd_xyzrcp
+        # Obtain rxn
+        rxn = -4.500
+
+        # Calculate site potential at multi bnd condition
+        # Need to update site potential, No need to calculate rxn
+        # Set up PBE solver at multu bnd condition
+        # Use bound.multi_bnd_xyzrcp
+        # ...
+
+        # Run PBE solver and save the log to result
+        result = subprocess.run([self.exe], capture_output=True, text=True)
+
+        # update p in bound.multi_bnd_xyzrcp
+
+
+        return (rxn0, rxn)
+
 class PBS_DELPHI:
     """
     Legacy delphi interface
-    Input:
-        bound - dielectric boundary object
-        run_options - command options in dictionary
-    Return value
     """
     def __init__(self):
         # consider loading these parameters from a file
@@ -123,8 +233,12 @@ class PBS_DELPHI:
 
     def run(self, bound, run_options):
         """PBE solver interface for delphi. 
-        It will generate site p in both boundary conditions 
-        and return reference rxn0, and rxn in single boundary condition.
+        Input:
+            bound - dielectric boundary object
+            run_options - command options in dictionary
+        Return value:
+            It will generate site p in both boundary conditions and
+            return reference rxn0, and rxn in single boundary condition.
         """
 
         # snippets to check the input and environment

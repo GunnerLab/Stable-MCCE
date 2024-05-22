@@ -394,6 +394,11 @@ def pbe(iric):
             pbs_delphi = PBS_DELPHI()
             rxn0, rxn = pbs_delphi.run(bound, run_options)
 
+        elif run_options.s.upper() == "TEMPLATE":
+            logging.info("%s: Calling template to calulate conformer %s" % (pid.name, confid))
+            pbs_template = PBS_TEMPLATE()
+            rxn0, rxn = pbs_template.run(bound, run_options)
+
         else:
             print("No compatible PBE solver detected, given pb solver is %s" % run_options.s)
 
@@ -940,7 +945,7 @@ if __name__ == "__main__":
     logging.info("Running PBE solver in %d threads" % max_pool)
     with Pool(max_pool) as process:
         work_out = process.imap(pbe, work_load)
-        logging.debug("Done PDE solving on %s" % str(list(work_out)))
+        logging.debug("Done PBE solving on %s" % str(list(work_out)))
 
     cwd = os.getcwd()
     pbe_folder = run_options.t + "/pbe_" + cwd.strip("/").replace("/", ".")
