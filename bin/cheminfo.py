@@ -19,7 +19,7 @@ with urllib.request.urlopen(query) as url:
     for entry in data["pdbx_chem_comp_descriptor"]:
         if entry["program"] == "OpenEye OEToolkits" and entry["type"] == "SMILES_CANONICAL":
             smiles = entry["descriptor"]
-            print("OpenEyeo SMILES: %s" % smiles)
+            print("OpenEye SMILES: %s" % smiles)
             print("Molecule image: %s%s/" % (imgurl_base, smiles))
             break
 

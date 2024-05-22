@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+###########################################
+# PB Solver Interface Module              #
+###########################################
+
 import logging
 import os
 import subprocess
@@ -8,6 +12,13 @@ import sys
 
 
 class PBS_DELPHI:
+    """
+    Legacy delphi interface
+    Input:
+        bound - dielectric boundary object
+        run_options - command options in dictionary
+    Return value
+    """
     def __init__(self):
         # consider loading these parameters from a file
         self.exe = "delphi"   # This has to be made available by the execution environment
