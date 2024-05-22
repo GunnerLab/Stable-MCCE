@@ -221,9 +221,12 @@ int load_energies(EMATRIX *ematrix, char *dir)
        n_conf = atoi(sbuff1);
        counter++;
     }
-    if ((counter-1) != n_conf) { /* counter does not match record */
+
+    if ((counter-1) != n_conf) { // counter does not match record 
+       printf("%d, %d", counter-1, n_conf);
        return -1;
     }
+
 
 
     /* allocate memeory */

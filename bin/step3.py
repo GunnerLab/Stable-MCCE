@@ -661,6 +661,7 @@ def postprocess_ele():
 
 
 def compose_opp(protein, ele_matrix):
+
     epath = "energies"
     for res1 in protein.residue:
         for conf1 in res1.conf[1:]:
@@ -683,7 +684,7 @@ def compose_opp(protein, ele_matrix):
                                 average = scaled = multi = 0.0
                                 mark = ""
                             if abs(protein.vdw_pw[i1, i2]) > PW_CUTOFF or abs(average) > PW_CUTOFF:
-                                lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.i, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
+                                lines.append("%05d %s %8.3f %7.3f %7.3f %7.3f %s\n" % (conf2.serial, conf2.confID, average, protein.vdw_pw[i1, i2], scaled, multi, mark))
                 open(fname, "w").writelines(lines)
 
     return
@@ -722,6 +723,7 @@ def compose_head3(protein):
             if conftype in natom_byconftype:  # there are cases CONNECT exists but conftype was commented out
                 natom_byconftype[conftype] += 1
 
+    serial = 1
     for res in protein.residue:
 
         # add dummy conformers
@@ -792,8 +794,9 @@ def compose_head3(protein):
                 mark = conf.mark  # inherit dummy mark from conformer
 
             head3lines.append("%05d %s %s %4.2f %6.3f %5d %5.2f %2d %2d %7.3f %7.3f %7.3f %7.3f %7.3f %7.3f %10s %s\n" % \
-              (iconf, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, dsolv, extra, history, mark))
-
+              (serial, confID, flag, occ, crg, em0, pka0, ne, nh, vdw0, vdw1, tors, epol, dsolv, extra, history, mark))
+            conf.serial = serial            
+            serial += 1
     open("head3.lst", "w").writelines(head3lines)
     return
 
@@ -910,9 +913,10 @@ if __name__ == "__main__":
     protein.calc_vdw()
     # For efficiency reason, the vdw pairwise table is a matrix protein.vdw_pw[conf1.i, conf2.i]
 
-    # Assemble output files
-    logging.info("Composing opp files ...")
-    compose_opp(protein, ele_matrix)
 
+    # Assemble output files, order sensitive as head3.lst subroutine will make serial for conformers later used by opp files
     logging.info("Composing head3.lst ...")
     compose_head3(protein)
+
+    logging.info("Composing opp files ...")
+    compose_opp(protein, ele_matrix)
