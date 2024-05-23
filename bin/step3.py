@@ -992,3 +992,6 @@ if __name__ == "__main__":
 
     logging.info("Composing opp files ...")
     compose_opp(protein, ele_matrix)
+
+    # Report where to find debug folder
+    logging.debug("PBE solver working directory for debugging is at %s" % pbe_folder)

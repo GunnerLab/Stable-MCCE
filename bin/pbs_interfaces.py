@@ -14,6 +14,20 @@ import sys
 class PBS_TEMPLATE:
     """
     Template interface. This serves as a template for writing your own interface.
+    
+    To test out this template, run this command in a working directory with step2_out.pdb file
+        step3.py -c 101 101 --fly --debug -s template
+    This command will
+    * calculate conformer 101, you can choose other number.
+    * calculate reference reaction field energy on the fly
+    * keep pbe solver working directory for debugging purpose
+    * call a dummy pbe solver named template
+
+    When writing interface, add a interface connection to step3.py around line 392.
+
+    The PBE solver working directory is saved and the location is reported at the end of step3.py.
+
+    The energy look up table is in energies/*.raw.
     """
 
     def __init__(self):
