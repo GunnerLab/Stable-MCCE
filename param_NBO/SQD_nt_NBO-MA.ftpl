@@ -603,6 +603,6 @@ RADIUS, SQD-1, " H62":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, SQD01:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -31.047, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
-CONFORMER, SQD02:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -32.713, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
-CONFORMER, SQD03:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -31.036, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
-CONFORMER, SQD-1:  Em0=0.0, pKa0=-1.86, ne=0, nH=-1, rxn02= 0, rxn04= -43.538, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs ) (pKa SulfonicAcid PubChem)
+CONFORMER, SQD02:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -32.897, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
+CONFORMER, SQD03:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04= -27.866, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs )
+CONFORMER, SQD-1:  Em0=0.0, pKa0=-1.86, ne=0, nH=-1, rxn02= 0, rxn04= -40.502, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal SQD with no Hs ) (pKa SulfonicAcid PubChem)

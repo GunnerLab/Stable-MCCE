@@ -15,7 +15,7 @@ CONFLIST, CLA: CLABK, CLA01
 # CLA01 is CLA neutral    ( Chlorophyll A )
 
 # Atom definition
-CONNECT, " MG ", CLA01: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, "MG  ", CLA01: sp3, " N1D", " N1A", " N1B", " N1C"
 CONNECT, " CHA", CLA01: sp2, " C4D", " CBD", " C1A"
 CONNECT, " CHB", CLA01: sp2, " C4A", " C1B", " HHB"         ##
 CONNECT, " CHC", CLA01: sp2, " C4B", " C1C", " HHC"         ##
@@ -23,7 +23,7 @@ CONNECT, " CHD", CLA01: sp2, " C1D", " C4C", " HHD"         ##
 CONNECT, " HHB", CLA01: s, " CHB" ##
 CONNECT, " HHC", CLA01: s, " CHC" ##
 CONNECT, " HHD", CLA01: s, " CHD" ##
-CONNECT, " N1A", CLA01: sp2, " C1A", " MG ", " C4A"
+CONNECT, " N1A", CLA01: sp2, " C1A", "MG  ", " C4A"
 CONNECT, " C1A", CLA01: sp2, " C2A", " CHA", " N1A"
 CONNECT, " C2A", CLA01: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
 CONNECT, " C3A", CLA01: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
@@ -43,7 +43,7 @@ CONNECT, "HAA1", CLA01: s, " CAA" ##
 CONNECT, "HAA2", CLA01: s, " CAA" ##
 CONNECT, "HBA1", CLA01: s, " CBA" ##
 CONNECT, "HBA2", CLA01: s, " CBA" ##
-CONNECT, " N1B", CLA01: sp2, " C1B", " MG ", " C4B"
+CONNECT, " N1B", CLA01: sp2, " C1B", "MG  ", " C4B"
 CONNECT, " C1B", CLA01: sp2, " CHB", " C2B", " N1B"
 CONNECT, " C2B", CLA01: sp2, " CMB", " C3B", " C1B"         ###
 CONNECT, " C3B", CLA01: sp2, " C2B", " CAB", " C4B"
@@ -57,7 +57,7 @@ CONNECT, "HMB2", CLA01: s, " CMB" #####
 CONNECT, "HMB3", CLA01: s, " CMB" #####
 CONNECT, "HBB1", CLA01: s, " CBB" #####
 CONNECT, "HBB3", CLA01: s, " CBB" #####
-CONNECT, " N1C", CLA01: sp2, " C1C", " C4C", " MG "
+CONNECT, " N1C", CLA01: sp2, " C1C", " C4C", "MG  "
 CONNECT, " C1C", CLA01: sp2, " C2C", " CHC", " N1C"
 CONNECT, " C2C", CLA01: sp2, " CMC", " C3C", " C1C"
 CONNECT, " C3C", CLA01: sp2, " CAC", " C4C", " C2C"
@@ -73,7 +73,7 @@ CONNECT, "HAC2", CLA01: s, " CAC" ##
 CONNECT, "HBC1", CLA01: s, " CBC" ##
 CONNECT, "HBC2", CLA01: s, " CBC" ##
 CONNECT, "HBC3", CLA01: s, " CBC" ##
-CONNECT, " N1D", CLA01: sp2, " C1D", " MG ", " C4D"
+CONNECT, " N1D", CLA01: sp2, " C1D", "MG  ", " C4D"
 CONNECT, " C1D", CLA01: sp2, " C2D", " N1D", " CHD"
 CONNECT, " C2D", CLA01: sp2, " CMD", " C3D", " C1D"
 CONNECT, " C3D", CLA01: sp2, " C2D", " CAD", " C4D"
@@ -95,7 +95,7 @@ CONNECT, "HED2", CLA01: s, " CED" ##
 CONNECT, "HED3", CLA01: s, " CED" ##
 
 # Atom charges
-CHARGE, CLA01, " MG ":  1.44331 
+CHARGE, CLA01, "MG  ":  1.44331 
 CHARGE, CLA01, " CHA": -0.07032
 CHARGE, CLA01, " CHB": -0.29239
 CHARGE, CLA01, " CHC": -0.2067 
@@ -176,7 +176,7 @@ CHARGE, CLA01, "HED3":  0.2187   ##
                                   # H-charge 0.48953 --> 0.48953/4 = 0.1223825
 
 # Atom radius, dielectric boundary radius, VDW radius, and energy well depth
-RADIUS,  CLA01,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CLA01,  "MG  ": 1.180,   2.000,   0.173
 RADIUS,  CLA01,  " CHA": 1.700,   2.000,   0.150
 RADIUS,  CLA01,  " CHB": 1.700,   2.000,   0.150
 RADIUS,  CLA01,  " CHC": 1.700,   2.000,   0.150
@@ -221,6 +221,39 @@ RADIUS,  CLA01,  " CGD": 1.700,   2.000,   0.150
 RADIUS,  CLA01,  " O1D": 1.520,   1.600,   0.200
 RADIUS,  CLA01,  " O2D": 1.520,   1.600,   0.200
 RADIUS,  CLA01,  " CED": 2.000,   2.000,   0.150
+RADIUS,  CLA01, " HHB":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " HHC":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " HHD":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMA1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMA2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMA3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " H2A":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " H3A":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HAA1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HAA2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBA1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBA2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " HBB":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMB1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMB2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMB3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBB1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBB3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMC1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMC2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMC3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HAC1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HAC2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBC1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBC2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HBC3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMD1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMD2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HMD3":  1.000,  1.000,  0.020
+RADIUS,  CLA01, " HBD":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HED1":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HED2":  1.000,  1.000,  0.020
+RADIUS,  CLA01, "HED3":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, CLA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -14.987, rxn08= 0 # Tested with LigandExpo Ideal PDB CLA with no Hs

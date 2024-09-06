@@ -32,7 +32,7 @@ CHARGE, CT101, " C4 ":  0.000
 CHARGE, CT101, " C5 ":  0.000
 CHARGE, CT101, " H11":  0.000 
 CHARGE, CT101, " H12":  0.000
-CHARGE, CT101, " H2" :  0.000
+CHARGE, CT101, " H2 ":  0.000
 CHARGE, CT101, " H41":  0.000
 CHARGE, CT101, " H42":  0.000
 CHARGE, CT101, " H43":  0.000
@@ -46,6 +46,15 @@ RADIUS,  CT101,  " C2 ": 1.700,   2.000,   0.150
 RADIUS,  CT101,  " C3 ": 1.700,   2.000,   0.150
 RADIUS,  CT101,  " C4 ": 2.000,   2.000,   0.150
 RADIUS,  CT101,  " C5 ": 2.000,   2.000,   0.150
+RADIUS, CT101, " H11":  1.000,  1.000,  0.020
+RADIUS, CT101, " H12":  1.000,  1.000,  0.020
+RADIUS, CT101, " H2 ":  1.000,  1.000,  0.020
+RADIUS, CT101, " H41":  1.000,  1.000,  0.020
+RADIUS, CT101, " H42":  1.000,  1.000,  0.020
+RADIUS, CT101, " H43":  1.000,  1.000,  0.020
+RADIUS, CT101, " H51":  1.000,  1.000,  0.020
+RADIUS, CT101, " H52":  1.000,  1.000,  0.020
+
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 # CONFORMER, CT10A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980

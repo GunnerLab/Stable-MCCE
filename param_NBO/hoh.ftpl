@@ -22,6 +22,13 @@ CHARGE, HOH01, " H2 ":  0.400
 RADIUS,  HOH01,  " O  ": 1.600,   1.600,   0.200
 RADIUS,  HOH01,  " H1 ": 1.000,   1.000,   0.020
 RADIUS,  HOH01,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH-1,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HOH-1,  " H1 ": 1.000,   1.000,   0.020
+RADIUS,  HOH-1,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HOH+1,  " H1 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " H3 ": 1.000,   1.000,   0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 CONFORMER, HOH01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -1.800, rxn04= -2.263, rxn08= -1.04

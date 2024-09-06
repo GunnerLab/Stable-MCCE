@@ -50,12 +50,22 @@ RADIUS,  CT201,  " C7 ": 2.000,   2.000,   0.150
 RADIUS,  CT201,  " C8 ": 2.000,   2.000,   0.150
 RADIUS,  CT201,  " C10": 2.000,   2.000,   0.150
 RADIUS,  CT201,  " C9 ": 2.000,   2.000,   0.150
+RADIUS, CT201, " H61":  1.000,  1.000,  0.020
+RADIUS, CT201, " H62":  1.000,  1.000,  0.020
+RADIUS, CT201, " H71":  1.000,  1.000,  0.020
+RADIUS, CT201, " H72":  1.000,  1.000,  0.020
+RADIUS, CT201, " H8 ":  1.000,  1.000,  0.020
+RADIUS, CT201, " H91":  1.000,  1.000,  0.020
+RADIUS, CT201, " H92":  1.000,  1.000,  0.020
+RADIUS, CT201, " H93":  1.000,  1.000,  0.020
+RADIUS, CT201, "H101":  1.000,  1.000,  0.020
+RADIUS, CT201, "H102":  1.000,  1.000,  0.020
 
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 # CONFORMER, CT20A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980
 # CONFORMER, CT20D: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -9.673, rxn08= -4.058
 # CONFORMER, CT20F: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -13.998, rxn04=-10.135, rxn08= -3.009
-
 CONFORMER, CT201: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.

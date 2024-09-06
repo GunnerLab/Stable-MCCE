@@ -11,7 +11,7 @@ CONFLIST, CT3: CT3BK, CT301
 
 # Atom definition
 CONNECT, " C11", CT301: sp3, " ?  ", " C12", "H111", "H112"
-CONNECT, " C13", CT301: sp3, " C12", " C14", " C15", " H13"
+CONNECT, " C13", CT301: sp3, " C12", " C14", " C15", "H13 "
 CONNECT, " C14", CT301: sp3, " C13", "H141", "H142", "H143"
 CONNECT, " C15", CT301: sp3, " C13", " ?  ", "H151", "H152"
 CONNECT, " C12", CT301: sp3, " C11", " C13", "H121", "H122"
@@ -51,7 +51,16 @@ RADIUS,  CT301,  " C13": 2.000,   2.000,   0.150
 RADIUS,  CT301,  " C14": 2.000,   2.000,   0.150
 RADIUS,  CT301,  " C15": 2.000,   2.000,   0.150
 RADIUS,  CT301,  " C12": 2.000,   2.000,   0.150
-
+RADIUS, CT301, "H111":  1.000,  1.000,  0.020
+RADIUS, CT301, "H112":  1.000,  1.000,  0.020
+RADIUS, CT301, "H121":  1.000,  1.000,  0.020
+RADIUS, CT301, "H122":  1.000,  1.000,  0.020
+RADIUS, CT301, "H13 ":  1.000,  1.000,  0.020
+RADIUS, CT301, "H141":  1.000,  1.000,  0.020
+RADIUS, CT301, "H142":  1.000,  1.000,  0.020
+RADIUS, CT301, "H143":  1.000,  1.000,  0.020
+RADIUS, CT301, "H151":  1.000,  1.000,  0.020
+RADIUS, CT301, "H152":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 # CONFORMER, CT30A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980

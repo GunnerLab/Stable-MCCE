@@ -14,7 +14,7 @@ CONFLIST, CL7: CL7BK, CL701
 # CL701 is CL7 neutral    ( Chlorophyll D )
 
 # Atom definition
-CONNECT, " MG ", CL701: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, "MG  ", CL701: sp3, " N1D", " N1A", " N1B", " N1C"
 CONNECT, " CHA", CL701: sp2, " C4D", " CBD", " C1A"
 CONNECT, " CHB", CL701: sp2, " C4A", " C1B", " HHB"         ##
 CONNECT, " CHC", CL701: sp2, " C4B", " C1C", " HHC"         ##
@@ -22,7 +22,7 @@ CONNECT, " CHD", CL701: sp2, " C1D", " C4C", " HHD"         ##
 CONNECT, " HHB", CL701: s, " CHB" ##
 CONNECT, " HHC", CL701: s, " CHC" ##
 CONNECT, " HHD", CL701: s, " CHD" ##
-CONNECT, " N1A", CL701: sp2, " C1A", " MG ", " C4A"
+CONNECT, " N1A", CL701: sp2, " C1A", "MG  ", " C4A"
 CONNECT, " C1A", CL701: sp2, " C2A", " CHA", " N1A"
 CONNECT, " C2A", CL701: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
 CONNECT, " C3A", CL701: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
@@ -42,7 +42,7 @@ CONNECT, "HAA1", CL701: s, " CAA" ##
 CONNECT, "HAA2", CL701: s, " CAA" ##
 CONNECT, "HBA1", CL701: s, " CBA" ##
 CONNECT, "HBA2", CL701: s, " CBA" ##
-CONNECT, " N1B", CL701: sp2, " C1B", " MG ", " C4B"
+CONNECT, " N1B", CL701: sp2, " C1B", "MG  ", " C4B"
 CONNECT, " C1B", CL701: sp2, " CHB", " C2B", " N1B"
 CONNECT, " C2B", CL701: sp2, " CMB", " C3B", " C1B"         ###
 CONNECT, " C3B", CL701: sp2, " C2B", " CAB", " C4B"
@@ -54,7 +54,7 @@ CONNECT, " HBB", CL701: s, " CAB" ##
 CONNECT, "HMB1", CL701: s, " CMB" #####
 CONNECT, "HMB2", CL701: s, " CMB" #####
 CONNECT, "HMB3", CL701: s, " CMB" #####
-CONNECT, " N1C", CL701: sp2, " C1C", " C4C", " MG "
+CONNECT, " N1C", CL701: sp2, " C1C", " C4C", "MG  "
 CONNECT, " C1C", CL701: sp2, " C2C", " CHC", " N1C"
 CONNECT, " C2C", CL701: sp2, " CMC", " C3C", " C1C"
 CONNECT, " C3C", CL701: sp2, " CAC", " C4C", " C2C"
@@ -70,7 +70,7 @@ CONNECT, "HAC2", CL701: s, " CAC" ##
 CONNECT, "HBC1", CL701: s, " CBC" ##
 CONNECT, "HBC2", CL701: s, " CBC" ##
 CONNECT, "HBC3", CL701: s, " CBC" ##
-CONNECT, " N1D", CL701: sp2, " C1D", " MG ", " C4D"
+CONNECT, " N1D", CL701: sp2, " C1D", "MG  ", " C4D"
 CONNECT, " C1D", CL701: sp2, " C2D", " N1D", " CHD"
 CONNECT, " C2D", CL701: sp2, " CMD", " C3D", " C1D"
 CONNECT, " C3D", CL701: sp2, " C2D", " CAD", " C4D"
@@ -92,7 +92,7 @@ CONNECT, "HED2", CL701: s, " CED" ##
 CONNECT, "HED3", CL701: s, " CED" ##
 
 # Atom charges
-CHARGE, CL701, " MG ":  1.41973 
+CHARGE, CL701, "MG  ":  1.41973 
 CHARGE, CL701, " CHA": -0.0901 
 CHARGE, CL701, " CHB": -0.31281
 CHARGE, CL701, " CHC": -0.22242
@@ -171,7 +171,7 @@ CHARGE, CL701, "HED3":  0.22492   ##
                                    # H-charge 0.50059 --> 0.50059/4 = 0.1251475                  
 
 # Atom radius, dielectric boundary radius, VDW radius, and energy well depth
-RADIUS,  CL701,  " MG ": 1.180,   2.000,   0.173
+RADIUS,  CL701,  "MG  ": 1.180,   2.000,   0.173
 RADIUS,  CL701,  " CHA": 1.700,   2.000,   0.150
 RADIUS,  CL701,  " CHB": 1.700,   2.000,   0.150
 RADIUS,  CL701,  " CHC": 1.700,   2.000,   0.150
@@ -216,6 +216,37 @@ RADIUS,  CL701,  " CGD": 1.700,   2.000,   0.150
 RADIUS,  CL701,  " O1D": 1.520,   1.600,   0.200
 RADIUS,  CL701,  " O2D": 1.520,   1.600,   0.200
 RADIUS,  CL701,  " CED": 2.000,   2.000,   0.150
+RADIUS,  CL701, " HHB":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HHC":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HHD":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA3":  1.000,  1.000,  0.020
+RADIUS,  CL701, " H2A":  1.000,  1.000,  0.020
+RADIUS,  CL701, " H3A":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HBB":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD3":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HBD":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED3":  1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 # CONFORMER, CL701: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -9.673, rxn08= -4.058

@@ -12,7 +12,7 @@ CONFLIST, CT4: CT4BK, CT401
 # Atom definition
 CONNECT, " C16", CT401: sp3, " ?  ", " C17", "H161", "H162"
 CONNECT, " C17", CT401: sp3, " C16", " C18", "H171", "H172"
-CONNECT, " C18", CT401: sp3, " C17", " C19", " C20", " H18"
+CONNECT, " C18", CT401: sp3, " C17", " C19", " C20", "H18 "
 CONNECT, " C19", CT401: sp3, " C18", "H191", "H192", "H193"
 CONNECT, " C20", CT401: sp3, " C18", "H201", "H202", "H203"
 CONNECT, "H161", CT401: s, " C16"
@@ -52,12 +52,22 @@ RADIUS,  CT401,  " C17": 2.000,   2.000,   0.150
 RADIUS,  CT401,  " C18": 2.000,   2.000,   0.150
 RADIUS,  CT401,  " C19": 2.000,   2.000,   0.150
 RADIUS,  CT401,  " C20": 2.000,   2.000,   0.150
-
+RADIUS, CT401,  "H161": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H162": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H171": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H172": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H18 ": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H191": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H192": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H193": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H201": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H202": 1.000,  1.000,  0.020
+RADIUS, CT401,  "H203": 1.000,  1.000,  0.020
 
 # Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
 # CONFORMER, CT40A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980
 # CONFORMER, CT40D: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -9.673, rxn08= -4.058
 # CONFORMER, CT40F: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -13.998, rxn04=-10.135, rxn08= -3.009
-
 CONFORMER, CT401: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+
 # Rotatable bonds. The atoms extended in the bond direction will all be rotated.
