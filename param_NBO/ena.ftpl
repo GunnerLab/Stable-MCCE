@@ -1,0 +1,42 @@
+# Values of the same key are appended and separated by ","
+CONFLIST, ENA: ENABK
+
+# Atom definition
+CONNECT, " N  ", ENABK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ENABK: s, " N  "
+CONNECT, " CA ", ENABK: sp3, " N  ", "1HA ", "2HA ", "CB  "
+CONNECT, "1HA ", ENABK: s, " CA "
+CONNECT, "2HA ", ENABK: s, " CA "
+CONNECT, " CB ", ENABK: sp3, " CA ", "1HA ", "2HA ", "OG1 "
+CONNECT, "1HB ", ENABK: s, " CB "
+CONNECT, "2HB ", ENABK: s, " CB "
+CONNECT, " OG1", ENABK: sp3, " CB ", "HG1 "
+CONNECT, " HG1", ENABK: s, " OG1"
+
+# Atom charges
+CHARGE, ENABK, " N  ": -0.470
+CHARGE, ENABK, " H  ":  0.310
+CHARGE, ENABK, " CA ": -0.020
+CHARGE, ENABK, "1HA ":  0.000
+CHARGE, ENABK, "2HA ":  0.000
+CHARGE, ENABK, " CB ":  0.050
+CHARGE, ENABK, "1HB ":  0.000
+CHARGE, ENABK, "2HB ":  0.000
+CHARGE, ENABK, " OG1": -0.660
+CHARGE, ENABK, " HG1": -0.430
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ENABK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ENABK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ENABK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ENABK,  "1HA ": 0.000,   1.000,   0.020
+RADIUS,  ENABK,  "2HA ": 0.000,   1.000,   0.020
+RADIUS,  ENABK,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ENABK,  "1HB ": 0.000,   1.000,   0.020
+RADIUS,  ENABK,  "2HB ": 0.000,   1.000,   0.020
+RADIUS,  ENABK,  " OG1": 0.000,   1.600,   0.200
+RADIUS,  ENABK,  " HG1": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

@@ -1,0 +1,37 @@
+>>>START of original comments, this file was converted from old format
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#23456789A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789I
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, HOH: HOHBK, HOH01, HOHDM
+
+# Atom definition
+CONNECT, " O  ", HOH01: sp3, " H1 ", " H2 "
+CONNECT, " H1 ", HOH01: s, " O  "
+CONNECT, " H2 ", HOH01: s, " O  "
+
+# Atom charges
+CHARGE, HOH01, " O  ": -0.834
+CHARGE, HOH01, " H1 ":  0.417
+CHARGE, HOH01, " H2 ":  0.417
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  HOH01,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HOH01,  " H1 ": 1.000,   1.000,   0.020
+RADIUS,  HOH01,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH-1,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HOH-1,  " H1 ": 1.000,   1.000,   0.020
+RADIUS,  HOH-1,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " O  ": 1.600,   1.600,   0.200
+RADIUS,  HOH+1,  " H1 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " H2 ": 1.000,   1.000,   0.020
+RADIUS,  HOH+1,  " H3 ": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, HOH01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -1.800, rxn04= -2.263, rxn08= -1.04
+CONFORMER, HOHDM: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

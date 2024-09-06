@@ -1,0 +1,113 @@
+# Conformer definition
+CONFLIST, T3V: T3VBK, T3V01, T3VDM
+
+# ATOM name and bonds
+CONNECT, " N1 ", T3V01:  sp2, " C7 "," C8 "," C10"
+CONNECT, " C4 ", T3V01:  sp2, " C5 "," C3 "," H3 "
+CONNECT, " C5 ", T3V01:  sp2, " C4 "," C  "," S  "
+CONNECT, " C6 ", T3V01:  sp3, " C7 "," N  "," H5 "," H4 "
+CONNECT, " C7 ", T3V01:  sp3, " N1 "," C6 "," H7 "," H6 "
+CONNECT, " C8 ", T3V01:  sp3, " N1 "," C9 "," H9 "," H8 "
+CONNECT, " C10", T3V01:  sp2, " N1 "," C11"," O2 "
+CONNECT, " N  ", T3V01:  sp2, " C6 "," C9 "," S  "
+CONNECT, " C  ", T3V01:  sp2, " C5 "," C1 "," F  "
+CONNECT, " O  ", T3V01:  sp3, " S  "
+CONNECT, " C1 ", T3V01:  sp2, " C  "," C2 "," H  "
+CONNECT, " C11", T3V01:  sp3, " C10"," H14"," H12"," H13"
+CONNECT, " C2 ", T3V01:  sp2, " C1 "," C3 "," H1 "
+CONNECT, " C3 ", T3V01:  sp2, " C4 "," C2 "," H2 "
+CONNECT, " C9 ", T3V01:  sp3, " C8 "," N  "," H11"," H10"
+CONNECT, " F  ", T3V01:     , " C  "
+CONNECT, " O1 ", T3V01:  sp3, " S  "
+CONNECT, " O2 ", T3V01:  sp3, " C10"
+CONNECT, " S  ", T3V01:  sp3, " C5 "," N  "," O  "," O1 "
+CONNECT, " H3 ", T3V01:    s, " C4 "
+CONNECT, " H5 ", T3V01:    s, " C6 "
+CONNECT, " H4 ", T3V01:    s, " C6 "
+CONNECT, " H7 ", T3V01:    s, " C7 "
+CONNECT, " H6 ", T3V01:    s, " C7 "
+CONNECT, " H9 ", T3V01:    s, " C8 "
+CONNECT, " H8 ", T3V01:    s, " C8 "
+CONNECT, " H  ", T3V01:    s, " C1 "
+CONNECT, " H14", T3V01:    s, " C11"
+CONNECT, " H12", T3V01:    s, " C11"
+CONNECT, " H13", T3V01:    s, " C11"
+CONNECT, " H1 ", T3V01:    s, " C2 "
+CONNECT, " H2 ", T3V01:    s, " C3 "
+CONNECT, " H11", T3V01:    s, " C9 "
+CONNECT, " H10", T3V01:    s, " C9 "
+
+# ATOM charges
+CHARGE, T3V01, " N1 ":   -0.47
+CHARGE, T3V01, " C4 ":   -0.01
+CHARGE, T3V01, " C5 ":    -0.4
+CHARGE, T3V01, " C6 ":     0.2
+CHARGE, T3V01, " C7 ":    0.07
+CHARGE, T3V01, " C8 ":    0.07
+CHARGE, T3V01, " C10":    0.66
+CHARGE, T3V01, " N  ":   -0.81
+CHARGE, T3V01, " C  ":    0.24
+CHARGE, T3V01, " O  ":   -0.64
+CHARGE, T3V01, " C1 ":   -0.19
+CHARGE, T3V01, " C11":   -0.17
+CHARGE, T3V01, " C2 ":   -0.05
+CHARGE, T3V01, " C3 ":   -0.17
+CHARGE, T3V01, " C9 ":     0.2
+CHARGE, T3V01, " F  ":   -0.13
+CHARGE, T3V01, " O1 ":   -0.64
+CHARGE, T3V01, " O2 ":    -0.6
+CHARGE, T3V01, " S  ":    1.51
+CHARGE, T3V01, " H3 ":    0.17
+CHARGE, T3V01, " H5 ":    0.06
+CHARGE, T3V01, " H4 ":    0.06
+CHARGE, T3V01, " H7 ":    0.06
+CHARGE, T3V01, " H6 ":    0.06
+CHARGE, T3V01, " H9 ":    0.06
+CHARGE, T3V01, " H8 ":    0.06
+CHARGE, T3V01, " H  ":    0.16
+CHARGE, T3V01, " H14":    0.07
+CHARGE, T3V01, " H12":    0.07
+CHARGE, T3V01, " H13":    0.07
+CHARGE, T3V01, " H1 ":    0.14
+CHARGE, T3V01, " H2 ":    0.15
+CHARGE, T3V01, " H11":    0.06
+CHARGE, T3V01, " H10":    0.06
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, T3V01, " N1 ":  1.500,  1.750,  0.160
+RADIUS, T3V01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C10":  1.700,  2.000,  0.150
+RADIUS, T3V01, " N  ":  1.500,  1.750,  0.160
+RADIUS, T3V01, " C  ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " O  ":  1.400,  1.600,  0.200
+RADIUS, T3V01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C11":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, T3V01, " F  ":  1.850,  2.000,  0.173
+RADIUS, T3V01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, T3V01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, T3V01, " S  ":  1.850,  2.000,  0.200
+RADIUS, T3V01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H  ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H14":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H12":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H13":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H11":  1.000,  1.000,  0.020
+RADIUS, T3V01, " H10":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, T3V01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -13.312, rxn04= -6.390, rxn08= -2.946

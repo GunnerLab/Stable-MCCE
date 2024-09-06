@@ -1,0 +1,256 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 05/11/2022
+
+# Guassian Calculation was done without the tail, such that O2A is connected to H instead of C1
+# Therefore the H charge was partioned evenly onto atoms HBA1, HBA2, HAA1 and HAA2
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CL7: CL7BK, CL701
+# CL701 is CL7 neutral    ( Chlorophyll D )
+
+# Atom definition
+CONNECT, "MG  ", CL701: sp3, " N1D", " N1A", " N1B", " N1C"
+CONNECT, " CHA", CL701: sp2, " C4D", " CBD", " C1A"
+CONNECT, " CHB", CL701: sp2, " C4A", " C1B", " HHB"         ##
+CONNECT, " CHC", CL701: sp2, " C4B", " C1C", " HHC"         ##
+CONNECT, " CHD", CL701: sp2, " C1D", " C4C", " HHD"         ##
+CONNECT, " HHB", CL701: s, " CHB" ##
+CONNECT, " HHC", CL701: s, " CHC" ##
+CONNECT, " HHD", CL701: s, " CHD" ##
+CONNECT, " N1A", CL701: sp2, " C1A", "MG  ", " C4A"
+CONNECT, " C1A", CL701: sp2, " C2A", " CHA", " N1A"
+CONNECT, " C2A", CL701: sp3, " CAA", " C3A", " C1A", " H2A" ##    sp2-hybrid
+CONNECT, " C3A", CL701: sp3, " C2A", " CMA", " C4A", " H3A" ##    sp2-hybrid
+CONNECT, " C4A", CL701: sp2, " N1A", " C3A", " CHB"
+CONNECT, " CMA", CL701: sp3, " C3A", "HMA1", "HMA2", "HMA3" ##    s-hybrid
+CONNECT, " CAA", CL701: sp3, " CBA", " C2A", "HAA1", "HAA2" ##    sp2-hybrid
+CONNECT, " CBA", CL701: sp3, " CGA", " CAA", "HBA1", "HBA2" ##    sp2-hybrid
+CONNECT, " CGA", CL701: sp2, " O2A", " O1A", " CBA"
+CONNECT, " O1A", CL701: sp2, " CGA"
+CONNECT, " O2A", CL701: sp3, " ?  ", " CGA" # ? = C1
+CONNECT, "HMA1", CL701: s, " CMA" ##
+CONNECT, "HMA2", CL701: s, " CMA" ##
+CONNECT, "HMA3", CL701: s, " CMA" ##
+CONNECT, " H2A", CL701: s, " C2A" ##
+CONNECT, " H3A", CL701: s, " C3A" ##
+CONNECT, "HAA1", CL701: s, " CAA" ##
+CONNECT, "HAA2", CL701: s, " CAA" ##
+CONNECT, "HBA1", CL701: s, " CBA" ##
+CONNECT, "HBA2", CL701: s, " CBA" ##
+CONNECT, " N1B", CL701: sp2, " C1B", "MG  ", " C4B"
+CONNECT, " C1B", CL701: sp2, " CHB", " C2B", " N1B"
+CONNECT, " C2B", CL701: sp2, " CMB", " C3B", " C1B"         ###
+CONNECT, " C3B", CL701: sp2, " C2B", " CAB", " C4B"
+CONNECT, " C4B", CL701: sp2, " C3B", " N1B", " CHC"
+CONNECT, " CMB", CL701: sp3, " C2B", "HMB1", "HMB2", "HMB3" ##### s-hybrid
+CONNECT, " CAB", CL701: sp2, " OBB", " C3B", " HBB"         ###
+CONNECT, " OBB", CL701: sp2, " CAB"                           ##### s-hybrid
+CONNECT, " HBB", CL701: s, " CAB" ##
+CONNECT, "HMB1", CL701: s, " CMB" #####
+CONNECT, "HMB2", CL701: s, " CMB" #####
+CONNECT, "HMB3", CL701: s, " CMB" #####
+CONNECT, " N1C", CL701: sp2, " C1C", " C4C", "MG  "
+CONNECT, " C1C", CL701: sp2, " C2C", " CHC", " N1C"
+CONNECT, " C2C", CL701: sp2, " CMC", " C3C", " C1C"
+CONNECT, " C3C", CL701: sp2, " CAC", " C4C", " C2C"
+CONNECT, " C4C", CL701: sp2, " C3C", " CHD", " N1C"
+CONNECT, " CMC", CL701: sp3, " C2C", "HMC1", "HMC2", "HMC3" ##    s-hybrid
+CONNECT, " CAC", CL701: sp3, " CBC", " C3C", "HAC1", "HAC2" ##    s-hybrid
+CONNECT, " CBC", CL701: sp3, " CAC", "HBC1", "HBC2", "HBC3" ##    s-hybrid
+CONNECT, "HMC1", CL701: s, " CMC" ##
+CONNECT, "HMC2", CL701: s, " CMC" ##
+CONNECT, "HMC3", CL701: s, " CMC" ##
+CONNECT, "HAC1", CL701: s, " CAC" ##
+CONNECT, "HAC2", CL701: s, " CAC" ##
+CONNECT, "HBC1", CL701: s, " CBC" ##
+CONNECT, "HBC2", CL701: s, " CBC" ##
+CONNECT, "HBC3", CL701: s, " CBC" ##
+CONNECT, " N1D", CL701: sp2, " C1D", "MG  ", " C4D"
+CONNECT, " C1D", CL701: sp2, " C2D", " N1D", " CHD"
+CONNECT, " C2D", CL701: sp2, " CMD", " C3D", " C1D"
+CONNECT, " C3D", CL701: sp2, " C2D", " CAD", " C4D"
+CONNECT, " C4D", CL701: sp2, " C3D", " N1D", " CHA"
+CONNECT, " CMD", CL701: sp3, " C2D", "HMD1", "HMD2", "HMD3" ##    s-hybrid
+CONNECT, " CAD", CL701: sp2, " OBD", " CBD", " C3D"
+CONNECT, " OBD", CL701: sp2, " CAD"
+CONNECT, " CBD", CL701: sp3, " CAD", " CGD", " CHA", " HBD" ##    sp2-hybrid
+CONNECT, " CGD", CL701: sp2, " O1D", " O2D", " CBD"
+CONNECT, " O1D", CL701: sp2, " CGD"
+CONNECT, " O2D", CL701: sp3, " CED", " CGD"
+CONNECT, " CED", CL701: sp3, " O2D", "HED1", "HED2", "HED3" ##    s-hybrid
+CONNECT, "HMD1", CL701: s, " CMD" ##
+CONNECT, "HMD2", CL701: s, " CMD" ##
+CONNECT, "HMD3", CL701: s, " CMD" ##
+CONNECT, " HBD", CL701: s, " CBD" ##
+CONNECT, "HED1", CL701: s, " CED" ##
+CONNECT, "HED2", CL701: s, " CED" ##
+CONNECT, "HED3", CL701: s, " CED" ##
+
+# Atom charges
+CHARGE, CL701, "MG  ":  1.41973 
+CHARGE, CL701, " CHA": -0.0901 
+CHARGE, CL701, " CHB": -0.31281
+CHARGE, CL701, " CHC": -0.22242
+CHARGE, CL701, " CHD": -0.2169 
+CHARGE, CL701, " HHB":  0.2386   ##
+CHARGE, CL701, " HHC":  0.26938  ##
+CHARGE, CL701, " HHD":  0.24104  ##
+CHARGE, CL701, " N1A": -0.6164 
+CHARGE, CL701, " C1A":  0.23581 
+CHARGE, CL701, " C2A": -0.28609
+CHARGE, CL701, " C3A": -0.28031
+CHARGE, CL701, " C4A":  0.2305  
+CHARGE, CL701, " CMA": -0.66582
+CHARGE, CL701, " CAA": -0.44662
+CHARGE, CL701, " CBA": -0.5692 
+CHARGE, CL701, " CGA":  0.83417 
+CHARGE, CL701, " O1A": -0.61893  ### -0.61293 - 0.006 =  -0.61893 Step2 Excess Charge Compensation
+CHARGE, CL701, " O2A": -0.70634  ##
+CHARGE, CL701, "HMA1":  0.23528  ##
+CHARGE, CL701, "HMA2":  0.24143  ##
+CHARGE, CL701, "HMA3":  0.23459  ##
+CHARGE, CL701, " H2A":  0.2763   ##
+CHARGE, CL701, " H3A":  0.25017  ##
+CHARGE, CL701, "HAA1":  0.38090  ### 0.25575 + 0.1251475 = 0.3808975
+CHARGE, CL701, "HAA2":  0.36928  ### 0.24413 + 0.1251475 = 0.3692775
+CHARGE, CL701, "HBA1":  0.39878  ### 0.27363 + 0.1251475 = 0.3987775
+CHARGE, CL701, "HBA2":  0.38205  ### 0.25690 + 0.1251475 = 0.3820475
+CHARGE, CL701, " N1B": -0.67183
+CHARGE, CL701, " C1B":  0.18877 
+CHARGE, CL701, " C2B":  0.007   
+CHARGE, CL701, " C3B": -0.17687
+CHARGE, CL701, " C4B":  0.18274 
+CHARGE, CL701, " CMB": -0.70382
+CHARGE, CL701, " CAB":  0.38297   # 
+CHARGE, CL701, " OBB": -0.54886  #  
+CHARGE, CL701, " HBB":  0.14397   ##
+CHARGE, CL701, "HMB1":  0.25057   ##
+CHARGE, CL701, "HMB2":  0.2506    ##
+CHARGE, CL701, "HMB3":  0.24485   ##
+CHARGE, CL701, " N1C": -0.66124
+CHARGE, CL701, " C1C":  0.17724 
+CHARGE, CL701, " C2C": -0.03614
+CHARGE, CL701, " C3C": -0.04325
+CHARGE, CL701, " C4C":  0.17148 
+CHARGE, CL701, " CMC": -0.6993 
+CHARGE, CL701, " CAC": -0.47647
+CHARGE, CL701, " CBC": -0.66482
+CHARGE, CL701, "HMC1":  0.2492    ##
+CHARGE, CL701, "HMC2":  0.25016   ##
+CHARGE, CL701, "HMC3":  0.2396    ##
+CHARGE, CL701, "HAC1":  0.23906   ##
+CHARGE, CL701, "HAC2":  0.2431    ##
+CHARGE, CL701, "HBC1":  0.23128   ##
+CHARGE, CL701, "HBC2":  0.22852   ##
+CHARGE, CL701, "HBC3":  0.23074   ##
+CHARGE, CL701, " N1D": -0.67984
+CHARGE, CL701, " C1D":  0.15248 
+CHARGE, CL701, " C2D":  0.02578 
+CHARGE, CL701, " C3D": -0.18649
+CHARGE, CL701, " C4D":  0.23644 
+CHARGE, CL701, " CMD": -0.70542
+CHARGE, CL701, " CAD":  0.58411 
+CHARGE, CL701, " OBD": -0.53036
+CHARGE, CL701, " CBD": -0.43335
+CHARGE, CL701, " CGD":  0.83451 
+CHARGE, CL701, " O1D": -0.60823
+CHARGE, CL701, " O2D": -0.53309
+CHARGE, CL701, " CED": -0.32306
+CHARGE, CL701, "HMD1":  0.24676   ##
+CHARGE, CL701, "HMD2":  0.24893   ##
+CHARGE, CL701, "HMD3":  0.2639    ##
+CHARGE, CL701, " HBD":  0.30465   ##
+CHARGE, CL701, "HED1":  0.2215    ##
+CHARGE, CL701, "HED2":  0.21453   ##
+CHARGE, CL701, "HED3":  0.22492   ##
+                                   # H-charge 0.50059 --> 0.50059/4 = 0.1251475                  
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CL701,  "MG  ": 1.180,   2.000,   0.173
+RADIUS,  CL701,  " CHA": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CHB": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CHC": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CHD": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " N1A": 1.550,   1.750,   0.160
+RADIUS,  CL701,  " C1A": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C2A": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " C3A": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " C4A": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CMA": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CAA": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CBA": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CGA": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " O1A": 1.520,   1.600,   0.200
+RADIUS,  CL701,  " O2A": 1.520,   1.600,   0.200
+RADIUS,  CL701,  " N1B": 1.550,   1.750,   0.160
+RADIUS,  CL701,  " C1B": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C2B": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C3B": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C4B": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CMB": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CAB": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " OBB": 1.520,   1.600,   0.200  # 1.700,  2.000,  0.150
+RADIUS,  CL701,  " N1C": 1.550,   1.750,   0.160
+RADIUS,  CL701,  " C1C": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C2C": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C3C": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C4C": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CMC": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CAC": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CBC": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " N1D": 1.550,   1.750,   0.160
+RADIUS,  CL701,  " C1D": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C2D": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C3D": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " C4D": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " CMD": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CAD": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " OBD": 1.520,   1.600,   0.200
+RADIUS,  CL701,  " CBD": 2.000,   2.000,   0.150
+RADIUS,  CL701,  " CGD": 1.700,   2.000,   0.150
+RADIUS,  CL701,  " O1D": 1.520,   1.600,   0.200
+RADIUS,  CL701,  " O2D": 1.520,   1.600,   0.200
+RADIUS,  CL701,  " CED": 2.000,   2.000,   0.150
+RADIUS,  CL701, " HHB":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HHC":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HHD":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMA3":  1.000,  1.000,  0.020
+RADIUS,  CL701, " H2A":  1.000,  1.000,  0.020
+RADIUS,  CL701, " H3A":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBA1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBA2":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HBB":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMB3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMC3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HAC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HBC3":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HMD3":  1.000,  1.000,  0.020
+RADIUS,  CL701, " HBD":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED1":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED2":  1.000,  1.000,  0.020
+RADIUS,  CL701, "HED3":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+# CONFORMER, CL701: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -9.673, rxn08= -4.058
+CONFORMER, CL701: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -15.071, rxn08= 0 # Muhamed Truncated NBO  (Tested with LigandExpo Ideal CL7 with no Hs) 
+# CONFORMER, CL701: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -25.375, rxn08= 0 # Muhamed Truncated NBO  (Tested with CHLD with no Hs and no C1)
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

@@ -1,0 +1,110 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+# File Created by Gehan Ranepura on 09/12/2023
+
+# Guassian Calculation was done with the sqd tail, but atoms of the tail were set to 0 in the sqd head group topology file (SQD_nt_NBO.ftpl)
+# Additonal Hs were added to C8 (HC83) and C24 (H243) after running DFT
+# pKa of sqd-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, sqd: sqdBK
+
+# ATOM name and bonds
+CONNECT, " C9 ", sqdBK:  sp3, " ?  ", " C10"
+CONNECT, " C10", sqdBK:  sp3, " C9 ", " C11"
+CONNECT, " C11", sqdBK:  sp3, " C10", " C12"
+CONNECT, " C12", sqdBK:  sp3, " C11", " C13"
+CONNECT, " C13", sqdBK:  sp3, " C12", " C14"
+CONNECT, " C14", sqdBK:  sp3, " C13", " C15"
+CONNECT, " C15", sqdBK:  sp3, " C14", " C16"
+CONNECT, " C16", sqdBK:  sp3, " C15", " C17"
+CONNECT, " C17", sqdBK:  sp3, " C16", " C18"
+CONNECT, " C18", sqdBK:  sp3, " C17", " C19"       
+CONNECT, " C19", sqdBK:  sp3, " C18", " C20"
+CONNECT, " C20", sqdBK:  sp3, " C19", " C21"
+CONNECT, " C21", sqdBK:  sp3, " C20", " C22"
+CONNECT, " C22", sqdBK:  sp3, " C21"
+
+CONNECT, " C25", sqdBK:  sp3, " ?  ", " C26"
+CONNECT, " C26", sqdBK:  sp3, " C25", " C27"
+CONNECT, " C27", sqdBK:  sp3, " C26", " C28"
+CONNECT, " C28", sqdBK:  sp3, " C27", " C29"
+CONNECT, " C29", sqdBK:  sp3, " C28", " C30"
+CONNECT, " C30", sqdBK:  sp3, " C29", " C31"
+CONNECT, " C31", sqdBK:  sp3, " C30", " C32"
+CONNECT, " C32", sqdBK:  sp3, " C31", " C33"
+CONNECT, " C33", sqdBK:  sp3, " C32", " C34"
+CONNECT, " C34", sqdBK:  sp3, " C33", " C35"
+CONNECT, " C35", sqdBK:  sp3, " C34", " C36"
+CONNECT, " C36", sqdBK:  sp3, " C35", " C37"
+CONNECT, " C37", sqdBK:  sp3, " C36", " C38"
+CONNECT, " C38", sqdBK:  sp3, " C37"
+
+
+# ATOM charges
+CHARGE, sqdBK, " C9 ":  0.000
+CHARGE, sqdBK, " C10":  0.000 
+CHARGE, sqdBK, " C11":  0.000
+CHARGE, sqdBK, " C12":  0.000
+CHARGE, sqdBK, " C13":  0.000
+CHARGE, sqdBK, " C14":  0.000
+CHARGE, sqdBK, " C15":  0.000
+CHARGE, sqdBK, " C16":  0.000
+CHARGE, sqdBK, " C17":  0.000
+CHARGE, sqdBK, " C18":  0.000
+CHARGE, sqdBK, " C19":  0.000
+CHARGE, sqdBK, " C20":  0.000
+CHARGE, sqdBK, " C21":  0.000
+CHARGE, sqdBK, " C22":  0.000
+  
+CHARGE, sqdBK, " C25":  0.000
+CHARGE, sqdBK, " C26":  0.000
+CHARGE, sqdBK, " C27":  0.000
+CHARGE, sqdBK, " C28":  0.000
+CHARGE, sqdBK, " C29":  0.000
+CHARGE, sqdBK, " C30":  0.000
+CHARGE, sqdBK, " C31":  0.000
+CHARGE, sqdBK, " C32":  0.000
+CHARGE, sqdBK, " C33":  0.000
+CHARGE, sqdBK, " C34":  0.000
+CHARGE, sqdBK, " C35":  0.000
+CHARGE, sqdBK, " C36":  0.000
+CHARGE, sqdBK, " C37":  0.000
+CHARGE, sqdBK, " C38":  0.000 
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, sqdBK, " C9 ":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C10":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C11":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C12":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C13":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C14":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C15":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C16":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C17":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C18":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C19":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C20":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C21":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C22":  1.700,  2.000,  0.150
+
+RADIUS, sqdBK, " C25":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C26":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C27":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C28":  1.700,  2.000,  0.150 
+RADIUS, sqdBK, " C29":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C30":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C31":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C32":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C33":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C34":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C35":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C36":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C37":  1.700,  2.000,  0.150
+RADIUS, sqdBK, " C38":  1.700,  2.000,  0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, sqdBK:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04=0, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal sqd with no Hs)

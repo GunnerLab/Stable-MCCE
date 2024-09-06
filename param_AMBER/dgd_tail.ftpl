@@ -1,0 +1,121 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 09/19/2022
+
+# Guassian Calculation was done with the dgd tail, but atoms of the tail were set to 0 in the dgd head group topology file (dgd_nt_NBO.ftpl)
+# Additonal Hs were added to C8 (HC83) and C24 (H243) after running DFT
+# pKa of dgd-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, dgd: dgdBK
+
+# ATOM name and bonds
+CONNECT, " C3A", dgdBK:  sp3, " C4A"
+CONNECT, " C3B", dgdBK:  sp3, " C4B"
+CONNECT, " C4A", dgdBK:  sp3, " C3A", " C5A"
+CONNECT, " C4B", dgdBK:  sp3, " C3B", " C5B"
+CONNECT, " C5A", dgdBK:  sp3, " C4A", " C6A"
+CONNECT, " C5B", dgdBK:  sp3, " C4B", " C6B"
+CONNECT, " C6A", dgdBK:  sp3, " C5A", " C7A"
+CONNECT, " C6B", dgdBK:  sp3, " C5B", " C7B"
+CONNECT, " C7A", dgdBK:  sp3, " C6A", " C8A"       
+CONNECT, " C7B", dgdBK:  sp3, " C6B", " C8B"
+CONNECT, " C8A", dgdBK:  sp3, " C7A", " C9A"
+CONNECT, " C8B", dgdBK:  sp3, " C7B", " C9B"
+CONNECT, " C9A", dgdBK:  sp2, " C8A", " CAA"
+CONNECT, " C9B", dgdBK:  sp2, " C8B", " CAB"
+CONNECT, " CAA", dgdBK:  sp3, " C9A", " CBA"
+CONNECT, " CAB", dgdBK:  sp3, " C9B", " CBB"
+CONNECT, " CBA", dgdBK:  sp3, " CAA", " CCA"
+CONNECT, " CBB", dgdBK:  sp3, " CAB", " CCB"
+CONNECT, " CCA", dgdBK:  sp3, " CBA", " CDA"
+CONNECT, " CCB", dgdBK:  sp3, " CBB", " CDB"
+CONNECT, " CDA", dgdBK:  sp3, " CCA", " CEA"
+CONNECT, " CDB", dgdBK:  sp3, " CCB", " CEB"
+CONNECT, " CEA", dgdBK:  sp3, " CDA", " CFA"
+CONNECT, " CEB", dgdBK:  sp3, " CDB", " CFB"
+CONNECT, " CFA", dgdBK:  sp3, " CEA", " CGA"
+CONNECT, " CFB", dgdBK:  sp3, " CEB", " CGB"
+CONNECT, " CGA", dgdBK:  sp2, " CFA", " CHA"
+CONNECT, " CGB", dgdBK:  sp2, " CFB", " CHB"
+CONNECT, " CHA", dgdBK:  sp3, " CGA", " CIA"
+CONNECT, " CHB", dgdBK:  sp3, " CGB", " CIB"
+CONNECT, " CIA", dgdBK:  sp3, " CHA"
+CONNECT, " CIB", dgdBK:  sp3, " CHB"
+
+# ATOM charges
+CHARGE, dgdBK, " C3A":  0.000 
+CHARGE, dgdBK, " C3B":  0.000
+CHARGE, dgdBK, " C4A":  0.000
+CHARGE, dgdBK, " C4B":  0.000
+CHARGE, dgdBK, " C5A":  0.000
+CHARGE, dgdBK, " C5B":  0.000
+CHARGE, dgdBK, " C6A":  0.000
+CHARGE, dgdBK, " C6B":  0.000
+CHARGE, dgdBK, " C7A":  0.000
+CHARGE, dgdBK, " C7B":  0.000
+CHARGE, dgdBK, " C8A":  0.000
+CHARGE, dgdBK, " C8B":  0.000
+CHARGE, dgdBK, " C9A":  0.000  
+CHARGE, dgdBK, " C9B":  0.000
+CHARGE, dgdBK, " CAA":  0.000
+CHARGE, dgdBK, " CAB":  0.000
+CHARGE, dgdBK, " CBA":  0.000
+CHARGE, dgdBK, " CBB":  0.000
+CHARGE, dgdBK, " CCA":  0.000
+CHARGE, dgdBK, " CCB":  0.000
+CHARGE, dgdBK, " CDA":  0.000
+CHARGE, dgdBK, " CDB":  0.000
+CHARGE, dgdBK, " CEA":  0.000
+CHARGE, dgdBK, " CEB":  0.000
+CHARGE, dgdBK, " CFA":  0.000
+CHARGE, dgdBK, " CFB":  0.000
+CHARGE, dgdBK, " CGA":  0.000 
+CHARGE, dgdBK, " CGB":  0.000
+CHARGE, dgdBK, " CHA":  0.000
+CHARGE, dgdBK, " CHB":  0.000
+CHARGE, dgdBK, " CIA":  0.000
+CHARGE, dgdBK, " CIB":  0.000
+
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, dgdBK, " C3A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C3B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C4A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C4B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C5A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C5B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C6A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C6B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C7A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C7B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C8A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C8B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C9A":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " C9B":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CAA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CAB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CBA":  1.700,  2.000,  0.150 
+RADIUS, dgdBK, " CBB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CCA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CCB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CDA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CDB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CEA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CEB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CFA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CFB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CGA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CGB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CHA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CHB":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CIA":  1.700,  2.000,  0.150
+RADIUS, dgdBK, " CIB":  1.700,  2.000,  0.150
+
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, dgdBK:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04=0, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal dgd with no Hs)

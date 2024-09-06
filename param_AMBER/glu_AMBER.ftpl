@@ -1,0 +1,143 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023 - Glutamic Acid
+# 1.Basic Conformer Information: name, pka, em, rxn.
+#RXN      GLU01      -5.958
+#RXN      GLU02      -6.05
+#RXN      GLU-1      -22.695
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, GLU: GLUBK, GLU01, GLU02, GLU-1
+
+# Atom definition
+CONNECT, " N  ", GLUBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", GLUBK: s,   " N  "
+CONNECT, " CA ", GLUBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", GLUBK: s,   " CA "
+CONNECT, " C  ", GLUBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", GLUBK: sp2, " C  "
+CONNECT, " CB ", GLU01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU01: s,   " CB "
+CONNECT, " HB3", GLU01: s,   " CB "
+CONNECT, " CG ", GLU01: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU01: s,   " CG "
+CONNECT, " HG3", GLU01: s,   " CG "
+CONNECT, " CD ", GLU01: sp2, " CG ", " OE1", " OE2"
+CONNECT, " OE1", GLU01: sp3, " CD ", " HE1"
+CONNECT, " HE1", GLU01: s,   " OE1"
+CONNECT, " OE2", GLU01: s,   " CD "
+CONNECT, " CB ", GLU02: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU02: s,   " CB "
+CONNECT, " HB3", GLU02: s,   " CB "
+CONNECT, " CG ", GLU02: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU02: s,   " CG "
+CONNECT, " HG3", GLU02: s,   " CG "
+CONNECT, " CD ", GLU02: sp2, " CG ", " OE1", " OE2"
+CONNECT, " OE1", GLU02: s,   " CD "
+CONNECT, " OE2", GLU02: sp3, " CD ", " HE2"
+CONNECT, " HE2", GLU02: sp3, " OE2"
+CONNECT, " CB ", GLU-1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", GLU-1: s,   " CB "
+CONNECT, " HB3", GLU-1: s,   " CB "
+CONNECT, " CG ", GLU-1: sp3, " CB ", " CD ", " HG2", " HG3"
+CONNECT, " HG2", GLU-1: s,   " CG "
+CONNECT, " HG3", GLU-1: s,   " CG "
+CONNECT, " CD ", GLU-1: sp2, " CG ", " OE1", " OE2"
+CONNECT, " OE1", GLU-1: sp2, " CD "
+CONNECT, " OE2", GLU-1: sp2, " CD "
+
+# Atom charges
+CHARGE, GLUBK, " N  ": -0.388
+CHARGE, GLUBK, " H  ":  0.301
+CHARGE, GLUBK, " CA ":  0.001
+CHARGE, GLUBK, " HA ":  0.103
+CHARGE, GLUBK, " C  ":  0.544
+CHARGE, GLUBK, " O  ": -0.562
+CHARGE, GLU01, " CB ": -0.024
+CHARGE, GLU01, " HB2":  0.030
+CHARGE, GLU01, " HB3":  0.030
+CHARGE, GLU01, " CG ": -0.043
+CHARGE, GLU01, " HG2":  0.044
+CHARGE, GLU01, " HG3":  0.044
+CHARGE, GLU01, " CD ":  0.634
+CHARGE, GLU01, " OE1": -0.564
+CHARGE, GLU01, " HE1":  0.443
+CHARGE, GLU01, " OE2": -0.594
+CHARGE, GLU02, " CB ": -0.024
+CHARGE, GLU02, " HB2":  0.030
+CHARGE, GLU02, " HB3":  0.030
+CHARGE, GLU02, " CG ": -0.043
+CHARGE, GLU02, " HG2":  0.044
+CHARGE, GLU02, " HG3":  0.044
+CHARGE, GLU02, " CD ":  0.634
+CHARGE, GLU02, " OE1": -0.594
+CHARGE, GLU02, " OE2": -0.564
+CHARGE, GLU02, " HE2":  0.443
+CHARGE, GLU-1, " CB ":  0.059
+CHARGE, GLU-1, " HB2": -0.019
+CHARGE, GLU-1, " HB3": -0.019
+CHARGE, GLU-1, " CG ": -0.050
+CHARGE, GLU-1, " HG2": -0.020
+CHARGE, GLU-1, " HG3": -0.020
+CHARGE, GLU-1, " CD ":  0.749
+CHARGE, GLU-1, " OE1": -0.840
+CHARGE, GLU-1, " OE2": -0.840
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  GLUBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  GLUBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  GLUBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  GLUBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  GLUBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  GLUBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  GLU01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  GLU01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  GLU01,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  GLU01,  " CD ": 1.700,   2.000,   0.150
+RADIUS,  GLU01,  " OE1": 1.400,   1.600,   0.200
+RADIUS,  GLU01,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  GLU01,  " OE2": 1.400,   1.600,   0.200
+RADIUS,  GLU02,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  GLU02,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  GLU02,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  GLU02,  " CD ": 1.700,   2.000,   0.150
+RADIUS,  GLU02,  " OE1": 1.400,   1.600,   0.200
+RADIUS,  GLU02,  " OE2": 1.400,   1.600,   0.200
+RADIUS,  GLU02,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  GLU-1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  GLU-1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " CG ": 2.000,   2.000,   0.150
+RADIUS,  GLU-1,  " HG2": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " HG3": 0.000,   1.000,   0.020
+RADIUS,  GLU-1,  " CD ": 1.700,   2.000,   0.150
+RADIUS,  GLU-1,  " OE1": 1.400,   1.600,   0.200
+RADIUS,  GLU-1,  " OE2": 1.400,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = 0, rxn04=  -4.986, rxn08= 0
+CONFORMER, GLU02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = 0, rxn04=  -4.774, rxn08= 0
+CONFORMER, GLU-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02 = 0, rxn04= -22.375, rxn08= 0
+
+#CONFORMER, GLU01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = 0, rxn04= -5.958, rxn08= 0
+#CONFORMER, GLU02: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02 = 0, rxn04= -6.050, rxn08= 0 
+#CONFORMER, GLU-1: Em0=   0.0, pKa0=  4.75, ne= 0, nH=-1, rxn02 = 0, rxn04= -22.695, rxn08= 0
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, GLU: " CA " - " CB ", " CB " - " CG ", " CG " - " CD "

@@ -1,0 +1,107 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 09/19/2022
+
+# Guassian Calculation was done with the lhg tail, but atoms of the tail were set to 0 in the lhg head group topology file (lhg_nt_NBO.ftpl)
+# Additonal Hs were added to C8 (HC83) and C24 (H243) after running DFT
+# pKa of lhg-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, lhg: lhgBK
+
+# ATOM name and bonds
+CONNECT, " C10", lhgBK:  sp3, " C11", " C9 "
+CONNECT, " C11", lhgBK:  sp3, " C10", " C12"
+CONNECT, " C12", lhgBK:  sp3, " C11", " C13"
+CONNECT, " C13", lhgBK:  sp3, " C12", " C14"
+CONNECT, " C14", lhgBK:  sp3, " C13", " C15"
+CONNECT, " C15", lhgBK:  sp3, " C14", " C16"
+CONNECT, " C16", lhgBK:  sp3, " C15", " C17"
+CONNECT, " C17", lhgBK:  sp3, " C16", " C18"
+CONNECT, " C18", lhgBK:  sp3, " C17", " C19"       
+CONNECT, " C19", lhgBK:  sp3, " C18", " C20"
+CONNECT, " C20", lhgBK:  sp3, " C19", " C21"
+CONNECT, " C21", lhgBK:  sp3, " C20", " C22"
+CONNECT, " C22", lhgBK:  sp2, " C21"
+CONNECT, " C25", lhgBK:  sp2, " C26"
+CONNECT, " C26", lhgBK:  sp3, " C25", " C27"
+CONNECT, " C27", lhgBK:  sp3, " C26", " C28"
+CONNECT, " C28", lhgBK:  sp3, " C27", "HC29"
+CONNECT, " C29", lhgBK:  sp3, " C28", " C30"
+CONNECT, " C30", lhgBK:  sp3, " C29", " C31"
+CONNECT, " C31", lhgBK:  sp3, " C30", " C32"
+CONNECT, " C32", lhgBK:  sp3, " C31", "HC33"
+CONNECT, " C33", lhgBK:  sp3, " C32", " C34"
+CONNECT, " C34", lhgBK:  sp3, " C33", " C35"
+CONNECT, " C35", lhgBK:  sp3, " C34", " C36"
+CONNECT, " C36", lhgBK:  sp3, " C35", " C37"
+CONNECT, " C37", lhgBK:  sp3, " C36", " C38"
+CONNECT, " C38", lhgBK:  sp2, " C37" 
+CONNECT, " C9 ", lhgBK:  sp2, " C10"
+
+# ATOM charges
+CHARGE, lhgBK, " C10":  0.000 
+CHARGE, lhgBK, " C11":  0.000
+CHARGE, lhgBK, " C12":  0.000
+CHARGE, lhgBK, " C13":  0.000
+CHARGE, lhgBK, " C14":  0.000
+CHARGE, lhgBK, " C15":  0.000
+CHARGE, lhgBK, " C16":  0.000
+CHARGE, lhgBK, " C17":  0.000
+CHARGE, lhgBK, " C18":  0.000
+CHARGE, lhgBK, " C19":  0.000
+CHARGE, lhgBK, " C20":  0.000
+CHARGE, lhgBK, " C21":  0.000
+CHARGE, lhgBK, " C22":  0.000  
+CHARGE, lhgBK, " C25":  0.000
+CHARGE, lhgBK, " C26":  0.000
+CHARGE, lhgBK, " C27":  0.000
+CHARGE, lhgBK, " C28":  0.000
+CHARGE, lhgBK, " C29":  0.000
+CHARGE, lhgBK, " C30":  0.000
+CHARGE, lhgBK, " C31":  0.000
+CHARGE, lhgBK, " C32":  0.000
+CHARGE, lhgBK, " C33":  0.000
+CHARGE, lhgBK, " C34":  0.000
+CHARGE, lhgBK, " C35":  0.000
+CHARGE, lhgBK, " C36":  0.000
+CHARGE, lhgBK, " C37":  0.000
+CHARGE, lhgBK, " C38":  0.000 
+CHARGE, lhgBK, " C9 ":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, lhgBK, " C10":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C11":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C12":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C13":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C14":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C15":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C16":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C17":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C18":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C19":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C20":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C21":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C22":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C25":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C26":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C27":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C28":  1.700,  2.000,  0.150 
+RADIUS, lhgBK, " C29":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C30":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C31":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C32":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C33":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C34":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C35":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C36":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C37":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C38":  1.700,  2.000,  0.150
+RADIUS, lhgBK, " C9 ":  1.700,  2.000,  0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, lhgBK:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04=0, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal lhg with no Hs)

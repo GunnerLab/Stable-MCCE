@@ -1,0 +1,90 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+# 4.Rotomer
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, PHE: PHEBK, PHE01
+
+# Atom definition
+CONNECT, " N  ", PHEBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", PHEBK: s, " N  "
+CONNECT, " CA ", PHEBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", PHEBK: s, " CA "
+CONNECT, " C  ", PHEBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", PHEBK: sp2, " C  "
+CONNECT, " CB ", PHE01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", PHE01: s, " CB "
+CONNECT, " HB3", PHE01: s, " CB "
+CONNECT, " CG ", PHE01: sp2, " CB ", " CD1", " CD2"
+CONNECT, " CD1", PHE01: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", PHE01: s, " CD1"
+CONNECT, " CD2", PHE01: sp2, " CG ", " CE2", " HD2"
+CONNECT, " HD2", PHE01: s, " CD2"
+CONNECT, " CE1", PHE01: sp2, " CD1", " CZ ", " HE1"
+CONNECT, " HE1", PHE01: s, " CE1"
+CONNECT, " CE2", PHE01: sp2, " CD2", " CZ ", " HE2"
+CONNECT, " HE2", PHE01: s, " CE2"
+CONNECT, " CZ ", PHE01: sp2, " CE1", " CE2", " HZ "
+CONNECT, " HZ ", PHE01: s, " CZ "
+
+# Atom charges
+CHARGE, PHEBK, " N  ": -0.367
+CHARGE, PHEBK, " H  ":  0.238
+CHARGE, PHEBK, " CA ": -0.026
+CHARGE, PHEBK, " HA ":  0.106
+CHARGE, PHEBK, " C  ":  0.552
+CHARGE, PHEBK, " O  ": -0.503
+CHARGE, PHE01, " CB ": -0.100
+CHARGE, PHE01, " HB2":  0.059
+CHARGE, PHE01, " HB3":  0.059
+CHARGE, PHE01, " CG ":  0.020
+CHARGE, PHE01, " CD1": -0.085
+CHARGE, PHE01, " HD1":  0.097
+CHARGE, PHE01, " CD2": -0.085
+CHARGE, PHE01, " HD2":  0.097
+CHARGE, PHE01, " CE1": -0.159
+CHARGE, PHE01, " HE1":  0.122
+CHARGE, PHE01, " CE2": -0.159
+CHARGE, PHE01, " HE2":  0.122
+CHARGE, PHE01, " CZ ": -0.102
+CHARGE, PHE01, " HZ ":  0.114 # 0.113 + 0.001 for excess charge        
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  PHEBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  PHEBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  PHEBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  PHEBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  PHEBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  PHEBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  PHE01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  PHE01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  PHE01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  PHE01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " CD1": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  PHE01,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  PHE01,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  PHE01,  " CE2": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  PHE01,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  PHE01,  " HZ ": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, PHE01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=  0.000, rxn04= -0.712, rxn08=  0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, PHE: " CA " - " CB ", " CB " - " CG "

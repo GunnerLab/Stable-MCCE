@@ -1,0 +1,59 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+# from parseres.siz
+# 4.Rotomer
+# None
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, ALA: ALABK, ALA01
+
+# Atom definition
+CONNECT, " N  ", ALABK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", ALABK: s,   " N  "
+CONNECT, " CA ", ALABK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", ALABK: s,   " CA "
+CONNECT, " C  ", ALABK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", ALABK: sp2, " C  "
+CONNECT, " CB ", ALA01: sp3, " CA ", " HB1", " HB2", " HB3"
+CONNECT, " HB1", ALA01: s,   " CB "
+CONNECT, " HB2", ALA01: s,   " CB "
+CONNECT, " HB3", ALA01: s,   " CB "
+
+# Atom charges
+CHARGE, ALABK, " N  ": -0.404
+CHARGE, ALABK, " H  ":  0.295
+CHARGE, ALABK, " CA ": -0.027
+CHARGE, ALABK, " HA ":  0.121
+CHARGE, ALABK, " C  ":  0.571 
+CHARGE, ALABK, " O  ": -0.555
+CHARGE, ALA01, " CB ": -0.231
+CHARGE, ALA01, " HB1":  0.077
+CHARGE, ALA01, " HB2":  0.077
+CHARGE, ALA01, " HB3":  0.077
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  ALABK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  ALABK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  ALABK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  ALABK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  ALABK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  ALABK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  ALA01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  ALA01,  " HB1": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  ALA01,  " HB3": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, ALA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0.000, rxn04= -0.041, rxn08=0.000
+
+#CONFORMER, ALA01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02=0.000, rxn04= -0.385, rxn08=0.000
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.

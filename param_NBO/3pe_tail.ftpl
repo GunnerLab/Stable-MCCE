@@ -1,0 +1,318 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 09/19/2022
+
+# Guassian Calculation was done with the lhg tail, but atoms of the tail were set to 0 in the lhg head group topology file (3pe_nt_NBO.ftpl)
+# pKa of 3pe-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, 3pe: 3peBK
+
+# ATOM name and bonds
+CONNECT, " C33", 3peBK:  sp3, " ?  "," C34","H331","H332"
+CONNECT, " C34", 3peBK:  sp3, " C33"," C35","H341","H342"
+CONNECT, " C35", 3peBK:  sp3, " C34"," C36","H351","H352"
+CONNECT, " C36", 3peBK:  sp3, " C35"," C37","H361","H362"
+CONNECT, " C37", 3peBK:  sp3, " C36"," C38","H371","H372"
+CONNECT, " C38", 3peBK:  sp3, " C37"," C39","H381","H382"
+CONNECT, " C39", 3peBK:  sp3, " C38"," C3A","H391","H392"
+CONNECT, " C3A", 3peBK:  sp3, " C39"," C3B","H3A1","H3A2"
+CONNECT, " C3B", 3peBK:  sp3, " C3A"," C3C","H3B1","H3B2"
+CONNECT, " C3C", 3peBK:  sp3, " C3B"," C3D","H3C1","H3C2"
+CONNECT, " C3D", 3peBK:  sp3, " C3C"," C3E","H3D1","H3D2"
+CONNECT, " C3E", 3peBK:  sp3, " C3D"," C3F","H3E1","H3E2"
+CONNECT, " C3F", 3peBK:  sp3, " C3E"," C3G","H3F1","H3F2"
+CONNECT, " C3G", 3peBK:  sp3, " C3F"," C3H","H3G1","H3G2"
+CONNECT, " C3H", 3peBK:  sp3, " C3G"," C3I","H3H1","H3H2"
+CONNECT, " C3I", 3peBK:  sp3, " C3H","H3I1","H3I2","H3I3"
+CONNECT, " C23", 3peBK:  sp3, " ?  "," C24","H231","H232"
+CONNECT, " C24", 3peBK:  sp3, " C23"," C25","H241","H242"
+CONNECT, " C25", 3peBK:  sp3, " C24"," C26","H251","H252"
+CONNECT, " C26", 3peBK:  sp3, " C25"," C27","H261","H262"
+CONNECT, " C27", 3peBK:  sp3, " C26"," C28","H271","H272"
+CONNECT, " C28", 3peBK:  sp3, " C27"," C29","H281","H282"
+CONNECT, " C29", 3peBK:  sp3, " C28"," C2A","H291","H292"
+CONNECT, " C2A", 3peBK:  sp3, " C29"," C2B","H2A1","H2A2"
+CONNECT, " C2B", 3peBK:  sp3, " C2A"," C2C","H2B1","H2B2"
+CONNECT, " C2C", 3peBK:  sp3, " C2B"," C2D","H2C1","H2C2"
+CONNECT, " C2D", 3peBK:  sp3, " C2C"," C2E","H2D1","H2D2"
+CONNECT, " C2E", 3peBK:  sp3, " C2D"," C2F","H2E1","H2E2"
+CONNECT, " C2F", 3peBK:  sp3, " C2E"," C2G","H2F1","H2F2"
+CONNECT, " C2G", 3peBK:  sp3, " C2F"," C2H","H2G1","H2G2"
+CONNECT, " C2H", 3peBK:  sp3, " C2G"," C2I","H2H1","H2H2"
+CONNECT, " C2I", 3peBK:  sp3, " C2H","H2I1","H2I2","H2I3"
+CONNECT, "H331", 3peBK:    s, " C33"
+CONNECT, "H332", 3peBK:    s, " C33"
+CONNECT, "H341", 3peBK:    s, " C34"
+CONNECT, "H342", 3peBK:    s, " C34"
+CONNECT, "H351", 3peBK:    s, " C35"
+CONNECT, "H352", 3peBK:    s, " C35"
+CONNECT, "H361", 3peBK:    s, " C36"
+CONNECT, "H362", 3peBK:    s, " C36"
+CONNECT, "H371", 3peBK:    s, " C37"
+CONNECT, "H372", 3peBK:    s, " C37"
+CONNECT, "H381", 3peBK:    s, " C38"
+CONNECT, "H382", 3peBK:    s, " C38"
+CONNECT, "H391", 3peBK:    s, " C39"
+CONNECT, "H392", 3peBK:    s, " C39"
+CONNECT, "H3A1", 3peBK:    s, " C3A"
+CONNECT, "H3A2", 3peBK:    s, " C3A"
+CONNECT, "H3B1", 3peBK:    s, " C3B"
+CONNECT, "H3B2", 3peBK:    s, " C3B"
+CONNECT, "H3C1", 3peBK:    s, " C3C"
+CONNECT, "H3C2", 3peBK:    s, " C3C"
+CONNECT, "H3D1", 3peBK:    s, " C3D"
+CONNECT, "H3D2", 3peBK:    s, " C3D"
+CONNECT, "H3E1", 3peBK:    s, " C3E"
+CONNECT, "H3E2", 3peBK:    s, " C3E"
+CONNECT, "H3F1", 3peBK:    s, " C3F"
+CONNECT, "H3F2", 3peBK:    s, " C3F"
+CONNECT, "H3G1", 3peBK:    s, " C3G"
+CONNECT, "H3G2", 3peBK:    s, " C3G"
+CONNECT, "H3H1", 3peBK:    s, " C3H"
+CONNECT, "H3H2", 3peBK:    s, " C3H"
+CONNECT, "H3I1", 3peBK:    s, " C3I"
+CONNECT, "H3I2", 3peBK:    s, " C3I"
+CONNECT, "H3I3", 3peBK:    s, " C3I"
+CONNECT, "H231", 3peBK:    s, " C23"
+CONNECT, "H232", 3peBK:    s, " C23"
+CONNECT, "H241", 3peBK:    s, " C24"
+CONNECT, "H242", 3peBK:    s, " C24"
+CONNECT, "H251", 3peBK:    s, " C25"
+CONNECT, "H252", 3peBK:    s, " C25"
+CONNECT, "H261", 3peBK:    s, " C26"
+CONNECT, "H262", 3peBK:    s, " C26"
+CONNECT, "H271", 3peBK:    s, " C27"
+CONNECT, "H272", 3peBK:    s, " C27"
+CONNECT, "H281", 3peBK:    s, " C28"
+CONNECT, "H282", 3peBK:    s, " C28"
+CONNECT, "H291", 3peBK:    s, " C29"
+CONNECT, "H292", 3peBK:    s, " C29"
+CONNECT, "H2A1", 3peBK:    s, " C2A"
+CONNECT, "H2A2", 3peBK:    s, " C2A"
+CONNECT, "H2B1", 3peBK:    s, " C2B"
+CONNECT, "H2B2", 3peBK:    s, " C2B"
+CONNECT, "H2C1", 3peBK:    s, " C2C"
+CONNECT, "H2C2", 3peBK:    s, " C2C"
+CONNECT, "H2D1", 3peBK:    s, " C2D"
+CONNECT, "H2D2", 3peBK:    s, " C2D"
+CONNECT, "H2E1", 3peBK:    s, " C2E"
+CONNECT, "H2E2", 3peBK:    s, " C2E"
+CONNECT, "H2F1", 3peBK:    s, " C2F"
+CONNECT, "H2F2", 3peBK:    s, " C2F"
+CONNECT, "H2G1", 3peBK:    s, " C2G"
+CONNECT, "H2G2", 3peBK:    s, " C2G"
+CONNECT, "H2H1", 3peBK:    s, " C2H"
+CONNECT, "H2H2", 3peBK:    s, " C2H"
+CONNECT, "H2I1", 3peBK:    s, " C2I"
+CONNECT, "H2I2", 3peBK:    s, " C2I"
+CONNECT, "H2I3", 3peBK:    s, " C2I"
+
+# ATOM charges
+CHARGE, 3peBK, " C33":  0.000
+CHARGE, 3peBK, " C34":  0.000
+CHARGE, 3peBK, " C35":  0.000
+CHARGE, 3peBK, " C36":  0.000
+CHARGE, 3peBK, " C37":  0.000
+CHARGE, 3peBK, " C38":  0.000
+CHARGE, 3peBK, " C39":  0.000
+CHARGE, 3peBK, " C3A":  0.000
+CHARGE, 3peBK, " C3B":  0.000
+CHARGE, 3peBK, " C3C":  0.000
+CHARGE, 3peBK, " C3D":  0.000
+CHARGE, 3peBK, " C3E":  0.000
+CHARGE, 3peBK, " C3F":  0.000
+CHARGE, 3peBK, " C3G":  0.000
+CHARGE, 3peBK, " C3H":  0.000
+CHARGE, 3peBK, " C3I":  0.000
+CHARGE, 3peBK, " C23":  0.000
+CHARGE, 3peBK, " C24":  0.000
+CHARGE, 3peBK, " C25":  0.000
+CHARGE, 3peBK, " C26":  0.000
+CHARGE, 3peBK, " C27":  0.000
+CHARGE, 3peBK, " C28":  0.000
+CHARGE, 3peBK, " C29":  0.000
+CHARGE, 3peBK, " C2A":  0.000
+CHARGE, 3peBK, " C2B":  0.000
+CHARGE, 3peBK, " C2C":  0.000
+CHARGE, 3peBK, " C2D":  0.000
+CHARGE, 3peBK, " C2E":  0.000
+CHARGE, 3peBK, " C2F":  0.000
+CHARGE, 3peBK, " C2G":  0.000
+CHARGE, 3peBK, " C2H":  0.000
+CHARGE, 3peBK, " C2I":  0.000
+CHARGE, 3peBK, "H331":  0.000
+CHARGE, 3peBK, "H332":  0.000
+CHARGE, 3peBK, "H341":  0.000
+CHARGE, 3peBK, "H342":  0.000
+CHARGE, 3peBK, "H351":  0.000
+CHARGE, 3peBK, "H352":  0.000
+CHARGE, 3peBK, "H361":  0.000
+CHARGE, 3peBK, "H362":  0.000
+CHARGE, 3peBK, "H371":  0.000
+CHARGE, 3peBK, "H372":  0.000
+CHARGE, 3peBK, "H381":  0.000
+CHARGE, 3peBK, "H382":  0.000
+CHARGE, 3peBK, "H391":  0.000
+CHARGE, 3peBK, "H392":  0.000
+CHARGE, 3peBK, "H3A1":  0.000
+CHARGE, 3peBK, "H3A2":  0.000
+CHARGE, 3peBK, "H3B1":  0.000
+CHARGE, 3peBK, "H3B2":  0.000
+CHARGE, 3peBK, "H3C1":  0.000
+CHARGE, 3peBK, "H3C2":  0.000
+CHARGE, 3peBK, "H3D1":  0.000
+CHARGE, 3peBK, "H3D2":  0.000
+CHARGE, 3peBK, "H3E1":  0.000
+CHARGE, 3peBK, "H3E2":  0.000
+CHARGE, 3peBK, "H3F1":  0.000
+CHARGE, 3peBK, "H3F2":  0.000
+CHARGE, 3peBK, "H3G1":  0.000
+CHARGE, 3peBK, "H3G2":  0.000
+CHARGE, 3peBK, "H3H1":  0.000
+CHARGE, 3peBK, "H3H2":  0.000
+CHARGE, 3peBK, "H3I1":  0.000
+CHARGE, 3peBK, "H3I2":  0.000
+CHARGE, 3peBK, "H3I3":  0.000
+CHARGE, 3peBK, "H231":  0.000
+CHARGE, 3peBK, "H232":  0.000
+CHARGE, 3peBK, "H241":  0.000
+CHARGE, 3peBK, "H242":  0.000
+CHARGE, 3peBK, "H251":  0.000
+CHARGE, 3peBK, "H252":  0.000
+CHARGE, 3peBK, "H261":  0.000
+CHARGE, 3peBK, "H262":  0.000
+CHARGE, 3peBK, "H271":  0.000
+CHARGE, 3peBK, "H272":  0.000
+CHARGE, 3peBK, "H281":  0.000
+CHARGE, 3peBK, "H282":  0.000
+CHARGE, 3peBK, "H291":  0.000
+CHARGE, 3peBK, "H292":  0.000
+CHARGE, 3peBK, "H2A1":  0.000
+CHARGE, 3peBK, "H2A2":  0.000
+CHARGE, 3peBK, "H2B1":  0.000
+CHARGE, 3peBK, "H2B2":  0.000
+CHARGE, 3peBK, "H2C1":  0.000
+CHARGE, 3peBK, "H2C2":  0.000
+CHARGE, 3peBK, "H2D1":  0.000
+CHARGE, 3peBK, "H2D2":  0.000
+CHARGE, 3peBK, "H2E1":  0.000
+CHARGE, 3peBK, "H2E2":  0.000
+CHARGE, 3peBK, "H2F1":  0.000
+CHARGE, 3peBK, "H2F2":  0.000
+CHARGE, 3peBK, "H2G1":  0.000
+CHARGE, 3peBK, "H2G2":  0.000
+CHARGE, 3peBK, "H2H1":  0.000
+CHARGE, 3peBK, "H2H2":  0.000
+CHARGE, 3peBK, "H2I1":  0.000
+CHARGE, 3peBK, "H2I2":  0.000
+CHARGE, 3peBK, "H2I3":  0.000
+                                    
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS, 3peBK, " C33":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C34":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C35":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C36":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C37":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C38":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C39":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3A":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3B":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3C":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3D":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3E":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3F":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3G":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3H":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C3I":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C23":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C24":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C25":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C26":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C27":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C28":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C29":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2A":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2B":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2C":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2D":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2E":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2F":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2G":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2H":  1.700,  2.000,  0.150
+RADIUS, 3peBK, " C2I":  1.700,  2.000,  0.150
+RADIUS, 3peBK, "H331":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H332":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H341":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H342":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H351":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H352":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H361":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H362":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H371":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H372":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H381":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H382":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H391":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H392":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3A1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3A2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3B1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3B2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3C1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3C2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3D1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3D2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3E1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3E2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3F1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3F2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3G1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3G2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3H1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3H2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3I1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3I2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H3I3":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H231":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H232":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H241":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H242":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H251":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H252":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H261":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H262":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H271":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H272":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H281":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H282":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H291":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H292":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2A1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2A2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2B1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2B2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2C1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2C2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2D1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2D2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2E1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2E2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2F1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2F2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2G1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2G2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2H1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2H2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2I1":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2I2":  1.000,  1.000,  0.020
+RADIUS, 3peBK, "H2I3":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, 3peBK:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0
+
+

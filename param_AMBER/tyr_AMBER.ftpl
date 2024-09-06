@@ -1,0 +1,138 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+# 4.Rotomer
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, TYR: TYRBK, TYR01, TYR-1
+
+# Atom definition
+CONNECT, " N  ", TYRBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", TYRBK: s,   " N  "
+CONNECT, " CA ", TYRBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", TYRBK: s,   " CA "
+CONNECT, " C  ", TYRBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", TYRBK: sp2, " C  "
+CONNECT, " CB ", TYR01: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", TYR01: s,   " CB "
+CONNECT, " HB3", TYR01: s,   " CB "
+CONNECT, " CG ", TYR01: sp2, " CB ", " CD1", " CD2"
+CONNECT, " CD1", TYR01: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", TYR01: s,   " CD1"
+CONNECT, " CD2", TYR01: sp2, " CG ", " CE2", " HD2"
+CONNECT, " HD2", TYR01: s,   " CD2"
+CONNECT, " CE1", TYR01: sp2, " CD1", " CZ ", " HE1"
+CONNECT, " HE1", TYR01: s,   " CE1"
+CONNECT, " CE2", TYR01: sp2, " CD2", " CZ ", " HE2"
+CONNECT, " HE2", TYR01: s,   " CE2"
+CONNECT, " CZ ", TYR01: sp2, " CE1", " CE2", " OH "
+CONNECT, " OH ", TYR01: sp3, " CZ ", " HH "
+CONNECT, " HH ", TYR01: s,   " OH "
+CONNECT, " CB ", TYR-1: sp3, " CA ", " CG ", " HB2", " HB3"
+CONNECT, " HB2", TYR-1: s,   " CB "
+CONNECT, " HB3", TYR-1: s,   " CB "
+CONNECT, " CG ", TYR-1: sp2, " CB ", " CD1", " CD2"
+CONNECT, " CD1", TYR-1: sp2, " CG ", " CE1", " HD1"
+CONNECT, " HD1", TYR-1: s,   " CD1"
+CONNECT, " CD2", TYR-1: sp2, " CG ", " CE2", " HD2"
+CONNECT, " HD2", TYR-1: s,   " CD2"
+CONNECT, " CE1", TYR-1: sp2, " CD1", " CZ ", " HE1"
+CONNECT, " HE1", TYR-1: s,   " CE1"
+CONNECT, " CE2", TYR-1: sp2, " CD2", " CZ ", " HE2"
+CONNECT, " HE2", TYR-1: s,   " CE2"
+CONNECT, " CZ ", TYR-1: sp2, " CE1", " CE2", " OH "
+CONNECT, " OH ", TYR-1: sp3, " CZ "
+
+# Atom charges
+CHARGE, TYRBK, " N  ": -0.484
+CHARGE, TYRBK, " H  ":  0.267
+CHARGE, TYRBK, " CA ":  0.013
+CHARGE, TYRBK, " HA ":  0.099
+CHARGE, TYRBK, " C  ":  0.626
+CHARGE, TYRBK, " O  ": -0.521 # -0.523 + 0.002 for excess BK charge
+CHARGE, TYR01, " CB ": -0.053
+CHARGE, TYR01, " HB2":  0.018
+CHARGE, TYR01, " HB3":  0.018
+CHARGE, TYR01, " CG ":  0.111
+CHARGE, TYR01, " CD1": -0.185
+CHARGE, TYR01, " HD1":  0.131
+CHARGE, TYR01, " CD2": -0.185
+CHARGE, TYR01, " HD2":  0.131
+CHARGE, TYR01, " CE1": -0.183
+CHARGE, TYR01, " HE1":  0.136
+CHARGE, TYR01, " CE2": -0.183
+CHARGE, TYR01, " HE2":  0.136
+CHARGE, TYR01, " CZ ":  0.205
+CHARGE, TYR01, " OH ": -0.425 # -0.423 - 0.002 for excess charge
+CHARGE, TYR01, " HH ":  0.328
+CHARGE, TYR-1, " CB ": -0.101
+CHARGE, TYR-1, " HB2": -0.030
+CHARGE, TYR-1, " HB3": -0.030
+CHARGE, TYR-1, " CG ":  0.063
+CHARGE, TYR-1, " CD1": -0.233
+CHARGE, TYR-1, " HD1":  0.083
+CHARGE, TYR-1, " CD2": -0.233
+CHARGE, TYR-1, " HD2":  0.083
+CHARGE, TYR-1, " CE1": -0.231
+CHARGE, TYR-1, " HE1":  0.088
+CHARGE, TYR-1, " CE2": -0.231
+CHARGE, TYR-1, " HE2":  0.088
+CHARGE, TYR-1, " CZ ":  0.157
+CHARGE, TYR-1, " OH ": -0.473 # -0.471 - 0.002 for excess charge
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  TYRBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  TYRBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  TYRBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  TYRBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  TYRBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  TYRBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  TYR01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  TYR01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  TYR01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  TYR01,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " CD1": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  TYR01,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  TYR01,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  TYR01,  " CE2": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  TYR01,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  TYR01,  " OH ": 1.400,   1.600,   0.200
+RADIUS,  TYR01,  " HH ": 1.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  TYR-1,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  TYR-1,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CG ": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " CD1": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " HD1": 1.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CD2": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " HD2": 1.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CE1": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " HE1": 1.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CE2": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " HE2": 1.000,   1.000,   0.020
+RADIUS,  TYR-1,  " CZ ": 1.700,   2.000,   0.150
+RADIUS,  TYR-1,  " OH ": 1.400,   1.600,   0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, TYR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04=  -1.684, rxn08= 0
+CONFORMER, TYR-1: Em0=   0.0, pKa0= 10.20, ne= 0, nH=-1, rxn02= 0, rxn04= -15.022, rxn08= 0
+#CONFORMER, TYR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -5.880, rxn04= -2.7, rxn08= -1.26
+#CONFORMER, TYR-1: Em0=   0.0, pKa0= 10.20, ne= 0, nH=-1, rxn02=-41.040, rxn04= -19.7, rxn08= -9.33
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, TYR: " CA " - " CB ", " CB " - " CG "

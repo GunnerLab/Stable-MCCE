@@ -1,0 +1,74 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#-------|---|----|-|---------|---------|---------|---------|---------|---------|
+#ROT_SWAP THR   0     OG1- CG2
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, THR: THRBK, THR01
+
+# Atom definition
+CONNECT, " N  ", THRBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", THRBK: s, " N  "
+CONNECT, " CA ", THRBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", THRBK: s, " CA "
+CONNECT, " C  ", THRBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", THRBK: sp2, " C  "
+CONNECT, " CB ", THR01: sp3, " CA ", " OG1", " CG2", " HB "
+CONNECT, " HB ", THR01: s, " CB "
+CONNECT, " OG1", THR01: sp3, " CB ", " HG1"
+CONNECT, " HG1", THR01: s, " OG1"
+CONNECT, " CG2", THR01: sp3, " CB ", "HG21", "HG22", "HG23"
+CONNECT, "HG21", THR01: s, " CG2"
+CONNECT, "HG22", THR01: s, " CG2"
+CONNECT, "HG23", THR01: s, " CG2"
+
+# Atom charges
+CHARGE, THRBK, " N  ": -0.230 
+CHARGE, THRBK, " H  ":  0.270 
+CHARGE, THRBK, " CA ": -0.256 
+CHARGE, THRBK, " HA ":  0.179 
+CHARGE, THRBK, " C  ":  0.575 
+CHARGE, THRBK, " O  ": -0.537 
+CHARGE, THR01, " CB ":  0.227 
+CHARGE, THR01, " HB ":  0.033  
+CHARGE, THR01, " OG1": -0.613 
+CHARGE, THR01, " HG1":  0.394 
+CHARGE, THR01, " CG2": -0.188 
+CHARGE, THR01, "HG21":  0.049 
+CHARGE, THR01, "HG22":  0.049  
+CHARGE, THR01, "HG23":  0.049  
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  THRBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  THRBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  THRBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  THRBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  THRBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  THRBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  THR01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  THR01,  " HB ": 0.000,   1.000,   0.020
+RADIUS,  THR01,  " OG1": 1.400,   1.600,   0.200
+RADIUS,  THR01,  " HG1": 1.000,   1.000,   0.020
+RADIUS,  THR01,  " CG2": 2.000,   2.000,   0.150
+RADIUS,  THR01,  "HG21": 0.000,   1.000,   0.020
+RADIUS,  THR01,  "HG22": 0.000,   1.000,   0.020
+RADIUS,  THR01,  "HG23": 0.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, THR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -1.608, rxn08= 0
+# CONFORMER, THR01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -4.260, rxn04= -2.0, rxn08= -0.92
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, THR: " CA " - " CB "

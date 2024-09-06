@@ -1,0 +1,163 @@
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 11/06/2023
+
+# Guassian Calculation was done with the LMU tail, but atoms of the tail were set to 0 in the LMU head group topology file (LMU_nt_NBO.ftpl)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, LMU: LMUBK, LMU01
+
+# ATOM name and bonds
+CONNECT, " C1B", LMU01:  sp3, " C2B"," O1B"," O5B"," H1B"
+CONNECT, " C2B", LMU01:  sp3, " C1B"," C3B"," O2B"," H2B"
+CONNECT, " C3B", LMU01:  sp3, " C2B"," C4B"," O3B"," H3B"
+CONNECT, " C4B", LMU01:  sp3, " C3B"," C5B"," O4'"," H4B"
+CONNECT, " C5B", LMU01:  sp3, " C4B"," C6B"," O5B"," H5B"
+CONNECT, " C6B", LMU01:  sp3, " C5B"," O6B","H6'2","H6'1"
+CONNECT, " O1B", LMU01:  sp3, " C1B"," C4'"
+CONNECT, " O2B", LMU01:  sp3, " C2B","H2O1"
+CONNECT, " O3B", LMU01:  sp3, " C3B","H3O1"
+CONNECT, " O4'", LMU01:  sp3, " C4B","H4O1"
+CONNECT, " O5B", LMU01:  sp3, " C1B"," C5B"
+CONNECT, " O6B", LMU01:  sp3, " C6B"," H6B"
+CONNECT, " C1'", LMU01:  sp3, " C2'"," O1'"," O5'"," H1'"
+CONNECT, " C2'", LMU01:  sp3, " C1'"," C3'"," O2'"," H2'"
+CONNECT, " C3'", LMU01:  sp3, " C2'"," C4'"," O3'"," H3'"
+CONNECT, " C4'", LMU01:  sp3, " O1B"," C3'"," C5'"," H4'"
+CONNECT, " C5'", LMU01:  sp3, " C4'"," C6'"," O5'"," H5'"
+CONNECT, " C6'", LMU01:  sp3, " C5'"," O6'"," H6D"," H6E"
+CONNECT, " O1'", LMU01:  sp3, " C1'"," C1 "
+CONNECT, " O2'", LMU01:  sp3, " C2'","H2O2"
+CONNECT, " O3'", LMU01:  sp3, " C3'","H3O2"
+CONNECT, " O5'", LMU01:  sp3, " C1'"," C5'"
+CONNECT, " O6'", LMU01:  sp3, " C6'"," H6'"
+CONNECT, " C1 ", LMU01:  sp3, " O1'"," ?  "," H12"," H11"
+CONNECT, " H1B", LMU01:    s, " C1B"
+CONNECT, " H2B", LMU01:    s, " C2B"
+CONNECT, " H3B", LMU01:    s, " C3B"
+CONNECT, " H4B", LMU01:    s, " C4B"
+CONNECT, " H5B", LMU01:    s, " C5B"
+CONNECT, "H6'2", LMU01:    s, " C6B"
+CONNECT, "H6'1", LMU01:    s, " C6B"
+CONNECT, "H2O1", LMU01:    s, " O2B"
+CONNECT, "H3O1", LMU01:    s, " O3B"
+CONNECT, "H4O1", LMU01:    s, " O4'"
+CONNECT, " H6B", LMU01:    s, " O6B"
+CONNECT, " H1'", LMU01:    s, " C1'"
+CONNECT, " H2'", LMU01:    s, " C2'"
+CONNECT, " H3'", LMU01:    s, " C3'"
+CONNECT, " H4'", LMU01:    s, " C4'"
+CONNECT, " H5'", LMU01:    s, " C5'"
+CONNECT, " H6D", LMU01:    s, " C6'"
+CONNECT, " H6E", LMU01:    s, " C6'"
+CONNECT, "H2O2", LMU01:    s, " O2'"
+CONNECT, "H3O2", LMU01:    s, " O3'"
+CONNECT, " H6'", LMU01:    s, " O6'"
+CONNECT, " H12", LMU01:    s, " C1 "
+CONNECT, " H11", LMU01:    s, " C1 "
+
+# ATOM charges
+CHARGE, LMU01, " C1B":  0.334
+CHARGE, LMU01, " C2B":  0.018
+CHARGE, LMU01, " C3B":  0.032
+CHARGE, LMU01, " C4B":  0.042
+CHARGE, LMU01, " C5B":  0.029
+CHARGE, LMU01, " C6B": -0.125
+CHARGE, LMU01, " O1B": -0.597
+CHARGE, LMU01, " O2B": -0.780
+CHARGE, LMU01, " O3B": -0.795
+CHARGE, LMU01, " O4'": -0.785
+CHARGE, LMU01, " O5B": -0.585
+CHARGE, LMU01, " O6B": -0.782
+CHARGE, LMU01, " C1'":  0.358
+CHARGE, LMU01, " C2'":  0.014
+CHARGE, LMU01, " C3'":  0.038
+CHARGE, LMU01, " C4'":  0.030
+CHARGE, LMU01, " C5'":  0.029
+CHARGE, LMU01, " C6'": -0.129
+CHARGE, LMU01, " O1'": -0.598
+CHARGE, LMU01, " O2'": -0.776
+CHARGE, LMU01, " O3'": -0.798
+CHARGE, LMU01, " O5'": -0.585
+CHARGE, LMU01, " O6'": -0.781
+CHARGE, LMU01, " C1 ": -0.134
+CHARGE, LMU01, " H1B":  0.263
+CHARGE, LMU01, " H2B":  0.235
+CHARGE, LMU01, " H3B":  0.245
+CHARGE, LMU01, " H4B":  0.226
+CHARGE, LMU01, " H5B":  0.235
+CHARGE, LMU01, "H6'2":  0.231
+CHARGE, LMU01, "H6'1":  0.208
+CHARGE, LMU01, "H2O1":  0.507
+CHARGE, LMU01, "H3O1":  0.518
+CHARGE, LMU01, "H4O1":  0.517
+CHARGE, LMU01, " H6B":  0.501
+CHARGE, LMU01, " H1'":  0.217
+CHARGE, LMU01, " H2'":  0.236
+CHARGE, LMU01, " H3'":  0.252
+CHARGE, LMU01, " H4'":  0.256
+CHARGE, LMU01, " H5'":  0.250
+CHARGE, LMU01, " H6D":  0.212
+CHARGE, LMU01, " H6E":  0.234
+CHARGE, LMU01, "H2O2":  0.503
+CHARGE, LMU01, "H3O2":  0.521
+CHARGE, LMU01, " H6'":  0.502
+CHARGE, LMU01, " H12":  0.213  ## 0.211 + 0.002 for excess charge
+CHARGE, LMU01, " H11":  0.244
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS, LMU01, " C1B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C2B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C3B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C4B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C5B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C6B":  1.700,  2.000,  0.150
+RADIUS, LMU01, " O1B":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O2B":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O3B":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O4'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O5B":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O6B":  1.400,  1.600,  0.200
+RADIUS, LMU01, " C1'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C2'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C3'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C4'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C5'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " C6'":  1.700,  2.000,  0.150
+RADIUS, LMU01, " O1'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O2'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O3'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O5'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " O6'":  1.400,  1.600,  0.200
+RADIUS, LMU01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LMU01, " H1B":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H2B":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H3B":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H4B":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H5B":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H6'2":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H6'1":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H2O1":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H3O1":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H4O1":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H6B":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H1'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H2'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H3'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H4'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H5'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H6D":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H6E":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H2O2":  1.000,  1.000,  0.020
+RADIUS, LMU01, "H3O2":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H6'":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H12":  1.000,  1.000,  0.020
+RADIUS, LMU01, " H11":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LMU01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= -31.417, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal LMU with no Hs)
+
+

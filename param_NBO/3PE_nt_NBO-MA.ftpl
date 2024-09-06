@@ -1,0 +1,342 @@
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charge
+# File Created by Gehan Ranepura on 11/07/2023
+
+# Guassian Calculation was done with the 3PE tail, but atoms of the tail were set to 0 in the 3PE head group topology file (3PE_nt_NBO.ftpl)
+# pKa of LHG-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, 3PE: 3PEBK, 3PE01, 3PE02, 3PE-1
+
+# ATOM name and bonds
+CONNECT, " P  ", 3PE01:  sp3, " O11"," O12"," O13"," O14"
+CONNECT, " N  ", 3PE01:  sp3, " C12"," HN1"," HN2"
+CONNECT, " O11", 3PE01:  sp2, " P  "," C1 "
+CONNECT, " O12", 3PE01:  sp2, " P  "," H1 "
+CONNECT, " O13", 3PE01:  sp2, " P  "," C11"
+CONNECT, " O14", 3PE01:  sp3, " P  "
+CONNECT, " C11", 3PE01:  sp3, " O13"," C12","H111","H112"
+CONNECT, " C12", 3PE01:  sp3, " N  "," C11","H121","H122"
+CONNECT, " C1 ", 3PE01:  sp3, " O11"," C2 "," H11"," H12"
+CONNECT, " C2 ", 3PE01:  sp3, " C1 "," C3 "," O21"," H2 "
+CONNECT, " C3 ", 3PE01:  sp3, " C2 "," O31"," H31"," H32"
+CONNECT, " O31", 3PE01:  sp2, " C3 "," C31"
+CONNECT, " O32", 3PE01:  sp3, " C31"
+CONNECT, " C31", 3PE01:  sp2, " O31"," O32"," C32"
+CONNECT, " C32", 3PE01:  sp3, " C31"," ?  ","H321","H322"
+CONNECT, " O21", 3PE01:  sp2, " C2 "," C21"
+CONNECT, " O22", 3PE01:  sp3, " C21"
+CONNECT, " C21", 3PE01:  sp2, " O21"," O22"," C22"
+CONNECT, " C22", 3PE01:  sp3, " C21"," ?  ","H221","H222"
+CONNECT, " HN1", 3PE01:    s, " N  "
+CONNECT, " HN2", 3PE01:    s, " N  "
+CONNECT, "H111", 3PE01:    s, " C11"
+CONNECT, "H112", 3PE01:    s, " C11"
+CONNECT, "H121", 3PE01:    s, " C12"
+CONNECT, "H122", 3PE01:    s, " C12"
+CONNECT, " H11", 3PE01:    s, " C1 "
+CONNECT, " H12", 3PE01:    s, " C1 "
+CONNECT, " H2 ", 3PE01:    s, " C2 "
+CONNECT, " H31", 3PE01:    s, " C3 "
+CONNECT, " H32", 3PE01:    s, " C3 "
+CONNECT, "H321", 3PE01:    s, " C32"
+CONNECT, "H322", 3PE01:    s, " C32"
+CONNECT, "H221", 3PE01:    s, " C22"
+CONNECT, "H222", 3PE01:    s, " C22"
+CONNECT, " H1 ", 3PE01:    s, " O12"
+
+CONNECT, " P  ", 3PE02:  sp3, " O11"," O12"," O13"," O14"
+CONNECT, " N  ", 3PE02:  sp3, " C12"," HN1"," HN2"
+CONNECT, " O11", 3PE02:  sp2, " P  "," C1 "
+CONNECT, " O12", 3PE02:  sp3, " P  "
+CONNECT, " O13", 3PE02:  sp2, " P  "," C11"
+CONNECT, " O14", 3PE02:  sp2, " P  "," H1 "
+CONNECT, " C11", 3PE02:  sp3, " O13"," C12","H111","H112"
+CONNECT, " C12", 3PE02:  sp3, " N  "," C11","H121","H122"
+CONNECT, " C1 ", 3PE02:  sp3, " O11"," C2 "," H11"," H12"
+CONNECT, " C2 ", 3PE02:  sp3, " C1 "," C3 "," O21"," H2 "
+CONNECT, " C3 ", 3PE02:  sp3, " C2 "," O31"," H31"," H32"
+CONNECT, " O31", 3PE02:  sp2, " C3 "," C31"
+CONNECT, " O32", 3PE02:  sp3, " C31"
+CONNECT, " C31", 3PE02:  sp2, " O31"," O32"," C32"
+CONNECT, " C32", 3PE02:  sp3, " C31"," ?  ","H321","H322"
+CONNECT, " O21", 3PE02:  sp2, " C2 "," C21"
+CONNECT, " O22", 3PE02:  sp3, " C21"
+CONNECT, " C21", 3PE02:  sp2, " O21"," O22"," C22"
+CONNECT, " C22", 3PE02:  sp3, " C21"," ?  ","H221","H222"
+CONNECT, " HN1", 3PE02:    s, " N  "
+CONNECT, " HN2", 3PE02:    s, " N  "
+CONNECT, "H111", 3PE02:    s, " C11"
+CONNECT, "H112", 3PE02:    s, " C11"
+CONNECT, "H121", 3PE02:    s, " C12"
+CONNECT, "H122", 3PE02:    s, " C12"
+CONNECT, " H11", 3PE02:    s, " C1 "
+CONNECT, " H12", 3PE02:    s, " C1 "
+CONNECT, " H2 ", 3PE02:    s, " C2 "
+CONNECT, " H31", 3PE02:    s, " C3 "
+CONNECT, " H32", 3PE02:    s, " C3 "
+CONNECT, "H321", 3PE02:    s, " C32"
+CONNECT, "H322", 3PE02:    s, " C32"
+CONNECT, "H221", 3PE02:    s, " C22"
+CONNECT, "H222", 3PE02:    s, " C22"
+CONNECT, " H1 ", 3PE02:    s, " O14"
+
+CONNECT, " P  ", 3PE-1:  sp3, " O11"," O12"," O13"," O14"
+CONNECT, " N  ", 3PE-1:  sp3, " C12"," HN1"," HN2"
+CONNECT, " O11", 3PE-1:  sp2, " P  "," C1 "
+CONNECT, " O12", 3PE-1:  sp3, " P  "
+CONNECT, " O13", 3PE-1:  sp2, " P  "," C11"
+CONNECT, " O14", 3PE-1:  sp3, " P  "
+CONNECT, " C11", 3PE-1:  sp3, " O13"," C12","H111","H112"
+CONNECT, " C12", 3PE-1:  sp3, " N  "," C11","H121","H122"
+CONNECT, " C1 ", 3PE-1:  sp3, " O11"," C2 "," H11"," H12"
+CONNECT, " C2 ", 3PE-1:  sp3, " C1 "," C3 "," O21"," H2 "
+CONNECT, " C3 ", 3PE-1:  sp3, " C2 "," O31"," H31"," H32"
+CONNECT, " O31", 3PE-1:  sp2, " C3 "," C31"
+CONNECT, " O32", 3PE-1:  sp3, " C31"
+CONNECT, " C31", 3PE-1:  sp2, " O31"," O32"," C32"
+CONNECT, " C32", 3PE-1:  sp3, " C31"," ?  ","H321","H322"
+CONNECT, " O21", 3PE-1:  sp2, " C2 "," C21"
+CONNECT, " O22", 3PE-1:  sp3, " C21"
+CONNECT, " C21", 3PE-1:  sp2, " O21"," O22"," C22"
+CONNECT, " C22", 3PE-1:  sp3, " C21"," ?  ","H221","H222"
+CONNECT, " HN1", 3PE-1:    s, " N  "
+CONNECT, " HN2", 3PE-1:    s, " N  "
+CONNECT, "H111", 3PE-1:    s, " C11"
+CONNECT, "H112", 3PE-1:    s, " C11"
+CONNECT, "H121", 3PE-1:    s, " C12"
+CONNECT, "H122", 3PE-1:    s, " C12"
+CONNECT, " H11", 3PE-1:    s, " C1 "
+CONNECT, " H12", 3PE-1:    s, " C1 "
+CONNECT, " H2 ", 3PE-1:    s, " C2 "
+CONNECT, " H31", 3PE-1:    s, " C3 "
+CONNECT, " H32", 3PE-1:    s, " C3 "
+CONNECT, "H321", 3PE-1:    s, " C32"
+CONNECT, "H322", 3PE-1:    s, " C32"
+CONNECT, "H221", 3PE-1:    s, " C22"
+CONNECT, "H222", 3PE-1:    s, " C22"
+
+# ATOM charges
+CHARGE, 3PE01, " P  ":  2.605
+CHARGE, 3PE01, " N  ": -0.948
+CHARGE, 3PE01, " O11": -0.845
+CHARGE, 3PE01, " O12": -1.020
+CHARGE, 3PE01, " O13": -0.868
+CHARGE, 3PE01, " O14": -1.121
+CHARGE, 3PE01, " C11": -0.125
+CHARGE, 3PE01, " C12": -0.302
+CHARGE, 3PE01, " C1 ": -0.128
+CHARGE, 3PE01, " C2 ":  0.012
+CHARGE, 3PE01, " C3 ": -0.141
+CHARGE, 3PE01, " O31": -0.542
+CHARGE, 3PE01, " O32": -0.626
+CHARGE, 3PE01, " C31":  0.817
+CHARGE, 3PE01, " C32": -0.549
+CHARGE, 3PE01, " O21": -0.552
+CHARGE, 3PE01, " O22": -0.626
+CHARGE, 3PE01, " C21":  0.824
+CHARGE, 3PE01, " C22": -0.553
+CHARGE, 3PE01, " HN1":  0.401
+CHARGE, 3PE01, " HN2":  0.398
+CHARGE, 3PE01, "H111":  0.231
+CHARGE, 3PE01, "H112":  0.247
+CHARGE, 3PE01, "H121":  0.222
+CHARGE, 3PE01, "H122":  0.246
+CHARGE, 3PE01, " H11":  0.264
+CHARGE, 3PE01, " H12":  0.232
+CHARGE, 3PE01, " H2 ":  0.282
+CHARGE, 3PE01, " H31":  0.254
+CHARGE, 3PE01, " H32":  0.245
+CHARGE, 3PE01, "H321":  0.272
+CHARGE, 3PE01, "H322":  0.289
+CHARGE, 3PE01, "H221":  0.285
+CHARGE, 3PE01, "H222":  0.290
+CHARGE, 3PE01, " H1 ":  0.530
+
+CHARGE, 3PE02, " P  ":  2.605
+CHARGE, 3PE02, " N  ": -0.948
+CHARGE, 3PE02, " O11": -0.845
+CHARGE, 3PE02, " O12": -1.121 # Switch with O14 = -1.121
+CHARGE, 3PE02, " O13": -0.868
+CHARGE, 3PE02, " O14": -1.020 # Switch with O12 = -1.020
+CHARGE, 3PE02, " C11": -0.125
+CHARGE, 3PE02, " C12": -0.302
+CHARGE, 3PE02, " C1 ": -0.128
+CHARGE, 3PE02, " C2 ":  0.012
+CHARGE, 3PE02, " C3 ": -0.141
+CHARGE, 3PE02, " O31": -0.542
+CHARGE, 3PE02, " O32": -0.626
+CHARGE, 3PE02, " C31":  0.817
+CHARGE, 3PE02, " C32": -0.549
+CHARGE, 3PE02, " O21": -0.552
+CHARGE, 3PE02, " O22": -0.626
+CHARGE, 3PE02, " C21":  0.824
+CHARGE, 3PE02, " C22": -0.553
+CHARGE, 3PE02, " HN1":  0.401
+CHARGE, 3PE02, " HN2":  0.398
+CHARGE, 3PE02, "H111":  0.231
+CHARGE, 3PE02, "H112":  0.247
+CHARGE, 3PE02, "H121":  0.222
+CHARGE, 3PE02, "H122":  0.246
+CHARGE, 3PE02, " H11":  0.264
+CHARGE, 3PE02, " H12":  0.232
+CHARGE, 3PE02, " H2 ":  0.282
+CHARGE, 3PE02, " H31":  0.254
+CHARGE, 3PE02, " H32":  0.245
+CHARGE, 3PE02, "H321":  0.272
+CHARGE, 3PE02, "H322":  0.289
+CHARGE, 3PE02, "H221":  0.285
+CHARGE, 3PE02, "H222":  0.290
+CHARGE, 3PE02, " H1 ":  0.530
+
+CHARGE, 3PE-1, " P  ":  2.605
+CHARGE, 3PE-1, " N  ": -0.948
+CHARGE, 3PE-1, " O11": -0.845
+CHARGE, 3PE-1, " O12": -1.305 # (O12 + O14)/2 - (0.47/2) --> -1.305
+CHARGE, 3PE-1, " O13": -0.869 # -0.868 - 0.001 
+CHARGE, 3PE-1, " O14": -1.305 # (O12 + O14)/2 - (0.47/2) --> -1.305
+CHARGE, 3PE-1, " C11": -0.125
+CHARGE, 3PE-1, " C12": -0.302
+CHARGE, 3PE-1, " C1 ": -0.128
+CHARGE, 3PE-1, " C2 ":  0.012
+CHARGE, 3PE-1, " C3 ": -0.141
+CHARGE, 3PE-1, " O31": -0.542
+CHARGE, 3PE-1, " O32": -0.626
+CHARGE, 3PE-1, " C31":  0.817
+CHARGE, 3PE-1, " C32": -0.549
+CHARGE, 3PE-1, " O21": -0.552
+CHARGE, 3PE-1, " O22": -0.626
+CHARGE, 3PE-1, " C21":  0.824
+CHARGE, 3PE-1, " C22": -0.553
+CHARGE, 3PE-1, " HN1":  0.401
+CHARGE, 3PE-1, " HN2":  0.398
+CHARGE, 3PE-1, "H111":  0.231
+CHARGE, 3PE-1, "H112":  0.247
+CHARGE, 3PE-1, "H121":  0.222
+CHARGE, 3PE-1, "H122":  0.246
+CHARGE, 3PE-1, " H11":  0.264
+CHARGE, 3PE-1, " H12":  0.232
+CHARGE, 3PE-1, " H2 ":  0.282
+CHARGE, 3PE-1, " H31":  0.254
+CHARGE, 3PE-1, " H32":  0.245
+CHARGE, 3PE-1, "H321":  0.272
+CHARGE, 3PE-1, "H322":  0.289
+CHARGE, 3PE-1, "H221":  0.285
+CHARGE, 3PE-1, "H222":  0.290
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS, 3PE01, " P  ":  1.850,  2.000,  0.200
+RADIUS, 3PE01, " N  ":  1.500,  1.750,  0.160
+RADIUS, 3PE01, " O11":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " O12":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " O13":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " O14":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " C11":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C12":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " O31":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " O32":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " C31":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C32":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " O21":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " O22":  1.400,  1.600,  0.200
+RADIUS, 3PE01, " C21":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " C22":  1.700,  2.000,  0.150
+RADIUS, 3PE01, " HN1":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " HN2":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H111":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H112":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H121":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H122":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H11":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H12":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H31":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H32":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H321":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H322":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H221":  1.000,  1.000,  0.020
+RADIUS, 3PE01, "H222":  1.000,  1.000,  0.020
+RADIUS, 3PE01, " H1 ":  1.000,  1.000,  0.020
+
+RADIUS, 3PE02, " P  ":  1.850,  2.000,  0.200
+RADIUS, 3PE02, " N  ":  1.500,  1.750,  0.160
+RADIUS, 3PE02, " O11":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " O12":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " O13":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " O14":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " C11":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C12":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C1 ":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C2 ":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C3 ":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " O31":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " O32":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " C31":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C32":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " O21":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " O22":  1.400,  1.600,  0.200
+RADIUS, 3PE02, " C21":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " C22":  1.700,  2.000,  0.150
+RADIUS, 3PE02, " HN1":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " HN2":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H111":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H112":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H121":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H122":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H11":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H12":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H2 ":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H31":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H32":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H321":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H322":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H221":  1.000,  1.000,  0.020
+RADIUS, 3PE02, "H222":  1.000,  1.000,  0.020
+RADIUS, 3PE02, " H1 ":  1.000,  1.000,  0.020
+
+RADIUS, 3PE-1, " P  ":  1.850,  2.000,  0.200
+RADIUS, 3PE-1, " N  ":  1.500,  1.750,  0.160
+RADIUS, 3PE-1, " O11":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " O12":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " O13":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " O14":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " C11":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C12":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C1 ":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C2 ":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C3 ":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " O31":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " O32":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " C31":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C32":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " O21":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " O22":  1.400,  1.600,  0.200
+RADIUS, 3PE-1, " C21":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " C22":  1.700,  2.000,  0.150
+RADIUS, 3PE-1, " HN1":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " HN2":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H111":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H112":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H121":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H122":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " H11":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " H12":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " H2 ":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " H31":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, " H32":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H321":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H322":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H221":  1.000,  1.000,  0.020
+RADIUS, 3PE-1, "H222":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, 3PE01:  Em0=0.0, pKa0=0.00, ne=0, nH=0,  rxn02= 0, rxn04= -22.577, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal 3PE with no Hs)
+CONFORMER, 3PE02:  Em0=0.0, pKa0=0.00, ne=0, nH=0,  rxn02= 0, rxn04= -23.308, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal 3PE with no Hs)
+CONFORMER, 3PE-1:  Em0=0.0, pKa0=2.14, ne=0, nH=-1, rxn02= 0, rxn04= -40.889, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal 3PE with no Hs) (pKa Phosphate Wikipedia)
+                                                                                  

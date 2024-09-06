@@ -1,0 +1,63 @@
+>>>START of original comments, this file was converted from old format
+# Created by Gehan Ranepura on 10/12/2023
+# 1.Basic Conformer Information: name, pka, em, rxn.
+# 2.Structure Connectivity
+#ONNECT   conf atom  orbital  ires conn ires conn ires conn ires conn
+#ONNECT |-----|----|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+# 3.Atom Parameters: Partial Charges and Radii
+# Radii from "Bondi, J.Phys.Chem., 68, 441, 1964."
+# Partial AMBER Charges provided by Mohamed Elrefaiy from the Urlich Group on 10/02/2023
+#=========================================================================
+#        GRP   #      BOND     AFFECTED_ATOMS
+#-------|---|----|-|---------|----|----|----|----|----|----|----|----|----
+#=========================================================================
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, SER: SERBK, SER01
+
+# Atom definition
+CONNECT, " N  ", SERBK: sp2, " ?  ", " CA ", " H  "
+CONNECT, " H  ", SERBK: s, " N  "
+CONNECT, " CA ", SERBK: sp3, " N  ", " C  ", " CB ", " HA "
+CONNECT, " HA ", SERBK: s, " CA "
+CONNECT, " C  ", SERBK: sp2, " CA ", " O  ", " ?  "
+CONNECT, " O  ", SERBK: sp2, " C  "
+CONNECT, " CB ", SER01: sp3, " CA ", " OG ", " HB2", " HB3"
+CONNECT, " HB2", SER01: s, " CB "
+CONNECT, " HB3", SER01: s, " CB "
+CONNECT, " OG ", SER01: sp3, " CB ", " HG "
+CONNECT, " HG ", SER01: s, " OG "
+
+# Atom charges
+CHARGE, SERBK, " N  ": -0.536
+CHARGE, SERBK, " H  ":  0.351
+CHARGE, SERBK, " CA ":  0.124
+CHARGE, SERBK, " HA ":  0.148
+CHARGE, SERBK, " C  ":  0.489
+CHARGE, SERBK, " O  ": -0.575
+CHARGE, SER01, " CB ":  0.140
+CHARGE, SER01, " HB2":  0.033
+CHARGE, SER01, " HB3":  0.033
+CHARGE, SER01, " OG ": -0.647
+CHARGE, SER01, " HG ":  0.441 # 0.440 + 0.001 for excess charge
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS,  SERBK,  " N  ": 1.500,   1.750,   0.160
+RADIUS,  SERBK,  " H  ": 1.000,   1.000,   0.020
+RADIUS,  SERBK,  " CA ": 2.000,   2.000,   0.150
+RADIUS,  SERBK,  " HA ": 0.000,   1.000,   0.020
+RADIUS,  SERBK,  " C  ": 1.700,   2.000,   0.150
+RADIUS,  SERBK,  " O  ": 1.400,   1.600,   0.200
+RADIUS,  SER01,  " CB ": 2.000,   2.000,   0.150
+RADIUS,  SER01,  " HB2": 0.000,   1.000,   0.020
+RADIUS,  SER01,  " HB3": 0.000,   1.000,   0.020
+RADIUS,  SER01,  " OG ": 1.400,   1.600,   0.200
+RADIUS,  SER01,  " HG ": 1.000,   1.000,   0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, SER01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= -2.091, rxn08= 0
+# CONFORMER, SER01: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -4.390, rxn04= -2.0, rxn08= -0.96
+
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
+ROTATE, SER: " CA " - " CB "

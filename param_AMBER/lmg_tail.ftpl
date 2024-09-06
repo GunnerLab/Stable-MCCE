@@ -1,0 +1,116 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges provided by Muhamed Amin
+# File Created by Gehan Ranepura on 09/19/2022
+
+# Guassian Calculation was done with the lmg tail, but atoms of the tail were set to 0 in the lmg head group topology file (lmg_nt_NBO.ftpl)
+# Additonal Hs were added to C8 (HC83) and C24 (H243) after running DFT
+# pKa of lmg-1 was set as the pKa of Orthophosphoric Acid from Wikipedia (https://en.wikipedia.org/wiki/Phosphate)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, lmg: lmgBK
+
+# ATOM name and bonds
+CONNECT, " C11", lmgBK:  sp3, " C12"
+CONNECT, " C12", lmgBK:  sp3, " C11", " C13"
+CONNECT, " C13", lmgBK:  sp3, " C12", " C14"
+CONNECT, " C14", lmgBK:  sp3, " C13", " C15"
+CONNECT, " C15", lmgBK:  sp3, " C14", " C16"
+CONNECT, " C16", lmgBK:  sp3, " C15", " C17"
+CONNECT, " C17", lmgBK:  sp3, " C16", " C18"
+CONNECT, " C18", lmgBK:  sp3, " C17", " C19"       
+CONNECT, " C19", lmgBK:  sp3, " C18", " C20"
+CONNECT, " C20", lmgBK:  sp3, " C19", " C21"
+CONNECT, " C21", lmgBK:  sp3, " C20", " C22"
+CONNECT, " C22", lmgBK:  sp2, " C21", " C23"
+CONNECT, " C23", lmgBK:  sp3, " C22", " C22"
+CONNECT, " C24", lmgBK:  sp2, " C23", " C23"
+CONNECT, " C25", lmgBK:  sp2, " C24", " C24"
+CONNECT, " C26", lmgBK:  sp3, " C25", " C25"
+CONNECT, " C27", lmgBK:  sp3, " C26"
+CONNECT, " C29", lmgBK:  sp3, " C30"
+CONNECT, " C30", lmgBK:  sp3, " C29", " C31"
+CONNECT, " C31", lmgBK:  sp3, " C30", " C32"
+CONNECT, " C32", lmgBK:  sp3, " C31", " C33"
+CONNECT, " C33", lmgBK:  sp3, " C32", " C34"
+CONNECT, " C34", lmgBK:  sp3, " C33", " C35"
+CONNECT, " C35", lmgBK:  sp3, " C34", " C36"
+CONNECT, " C36", lmgBK:  sp3, " C35", " C37"
+CONNECT, " C37", lmgBK:  sp3, " C36", " C38"
+CONNECT, " C38", lmgBK:  sp2, " C37", " C39" 
+CONNECT, " C39", lmgBK:  sp3, " C38", " C40"
+CONNECT, " C40", lmgBK:  sp3, " C39", " C41"
+CONNECT, " C41", lmgBK:  sp3, " C40", " C42"
+CONNECT, " C42", lmgBK:  sp3, " C41", " C43"
+CONNECT, " C43", lmgBK:  sp3, " C42"
+
+
+# ATOM charges
+CHARGE, lmgBK, " C11":  0.000
+CHARGE, lmgBK, " C12":  0.000
+CHARGE, lmgBK, " C13":  0.000
+CHARGE, lmgBK, " C14":  0.000
+CHARGE, lmgBK, " C15":  0.000
+CHARGE, lmgBK, " C16":  0.000
+CHARGE, lmgBK, " C17":  0.000
+CHARGE, lmgBK, " C18":  0.000
+CHARGE, lmgBK, " C19":  0.000
+CHARGE, lmgBK, " C20":  0.000
+CHARGE, lmgBK, " C21":  0.000
+CHARGE, lmgBK, " C22":  0.000  
+CHARGE, lmgBK, " C25":  0.000
+CHARGE, lmgBK, " C26":  0.000
+CHARGE, lmgBK, " C27":  0.000
+CHARGE, lmgBK, " C29":  0.000
+CHARGE, lmgBK, " C30":  0.000
+CHARGE, lmgBK, " C31":  0.000
+CHARGE, lmgBK, " C32":  0.000
+CHARGE, lmgBK, " C33":  0.000
+CHARGE, lmgBK, " C34":  0.000
+CHARGE, lmgBK, " C35":  0.000
+CHARGE, lmgBK, " C36":  0.000
+CHARGE, lmgBK, " C37":  0.000
+CHARGE, lmgBK, " C38":  0.000 
+CHARGE, lmgBK, " C39":  0.000
+CHARGE, lmgBK, " C40":  0.000
+CHARGE, lmgBK, " C41":  0.000
+CHARGE, lmgBK, " C42":  0.000
+CHARGE, lmgBK, " C43":  0.000
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, lmgBK, " C11":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C12":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C13":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C14":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C15":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C16":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C17":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C18":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C19":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C20":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C21":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C22":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C25":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C26":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C27":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C29":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C30":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C31":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C32":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C33":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C34":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C35":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C36":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C37":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C38":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C39":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C40":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C41":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C42":  1.700,  2.000,  0.150
+RADIUS, lmgBK, " C43":  1.700,  2.000,  0.150
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, lmgBK:  Em0=0.0, pKa0= 0.00, ne=0, nH= 0, rxn02= 0, rxn04=0, rxn08= 0  # Muhamed NBO  (Tested with LigandExpo Ideal lmg with no Hs)

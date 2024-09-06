@@ -1,0 +1,125 @@
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii
+#    - NBO Guassian charges
+# File Created by Gehan Ranepura on 11/06/2023
+
+# Guassian Calculation was done with the lmt tail, but atoms of the tail were set to 0 in the lmt group topology file (lmt_nt_NBO.ftpl)
+<<<END of original comments
+
+# Conformer definition
+CONFLIST, lmt: lmtBK
+
+# Conformer definition
+CONFLIST, lmt: lmtBK
+
+# ATOM name and bonds
+CONNECT, " C2 ", lmtBK:  sp3, " ?  "," C3 "," H22"," H21"
+CONNECT, " C3 ", lmtBK:  sp3, " C2 "," C4 "," H32"," H31"
+CONNECT, " C4 ", lmtBK:  sp3, " C3 "," C5 "," H42"," H41"
+CONNECT, " C5 ", lmtBK:  sp3, " C4 "," C6 "," H52"," H51"
+CONNECT, " C6 ", lmtBK:  sp3, " C5 "," C7 "," H62"," H61"
+CONNECT, " C7 ", lmtBK:  sp3, " C6 "," C8 "," H72"," H71"
+CONNECT, " C8 ", lmtBK:  sp3, " C7 "," C9 "," H82"," H81"
+CONNECT, " C9 ", lmtBK:  sp3, " C8 "," C10"," H92"," H91"
+CONNECT, " C10", lmtBK:  sp3, " C9 "," C11","H102","H101"
+CONNECT, " C11", lmtBK:  sp3, " C10"," C12","H112","H111"
+CONNECT, " C12", lmtBK:  sp3, " C11","H123","H122","H121"
+CONNECT, " H22", lmtBK:    s, " C2 "
+CONNECT, " H21", lmtBK:    s, " C2 "
+CONNECT, " H32", lmtBK:    s, " C3 "
+CONNECT, " H31", lmtBK:    s, " C3 "
+CONNECT, " H42", lmtBK:    s, " C4 "
+CONNECT, " H41", lmtBK:    s, " C4 "
+CONNECT, " H52", lmtBK:    s, " C5 "
+CONNECT, " H51", lmtBK:    s, " C5 "
+CONNECT, " H62", lmtBK:    s, " C6 "
+CONNECT, " H61", lmtBK:    s, " C6 "
+CONNECT, " H72", lmtBK:    s, " C7 "
+CONNECT, " H71", lmtBK:    s, " C7 "
+CONNECT, " H82", lmtBK:    s, " C8 "
+CONNECT, " H81", lmtBK:    s, " C8 "
+CONNECT, " H92", lmtBK:    s, " C9 "
+CONNECT, " H91", lmtBK:    s, " C9 "
+CONNECT, "H102", lmtBK:    s, " C10"
+CONNECT, "H101", lmtBK:    s, " C10"
+CONNECT, "H112", lmtBK:    s, " C11"
+CONNECT, "H111", lmtBK:    s, " C11"
+CONNECT, "H123", lmtBK:    s, " C12"
+CONNECT, "H122", lmtBK:    s, " C12"
+CONNECT, "H121", lmtBK:    s, " C12"
+
+# ATOM charges
+CHARGE, lmtBK, " C2 ": 0.000
+CHARGE, lmtBK, " C3 ": 0.000
+CHARGE, lmtBK, " C4 ": 0.000
+CHARGE, lmtBK, " C5 ": 0.000
+CHARGE, lmtBK, " C6 ": 0.000
+CHARGE, lmtBK, " C7 ": 0.000
+CHARGE, lmtBK, " C8 ": 0.000
+CHARGE, lmtBK, " C9 ": 0.000
+CHARGE, lmtBK, " C10": 0.000
+CHARGE, lmtBK, " C11": 0.000
+CHARGE, lmtBK, " C12": 0.000
+CHARGE, lmtBK, " H22": 0.000
+CHARGE, lmtBK, " H21": 0.000
+CHARGE, lmtBK, " H32": 0.000
+CHARGE, lmtBK, " H31": 0.000
+CHARGE, lmtBK, " H42": 0.000
+CHARGE, lmtBK, " H41": 0.000
+CHARGE, lmtBK, " H52": 0.000
+CHARGE, lmtBK, " H51": 0.000
+CHARGE, lmtBK, " H62": 0.000
+CHARGE, lmtBK, " H61": 0.000
+CHARGE, lmtBK, " H72": 0.000
+CHARGE, lmtBK, " H71": 0.000
+CHARGE, lmtBK, " H82": 0.000
+CHARGE, lmtBK, " H81": 0.000
+CHARGE, lmtBK, " H92": 0.000
+CHARGE, lmtBK, " H91": 0.000
+CHARGE, lmtBK, "H102": 0.000
+CHARGE, lmtBK, "H101": 0.000
+CHARGE, lmtBK, "H112": 0.000
+CHARGE, lmtBK, "H111": 0.000
+CHARGE, lmtBK, "H123": 0.000
+CHARGE, lmtBK, "H122": 0.000
+CHARGE, lmtBK, "H121": 0.000
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS, lmtBK, " C2 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C3 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C4 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C5 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C6 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C7 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C8 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C9 ":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C10":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C11":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " C12":  1.700,  2.000,  0.150
+RADIUS, lmtBK, " H22":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H21":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H32":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H31":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H42":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H41":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H52":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H51":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H62":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H61":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H72":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H71":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H82":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H81":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H92":  1.000,  1.000,  0.020
+RADIUS, lmtBK, " H91":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H102":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H101":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H112":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H111":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H123":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H122":  1.000,  1.000,  0.020
+RADIUS, lmtBK, "H121":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, lmtBK:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= 0, rxn04= 0, rxn08= 0

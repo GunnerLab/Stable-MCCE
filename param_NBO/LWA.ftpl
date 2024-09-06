@@ -1,0 +1,206 @@
+# Conformer definition
+CONFLIST, LWA: LWABK, LWA01, LWA02
+
+# ATOM name and bonds
+CONNECT, " N1 ", LWA01:  sp2, " C7 "," C2 "," H1 "
+CONNECT, " C4 ", LWA01:  sp2, " C5 "," C3 "," H2 "
+CONNECT, " C5 ", LWA01:  sp2, " C4 "," C6 "," C  "
+CONNECT, " C6 ", LWA01:  sp2, " C5 "," N  "," O  "
+CONNECT, " C7 ", LWA01:  sp2, " N1 "," C8 "," O1 "
+CONNECT, " C8 ", LWA01:  sp3, " C7 "," C9 "," O2 "," H3 "
+CONNECT, " C10", LWA01:  sp3, " C11"," C9 "," H4 "," H5 "
+CONNECT, " N  ", LWA01:  sp2, " C6 "," H6 "," H7 "
+CONNECT, " C  ", LWA01:  sp2, " C5 "," C1 "," H8 "
+CONNECT, " O  ", LWA01:  sp3, " C6 "
+CONNECT, " C1 ", LWA01:  sp2, " C  "," C2 "," H9 "
+CONNECT, " C11", LWA01:  sp3, " C10"," O2 "," H10"," H11"
+CONNECT, " C2 ", LWA01:  sp2, " N1 "," C1 "," C3 "
+CONNECT, " C3 ", LWA01:  sp2, " C4 "," C2 "," H12"
+CONNECT, " C9 ", LWA01:  sp3, " C8 "," C10"," H13"," H14"
+CONNECT, " O1 ", LWA01:  sp3, " C7 "
+CONNECT, " O2 ", LWA01:  sp3, " C8 "," C11"
+CONNECT, " H1 ", LWA01:    s, " N1 "
+CONNECT, " H2 ", LWA01:    s, " C4 "
+CONNECT, " H3 ", LWA01:    s, " C8 "
+CONNECT, " H4 ", LWA01:    s, " C10"
+CONNECT, " H5 ", LWA01:    s, " C10"
+CONNECT, " H6 ", LWA01:    s, " N  "
+CONNECT, " H7 ", LWA01:    s, " N  "
+CONNECT, " H8 ", LWA01:    s, " C  "
+CONNECT, " H9 ", LWA01:    s, " C1 "
+CONNECT, " H10", LWA01:    s, " C11"
+CONNECT, " H11", LWA01:    s, " C11"
+CONNECT, " H12", LWA01:    s, " C3 "
+CONNECT, " H13", LWA01:    s, " C9 "
+CONNECT, " H14", LWA01:    s, " C9 "
+
+# ATOM name and bonds
+CONNECT, " N1 ", LWA02:  sp2, " C7 "," C2 "," H1 "
+CONNECT, " C4 ", LWA02:  sp2, " C5 "," C3 "," H2 "
+CONNECT, " C5 ", LWA02:  sp2, " C4 "," C6 "," C  "
+CONNECT, " C6 ", LWA02:  sp2, " C5 "," N  "," O  "
+CONNECT, " C7 ", LWA02:  sp2, " N1 "," C8 "," O1 "
+CONNECT, " C8 ", LWA02:  sp3, " C7 "," C9 "," O2 "," H3 "
+CONNECT, " C10", LWA02:  sp3, " C11"," C9 "," H4 "," H5 "
+CONNECT, " N  ", LWA02:  sp2, " C6 "," H6 "," H7 "
+CONNECT, " C  ", LWA02:  sp2, " C5 "," C1 "," H8 "
+CONNECT, " O  ", LWA02:  sp3, " C6 "
+CONNECT, " C1 ", LWA02:  sp2, " C  "," C2 "," H9 "
+CONNECT, " C11", LWA02:  sp3, " C10"," O2 "," H10"," H11"
+CONNECT, " C2 ", LWA02:  sp2, " N1 "," C1 "," C3 "
+CONNECT, " C3 ", LWA02:  sp2, " C4 "," C2 "," H12"
+CONNECT, " C9 ", LWA02:  sp3, " C8 "," C10"," H13"," H14"
+CONNECT, " O1 ", LWA02:  sp3, " C7 "
+CONNECT, " O2 ", LWA02:  sp3, " C8 "," C11"
+CONNECT, " H1 ", LWA02:    s, " N1 "
+CONNECT, " H2 ", LWA02:    s, " C4 "
+CONNECT, " H3 ", LWA02:    s, " C8 "
+CONNECT, " H4 ", LWA02:    s, " C10"
+CONNECT, " H5 ", LWA02:    s, " C10"
+CONNECT, " H6 ", LWA02:    s, " N  "
+CONNECT, " H7 ", LWA02:    s, " N  "
+CONNECT, " H8 ", LWA02:    s, " C  "
+CONNECT, " H9 ", LWA02:    s, " C1 "
+CONNECT, " H10", LWA02:    s, " C11"
+CONNECT, " H11", LWA02:    s, " C11"
+CONNECT, " H12", LWA02:    s, " C3 "
+CONNECT, " H13", LWA02:    s, " C9 "
+CONNECT, " H14", LWA02:    s, " C9 "
+
+
+# ATOM charges
+CHARGE, LWA01, " N1 ":   -0.46
+CHARGE, LWA01, " C4 ":   -0.06
+CHARGE, LWA01, " C5 ":   -0.18
+CHARGE, LWA01, " C6 ":    0.67
+CHARGE, LWA01, " C7 ":    0.65
+CHARGE, LWA01, " C8 ":    0.07
+CHARGE, LWA01, " C10":   -0.11
+CHARGE, LWA01, " N  ":   -0.68
+CHARGE, LWA01, " C  ":   -0.06
+CHARGE, LWA01, " O  ":   -0.61
+CHARGE, LWA01, " C1 ":   -0.18
+CHARGE, LWA01, " C11":    0.12
+CHARGE, LWA01, " C2 ":     0.1
+CHARGE, LWA01, " C3 ":   -0.18
+CHARGE, LWA01, " C9 ":    -0.1
+CHARGE, LWA01, " O1 ":   -0.59
+CHARGE, LWA01, " O2 ":   -0.43
+CHARGE, LWA01, " H1 ":    0.33
+CHARGE, LWA01, " H2 ":    0.15
+CHARGE, LWA01, " H3 ":    0.09
+CHARGE, LWA01, " H4 ":    0.06
+CHARGE, LWA01, " H5 ":    0.06
+CHARGE, LWA01, " H6 ":    0.31
+CHARGE, LWA01, " H7 ":    0.31
+CHARGE, LWA01, " H8 ":    0.15
+CHARGE, LWA01, " H9 ":    0.16
+CHARGE, LWA01, " H10":    0.05
+CHARGE, LWA01, " H11":    0.05
+CHARGE, LWA01, " H12":    0.16
+CHARGE, LWA01, " H13":    0.08
+CHARGE, LWA01, " H14":    0.08
+
+# ATOM charges
+CHARGE, LWA02, " N1 ":   -0.46
+CHARGE, LWA02, " C4 ":   -0.06
+CHARGE, LWA02, " C5 ":   -0.17
+CHARGE, LWA02, " C6 ":    0.68
+CHARGE, LWA02, " C7 ":    0.65
+CHARGE, LWA02, " C8 ":    0.07
+CHARGE, LWA02, " C10":   -0.11
+CHARGE, LWA02, " N  ":   -0.68
+CHARGE, LWA02, " C  ":   -0.06
+CHARGE, LWA02, " O  ":   -0.62
+CHARGE, LWA02, " C1 ":   -0.18
+CHARGE, LWA02, " C11":    0.13
+CHARGE, LWA02, " C2 ":    0.09
+CHARGE, LWA02, " C3 ":   -0.18
+CHARGE, LWA02, " C9 ":    -0.1
+CHARGE, LWA02, " O1 ":    -0.6
+CHARGE, LWA02, " O2 ":   -0.43
+CHARGE, LWA02, " H1 ":    0.34
+CHARGE, LWA02, " H2 ":    0.15
+CHARGE, LWA02, " H3 ":    0.09
+CHARGE, LWA02, " H4 ":    0.06
+CHARGE, LWA02, " H5 ":    0.06
+CHARGE, LWA02, " H6 ":    0.31
+CHARGE, LWA02, " H7 ":    0.31
+CHARGE, LWA02, " H8 ":    0.15
+CHARGE, LWA02, " H9 ":    0.16
+CHARGE, LWA02, " H10":    0.05
+CHARGE, LWA02, " H11":    0.05
+CHARGE, LWA02, " H12":    0.16
+CHARGE, LWA02, " H13":    0.08
+CHARGE, LWA02, " H14":    0.08
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, LWA01, " N1 ":  1.500,  1.750,  0.160
+RADIUS, LWA01, " C4 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C5 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C6 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C7 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C8 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C10":  1.700,  2.000,  0.150
+RADIUS, LWA01, " N  ":  1.500,  1.750,  0.160
+RADIUS, LWA01, " C  ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " O  ":  1.400,  1.600,  0.200
+RADIUS, LWA01, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C11":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C2 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C3 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " C9 ":  1.700,  2.000,  0.150
+RADIUS, LWA01, " O1 ":  1.400,  1.600,  0.200
+RADIUS, LWA01, " O2 ":  1.400,  1.600,  0.200
+RADIUS, LWA01, " H1 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H2 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H3 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H4 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H5 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H6 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H7 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H8 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H9 ":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H10":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H11":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H12":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H13":  1.000,  1.000,  0.020
+RADIUS, LWA01, " H14":  1.000,  1.000,  0.020
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, LWA02, " N1 ":  1.500,  1.750,  0.160
+RADIUS, LWA02, " C4 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C5 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C6 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C7 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C8 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C10":  1.700,  2.000,  0.150
+RADIUS, LWA02, " N  ":  1.500,  1.750,  0.160
+RADIUS, LWA02, " C  ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " O  ":  1.400,  1.600,  0.200
+RADIUS, LWA02, " C1 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C11":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C2 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C3 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " C9 ":  1.700,  2.000,  0.150
+RADIUS, LWA02, " O1 ":  1.400,  1.600,  0.200
+RADIUS, LWA02, " O2 ":  1.400,  1.600,  0.200
+RADIUS, LWA02, " H1 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H2 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H3 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H4 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H5 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H6 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H7 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H8 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H9 ":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H10":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H11":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H12":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H13":  1.000,  1.000,  0.020
+RADIUS, LWA02, " H14":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LWA01:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -15.941, rxn04= -7.605, rxn08= -3.465
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, LWA02:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -16.385, rxn04= -7.82, rxn08= -3.566

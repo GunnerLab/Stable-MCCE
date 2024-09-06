@@ -1,0 +1,23 @@
+# Conformer definition
+CONFLIST, NO3: NO3BK, NO3-1
+
+# ATOM name and bonds
+CONNECT, " N  ", NO3-1:  sp2, " O1 "," O2 "," O3 "
+CONNECT, " O1 ", NO3-1:  sp3, " N  "
+CONNECT, " O2 ", NO3-1:  sp3, " N  "
+CONNECT, " O3 ", NO3-1:  sp3, " N  "
+
+# ATOM charges
+CHARGE, NO3-1, " N  ": 0.177
+CHARGE, NO3-1, " O1 ": -0.392
+CHARGE, NO3-1, " O2 ": -0.392
+CHARGE, NO3-1, " O3 ": -0.392
+
+# Atom radius, dielelctric boundary radius, VDW radius, and energy well depth
+RADIUS, NO3-1, " N  ":  1.500,  1.750,  0.160
+RADIUS, NO3-1, " O1 ":  1.400,  1.600,  0.200
+RADIUS, NO3-1, " O2 ":  1.400,  1.600,  0.200
+RADIUS, NO3-1, " O3 ":  1.400,  1.600,  0.200
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+CONFORMER, NO3-1:  Em0=0.0, pKa0=0.00, ne=0, nH=0, rxn02= -39.479, rxn04= -19.225, rxn08= -9.099

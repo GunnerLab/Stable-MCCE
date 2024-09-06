@@ -1,0 +1,71 @@
+>>>START of original comments, this file was converted from old format
+# 1. Basic Conformer Information: name, pka, em, rxn
+# 2. Structure Connectivity:
+# 3. Atom Parameters: Partial Charges and Radii 
+#    - Truncated ESP QM/MM charges provided by Krystle Reiss from Batista Lab at Yale
+# File Created by Gehan Ranepura on 11/18/2021
+<<<END of original comments
+
+# Values of the same key are appended and separated by ","
+CONFLIST, CT3: CT3BK, CT301
+
+# Atom definition
+CONNECT, " C11", CT301: sp3, " ?  ", " C12", "H111", "H112"
+CONNECT, " C13", CT301: sp3, " C12", " C14", " C15", "H13 "
+CONNECT, " C14", CT301: sp3, " C13", "H141", "H142", "H143"
+CONNECT, " C15", CT301: sp3, " C13", " ?  ", "H151", "H152"
+CONNECT, " C12", CT301: sp3, " C11", " C13", "H121", "H122"
+CONNECT, "H111", CT301: s, " C11"
+CONNECT, "H112", CT301: s, " C11"
+CONNECT, "H121", CT301: s, " C12"
+CONNECT, "H122", CT301: s, " C12"
+CONNECT, "H13 ", CT301: s, " C13"
+CONNECT, "H141", CT301: s, " C14"
+CONNECT, "H142", CT301: s, " C14"
+CONNECT, "H143", CT301: s, " C14"
+CONNECT, "H151", CT301: s, " C15"
+CONNECT, "H152", CT301: s, " C15"
+
+
+# Atom charges
+CHARGE, CT301, " C11":  0.000
+CHARGE, CT301, " C13":  0.000
+CHARGE, CT301, " C14":  0.000
+CHARGE, CT301, " C15":  0.000
+CHARGE, CT301, " C12":  0.000
+CHARGE, CT301, "H111":  0.000
+CHARGE, CT301, "H112":  0.000
+CHARGE, CT301, "H121":  0.000
+CHARGE, CT301, "H122":  0.000
+CHARGE, CT301, "H13 ":  0.000
+CHARGE, CT301, "H141":  0.000
+CHARGE, CT301, "H142":  0.000
+CHARGE, CT301, "H143":  0.000
+CHARGE, CT301, "H151":  0.000
+CHARGE, CT301, "H152":  0.000
+
+
+# Atom radius, dielectric boundary radius, VDW radius, and energy well depth
+RADIUS,  CT301,  " C11": 2.000,   2.000,   0.150
+RADIUS,  CT301,  " C13": 2.000,   2.000,   0.150
+RADIUS,  CT301,  " C14": 2.000,   2.000,   0.150
+RADIUS,  CT301,  " C15": 2.000,   2.000,   0.150
+RADIUS,  CT301,  " C12": 2.000,   2.000,   0.150
+RADIUS, CT301, "H111":  1.000,  1.000,  0.020
+RADIUS, CT301, "H112":  1.000,  1.000,  0.020
+RADIUS, CT301, "H121":  1.000,  1.000,  0.020
+RADIUS, CT301, "H122":  1.000,  1.000,  0.020
+RADIUS, CT301, "H13 ":  1.000,  1.000,  0.020
+RADIUS, CT301, "H141":  1.000,  1.000,  0.020
+RADIUS, CT301, "H142":  1.000,  1.000,  0.020
+RADIUS, CT301, "H143":  1.000,  1.000,  0.020
+RADIUS, CT301, "H151":  1.000,  1.000,  0.020
+RADIUS, CT301, "H152":  1.000,  1.000,  0.020
+
+# Conformer parameters that appear in head3.lst: ne, Em0, nH, pKa0, rxn
+# CONFORMER, CT30A: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -19.694, rxn04= -9.129, rxn08= -3.980
+# CONFORMER, CT30D: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -18.960, rxn04= -9.673, rxn08= -4.058
+# CONFORMER, CT30F: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= -13.998, rxn04=-10.135, rxn08= -3.009
+
+CONFORMER, CT301: Em0=   0.0, pKa0=  0.00, ne= 0, nH= 0, rxn02= 0, rxn04= 0, rxn08 =0
+# Rotatable bonds. The atoms extended in the bond direction will all be rotated.
